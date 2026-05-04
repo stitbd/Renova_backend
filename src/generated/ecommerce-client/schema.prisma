@@ -1,0 +1,9 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../../src/generated/ecommerce-client"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("ECOMMERCE_DATABASE_URL")
+}

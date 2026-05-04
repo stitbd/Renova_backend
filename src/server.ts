@@ -1,23 +1,39 @@
-import http from "http";
-import mongoose from "mongoose";
 import app from "./app";
-import { configs } from "./app/configs";
+import { env } from "./configs/env";
 
-import { User_Model } from "./app/modules/user/user.schema";
-import { initSocket } from "./app/utils/socket";
+import {
+  appointmentPrisma,
+  ecommercePrisma,
+  mainPrisma,
+} from "./databases/prisma";
 
-async function startServer() {
-  await mongoose.connect(configs.db_url!);
+const startServer = async () => {
+  try {
+    await mainPrisma.$connect();
+    await ecommercePrisma.$connect();
+    await appointmentPrisma.$connect();
 
-  // Prevent ghost online users after restart
-  await User_Model.updateMany({}, { isOnline: false });
+    console.log("All MySQL databases connected successfully");
 
-  const server = http.createServer(app);
-  initSocket(server);
+    app.listen(env.port, () => {
+      console.log(`Server running on port ${env.port}`);
+    });
+  } catch (error) {
+    console.error("Server failed to start:", error);
 
-  server.listen(configs.port, () => {
-    console.log(`🚀 Server running on port ${configs.port}`);
-  });
-}
+    await mainPrisma.$disconnect();
+    await ecommercePrisma.$disconnect();
+    await appointmentPrisma.$disconnect();
+
+    process.exit(1);
+  }
+};
 
 startServer();
+
+process.on("SIGINT", async () => {
+  await mainPrisma.$disconnect();
+  await ecommercePrisma.$disconnect();
+  await appointmentPrisma.$disconnect();
+  process.exit(0);
+});
