@@ -93,9 +93,224 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
+exports.Prisma.SuperAdminsScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  phone: 'phone',
+  password: 'password',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.PatientScalarFieldEnum = {
+  id: 'id',
+  fullName: 'fullName',
+  mobileNumber: 'mobileNumber',
+  otp: 'otp',
+  otpExpiresAt: 'otpExpiresAt',
+  email: 'email',
+  dateOfBirth: 'dateOfBirth',
+  age: 'age',
+  bloodGroup: 'bloodGroup',
+  gender: 'gender',
+  address: 'address',
+  diagnosticAccountId: 'diagnosticAccountId',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.DoctorScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  phone: 'phone',
+  password: 'password',
+  specialization: 'specialization',
+  experience: 'experience',
+  consultationFee: 'consultationFee',
+  bio: 'bio',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.DiagnosticAccountScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  phone: 'phone',
+  password: 'password',
+  centerName: 'centerName',
+  slug: 'slug',
+  logo: 'logo',
+  address: 'address',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.DiagnosticChildUserScalarFieldEnum = {
+  id: 'id',
+  DiagnosticAccountId: 'DiagnosticAccountId',
+  name: 'name',
+  email: 'email',
+  phone: 'phone',
+  password: 'password',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.RoleScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  ownerType: 'ownerType',
+  DiagnosticAccountId: 'DiagnosticAccountId',
+  superAdminId: 'superAdminId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.PermissionScalarFieldEnum = {
+  id: 'id',
+  key: 'key',
+  module: 'module',
+  description: 'description',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.RolePermissionScalarFieldEnum = {
+  id: 'id',
+  roleId: 'roleId',
+  permissionId: 'permissionId'
+};
+
+exports.Prisma.DiagnosticUserRoleScalarFieldEnum = {
+  id: 'id',
+  DiagnosticChildUserId: 'DiagnosticChildUserId',
+  roleId: 'roleId',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.SuperAdminUserRoleScalarFieldEnum = {
+  id: 'id',
+  superAdminId: 'superAdminId',
+  roleId: 'roleId',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.SortOrder = {
+  asc: 'asc',
+  desc: 'desc'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
+exports.Prisma.SuperAdminsOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  phone: 'phone',
+  password: 'password'
+};
+
+exports.Prisma.PatientOrderByRelevanceFieldEnum = {
+  id: 'id',
+  fullName: 'fullName',
+  mobileNumber: 'mobileNumber',
+  otp: 'otp',
+  email: 'email',
+  bloodGroup: 'bloodGroup',
+  gender: 'gender',
+  address: 'address',
+  diagnosticAccountId: 'diagnosticAccountId'
+};
+
+exports.Prisma.DoctorOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  phone: 'phone',
+  password: 'password',
+  specialization: 'specialization',
+  bio: 'bio'
+};
+
+exports.Prisma.DiagnosticAccountOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  phone: 'phone',
+  password: 'password',
+  centerName: 'centerName',
+  slug: 'slug',
+  logo: 'logo',
+  address: 'address'
+};
+
+exports.Prisma.DiagnosticChildUserOrderByRelevanceFieldEnum = {
+  id: 'id',
+  DiagnosticAccountId: 'DiagnosticAccountId',
+  name: 'name',
+  email: 'email',
+  phone: 'phone',
+  password: 'password'
+};
+
+exports.Prisma.RoleOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  DiagnosticAccountId: 'DiagnosticAccountId',
+  superAdminId: 'superAdminId'
+};
+
+exports.Prisma.PermissionOrderByRelevanceFieldEnum = {
+  id: 'id',
+  key: 'key',
+  module: 'module',
+  description: 'description'
+};
+
+exports.Prisma.RolePermissionOrderByRelevanceFieldEnum = {
+  id: 'id',
+  roleId: 'roleId',
+  permissionId: 'permissionId'
+};
+
+exports.Prisma.DiagnosticUserRoleOrderByRelevanceFieldEnum = {
+  id: 'id',
+  DiagnosticChildUserId: 'DiagnosticChildUserId',
+  roleId: 'roleId'
+};
+
+exports.Prisma.SuperAdminUserRoleOrderByRelevanceFieldEnum = {
+  id: 'id',
+  superAdminId: 'superAdminId',
+  roleId: 'roleId'
+};
+exports.RoleOwnerType = exports.$Enums.RoleOwnerType = {
+  DIAGNOSTIC: 'DIAGNOSTIC',
+  SUPER_ADMIN: 'SUPER_ADMIN'
+};
 
 exports.Prisma.ModelName = {
-
+  SuperAdmins: 'SuperAdmins',
+  Patient: 'Patient',
+  Doctor: 'Doctor',
+  DiagnosticAccount: 'DiagnosticAccount',
+  DiagnosticChildUser: 'DiagnosticChildUser',
+  Role: 'Role',
+  Permission: 'Permission',
+  RolePermission: 'RolePermission',
+  DiagnosticUserRole: 'DiagnosticUserRole',
+  SuperAdminUserRole: 'SuperAdminUserRole'
 };
 /**
  * Create the Client
@@ -136,7 +351,6 @@ const config = {
     "db"
   ],
   "activeProvider": "mysql",
-  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -145,13 +359,13 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../../src/generated/main-client\"\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"MAIN_DATABASE_URL\")\n}\n",
-  "inlineSchemaHash": "e0505e0f8daefba879274498d0fc90155b2e7ebfe4c4ab9bc2ddb8a404b26cb8",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../../src/generated/main-client\"\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"MAIN_DATABASE_URL\")\n}\n\n//SuperAdmins model\nmodel SuperAdmins {\n  id       String  @id @default(uuid())\n  name     String\n  email    String  @unique\n  phone    String?\n  password String\n  isActive Boolean @default(true)\n\n  roles     Role[]\n  userRoles SuperAdminUserRole[]\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\n//patient model \nmodel Patient {\n  id           String    @id @default(uuid())\n  fullName     String\n  mobileNumber String    @unique\n  otp          String?\n  otpExpiresAt DateTime?\n\n  email       String?\n  dateOfBirth DateTime?\n  age         Int?\n  bloodGroup  String?\n  gender      String?\n  address     String?\n\n  diagnosticAccountId String?\n  diagnosticAccount   DiagnosticAccount? @relation(fields: [diagnosticAccountId], references: [id])\n\n  isActive Boolean @default(true)\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\n//Doctor model\nmodel Doctor {\n  id              String   @id @default(uuid())\n  name            String\n  email           String   @unique\n  phone           String?\n  password        String\n  specialization  String\n  experience      Int?\n  consultationFee Decimal? @db.Decimal(10, 2)\n  bio             String?  @db.Text\n  isActive        Boolean  @default(true)\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\n// Diognostic_parent model \nmodel DiagnosticAccount {\n  id         String  @id @default(uuid())\n  name       String\n  email      String  @unique\n  phone      String?\n  password   String\n  centerName String\n  slug       String  @unique\n  logo       String?\n  address    String?\n  isActive   Boolean @default(true)\n\n  childUsers DiagnosticChildUser[]\n  roles      Role[]\n  patients   Patient[] // ✅ ADD THIS\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\n// Diognostic_child model\nmodel DiagnosticChildUser {\n  id                  String  @id @default(uuid())\n  DiagnosticAccountId String\n  name                String\n  email               String\n  phone               String?\n  password            String\n  isActive            Boolean @default(true)\n\n  DiagnosticAccount DiagnosticAccount    @relation(fields: [DiagnosticAccountId], references: [id])\n  userRoles         DiagnosticUserRole[]\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  @@unique([email, DiagnosticAccountId])\n}\n\n// Role and Permission models \n\nenum RoleOwnerType {\n  DIAGNOSTIC\n  SUPER_ADMIN\n}\n\nmodel Role {\n  id        String        @id @default(uuid())\n  name      String\n  ownerType RoleOwnerType\n\n  // owner references\n  DiagnosticAccountId String?\n  superAdminId        String? // ✅ NEW\n\n  DiagnosticAccount DiagnosticAccount? @relation(fields: [DiagnosticAccountId], references: [id])\n  superAdmin        SuperAdmins?       @relation(fields: [superAdminId], references: [id])\n\n  rolePermissions     RolePermission[]\n  diagnosticUserRoles DiagnosticUserRole[]\n  superAdminUserRoles SuperAdminUserRole[] // ✅ NEW\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  @@unique([name, DiagnosticAccountId])\n  @@unique([name, superAdminId]) // ✅ NEW\n}\n\nmodel Permission {\n  id          String  @id @default(uuid())\n  key         String  @unique\n  module      String\n  description String?\n\n  rolePermissions RolePermission[]\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\nmodel RolePermission {\n  id           String @id @default(uuid())\n  roleId       String\n  permissionId String\n\n  role       Role       @relation(fields: [roleId], references: [id])\n  permission Permission @relation(fields: [permissionId], references: [id])\n\n  @@unique([roleId, permissionId])\n}\n\n// assaigning role to child users in  diagnostic accounts and superAdmin \n\nmodel DiagnosticUserRole {\n  id                    String @id @default(uuid())\n  DiagnosticChildUserId String\n  roleId                String\n\n  DiagnosticChildUser DiagnosticChildUser @relation(fields: [DiagnosticChildUserId], references: [id])\n  role                Role                @relation(fields: [roleId], references: [id])\n\n  createdAt DateTime @default(now())\n\n  @@unique([DiagnosticChildUserId, roleId])\n}\n\nmodel SuperAdminUserRole {\n  id           String @id @default(uuid())\n  superAdminId String\n  roleId       String\n\n  superAdmin SuperAdmins @relation(fields: [superAdminId], references: [id])\n  role       Role        @relation(fields: [roleId], references: [id])\n\n  createdAt DateTime @default(now())\n\n  @@unique([superAdminId, roleId])\n}\n",
+  "inlineSchemaHash": "c83bf3edbbc0ad3c70083648ebc1714daebad753c310ffeb9dfbc527ec0ca24d",
   "copyEngine": true
 }
 config.dirname = '/'
 
-config.runtimeDataModel = JSON.parse("{\"models\":{},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"SuperAdmins\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"phone\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"isActive\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"roles\",\"kind\":\"object\",\"type\":\"Role\",\"relationName\":\"RoleToSuperAdmins\"},{\"name\":\"userRoles\",\"kind\":\"object\",\"type\":\"SuperAdminUserRole\",\"relationName\":\"SuperAdminUserRoleToSuperAdmins\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"Patient\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"fullName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"mobileNumber\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"otp\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"otpExpiresAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"dateOfBirth\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"age\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"bloodGroup\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"gender\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"address\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"diagnosticAccountId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"diagnosticAccount\",\"kind\":\"object\",\"type\":\"DiagnosticAccount\",\"relationName\":\"DiagnosticAccountToPatient\"},{\"name\":\"isActive\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"Doctor\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"phone\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"specialization\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"experience\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"consultationFee\",\"kind\":\"scalar\",\"type\":\"Decimal\"},{\"name\":\"bio\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"isActive\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"DiagnosticAccount\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"phone\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"centerName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"slug\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"logo\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"address\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"isActive\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"childUsers\",\"kind\":\"object\",\"type\":\"DiagnosticChildUser\",\"relationName\":\"DiagnosticAccountToDiagnosticChildUser\"},{\"name\":\"roles\",\"kind\":\"object\",\"type\":\"Role\",\"relationName\":\"DiagnosticAccountToRole\"},{\"name\":\"patients\",\"kind\":\"object\",\"type\":\"Patient\",\"relationName\":\"DiagnosticAccountToPatient\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"DiagnosticChildUser\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"DiagnosticAccountId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"phone\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"isActive\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"DiagnosticAccount\",\"kind\":\"object\",\"type\":\"DiagnosticAccount\",\"relationName\":\"DiagnosticAccountToDiagnosticChildUser\"},{\"name\":\"userRoles\",\"kind\":\"object\",\"type\":\"DiagnosticUserRole\",\"relationName\":\"DiagnosticChildUserToDiagnosticUserRole\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"Role\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"ownerType\",\"kind\":\"enum\",\"type\":\"RoleOwnerType\"},{\"name\":\"DiagnosticAccountId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"superAdminId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"DiagnosticAccount\",\"kind\":\"object\",\"type\":\"DiagnosticAccount\",\"relationName\":\"DiagnosticAccountToRole\"},{\"name\":\"superAdmin\",\"kind\":\"object\",\"type\":\"SuperAdmins\",\"relationName\":\"RoleToSuperAdmins\"},{\"name\":\"rolePermissions\",\"kind\":\"object\",\"type\":\"RolePermission\",\"relationName\":\"RoleToRolePermission\"},{\"name\":\"diagnosticUserRoles\",\"kind\":\"object\",\"type\":\"DiagnosticUserRole\",\"relationName\":\"DiagnosticUserRoleToRole\"},{\"name\":\"superAdminUserRoles\",\"kind\":\"object\",\"type\":\"SuperAdminUserRole\",\"relationName\":\"RoleToSuperAdminUserRole\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"Permission\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"key\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"module\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"rolePermissions\",\"kind\":\"object\",\"type\":\"RolePermission\",\"relationName\":\"PermissionToRolePermission\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"RolePermission\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"roleId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"permissionId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"role\",\"kind\":\"object\",\"type\":\"Role\",\"relationName\":\"RoleToRolePermission\"},{\"name\":\"permission\",\"kind\":\"object\",\"type\":\"Permission\",\"relationName\":\"PermissionToRolePermission\"}],\"dbName\":null},\"DiagnosticUserRole\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"DiagnosticChildUserId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"roleId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"DiagnosticChildUser\",\"kind\":\"object\",\"type\":\"DiagnosticChildUser\",\"relationName\":\"DiagnosticChildUserToDiagnosticUserRole\"},{\"name\":\"role\",\"kind\":\"object\",\"type\":\"Role\",\"relationName\":\"DiagnosticUserRoleToRole\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"SuperAdminUserRole\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"superAdminId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"roleId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"superAdmin\",\"kind\":\"object\",\"type\":\"SuperAdmins\",\"relationName\":\"SuperAdminUserRoleToSuperAdmins\"},{\"name\":\"role\",\"kind\":\"object\",\"type\":\"Role\",\"relationName\":\"RoleToSuperAdminUserRole\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.engineWasm = {
   getRuntime: async () => require('./query_engine_bg.js'),

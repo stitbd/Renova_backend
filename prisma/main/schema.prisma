@@ -7,3 +7,181 @@ datasource db {
   provider = "mysql"
   url      = env("MAIN_DATABASE_URL")
 }
+
+//SuperAdmins model
+model SuperAdmins {
+  id       String  @id @default(uuid())
+  name     String
+  email    String  @unique
+  phone    String?
+  password String
+  isActive Boolean @default(true)
+
+  roles     Role[]
+  userRoles SuperAdminUserRole[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+//patient model 
+model Patient {
+  id           String    @id @default(uuid())
+  fullName     String
+  mobileNumber String    @unique
+  otp          String?
+  otpExpiresAt DateTime?
+
+  email       String?
+  dateOfBirth DateTime?
+  age         Int?
+  bloodGroup  String?
+  gender      String?
+  address     String?
+
+  diagnosticAccountId String?
+  diagnosticAccount   DiagnosticAccount? @relation(fields: [diagnosticAccountId], references: [id])
+
+  isActive Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+//Doctor model
+model Doctor {
+  id              String   @id @default(uuid())
+  name            String
+  email           String   @unique
+  phone           String?
+  password        String
+  specialization  String
+  experience      Int?
+  consultationFee Decimal? @db.Decimal(10, 2)
+  bio             String?  @db.Text
+  isActive        Boolean  @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Diognostic_parent model 
+model DiagnosticAccount {
+  id         String  @id @default(uuid())
+  name       String
+  email      String  @unique
+  phone      String?
+  password   String
+  centerName String
+  slug       String  @unique
+  logo       String?
+  address    String?
+  isActive   Boolean @default(true)
+
+  childUsers DiagnosticChildUser[]
+  roles      Role[]
+  patients   Patient[] // ✅ ADD THIS
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Diognostic_child model
+model DiagnosticChildUser {
+  id                  String  @id @default(uuid())
+  DiagnosticAccountId String
+  name                String
+  email               String
+  phone               String?
+  password            String
+  isActive            Boolean @default(true)
+
+  DiagnosticAccount DiagnosticAccount    @relation(fields: [DiagnosticAccountId], references: [id])
+  userRoles         DiagnosticUserRole[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([email, DiagnosticAccountId])
+}
+
+// Role and Permission models 
+
+enum RoleOwnerType {
+  DIAGNOSTIC
+  SUPER_ADMIN
+}
+
+model Role {
+  id        String        @id @default(uuid())
+  name      String
+  ownerType RoleOwnerType
+
+  // owner references
+  DiagnosticAccountId String?
+  superAdminId        String? // ✅ NEW
+
+  DiagnosticAccount DiagnosticAccount? @relation(fields: [DiagnosticAccountId], references: [id])
+  superAdmin        SuperAdmins?       @relation(fields: [superAdminId], references: [id])
+
+  rolePermissions     RolePermission[]
+  diagnosticUserRoles DiagnosticUserRole[]
+  superAdminUserRoles SuperAdminUserRole[] // ✅ NEW
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([name, DiagnosticAccountId])
+  @@unique([name, superAdminId]) // ✅ NEW
+}
+
+model Permission {
+  id          String  @id @default(uuid())
+  key         String  @unique
+  module      String
+  description String?
+
+  rolePermissions RolePermission[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model RolePermission {
+  id           String @id @default(uuid())
+  roleId       String
+  permissionId String
+
+  role       Role       @relation(fields: [roleId], references: [id])
+  permission Permission @relation(fields: [permissionId], references: [id])
+
+  @@unique([roleId, permissionId])
+}
+
+// assaigning role to child users in  diagnostic accounts and superAdmin 
+
+model DiagnosticUserRole {
+  id                    String @id @default(uuid())
+  DiagnosticChildUserId String
+  roleId                String
+
+  DiagnosticChildUser DiagnosticChildUser @relation(fields: [DiagnosticChildUserId], references: [id])
+  role                Role                @relation(fields: [roleId], references: [id])
+
+  createdAt DateTime @default(now())
+
+  @@unique([DiagnosticChildUserId, roleId])
+}
+
+model SuperAdminUserRole {
+  id           String @id @default(uuid())
+  superAdminId String
+  roleId       String
+
+  superAdmin SuperAdmins @relation(fields: [superAdminId], references: [id])
+  role       Role        @relation(fields: [roleId], references: [id])
+
+  createdAt DateTime @default(now())
+
+  @@unique([superAdminId, roleId])
+}

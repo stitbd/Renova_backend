@@ -121,9 +121,224 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
+exports.Prisma.SuperAdminsScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  phone: 'phone',
+  password: 'password',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.PatientScalarFieldEnum = {
+  id: 'id',
+  fullName: 'fullName',
+  mobileNumber: 'mobileNumber',
+  otp: 'otp',
+  otpExpiresAt: 'otpExpiresAt',
+  email: 'email',
+  dateOfBirth: 'dateOfBirth',
+  age: 'age',
+  bloodGroup: 'bloodGroup',
+  gender: 'gender',
+  address: 'address',
+  diagnosticAccountId: 'diagnosticAccountId',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.DoctorScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  phone: 'phone',
+  password: 'password',
+  specialization: 'specialization',
+  experience: 'experience',
+  consultationFee: 'consultationFee',
+  bio: 'bio',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.DiagnosticAccountScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  phone: 'phone',
+  password: 'password',
+  centerName: 'centerName',
+  slug: 'slug',
+  logo: 'logo',
+  address: 'address',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.DiagnosticChildUserScalarFieldEnum = {
+  id: 'id',
+  DiagnosticAccountId: 'DiagnosticAccountId',
+  name: 'name',
+  email: 'email',
+  phone: 'phone',
+  password: 'password',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.RoleScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  ownerType: 'ownerType',
+  DiagnosticAccountId: 'DiagnosticAccountId',
+  superAdminId: 'superAdminId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.PermissionScalarFieldEnum = {
+  id: 'id',
+  key: 'key',
+  module: 'module',
+  description: 'description',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.RolePermissionScalarFieldEnum = {
+  id: 'id',
+  roleId: 'roleId',
+  permissionId: 'permissionId'
+};
+
+exports.Prisma.DiagnosticUserRoleScalarFieldEnum = {
+  id: 'id',
+  DiagnosticChildUserId: 'DiagnosticChildUserId',
+  roleId: 'roleId',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.SuperAdminUserRoleScalarFieldEnum = {
+  id: 'id',
+  superAdminId: 'superAdminId',
+  roleId: 'roleId',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.SortOrder = {
+  asc: 'asc',
+  desc: 'desc'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
+exports.Prisma.SuperAdminsOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  phone: 'phone',
+  password: 'password'
+};
+
+exports.Prisma.PatientOrderByRelevanceFieldEnum = {
+  id: 'id',
+  fullName: 'fullName',
+  mobileNumber: 'mobileNumber',
+  otp: 'otp',
+  email: 'email',
+  bloodGroup: 'bloodGroup',
+  gender: 'gender',
+  address: 'address',
+  diagnosticAccountId: 'diagnosticAccountId'
+};
+
+exports.Prisma.DoctorOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  phone: 'phone',
+  password: 'password',
+  specialization: 'specialization',
+  bio: 'bio'
+};
+
+exports.Prisma.DiagnosticAccountOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  phone: 'phone',
+  password: 'password',
+  centerName: 'centerName',
+  slug: 'slug',
+  logo: 'logo',
+  address: 'address'
+};
+
+exports.Prisma.DiagnosticChildUserOrderByRelevanceFieldEnum = {
+  id: 'id',
+  DiagnosticAccountId: 'DiagnosticAccountId',
+  name: 'name',
+  email: 'email',
+  phone: 'phone',
+  password: 'password'
+};
+
+exports.Prisma.RoleOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  DiagnosticAccountId: 'DiagnosticAccountId',
+  superAdminId: 'superAdminId'
+};
+
+exports.Prisma.PermissionOrderByRelevanceFieldEnum = {
+  id: 'id',
+  key: 'key',
+  module: 'module',
+  description: 'description'
+};
+
+exports.Prisma.RolePermissionOrderByRelevanceFieldEnum = {
+  id: 'id',
+  roleId: 'roleId',
+  permissionId: 'permissionId'
+};
+
+exports.Prisma.DiagnosticUserRoleOrderByRelevanceFieldEnum = {
+  id: 'id',
+  DiagnosticChildUserId: 'DiagnosticChildUserId',
+  roleId: 'roleId'
+};
+
+exports.Prisma.SuperAdminUserRoleOrderByRelevanceFieldEnum = {
+  id: 'id',
+  superAdminId: 'superAdminId',
+  roleId: 'roleId'
+};
+exports.RoleOwnerType = exports.$Enums.RoleOwnerType = {
+  DIAGNOSTIC: 'DIAGNOSTIC',
+  SUPER_ADMIN: 'SUPER_ADMIN'
+};
 
 exports.Prisma.ModelName = {
-
+  SuperAdmins: 'SuperAdmins',
+  Patient: 'Patient',
+  Doctor: 'Doctor',
+  DiagnosticAccount: 'DiagnosticAccount',
+  DiagnosticChildUser: 'DiagnosticChildUser',
+  Role: 'Role',
+  Permission: 'Permission',
+  RolePermission: 'RolePermission',
+  DiagnosticUserRole: 'DiagnosticUserRole',
+  SuperAdminUserRole: 'SuperAdminUserRole'
 };
 
 /**
