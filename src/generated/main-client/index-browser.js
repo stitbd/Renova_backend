@@ -155,17 +155,47 @@ exports.Prisma.PatientScalarFieldEnum = {
 
 exports.Prisma.DoctorScalarFieldEnum = {
   id: 'id',
-  name: 'name',
+  doctorCode: 'doctorCode',
+  fullName: 'fullName',
+  mobile: 'mobile',
   email: 'email',
-  phone: 'phone',
-  password: 'password',
-  specialization: 'specialization',
-  experience: 'experience',
+  bmdcNumber: 'bmdcNumber',
+  subSpecialization: 'subSpecialization',
+  qualification: 'qualification',
+  experienceYears: 'experienceYears',
+  currentDesignation: 'currentDesignation',
   consultationFee: 'consultationFee',
-  bio: 'bio',
-  isActive: 'isActive',
+  status: 'status',
+  onlineStatus: 'onlineStatus',
+  outletId: 'outletId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
+};
+
+exports.Prisma.DoctorSpecializationScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  status: 'status',
+  doctorId: 'doctorId'
+};
+
+exports.Prisma.DoctorDocumentScalarFieldEnum = {
+  id: 'id',
+  doctorId: 'doctorId',
+  documentType: 'documentType',
+  fileUrl: 'fileUrl',
+  verificationStatus: 'verificationStatus',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.DoctorScheduleScalarFieldEnum = {
+  id: 'id',
+  doctorId: 'doctorId',
+  dayName: 'dayName',
+  startTime: 'startTime',
+  endTime: 'endTime',
+  slotDuration: 'slotDuration',
+  status: 'status'
 };
 
 exports.Prisma.OutletScalarFieldEnum = {
@@ -268,12 +298,35 @@ exports.Prisma.PatientOrderByRelevanceFieldEnum = {
 
 exports.Prisma.DoctorOrderByRelevanceFieldEnum = {
   id: 'id',
-  name: 'name',
+  doctorCode: 'doctorCode',
+  fullName: 'fullName',
+  mobile: 'mobile',
   email: 'email',
-  phone: 'phone',
-  password: 'password',
-  specialization: 'specialization',
-  bio: 'bio'
+  bmdcNumber: 'bmdcNumber',
+  subSpecialization: 'subSpecialization',
+  qualification: 'qualification',
+  currentDesignation: 'currentDesignation',
+  outletId: 'outletId'
+};
+
+exports.Prisma.DoctorSpecializationOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  doctorId: 'doctorId'
+};
+
+exports.Prisma.DoctorDocumentOrderByRelevanceFieldEnum = {
+  id: 'id',
+  doctorId: 'doctorId',
+  fileUrl: 'fileUrl'
+};
+
+exports.Prisma.DoctorScheduleOrderByRelevanceFieldEnum = {
+  id: 'id',
+  doctorId: 'doctorId',
+  dayName: 'dayName',
+  startTime: 'startTime',
+  endTime: 'endTime'
 };
 
 exports.Prisma.outletOrderByRelevanceFieldEnum = {
@@ -330,8 +383,36 @@ exports.Prisma.SuperAdminUserRoleOrderByRelevanceFieldEnum = {
 };
 exports.PatientStatus = exports.$Enums.PatientStatus = {
   ACTIVE: 'ACTIVE',
-  INACTIVE: 'INACTIVE',
-  PENDING: 'PENDING'
+  INACTIVE: 'INACTIVE'
+};
+
+exports.DoctorStatus = exports.$Enums.DoctorStatus = {
+  ACTIVE: 'ACTIVE',
+  INACTIVE: 'INACTIVE'
+};
+
+exports.DoctorOnlineStatus = exports.$Enums.DoctorOnlineStatus = {
+  ONLINE: 'ONLINE',
+  OFFLINE: 'OFFLINE'
+};
+
+exports.DocumentType = exports.$Enums.DocumentType = {
+  LICENSE: 'LICENSE',
+  CERTIFICATE: 'CERTIFICATE',
+  DEGREE: 'DEGREE',
+  NID: 'NID',
+  OTHER: 'OTHER'
+};
+
+exports.VerificationStatus = exports.$Enums.VerificationStatus = {
+  PENDING: 'PENDING',
+  VERIFIED: 'VERIFIED',
+  REJECTED: 'REJECTED'
+};
+
+exports.ScheduleStatus = exports.$Enums.ScheduleStatus = {
+  ACTIVE: 'ACTIVE',
+  INACTIVE: 'INACTIVE'
 };
 
 exports.RoleOwnerType = exports.$Enums.RoleOwnerType = {
@@ -343,6 +424,9 @@ exports.Prisma.ModelName = {
   SuperAdmins: 'SuperAdmins',
   Patient: 'Patient',
   Doctor: 'Doctor',
+  DoctorSpecialization: 'DoctorSpecialization',
+  DoctorDocument: 'DoctorDocument',
+  DoctorSchedule: 'DoctorSchedule',
   outlet: 'outlet',
   OutletChildUser: 'OutletChildUser',
   Role: 'Role',

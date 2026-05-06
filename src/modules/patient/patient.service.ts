@@ -35,7 +35,7 @@ export const patientService = {
       gender: data.gender,
       address: data.address,
       emergencyContact: data.emergencyContact,
-      status: data.status,
+      status: data.status as PatientStatus,
 
       outlet: data.outletId
         ? {
@@ -100,7 +100,7 @@ export const patientService = {
       gender: data.gender,
       address: data.address,
       emergencyContact: data.emergencyContact,
-      status: data.status,
+      status: data.status as PatientStatus,
 
       outlet: data.outletId
         ? {

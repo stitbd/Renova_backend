@@ -9,6 +9,8 @@ datasource db {
 }
 
 //SuperAdmins model
+//-----------------
+
 model SuperAdmins {
   id       String  @id @default(uuid())
   name     String
@@ -25,63 +27,137 @@ model SuperAdmins {
 }
 
 //patient model 
+//---------------
 
 enum PatientStatus {
   ACTIVE
   INACTIVE
-  PENDING
 }
 
 model Patient {
   id String @id @default(uuid())
 
-  referenceName String?
-  fullName      String
-  mobileNumber  String  @unique
-  email         String?
-
-  dateOfBirth DateTime?
-  age         Int?
-
-  bloodGroup String?
-  gender     String?
-
-  address String?
-
+  referenceName    String?
+  fullName         String
+  mobileNumber     String        @unique
+  email            String?
+  dateOfBirth      DateTime?
+  age              Int?
+  bloodGroup       String?
+  gender           String?
+  address          String?
   emergencyContact String?
-
-  status PatientStatus @default(ACTIVE)
-
-  otp          String?
-  otpExpiresAt DateTime?
+  status           PatientStatus @default(ACTIVE)
+  otp              String?
+  otpExpiresAt     DateTime?
 
   outletId String?
   outlet   outlet? @relation(fields: [outletId], references: [id])
 
-  isActive Boolean @default(true)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+//Doctor models 
+//---------------
+
+enum DoctorStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum DoctorOnlineStatus {
+  ONLINE
+  OFFLINE
+}
+
+enum DocumentType {
+  LICENSE
+  CERTIFICATE
+  DEGREE
+  NID
+  OTHER
+}
+
+enum VerificationStatus {
+  PENDING
+  VERIFIED
+  REJECTED
+}
+
+enum ScheduleStatus {
+  ACTIVE
+  INACTIVE
+}
+
+model Doctor {
+  id String @id @default(uuid())
+
+  doctorCode String? @unique
+  fullName   String
+  mobile     String?
+  email      String  @unique
+  bmdcNumber String? @unique
+
+  subSpecialization  String?
+  qualification      String?
+  experienceYears    Int?
+  currentDesignation String?
+  consultationFee    Decimal?           @db.Decimal(10, 2)
+  status             DoctorStatus       @default(ACTIVE)
+  onlineStatus       DoctorOnlineStatus @default(OFFLINE)
+
+  outletId String?
+  outlet   outlet? @relation(fields: [outletId], references: [id])
+
+  documents      DoctorDocument[]
+  schedules      DoctorSchedule[]
+  specialization DoctorSpecialization[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
-//Doctor model
-model Doctor {
-  id              String   @id @default(uuid())
-  name            String
-  email           String   @unique
-  phone           String?
-  password        String
-  specialization  String
-  experience      Int?
-  consultationFee Decimal? @db.Decimal(10, 2)
-  bio             String?  @db.Text
-  isActive        Boolean  @default(true)
+model DoctorSpecialization {
+  id     String       @id @default(uuid())
+  name   String       @unique
+  status DoctorStatus @default(ACTIVE)
+
+  doctorId String
+  doctor   Doctor @relation(fields: [doctorId], references: [id])
+}
+
+model DoctorDocument {
+  id String @id @default(uuid())
+
+  doctorId String
+  doctor   Doctor @relation(fields: [doctorId], references: [id])
+
+  documentType       DocumentType
+  fileUrl            String
+  verificationStatus VerificationStatus @default(PENDING)
 
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+}
+
+model DoctorSchedule {
+  id String @id @default(uuid())
+
+  doctorId String
+  doctor   Doctor @relation(fields: [doctorId], references: [id])
+
+  dayName      String
+  startTime    String
+  endTime      String
+  slotDuration Int
+
+  status ScheduleStatus @default(ACTIVE)
 }
 
 // Outlet_parent model 
+//--------------------
+
 model outlet {
   id         String  @id @default(uuid())
   name       String
@@ -97,12 +173,15 @@ model outlet {
   childUsers OutletChildUser[]
   roles      Role[]
   patients   Patient[] // ✅ ADD THIS
+  doctors    Doctor[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 // Outlet_child model
+//-----------------------
+
 model OutletChildUser {
   id       String  @id @default(uuid())
   outletId String
@@ -175,6 +254,7 @@ model RolePermission {
 }
 
 // assaigning role to child users in  diagnostic accounts and superAdmin 
+//--------------------------------------------------------------------
 
 model OutletUserRole {
   id                String @id @default(uuid())
