@@ -16,19 +16,6 @@ export const doctorScheduleController = {
     });
   },
 
-  async getSchedulesByDoctorId(req: Request, res: Response) {
-    const result = await doctorScheduleService.getSchedulesByDoctorId(
-      req.params.doctorId as string
-    );
-
-    manageResponse(res, {
-      success: true,
-      statusCode: 200,
-      message: "Doctor schedules retrieved successfully",
-      data: result,
-    });
-  },
-
   async updateSchedule(req: Request, res: Response) {
     const result = await doctorScheduleService.updateSchedule(
       req.params.id as string,

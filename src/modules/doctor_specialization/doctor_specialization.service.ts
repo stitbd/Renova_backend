@@ -12,9 +12,12 @@ export const doctorSpecializationService = {
       throw new Error("Specialization already exists");
     }
 
+
+
     return doctorSpecializationRepository.createSpecialization({
       name: data.name,
-      status: data.status,
+      status: data.status as "ACTIVE" | "INACTIVE",
+    
     });
   },
 
@@ -48,7 +51,7 @@ export const doctorSpecializationService = {
 
     return doctorSpecializationRepository.updateSpecialization(id, {
       name: data.name,
-      status: data.status,
+      status: data.status as "ACTIVE" | "INACTIVE",
     });
   },
 
@@ -57,5 +60,5 @@ export const doctorSpecializationService = {
 
     return doctorSpecializationRepository.deleteSpecialization(id);
   },
- 
+
 }

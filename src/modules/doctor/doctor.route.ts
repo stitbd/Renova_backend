@@ -13,7 +13,7 @@ const router = express.Router();
 
 router.post("/create", validateRequest(createDoctorSchema), doctorController.create);
 
-router.get("/all", doctorController.getAll);
+router.get("/getAll", doctorController.getAll);
 router.get("/getSingle/:id", doctorController.getById);
 
 router.patch("/update/:id", validateRequest(updateDoctorSchema), doctorController.update);

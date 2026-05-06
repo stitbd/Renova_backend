@@ -52,7 +52,7 @@ model Patient {
   otpExpiresAt     DateTime?
 
   outletId String?
-  outlet   outlet? @relation(fields: [outletId], references: [id])
+  outlet   outlet? @relation(fields: [outletId], references: [id], onDelete: Cascade)
 
   isActive  Boolean  @default(true)
   createdAt DateTime @default(now())
@@ -109,34 +109,35 @@ model Doctor {
   onlineStatus       DoctorOnlineStatus @default(OFFLINE)
 
   outletId String?
-  outlet   outlet? @relation(fields: [outletId], references: [id])
+  outlet   outlet? @relation(fields: [outletId], references: [id], onDelete: Cascade)
 
-  documents      DoctorDocument[]
-  schedules      DoctorSchedule[]
-  specialization DoctorSpecialization[]
+  specializationId String
+  specialization   DoctorSpecialization @relation(fields: [specializationId], references: [id], onDelete: Cascade)
+
+  documentId String?
+  document   DoctorDocument? @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  scheduleId String
+  schedule   DoctorSchedule @relation(fields: [scheduleId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 model DoctorSpecialization {
-  id     String       @id @default(uuid())
-  name   String       @unique
-  status DoctorStatus @default(ACTIVE)
-
-  doctorId String
-  doctor   Doctor @relation(fields: [doctorId], references: [id])
+  id      String       @id @default(uuid())
+  name    String       @unique
+  status  DoctorStatus @default(ACTIVE)
+  doctors Doctor[]
 }
 
 model DoctorDocument {
-  id String @id @default(uuid())
-
-  doctorId String
-  doctor   Doctor @relation(fields: [doctorId], references: [id])
-
+  id                 String             @id @default(uuid())
   documentType       DocumentType
   fileUrl            String
   verificationStatus VerificationStatus @default(PENDING)
+
+  doctors Doctor[]
 
   createdAt DateTime @default(now())
 }
@@ -144,8 +145,7 @@ model DoctorDocument {
 model DoctorSchedule {
   id String @id @default(uuid())
 
-  doctorId String
-  doctor   Doctor @relation(fields: [doctorId], references: [id])
+  doctors Doctor[]
 
   dayName      String
   startTime    String
@@ -191,7 +191,7 @@ model OutletChildUser {
   password String
   isActive Boolean @default(true)
 
-  outlet    outlet           @relation(fields: [outletId], references: [id])
+  outlet    outlet           @relation(fields: [outletId], references: [id], onDelete: Cascade)
   userRoles OutletUserRole[]
 
   createdAt DateTime @default(now())
@@ -216,8 +216,8 @@ model Role {
   outletId     String?
   superAdminId String? // ✅ NEW
 
-  outlet     outlet?      @relation(fields: [outletId], references: [id])
-  superAdmin SuperAdmins? @relation(fields: [superAdminId], references: [id])
+  outlet     outlet?      @relation(fields: [outletId], references: [id], onDelete: Cascade)
+  superAdmin SuperAdmins? @relation(fields: [superAdminId], references: [id], onDelete: Cascade)
 
   rolePermissions     RolePermission[]
   OutletUserRoles     OutletUserRole[]
@@ -247,8 +247,8 @@ model RolePermission {
   roleId       String
   permissionId String
 
-  role       Role       @relation(fields: [roleId], references: [id])
-  permission Permission @relation(fields: [permissionId], references: [id])
+  role       Role       @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  permission Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
 
   @@unique([roleId, permissionId])
 }
@@ -261,8 +261,8 @@ model OutletUserRole {
   OutletChildUserId String
   roleId            String
 
-  OutletChildUser OutletChildUser @relation(fields: [OutletChildUserId], references: [id])
-  role            Role            @relation(fields: [roleId], references: [id])
+  OutletChildUser OutletChildUser @relation(fields: [OutletChildUserId], references: [id], onDelete: Cascade)
+  role            Role            @relation(fields: [roleId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
 
@@ -274,8 +274,8 @@ model SuperAdminUserRole {
   superAdminId String
   roleId       String
 
-  superAdmin SuperAdmins @relation(fields: [superAdminId], references: [id])
-  role       Role        @relation(fields: [roleId], references: [id])
+  superAdmin SuperAdmins @relation(fields: [superAdminId], references: [id], onDelete: Cascade)
+  role       Role        @relation(fields: [roleId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
 

@@ -7,21 +7,21 @@ const router = express.Router();
 
 
 router.post(
-  "/specializations",
+  "/create",
   validateRequest(createDoctorSpecializationSchema),
   doctorSpecializationController.createSpecialization
 );
 
-router.get("/specializations/all", doctorSpecializationController.getAllSpecializations);
+router.get("/getAll", doctorSpecializationController.getAllSpecializations);
 
 router.patch(
-  "/specializations/:id",
+  "/update/:id",
   validateRequest(updateDoctorSpecializationSchema),
   doctorSpecializationController.updateSpecialization
 );
 
 router.delete(
-  "/specializations/:id",
+  "/delete/:id",
   doctorSpecializationController.deleteSpecialization
 );
 

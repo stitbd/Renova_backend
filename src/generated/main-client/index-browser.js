@@ -168,6 +168,9 @@ exports.Prisma.DoctorScalarFieldEnum = {
   status: 'status',
   onlineStatus: 'onlineStatus',
   outletId: 'outletId',
+  specializationId: 'specializationId',
+  documentId: 'documentId',
+  scheduleId: 'scheduleId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -175,13 +178,11 @@ exports.Prisma.DoctorScalarFieldEnum = {
 exports.Prisma.DoctorSpecializationScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  status: 'status',
-  doctorId: 'doctorId'
+  status: 'status'
 };
 
 exports.Prisma.DoctorDocumentScalarFieldEnum = {
   id: 'id',
-  doctorId: 'doctorId',
   documentType: 'documentType',
   fileUrl: 'fileUrl',
   verificationStatus: 'verificationStatus',
@@ -190,7 +191,6 @@ exports.Prisma.DoctorDocumentScalarFieldEnum = {
 
 exports.Prisma.DoctorScheduleScalarFieldEnum = {
   id: 'id',
-  doctorId: 'doctorId',
   dayName: 'dayName',
   startTime: 'startTime',
   endTime: 'endTime',
@@ -306,24 +306,24 @@ exports.Prisma.DoctorOrderByRelevanceFieldEnum = {
   subSpecialization: 'subSpecialization',
   qualification: 'qualification',
   currentDesignation: 'currentDesignation',
-  outletId: 'outletId'
+  outletId: 'outletId',
+  specializationId: 'specializationId',
+  documentId: 'documentId',
+  scheduleId: 'scheduleId'
 };
 
 exports.Prisma.DoctorSpecializationOrderByRelevanceFieldEnum = {
   id: 'id',
-  name: 'name',
-  doctorId: 'doctorId'
+  name: 'name'
 };
 
 exports.Prisma.DoctorDocumentOrderByRelevanceFieldEnum = {
   id: 'id',
-  doctorId: 'doctorId',
   fileUrl: 'fileUrl'
 };
 
 exports.Prisma.DoctorScheduleOrderByRelevanceFieldEnum = {
   id: 'id',
-  doctorId: 'doctorId',
   dayName: 'dayName',
   startTime: 'startTime',
   endTime: 'endTime'

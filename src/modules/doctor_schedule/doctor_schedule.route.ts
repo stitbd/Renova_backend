@@ -8,30 +8,26 @@ const router = express.Router();
 
 
 router.post(
-  "/schedules",
+  "/create",
   validateRequest(createDoctorScheduleSchema),
   doctorScheduleController.createSchedule
 );
 
-router.get(
-  "/:doctorId/schedules",
-  doctorScheduleController.getSchedulesByDoctorId
-);
 
 router.patch(
-  "/schedules/:id",
+  "/update/:id",
   validateRequest(updateDoctorScheduleSchema),
   doctorScheduleController.updateSchedule
 );
 
 router.patch(
-  "/schedules/:id/status",
+  "/update/:id/status",
   validateRequest(updateDoctorScheduleStatusSchema),
   doctorScheduleController.updateScheduleStatus
 );
 
 router.delete(
-  "/schedules/:id",
+  "/delete/:id",
   doctorScheduleController.deleteSchedule
 );
 

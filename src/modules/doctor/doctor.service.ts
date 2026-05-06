@@ -20,7 +20,6 @@ export const doctorService = {
 
     if (data.mobile) {
       const mobileExists = await doctorRepository.findByMobile(data.mobile);
-
       if (mobileExists) {
         throw new Error("Doctor already exists with this mobile number");
       }
@@ -28,37 +27,31 @@ export const doctorService = {
 
     if (data.bmdcNumber) {
       const bmdcExists = await doctorRepository.findByBMDCNumber(data.bmdcNumber);
-
       if (bmdcExists) {
         throw new Error("Doctor already exists with this BMDC number");
       }
     }
 
-    if (data.doctorCode) {
-      const codeExists = await doctorRepository.findByDoctorCode(data.doctorCode);
-
-      if (codeExists) {
-        throw new Error("Doctor already exists with this doctor code");
-      }
+    if (!data.specializationId) {
+      throw new Error("Specialization ID is required");
     }
 
-      // AUTO DOCTOR CODE GENERATION
-  const lastDoctor = await doctorRepository.findLastDoctor();
+    if (!data.scheduleId) {
+      throw new Error("Schedule ID is required");
+    }
 
-  let doctorCode = "DOC_0001";
+    const lastDoctor = await doctorRepository.findLastDoctor();
 
-  if (lastDoctor?.doctorCode) {
-    const lastNumber = parseInt(
-      lastDoctor.doctorCode.split("_")[1]
-    );
+    let doctorCode = "DOC_0001";
 
-    const nextNumber = lastNumber + 1;
-
-    doctorCode = `DOC_${String(nextNumber).padStart(4, "0")}`;
-  }
+    if (lastDoctor?.doctorCode) {
+      const lastNumber = parseInt(lastDoctor.doctorCode.split("_")[1]);
+      const nextNumber = lastNumber + 1;
+      doctorCode = `DOC_${String(nextNumber).padStart(4, "0")}`;
+    }
 
     return doctorRepository.create({
-      doctorCode: doctorCode,
+      doctorCode,
       fullName: data.fullName,
       mobile: data.mobile,
       email: data.email,
@@ -75,6 +68,26 @@ export const doctorService = {
         ? {
           connect: {
             id: data.outletId,
+          },
+        }
+        : undefined,
+
+      specialization: {
+        connect: {
+          id: data.specializationId,
+        },
+      },
+
+      schedule: {
+        connect: {
+          id: data.scheduleId,
+        },
+      },
+
+      document: data.documentId
+        ? {
+          connect: {
+            id: data.documentId,
           },
         }
         : undefined,
@@ -141,6 +154,30 @@ export const doctorService = {
         ? {
           connect: {
             id: data.outletId,
+          },
+        }
+        : undefined,
+
+      specialization: data.specializationId
+        ? {
+          connect: {
+            id: data.specializationId,
+          },
+        }
+        : undefined,
+
+      schedule: data.scheduleId
+        ? {
+          connect: {
+            id: data.scheduleId,
+          },
+        }
+        : undefined,
+
+      document: data.documentId
+        ? {
+          connect: {
+            id: data.documentId,
           },
         }
         : undefined,

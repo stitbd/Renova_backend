@@ -8,27 +8,13 @@ export const doctorScheduleRepository = {
   createSchedule(data: Prisma.DoctorScheduleCreateInput) {
     return mainPrisma.doctorSchedule.create({
       data,
-      include: {
-        doctor: true,
-      },
     });
   },
 
   findScheduleById(id: string) {
     return mainPrisma.doctorSchedule.findUnique({
       where: { id },
-      include: {
-        doctor: true,
-      },
-    });
-  },
-
-  findSchedulesByDoctorId(doctorId: string) {
-    return mainPrisma.doctorSchedule.findMany({
-      where: { doctorId },
-      orderBy: {
-        dayName: "asc",
-      },
+     
     });
   },
 

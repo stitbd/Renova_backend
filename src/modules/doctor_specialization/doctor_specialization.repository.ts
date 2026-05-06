@@ -1,10 +1,7 @@
 import { mainPrisma } from "../../databases/prisma";
 import {
-    DoctorOnlineStatus,
-    DoctorStatus,
     Prisma,
-    ScheduleStatus,
-    VerificationStatus,
+
 } from "../../generated/main-client";
 
 export const doctorSpecializationRepository = {

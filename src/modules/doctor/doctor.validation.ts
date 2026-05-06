@@ -5,7 +5,6 @@ export const createDoctorSchema = z.object({
   mobile: z.string().optional(),
   email: z.string().email("Invalid email address"),
   bmdcNumber: z.string().optional(),
-  specializationId: z.string().uuid("Invalid specialization id").optional(),
   subSpecialization: z.string().optional(),
   qualification: z.string().optional(),
   experienceYears: z.number().int().min(0).optional(),
@@ -13,6 +12,9 @@ export const createDoctorSchema = z.object({
   consultationFee: z.number().min(0).optional(),
   status: z.enum(["ACTIVE", "INACTIVE"]).optional(),
   onlineStatus: z.enum(["ONLINE", "OFFLINE"]).optional(),
+  specializationId: z.string(),
+  scheduleId: z.string(),
+  documentId: z.string().optional(),
 });
 
 export const updateDoctorSchema = createDoctorSchema.partial();

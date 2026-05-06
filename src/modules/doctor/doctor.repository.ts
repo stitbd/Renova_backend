@@ -11,19 +11,18 @@ export const doctorRepository = {
       data,
       include: {
         specialization: true,
-        documents: true,
-        schedules: true,
+        document: true,
+        schedule: true,
         outlet: true,
       },
     });
   },
-
   findAll() {
     return mainPrisma.doctor.findMany({
       include: {
         specialization: true,
-        documents: true,
-        schedules: true,
+        document: true,
+        schedule: true,
         outlet: true,
       },
       orderBy: {
@@ -37,8 +36,8 @@ export const doctorRepository = {
       where: { id },
       include: {
         specialization: true,
-        documents: true,
-        schedules: true,
+        document: true,
+        schedule: true,
         outlet: true,
       },
     });
@@ -69,15 +68,15 @@ export const doctorRepository = {
   },
 
   findLastDoctor() {
-  return mainPrisma.doctor.findFirst({
-    orderBy: {
-      createdAt: "desc",
-    },
-    select: {
-      doctorCode: true,
-    },
-  });
-},
+    return mainPrisma.doctor.findFirst({
+      orderBy: {
+        createdAt: "desc",
+      },
+      select: {
+        doctorCode: true,
+      },
+    });
+  },
 
   update(id: string, data: Prisma.DoctorUpdateInput) {
     return mainPrisma.doctor.update({
@@ -85,8 +84,8 @@ export const doctorRepository = {
       data,
       include: {
         specialization: true,
-        documents: true,
-        schedules: true,
+        document: true,
+        schedule: true,
         outlet: true,
       },
     });
