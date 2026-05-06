@@ -134,17 +134,20 @@ exports.Prisma.SuperAdminsScalarFieldEnum = {
 
 exports.Prisma.PatientScalarFieldEnum = {
   id: 'id',
+  referenceName: 'referenceName',
   fullName: 'fullName',
   mobileNumber: 'mobileNumber',
-  otp: 'otp',
-  otpExpiresAt: 'otpExpiresAt',
   email: 'email',
   dateOfBirth: 'dateOfBirth',
   age: 'age',
   bloodGroup: 'bloodGroup',
   gender: 'gender',
   address: 'address',
-  diagnosticAccountId: 'diagnosticAccountId',
+  emergencyContact: 'emergencyContact',
+  status: 'status',
+  otp: 'otp',
+  otpExpiresAt: 'otpExpiresAt',
+  outletId: 'outletId',
   isActive: 'isActive',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -165,7 +168,7 @@ exports.Prisma.DoctorScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.DiagnosticAccountScalarFieldEnum = {
+exports.Prisma.OutletScalarFieldEnum = {
   id: 'id',
   name: 'name',
   email: 'email',
@@ -180,9 +183,9 @@ exports.Prisma.DiagnosticAccountScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.DiagnosticChildUserScalarFieldEnum = {
+exports.Prisma.OutletChildUserScalarFieldEnum = {
   id: 'id',
-  DiagnosticAccountId: 'DiagnosticAccountId',
+  outletId: 'outletId',
   name: 'name',
   email: 'email',
   phone: 'phone',
@@ -196,7 +199,7 @@ exports.Prisma.RoleScalarFieldEnum = {
   id: 'id',
   name: 'name',
   ownerType: 'ownerType',
-  DiagnosticAccountId: 'DiagnosticAccountId',
+  outletId: 'outletId',
   superAdminId: 'superAdminId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -217,9 +220,9 @@ exports.Prisma.RolePermissionScalarFieldEnum = {
   permissionId: 'permissionId'
 };
 
-exports.Prisma.DiagnosticUserRoleScalarFieldEnum = {
+exports.Prisma.OutletUserRoleScalarFieldEnum = {
   id: 'id',
-  DiagnosticChildUserId: 'DiagnosticChildUserId',
+  OutletChildUserId: 'OutletChildUserId',
   roleId: 'roleId',
   createdAt: 'createdAt'
 };
@@ -251,14 +254,16 @@ exports.Prisma.SuperAdminsOrderByRelevanceFieldEnum = {
 
 exports.Prisma.PatientOrderByRelevanceFieldEnum = {
   id: 'id',
+  referenceName: 'referenceName',
   fullName: 'fullName',
   mobileNumber: 'mobileNumber',
-  otp: 'otp',
   email: 'email',
   bloodGroup: 'bloodGroup',
   gender: 'gender',
   address: 'address',
-  diagnosticAccountId: 'diagnosticAccountId'
+  emergencyContact: 'emergencyContact',
+  otp: 'otp',
+  outletId: 'outletId'
 };
 
 exports.Prisma.DoctorOrderByRelevanceFieldEnum = {
@@ -271,7 +276,7 @@ exports.Prisma.DoctorOrderByRelevanceFieldEnum = {
   bio: 'bio'
 };
 
-exports.Prisma.DiagnosticAccountOrderByRelevanceFieldEnum = {
+exports.Prisma.outletOrderByRelevanceFieldEnum = {
   id: 'id',
   name: 'name',
   email: 'email',
@@ -283,9 +288,9 @@ exports.Prisma.DiagnosticAccountOrderByRelevanceFieldEnum = {
   address: 'address'
 };
 
-exports.Prisma.DiagnosticChildUserOrderByRelevanceFieldEnum = {
+exports.Prisma.OutletChildUserOrderByRelevanceFieldEnum = {
   id: 'id',
-  DiagnosticAccountId: 'DiagnosticAccountId',
+  outletId: 'outletId',
   name: 'name',
   email: 'email',
   phone: 'phone',
@@ -295,7 +300,7 @@ exports.Prisma.DiagnosticChildUserOrderByRelevanceFieldEnum = {
 exports.Prisma.RoleOrderByRelevanceFieldEnum = {
   id: 'id',
   name: 'name',
-  DiagnosticAccountId: 'DiagnosticAccountId',
+  outletId: 'outletId',
   superAdminId: 'superAdminId'
 };
 
@@ -312,9 +317,9 @@ exports.Prisma.RolePermissionOrderByRelevanceFieldEnum = {
   permissionId: 'permissionId'
 };
 
-exports.Prisma.DiagnosticUserRoleOrderByRelevanceFieldEnum = {
+exports.Prisma.OutletUserRoleOrderByRelevanceFieldEnum = {
   id: 'id',
-  DiagnosticChildUserId: 'DiagnosticChildUserId',
+  OutletChildUserId: 'OutletChildUserId',
   roleId: 'roleId'
 };
 
@@ -323,8 +328,14 @@ exports.Prisma.SuperAdminUserRoleOrderByRelevanceFieldEnum = {
   superAdminId: 'superAdminId',
   roleId: 'roleId'
 };
+exports.PatientStatus = exports.$Enums.PatientStatus = {
+  ACTIVE: 'ACTIVE',
+  INACTIVE: 'INACTIVE',
+  PENDING: 'PENDING'
+};
+
 exports.RoleOwnerType = exports.$Enums.RoleOwnerType = {
-  DIAGNOSTIC: 'DIAGNOSTIC',
+  OUTLET: 'OUTLET',
   SUPER_ADMIN: 'SUPER_ADMIN'
 };
 
@@ -332,12 +343,12 @@ exports.Prisma.ModelName = {
   SuperAdmins: 'SuperAdmins',
   Patient: 'Patient',
   Doctor: 'Doctor',
-  DiagnosticAccount: 'DiagnosticAccount',
-  DiagnosticChildUser: 'DiagnosticChildUser',
+  outlet: 'outlet',
+  OutletChildUser: 'OutletChildUser',
   Role: 'Role',
   Permission: 'Permission',
   RolePermission: 'RolePermission',
-  DiagnosticUserRole: 'DiagnosticUserRole',
+  OutletUserRole: 'OutletUserRole',
   SuperAdminUserRole: 'SuperAdminUserRole'
 };
 

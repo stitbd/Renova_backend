@@ -1,20 +1,22 @@
 import { Request, Response, NextFunction } from "express";
 import { patientService } from "./patient.service";
 import { createPatientSchema, updatePatientSchema } from "./patient.validation";
+import manageResponse from "../../utils/manage_response";
 
 export const patientController = {
     async create(req: Request, res: Response, next: NextFunction) {
         try {
-           
+
             const validated = createPatientSchema.parse(req.body);
 
 
             const result = await patientService.create(validated);
 
-            res.status(201).json({
+            manageResponse(res, {
                 success: true,
                 message: "Patient created successfully",
                 data: result,
+                statusCode: 200
             });
         } catch (error) {
             next(error);
@@ -25,9 +27,11 @@ export const patientController = {
         try {
             const result = await patientService.getAll();
 
-            res.json({
+            manageResponse(res, {
                 success: true,
                 data: result,
+                message: "Patients retrieved successfully",
+                statusCode: 200
             });
         } catch (error) {
             next(error);
@@ -38,9 +42,11 @@ export const patientController = {
         try {
             const result = await patientService.getById(req.params.id as string);
 
-            res.json({
+            manageResponse(res, {
                 success: true,
                 data: result,
+                message: "Patient retrieved successfully",
+                statusCode: 200
             });
         } catch (error) {
             next(error);
@@ -56,23 +62,43 @@ export const patientController = {
                 validated
             );
 
-            res.json({
+            manageResponse(res, {
                 success: true,
                 message: "Patient updated",
                 data: result,
+                statusCode: 200
             });
         } catch (error) {
             next(error);
         }
     },
 
-    async delete(req: Request, res: Response, next: NextFunction) {
+    async deletePatient(req: Request, res: Response, next: NextFunction) {
         try {
-            await patientService.delete(req.params.id as string);
-
-            res.json({
+            await patientService.deletePatient(req.params.id as string);
+            manageResponse(res, {
                 success: true,
                 message: "Patient deleted",
+                statusCode: 200
+            });
+        } catch (error) {
+            next(error);
+        }
+    },
+
+    async patientStatusUpdate(req: Request, res: Response, next: NextFunction) {
+        try {
+            const { status } = req.body;
+            const result = await patientService.patientStatusUpdate(
+                req.params.id as string,
+                status
+            );
+
+            manageResponse(res, {
+                success: true,
+                message: "Patient status updated",
+                data: result,
+                statusCode: 200
             });
         } catch (error) {
             next(error);

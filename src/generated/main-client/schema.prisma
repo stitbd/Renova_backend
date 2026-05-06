@@ -25,22 +25,38 @@ model SuperAdmins {
 }
 
 //patient model 
+
+enum PatientStatus {
+  ACTIVE
+  INACTIVE
+  PENDING
+}
+
 model Patient {
-  id           String    @id @default(uuid())
-  fullName     String
-  mobileNumber String    @unique
+  id String @id @default(uuid())
+
+  referenceName String?
+  fullName      String
+  mobileNumber  String  @unique
+  email         String?
+
+  dateOfBirth DateTime?
+  age         Int?
+
+  bloodGroup String?
+  gender     String?
+
+  address String?
+
+  emergencyContact String?
+
+  status PatientStatus @default(ACTIVE)
+
   otp          String?
   otpExpiresAt DateTime?
 
-  email       String?
-  dateOfBirth DateTime?
-  age         Int?
-  bloodGroup  String?
-  gender      String?
-  address     String?
-
-  diagnosticAccountId String?
-  diagnosticAccount   DiagnosticAccount? @relation(fields: [diagnosticAccountId], references: [id])
+  outletId String?
+  outlet   outlet? @relation(fields: [outletId], references: [id])
 
   isActive Boolean @default(true)
 
@@ -65,8 +81,8 @@ model Doctor {
   updatedAt DateTime @updatedAt
 }
 
-// Diognostic_parent model 
-model DiagnosticAccount {
+// Outlet_parent model 
+model outlet {
   id         String  @id @default(uuid())
   name       String
   email      String  @unique
@@ -78,7 +94,7 @@ model DiagnosticAccount {
   address    String?
   isActive   Boolean @default(true)
 
-  childUsers DiagnosticChildUser[]
+  childUsers OutletChildUser[]
   roles      Role[]
   patients   Patient[] // ✅ ADD THIS
 
@@ -86,29 +102,29 @@ model DiagnosticAccount {
   updatedAt DateTime @updatedAt
 }
 
-// Diognostic_child model
-model DiagnosticChildUser {
-  id                  String  @id @default(uuid())
-  DiagnosticAccountId String
-  name                String
-  email               String
-  phone               String?
-  password            String
-  isActive            Boolean @default(true)
+// Outlet_child model
+model OutletChildUser {
+  id       String  @id @default(uuid())
+  outletId String
+  name     String
+  email    String
+  phone    String?
+  password String
+  isActive Boolean @default(true)
 
-  DiagnosticAccount DiagnosticAccount    @relation(fields: [DiagnosticAccountId], references: [id])
-  userRoles         DiagnosticUserRole[]
+  outlet    outlet           @relation(fields: [outletId], references: [id])
+  userRoles OutletUserRole[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@unique([email, DiagnosticAccountId])
+  @@unique([email, outletId])
 }
 
 // Role and Permission models 
 
 enum RoleOwnerType {
-  DIAGNOSTIC
+  OUTLET
   SUPER_ADMIN
 }
 
@@ -118,20 +134,20 @@ model Role {
   ownerType RoleOwnerType
 
   // owner references
-  DiagnosticAccountId String?
-  superAdminId        String? // ✅ NEW
+  outletId     String?
+  superAdminId String? // ✅ NEW
 
-  DiagnosticAccount DiagnosticAccount? @relation(fields: [DiagnosticAccountId], references: [id])
-  superAdmin        SuperAdmins?       @relation(fields: [superAdminId], references: [id])
+  outlet     outlet?      @relation(fields: [outletId], references: [id])
+  superAdmin SuperAdmins? @relation(fields: [superAdminId], references: [id])
 
   rolePermissions     RolePermission[]
-  diagnosticUserRoles DiagnosticUserRole[]
+  OutletUserRoles     OutletUserRole[]
   superAdminUserRoles SuperAdminUserRole[] // ✅ NEW
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@unique([name, DiagnosticAccountId])
+  @@unique([name, outletId])
   @@unique([name, superAdminId]) // ✅ NEW
 }
 
@@ -160,17 +176,17 @@ model RolePermission {
 
 // assaigning role to child users in  diagnostic accounts and superAdmin 
 
-model DiagnosticUserRole {
-  id                    String @id @default(uuid())
-  DiagnosticChildUserId String
-  roleId                String
+model OutletUserRole {
+  id                String @id @default(uuid())
+  OutletChildUserId String
+  roleId            String
 
-  DiagnosticChildUser DiagnosticChildUser @relation(fields: [DiagnosticChildUserId], references: [id])
-  role                Role                @relation(fields: [roleId], references: [id])
+  OutletChildUser OutletChildUser @relation(fields: [OutletChildUserId], references: [id])
+  role            Role            @relation(fields: [roleId], references: [id])
 
   createdAt DateTime @default(now())
 
-  @@unique([DiagnosticChildUserId, roleId])
+  @@unique([OutletChildUserId, roleId])
 }
 
 model SuperAdminUserRole {

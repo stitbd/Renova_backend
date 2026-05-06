@@ -1,4 +1,5 @@
 export type CreatePatientInput = {
+  referenceName?: string;
   fullName: string;
   mobileNumber: string;
   email?: string;
@@ -7,5 +8,7 @@ export type CreatePatientInput = {
   bloodGroup?: string;
   gender?: string;
   address?: string;
-  diagnosticAccountId?: string;
+  emergencyContact?: string;
+  status?: "ACTIVE" | "INACTIVE" | "PENDING";
+  outletId?: string;
 };

@@ -1,64 +1,129 @@
-import { mainPrisma } from "../../databases/prisma";
+import { PatientStatus } from "../../generated/main-client";
+import { patientRepository } from "./patient.repository";
 import { CreatePatientInput } from "./patient.types";
-import bcrypt from "bcryptjs";
 
 export const patientService = {
-    async create(data: CreatePatientInput) {
-        // check duplicate
-        // console.log('patient payload', data);
-        const exists = await mainPrisma.patient.findUnique({
-            where: { mobileNumber: data.mobileNumber },
-        });
+  async create(data: CreatePatientInput) {
+    const exists = await patientRepository.findByMobileNumber(
+      data.mobileNumber
+    );
 
-        if (exists) {
-            throw new Error("Patient already exists with this mobile number");
-        }
+    if (exists) {
+      throw new Error("Patient already exists with this mobile number");
+    }
 
-        return mainPrisma.patient.create({
-            data: {
-                ...data,
-                dateOfBirth: data.dateOfBirth
-                    ? new Date(data.dateOfBirth)
-                    : undefined,
+    if (data.email) {
+      const emailExists = await patientRepository.findByEmail(data.email);
+
+      if (emailExists) {
+        throw new Error("Patient already exists with this email");
+      }
+    }
+
+    return patientRepository.create({
+      referenceName: data.referenceName,
+      fullName: data.fullName,
+      mobileNumber: data.mobileNumber,
+      email: data.email,
+
+      dateOfBirth: data.dateOfBirth
+        ? new Date(data.dateOfBirth)
+        : undefined,
+
+      age: data.age,
+      bloodGroup: data.bloodGroup,
+      gender: data.gender,
+      address: data.address,
+      emergencyContact: data.emergencyContact,
+      status: data.status,
+
+      outlet: data.outletId
+        ? {
+            connect: {
+              id: data.outletId,
             },
-        });
-    },
+          }
+        : undefined,
+    });
+  },
 
-    async getAll() {
-        return mainPrisma.patient.findMany({
-            orderBy: { createdAt: "desc" },
-        });
-    },
+  async getAll() {
+    return patientRepository.findAll();
+  },
 
-    async getById(id: string) {
-        const patient = await mainPrisma.patient.findUnique({
-            where: { id },
-        });
+  async getById(id: string) {
+    const patient = await patientRepository.findById(id);
 
-        if (!patient) throw new Error("Patient not found");
+    if (!patient) {
+      throw new Error("Patient not found");
+    }
 
-        return patient;
-    },
+    return patient;
+  },
 
-    async update(id: string, data: Partial<CreatePatientInput>) {
-        await this.getById(id);
+  async update(id: string, data: Partial<CreatePatientInput>) {
+    await this.getById(id);
 
-        return mainPrisma.patient.update({
-            where: { id },
-            data: {
-                ...data,
-                dateOfBirth: data.dateOfBirth
-                    ? new Date(data.dateOfBirth)
-                    : undefined,
+    if (data.mobileNumber) {
+      const exists = await patientRepository.findByMobileNumber(
+        data.mobileNumber
+      );
+
+      if (exists && exists.id !== id) {
+        throw new Error("Patient already exists with this mobile number");
+      }
+    }
+
+    if (data.email) {
+      const emailExists = await patientRepository.findByEmailExceptId(
+        data.email,
+        id
+      );
+
+      if (emailExists) {
+        throw new Error("Patient already exists with this email");
+      }
+    }
+
+    return patientRepository.update(id, {
+      referenceName: data.referenceName,
+      fullName: data.fullName,
+      mobileNumber: data.mobileNumber,
+      email: data.email,
+
+      dateOfBirth: data.dateOfBirth
+        ? new Date(data.dateOfBirth)
+        : undefined,
+
+      age: data.age,
+      bloodGroup: data.bloodGroup,
+      gender: data.gender,
+      address: data.address,
+      emergencyContact: data.emergencyContact,
+      status: data.status,
+
+      outlet: data.outletId
+        ? {
+            connect: {
+              id: data.outletId,
             },
-        });
-    },
+          }
+        : undefined,
+    });
+  },
 
-    async delete(id: string) {
-        await this.getById(id);
+  async deletePatient(id: string) {
+    await this.getById(id);
 
-        return mainPrisma.patient.delete({
-            where: { id },
-        });
-    },
+    return patientRepository.delete(id);
+  },
+
+  async patientStatusUpdate(
+    id: string,
+    status: PatientStatus
+  ) {
+    await this.getById(id);
+
+    return patientRepository.updateStatus(id, status);
+  },
 };

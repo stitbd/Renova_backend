@@ -29,15 +29,15 @@ export type Patient = $Result.DefaultSelection<Prisma.$PatientPayload>
  */
 export type Doctor = $Result.DefaultSelection<Prisma.$DoctorPayload>
 /**
- * Model DiagnosticAccount
+ * Model outlet
  * 
  */
-export type DiagnosticAccount = $Result.DefaultSelection<Prisma.$DiagnosticAccountPayload>
+export type outlet = $Result.DefaultSelection<Prisma.$outletPayload>
 /**
- * Model DiagnosticChildUser
+ * Model OutletChildUser
  * 
  */
-export type DiagnosticChildUser = $Result.DefaultSelection<Prisma.$DiagnosticChildUserPayload>
+export type OutletChildUser = $Result.DefaultSelection<Prisma.$OutletChildUserPayload>
 /**
  * Model Role
  * 
@@ -54,10 +54,10 @@ export type Permission = $Result.DefaultSelection<Prisma.$PermissionPayload>
  */
 export type RolePermission = $Result.DefaultSelection<Prisma.$RolePermissionPayload>
 /**
- * Model DiagnosticUserRole
+ * Model OutletUserRole
  * 
  */
-export type DiagnosticUserRole = $Result.DefaultSelection<Prisma.$DiagnosticUserRolePayload>
+export type OutletUserRole = $Result.DefaultSelection<Prisma.$OutletUserRolePayload>
 /**
  * Model SuperAdminUserRole
  * 
@@ -68,14 +68,27 @@ export type SuperAdminUserRole = $Result.DefaultSelection<Prisma.$SuperAdminUser
  * Enums
  */
 export namespace $Enums {
-  export const RoleOwnerType: {
-  DIAGNOSTIC: 'DIAGNOSTIC',
+  export const PatientStatus: {
+  ACTIVE: 'ACTIVE',
+  INACTIVE: 'INACTIVE',
+  PENDING: 'PENDING'
+};
+
+export type PatientStatus = (typeof PatientStatus)[keyof typeof PatientStatus]
+
+
+export const RoleOwnerType: {
+  OUTLET: 'OUTLET',
   SUPER_ADMIN: 'SUPER_ADMIN'
 };
 
 export type RoleOwnerType = (typeof RoleOwnerType)[keyof typeof RoleOwnerType]
 
 }
+
+export type PatientStatus = $Enums.PatientStatus
+
+export const PatientStatus: typeof $Enums.PatientStatus
 
 export type RoleOwnerType = $Enums.RoleOwnerType
 
@@ -230,24 +243,24 @@ export class PrismaClient<
   get doctor(): Prisma.DoctorDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.diagnosticAccount`: Exposes CRUD operations for the **DiagnosticAccount** model.
+   * `prisma.outlet`: Exposes CRUD operations for the **outlet** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more DiagnosticAccounts
-    * const diagnosticAccounts = await prisma.diagnosticAccount.findMany()
+    * // Fetch zero or more Outlets
+    * const outlets = await prisma.outlet.findMany()
     * ```
     */
-  get diagnosticAccount(): Prisma.DiagnosticAccountDelegate<ExtArgs, ClientOptions>;
+  get outlet(): Prisma.outletDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.diagnosticChildUser`: Exposes CRUD operations for the **DiagnosticChildUser** model.
+   * `prisma.outletChildUser`: Exposes CRUD operations for the **OutletChildUser** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more DiagnosticChildUsers
-    * const diagnosticChildUsers = await prisma.diagnosticChildUser.findMany()
+    * // Fetch zero or more OutletChildUsers
+    * const outletChildUsers = await prisma.outletChildUser.findMany()
     * ```
     */
-  get diagnosticChildUser(): Prisma.DiagnosticChildUserDelegate<ExtArgs, ClientOptions>;
+  get outletChildUser(): Prisma.OutletChildUserDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.role`: Exposes CRUD operations for the **Role** model.
@@ -280,14 +293,14 @@ export class PrismaClient<
   get rolePermission(): Prisma.RolePermissionDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.diagnosticUserRole`: Exposes CRUD operations for the **DiagnosticUserRole** model.
+   * `prisma.outletUserRole`: Exposes CRUD operations for the **OutletUserRole** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more DiagnosticUserRoles
-    * const diagnosticUserRoles = await prisma.diagnosticUserRole.findMany()
+    * // Fetch zero or more OutletUserRoles
+    * const outletUserRoles = await prisma.outletUserRole.findMany()
     * ```
     */
-  get diagnosticUserRole(): Prisma.DiagnosticUserRoleDelegate<ExtArgs, ClientOptions>;
+  get outletUserRole(): Prisma.OutletUserRoleDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.superAdminUserRole`: Exposes CRUD operations for the **SuperAdminUserRole** model.
@@ -742,12 +755,12 @@ export namespace Prisma {
     SuperAdmins: 'SuperAdmins',
     Patient: 'Patient',
     Doctor: 'Doctor',
-    DiagnosticAccount: 'DiagnosticAccount',
-    DiagnosticChildUser: 'DiagnosticChildUser',
+    outlet: 'outlet',
+    OutletChildUser: 'OutletChildUser',
     Role: 'Role',
     Permission: 'Permission',
     RolePermission: 'RolePermission',
-    DiagnosticUserRole: 'DiagnosticUserRole',
+    OutletUserRole: 'OutletUserRole',
     SuperAdminUserRole: 'SuperAdminUserRole'
   };
 
@@ -767,7 +780,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "superAdmins" | "patient" | "doctor" | "diagnosticAccount" | "diagnosticChildUser" | "role" | "permission" | "rolePermission" | "diagnosticUserRole" | "superAdminUserRole"
+      modelProps: "superAdmins" | "patient" | "doctor" | "outlet" | "outletChildUser" | "role" | "permission" | "rolePermission" | "outletUserRole" | "superAdminUserRole"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -969,135 +982,135 @@ export namespace Prisma {
           }
         }
       }
-      DiagnosticAccount: {
-        payload: Prisma.$DiagnosticAccountPayload<ExtArgs>
-        fields: Prisma.DiagnosticAccountFieldRefs
+      outlet: {
+        payload: Prisma.$outletPayload<ExtArgs>
+        fields: Prisma.outletFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.DiagnosticAccountFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DiagnosticAccountPayload> | null
+            args: Prisma.outletFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$outletPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.DiagnosticAccountFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DiagnosticAccountPayload>
+            args: Prisma.outletFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$outletPayload>
           }
           findFirst: {
-            args: Prisma.DiagnosticAccountFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DiagnosticAccountPayload> | null
+            args: Prisma.outletFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$outletPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.DiagnosticAccountFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DiagnosticAccountPayload>
+            args: Prisma.outletFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$outletPayload>
           }
           findMany: {
-            args: Prisma.DiagnosticAccountFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DiagnosticAccountPayload>[]
+            args: Prisma.outletFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$outletPayload>[]
           }
           create: {
-            args: Prisma.DiagnosticAccountCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DiagnosticAccountPayload>
+            args: Prisma.outletCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$outletPayload>
           }
           createMany: {
-            args: Prisma.DiagnosticAccountCreateManyArgs<ExtArgs>
+            args: Prisma.outletCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           delete: {
-            args: Prisma.DiagnosticAccountDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DiagnosticAccountPayload>
+            args: Prisma.outletDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$outletPayload>
           }
           update: {
-            args: Prisma.DiagnosticAccountUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DiagnosticAccountPayload>
+            args: Prisma.outletUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$outletPayload>
           }
           deleteMany: {
-            args: Prisma.DiagnosticAccountDeleteManyArgs<ExtArgs>
+            args: Prisma.outletDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.DiagnosticAccountUpdateManyArgs<ExtArgs>
+            args: Prisma.outletUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           upsert: {
-            args: Prisma.DiagnosticAccountUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DiagnosticAccountPayload>
+            args: Prisma.outletUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$outletPayload>
           }
           aggregate: {
-            args: Prisma.DiagnosticAccountAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateDiagnosticAccount>
+            args: Prisma.OutletAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateOutlet>
           }
           groupBy: {
-            args: Prisma.DiagnosticAccountGroupByArgs<ExtArgs>
-            result: $Utils.Optional<DiagnosticAccountGroupByOutputType>[]
+            args: Prisma.outletGroupByArgs<ExtArgs>
+            result: $Utils.Optional<OutletGroupByOutputType>[]
           }
           count: {
-            args: Prisma.DiagnosticAccountCountArgs<ExtArgs>
-            result: $Utils.Optional<DiagnosticAccountCountAggregateOutputType> | number
+            args: Prisma.outletCountArgs<ExtArgs>
+            result: $Utils.Optional<OutletCountAggregateOutputType> | number
           }
         }
       }
-      DiagnosticChildUser: {
-        payload: Prisma.$DiagnosticChildUserPayload<ExtArgs>
-        fields: Prisma.DiagnosticChildUserFieldRefs
+      OutletChildUser: {
+        payload: Prisma.$OutletChildUserPayload<ExtArgs>
+        fields: Prisma.OutletChildUserFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.DiagnosticChildUserFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DiagnosticChildUserPayload> | null
+            args: Prisma.OutletChildUserFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutletChildUserPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.DiagnosticChildUserFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DiagnosticChildUserPayload>
+            args: Prisma.OutletChildUserFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutletChildUserPayload>
           }
           findFirst: {
-            args: Prisma.DiagnosticChildUserFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DiagnosticChildUserPayload> | null
+            args: Prisma.OutletChildUserFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutletChildUserPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.DiagnosticChildUserFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DiagnosticChildUserPayload>
+            args: Prisma.OutletChildUserFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutletChildUserPayload>
           }
           findMany: {
-            args: Prisma.DiagnosticChildUserFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DiagnosticChildUserPayload>[]
+            args: Prisma.OutletChildUserFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutletChildUserPayload>[]
           }
           create: {
-            args: Prisma.DiagnosticChildUserCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DiagnosticChildUserPayload>
+            args: Prisma.OutletChildUserCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutletChildUserPayload>
           }
           createMany: {
-            args: Prisma.DiagnosticChildUserCreateManyArgs<ExtArgs>
+            args: Prisma.OutletChildUserCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           delete: {
-            args: Prisma.DiagnosticChildUserDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DiagnosticChildUserPayload>
+            args: Prisma.OutletChildUserDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutletChildUserPayload>
           }
           update: {
-            args: Prisma.DiagnosticChildUserUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DiagnosticChildUserPayload>
+            args: Prisma.OutletChildUserUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutletChildUserPayload>
           }
           deleteMany: {
-            args: Prisma.DiagnosticChildUserDeleteManyArgs<ExtArgs>
+            args: Prisma.OutletChildUserDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.DiagnosticChildUserUpdateManyArgs<ExtArgs>
+            args: Prisma.OutletChildUserUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           upsert: {
-            args: Prisma.DiagnosticChildUserUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DiagnosticChildUserPayload>
+            args: Prisma.OutletChildUserUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutletChildUserPayload>
           }
           aggregate: {
-            args: Prisma.DiagnosticChildUserAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateDiagnosticChildUser>
+            args: Prisma.OutletChildUserAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateOutletChildUser>
           }
           groupBy: {
-            args: Prisma.DiagnosticChildUserGroupByArgs<ExtArgs>
-            result: $Utils.Optional<DiagnosticChildUserGroupByOutputType>[]
+            args: Prisma.OutletChildUserGroupByArgs<ExtArgs>
+            result: $Utils.Optional<OutletChildUserGroupByOutputType>[]
           }
           count: {
-            args: Prisma.DiagnosticChildUserCountArgs<ExtArgs>
-            result: $Utils.Optional<DiagnosticChildUserCountAggregateOutputType> | number
+            args: Prisma.OutletChildUserCountArgs<ExtArgs>
+            result: $Utils.Optional<OutletChildUserCountAggregateOutputType> | number
           }
         }
       }
@@ -1299,69 +1312,69 @@ export namespace Prisma {
           }
         }
       }
-      DiagnosticUserRole: {
-        payload: Prisma.$DiagnosticUserRolePayload<ExtArgs>
-        fields: Prisma.DiagnosticUserRoleFieldRefs
+      OutletUserRole: {
+        payload: Prisma.$OutletUserRolePayload<ExtArgs>
+        fields: Prisma.OutletUserRoleFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.DiagnosticUserRoleFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DiagnosticUserRolePayload> | null
+            args: Prisma.OutletUserRoleFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutletUserRolePayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.DiagnosticUserRoleFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DiagnosticUserRolePayload>
+            args: Prisma.OutletUserRoleFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutletUserRolePayload>
           }
           findFirst: {
-            args: Prisma.DiagnosticUserRoleFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DiagnosticUserRolePayload> | null
+            args: Prisma.OutletUserRoleFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutletUserRolePayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.DiagnosticUserRoleFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DiagnosticUserRolePayload>
+            args: Prisma.OutletUserRoleFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutletUserRolePayload>
           }
           findMany: {
-            args: Prisma.DiagnosticUserRoleFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DiagnosticUserRolePayload>[]
+            args: Prisma.OutletUserRoleFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutletUserRolePayload>[]
           }
           create: {
-            args: Prisma.DiagnosticUserRoleCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DiagnosticUserRolePayload>
+            args: Prisma.OutletUserRoleCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutletUserRolePayload>
           }
           createMany: {
-            args: Prisma.DiagnosticUserRoleCreateManyArgs<ExtArgs>
+            args: Prisma.OutletUserRoleCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           delete: {
-            args: Prisma.DiagnosticUserRoleDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DiagnosticUserRolePayload>
+            args: Prisma.OutletUserRoleDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutletUserRolePayload>
           }
           update: {
-            args: Prisma.DiagnosticUserRoleUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DiagnosticUserRolePayload>
+            args: Prisma.OutletUserRoleUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutletUserRolePayload>
           }
           deleteMany: {
-            args: Prisma.DiagnosticUserRoleDeleteManyArgs<ExtArgs>
+            args: Prisma.OutletUserRoleDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.DiagnosticUserRoleUpdateManyArgs<ExtArgs>
+            args: Prisma.OutletUserRoleUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           upsert: {
-            args: Prisma.DiagnosticUserRoleUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DiagnosticUserRolePayload>
+            args: Prisma.OutletUserRoleUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutletUserRolePayload>
           }
           aggregate: {
-            args: Prisma.DiagnosticUserRoleAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateDiagnosticUserRole>
+            args: Prisma.OutletUserRoleAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateOutletUserRole>
           }
           groupBy: {
-            args: Prisma.DiagnosticUserRoleGroupByArgs<ExtArgs>
-            result: $Utils.Optional<DiagnosticUserRoleGroupByOutputType>[]
+            args: Prisma.OutletUserRoleGroupByArgs<ExtArgs>
+            result: $Utils.Optional<OutletUserRoleGroupByOutputType>[]
           }
           count: {
-            args: Prisma.DiagnosticUserRoleCountArgs<ExtArgs>
-            result: $Utils.Optional<DiagnosticUserRoleCountAggregateOutputType> | number
+            args: Prisma.OutletUserRoleCountArgs<ExtArgs>
+            result: $Utils.Optional<OutletUserRoleCountAggregateOutputType> | number
           }
         }
       }
@@ -1530,12 +1543,12 @@ export namespace Prisma {
     superAdmins?: SuperAdminsOmit
     patient?: PatientOmit
     doctor?: DoctorOmit
-    diagnosticAccount?: DiagnosticAccountOmit
-    diagnosticChildUser?: DiagnosticChildUserOmit
+    outlet?: outletOmit
+    outletChildUser?: OutletChildUserOmit
     role?: RoleOmit
     permission?: PermissionOmit
     rolePermission?: RolePermissionOmit
-    diagnosticUserRole?: DiagnosticUserRoleOmit
+    outletUserRole?: OutletUserRoleOmit
     superAdminUserRole?: SuperAdminUserRoleOmit
   }
 
@@ -1653,82 +1666,82 @@ export namespace Prisma {
 
 
   /**
-   * Count Type DiagnosticAccountCountOutputType
+   * Count Type OutletCountOutputType
    */
 
-  export type DiagnosticAccountCountOutputType = {
+  export type OutletCountOutputType = {
     childUsers: number
     roles: number
     patients: number
   }
 
-  export type DiagnosticAccountCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    childUsers?: boolean | DiagnosticAccountCountOutputTypeCountChildUsersArgs
-    roles?: boolean | DiagnosticAccountCountOutputTypeCountRolesArgs
-    patients?: boolean | DiagnosticAccountCountOutputTypeCountPatientsArgs
+  export type OutletCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    childUsers?: boolean | OutletCountOutputTypeCountChildUsersArgs
+    roles?: boolean | OutletCountOutputTypeCountRolesArgs
+    patients?: boolean | OutletCountOutputTypeCountPatientsArgs
   }
 
   // Custom InputTypes
   /**
-   * DiagnosticAccountCountOutputType without action
+   * OutletCountOutputType without action
    */
-  export type DiagnosticAccountCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the DiagnosticAccountCountOutputType
+     * Select specific fields to fetch from the OutletCountOutputType
      */
-    select?: DiagnosticAccountCountOutputTypeSelect<ExtArgs> | null
+    select?: OutletCountOutputTypeSelect<ExtArgs> | null
   }
 
   /**
-   * DiagnosticAccountCountOutputType without action
+   * OutletCountOutputType without action
    */
-  export type DiagnosticAccountCountOutputTypeCountChildUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: DiagnosticChildUserWhereInput
+  export type OutletCountOutputTypeCountChildUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OutletChildUserWhereInput
   }
 
   /**
-   * DiagnosticAccountCountOutputType without action
+   * OutletCountOutputType without action
    */
-  export type DiagnosticAccountCountOutputTypeCountRolesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletCountOutputTypeCountRolesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: RoleWhereInput
   }
 
   /**
-   * DiagnosticAccountCountOutputType without action
+   * OutletCountOutputType without action
    */
-  export type DiagnosticAccountCountOutputTypeCountPatientsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletCountOutputTypeCountPatientsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: PatientWhereInput
   }
 
 
   /**
-   * Count Type DiagnosticChildUserCountOutputType
+   * Count Type OutletChildUserCountOutputType
    */
 
-  export type DiagnosticChildUserCountOutputType = {
+  export type OutletChildUserCountOutputType = {
     userRoles: number
   }
 
-  export type DiagnosticChildUserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    userRoles?: boolean | DiagnosticChildUserCountOutputTypeCountUserRolesArgs
+  export type OutletChildUserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    userRoles?: boolean | OutletChildUserCountOutputTypeCountUserRolesArgs
   }
 
   // Custom InputTypes
   /**
-   * DiagnosticChildUserCountOutputType without action
+   * OutletChildUserCountOutputType without action
    */
-  export type DiagnosticChildUserCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletChildUserCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the DiagnosticChildUserCountOutputType
+     * Select specific fields to fetch from the OutletChildUserCountOutputType
      */
-    select?: DiagnosticChildUserCountOutputTypeSelect<ExtArgs> | null
+    select?: OutletChildUserCountOutputTypeSelect<ExtArgs> | null
   }
 
   /**
-   * DiagnosticChildUserCountOutputType without action
+   * OutletChildUserCountOutputType without action
    */
-  export type DiagnosticChildUserCountOutputTypeCountUserRolesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: DiagnosticUserRoleWhereInput
+  export type OutletChildUserCountOutputTypeCountUserRolesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OutletUserRoleWhereInput
   }
 
 
@@ -1738,13 +1751,13 @@ export namespace Prisma {
 
   export type RoleCountOutputType = {
     rolePermissions: number
-    diagnosticUserRoles: number
+    OutletUserRoles: number
     superAdminUserRoles: number
   }
 
   export type RoleCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     rolePermissions?: boolean | RoleCountOutputTypeCountRolePermissionsArgs
-    diagnosticUserRoles?: boolean | RoleCountOutputTypeCountDiagnosticUserRolesArgs
+    OutletUserRoles?: boolean | RoleCountOutputTypeCountOutletUserRolesArgs
     superAdminUserRoles?: boolean | RoleCountOutputTypeCountSuperAdminUserRolesArgs
   }
 
@@ -1769,8 +1782,8 @@ export namespace Prisma {
   /**
    * RoleCountOutputType without action
    */
-  export type RoleCountOutputTypeCountDiagnosticUserRolesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: DiagnosticUserRoleWhereInput
+  export type RoleCountOutputTypeCountOutletUserRolesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OutletUserRoleWhereInput
   }
 
   /**
@@ -2854,17 +2867,20 @@ export namespace Prisma {
 
   export type PatientMinAggregateOutputType = {
     id: string | null
+    referenceName: string | null
     fullName: string | null
     mobileNumber: string | null
-    otp: string | null
-    otpExpiresAt: Date | null
     email: string | null
     dateOfBirth: Date | null
     age: number | null
     bloodGroup: string | null
     gender: string | null
     address: string | null
-    diagnosticAccountId: string | null
+    emergencyContact: string | null
+    status: $Enums.PatientStatus | null
+    otp: string | null
+    otpExpiresAt: Date | null
+    outletId: string | null
     isActive: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -2872,17 +2888,20 @@ export namespace Prisma {
 
   export type PatientMaxAggregateOutputType = {
     id: string | null
+    referenceName: string | null
     fullName: string | null
     mobileNumber: string | null
-    otp: string | null
-    otpExpiresAt: Date | null
     email: string | null
     dateOfBirth: Date | null
     age: number | null
     bloodGroup: string | null
     gender: string | null
     address: string | null
-    diagnosticAccountId: string | null
+    emergencyContact: string | null
+    status: $Enums.PatientStatus | null
+    otp: string | null
+    otpExpiresAt: Date | null
+    outletId: string | null
     isActive: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -2890,17 +2909,20 @@ export namespace Prisma {
 
   export type PatientCountAggregateOutputType = {
     id: number
+    referenceName: number
     fullName: number
     mobileNumber: number
-    otp: number
-    otpExpiresAt: number
     email: number
     dateOfBirth: number
     age: number
     bloodGroup: number
     gender: number
     address: number
-    diagnosticAccountId: number
+    emergencyContact: number
+    status: number
+    otp: number
+    otpExpiresAt: number
+    outletId: number
     isActive: number
     createdAt: number
     updatedAt: number
@@ -2918,17 +2940,20 @@ export namespace Prisma {
 
   export type PatientMinAggregateInputType = {
     id?: true
+    referenceName?: true
     fullName?: true
     mobileNumber?: true
-    otp?: true
-    otpExpiresAt?: true
     email?: true
     dateOfBirth?: true
     age?: true
     bloodGroup?: true
     gender?: true
     address?: true
-    diagnosticAccountId?: true
+    emergencyContact?: true
+    status?: true
+    otp?: true
+    otpExpiresAt?: true
+    outletId?: true
     isActive?: true
     createdAt?: true
     updatedAt?: true
@@ -2936,17 +2961,20 @@ export namespace Prisma {
 
   export type PatientMaxAggregateInputType = {
     id?: true
+    referenceName?: true
     fullName?: true
     mobileNumber?: true
-    otp?: true
-    otpExpiresAt?: true
     email?: true
     dateOfBirth?: true
     age?: true
     bloodGroup?: true
     gender?: true
     address?: true
-    diagnosticAccountId?: true
+    emergencyContact?: true
+    status?: true
+    otp?: true
+    otpExpiresAt?: true
+    outletId?: true
     isActive?: true
     createdAt?: true
     updatedAt?: true
@@ -2954,17 +2982,20 @@ export namespace Prisma {
 
   export type PatientCountAggregateInputType = {
     id?: true
+    referenceName?: true
     fullName?: true
     mobileNumber?: true
-    otp?: true
-    otpExpiresAt?: true
     email?: true
     dateOfBirth?: true
     age?: true
     bloodGroup?: true
     gender?: true
     address?: true
-    diagnosticAccountId?: true
+    emergencyContact?: true
+    status?: true
+    otp?: true
+    otpExpiresAt?: true
+    outletId?: true
     isActive?: true
     createdAt?: true
     updatedAt?: true
@@ -3059,17 +3090,20 @@ export namespace Prisma {
 
   export type PatientGroupByOutputType = {
     id: string
+    referenceName: string | null
     fullName: string
     mobileNumber: string
-    otp: string | null
-    otpExpiresAt: Date | null
     email: string | null
     dateOfBirth: Date | null
     age: number | null
     bloodGroup: string | null
     gender: string | null
     address: string | null
-    diagnosticAccountId: string | null
+    emergencyContact: string | null
+    status: $Enums.PatientStatus
+    otp: string | null
+    otpExpiresAt: Date | null
+    outletId: string | null
     isActive: boolean
     createdAt: Date
     updatedAt: Date
@@ -3096,66 +3130,75 @@ export namespace Prisma {
 
   export type PatientSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    referenceName?: boolean
     fullName?: boolean
     mobileNumber?: boolean
-    otp?: boolean
-    otpExpiresAt?: boolean
     email?: boolean
     dateOfBirth?: boolean
     age?: boolean
     bloodGroup?: boolean
     gender?: boolean
     address?: boolean
-    diagnosticAccountId?: boolean
+    emergencyContact?: boolean
+    status?: boolean
+    otp?: boolean
+    otpExpiresAt?: boolean
+    outletId?: boolean
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    diagnosticAccount?: boolean | Patient$diagnosticAccountArgs<ExtArgs>
+    outlet?: boolean | Patient$outletArgs<ExtArgs>
   }, ExtArgs["result"]["patient"]>
 
 
 
   export type PatientSelectScalar = {
     id?: boolean
+    referenceName?: boolean
     fullName?: boolean
     mobileNumber?: boolean
-    otp?: boolean
-    otpExpiresAt?: boolean
     email?: boolean
     dateOfBirth?: boolean
     age?: boolean
     bloodGroup?: boolean
     gender?: boolean
     address?: boolean
-    diagnosticAccountId?: boolean
+    emergencyContact?: boolean
+    status?: boolean
+    otp?: boolean
+    otpExpiresAt?: boolean
+    outletId?: boolean
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type PatientOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "fullName" | "mobileNumber" | "otp" | "otpExpiresAt" | "email" | "dateOfBirth" | "age" | "bloodGroup" | "gender" | "address" | "diagnosticAccountId" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["patient"]>
+  export type PatientOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "referenceName" | "fullName" | "mobileNumber" | "email" | "dateOfBirth" | "age" | "bloodGroup" | "gender" | "address" | "emergencyContact" | "status" | "otp" | "otpExpiresAt" | "outletId" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["patient"]>
   export type PatientInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    diagnosticAccount?: boolean | Patient$diagnosticAccountArgs<ExtArgs>
+    outlet?: boolean | Patient$outletArgs<ExtArgs>
   }
 
   export type $PatientPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Patient"
     objects: {
-      diagnosticAccount: Prisma.$DiagnosticAccountPayload<ExtArgs> | null
+      outlet: Prisma.$outletPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
+      referenceName: string | null
       fullName: string
       mobileNumber: string
-      otp: string | null
-      otpExpiresAt: Date | null
       email: string | null
       dateOfBirth: Date | null
       age: number | null
       bloodGroup: string | null
       gender: string | null
       address: string | null
-      diagnosticAccountId: string | null
+      emergencyContact: string | null
+      status: $Enums.PatientStatus
+      otp: string | null
+      otpExpiresAt: Date | null
+      outletId: string | null
       isActive: boolean
       createdAt: Date
       updatedAt: Date
@@ -3499,7 +3542,7 @@ export namespace Prisma {
    */
   export interface Prisma__PatientClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    diagnosticAccount<T extends Patient$diagnosticAccountArgs<ExtArgs> = {}>(args?: Subset<T, Patient$diagnosticAccountArgs<ExtArgs>>): Prisma__DiagnosticAccountClient<$Result.GetResult<Prisma.$DiagnosticAccountPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    outlet<T extends Patient$outletArgs<ExtArgs> = {}>(args?: Subset<T, Patient$outletArgs<ExtArgs>>): Prisma__outletClient<$Result.GetResult<Prisma.$outletPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3530,17 +3573,20 @@ export namespace Prisma {
    */
   interface PatientFieldRefs {
     readonly id: FieldRef<"Patient", 'String'>
+    readonly referenceName: FieldRef<"Patient", 'String'>
     readonly fullName: FieldRef<"Patient", 'String'>
     readonly mobileNumber: FieldRef<"Patient", 'String'>
-    readonly otp: FieldRef<"Patient", 'String'>
-    readonly otpExpiresAt: FieldRef<"Patient", 'DateTime'>
     readonly email: FieldRef<"Patient", 'String'>
     readonly dateOfBirth: FieldRef<"Patient", 'DateTime'>
     readonly age: FieldRef<"Patient", 'Int'>
     readonly bloodGroup: FieldRef<"Patient", 'String'>
     readonly gender: FieldRef<"Patient", 'String'>
     readonly address: FieldRef<"Patient", 'String'>
-    readonly diagnosticAccountId: FieldRef<"Patient", 'String'>
+    readonly emergencyContact: FieldRef<"Patient", 'String'>
+    readonly status: FieldRef<"Patient", 'PatientStatus'>
+    readonly otp: FieldRef<"Patient", 'String'>
+    readonly otpExpiresAt: FieldRef<"Patient", 'DateTime'>
+    readonly outletId: FieldRef<"Patient", 'String'>
     readonly isActive: FieldRef<"Patient", 'Boolean'>
     readonly createdAt: FieldRef<"Patient", 'DateTime'>
     readonly updatedAt: FieldRef<"Patient", 'DateTime'>
@@ -3887,22 +3933,22 @@ export namespace Prisma {
   }
 
   /**
-   * Patient.diagnosticAccount
+   * Patient.outlet
    */
-  export type Patient$diagnosticAccountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Patient$outletArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the DiagnosticAccount
+     * Select specific fields to fetch from the outlet
      */
-    select?: DiagnosticAccountSelect<ExtArgs> | null
+    select?: outletSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the DiagnosticAccount
+     * Omit specific fields from the outlet
      */
-    omit?: DiagnosticAccountOmit<ExtArgs> | null
+    omit?: outletOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DiagnosticAccountInclude<ExtArgs> | null
-    where?: DiagnosticAccountWhereInput
+    include?: outletInclude<ExtArgs> | null
+    where?: outletWhereInput
   }
 
   /**
@@ -4922,16 +4968,16 @@ export namespace Prisma {
 
 
   /**
-   * Model DiagnosticAccount
+   * Model outlet
    */
 
-  export type AggregateDiagnosticAccount = {
-    _count: DiagnosticAccountCountAggregateOutputType | null
-    _min: DiagnosticAccountMinAggregateOutputType | null
-    _max: DiagnosticAccountMaxAggregateOutputType | null
+  export type AggregateOutlet = {
+    _count: OutletCountAggregateOutputType | null
+    _min: OutletMinAggregateOutputType | null
+    _max: OutletMaxAggregateOutputType | null
   }
 
-  export type DiagnosticAccountMinAggregateOutputType = {
+  export type OutletMinAggregateOutputType = {
     id: string | null
     name: string | null
     email: string | null
@@ -4946,7 +4992,7 @@ export namespace Prisma {
     updatedAt: Date | null
   }
 
-  export type DiagnosticAccountMaxAggregateOutputType = {
+  export type OutletMaxAggregateOutputType = {
     id: string | null
     name: string | null
     email: string | null
@@ -4961,7 +5007,7 @@ export namespace Prisma {
     updatedAt: Date | null
   }
 
-  export type DiagnosticAccountCountAggregateOutputType = {
+  export type OutletCountAggregateOutputType = {
     id: number
     name: number
     email: number
@@ -4978,7 +5024,7 @@ export namespace Prisma {
   }
 
 
-  export type DiagnosticAccountMinAggregateInputType = {
+  export type OutletMinAggregateInputType = {
     id?: true
     name?: true
     email?: true
@@ -4993,7 +5039,7 @@ export namespace Prisma {
     updatedAt?: true
   }
 
-  export type DiagnosticAccountMaxAggregateInputType = {
+  export type OutletMaxAggregateInputType = {
     id?: true
     name?: true
     email?: true
@@ -5008,7 +5054,7 @@ export namespace Prisma {
     updatedAt?: true
   }
 
-  export type DiagnosticAccountCountAggregateInputType = {
+  export type OutletCountAggregateInputType = {
     id?: true
     name?: true
     email?: true
@@ -5024,79 +5070,79 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type DiagnosticAccountAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which DiagnosticAccount to aggregate.
+     * Filter which outlet to aggregate.
      */
-    where?: DiagnosticAccountWhereInput
+    where?: outletWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of DiagnosticAccounts to fetch.
+     * Determine the order of outlets to fetch.
      */
-    orderBy?: DiagnosticAccountOrderByWithRelationInput | DiagnosticAccountOrderByWithRelationInput[]
+    orderBy?: outletOrderByWithRelationInput | outletOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: DiagnosticAccountWhereUniqueInput
+    cursor?: outletWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` DiagnosticAccounts from the position of the cursor.
+     * Take `±n` outlets from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` DiagnosticAccounts.
+     * Skip the first `n` outlets.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned DiagnosticAccounts
+     * Count returned outlets
     **/
-    _count?: true | DiagnosticAccountCountAggregateInputType
+    _count?: true | OutletCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: DiagnosticAccountMinAggregateInputType
+    _min?: OutletMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: DiagnosticAccountMaxAggregateInputType
+    _max?: OutletMaxAggregateInputType
   }
 
-  export type GetDiagnosticAccountAggregateType<T extends DiagnosticAccountAggregateArgs> = {
-        [P in keyof T & keyof AggregateDiagnosticAccount]: P extends '_count' | 'count'
+  export type GetOutletAggregateType<T extends OutletAggregateArgs> = {
+        [P in keyof T & keyof AggregateOutlet]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateDiagnosticAccount[P]>
-      : GetScalarType<T[P], AggregateDiagnosticAccount[P]>
+        : GetScalarType<T[P], AggregateOutlet[P]>
+      : GetScalarType<T[P], AggregateOutlet[P]>
   }
 
 
 
 
-  export type DiagnosticAccountGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: DiagnosticAccountWhereInput
-    orderBy?: DiagnosticAccountOrderByWithAggregationInput | DiagnosticAccountOrderByWithAggregationInput[]
-    by: DiagnosticAccountScalarFieldEnum[] | DiagnosticAccountScalarFieldEnum
-    having?: DiagnosticAccountScalarWhereWithAggregatesInput
+  export type outletGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: outletWhereInput
+    orderBy?: outletOrderByWithAggregationInput | outletOrderByWithAggregationInput[]
+    by: OutletScalarFieldEnum[] | OutletScalarFieldEnum
+    having?: outletScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: DiagnosticAccountCountAggregateInputType | true
-    _min?: DiagnosticAccountMinAggregateInputType
-    _max?: DiagnosticAccountMaxAggregateInputType
+    _count?: OutletCountAggregateInputType | true
+    _min?: OutletMinAggregateInputType
+    _max?: OutletMaxAggregateInputType
   }
 
-  export type DiagnosticAccountGroupByOutputType = {
+  export type OutletGroupByOutputType = {
     id: string
     name: string
     email: string
@@ -5109,26 +5155,26 @@ export namespace Prisma {
     isActive: boolean
     createdAt: Date
     updatedAt: Date
-    _count: DiagnosticAccountCountAggregateOutputType | null
-    _min: DiagnosticAccountMinAggregateOutputType | null
-    _max: DiagnosticAccountMaxAggregateOutputType | null
+    _count: OutletCountAggregateOutputType | null
+    _min: OutletMinAggregateOutputType | null
+    _max: OutletMaxAggregateOutputType | null
   }
 
-  type GetDiagnosticAccountGroupByPayload<T extends DiagnosticAccountGroupByArgs> = Prisma.PrismaPromise<
+  type GetOutletGroupByPayload<T extends outletGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<DiagnosticAccountGroupByOutputType, T['by']> &
+      PickEnumerable<OutletGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof DiagnosticAccountGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof OutletGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], DiagnosticAccountGroupByOutputType[P]>
-            : GetScalarType<T[P], DiagnosticAccountGroupByOutputType[P]>
+              : GetScalarType<T[P], OutletGroupByOutputType[P]>
+            : GetScalarType<T[P], OutletGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type DiagnosticAccountSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type outletSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
     email?: boolean
@@ -5141,15 +5187,15 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    childUsers?: boolean | DiagnosticAccount$childUsersArgs<ExtArgs>
-    roles?: boolean | DiagnosticAccount$rolesArgs<ExtArgs>
-    patients?: boolean | DiagnosticAccount$patientsArgs<ExtArgs>
-    _count?: boolean | DiagnosticAccountCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["diagnosticAccount"]>
+    childUsers?: boolean | outlet$childUsersArgs<ExtArgs>
+    roles?: boolean | outlet$rolesArgs<ExtArgs>
+    patients?: boolean | outlet$patientsArgs<ExtArgs>
+    _count?: boolean | OutletCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["outlet"]>
 
 
 
-  export type DiagnosticAccountSelectScalar = {
+  export type outletSelectScalar = {
     id?: boolean
     name?: boolean
     email?: boolean
@@ -5164,18 +5210,18 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type DiagnosticAccountOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "phone" | "password" | "centerName" | "slug" | "logo" | "address" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["diagnosticAccount"]>
-  export type DiagnosticAccountInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    childUsers?: boolean | DiagnosticAccount$childUsersArgs<ExtArgs>
-    roles?: boolean | DiagnosticAccount$rolesArgs<ExtArgs>
-    patients?: boolean | DiagnosticAccount$patientsArgs<ExtArgs>
-    _count?: boolean | DiagnosticAccountCountOutputTypeDefaultArgs<ExtArgs>
+  export type outletOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "phone" | "password" | "centerName" | "slug" | "logo" | "address" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["outlet"]>
+  export type outletInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    childUsers?: boolean | outlet$childUsersArgs<ExtArgs>
+    roles?: boolean | outlet$rolesArgs<ExtArgs>
+    patients?: boolean | outlet$patientsArgs<ExtArgs>
+    _count?: boolean | OutletCountOutputTypeDefaultArgs<ExtArgs>
   }
 
-  export type $DiagnosticAccountPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "DiagnosticAccount"
+  export type $outletPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "outlet"
     objects: {
-      childUsers: Prisma.$DiagnosticChildUserPayload<ExtArgs>[]
+      childUsers: Prisma.$OutletChildUserPayload<ExtArgs>[]
       roles: Prisma.$RolePayload<ExtArgs>[]
       patients: Prisma.$PatientPayload<ExtArgs>[]
     }
@@ -5192,143 +5238,143 @@ export namespace Prisma {
       isActive: boolean
       createdAt: Date
       updatedAt: Date
-    }, ExtArgs["result"]["diagnosticAccount"]>
+    }, ExtArgs["result"]["outlet"]>
     composites: {}
   }
 
-  type DiagnosticAccountGetPayload<S extends boolean | null | undefined | DiagnosticAccountDefaultArgs> = $Result.GetResult<Prisma.$DiagnosticAccountPayload, S>
+  type outletGetPayload<S extends boolean | null | undefined | outletDefaultArgs> = $Result.GetResult<Prisma.$outletPayload, S>
 
-  type DiagnosticAccountCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<DiagnosticAccountFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: DiagnosticAccountCountAggregateInputType | true
+  type outletCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<outletFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: OutletCountAggregateInputType | true
     }
 
-  export interface DiagnosticAccountDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['DiagnosticAccount'], meta: { name: 'DiagnosticAccount' } }
+  export interface outletDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['outlet'], meta: { name: 'outlet' } }
     /**
-     * Find zero or one DiagnosticAccount that matches the filter.
-     * @param {DiagnosticAccountFindUniqueArgs} args - Arguments to find a DiagnosticAccount
+     * Find zero or one Outlet that matches the filter.
+     * @param {outletFindUniqueArgs} args - Arguments to find a Outlet
      * @example
-     * // Get one DiagnosticAccount
-     * const diagnosticAccount = await prisma.diagnosticAccount.findUnique({
+     * // Get one Outlet
+     * const outlet = await prisma.outlet.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends DiagnosticAccountFindUniqueArgs>(args: SelectSubset<T, DiagnosticAccountFindUniqueArgs<ExtArgs>>): Prisma__DiagnosticAccountClient<$Result.GetResult<Prisma.$DiagnosticAccountPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends outletFindUniqueArgs>(args: SelectSubset<T, outletFindUniqueArgs<ExtArgs>>): Prisma__outletClient<$Result.GetResult<Prisma.$outletPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one DiagnosticAccount that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Outlet that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {DiagnosticAccountFindUniqueOrThrowArgs} args - Arguments to find a DiagnosticAccount
+     * @param {outletFindUniqueOrThrowArgs} args - Arguments to find a Outlet
      * @example
-     * // Get one DiagnosticAccount
-     * const diagnosticAccount = await prisma.diagnosticAccount.findUniqueOrThrow({
+     * // Get one Outlet
+     * const outlet = await prisma.outlet.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends DiagnosticAccountFindUniqueOrThrowArgs>(args: SelectSubset<T, DiagnosticAccountFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DiagnosticAccountClient<$Result.GetResult<Prisma.$DiagnosticAccountPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends outletFindUniqueOrThrowArgs>(args: SelectSubset<T, outletFindUniqueOrThrowArgs<ExtArgs>>): Prisma__outletClient<$Result.GetResult<Prisma.$outletPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first DiagnosticAccount that matches the filter.
+     * Find the first Outlet that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {DiagnosticAccountFindFirstArgs} args - Arguments to find a DiagnosticAccount
+     * @param {outletFindFirstArgs} args - Arguments to find a Outlet
      * @example
-     * // Get one DiagnosticAccount
-     * const diagnosticAccount = await prisma.diagnosticAccount.findFirst({
+     * // Get one Outlet
+     * const outlet = await prisma.outlet.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends DiagnosticAccountFindFirstArgs>(args?: SelectSubset<T, DiagnosticAccountFindFirstArgs<ExtArgs>>): Prisma__DiagnosticAccountClient<$Result.GetResult<Prisma.$DiagnosticAccountPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends outletFindFirstArgs>(args?: SelectSubset<T, outletFindFirstArgs<ExtArgs>>): Prisma__outletClient<$Result.GetResult<Prisma.$outletPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first DiagnosticAccount that matches the filter or
+     * Find the first Outlet that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {DiagnosticAccountFindFirstOrThrowArgs} args - Arguments to find a DiagnosticAccount
+     * @param {outletFindFirstOrThrowArgs} args - Arguments to find a Outlet
      * @example
-     * // Get one DiagnosticAccount
-     * const diagnosticAccount = await prisma.diagnosticAccount.findFirstOrThrow({
+     * // Get one Outlet
+     * const outlet = await prisma.outlet.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends DiagnosticAccountFindFirstOrThrowArgs>(args?: SelectSubset<T, DiagnosticAccountFindFirstOrThrowArgs<ExtArgs>>): Prisma__DiagnosticAccountClient<$Result.GetResult<Prisma.$DiagnosticAccountPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends outletFindFirstOrThrowArgs>(args?: SelectSubset<T, outletFindFirstOrThrowArgs<ExtArgs>>): Prisma__outletClient<$Result.GetResult<Prisma.$outletPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more DiagnosticAccounts that matches the filter.
+     * Find zero or more Outlets that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {DiagnosticAccountFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {outletFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all DiagnosticAccounts
-     * const diagnosticAccounts = await prisma.diagnosticAccount.findMany()
+     * // Get all Outlets
+     * const outlets = await prisma.outlet.findMany()
      * 
-     * // Get first 10 DiagnosticAccounts
-     * const diagnosticAccounts = await prisma.diagnosticAccount.findMany({ take: 10 })
+     * // Get first 10 Outlets
+     * const outlets = await prisma.outlet.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const diagnosticAccountWithIdOnly = await prisma.diagnosticAccount.findMany({ select: { id: true } })
+     * const outletWithIdOnly = await prisma.outlet.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends DiagnosticAccountFindManyArgs>(args?: SelectSubset<T, DiagnosticAccountFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiagnosticAccountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends outletFindManyArgs>(args?: SelectSubset<T, outletFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$outletPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a DiagnosticAccount.
-     * @param {DiagnosticAccountCreateArgs} args - Arguments to create a DiagnosticAccount.
+     * Create a Outlet.
+     * @param {outletCreateArgs} args - Arguments to create a Outlet.
      * @example
-     * // Create one DiagnosticAccount
-     * const DiagnosticAccount = await prisma.diagnosticAccount.create({
+     * // Create one Outlet
+     * const Outlet = await prisma.outlet.create({
      *   data: {
-     *     // ... data to create a DiagnosticAccount
+     *     // ... data to create a Outlet
      *   }
      * })
      * 
      */
-    create<T extends DiagnosticAccountCreateArgs>(args: SelectSubset<T, DiagnosticAccountCreateArgs<ExtArgs>>): Prisma__DiagnosticAccountClient<$Result.GetResult<Prisma.$DiagnosticAccountPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends outletCreateArgs>(args: SelectSubset<T, outletCreateArgs<ExtArgs>>): Prisma__outletClient<$Result.GetResult<Prisma.$outletPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many DiagnosticAccounts.
-     * @param {DiagnosticAccountCreateManyArgs} args - Arguments to create many DiagnosticAccounts.
+     * Create many Outlets.
+     * @param {outletCreateManyArgs} args - Arguments to create many Outlets.
      * @example
-     * // Create many DiagnosticAccounts
-     * const diagnosticAccount = await prisma.diagnosticAccount.createMany({
+     * // Create many Outlets
+     * const outlet = await prisma.outlet.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends DiagnosticAccountCreateManyArgs>(args?: SelectSubset<T, DiagnosticAccountCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends outletCreateManyArgs>(args?: SelectSubset<T, outletCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a DiagnosticAccount.
-     * @param {DiagnosticAccountDeleteArgs} args - Arguments to delete one DiagnosticAccount.
+     * Delete a Outlet.
+     * @param {outletDeleteArgs} args - Arguments to delete one Outlet.
      * @example
-     * // Delete one DiagnosticAccount
-     * const DiagnosticAccount = await prisma.diagnosticAccount.delete({
+     * // Delete one Outlet
+     * const Outlet = await prisma.outlet.delete({
      *   where: {
-     *     // ... filter to delete one DiagnosticAccount
+     *     // ... filter to delete one Outlet
      *   }
      * })
      * 
      */
-    delete<T extends DiagnosticAccountDeleteArgs>(args: SelectSubset<T, DiagnosticAccountDeleteArgs<ExtArgs>>): Prisma__DiagnosticAccountClient<$Result.GetResult<Prisma.$DiagnosticAccountPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends outletDeleteArgs>(args: SelectSubset<T, outletDeleteArgs<ExtArgs>>): Prisma__outletClient<$Result.GetResult<Prisma.$outletPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one DiagnosticAccount.
-     * @param {DiagnosticAccountUpdateArgs} args - Arguments to update one DiagnosticAccount.
+     * Update one Outlet.
+     * @param {outletUpdateArgs} args - Arguments to update one Outlet.
      * @example
-     * // Update one DiagnosticAccount
-     * const diagnosticAccount = await prisma.diagnosticAccount.update({
+     * // Update one Outlet
+     * const outlet = await prisma.outlet.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -5338,30 +5384,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends DiagnosticAccountUpdateArgs>(args: SelectSubset<T, DiagnosticAccountUpdateArgs<ExtArgs>>): Prisma__DiagnosticAccountClient<$Result.GetResult<Prisma.$DiagnosticAccountPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends outletUpdateArgs>(args: SelectSubset<T, outletUpdateArgs<ExtArgs>>): Prisma__outletClient<$Result.GetResult<Prisma.$outletPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more DiagnosticAccounts.
-     * @param {DiagnosticAccountDeleteManyArgs} args - Arguments to filter DiagnosticAccounts to delete.
+     * Delete zero or more Outlets.
+     * @param {outletDeleteManyArgs} args - Arguments to filter Outlets to delete.
      * @example
-     * // Delete a few DiagnosticAccounts
-     * const { count } = await prisma.diagnosticAccount.deleteMany({
+     * // Delete a few Outlets
+     * const { count } = await prisma.outlet.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends DiagnosticAccountDeleteManyArgs>(args?: SelectSubset<T, DiagnosticAccountDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends outletDeleteManyArgs>(args?: SelectSubset<T, outletDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more DiagnosticAccounts.
+     * Update zero or more Outlets.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {DiagnosticAccountUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {outletUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many DiagnosticAccounts
-     * const diagnosticAccount = await prisma.diagnosticAccount.updateMany({
+     * // Update many Outlets
+     * const outlet = await prisma.outlet.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -5371,56 +5417,56 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends DiagnosticAccountUpdateManyArgs>(args: SelectSubset<T, DiagnosticAccountUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends outletUpdateManyArgs>(args: SelectSubset<T, outletUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one DiagnosticAccount.
-     * @param {DiagnosticAccountUpsertArgs} args - Arguments to update or create a DiagnosticAccount.
+     * Create or update one Outlet.
+     * @param {outletUpsertArgs} args - Arguments to update or create a Outlet.
      * @example
-     * // Update or create a DiagnosticAccount
-     * const diagnosticAccount = await prisma.diagnosticAccount.upsert({
+     * // Update or create a Outlet
+     * const outlet = await prisma.outlet.upsert({
      *   create: {
-     *     // ... data to create a DiagnosticAccount
+     *     // ... data to create a Outlet
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the DiagnosticAccount we want to update
+     *     // ... the filter for the Outlet we want to update
      *   }
      * })
      */
-    upsert<T extends DiagnosticAccountUpsertArgs>(args: SelectSubset<T, DiagnosticAccountUpsertArgs<ExtArgs>>): Prisma__DiagnosticAccountClient<$Result.GetResult<Prisma.$DiagnosticAccountPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends outletUpsertArgs>(args: SelectSubset<T, outletUpsertArgs<ExtArgs>>): Prisma__outletClient<$Result.GetResult<Prisma.$outletPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of DiagnosticAccounts.
+     * Count the number of Outlets.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {DiagnosticAccountCountArgs} args - Arguments to filter DiagnosticAccounts to count.
+     * @param {outletCountArgs} args - Arguments to filter Outlets to count.
      * @example
-     * // Count the number of DiagnosticAccounts
-     * const count = await prisma.diagnosticAccount.count({
+     * // Count the number of Outlets
+     * const count = await prisma.outlet.count({
      *   where: {
-     *     // ... the filter for the DiagnosticAccounts we want to count
+     *     // ... the filter for the Outlets we want to count
      *   }
      * })
     **/
-    count<T extends DiagnosticAccountCountArgs>(
-      args?: Subset<T, DiagnosticAccountCountArgs>,
+    count<T extends outletCountArgs>(
+      args?: Subset<T, outletCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], DiagnosticAccountCountAggregateOutputType>
+          : GetScalarType<T['select'], OutletCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a DiagnosticAccount.
+     * Allows you to perform aggregations operations on a Outlet.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {DiagnosticAccountAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {OutletAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -5440,13 +5486,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends DiagnosticAccountAggregateArgs>(args: Subset<T, DiagnosticAccountAggregateArgs>): Prisma.PrismaPromise<GetDiagnosticAccountAggregateType<T>>
+    aggregate<T extends OutletAggregateArgs>(args: Subset<T, OutletAggregateArgs>): Prisma.PrismaPromise<GetOutletAggregateType<T>>
 
     /**
-     * Group by DiagnosticAccount.
+     * Group by Outlet.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {DiagnosticAccountGroupByArgs} args - Group by arguments.
+     * @param {outletGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -5461,14 +5507,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends DiagnosticAccountGroupByArgs,
+      T extends outletGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: DiagnosticAccountGroupByArgs['orderBy'] }
-        : { orderBy?: DiagnosticAccountGroupByArgs['orderBy'] },
+        ? { orderBy: outletGroupByArgs['orderBy'] }
+        : { orderBy?: outletGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -5517,24 +5563,24 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, DiagnosticAccountGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDiagnosticAccountGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, outletGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetOutletGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the DiagnosticAccount model
+   * Fields of the outlet model
    */
-  readonly fields: DiagnosticAccountFieldRefs;
+  readonly fields: outletFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for DiagnosticAccount.
+   * The delegate class that acts as a "Promise-like" for outlet.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__DiagnosticAccountClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__outletClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    childUsers<T extends DiagnosticAccount$childUsersArgs<ExtArgs> = {}>(args?: Subset<T, DiagnosticAccount$childUsersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiagnosticChildUserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    roles<T extends DiagnosticAccount$rolesArgs<ExtArgs> = {}>(args?: Subset<T, DiagnosticAccount$rolesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    patients<T extends DiagnosticAccount$patientsArgs<ExtArgs> = {}>(args?: Subset<T, DiagnosticAccount$patientsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PatientPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    childUsers<T extends outlet$childUsersArgs<ExtArgs> = {}>(args?: Subset<T, outlet$childUsersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OutletChildUserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    roles<T extends outlet$rolesArgs<ExtArgs> = {}>(args?: Subset<T, outlet$rolesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    patients<T extends outlet$patientsArgs<ExtArgs> = {}>(args?: Subset<T, outlet$patientsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PatientPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5561,391 +5607,391 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the DiagnosticAccount model
+   * Fields of the outlet model
    */
-  interface DiagnosticAccountFieldRefs {
-    readonly id: FieldRef<"DiagnosticAccount", 'String'>
-    readonly name: FieldRef<"DiagnosticAccount", 'String'>
-    readonly email: FieldRef<"DiagnosticAccount", 'String'>
-    readonly phone: FieldRef<"DiagnosticAccount", 'String'>
-    readonly password: FieldRef<"DiagnosticAccount", 'String'>
-    readonly centerName: FieldRef<"DiagnosticAccount", 'String'>
-    readonly slug: FieldRef<"DiagnosticAccount", 'String'>
-    readonly logo: FieldRef<"DiagnosticAccount", 'String'>
-    readonly address: FieldRef<"DiagnosticAccount", 'String'>
-    readonly isActive: FieldRef<"DiagnosticAccount", 'Boolean'>
-    readonly createdAt: FieldRef<"DiagnosticAccount", 'DateTime'>
-    readonly updatedAt: FieldRef<"DiagnosticAccount", 'DateTime'>
+  interface outletFieldRefs {
+    readonly id: FieldRef<"outlet", 'String'>
+    readonly name: FieldRef<"outlet", 'String'>
+    readonly email: FieldRef<"outlet", 'String'>
+    readonly phone: FieldRef<"outlet", 'String'>
+    readonly password: FieldRef<"outlet", 'String'>
+    readonly centerName: FieldRef<"outlet", 'String'>
+    readonly slug: FieldRef<"outlet", 'String'>
+    readonly logo: FieldRef<"outlet", 'String'>
+    readonly address: FieldRef<"outlet", 'String'>
+    readonly isActive: FieldRef<"outlet", 'Boolean'>
+    readonly createdAt: FieldRef<"outlet", 'DateTime'>
+    readonly updatedAt: FieldRef<"outlet", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * DiagnosticAccount findUnique
+   * outlet findUnique
    */
-  export type DiagnosticAccountFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type outletFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the DiagnosticAccount
+     * Select specific fields to fetch from the outlet
      */
-    select?: DiagnosticAccountSelect<ExtArgs> | null
+    select?: outletSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the DiagnosticAccount
+     * Omit specific fields from the outlet
      */
-    omit?: DiagnosticAccountOmit<ExtArgs> | null
+    omit?: outletOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DiagnosticAccountInclude<ExtArgs> | null
+    include?: outletInclude<ExtArgs> | null
     /**
-     * Filter, which DiagnosticAccount to fetch.
+     * Filter, which outlet to fetch.
      */
-    where: DiagnosticAccountWhereUniqueInput
+    where: outletWhereUniqueInput
   }
 
   /**
-   * DiagnosticAccount findUniqueOrThrow
+   * outlet findUniqueOrThrow
    */
-  export type DiagnosticAccountFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type outletFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the DiagnosticAccount
+     * Select specific fields to fetch from the outlet
      */
-    select?: DiagnosticAccountSelect<ExtArgs> | null
+    select?: outletSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the DiagnosticAccount
+     * Omit specific fields from the outlet
      */
-    omit?: DiagnosticAccountOmit<ExtArgs> | null
+    omit?: outletOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DiagnosticAccountInclude<ExtArgs> | null
+    include?: outletInclude<ExtArgs> | null
     /**
-     * Filter, which DiagnosticAccount to fetch.
+     * Filter, which outlet to fetch.
      */
-    where: DiagnosticAccountWhereUniqueInput
+    where: outletWhereUniqueInput
   }
 
   /**
-   * DiagnosticAccount findFirst
+   * outlet findFirst
    */
-  export type DiagnosticAccountFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type outletFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the DiagnosticAccount
+     * Select specific fields to fetch from the outlet
      */
-    select?: DiagnosticAccountSelect<ExtArgs> | null
+    select?: outletSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the DiagnosticAccount
+     * Omit specific fields from the outlet
      */
-    omit?: DiagnosticAccountOmit<ExtArgs> | null
+    omit?: outletOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DiagnosticAccountInclude<ExtArgs> | null
+    include?: outletInclude<ExtArgs> | null
     /**
-     * Filter, which DiagnosticAccount to fetch.
+     * Filter, which outlet to fetch.
      */
-    where?: DiagnosticAccountWhereInput
+    where?: outletWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of DiagnosticAccounts to fetch.
+     * Determine the order of outlets to fetch.
      */
-    orderBy?: DiagnosticAccountOrderByWithRelationInput | DiagnosticAccountOrderByWithRelationInput[]
+    orderBy?: outletOrderByWithRelationInput | outletOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for DiagnosticAccounts.
+     * Sets the position for searching for outlets.
      */
-    cursor?: DiagnosticAccountWhereUniqueInput
+    cursor?: outletWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` DiagnosticAccounts from the position of the cursor.
+     * Take `±n` outlets from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` DiagnosticAccounts.
+     * Skip the first `n` outlets.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of DiagnosticAccounts.
+     * Filter by unique combinations of outlets.
      */
-    distinct?: DiagnosticAccountScalarFieldEnum | DiagnosticAccountScalarFieldEnum[]
+    distinct?: OutletScalarFieldEnum | OutletScalarFieldEnum[]
   }
 
   /**
-   * DiagnosticAccount findFirstOrThrow
+   * outlet findFirstOrThrow
    */
-  export type DiagnosticAccountFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type outletFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the DiagnosticAccount
+     * Select specific fields to fetch from the outlet
      */
-    select?: DiagnosticAccountSelect<ExtArgs> | null
+    select?: outletSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the DiagnosticAccount
+     * Omit specific fields from the outlet
      */
-    omit?: DiagnosticAccountOmit<ExtArgs> | null
+    omit?: outletOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DiagnosticAccountInclude<ExtArgs> | null
+    include?: outletInclude<ExtArgs> | null
     /**
-     * Filter, which DiagnosticAccount to fetch.
+     * Filter, which outlet to fetch.
      */
-    where?: DiagnosticAccountWhereInput
+    where?: outletWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of DiagnosticAccounts to fetch.
+     * Determine the order of outlets to fetch.
      */
-    orderBy?: DiagnosticAccountOrderByWithRelationInput | DiagnosticAccountOrderByWithRelationInput[]
+    orderBy?: outletOrderByWithRelationInput | outletOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for DiagnosticAccounts.
+     * Sets the position for searching for outlets.
      */
-    cursor?: DiagnosticAccountWhereUniqueInput
+    cursor?: outletWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` DiagnosticAccounts from the position of the cursor.
+     * Take `±n` outlets from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` DiagnosticAccounts.
+     * Skip the first `n` outlets.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of DiagnosticAccounts.
+     * Filter by unique combinations of outlets.
      */
-    distinct?: DiagnosticAccountScalarFieldEnum | DiagnosticAccountScalarFieldEnum[]
+    distinct?: OutletScalarFieldEnum | OutletScalarFieldEnum[]
   }
 
   /**
-   * DiagnosticAccount findMany
+   * outlet findMany
    */
-  export type DiagnosticAccountFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type outletFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the DiagnosticAccount
+     * Select specific fields to fetch from the outlet
      */
-    select?: DiagnosticAccountSelect<ExtArgs> | null
+    select?: outletSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the DiagnosticAccount
+     * Omit specific fields from the outlet
      */
-    omit?: DiagnosticAccountOmit<ExtArgs> | null
+    omit?: outletOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DiagnosticAccountInclude<ExtArgs> | null
+    include?: outletInclude<ExtArgs> | null
     /**
-     * Filter, which DiagnosticAccounts to fetch.
+     * Filter, which outlets to fetch.
      */
-    where?: DiagnosticAccountWhereInput
+    where?: outletWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of DiagnosticAccounts to fetch.
+     * Determine the order of outlets to fetch.
      */
-    orderBy?: DiagnosticAccountOrderByWithRelationInput | DiagnosticAccountOrderByWithRelationInput[]
+    orderBy?: outletOrderByWithRelationInput | outletOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing DiagnosticAccounts.
+     * Sets the position for listing outlets.
      */
-    cursor?: DiagnosticAccountWhereUniqueInput
+    cursor?: outletWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` DiagnosticAccounts from the position of the cursor.
+     * Take `±n` outlets from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` DiagnosticAccounts.
+     * Skip the first `n` outlets.
      */
     skip?: number
-    distinct?: DiagnosticAccountScalarFieldEnum | DiagnosticAccountScalarFieldEnum[]
+    distinct?: OutletScalarFieldEnum | OutletScalarFieldEnum[]
   }
 
   /**
-   * DiagnosticAccount create
+   * outlet create
    */
-  export type DiagnosticAccountCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type outletCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the DiagnosticAccount
+     * Select specific fields to fetch from the outlet
      */
-    select?: DiagnosticAccountSelect<ExtArgs> | null
+    select?: outletSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the DiagnosticAccount
+     * Omit specific fields from the outlet
      */
-    omit?: DiagnosticAccountOmit<ExtArgs> | null
+    omit?: outletOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DiagnosticAccountInclude<ExtArgs> | null
+    include?: outletInclude<ExtArgs> | null
     /**
-     * The data needed to create a DiagnosticAccount.
+     * The data needed to create a outlet.
      */
-    data: XOR<DiagnosticAccountCreateInput, DiagnosticAccountUncheckedCreateInput>
+    data: XOR<outletCreateInput, outletUncheckedCreateInput>
   }
 
   /**
-   * DiagnosticAccount createMany
+   * outlet createMany
    */
-  export type DiagnosticAccountCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type outletCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many DiagnosticAccounts.
+     * The data used to create many outlets.
      */
-    data: DiagnosticAccountCreateManyInput | DiagnosticAccountCreateManyInput[]
+    data: outletCreateManyInput | outletCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * DiagnosticAccount update
+   * outlet update
    */
-  export type DiagnosticAccountUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type outletUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the DiagnosticAccount
+     * Select specific fields to fetch from the outlet
      */
-    select?: DiagnosticAccountSelect<ExtArgs> | null
+    select?: outletSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the DiagnosticAccount
+     * Omit specific fields from the outlet
      */
-    omit?: DiagnosticAccountOmit<ExtArgs> | null
+    omit?: outletOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DiagnosticAccountInclude<ExtArgs> | null
+    include?: outletInclude<ExtArgs> | null
     /**
-     * The data needed to update a DiagnosticAccount.
+     * The data needed to update a outlet.
      */
-    data: XOR<DiagnosticAccountUpdateInput, DiagnosticAccountUncheckedUpdateInput>
+    data: XOR<outletUpdateInput, outletUncheckedUpdateInput>
     /**
-     * Choose, which DiagnosticAccount to update.
+     * Choose, which outlet to update.
      */
-    where: DiagnosticAccountWhereUniqueInput
+    where: outletWhereUniqueInput
   }
 
   /**
-   * DiagnosticAccount updateMany
+   * outlet updateMany
    */
-  export type DiagnosticAccountUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type outletUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update DiagnosticAccounts.
+     * The data used to update outlets.
      */
-    data: XOR<DiagnosticAccountUpdateManyMutationInput, DiagnosticAccountUncheckedUpdateManyInput>
+    data: XOR<outletUpdateManyMutationInput, outletUncheckedUpdateManyInput>
     /**
-     * Filter which DiagnosticAccounts to update
+     * Filter which outlets to update
      */
-    where?: DiagnosticAccountWhereInput
+    where?: outletWhereInput
     /**
-     * Limit how many DiagnosticAccounts to update.
+     * Limit how many outlets to update.
      */
     limit?: number
   }
 
   /**
-   * DiagnosticAccount upsert
+   * outlet upsert
    */
-  export type DiagnosticAccountUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type outletUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the DiagnosticAccount
+     * Select specific fields to fetch from the outlet
      */
-    select?: DiagnosticAccountSelect<ExtArgs> | null
+    select?: outletSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the DiagnosticAccount
+     * Omit specific fields from the outlet
      */
-    omit?: DiagnosticAccountOmit<ExtArgs> | null
+    omit?: outletOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DiagnosticAccountInclude<ExtArgs> | null
+    include?: outletInclude<ExtArgs> | null
     /**
-     * The filter to search for the DiagnosticAccount to update in case it exists.
+     * The filter to search for the outlet to update in case it exists.
      */
-    where: DiagnosticAccountWhereUniqueInput
+    where: outletWhereUniqueInput
     /**
-     * In case the DiagnosticAccount found by the `where` argument doesn't exist, create a new DiagnosticAccount with this data.
+     * In case the outlet found by the `where` argument doesn't exist, create a new outlet with this data.
      */
-    create: XOR<DiagnosticAccountCreateInput, DiagnosticAccountUncheckedCreateInput>
+    create: XOR<outletCreateInput, outletUncheckedCreateInput>
     /**
-     * In case the DiagnosticAccount was found with the provided `where` argument, update it with this data.
+     * In case the outlet was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<DiagnosticAccountUpdateInput, DiagnosticAccountUncheckedUpdateInput>
+    update: XOR<outletUpdateInput, outletUncheckedUpdateInput>
   }
 
   /**
-   * DiagnosticAccount delete
+   * outlet delete
    */
-  export type DiagnosticAccountDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type outletDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the DiagnosticAccount
+     * Select specific fields to fetch from the outlet
      */
-    select?: DiagnosticAccountSelect<ExtArgs> | null
+    select?: outletSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the DiagnosticAccount
+     * Omit specific fields from the outlet
      */
-    omit?: DiagnosticAccountOmit<ExtArgs> | null
+    omit?: outletOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DiagnosticAccountInclude<ExtArgs> | null
+    include?: outletInclude<ExtArgs> | null
     /**
-     * Filter which DiagnosticAccount to delete.
+     * Filter which outlet to delete.
      */
-    where: DiagnosticAccountWhereUniqueInput
+    where: outletWhereUniqueInput
   }
 
   /**
-   * DiagnosticAccount deleteMany
+   * outlet deleteMany
    */
-  export type DiagnosticAccountDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type outletDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which DiagnosticAccounts to delete
+     * Filter which outlets to delete
      */
-    where?: DiagnosticAccountWhereInput
+    where?: outletWhereInput
     /**
-     * Limit how many DiagnosticAccounts to delete.
+     * Limit how many outlets to delete.
      */
     limit?: number
   }
 
   /**
-   * DiagnosticAccount.childUsers
+   * outlet.childUsers
    */
-  export type DiagnosticAccount$childUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type outlet$childUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the DiagnosticChildUser
+     * Select specific fields to fetch from the OutletChildUser
      */
-    select?: DiagnosticChildUserSelect<ExtArgs> | null
+    select?: OutletChildUserSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the DiagnosticChildUser
+     * Omit specific fields from the OutletChildUser
      */
-    omit?: DiagnosticChildUserOmit<ExtArgs> | null
+    omit?: OutletChildUserOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DiagnosticChildUserInclude<ExtArgs> | null
-    where?: DiagnosticChildUserWhereInput
-    orderBy?: DiagnosticChildUserOrderByWithRelationInput | DiagnosticChildUserOrderByWithRelationInput[]
-    cursor?: DiagnosticChildUserWhereUniqueInput
+    include?: OutletChildUserInclude<ExtArgs> | null
+    where?: OutletChildUserWhereInput
+    orderBy?: OutletChildUserOrderByWithRelationInput | OutletChildUserOrderByWithRelationInput[]
+    cursor?: OutletChildUserWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: DiagnosticChildUserScalarFieldEnum | DiagnosticChildUserScalarFieldEnum[]
+    distinct?: OutletChildUserScalarFieldEnum | OutletChildUserScalarFieldEnum[]
   }
 
   /**
-   * DiagnosticAccount.roles
+   * outlet.roles
    */
-  export type DiagnosticAccount$rolesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type outlet$rolesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Role
      */
@@ -5967,9 +6013,9 @@ export namespace Prisma {
   }
 
   /**
-   * DiagnosticAccount.patients
+   * outlet.patients
    */
-  export type DiagnosticAccount$patientsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type outlet$patientsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Patient
      */
@@ -5991,37 +6037,37 @@ export namespace Prisma {
   }
 
   /**
-   * DiagnosticAccount without action
+   * outlet without action
    */
-  export type DiagnosticAccountDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type outletDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the DiagnosticAccount
+     * Select specific fields to fetch from the outlet
      */
-    select?: DiagnosticAccountSelect<ExtArgs> | null
+    select?: outletSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the DiagnosticAccount
+     * Omit specific fields from the outlet
      */
-    omit?: DiagnosticAccountOmit<ExtArgs> | null
+    omit?: outletOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DiagnosticAccountInclude<ExtArgs> | null
+    include?: outletInclude<ExtArgs> | null
   }
 
 
   /**
-   * Model DiagnosticChildUser
+   * Model OutletChildUser
    */
 
-  export type AggregateDiagnosticChildUser = {
-    _count: DiagnosticChildUserCountAggregateOutputType | null
-    _min: DiagnosticChildUserMinAggregateOutputType | null
-    _max: DiagnosticChildUserMaxAggregateOutputType | null
+  export type AggregateOutletChildUser = {
+    _count: OutletChildUserCountAggregateOutputType | null
+    _min: OutletChildUserMinAggregateOutputType | null
+    _max: OutletChildUserMaxAggregateOutputType | null
   }
 
-  export type DiagnosticChildUserMinAggregateOutputType = {
+  export type OutletChildUserMinAggregateOutputType = {
     id: string | null
-    DiagnosticAccountId: string | null
+    outletId: string | null
     name: string | null
     email: string | null
     phone: string | null
@@ -6031,9 +6077,9 @@ export namespace Prisma {
     updatedAt: Date | null
   }
 
-  export type DiagnosticChildUserMaxAggregateOutputType = {
+  export type OutletChildUserMaxAggregateOutputType = {
     id: string | null
-    DiagnosticAccountId: string | null
+    outletId: string | null
     name: string | null
     email: string | null
     phone: string | null
@@ -6043,9 +6089,9 @@ export namespace Prisma {
     updatedAt: Date | null
   }
 
-  export type DiagnosticChildUserCountAggregateOutputType = {
+  export type OutletChildUserCountAggregateOutputType = {
     id: number
-    DiagnosticAccountId: number
+    outletId: number
     name: number
     email: number
     phone: number
@@ -6057,9 +6103,9 @@ export namespace Prisma {
   }
 
 
-  export type DiagnosticChildUserMinAggregateInputType = {
+  export type OutletChildUserMinAggregateInputType = {
     id?: true
-    DiagnosticAccountId?: true
+    outletId?: true
     name?: true
     email?: true
     phone?: true
@@ -6069,9 +6115,9 @@ export namespace Prisma {
     updatedAt?: true
   }
 
-  export type DiagnosticChildUserMaxAggregateInputType = {
+  export type OutletChildUserMaxAggregateInputType = {
     id?: true
-    DiagnosticAccountId?: true
+    outletId?: true
     name?: true
     email?: true
     phone?: true
@@ -6081,9 +6127,9 @@ export namespace Prisma {
     updatedAt?: true
   }
 
-  export type DiagnosticChildUserCountAggregateInputType = {
+  export type OutletChildUserCountAggregateInputType = {
     id?: true
-    DiagnosticAccountId?: true
+    outletId?: true
     name?: true
     email?: true
     phone?: true
@@ -6094,81 +6140,81 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type DiagnosticChildUserAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletChildUserAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which DiagnosticChildUser to aggregate.
+     * Filter which OutletChildUser to aggregate.
      */
-    where?: DiagnosticChildUserWhereInput
+    where?: OutletChildUserWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of DiagnosticChildUsers to fetch.
+     * Determine the order of OutletChildUsers to fetch.
      */
-    orderBy?: DiagnosticChildUserOrderByWithRelationInput | DiagnosticChildUserOrderByWithRelationInput[]
+    orderBy?: OutletChildUserOrderByWithRelationInput | OutletChildUserOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: DiagnosticChildUserWhereUniqueInput
+    cursor?: OutletChildUserWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` DiagnosticChildUsers from the position of the cursor.
+     * Take `±n` OutletChildUsers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` DiagnosticChildUsers.
+     * Skip the first `n` OutletChildUsers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned DiagnosticChildUsers
+     * Count returned OutletChildUsers
     **/
-    _count?: true | DiagnosticChildUserCountAggregateInputType
+    _count?: true | OutletChildUserCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: DiagnosticChildUserMinAggregateInputType
+    _min?: OutletChildUserMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: DiagnosticChildUserMaxAggregateInputType
+    _max?: OutletChildUserMaxAggregateInputType
   }
 
-  export type GetDiagnosticChildUserAggregateType<T extends DiagnosticChildUserAggregateArgs> = {
-        [P in keyof T & keyof AggregateDiagnosticChildUser]: P extends '_count' | 'count'
+  export type GetOutletChildUserAggregateType<T extends OutletChildUserAggregateArgs> = {
+        [P in keyof T & keyof AggregateOutletChildUser]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateDiagnosticChildUser[P]>
-      : GetScalarType<T[P], AggregateDiagnosticChildUser[P]>
+        : GetScalarType<T[P], AggregateOutletChildUser[P]>
+      : GetScalarType<T[P], AggregateOutletChildUser[P]>
   }
 
 
 
 
-  export type DiagnosticChildUserGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: DiagnosticChildUserWhereInput
-    orderBy?: DiagnosticChildUserOrderByWithAggregationInput | DiagnosticChildUserOrderByWithAggregationInput[]
-    by: DiagnosticChildUserScalarFieldEnum[] | DiagnosticChildUserScalarFieldEnum
-    having?: DiagnosticChildUserScalarWhereWithAggregatesInput
+  export type OutletChildUserGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OutletChildUserWhereInput
+    orderBy?: OutletChildUserOrderByWithAggregationInput | OutletChildUserOrderByWithAggregationInput[]
+    by: OutletChildUserScalarFieldEnum[] | OutletChildUserScalarFieldEnum
+    having?: OutletChildUserScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: DiagnosticChildUserCountAggregateInputType | true
-    _min?: DiagnosticChildUserMinAggregateInputType
-    _max?: DiagnosticChildUserMaxAggregateInputType
+    _count?: OutletChildUserCountAggregateInputType | true
+    _min?: OutletChildUserMinAggregateInputType
+    _max?: OutletChildUserMaxAggregateInputType
   }
 
-  export type DiagnosticChildUserGroupByOutputType = {
+  export type OutletChildUserGroupByOutputType = {
     id: string
-    DiagnosticAccountId: string
+    outletId: string
     name: string
     email: string
     phone: string | null
@@ -6176,28 +6222,28 @@ export namespace Prisma {
     isActive: boolean
     createdAt: Date
     updatedAt: Date
-    _count: DiagnosticChildUserCountAggregateOutputType | null
-    _min: DiagnosticChildUserMinAggregateOutputType | null
-    _max: DiagnosticChildUserMaxAggregateOutputType | null
+    _count: OutletChildUserCountAggregateOutputType | null
+    _min: OutletChildUserMinAggregateOutputType | null
+    _max: OutletChildUserMaxAggregateOutputType | null
   }
 
-  type GetDiagnosticChildUserGroupByPayload<T extends DiagnosticChildUserGroupByArgs> = Prisma.PrismaPromise<
+  type GetOutletChildUserGroupByPayload<T extends OutletChildUserGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<DiagnosticChildUserGroupByOutputType, T['by']> &
+      PickEnumerable<OutletChildUserGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof DiagnosticChildUserGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof OutletChildUserGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], DiagnosticChildUserGroupByOutputType[P]>
-            : GetScalarType<T[P], DiagnosticChildUserGroupByOutputType[P]>
+              : GetScalarType<T[P], OutletChildUserGroupByOutputType[P]>
+            : GetScalarType<T[P], OutletChildUserGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type DiagnosticChildUserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type OutletChildUserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    DiagnosticAccountId?: boolean
+    outletId?: boolean
     name?: boolean
     email?: boolean
     phone?: boolean
@@ -6205,16 +6251,16 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    DiagnosticAccount?: boolean | DiagnosticAccountDefaultArgs<ExtArgs>
-    userRoles?: boolean | DiagnosticChildUser$userRolesArgs<ExtArgs>
-    _count?: boolean | DiagnosticChildUserCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["diagnosticChildUser"]>
+    outlet?: boolean | outletDefaultArgs<ExtArgs>
+    userRoles?: boolean | OutletChildUser$userRolesArgs<ExtArgs>
+    _count?: boolean | OutletChildUserCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["outletChildUser"]>
 
 
 
-  export type DiagnosticChildUserSelectScalar = {
+  export type OutletChildUserSelectScalar = {
     id?: boolean
-    DiagnosticAccountId?: boolean
+    outletId?: boolean
     name?: boolean
     email?: boolean
     phone?: boolean
@@ -6224,22 +6270,22 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type DiagnosticChildUserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "DiagnosticAccountId" | "name" | "email" | "phone" | "password" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["diagnosticChildUser"]>
-  export type DiagnosticChildUserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    DiagnosticAccount?: boolean | DiagnosticAccountDefaultArgs<ExtArgs>
-    userRoles?: boolean | DiagnosticChildUser$userRolesArgs<ExtArgs>
-    _count?: boolean | DiagnosticChildUserCountOutputTypeDefaultArgs<ExtArgs>
+  export type OutletChildUserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "outletId" | "name" | "email" | "phone" | "password" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["outletChildUser"]>
+  export type OutletChildUserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    outlet?: boolean | outletDefaultArgs<ExtArgs>
+    userRoles?: boolean | OutletChildUser$userRolesArgs<ExtArgs>
+    _count?: boolean | OutletChildUserCountOutputTypeDefaultArgs<ExtArgs>
   }
 
-  export type $DiagnosticChildUserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "DiagnosticChildUser"
+  export type $OutletChildUserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "OutletChildUser"
     objects: {
-      DiagnosticAccount: Prisma.$DiagnosticAccountPayload<ExtArgs>
-      userRoles: Prisma.$DiagnosticUserRolePayload<ExtArgs>[]
+      outlet: Prisma.$outletPayload<ExtArgs>
+      userRoles: Prisma.$OutletUserRolePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      DiagnosticAccountId: string
+      outletId: string
       name: string
       email: string
       phone: string | null
@@ -6247,143 +6293,143 @@ export namespace Prisma {
       isActive: boolean
       createdAt: Date
       updatedAt: Date
-    }, ExtArgs["result"]["diagnosticChildUser"]>
+    }, ExtArgs["result"]["outletChildUser"]>
     composites: {}
   }
 
-  type DiagnosticChildUserGetPayload<S extends boolean | null | undefined | DiagnosticChildUserDefaultArgs> = $Result.GetResult<Prisma.$DiagnosticChildUserPayload, S>
+  type OutletChildUserGetPayload<S extends boolean | null | undefined | OutletChildUserDefaultArgs> = $Result.GetResult<Prisma.$OutletChildUserPayload, S>
 
-  type DiagnosticChildUserCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<DiagnosticChildUserFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: DiagnosticChildUserCountAggregateInputType | true
+  type OutletChildUserCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<OutletChildUserFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: OutletChildUserCountAggregateInputType | true
     }
 
-  export interface DiagnosticChildUserDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['DiagnosticChildUser'], meta: { name: 'DiagnosticChildUser' } }
+  export interface OutletChildUserDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['OutletChildUser'], meta: { name: 'OutletChildUser' } }
     /**
-     * Find zero or one DiagnosticChildUser that matches the filter.
-     * @param {DiagnosticChildUserFindUniqueArgs} args - Arguments to find a DiagnosticChildUser
+     * Find zero or one OutletChildUser that matches the filter.
+     * @param {OutletChildUserFindUniqueArgs} args - Arguments to find a OutletChildUser
      * @example
-     * // Get one DiagnosticChildUser
-     * const diagnosticChildUser = await prisma.diagnosticChildUser.findUnique({
+     * // Get one OutletChildUser
+     * const outletChildUser = await prisma.outletChildUser.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends DiagnosticChildUserFindUniqueArgs>(args: SelectSubset<T, DiagnosticChildUserFindUniqueArgs<ExtArgs>>): Prisma__DiagnosticChildUserClient<$Result.GetResult<Prisma.$DiagnosticChildUserPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends OutletChildUserFindUniqueArgs>(args: SelectSubset<T, OutletChildUserFindUniqueArgs<ExtArgs>>): Prisma__OutletChildUserClient<$Result.GetResult<Prisma.$OutletChildUserPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one DiagnosticChildUser that matches the filter or throw an error with `error.code='P2025'`
+     * Find one OutletChildUser that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {DiagnosticChildUserFindUniqueOrThrowArgs} args - Arguments to find a DiagnosticChildUser
+     * @param {OutletChildUserFindUniqueOrThrowArgs} args - Arguments to find a OutletChildUser
      * @example
-     * // Get one DiagnosticChildUser
-     * const diagnosticChildUser = await prisma.diagnosticChildUser.findUniqueOrThrow({
+     * // Get one OutletChildUser
+     * const outletChildUser = await prisma.outletChildUser.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends DiagnosticChildUserFindUniqueOrThrowArgs>(args: SelectSubset<T, DiagnosticChildUserFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DiagnosticChildUserClient<$Result.GetResult<Prisma.$DiagnosticChildUserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends OutletChildUserFindUniqueOrThrowArgs>(args: SelectSubset<T, OutletChildUserFindUniqueOrThrowArgs<ExtArgs>>): Prisma__OutletChildUserClient<$Result.GetResult<Prisma.$OutletChildUserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first DiagnosticChildUser that matches the filter.
+     * Find the first OutletChildUser that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {DiagnosticChildUserFindFirstArgs} args - Arguments to find a DiagnosticChildUser
+     * @param {OutletChildUserFindFirstArgs} args - Arguments to find a OutletChildUser
      * @example
-     * // Get one DiagnosticChildUser
-     * const diagnosticChildUser = await prisma.diagnosticChildUser.findFirst({
+     * // Get one OutletChildUser
+     * const outletChildUser = await prisma.outletChildUser.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends DiagnosticChildUserFindFirstArgs>(args?: SelectSubset<T, DiagnosticChildUserFindFirstArgs<ExtArgs>>): Prisma__DiagnosticChildUserClient<$Result.GetResult<Prisma.$DiagnosticChildUserPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends OutletChildUserFindFirstArgs>(args?: SelectSubset<T, OutletChildUserFindFirstArgs<ExtArgs>>): Prisma__OutletChildUserClient<$Result.GetResult<Prisma.$OutletChildUserPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first DiagnosticChildUser that matches the filter or
+     * Find the first OutletChildUser that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {DiagnosticChildUserFindFirstOrThrowArgs} args - Arguments to find a DiagnosticChildUser
+     * @param {OutletChildUserFindFirstOrThrowArgs} args - Arguments to find a OutletChildUser
      * @example
-     * // Get one DiagnosticChildUser
-     * const diagnosticChildUser = await prisma.diagnosticChildUser.findFirstOrThrow({
+     * // Get one OutletChildUser
+     * const outletChildUser = await prisma.outletChildUser.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends DiagnosticChildUserFindFirstOrThrowArgs>(args?: SelectSubset<T, DiagnosticChildUserFindFirstOrThrowArgs<ExtArgs>>): Prisma__DiagnosticChildUserClient<$Result.GetResult<Prisma.$DiagnosticChildUserPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends OutletChildUserFindFirstOrThrowArgs>(args?: SelectSubset<T, OutletChildUserFindFirstOrThrowArgs<ExtArgs>>): Prisma__OutletChildUserClient<$Result.GetResult<Prisma.$OutletChildUserPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more DiagnosticChildUsers that matches the filter.
+     * Find zero or more OutletChildUsers that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {DiagnosticChildUserFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {OutletChildUserFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all DiagnosticChildUsers
-     * const diagnosticChildUsers = await prisma.diagnosticChildUser.findMany()
+     * // Get all OutletChildUsers
+     * const outletChildUsers = await prisma.outletChildUser.findMany()
      * 
-     * // Get first 10 DiagnosticChildUsers
-     * const diagnosticChildUsers = await prisma.diagnosticChildUser.findMany({ take: 10 })
+     * // Get first 10 OutletChildUsers
+     * const outletChildUsers = await prisma.outletChildUser.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const diagnosticChildUserWithIdOnly = await prisma.diagnosticChildUser.findMany({ select: { id: true } })
+     * const outletChildUserWithIdOnly = await prisma.outletChildUser.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends DiagnosticChildUserFindManyArgs>(args?: SelectSubset<T, DiagnosticChildUserFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiagnosticChildUserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends OutletChildUserFindManyArgs>(args?: SelectSubset<T, OutletChildUserFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OutletChildUserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a DiagnosticChildUser.
-     * @param {DiagnosticChildUserCreateArgs} args - Arguments to create a DiagnosticChildUser.
+     * Create a OutletChildUser.
+     * @param {OutletChildUserCreateArgs} args - Arguments to create a OutletChildUser.
      * @example
-     * // Create one DiagnosticChildUser
-     * const DiagnosticChildUser = await prisma.diagnosticChildUser.create({
+     * // Create one OutletChildUser
+     * const OutletChildUser = await prisma.outletChildUser.create({
      *   data: {
-     *     // ... data to create a DiagnosticChildUser
+     *     // ... data to create a OutletChildUser
      *   }
      * })
      * 
      */
-    create<T extends DiagnosticChildUserCreateArgs>(args: SelectSubset<T, DiagnosticChildUserCreateArgs<ExtArgs>>): Prisma__DiagnosticChildUserClient<$Result.GetResult<Prisma.$DiagnosticChildUserPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends OutletChildUserCreateArgs>(args: SelectSubset<T, OutletChildUserCreateArgs<ExtArgs>>): Prisma__OutletChildUserClient<$Result.GetResult<Prisma.$OutletChildUserPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many DiagnosticChildUsers.
-     * @param {DiagnosticChildUserCreateManyArgs} args - Arguments to create many DiagnosticChildUsers.
+     * Create many OutletChildUsers.
+     * @param {OutletChildUserCreateManyArgs} args - Arguments to create many OutletChildUsers.
      * @example
-     * // Create many DiagnosticChildUsers
-     * const diagnosticChildUser = await prisma.diagnosticChildUser.createMany({
+     * // Create many OutletChildUsers
+     * const outletChildUser = await prisma.outletChildUser.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends DiagnosticChildUserCreateManyArgs>(args?: SelectSubset<T, DiagnosticChildUserCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends OutletChildUserCreateManyArgs>(args?: SelectSubset<T, OutletChildUserCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a DiagnosticChildUser.
-     * @param {DiagnosticChildUserDeleteArgs} args - Arguments to delete one DiagnosticChildUser.
+     * Delete a OutletChildUser.
+     * @param {OutletChildUserDeleteArgs} args - Arguments to delete one OutletChildUser.
      * @example
-     * // Delete one DiagnosticChildUser
-     * const DiagnosticChildUser = await prisma.diagnosticChildUser.delete({
+     * // Delete one OutletChildUser
+     * const OutletChildUser = await prisma.outletChildUser.delete({
      *   where: {
-     *     // ... filter to delete one DiagnosticChildUser
+     *     // ... filter to delete one OutletChildUser
      *   }
      * })
      * 
      */
-    delete<T extends DiagnosticChildUserDeleteArgs>(args: SelectSubset<T, DiagnosticChildUserDeleteArgs<ExtArgs>>): Prisma__DiagnosticChildUserClient<$Result.GetResult<Prisma.$DiagnosticChildUserPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends OutletChildUserDeleteArgs>(args: SelectSubset<T, OutletChildUserDeleteArgs<ExtArgs>>): Prisma__OutletChildUserClient<$Result.GetResult<Prisma.$OutletChildUserPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one DiagnosticChildUser.
-     * @param {DiagnosticChildUserUpdateArgs} args - Arguments to update one DiagnosticChildUser.
+     * Update one OutletChildUser.
+     * @param {OutletChildUserUpdateArgs} args - Arguments to update one OutletChildUser.
      * @example
-     * // Update one DiagnosticChildUser
-     * const diagnosticChildUser = await prisma.diagnosticChildUser.update({
+     * // Update one OutletChildUser
+     * const outletChildUser = await prisma.outletChildUser.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -6393,30 +6439,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends DiagnosticChildUserUpdateArgs>(args: SelectSubset<T, DiagnosticChildUserUpdateArgs<ExtArgs>>): Prisma__DiagnosticChildUserClient<$Result.GetResult<Prisma.$DiagnosticChildUserPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends OutletChildUserUpdateArgs>(args: SelectSubset<T, OutletChildUserUpdateArgs<ExtArgs>>): Prisma__OutletChildUserClient<$Result.GetResult<Prisma.$OutletChildUserPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more DiagnosticChildUsers.
-     * @param {DiagnosticChildUserDeleteManyArgs} args - Arguments to filter DiagnosticChildUsers to delete.
+     * Delete zero or more OutletChildUsers.
+     * @param {OutletChildUserDeleteManyArgs} args - Arguments to filter OutletChildUsers to delete.
      * @example
-     * // Delete a few DiagnosticChildUsers
-     * const { count } = await prisma.diagnosticChildUser.deleteMany({
+     * // Delete a few OutletChildUsers
+     * const { count } = await prisma.outletChildUser.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends DiagnosticChildUserDeleteManyArgs>(args?: SelectSubset<T, DiagnosticChildUserDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends OutletChildUserDeleteManyArgs>(args?: SelectSubset<T, OutletChildUserDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more DiagnosticChildUsers.
+     * Update zero or more OutletChildUsers.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {DiagnosticChildUserUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {OutletChildUserUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many DiagnosticChildUsers
-     * const diagnosticChildUser = await prisma.diagnosticChildUser.updateMany({
+     * // Update many OutletChildUsers
+     * const outletChildUser = await prisma.outletChildUser.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -6426,56 +6472,56 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends DiagnosticChildUserUpdateManyArgs>(args: SelectSubset<T, DiagnosticChildUserUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends OutletChildUserUpdateManyArgs>(args: SelectSubset<T, OutletChildUserUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one DiagnosticChildUser.
-     * @param {DiagnosticChildUserUpsertArgs} args - Arguments to update or create a DiagnosticChildUser.
+     * Create or update one OutletChildUser.
+     * @param {OutletChildUserUpsertArgs} args - Arguments to update or create a OutletChildUser.
      * @example
-     * // Update or create a DiagnosticChildUser
-     * const diagnosticChildUser = await prisma.diagnosticChildUser.upsert({
+     * // Update or create a OutletChildUser
+     * const outletChildUser = await prisma.outletChildUser.upsert({
      *   create: {
-     *     // ... data to create a DiagnosticChildUser
+     *     // ... data to create a OutletChildUser
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the DiagnosticChildUser we want to update
+     *     // ... the filter for the OutletChildUser we want to update
      *   }
      * })
      */
-    upsert<T extends DiagnosticChildUserUpsertArgs>(args: SelectSubset<T, DiagnosticChildUserUpsertArgs<ExtArgs>>): Prisma__DiagnosticChildUserClient<$Result.GetResult<Prisma.$DiagnosticChildUserPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends OutletChildUserUpsertArgs>(args: SelectSubset<T, OutletChildUserUpsertArgs<ExtArgs>>): Prisma__OutletChildUserClient<$Result.GetResult<Prisma.$OutletChildUserPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of DiagnosticChildUsers.
+     * Count the number of OutletChildUsers.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {DiagnosticChildUserCountArgs} args - Arguments to filter DiagnosticChildUsers to count.
+     * @param {OutletChildUserCountArgs} args - Arguments to filter OutletChildUsers to count.
      * @example
-     * // Count the number of DiagnosticChildUsers
-     * const count = await prisma.diagnosticChildUser.count({
+     * // Count the number of OutletChildUsers
+     * const count = await prisma.outletChildUser.count({
      *   where: {
-     *     // ... the filter for the DiagnosticChildUsers we want to count
+     *     // ... the filter for the OutletChildUsers we want to count
      *   }
      * })
     **/
-    count<T extends DiagnosticChildUserCountArgs>(
-      args?: Subset<T, DiagnosticChildUserCountArgs>,
+    count<T extends OutletChildUserCountArgs>(
+      args?: Subset<T, OutletChildUserCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], DiagnosticChildUserCountAggregateOutputType>
+          : GetScalarType<T['select'], OutletChildUserCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a DiagnosticChildUser.
+     * Allows you to perform aggregations operations on a OutletChildUser.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {DiagnosticChildUserAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {OutletChildUserAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -6495,13 +6541,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends DiagnosticChildUserAggregateArgs>(args: Subset<T, DiagnosticChildUserAggregateArgs>): Prisma.PrismaPromise<GetDiagnosticChildUserAggregateType<T>>
+    aggregate<T extends OutletChildUserAggregateArgs>(args: Subset<T, OutletChildUserAggregateArgs>): Prisma.PrismaPromise<GetOutletChildUserAggregateType<T>>
 
     /**
-     * Group by DiagnosticChildUser.
+     * Group by OutletChildUser.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {DiagnosticChildUserGroupByArgs} args - Group by arguments.
+     * @param {OutletChildUserGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -6516,14 +6562,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends DiagnosticChildUserGroupByArgs,
+      T extends OutletChildUserGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: DiagnosticChildUserGroupByArgs['orderBy'] }
-        : { orderBy?: DiagnosticChildUserGroupByArgs['orderBy'] },
+        ? { orderBy: OutletChildUserGroupByArgs['orderBy'] }
+        : { orderBy?: OutletChildUserGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -6572,23 +6618,23 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, DiagnosticChildUserGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDiagnosticChildUserGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, OutletChildUserGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetOutletChildUserGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the DiagnosticChildUser model
+   * Fields of the OutletChildUser model
    */
-  readonly fields: DiagnosticChildUserFieldRefs;
+  readonly fields: OutletChildUserFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for DiagnosticChildUser.
+   * The delegate class that acts as a "Promise-like" for OutletChildUser.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__DiagnosticChildUserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__OutletChildUserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    DiagnosticAccount<T extends DiagnosticAccountDefaultArgs<ExtArgs> = {}>(args?: Subset<T, DiagnosticAccountDefaultArgs<ExtArgs>>): Prisma__DiagnosticAccountClient<$Result.GetResult<Prisma.$DiagnosticAccountPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    userRoles<T extends DiagnosticChildUser$userRolesArgs<ExtArgs> = {}>(args?: Subset<T, DiagnosticChildUser$userRolesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiagnosticUserRolePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    outlet<T extends outletDefaultArgs<ExtArgs> = {}>(args?: Subset<T, outletDefaultArgs<ExtArgs>>): Prisma__outletClient<$Result.GetResult<Prisma.$outletPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    userRoles<T extends OutletChildUser$userRolesArgs<ExtArgs> = {}>(args?: Subset<T, OutletChildUser$userRolesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OutletUserRolePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6615,400 +6661,400 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the DiagnosticChildUser model
+   * Fields of the OutletChildUser model
    */
-  interface DiagnosticChildUserFieldRefs {
-    readonly id: FieldRef<"DiagnosticChildUser", 'String'>
-    readonly DiagnosticAccountId: FieldRef<"DiagnosticChildUser", 'String'>
-    readonly name: FieldRef<"DiagnosticChildUser", 'String'>
-    readonly email: FieldRef<"DiagnosticChildUser", 'String'>
-    readonly phone: FieldRef<"DiagnosticChildUser", 'String'>
-    readonly password: FieldRef<"DiagnosticChildUser", 'String'>
-    readonly isActive: FieldRef<"DiagnosticChildUser", 'Boolean'>
-    readonly createdAt: FieldRef<"DiagnosticChildUser", 'DateTime'>
-    readonly updatedAt: FieldRef<"DiagnosticChildUser", 'DateTime'>
+  interface OutletChildUserFieldRefs {
+    readonly id: FieldRef<"OutletChildUser", 'String'>
+    readonly outletId: FieldRef<"OutletChildUser", 'String'>
+    readonly name: FieldRef<"OutletChildUser", 'String'>
+    readonly email: FieldRef<"OutletChildUser", 'String'>
+    readonly phone: FieldRef<"OutletChildUser", 'String'>
+    readonly password: FieldRef<"OutletChildUser", 'String'>
+    readonly isActive: FieldRef<"OutletChildUser", 'Boolean'>
+    readonly createdAt: FieldRef<"OutletChildUser", 'DateTime'>
+    readonly updatedAt: FieldRef<"OutletChildUser", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * DiagnosticChildUser findUnique
+   * OutletChildUser findUnique
    */
-  export type DiagnosticChildUserFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletChildUserFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the DiagnosticChildUser
+     * Select specific fields to fetch from the OutletChildUser
      */
-    select?: DiagnosticChildUserSelect<ExtArgs> | null
+    select?: OutletChildUserSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the DiagnosticChildUser
+     * Omit specific fields from the OutletChildUser
      */
-    omit?: DiagnosticChildUserOmit<ExtArgs> | null
+    omit?: OutletChildUserOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DiagnosticChildUserInclude<ExtArgs> | null
+    include?: OutletChildUserInclude<ExtArgs> | null
     /**
-     * Filter, which DiagnosticChildUser to fetch.
+     * Filter, which OutletChildUser to fetch.
      */
-    where: DiagnosticChildUserWhereUniqueInput
+    where: OutletChildUserWhereUniqueInput
   }
 
   /**
-   * DiagnosticChildUser findUniqueOrThrow
+   * OutletChildUser findUniqueOrThrow
    */
-  export type DiagnosticChildUserFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletChildUserFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the DiagnosticChildUser
+     * Select specific fields to fetch from the OutletChildUser
      */
-    select?: DiagnosticChildUserSelect<ExtArgs> | null
+    select?: OutletChildUserSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the DiagnosticChildUser
+     * Omit specific fields from the OutletChildUser
      */
-    omit?: DiagnosticChildUserOmit<ExtArgs> | null
+    omit?: OutletChildUserOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DiagnosticChildUserInclude<ExtArgs> | null
+    include?: OutletChildUserInclude<ExtArgs> | null
     /**
-     * Filter, which DiagnosticChildUser to fetch.
+     * Filter, which OutletChildUser to fetch.
      */
-    where: DiagnosticChildUserWhereUniqueInput
+    where: OutletChildUserWhereUniqueInput
   }
 
   /**
-   * DiagnosticChildUser findFirst
+   * OutletChildUser findFirst
    */
-  export type DiagnosticChildUserFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletChildUserFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the DiagnosticChildUser
+     * Select specific fields to fetch from the OutletChildUser
      */
-    select?: DiagnosticChildUserSelect<ExtArgs> | null
+    select?: OutletChildUserSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the DiagnosticChildUser
+     * Omit specific fields from the OutletChildUser
      */
-    omit?: DiagnosticChildUserOmit<ExtArgs> | null
+    omit?: OutletChildUserOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DiagnosticChildUserInclude<ExtArgs> | null
+    include?: OutletChildUserInclude<ExtArgs> | null
     /**
-     * Filter, which DiagnosticChildUser to fetch.
+     * Filter, which OutletChildUser to fetch.
      */
-    where?: DiagnosticChildUserWhereInput
+    where?: OutletChildUserWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of DiagnosticChildUsers to fetch.
+     * Determine the order of OutletChildUsers to fetch.
      */
-    orderBy?: DiagnosticChildUserOrderByWithRelationInput | DiagnosticChildUserOrderByWithRelationInput[]
+    orderBy?: OutletChildUserOrderByWithRelationInput | OutletChildUserOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for DiagnosticChildUsers.
+     * Sets the position for searching for OutletChildUsers.
      */
-    cursor?: DiagnosticChildUserWhereUniqueInput
+    cursor?: OutletChildUserWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` DiagnosticChildUsers from the position of the cursor.
+     * Take `±n` OutletChildUsers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` DiagnosticChildUsers.
+     * Skip the first `n` OutletChildUsers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of DiagnosticChildUsers.
+     * Filter by unique combinations of OutletChildUsers.
      */
-    distinct?: DiagnosticChildUserScalarFieldEnum | DiagnosticChildUserScalarFieldEnum[]
+    distinct?: OutletChildUserScalarFieldEnum | OutletChildUserScalarFieldEnum[]
   }
 
   /**
-   * DiagnosticChildUser findFirstOrThrow
+   * OutletChildUser findFirstOrThrow
    */
-  export type DiagnosticChildUserFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletChildUserFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the DiagnosticChildUser
+     * Select specific fields to fetch from the OutletChildUser
      */
-    select?: DiagnosticChildUserSelect<ExtArgs> | null
+    select?: OutletChildUserSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the DiagnosticChildUser
+     * Omit specific fields from the OutletChildUser
      */
-    omit?: DiagnosticChildUserOmit<ExtArgs> | null
+    omit?: OutletChildUserOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DiagnosticChildUserInclude<ExtArgs> | null
+    include?: OutletChildUserInclude<ExtArgs> | null
     /**
-     * Filter, which DiagnosticChildUser to fetch.
+     * Filter, which OutletChildUser to fetch.
      */
-    where?: DiagnosticChildUserWhereInput
+    where?: OutletChildUserWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of DiagnosticChildUsers to fetch.
+     * Determine the order of OutletChildUsers to fetch.
      */
-    orderBy?: DiagnosticChildUserOrderByWithRelationInput | DiagnosticChildUserOrderByWithRelationInput[]
+    orderBy?: OutletChildUserOrderByWithRelationInput | OutletChildUserOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for DiagnosticChildUsers.
+     * Sets the position for searching for OutletChildUsers.
      */
-    cursor?: DiagnosticChildUserWhereUniqueInput
+    cursor?: OutletChildUserWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` DiagnosticChildUsers from the position of the cursor.
+     * Take `±n` OutletChildUsers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` DiagnosticChildUsers.
+     * Skip the first `n` OutletChildUsers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of DiagnosticChildUsers.
+     * Filter by unique combinations of OutletChildUsers.
      */
-    distinct?: DiagnosticChildUserScalarFieldEnum | DiagnosticChildUserScalarFieldEnum[]
+    distinct?: OutletChildUserScalarFieldEnum | OutletChildUserScalarFieldEnum[]
   }
 
   /**
-   * DiagnosticChildUser findMany
+   * OutletChildUser findMany
    */
-  export type DiagnosticChildUserFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletChildUserFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the DiagnosticChildUser
+     * Select specific fields to fetch from the OutletChildUser
      */
-    select?: DiagnosticChildUserSelect<ExtArgs> | null
+    select?: OutletChildUserSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the DiagnosticChildUser
+     * Omit specific fields from the OutletChildUser
      */
-    omit?: DiagnosticChildUserOmit<ExtArgs> | null
+    omit?: OutletChildUserOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DiagnosticChildUserInclude<ExtArgs> | null
+    include?: OutletChildUserInclude<ExtArgs> | null
     /**
-     * Filter, which DiagnosticChildUsers to fetch.
+     * Filter, which OutletChildUsers to fetch.
      */
-    where?: DiagnosticChildUserWhereInput
+    where?: OutletChildUserWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of DiagnosticChildUsers to fetch.
+     * Determine the order of OutletChildUsers to fetch.
      */
-    orderBy?: DiagnosticChildUserOrderByWithRelationInput | DiagnosticChildUserOrderByWithRelationInput[]
+    orderBy?: OutletChildUserOrderByWithRelationInput | OutletChildUserOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing DiagnosticChildUsers.
+     * Sets the position for listing OutletChildUsers.
      */
-    cursor?: DiagnosticChildUserWhereUniqueInput
+    cursor?: OutletChildUserWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` DiagnosticChildUsers from the position of the cursor.
+     * Take `±n` OutletChildUsers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` DiagnosticChildUsers.
+     * Skip the first `n` OutletChildUsers.
      */
     skip?: number
-    distinct?: DiagnosticChildUserScalarFieldEnum | DiagnosticChildUserScalarFieldEnum[]
+    distinct?: OutletChildUserScalarFieldEnum | OutletChildUserScalarFieldEnum[]
   }
 
   /**
-   * DiagnosticChildUser create
+   * OutletChildUser create
    */
-  export type DiagnosticChildUserCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletChildUserCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the DiagnosticChildUser
+     * Select specific fields to fetch from the OutletChildUser
      */
-    select?: DiagnosticChildUserSelect<ExtArgs> | null
+    select?: OutletChildUserSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the DiagnosticChildUser
+     * Omit specific fields from the OutletChildUser
      */
-    omit?: DiagnosticChildUserOmit<ExtArgs> | null
+    omit?: OutletChildUserOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DiagnosticChildUserInclude<ExtArgs> | null
+    include?: OutletChildUserInclude<ExtArgs> | null
     /**
-     * The data needed to create a DiagnosticChildUser.
+     * The data needed to create a OutletChildUser.
      */
-    data: XOR<DiagnosticChildUserCreateInput, DiagnosticChildUserUncheckedCreateInput>
+    data: XOR<OutletChildUserCreateInput, OutletChildUserUncheckedCreateInput>
   }
 
   /**
-   * DiagnosticChildUser createMany
+   * OutletChildUser createMany
    */
-  export type DiagnosticChildUserCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletChildUserCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many DiagnosticChildUsers.
+     * The data used to create many OutletChildUsers.
      */
-    data: DiagnosticChildUserCreateManyInput | DiagnosticChildUserCreateManyInput[]
+    data: OutletChildUserCreateManyInput | OutletChildUserCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * DiagnosticChildUser update
+   * OutletChildUser update
    */
-  export type DiagnosticChildUserUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletChildUserUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the DiagnosticChildUser
+     * Select specific fields to fetch from the OutletChildUser
      */
-    select?: DiagnosticChildUserSelect<ExtArgs> | null
+    select?: OutletChildUserSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the DiagnosticChildUser
+     * Omit specific fields from the OutletChildUser
      */
-    omit?: DiagnosticChildUserOmit<ExtArgs> | null
+    omit?: OutletChildUserOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DiagnosticChildUserInclude<ExtArgs> | null
+    include?: OutletChildUserInclude<ExtArgs> | null
     /**
-     * The data needed to update a DiagnosticChildUser.
+     * The data needed to update a OutletChildUser.
      */
-    data: XOR<DiagnosticChildUserUpdateInput, DiagnosticChildUserUncheckedUpdateInput>
+    data: XOR<OutletChildUserUpdateInput, OutletChildUserUncheckedUpdateInput>
     /**
-     * Choose, which DiagnosticChildUser to update.
+     * Choose, which OutletChildUser to update.
      */
-    where: DiagnosticChildUserWhereUniqueInput
+    where: OutletChildUserWhereUniqueInput
   }
 
   /**
-   * DiagnosticChildUser updateMany
+   * OutletChildUser updateMany
    */
-  export type DiagnosticChildUserUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletChildUserUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update DiagnosticChildUsers.
+     * The data used to update OutletChildUsers.
      */
-    data: XOR<DiagnosticChildUserUpdateManyMutationInput, DiagnosticChildUserUncheckedUpdateManyInput>
+    data: XOR<OutletChildUserUpdateManyMutationInput, OutletChildUserUncheckedUpdateManyInput>
     /**
-     * Filter which DiagnosticChildUsers to update
+     * Filter which OutletChildUsers to update
      */
-    where?: DiagnosticChildUserWhereInput
+    where?: OutletChildUserWhereInput
     /**
-     * Limit how many DiagnosticChildUsers to update.
+     * Limit how many OutletChildUsers to update.
      */
     limit?: number
   }
 
   /**
-   * DiagnosticChildUser upsert
+   * OutletChildUser upsert
    */
-  export type DiagnosticChildUserUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletChildUserUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the DiagnosticChildUser
+     * Select specific fields to fetch from the OutletChildUser
      */
-    select?: DiagnosticChildUserSelect<ExtArgs> | null
+    select?: OutletChildUserSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the DiagnosticChildUser
+     * Omit specific fields from the OutletChildUser
      */
-    omit?: DiagnosticChildUserOmit<ExtArgs> | null
+    omit?: OutletChildUserOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DiagnosticChildUserInclude<ExtArgs> | null
+    include?: OutletChildUserInclude<ExtArgs> | null
     /**
-     * The filter to search for the DiagnosticChildUser to update in case it exists.
+     * The filter to search for the OutletChildUser to update in case it exists.
      */
-    where: DiagnosticChildUserWhereUniqueInput
+    where: OutletChildUserWhereUniqueInput
     /**
-     * In case the DiagnosticChildUser found by the `where` argument doesn't exist, create a new DiagnosticChildUser with this data.
+     * In case the OutletChildUser found by the `where` argument doesn't exist, create a new OutletChildUser with this data.
      */
-    create: XOR<DiagnosticChildUserCreateInput, DiagnosticChildUserUncheckedCreateInput>
+    create: XOR<OutletChildUserCreateInput, OutletChildUserUncheckedCreateInput>
     /**
-     * In case the DiagnosticChildUser was found with the provided `where` argument, update it with this data.
+     * In case the OutletChildUser was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<DiagnosticChildUserUpdateInput, DiagnosticChildUserUncheckedUpdateInput>
+    update: XOR<OutletChildUserUpdateInput, OutletChildUserUncheckedUpdateInput>
   }
 
   /**
-   * DiagnosticChildUser delete
+   * OutletChildUser delete
    */
-  export type DiagnosticChildUserDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletChildUserDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the DiagnosticChildUser
+     * Select specific fields to fetch from the OutletChildUser
      */
-    select?: DiagnosticChildUserSelect<ExtArgs> | null
+    select?: OutletChildUserSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the DiagnosticChildUser
+     * Omit specific fields from the OutletChildUser
      */
-    omit?: DiagnosticChildUserOmit<ExtArgs> | null
+    omit?: OutletChildUserOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DiagnosticChildUserInclude<ExtArgs> | null
+    include?: OutletChildUserInclude<ExtArgs> | null
     /**
-     * Filter which DiagnosticChildUser to delete.
+     * Filter which OutletChildUser to delete.
      */
-    where: DiagnosticChildUserWhereUniqueInput
+    where: OutletChildUserWhereUniqueInput
   }
 
   /**
-   * DiagnosticChildUser deleteMany
+   * OutletChildUser deleteMany
    */
-  export type DiagnosticChildUserDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletChildUserDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which DiagnosticChildUsers to delete
+     * Filter which OutletChildUsers to delete
      */
-    where?: DiagnosticChildUserWhereInput
+    where?: OutletChildUserWhereInput
     /**
-     * Limit how many DiagnosticChildUsers to delete.
+     * Limit how many OutletChildUsers to delete.
      */
     limit?: number
   }
 
   /**
-   * DiagnosticChildUser.userRoles
+   * OutletChildUser.userRoles
    */
-  export type DiagnosticChildUser$userRolesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletChildUser$userRolesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the DiagnosticUserRole
+     * Select specific fields to fetch from the OutletUserRole
      */
-    select?: DiagnosticUserRoleSelect<ExtArgs> | null
+    select?: OutletUserRoleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the DiagnosticUserRole
+     * Omit specific fields from the OutletUserRole
      */
-    omit?: DiagnosticUserRoleOmit<ExtArgs> | null
+    omit?: OutletUserRoleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DiagnosticUserRoleInclude<ExtArgs> | null
-    where?: DiagnosticUserRoleWhereInput
-    orderBy?: DiagnosticUserRoleOrderByWithRelationInput | DiagnosticUserRoleOrderByWithRelationInput[]
-    cursor?: DiagnosticUserRoleWhereUniqueInput
+    include?: OutletUserRoleInclude<ExtArgs> | null
+    where?: OutletUserRoleWhereInput
+    orderBy?: OutletUserRoleOrderByWithRelationInput | OutletUserRoleOrderByWithRelationInput[]
+    cursor?: OutletUserRoleWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: DiagnosticUserRoleScalarFieldEnum | DiagnosticUserRoleScalarFieldEnum[]
+    distinct?: OutletUserRoleScalarFieldEnum | OutletUserRoleScalarFieldEnum[]
   }
 
   /**
-   * DiagnosticChildUser without action
+   * OutletChildUser without action
    */
-  export type DiagnosticChildUserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletChildUserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the DiagnosticChildUser
+     * Select specific fields to fetch from the OutletChildUser
      */
-    select?: DiagnosticChildUserSelect<ExtArgs> | null
+    select?: OutletChildUserSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the DiagnosticChildUser
+     * Omit specific fields from the OutletChildUser
      */
-    omit?: DiagnosticChildUserOmit<ExtArgs> | null
+    omit?: OutletChildUserOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DiagnosticChildUserInclude<ExtArgs> | null
+    include?: OutletChildUserInclude<ExtArgs> | null
   }
 
 
@@ -7026,7 +7072,7 @@ export namespace Prisma {
     id: string | null
     name: string | null
     ownerType: $Enums.RoleOwnerType | null
-    DiagnosticAccountId: string | null
+    outletId: string | null
     superAdminId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -7036,7 +7082,7 @@ export namespace Prisma {
     id: string | null
     name: string | null
     ownerType: $Enums.RoleOwnerType | null
-    DiagnosticAccountId: string | null
+    outletId: string | null
     superAdminId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -7046,7 +7092,7 @@ export namespace Prisma {
     id: number
     name: number
     ownerType: number
-    DiagnosticAccountId: number
+    outletId: number
     superAdminId: number
     createdAt: number
     updatedAt: number
@@ -7058,7 +7104,7 @@ export namespace Prisma {
     id?: true
     name?: true
     ownerType?: true
-    DiagnosticAccountId?: true
+    outletId?: true
     superAdminId?: true
     createdAt?: true
     updatedAt?: true
@@ -7068,7 +7114,7 @@ export namespace Prisma {
     id?: true
     name?: true
     ownerType?: true
-    DiagnosticAccountId?: true
+    outletId?: true
     superAdminId?: true
     createdAt?: true
     updatedAt?: true
@@ -7078,7 +7124,7 @@ export namespace Prisma {
     id?: true
     name?: true
     ownerType?: true
-    DiagnosticAccountId?: true
+    outletId?: true
     superAdminId?: true
     createdAt?: true
     updatedAt?: true
@@ -7161,7 +7207,7 @@ export namespace Prisma {
     id: string
     name: string
     ownerType: $Enums.RoleOwnerType
-    DiagnosticAccountId: string | null
+    outletId: string | null
     superAdminId: string | null
     createdAt: Date
     updatedAt: Date
@@ -7188,14 +7234,14 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     ownerType?: boolean
-    DiagnosticAccountId?: boolean
+    outletId?: boolean
     superAdminId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    DiagnosticAccount?: boolean | Role$DiagnosticAccountArgs<ExtArgs>
+    outlet?: boolean | Role$outletArgs<ExtArgs>
     superAdmin?: boolean | Role$superAdminArgs<ExtArgs>
     rolePermissions?: boolean | Role$rolePermissionsArgs<ExtArgs>
-    diagnosticUserRoles?: boolean | Role$diagnosticUserRolesArgs<ExtArgs>
+    OutletUserRoles?: boolean | Role$OutletUserRolesArgs<ExtArgs>
     superAdminUserRoles?: boolean | Role$superAdminUserRolesArgs<ExtArgs>
     _count?: boolean | RoleCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["role"]>
@@ -7206,18 +7252,18 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     ownerType?: boolean
-    DiagnosticAccountId?: boolean
+    outletId?: boolean
     superAdminId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type RoleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "ownerType" | "DiagnosticAccountId" | "superAdminId" | "createdAt" | "updatedAt", ExtArgs["result"]["role"]>
+  export type RoleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "ownerType" | "outletId" | "superAdminId" | "createdAt" | "updatedAt", ExtArgs["result"]["role"]>
   export type RoleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    DiagnosticAccount?: boolean | Role$DiagnosticAccountArgs<ExtArgs>
+    outlet?: boolean | Role$outletArgs<ExtArgs>
     superAdmin?: boolean | Role$superAdminArgs<ExtArgs>
     rolePermissions?: boolean | Role$rolePermissionsArgs<ExtArgs>
-    diagnosticUserRoles?: boolean | Role$diagnosticUserRolesArgs<ExtArgs>
+    OutletUserRoles?: boolean | Role$OutletUserRolesArgs<ExtArgs>
     superAdminUserRoles?: boolean | Role$superAdminUserRolesArgs<ExtArgs>
     _count?: boolean | RoleCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -7225,17 +7271,17 @@ export namespace Prisma {
   export type $RolePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Role"
     objects: {
-      DiagnosticAccount: Prisma.$DiagnosticAccountPayload<ExtArgs> | null
+      outlet: Prisma.$outletPayload<ExtArgs> | null
       superAdmin: Prisma.$SuperAdminsPayload<ExtArgs> | null
       rolePermissions: Prisma.$RolePermissionPayload<ExtArgs>[]
-      diagnosticUserRoles: Prisma.$DiagnosticUserRolePayload<ExtArgs>[]
+      OutletUserRoles: Prisma.$OutletUserRolePayload<ExtArgs>[]
       superAdminUserRoles: Prisma.$SuperAdminUserRolePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
       ownerType: $Enums.RoleOwnerType
-      DiagnosticAccountId: string | null
+      outletId: string | null
       superAdminId: string | null
       createdAt: Date
       updatedAt: Date
@@ -7579,10 +7625,10 @@ export namespace Prisma {
    */
   export interface Prisma__RoleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    DiagnosticAccount<T extends Role$DiagnosticAccountArgs<ExtArgs> = {}>(args?: Subset<T, Role$DiagnosticAccountArgs<ExtArgs>>): Prisma__DiagnosticAccountClient<$Result.GetResult<Prisma.$DiagnosticAccountPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    outlet<T extends Role$outletArgs<ExtArgs> = {}>(args?: Subset<T, Role$outletArgs<ExtArgs>>): Prisma__outletClient<$Result.GetResult<Prisma.$outletPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     superAdmin<T extends Role$superAdminArgs<ExtArgs> = {}>(args?: Subset<T, Role$superAdminArgs<ExtArgs>>): Prisma__SuperAdminsClient<$Result.GetResult<Prisma.$SuperAdminsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     rolePermissions<T extends Role$rolePermissionsArgs<ExtArgs> = {}>(args?: Subset<T, Role$rolePermissionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RolePermissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    diagnosticUserRoles<T extends Role$diagnosticUserRolesArgs<ExtArgs> = {}>(args?: Subset<T, Role$diagnosticUserRolesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiagnosticUserRolePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    OutletUserRoles<T extends Role$OutletUserRolesArgs<ExtArgs> = {}>(args?: Subset<T, Role$OutletUserRolesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OutletUserRolePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     superAdminUserRoles<T extends Role$superAdminUserRolesArgs<ExtArgs> = {}>(args?: Subset<T, Role$superAdminUserRolesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SuperAdminUserRolePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -7616,7 +7662,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Role", 'String'>
     readonly name: FieldRef<"Role", 'String'>
     readonly ownerType: FieldRef<"Role", 'RoleOwnerType'>
-    readonly DiagnosticAccountId: FieldRef<"Role", 'String'>
+    readonly outletId: FieldRef<"Role", 'String'>
     readonly superAdminId: FieldRef<"Role", 'String'>
     readonly createdAt: FieldRef<"Role", 'DateTime'>
     readonly updatedAt: FieldRef<"Role", 'DateTime'>
@@ -7963,22 +8009,22 @@ export namespace Prisma {
   }
 
   /**
-   * Role.DiagnosticAccount
+   * Role.outlet
    */
-  export type Role$DiagnosticAccountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Role$outletArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the DiagnosticAccount
+     * Select specific fields to fetch from the outlet
      */
-    select?: DiagnosticAccountSelect<ExtArgs> | null
+    select?: outletSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the DiagnosticAccount
+     * Omit specific fields from the outlet
      */
-    omit?: DiagnosticAccountOmit<ExtArgs> | null
+    omit?: outletOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DiagnosticAccountInclude<ExtArgs> | null
-    where?: DiagnosticAccountWhereInput
+    include?: outletInclude<ExtArgs> | null
+    where?: outletWhereInput
   }
 
   /**
@@ -8025,27 +8071,27 @@ export namespace Prisma {
   }
 
   /**
-   * Role.diagnosticUserRoles
+   * Role.OutletUserRoles
    */
-  export type Role$diagnosticUserRolesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Role$OutletUserRolesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the DiagnosticUserRole
+     * Select specific fields to fetch from the OutletUserRole
      */
-    select?: DiagnosticUserRoleSelect<ExtArgs> | null
+    select?: OutletUserRoleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the DiagnosticUserRole
+     * Omit specific fields from the OutletUserRole
      */
-    omit?: DiagnosticUserRoleOmit<ExtArgs> | null
+    omit?: OutletUserRoleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DiagnosticUserRoleInclude<ExtArgs> | null
-    where?: DiagnosticUserRoleWhereInput
-    orderBy?: DiagnosticUserRoleOrderByWithRelationInput | DiagnosticUserRoleOrderByWithRelationInput[]
-    cursor?: DiagnosticUserRoleWhereUniqueInput
+    include?: OutletUserRoleInclude<ExtArgs> | null
+    where?: OutletUserRoleWhereInput
+    orderBy?: OutletUserRoleOrderByWithRelationInput | OutletUserRoleOrderByWithRelationInput[]
+    cursor?: OutletUserRoleWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: DiagnosticUserRoleScalarFieldEnum | DiagnosticUserRoleScalarFieldEnum[]
+    distinct?: OutletUserRoleScalarFieldEnum | OutletUserRoleScalarFieldEnum[]
   }
 
   /**
@@ -9969,328 +10015,328 @@ export namespace Prisma {
 
 
   /**
-   * Model DiagnosticUserRole
+   * Model OutletUserRole
    */
 
-  export type AggregateDiagnosticUserRole = {
-    _count: DiagnosticUserRoleCountAggregateOutputType | null
-    _min: DiagnosticUserRoleMinAggregateOutputType | null
-    _max: DiagnosticUserRoleMaxAggregateOutputType | null
+  export type AggregateOutletUserRole = {
+    _count: OutletUserRoleCountAggregateOutputType | null
+    _min: OutletUserRoleMinAggregateOutputType | null
+    _max: OutletUserRoleMaxAggregateOutputType | null
   }
 
-  export type DiagnosticUserRoleMinAggregateOutputType = {
+  export type OutletUserRoleMinAggregateOutputType = {
     id: string | null
-    DiagnosticChildUserId: string | null
+    OutletChildUserId: string | null
     roleId: string | null
     createdAt: Date | null
   }
 
-  export type DiagnosticUserRoleMaxAggregateOutputType = {
+  export type OutletUserRoleMaxAggregateOutputType = {
     id: string | null
-    DiagnosticChildUserId: string | null
+    OutletChildUserId: string | null
     roleId: string | null
     createdAt: Date | null
   }
 
-  export type DiagnosticUserRoleCountAggregateOutputType = {
+  export type OutletUserRoleCountAggregateOutputType = {
     id: number
-    DiagnosticChildUserId: number
+    OutletChildUserId: number
     roleId: number
     createdAt: number
     _all: number
   }
 
 
-  export type DiagnosticUserRoleMinAggregateInputType = {
+  export type OutletUserRoleMinAggregateInputType = {
     id?: true
-    DiagnosticChildUserId?: true
+    OutletChildUserId?: true
     roleId?: true
     createdAt?: true
   }
 
-  export type DiagnosticUserRoleMaxAggregateInputType = {
+  export type OutletUserRoleMaxAggregateInputType = {
     id?: true
-    DiagnosticChildUserId?: true
+    OutletChildUserId?: true
     roleId?: true
     createdAt?: true
   }
 
-  export type DiagnosticUserRoleCountAggregateInputType = {
+  export type OutletUserRoleCountAggregateInputType = {
     id?: true
-    DiagnosticChildUserId?: true
+    OutletChildUserId?: true
     roleId?: true
     createdAt?: true
     _all?: true
   }
 
-  export type DiagnosticUserRoleAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletUserRoleAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which DiagnosticUserRole to aggregate.
+     * Filter which OutletUserRole to aggregate.
      */
-    where?: DiagnosticUserRoleWhereInput
+    where?: OutletUserRoleWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of DiagnosticUserRoles to fetch.
+     * Determine the order of OutletUserRoles to fetch.
      */
-    orderBy?: DiagnosticUserRoleOrderByWithRelationInput | DiagnosticUserRoleOrderByWithRelationInput[]
+    orderBy?: OutletUserRoleOrderByWithRelationInput | OutletUserRoleOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: DiagnosticUserRoleWhereUniqueInput
+    cursor?: OutletUserRoleWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` DiagnosticUserRoles from the position of the cursor.
+     * Take `±n` OutletUserRoles from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` DiagnosticUserRoles.
+     * Skip the first `n` OutletUserRoles.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned DiagnosticUserRoles
+     * Count returned OutletUserRoles
     **/
-    _count?: true | DiagnosticUserRoleCountAggregateInputType
+    _count?: true | OutletUserRoleCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: DiagnosticUserRoleMinAggregateInputType
+    _min?: OutletUserRoleMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: DiagnosticUserRoleMaxAggregateInputType
+    _max?: OutletUserRoleMaxAggregateInputType
   }
 
-  export type GetDiagnosticUserRoleAggregateType<T extends DiagnosticUserRoleAggregateArgs> = {
-        [P in keyof T & keyof AggregateDiagnosticUserRole]: P extends '_count' | 'count'
+  export type GetOutletUserRoleAggregateType<T extends OutletUserRoleAggregateArgs> = {
+        [P in keyof T & keyof AggregateOutletUserRole]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateDiagnosticUserRole[P]>
-      : GetScalarType<T[P], AggregateDiagnosticUserRole[P]>
+        : GetScalarType<T[P], AggregateOutletUserRole[P]>
+      : GetScalarType<T[P], AggregateOutletUserRole[P]>
   }
 
 
 
 
-  export type DiagnosticUserRoleGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: DiagnosticUserRoleWhereInput
-    orderBy?: DiagnosticUserRoleOrderByWithAggregationInput | DiagnosticUserRoleOrderByWithAggregationInput[]
-    by: DiagnosticUserRoleScalarFieldEnum[] | DiagnosticUserRoleScalarFieldEnum
-    having?: DiagnosticUserRoleScalarWhereWithAggregatesInput
+  export type OutletUserRoleGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OutletUserRoleWhereInput
+    orderBy?: OutletUserRoleOrderByWithAggregationInput | OutletUserRoleOrderByWithAggregationInput[]
+    by: OutletUserRoleScalarFieldEnum[] | OutletUserRoleScalarFieldEnum
+    having?: OutletUserRoleScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: DiagnosticUserRoleCountAggregateInputType | true
-    _min?: DiagnosticUserRoleMinAggregateInputType
-    _max?: DiagnosticUserRoleMaxAggregateInputType
+    _count?: OutletUserRoleCountAggregateInputType | true
+    _min?: OutletUserRoleMinAggregateInputType
+    _max?: OutletUserRoleMaxAggregateInputType
   }
 
-  export type DiagnosticUserRoleGroupByOutputType = {
+  export type OutletUserRoleGroupByOutputType = {
     id: string
-    DiagnosticChildUserId: string
+    OutletChildUserId: string
     roleId: string
     createdAt: Date
-    _count: DiagnosticUserRoleCountAggregateOutputType | null
-    _min: DiagnosticUserRoleMinAggregateOutputType | null
-    _max: DiagnosticUserRoleMaxAggregateOutputType | null
+    _count: OutletUserRoleCountAggregateOutputType | null
+    _min: OutletUserRoleMinAggregateOutputType | null
+    _max: OutletUserRoleMaxAggregateOutputType | null
   }
 
-  type GetDiagnosticUserRoleGroupByPayload<T extends DiagnosticUserRoleGroupByArgs> = Prisma.PrismaPromise<
+  type GetOutletUserRoleGroupByPayload<T extends OutletUserRoleGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<DiagnosticUserRoleGroupByOutputType, T['by']> &
+      PickEnumerable<OutletUserRoleGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof DiagnosticUserRoleGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof OutletUserRoleGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], DiagnosticUserRoleGroupByOutputType[P]>
-            : GetScalarType<T[P], DiagnosticUserRoleGroupByOutputType[P]>
+              : GetScalarType<T[P], OutletUserRoleGroupByOutputType[P]>
+            : GetScalarType<T[P], OutletUserRoleGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type DiagnosticUserRoleSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type OutletUserRoleSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    DiagnosticChildUserId?: boolean
+    OutletChildUserId?: boolean
     roleId?: boolean
     createdAt?: boolean
-    DiagnosticChildUser?: boolean | DiagnosticChildUserDefaultArgs<ExtArgs>
+    OutletChildUser?: boolean | OutletChildUserDefaultArgs<ExtArgs>
     role?: boolean | RoleDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["diagnosticUserRole"]>
+  }, ExtArgs["result"]["outletUserRole"]>
 
 
 
-  export type DiagnosticUserRoleSelectScalar = {
+  export type OutletUserRoleSelectScalar = {
     id?: boolean
-    DiagnosticChildUserId?: boolean
+    OutletChildUserId?: boolean
     roleId?: boolean
     createdAt?: boolean
   }
 
-  export type DiagnosticUserRoleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "DiagnosticChildUserId" | "roleId" | "createdAt", ExtArgs["result"]["diagnosticUserRole"]>
-  export type DiagnosticUserRoleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    DiagnosticChildUser?: boolean | DiagnosticChildUserDefaultArgs<ExtArgs>
+  export type OutletUserRoleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "OutletChildUserId" | "roleId" | "createdAt", ExtArgs["result"]["outletUserRole"]>
+  export type OutletUserRoleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    OutletChildUser?: boolean | OutletChildUserDefaultArgs<ExtArgs>
     role?: boolean | RoleDefaultArgs<ExtArgs>
   }
 
-  export type $DiagnosticUserRolePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "DiagnosticUserRole"
+  export type $OutletUserRolePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "OutletUserRole"
     objects: {
-      DiagnosticChildUser: Prisma.$DiagnosticChildUserPayload<ExtArgs>
+      OutletChildUser: Prisma.$OutletChildUserPayload<ExtArgs>
       role: Prisma.$RolePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      DiagnosticChildUserId: string
+      OutletChildUserId: string
       roleId: string
       createdAt: Date
-    }, ExtArgs["result"]["diagnosticUserRole"]>
+    }, ExtArgs["result"]["outletUserRole"]>
     composites: {}
   }
 
-  type DiagnosticUserRoleGetPayload<S extends boolean | null | undefined | DiagnosticUserRoleDefaultArgs> = $Result.GetResult<Prisma.$DiagnosticUserRolePayload, S>
+  type OutletUserRoleGetPayload<S extends boolean | null | undefined | OutletUserRoleDefaultArgs> = $Result.GetResult<Prisma.$OutletUserRolePayload, S>
 
-  type DiagnosticUserRoleCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<DiagnosticUserRoleFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: DiagnosticUserRoleCountAggregateInputType | true
+  type OutletUserRoleCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<OutletUserRoleFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: OutletUserRoleCountAggregateInputType | true
     }
 
-  export interface DiagnosticUserRoleDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['DiagnosticUserRole'], meta: { name: 'DiagnosticUserRole' } }
+  export interface OutletUserRoleDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['OutletUserRole'], meta: { name: 'OutletUserRole' } }
     /**
-     * Find zero or one DiagnosticUserRole that matches the filter.
-     * @param {DiagnosticUserRoleFindUniqueArgs} args - Arguments to find a DiagnosticUserRole
+     * Find zero or one OutletUserRole that matches the filter.
+     * @param {OutletUserRoleFindUniqueArgs} args - Arguments to find a OutletUserRole
      * @example
-     * // Get one DiagnosticUserRole
-     * const diagnosticUserRole = await prisma.diagnosticUserRole.findUnique({
+     * // Get one OutletUserRole
+     * const outletUserRole = await prisma.outletUserRole.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends DiagnosticUserRoleFindUniqueArgs>(args: SelectSubset<T, DiagnosticUserRoleFindUniqueArgs<ExtArgs>>): Prisma__DiagnosticUserRoleClient<$Result.GetResult<Prisma.$DiagnosticUserRolePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends OutletUserRoleFindUniqueArgs>(args: SelectSubset<T, OutletUserRoleFindUniqueArgs<ExtArgs>>): Prisma__OutletUserRoleClient<$Result.GetResult<Prisma.$OutletUserRolePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one DiagnosticUserRole that matches the filter or throw an error with `error.code='P2025'`
+     * Find one OutletUserRole that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {DiagnosticUserRoleFindUniqueOrThrowArgs} args - Arguments to find a DiagnosticUserRole
+     * @param {OutletUserRoleFindUniqueOrThrowArgs} args - Arguments to find a OutletUserRole
      * @example
-     * // Get one DiagnosticUserRole
-     * const diagnosticUserRole = await prisma.diagnosticUserRole.findUniqueOrThrow({
+     * // Get one OutletUserRole
+     * const outletUserRole = await prisma.outletUserRole.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends DiagnosticUserRoleFindUniqueOrThrowArgs>(args: SelectSubset<T, DiagnosticUserRoleFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DiagnosticUserRoleClient<$Result.GetResult<Prisma.$DiagnosticUserRolePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends OutletUserRoleFindUniqueOrThrowArgs>(args: SelectSubset<T, OutletUserRoleFindUniqueOrThrowArgs<ExtArgs>>): Prisma__OutletUserRoleClient<$Result.GetResult<Prisma.$OutletUserRolePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first DiagnosticUserRole that matches the filter.
+     * Find the first OutletUserRole that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {DiagnosticUserRoleFindFirstArgs} args - Arguments to find a DiagnosticUserRole
+     * @param {OutletUserRoleFindFirstArgs} args - Arguments to find a OutletUserRole
      * @example
-     * // Get one DiagnosticUserRole
-     * const diagnosticUserRole = await prisma.diagnosticUserRole.findFirst({
+     * // Get one OutletUserRole
+     * const outletUserRole = await prisma.outletUserRole.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends DiagnosticUserRoleFindFirstArgs>(args?: SelectSubset<T, DiagnosticUserRoleFindFirstArgs<ExtArgs>>): Prisma__DiagnosticUserRoleClient<$Result.GetResult<Prisma.$DiagnosticUserRolePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends OutletUserRoleFindFirstArgs>(args?: SelectSubset<T, OutletUserRoleFindFirstArgs<ExtArgs>>): Prisma__OutletUserRoleClient<$Result.GetResult<Prisma.$OutletUserRolePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first DiagnosticUserRole that matches the filter or
+     * Find the first OutletUserRole that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {DiagnosticUserRoleFindFirstOrThrowArgs} args - Arguments to find a DiagnosticUserRole
+     * @param {OutletUserRoleFindFirstOrThrowArgs} args - Arguments to find a OutletUserRole
      * @example
-     * // Get one DiagnosticUserRole
-     * const diagnosticUserRole = await prisma.diagnosticUserRole.findFirstOrThrow({
+     * // Get one OutletUserRole
+     * const outletUserRole = await prisma.outletUserRole.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends DiagnosticUserRoleFindFirstOrThrowArgs>(args?: SelectSubset<T, DiagnosticUserRoleFindFirstOrThrowArgs<ExtArgs>>): Prisma__DiagnosticUserRoleClient<$Result.GetResult<Prisma.$DiagnosticUserRolePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends OutletUserRoleFindFirstOrThrowArgs>(args?: SelectSubset<T, OutletUserRoleFindFirstOrThrowArgs<ExtArgs>>): Prisma__OutletUserRoleClient<$Result.GetResult<Prisma.$OutletUserRolePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more DiagnosticUserRoles that matches the filter.
+     * Find zero or more OutletUserRoles that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {DiagnosticUserRoleFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {OutletUserRoleFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all DiagnosticUserRoles
-     * const diagnosticUserRoles = await prisma.diagnosticUserRole.findMany()
+     * // Get all OutletUserRoles
+     * const outletUserRoles = await prisma.outletUserRole.findMany()
      * 
-     * // Get first 10 DiagnosticUserRoles
-     * const diagnosticUserRoles = await prisma.diagnosticUserRole.findMany({ take: 10 })
+     * // Get first 10 OutletUserRoles
+     * const outletUserRoles = await prisma.outletUserRole.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const diagnosticUserRoleWithIdOnly = await prisma.diagnosticUserRole.findMany({ select: { id: true } })
+     * const outletUserRoleWithIdOnly = await prisma.outletUserRole.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends DiagnosticUserRoleFindManyArgs>(args?: SelectSubset<T, DiagnosticUserRoleFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiagnosticUserRolePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends OutletUserRoleFindManyArgs>(args?: SelectSubset<T, OutletUserRoleFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OutletUserRolePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a DiagnosticUserRole.
-     * @param {DiagnosticUserRoleCreateArgs} args - Arguments to create a DiagnosticUserRole.
+     * Create a OutletUserRole.
+     * @param {OutletUserRoleCreateArgs} args - Arguments to create a OutletUserRole.
      * @example
-     * // Create one DiagnosticUserRole
-     * const DiagnosticUserRole = await prisma.diagnosticUserRole.create({
+     * // Create one OutletUserRole
+     * const OutletUserRole = await prisma.outletUserRole.create({
      *   data: {
-     *     // ... data to create a DiagnosticUserRole
+     *     // ... data to create a OutletUserRole
      *   }
      * })
      * 
      */
-    create<T extends DiagnosticUserRoleCreateArgs>(args: SelectSubset<T, DiagnosticUserRoleCreateArgs<ExtArgs>>): Prisma__DiagnosticUserRoleClient<$Result.GetResult<Prisma.$DiagnosticUserRolePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends OutletUserRoleCreateArgs>(args: SelectSubset<T, OutletUserRoleCreateArgs<ExtArgs>>): Prisma__OutletUserRoleClient<$Result.GetResult<Prisma.$OutletUserRolePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many DiagnosticUserRoles.
-     * @param {DiagnosticUserRoleCreateManyArgs} args - Arguments to create many DiagnosticUserRoles.
+     * Create many OutletUserRoles.
+     * @param {OutletUserRoleCreateManyArgs} args - Arguments to create many OutletUserRoles.
      * @example
-     * // Create many DiagnosticUserRoles
-     * const diagnosticUserRole = await prisma.diagnosticUserRole.createMany({
+     * // Create many OutletUserRoles
+     * const outletUserRole = await prisma.outletUserRole.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends DiagnosticUserRoleCreateManyArgs>(args?: SelectSubset<T, DiagnosticUserRoleCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends OutletUserRoleCreateManyArgs>(args?: SelectSubset<T, OutletUserRoleCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a DiagnosticUserRole.
-     * @param {DiagnosticUserRoleDeleteArgs} args - Arguments to delete one DiagnosticUserRole.
+     * Delete a OutletUserRole.
+     * @param {OutletUserRoleDeleteArgs} args - Arguments to delete one OutletUserRole.
      * @example
-     * // Delete one DiagnosticUserRole
-     * const DiagnosticUserRole = await prisma.diagnosticUserRole.delete({
+     * // Delete one OutletUserRole
+     * const OutletUserRole = await prisma.outletUserRole.delete({
      *   where: {
-     *     // ... filter to delete one DiagnosticUserRole
+     *     // ... filter to delete one OutletUserRole
      *   }
      * })
      * 
      */
-    delete<T extends DiagnosticUserRoleDeleteArgs>(args: SelectSubset<T, DiagnosticUserRoleDeleteArgs<ExtArgs>>): Prisma__DiagnosticUserRoleClient<$Result.GetResult<Prisma.$DiagnosticUserRolePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends OutletUserRoleDeleteArgs>(args: SelectSubset<T, OutletUserRoleDeleteArgs<ExtArgs>>): Prisma__OutletUserRoleClient<$Result.GetResult<Prisma.$OutletUserRolePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one DiagnosticUserRole.
-     * @param {DiagnosticUserRoleUpdateArgs} args - Arguments to update one DiagnosticUserRole.
+     * Update one OutletUserRole.
+     * @param {OutletUserRoleUpdateArgs} args - Arguments to update one OutletUserRole.
      * @example
-     * // Update one DiagnosticUserRole
-     * const diagnosticUserRole = await prisma.diagnosticUserRole.update({
+     * // Update one OutletUserRole
+     * const outletUserRole = await prisma.outletUserRole.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -10300,30 +10346,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends DiagnosticUserRoleUpdateArgs>(args: SelectSubset<T, DiagnosticUserRoleUpdateArgs<ExtArgs>>): Prisma__DiagnosticUserRoleClient<$Result.GetResult<Prisma.$DiagnosticUserRolePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends OutletUserRoleUpdateArgs>(args: SelectSubset<T, OutletUserRoleUpdateArgs<ExtArgs>>): Prisma__OutletUserRoleClient<$Result.GetResult<Prisma.$OutletUserRolePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more DiagnosticUserRoles.
-     * @param {DiagnosticUserRoleDeleteManyArgs} args - Arguments to filter DiagnosticUserRoles to delete.
+     * Delete zero or more OutletUserRoles.
+     * @param {OutletUserRoleDeleteManyArgs} args - Arguments to filter OutletUserRoles to delete.
      * @example
-     * // Delete a few DiagnosticUserRoles
-     * const { count } = await prisma.diagnosticUserRole.deleteMany({
+     * // Delete a few OutletUserRoles
+     * const { count } = await prisma.outletUserRole.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends DiagnosticUserRoleDeleteManyArgs>(args?: SelectSubset<T, DiagnosticUserRoleDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends OutletUserRoleDeleteManyArgs>(args?: SelectSubset<T, OutletUserRoleDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more DiagnosticUserRoles.
+     * Update zero or more OutletUserRoles.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {DiagnosticUserRoleUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {OutletUserRoleUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many DiagnosticUserRoles
-     * const diagnosticUserRole = await prisma.diagnosticUserRole.updateMany({
+     * // Update many OutletUserRoles
+     * const outletUserRole = await prisma.outletUserRole.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -10333,56 +10379,56 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends DiagnosticUserRoleUpdateManyArgs>(args: SelectSubset<T, DiagnosticUserRoleUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends OutletUserRoleUpdateManyArgs>(args: SelectSubset<T, OutletUserRoleUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one DiagnosticUserRole.
-     * @param {DiagnosticUserRoleUpsertArgs} args - Arguments to update or create a DiagnosticUserRole.
+     * Create or update one OutletUserRole.
+     * @param {OutletUserRoleUpsertArgs} args - Arguments to update or create a OutletUserRole.
      * @example
-     * // Update or create a DiagnosticUserRole
-     * const diagnosticUserRole = await prisma.diagnosticUserRole.upsert({
+     * // Update or create a OutletUserRole
+     * const outletUserRole = await prisma.outletUserRole.upsert({
      *   create: {
-     *     // ... data to create a DiagnosticUserRole
+     *     // ... data to create a OutletUserRole
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the DiagnosticUserRole we want to update
+     *     // ... the filter for the OutletUserRole we want to update
      *   }
      * })
      */
-    upsert<T extends DiagnosticUserRoleUpsertArgs>(args: SelectSubset<T, DiagnosticUserRoleUpsertArgs<ExtArgs>>): Prisma__DiagnosticUserRoleClient<$Result.GetResult<Prisma.$DiagnosticUserRolePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends OutletUserRoleUpsertArgs>(args: SelectSubset<T, OutletUserRoleUpsertArgs<ExtArgs>>): Prisma__OutletUserRoleClient<$Result.GetResult<Prisma.$OutletUserRolePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of DiagnosticUserRoles.
+     * Count the number of OutletUserRoles.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {DiagnosticUserRoleCountArgs} args - Arguments to filter DiagnosticUserRoles to count.
+     * @param {OutletUserRoleCountArgs} args - Arguments to filter OutletUserRoles to count.
      * @example
-     * // Count the number of DiagnosticUserRoles
-     * const count = await prisma.diagnosticUserRole.count({
+     * // Count the number of OutletUserRoles
+     * const count = await prisma.outletUserRole.count({
      *   where: {
-     *     // ... the filter for the DiagnosticUserRoles we want to count
+     *     // ... the filter for the OutletUserRoles we want to count
      *   }
      * })
     **/
-    count<T extends DiagnosticUserRoleCountArgs>(
-      args?: Subset<T, DiagnosticUserRoleCountArgs>,
+    count<T extends OutletUserRoleCountArgs>(
+      args?: Subset<T, OutletUserRoleCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], DiagnosticUserRoleCountAggregateOutputType>
+          : GetScalarType<T['select'], OutletUserRoleCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a DiagnosticUserRole.
+     * Allows you to perform aggregations operations on a OutletUserRole.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {DiagnosticUserRoleAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {OutletUserRoleAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -10402,13 +10448,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends DiagnosticUserRoleAggregateArgs>(args: Subset<T, DiagnosticUserRoleAggregateArgs>): Prisma.PrismaPromise<GetDiagnosticUserRoleAggregateType<T>>
+    aggregate<T extends OutletUserRoleAggregateArgs>(args: Subset<T, OutletUserRoleAggregateArgs>): Prisma.PrismaPromise<GetOutletUserRoleAggregateType<T>>
 
     /**
-     * Group by DiagnosticUserRole.
+     * Group by OutletUserRole.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {DiagnosticUserRoleGroupByArgs} args - Group by arguments.
+     * @param {OutletUserRoleGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -10423,14 +10469,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends DiagnosticUserRoleGroupByArgs,
+      T extends OutletUserRoleGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: DiagnosticUserRoleGroupByArgs['orderBy'] }
-        : { orderBy?: DiagnosticUserRoleGroupByArgs['orderBy'] },
+        ? { orderBy: OutletUserRoleGroupByArgs['orderBy'] }
+        : { orderBy?: OutletUserRoleGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -10479,22 +10525,22 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, DiagnosticUserRoleGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDiagnosticUserRoleGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, OutletUserRoleGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetOutletUserRoleGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the DiagnosticUserRole model
+   * Fields of the OutletUserRole model
    */
-  readonly fields: DiagnosticUserRoleFieldRefs;
+  readonly fields: OutletUserRoleFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for DiagnosticUserRole.
+   * The delegate class that acts as a "Promise-like" for OutletUserRole.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__DiagnosticUserRoleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__OutletUserRoleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    DiagnosticChildUser<T extends DiagnosticChildUserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, DiagnosticChildUserDefaultArgs<ExtArgs>>): Prisma__DiagnosticChildUserClient<$Result.GetResult<Prisma.$DiagnosticChildUserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    OutletChildUser<T extends OutletChildUserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, OutletChildUserDefaultArgs<ExtArgs>>): Prisma__OutletChildUserClient<$Result.GetResult<Prisma.$OutletChildUserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     role<T extends RoleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, RoleDefaultArgs<ExtArgs>>): Prisma__RoleClient<$Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -10522,371 +10568,371 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the DiagnosticUserRole model
+   * Fields of the OutletUserRole model
    */
-  interface DiagnosticUserRoleFieldRefs {
-    readonly id: FieldRef<"DiagnosticUserRole", 'String'>
-    readonly DiagnosticChildUserId: FieldRef<"DiagnosticUserRole", 'String'>
-    readonly roleId: FieldRef<"DiagnosticUserRole", 'String'>
-    readonly createdAt: FieldRef<"DiagnosticUserRole", 'DateTime'>
+  interface OutletUserRoleFieldRefs {
+    readonly id: FieldRef<"OutletUserRole", 'String'>
+    readonly OutletChildUserId: FieldRef<"OutletUserRole", 'String'>
+    readonly roleId: FieldRef<"OutletUserRole", 'String'>
+    readonly createdAt: FieldRef<"OutletUserRole", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * DiagnosticUserRole findUnique
+   * OutletUserRole findUnique
    */
-  export type DiagnosticUserRoleFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletUserRoleFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the DiagnosticUserRole
+     * Select specific fields to fetch from the OutletUserRole
      */
-    select?: DiagnosticUserRoleSelect<ExtArgs> | null
+    select?: OutletUserRoleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the DiagnosticUserRole
+     * Omit specific fields from the OutletUserRole
      */
-    omit?: DiagnosticUserRoleOmit<ExtArgs> | null
+    omit?: OutletUserRoleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DiagnosticUserRoleInclude<ExtArgs> | null
+    include?: OutletUserRoleInclude<ExtArgs> | null
     /**
-     * Filter, which DiagnosticUserRole to fetch.
+     * Filter, which OutletUserRole to fetch.
      */
-    where: DiagnosticUserRoleWhereUniqueInput
+    where: OutletUserRoleWhereUniqueInput
   }
 
   /**
-   * DiagnosticUserRole findUniqueOrThrow
+   * OutletUserRole findUniqueOrThrow
    */
-  export type DiagnosticUserRoleFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletUserRoleFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the DiagnosticUserRole
+     * Select specific fields to fetch from the OutletUserRole
      */
-    select?: DiagnosticUserRoleSelect<ExtArgs> | null
+    select?: OutletUserRoleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the DiagnosticUserRole
+     * Omit specific fields from the OutletUserRole
      */
-    omit?: DiagnosticUserRoleOmit<ExtArgs> | null
+    omit?: OutletUserRoleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DiagnosticUserRoleInclude<ExtArgs> | null
+    include?: OutletUserRoleInclude<ExtArgs> | null
     /**
-     * Filter, which DiagnosticUserRole to fetch.
+     * Filter, which OutletUserRole to fetch.
      */
-    where: DiagnosticUserRoleWhereUniqueInput
+    where: OutletUserRoleWhereUniqueInput
   }
 
   /**
-   * DiagnosticUserRole findFirst
+   * OutletUserRole findFirst
    */
-  export type DiagnosticUserRoleFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletUserRoleFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the DiagnosticUserRole
+     * Select specific fields to fetch from the OutletUserRole
      */
-    select?: DiagnosticUserRoleSelect<ExtArgs> | null
+    select?: OutletUserRoleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the DiagnosticUserRole
+     * Omit specific fields from the OutletUserRole
      */
-    omit?: DiagnosticUserRoleOmit<ExtArgs> | null
+    omit?: OutletUserRoleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DiagnosticUserRoleInclude<ExtArgs> | null
+    include?: OutletUserRoleInclude<ExtArgs> | null
     /**
-     * Filter, which DiagnosticUserRole to fetch.
+     * Filter, which OutletUserRole to fetch.
      */
-    where?: DiagnosticUserRoleWhereInput
+    where?: OutletUserRoleWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of DiagnosticUserRoles to fetch.
+     * Determine the order of OutletUserRoles to fetch.
      */
-    orderBy?: DiagnosticUserRoleOrderByWithRelationInput | DiagnosticUserRoleOrderByWithRelationInput[]
+    orderBy?: OutletUserRoleOrderByWithRelationInput | OutletUserRoleOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for DiagnosticUserRoles.
+     * Sets the position for searching for OutletUserRoles.
      */
-    cursor?: DiagnosticUserRoleWhereUniqueInput
+    cursor?: OutletUserRoleWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` DiagnosticUserRoles from the position of the cursor.
+     * Take `±n` OutletUserRoles from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` DiagnosticUserRoles.
+     * Skip the first `n` OutletUserRoles.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of DiagnosticUserRoles.
+     * Filter by unique combinations of OutletUserRoles.
      */
-    distinct?: DiagnosticUserRoleScalarFieldEnum | DiagnosticUserRoleScalarFieldEnum[]
+    distinct?: OutletUserRoleScalarFieldEnum | OutletUserRoleScalarFieldEnum[]
   }
 
   /**
-   * DiagnosticUserRole findFirstOrThrow
+   * OutletUserRole findFirstOrThrow
    */
-  export type DiagnosticUserRoleFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletUserRoleFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the DiagnosticUserRole
+     * Select specific fields to fetch from the OutletUserRole
      */
-    select?: DiagnosticUserRoleSelect<ExtArgs> | null
+    select?: OutletUserRoleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the DiagnosticUserRole
+     * Omit specific fields from the OutletUserRole
      */
-    omit?: DiagnosticUserRoleOmit<ExtArgs> | null
+    omit?: OutletUserRoleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DiagnosticUserRoleInclude<ExtArgs> | null
+    include?: OutletUserRoleInclude<ExtArgs> | null
     /**
-     * Filter, which DiagnosticUserRole to fetch.
+     * Filter, which OutletUserRole to fetch.
      */
-    where?: DiagnosticUserRoleWhereInput
+    where?: OutletUserRoleWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of DiagnosticUserRoles to fetch.
+     * Determine the order of OutletUserRoles to fetch.
      */
-    orderBy?: DiagnosticUserRoleOrderByWithRelationInput | DiagnosticUserRoleOrderByWithRelationInput[]
+    orderBy?: OutletUserRoleOrderByWithRelationInput | OutletUserRoleOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for DiagnosticUserRoles.
+     * Sets the position for searching for OutletUserRoles.
      */
-    cursor?: DiagnosticUserRoleWhereUniqueInput
+    cursor?: OutletUserRoleWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` DiagnosticUserRoles from the position of the cursor.
+     * Take `±n` OutletUserRoles from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` DiagnosticUserRoles.
+     * Skip the first `n` OutletUserRoles.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of DiagnosticUserRoles.
+     * Filter by unique combinations of OutletUserRoles.
      */
-    distinct?: DiagnosticUserRoleScalarFieldEnum | DiagnosticUserRoleScalarFieldEnum[]
+    distinct?: OutletUserRoleScalarFieldEnum | OutletUserRoleScalarFieldEnum[]
   }
 
   /**
-   * DiagnosticUserRole findMany
+   * OutletUserRole findMany
    */
-  export type DiagnosticUserRoleFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletUserRoleFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the DiagnosticUserRole
+     * Select specific fields to fetch from the OutletUserRole
      */
-    select?: DiagnosticUserRoleSelect<ExtArgs> | null
+    select?: OutletUserRoleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the DiagnosticUserRole
+     * Omit specific fields from the OutletUserRole
      */
-    omit?: DiagnosticUserRoleOmit<ExtArgs> | null
+    omit?: OutletUserRoleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DiagnosticUserRoleInclude<ExtArgs> | null
+    include?: OutletUserRoleInclude<ExtArgs> | null
     /**
-     * Filter, which DiagnosticUserRoles to fetch.
+     * Filter, which OutletUserRoles to fetch.
      */
-    where?: DiagnosticUserRoleWhereInput
+    where?: OutletUserRoleWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of DiagnosticUserRoles to fetch.
+     * Determine the order of OutletUserRoles to fetch.
      */
-    orderBy?: DiagnosticUserRoleOrderByWithRelationInput | DiagnosticUserRoleOrderByWithRelationInput[]
+    orderBy?: OutletUserRoleOrderByWithRelationInput | OutletUserRoleOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing DiagnosticUserRoles.
+     * Sets the position for listing OutletUserRoles.
      */
-    cursor?: DiagnosticUserRoleWhereUniqueInput
+    cursor?: OutletUserRoleWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` DiagnosticUserRoles from the position of the cursor.
+     * Take `±n` OutletUserRoles from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` DiagnosticUserRoles.
+     * Skip the first `n` OutletUserRoles.
      */
     skip?: number
-    distinct?: DiagnosticUserRoleScalarFieldEnum | DiagnosticUserRoleScalarFieldEnum[]
+    distinct?: OutletUserRoleScalarFieldEnum | OutletUserRoleScalarFieldEnum[]
   }
 
   /**
-   * DiagnosticUserRole create
+   * OutletUserRole create
    */
-  export type DiagnosticUserRoleCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletUserRoleCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the DiagnosticUserRole
+     * Select specific fields to fetch from the OutletUserRole
      */
-    select?: DiagnosticUserRoleSelect<ExtArgs> | null
+    select?: OutletUserRoleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the DiagnosticUserRole
+     * Omit specific fields from the OutletUserRole
      */
-    omit?: DiagnosticUserRoleOmit<ExtArgs> | null
+    omit?: OutletUserRoleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DiagnosticUserRoleInclude<ExtArgs> | null
+    include?: OutletUserRoleInclude<ExtArgs> | null
     /**
-     * The data needed to create a DiagnosticUserRole.
+     * The data needed to create a OutletUserRole.
      */
-    data: XOR<DiagnosticUserRoleCreateInput, DiagnosticUserRoleUncheckedCreateInput>
+    data: XOR<OutletUserRoleCreateInput, OutletUserRoleUncheckedCreateInput>
   }
 
   /**
-   * DiagnosticUserRole createMany
+   * OutletUserRole createMany
    */
-  export type DiagnosticUserRoleCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletUserRoleCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many DiagnosticUserRoles.
+     * The data used to create many OutletUserRoles.
      */
-    data: DiagnosticUserRoleCreateManyInput | DiagnosticUserRoleCreateManyInput[]
+    data: OutletUserRoleCreateManyInput | OutletUserRoleCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * DiagnosticUserRole update
+   * OutletUserRole update
    */
-  export type DiagnosticUserRoleUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletUserRoleUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the DiagnosticUserRole
+     * Select specific fields to fetch from the OutletUserRole
      */
-    select?: DiagnosticUserRoleSelect<ExtArgs> | null
+    select?: OutletUserRoleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the DiagnosticUserRole
+     * Omit specific fields from the OutletUserRole
      */
-    omit?: DiagnosticUserRoleOmit<ExtArgs> | null
+    omit?: OutletUserRoleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DiagnosticUserRoleInclude<ExtArgs> | null
+    include?: OutletUserRoleInclude<ExtArgs> | null
     /**
-     * The data needed to update a DiagnosticUserRole.
+     * The data needed to update a OutletUserRole.
      */
-    data: XOR<DiagnosticUserRoleUpdateInput, DiagnosticUserRoleUncheckedUpdateInput>
+    data: XOR<OutletUserRoleUpdateInput, OutletUserRoleUncheckedUpdateInput>
     /**
-     * Choose, which DiagnosticUserRole to update.
+     * Choose, which OutletUserRole to update.
      */
-    where: DiagnosticUserRoleWhereUniqueInput
+    where: OutletUserRoleWhereUniqueInput
   }
 
   /**
-   * DiagnosticUserRole updateMany
+   * OutletUserRole updateMany
    */
-  export type DiagnosticUserRoleUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletUserRoleUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update DiagnosticUserRoles.
+     * The data used to update OutletUserRoles.
      */
-    data: XOR<DiagnosticUserRoleUpdateManyMutationInput, DiagnosticUserRoleUncheckedUpdateManyInput>
+    data: XOR<OutletUserRoleUpdateManyMutationInput, OutletUserRoleUncheckedUpdateManyInput>
     /**
-     * Filter which DiagnosticUserRoles to update
+     * Filter which OutletUserRoles to update
      */
-    where?: DiagnosticUserRoleWhereInput
+    where?: OutletUserRoleWhereInput
     /**
-     * Limit how many DiagnosticUserRoles to update.
+     * Limit how many OutletUserRoles to update.
      */
     limit?: number
   }
 
   /**
-   * DiagnosticUserRole upsert
+   * OutletUserRole upsert
    */
-  export type DiagnosticUserRoleUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletUserRoleUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the DiagnosticUserRole
+     * Select specific fields to fetch from the OutletUserRole
      */
-    select?: DiagnosticUserRoleSelect<ExtArgs> | null
+    select?: OutletUserRoleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the DiagnosticUserRole
+     * Omit specific fields from the OutletUserRole
      */
-    omit?: DiagnosticUserRoleOmit<ExtArgs> | null
+    omit?: OutletUserRoleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DiagnosticUserRoleInclude<ExtArgs> | null
+    include?: OutletUserRoleInclude<ExtArgs> | null
     /**
-     * The filter to search for the DiagnosticUserRole to update in case it exists.
+     * The filter to search for the OutletUserRole to update in case it exists.
      */
-    where: DiagnosticUserRoleWhereUniqueInput
+    where: OutletUserRoleWhereUniqueInput
     /**
-     * In case the DiagnosticUserRole found by the `where` argument doesn't exist, create a new DiagnosticUserRole with this data.
+     * In case the OutletUserRole found by the `where` argument doesn't exist, create a new OutletUserRole with this data.
      */
-    create: XOR<DiagnosticUserRoleCreateInput, DiagnosticUserRoleUncheckedCreateInput>
+    create: XOR<OutletUserRoleCreateInput, OutletUserRoleUncheckedCreateInput>
     /**
-     * In case the DiagnosticUserRole was found with the provided `where` argument, update it with this data.
+     * In case the OutletUserRole was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<DiagnosticUserRoleUpdateInput, DiagnosticUserRoleUncheckedUpdateInput>
+    update: XOR<OutletUserRoleUpdateInput, OutletUserRoleUncheckedUpdateInput>
   }
 
   /**
-   * DiagnosticUserRole delete
+   * OutletUserRole delete
    */
-  export type DiagnosticUserRoleDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletUserRoleDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the DiagnosticUserRole
+     * Select specific fields to fetch from the OutletUserRole
      */
-    select?: DiagnosticUserRoleSelect<ExtArgs> | null
+    select?: OutletUserRoleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the DiagnosticUserRole
+     * Omit specific fields from the OutletUserRole
      */
-    omit?: DiagnosticUserRoleOmit<ExtArgs> | null
+    omit?: OutletUserRoleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DiagnosticUserRoleInclude<ExtArgs> | null
+    include?: OutletUserRoleInclude<ExtArgs> | null
     /**
-     * Filter which DiagnosticUserRole to delete.
+     * Filter which OutletUserRole to delete.
      */
-    where: DiagnosticUserRoleWhereUniqueInput
+    where: OutletUserRoleWhereUniqueInput
   }
 
   /**
-   * DiagnosticUserRole deleteMany
+   * OutletUserRole deleteMany
    */
-  export type DiagnosticUserRoleDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletUserRoleDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which DiagnosticUserRoles to delete
+     * Filter which OutletUserRoles to delete
      */
-    where?: DiagnosticUserRoleWhereInput
+    where?: OutletUserRoleWhereInput
     /**
-     * Limit how many DiagnosticUserRoles to delete.
+     * Limit how many OutletUserRoles to delete.
      */
     limit?: number
   }
 
   /**
-   * DiagnosticUserRole without action
+   * OutletUserRole without action
    */
-  export type DiagnosticUserRoleDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletUserRoleDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the DiagnosticUserRole
+     * Select specific fields to fetch from the OutletUserRole
      */
-    select?: DiagnosticUserRoleSelect<ExtArgs> | null
+    select?: OutletUserRoleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the DiagnosticUserRole
+     * Omit specific fields from the OutletUserRole
      */
-    omit?: DiagnosticUserRoleOmit<ExtArgs> | null
+    omit?: OutletUserRoleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DiagnosticUserRoleInclude<ExtArgs> | null
+    include?: OutletUserRoleInclude<ExtArgs> | null
   }
 
 
@@ -11842,17 +11888,20 @@ export namespace Prisma {
 
   export const PatientScalarFieldEnum: {
     id: 'id',
+    referenceName: 'referenceName',
     fullName: 'fullName',
     mobileNumber: 'mobileNumber',
-    otp: 'otp',
-    otpExpiresAt: 'otpExpiresAt',
     email: 'email',
     dateOfBirth: 'dateOfBirth',
     age: 'age',
     bloodGroup: 'bloodGroup',
     gender: 'gender',
     address: 'address',
-    diagnosticAccountId: 'diagnosticAccountId',
+    emergencyContact: 'emergencyContact',
+    status: 'status',
+    otp: 'otp',
+    otpExpiresAt: 'otpExpiresAt',
+    outletId: 'outletId',
     isActive: 'isActive',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -11879,7 +11928,7 @@ export namespace Prisma {
   export type DoctorScalarFieldEnum = (typeof DoctorScalarFieldEnum)[keyof typeof DoctorScalarFieldEnum]
 
 
-  export const DiagnosticAccountScalarFieldEnum: {
+  export const OutletScalarFieldEnum: {
     id: 'id',
     name: 'name',
     email: 'email',
@@ -11894,12 +11943,12 @@ export namespace Prisma {
     updatedAt: 'updatedAt'
   };
 
-  export type DiagnosticAccountScalarFieldEnum = (typeof DiagnosticAccountScalarFieldEnum)[keyof typeof DiagnosticAccountScalarFieldEnum]
+  export type OutletScalarFieldEnum = (typeof OutletScalarFieldEnum)[keyof typeof OutletScalarFieldEnum]
 
 
-  export const DiagnosticChildUserScalarFieldEnum: {
+  export const OutletChildUserScalarFieldEnum: {
     id: 'id',
-    DiagnosticAccountId: 'DiagnosticAccountId',
+    outletId: 'outletId',
     name: 'name',
     email: 'email',
     phone: 'phone',
@@ -11909,14 +11958,14 @@ export namespace Prisma {
     updatedAt: 'updatedAt'
   };
 
-  export type DiagnosticChildUserScalarFieldEnum = (typeof DiagnosticChildUserScalarFieldEnum)[keyof typeof DiagnosticChildUserScalarFieldEnum]
+  export type OutletChildUserScalarFieldEnum = (typeof OutletChildUserScalarFieldEnum)[keyof typeof OutletChildUserScalarFieldEnum]
 
 
   export const RoleScalarFieldEnum: {
     id: 'id',
     name: 'name',
     ownerType: 'ownerType',
-    DiagnosticAccountId: 'DiagnosticAccountId',
+    outletId: 'outletId',
     superAdminId: 'superAdminId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -11946,14 +11995,14 @@ export namespace Prisma {
   export type RolePermissionScalarFieldEnum = (typeof RolePermissionScalarFieldEnum)[keyof typeof RolePermissionScalarFieldEnum]
 
 
-  export const DiagnosticUserRoleScalarFieldEnum: {
+  export const OutletUserRoleScalarFieldEnum: {
     id: 'id',
-    DiagnosticChildUserId: 'DiagnosticChildUserId',
+    OutletChildUserId: 'OutletChildUserId',
     roleId: 'roleId',
     createdAt: 'createdAt'
   };
 
-  export type DiagnosticUserRoleScalarFieldEnum = (typeof DiagnosticUserRoleScalarFieldEnum)[keyof typeof DiagnosticUserRoleScalarFieldEnum]
+  export type OutletUserRoleScalarFieldEnum = (typeof OutletUserRoleScalarFieldEnum)[keyof typeof OutletUserRoleScalarFieldEnum]
 
 
   export const SuperAdminUserRoleScalarFieldEnum: {
@@ -11995,14 +12044,16 @@ export namespace Prisma {
 
   export const PatientOrderByRelevanceFieldEnum: {
     id: 'id',
+    referenceName: 'referenceName',
     fullName: 'fullName',
     mobileNumber: 'mobileNumber',
-    otp: 'otp',
     email: 'email',
     bloodGroup: 'bloodGroup',
     gender: 'gender',
     address: 'address',
-    diagnosticAccountId: 'diagnosticAccountId'
+    emergencyContact: 'emergencyContact',
+    otp: 'otp',
+    outletId: 'outletId'
   };
 
   export type PatientOrderByRelevanceFieldEnum = (typeof PatientOrderByRelevanceFieldEnum)[keyof typeof PatientOrderByRelevanceFieldEnum]
@@ -12021,7 +12072,7 @@ export namespace Prisma {
   export type DoctorOrderByRelevanceFieldEnum = (typeof DoctorOrderByRelevanceFieldEnum)[keyof typeof DoctorOrderByRelevanceFieldEnum]
 
 
-  export const DiagnosticAccountOrderByRelevanceFieldEnum: {
+  export const outletOrderByRelevanceFieldEnum: {
     id: 'id',
     name: 'name',
     email: 'email',
@@ -12033,25 +12084,25 @@ export namespace Prisma {
     address: 'address'
   };
 
-  export type DiagnosticAccountOrderByRelevanceFieldEnum = (typeof DiagnosticAccountOrderByRelevanceFieldEnum)[keyof typeof DiagnosticAccountOrderByRelevanceFieldEnum]
+  export type outletOrderByRelevanceFieldEnum = (typeof outletOrderByRelevanceFieldEnum)[keyof typeof outletOrderByRelevanceFieldEnum]
 
 
-  export const DiagnosticChildUserOrderByRelevanceFieldEnum: {
+  export const OutletChildUserOrderByRelevanceFieldEnum: {
     id: 'id',
-    DiagnosticAccountId: 'DiagnosticAccountId',
+    outletId: 'outletId',
     name: 'name',
     email: 'email',
     phone: 'phone',
     password: 'password'
   };
 
-  export type DiagnosticChildUserOrderByRelevanceFieldEnum = (typeof DiagnosticChildUserOrderByRelevanceFieldEnum)[keyof typeof DiagnosticChildUserOrderByRelevanceFieldEnum]
+  export type OutletChildUserOrderByRelevanceFieldEnum = (typeof OutletChildUserOrderByRelevanceFieldEnum)[keyof typeof OutletChildUserOrderByRelevanceFieldEnum]
 
 
   export const RoleOrderByRelevanceFieldEnum: {
     id: 'id',
     name: 'name',
-    DiagnosticAccountId: 'DiagnosticAccountId',
+    outletId: 'outletId',
     superAdminId: 'superAdminId'
   };
 
@@ -12077,13 +12128,13 @@ export namespace Prisma {
   export type RolePermissionOrderByRelevanceFieldEnum = (typeof RolePermissionOrderByRelevanceFieldEnum)[keyof typeof RolePermissionOrderByRelevanceFieldEnum]
 
 
-  export const DiagnosticUserRoleOrderByRelevanceFieldEnum: {
+  export const OutletUserRoleOrderByRelevanceFieldEnum: {
     id: 'id',
-    DiagnosticChildUserId: 'DiagnosticChildUserId',
+    OutletChildUserId: 'OutletChildUserId',
     roleId: 'roleId'
   };
 
-  export type DiagnosticUserRoleOrderByRelevanceFieldEnum = (typeof DiagnosticUserRoleOrderByRelevanceFieldEnum)[keyof typeof DiagnosticUserRoleOrderByRelevanceFieldEnum]
+  export type OutletUserRoleOrderByRelevanceFieldEnum = (typeof OutletUserRoleOrderByRelevanceFieldEnum)[keyof typeof OutletUserRoleOrderByRelevanceFieldEnum]
 
 
   export const SuperAdminUserRoleOrderByRelevanceFieldEnum: {
@@ -12125,6 +12176,13 @@ export namespace Prisma {
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
+   * Reference to a field of type 'PatientStatus'
+   */
+  export type EnumPatientStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PatientStatus'>
     
 
 
@@ -12231,40 +12289,46 @@ export namespace Prisma {
     OR?: PatientWhereInput[]
     NOT?: PatientWhereInput | PatientWhereInput[]
     id?: StringFilter<"Patient"> | string
+    referenceName?: StringNullableFilter<"Patient"> | string | null
     fullName?: StringFilter<"Patient"> | string
     mobileNumber?: StringFilter<"Patient"> | string
-    otp?: StringNullableFilter<"Patient"> | string | null
-    otpExpiresAt?: DateTimeNullableFilter<"Patient"> | Date | string | null
     email?: StringNullableFilter<"Patient"> | string | null
     dateOfBirth?: DateTimeNullableFilter<"Patient"> | Date | string | null
     age?: IntNullableFilter<"Patient"> | number | null
     bloodGroup?: StringNullableFilter<"Patient"> | string | null
     gender?: StringNullableFilter<"Patient"> | string | null
     address?: StringNullableFilter<"Patient"> | string | null
-    diagnosticAccountId?: StringNullableFilter<"Patient"> | string | null
+    emergencyContact?: StringNullableFilter<"Patient"> | string | null
+    status?: EnumPatientStatusFilter<"Patient"> | $Enums.PatientStatus
+    otp?: StringNullableFilter<"Patient"> | string | null
+    otpExpiresAt?: DateTimeNullableFilter<"Patient"> | Date | string | null
+    outletId?: StringNullableFilter<"Patient"> | string | null
     isActive?: BoolFilter<"Patient"> | boolean
     createdAt?: DateTimeFilter<"Patient"> | Date | string
     updatedAt?: DateTimeFilter<"Patient"> | Date | string
-    diagnosticAccount?: XOR<DiagnosticAccountNullableScalarRelationFilter, DiagnosticAccountWhereInput> | null
+    outlet?: XOR<OutletNullableScalarRelationFilter, outletWhereInput> | null
   }
 
   export type PatientOrderByWithRelationInput = {
     id?: SortOrder
+    referenceName?: SortOrderInput | SortOrder
     fullName?: SortOrder
     mobileNumber?: SortOrder
-    otp?: SortOrderInput | SortOrder
-    otpExpiresAt?: SortOrderInput | SortOrder
     email?: SortOrderInput | SortOrder
     dateOfBirth?: SortOrderInput | SortOrder
     age?: SortOrderInput | SortOrder
     bloodGroup?: SortOrderInput | SortOrder
     gender?: SortOrderInput | SortOrder
     address?: SortOrderInput | SortOrder
-    diagnosticAccountId?: SortOrderInput | SortOrder
+    emergencyContact?: SortOrderInput | SortOrder
+    status?: SortOrder
+    otp?: SortOrderInput | SortOrder
+    otpExpiresAt?: SortOrderInput | SortOrder
+    outletId?: SortOrderInput | SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    diagnosticAccount?: DiagnosticAccountOrderByWithRelationInput
+    outlet?: outletOrderByWithRelationInput
     _relevance?: PatientOrderByRelevanceInput
   }
 
@@ -12274,35 +12338,41 @@ export namespace Prisma {
     AND?: PatientWhereInput | PatientWhereInput[]
     OR?: PatientWhereInput[]
     NOT?: PatientWhereInput | PatientWhereInput[]
+    referenceName?: StringNullableFilter<"Patient"> | string | null
     fullName?: StringFilter<"Patient"> | string
-    otp?: StringNullableFilter<"Patient"> | string | null
-    otpExpiresAt?: DateTimeNullableFilter<"Patient"> | Date | string | null
     email?: StringNullableFilter<"Patient"> | string | null
     dateOfBirth?: DateTimeNullableFilter<"Patient"> | Date | string | null
     age?: IntNullableFilter<"Patient"> | number | null
     bloodGroup?: StringNullableFilter<"Patient"> | string | null
     gender?: StringNullableFilter<"Patient"> | string | null
     address?: StringNullableFilter<"Patient"> | string | null
-    diagnosticAccountId?: StringNullableFilter<"Patient"> | string | null
+    emergencyContact?: StringNullableFilter<"Patient"> | string | null
+    status?: EnumPatientStatusFilter<"Patient"> | $Enums.PatientStatus
+    otp?: StringNullableFilter<"Patient"> | string | null
+    otpExpiresAt?: DateTimeNullableFilter<"Patient"> | Date | string | null
+    outletId?: StringNullableFilter<"Patient"> | string | null
     isActive?: BoolFilter<"Patient"> | boolean
     createdAt?: DateTimeFilter<"Patient"> | Date | string
     updatedAt?: DateTimeFilter<"Patient"> | Date | string
-    diagnosticAccount?: XOR<DiagnosticAccountNullableScalarRelationFilter, DiagnosticAccountWhereInput> | null
+    outlet?: XOR<OutletNullableScalarRelationFilter, outletWhereInput> | null
   }, "id" | "mobileNumber">
 
   export type PatientOrderByWithAggregationInput = {
     id?: SortOrder
+    referenceName?: SortOrderInput | SortOrder
     fullName?: SortOrder
     mobileNumber?: SortOrder
-    otp?: SortOrderInput | SortOrder
-    otpExpiresAt?: SortOrderInput | SortOrder
     email?: SortOrderInput | SortOrder
     dateOfBirth?: SortOrderInput | SortOrder
     age?: SortOrderInput | SortOrder
     bloodGroup?: SortOrderInput | SortOrder
     gender?: SortOrderInput | SortOrder
     address?: SortOrderInput | SortOrder
-    diagnosticAccountId?: SortOrderInput | SortOrder
+    emergencyContact?: SortOrderInput | SortOrder
+    status?: SortOrder
+    otp?: SortOrderInput | SortOrder
+    otpExpiresAt?: SortOrderInput | SortOrder
+    outletId?: SortOrderInput | SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -12318,17 +12388,20 @@ export namespace Prisma {
     OR?: PatientScalarWhereWithAggregatesInput[]
     NOT?: PatientScalarWhereWithAggregatesInput | PatientScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Patient"> | string
+    referenceName?: StringNullableWithAggregatesFilter<"Patient"> | string | null
     fullName?: StringWithAggregatesFilter<"Patient"> | string
     mobileNumber?: StringWithAggregatesFilter<"Patient"> | string
-    otp?: StringNullableWithAggregatesFilter<"Patient"> | string | null
-    otpExpiresAt?: DateTimeNullableWithAggregatesFilter<"Patient"> | Date | string | null
     email?: StringNullableWithAggregatesFilter<"Patient"> | string | null
     dateOfBirth?: DateTimeNullableWithAggregatesFilter<"Patient"> | Date | string | null
     age?: IntNullableWithAggregatesFilter<"Patient"> | number | null
     bloodGroup?: StringNullableWithAggregatesFilter<"Patient"> | string | null
     gender?: StringNullableWithAggregatesFilter<"Patient"> | string | null
     address?: StringNullableWithAggregatesFilter<"Patient"> | string | null
-    diagnosticAccountId?: StringNullableWithAggregatesFilter<"Patient"> | string | null
+    emergencyContact?: StringNullableWithAggregatesFilter<"Patient"> | string | null
+    status?: EnumPatientStatusWithAggregatesFilter<"Patient"> | $Enums.PatientStatus
+    otp?: StringNullableWithAggregatesFilter<"Patient"> | string | null
+    otpExpiresAt?: DateTimeNullableWithAggregatesFilter<"Patient"> | Date | string | null
+    outletId?: StringNullableWithAggregatesFilter<"Patient"> | string | null
     isActive?: BoolWithAggregatesFilter<"Patient"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"Patient"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Patient"> | Date | string
@@ -12424,28 +12497,28 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Doctor"> | Date | string
   }
 
-  export type DiagnosticAccountWhereInput = {
-    AND?: DiagnosticAccountWhereInput | DiagnosticAccountWhereInput[]
-    OR?: DiagnosticAccountWhereInput[]
-    NOT?: DiagnosticAccountWhereInput | DiagnosticAccountWhereInput[]
-    id?: StringFilter<"DiagnosticAccount"> | string
-    name?: StringFilter<"DiagnosticAccount"> | string
-    email?: StringFilter<"DiagnosticAccount"> | string
-    phone?: StringNullableFilter<"DiagnosticAccount"> | string | null
-    password?: StringFilter<"DiagnosticAccount"> | string
-    centerName?: StringFilter<"DiagnosticAccount"> | string
-    slug?: StringFilter<"DiagnosticAccount"> | string
-    logo?: StringNullableFilter<"DiagnosticAccount"> | string | null
-    address?: StringNullableFilter<"DiagnosticAccount"> | string | null
-    isActive?: BoolFilter<"DiagnosticAccount"> | boolean
-    createdAt?: DateTimeFilter<"DiagnosticAccount"> | Date | string
-    updatedAt?: DateTimeFilter<"DiagnosticAccount"> | Date | string
-    childUsers?: DiagnosticChildUserListRelationFilter
+  export type outletWhereInput = {
+    AND?: outletWhereInput | outletWhereInput[]
+    OR?: outletWhereInput[]
+    NOT?: outletWhereInput | outletWhereInput[]
+    id?: StringFilter<"outlet"> | string
+    name?: StringFilter<"outlet"> | string
+    email?: StringFilter<"outlet"> | string
+    phone?: StringNullableFilter<"outlet"> | string | null
+    password?: StringFilter<"outlet"> | string
+    centerName?: StringFilter<"outlet"> | string
+    slug?: StringFilter<"outlet"> | string
+    logo?: StringNullableFilter<"outlet"> | string | null
+    address?: StringNullableFilter<"outlet"> | string | null
+    isActive?: BoolFilter<"outlet"> | boolean
+    createdAt?: DateTimeFilter<"outlet"> | Date | string
+    updatedAt?: DateTimeFilter<"outlet"> | Date | string
+    childUsers?: OutletChildUserListRelationFilter
     roles?: RoleListRelationFilter
     patients?: PatientListRelationFilter
   }
 
-  export type DiagnosticAccountOrderByWithRelationInput = {
+  export type outletOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrder
@@ -12458,34 +12531,34 @@ export namespace Prisma {
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    childUsers?: DiagnosticChildUserOrderByRelationAggregateInput
+    childUsers?: OutletChildUserOrderByRelationAggregateInput
     roles?: RoleOrderByRelationAggregateInput
     patients?: PatientOrderByRelationAggregateInput
-    _relevance?: DiagnosticAccountOrderByRelevanceInput
+    _relevance?: outletOrderByRelevanceInput
   }
 
-  export type DiagnosticAccountWhereUniqueInput = Prisma.AtLeast<{
+  export type outletWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     email?: string
     slug?: string
-    AND?: DiagnosticAccountWhereInput | DiagnosticAccountWhereInput[]
-    OR?: DiagnosticAccountWhereInput[]
-    NOT?: DiagnosticAccountWhereInput | DiagnosticAccountWhereInput[]
-    name?: StringFilter<"DiagnosticAccount"> | string
-    phone?: StringNullableFilter<"DiagnosticAccount"> | string | null
-    password?: StringFilter<"DiagnosticAccount"> | string
-    centerName?: StringFilter<"DiagnosticAccount"> | string
-    logo?: StringNullableFilter<"DiagnosticAccount"> | string | null
-    address?: StringNullableFilter<"DiagnosticAccount"> | string | null
-    isActive?: BoolFilter<"DiagnosticAccount"> | boolean
-    createdAt?: DateTimeFilter<"DiagnosticAccount"> | Date | string
-    updatedAt?: DateTimeFilter<"DiagnosticAccount"> | Date | string
-    childUsers?: DiagnosticChildUserListRelationFilter
+    AND?: outletWhereInput | outletWhereInput[]
+    OR?: outletWhereInput[]
+    NOT?: outletWhereInput | outletWhereInput[]
+    name?: StringFilter<"outlet"> | string
+    phone?: StringNullableFilter<"outlet"> | string | null
+    password?: StringFilter<"outlet"> | string
+    centerName?: StringFilter<"outlet"> | string
+    logo?: StringNullableFilter<"outlet"> | string | null
+    address?: StringNullableFilter<"outlet"> | string | null
+    isActive?: BoolFilter<"outlet"> | boolean
+    createdAt?: DateTimeFilter<"outlet"> | Date | string
+    updatedAt?: DateTimeFilter<"outlet"> | Date | string
+    childUsers?: OutletChildUserListRelationFilter
     roles?: RoleListRelationFilter
     patients?: PatientListRelationFilter
   }, "id" | "email" | "slug">
 
-  export type DiagnosticAccountOrderByWithAggregationInput = {
+  export type outletOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrder
@@ -12498,49 +12571,49 @@ export namespace Prisma {
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    _count?: DiagnosticAccountCountOrderByAggregateInput
-    _max?: DiagnosticAccountMaxOrderByAggregateInput
-    _min?: DiagnosticAccountMinOrderByAggregateInput
+    _count?: outletCountOrderByAggregateInput
+    _max?: outletMaxOrderByAggregateInput
+    _min?: outletMinOrderByAggregateInput
   }
 
-  export type DiagnosticAccountScalarWhereWithAggregatesInput = {
-    AND?: DiagnosticAccountScalarWhereWithAggregatesInput | DiagnosticAccountScalarWhereWithAggregatesInput[]
-    OR?: DiagnosticAccountScalarWhereWithAggregatesInput[]
-    NOT?: DiagnosticAccountScalarWhereWithAggregatesInput | DiagnosticAccountScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"DiagnosticAccount"> | string
-    name?: StringWithAggregatesFilter<"DiagnosticAccount"> | string
-    email?: StringWithAggregatesFilter<"DiagnosticAccount"> | string
-    phone?: StringNullableWithAggregatesFilter<"DiagnosticAccount"> | string | null
-    password?: StringWithAggregatesFilter<"DiagnosticAccount"> | string
-    centerName?: StringWithAggregatesFilter<"DiagnosticAccount"> | string
-    slug?: StringWithAggregatesFilter<"DiagnosticAccount"> | string
-    logo?: StringNullableWithAggregatesFilter<"DiagnosticAccount"> | string | null
-    address?: StringNullableWithAggregatesFilter<"DiagnosticAccount"> | string | null
-    isActive?: BoolWithAggregatesFilter<"DiagnosticAccount"> | boolean
-    createdAt?: DateTimeWithAggregatesFilter<"DiagnosticAccount"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"DiagnosticAccount"> | Date | string
+  export type outletScalarWhereWithAggregatesInput = {
+    AND?: outletScalarWhereWithAggregatesInput | outletScalarWhereWithAggregatesInput[]
+    OR?: outletScalarWhereWithAggregatesInput[]
+    NOT?: outletScalarWhereWithAggregatesInput | outletScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"outlet"> | string
+    name?: StringWithAggregatesFilter<"outlet"> | string
+    email?: StringWithAggregatesFilter<"outlet"> | string
+    phone?: StringNullableWithAggregatesFilter<"outlet"> | string | null
+    password?: StringWithAggregatesFilter<"outlet"> | string
+    centerName?: StringWithAggregatesFilter<"outlet"> | string
+    slug?: StringWithAggregatesFilter<"outlet"> | string
+    logo?: StringNullableWithAggregatesFilter<"outlet"> | string | null
+    address?: StringNullableWithAggregatesFilter<"outlet"> | string | null
+    isActive?: BoolWithAggregatesFilter<"outlet"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"outlet"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"outlet"> | Date | string
   }
 
-  export type DiagnosticChildUserWhereInput = {
-    AND?: DiagnosticChildUserWhereInput | DiagnosticChildUserWhereInput[]
-    OR?: DiagnosticChildUserWhereInput[]
-    NOT?: DiagnosticChildUserWhereInput | DiagnosticChildUserWhereInput[]
-    id?: StringFilter<"DiagnosticChildUser"> | string
-    DiagnosticAccountId?: StringFilter<"DiagnosticChildUser"> | string
-    name?: StringFilter<"DiagnosticChildUser"> | string
-    email?: StringFilter<"DiagnosticChildUser"> | string
-    phone?: StringNullableFilter<"DiagnosticChildUser"> | string | null
-    password?: StringFilter<"DiagnosticChildUser"> | string
-    isActive?: BoolFilter<"DiagnosticChildUser"> | boolean
-    createdAt?: DateTimeFilter<"DiagnosticChildUser"> | Date | string
-    updatedAt?: DateTimeFilter<"DiagnosticChildUser"> | Date | string
-    DiagnosticAccount?: XOR<DiagnosticAccountScalarRelationFilter, DiagnosticAccountWhereInput>
-    userRoles?: DiagnosticUserRoleListRelationFilter
+  export type OutletChildUserWhereInput = {
+    AND?: OutletChildUserWhereInput | OutletChildUserWhereInput[]
+    OR?: OutletChildUserWhereInput[]
+    NOT?: OutletChildUserWhereInput | OutletChildUserWhereInput[]
+    id?: StringFilter<"OutletChildUser"> | string
+    outletId?: StringFilter<"OutletChildUser"> | string
+    name?: StringFilter<"OutletChildUser"> | string
+    email?: StringFilter<"OutletChildUser"> | string
+    phone?: StringNullableFilter<"OutletChildUser"> | string | null
+    password?: StringFilter<"OutletChildUser"> | string
+    isActive?: BoolFilter<"OutletChildUser"> | boolean
+    createdAt?: DateTimeFilter<"OutletChildUser"> | Date | string
+    updatedAt?: DateTimeFilter<"OutletChildUser"> | Date | string
+    outlet?: XOR<OutletScalarRelationFilter, outletWhereInput>
+    userRoles?: OutletUserRoleListRelationFilter
   }
 
-  export type DiagnosticChildUserOrderByWithRelationInput = {
+  export type OutletChildUserOrderByWithRelationInput = {
     id?: SortOrder
-    DiagnosticAccountId?: SortOrder
+    outletId?: SortOrder
     name?: SortOrder
     email?: SortOrder
     phone?: SortOrderInput | SortOrder
@@ -12548,32 +12621,32 @@ export namespace Prisma {
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    DiagnosticAccount?: DiagnosticAccountOrderByWithRelationInput
-    userRoles?: DiagnosticUserRoleOrderByRelationAggregateInput
-    _relevance?: DiagnosticChildUserOrderByRelevanceInput
+    outlet?: outletOrderByWithRelationInput
+    userRoles?: OutletUserRoleOrderByRelationAggregateInput
+    _relevance?: OutletChildUserOrderByRelevanceInput
   }
 
-  export type DiagnosticChildUserWhereUniqueInput = Prisma.AtLeast<{
+  export type OutletChildUserWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    email_DiagnosticAccountId?: DiagnosticChildUserEmailDiagnosticAccountIdCompoundUniqueInput
-    AND?: DiagnosticChildUserWhereInput | DiagnosticChildUserWhereInput[]
-    OR?: DiagnosticChildUserWhereInput[]
-    NOT?: DiagnosticChildUserWhereInput | DiagnosticChildUserWhereInput[]
-    DiagnosticAccountId?: StringFilter<"DiagnosticChildUser"> | string
-    name?: StringFilter<"DiagnosticChildUser"> | string
-    email?: StringFilter<"DiagnosticChildUser"> | string
-    phone?: StringNullableFilter<"DiagnosticChildUser"> | string | null
-    password?: StringFilter<"DiagnosticChildUser"> | string
-    isActive?: BoolFilter<"DiagnosticChildUser"> | boolean
-    createdAt?: DateTimeFilter<"DiagnosticChildUser"> | Date | string
-    updatedAt?: DateTimeFilter<"DiagnosticChildUser"> | Date | string
-    DiagnosticAccount?: XOR<DiagnosticAccountScalarRelationFilter, DiagnosticAccountWhereInput>
-    userRoles?: DiagnosticUserRoleListRelationFilter
-  }, "id" | "email_DiagnosticAccountId">
+    email_outletId?: OutletChildUserEmailOutletIdCompoundUniqueInput
+    AND?: OutletChildUserWhereInput | OutletChildUserWhereInput[]
+    OR?: OutletChildUserWhereInput[]
+    NOT?: OutletChildUserWhereInput | OutletChildUserWhereInput[]
+    outletId?: StringFilter<"OutletChildUser"> | string
+    name?: StringFilter<"OutletChildUser"> | string
+    email?: StringFilter<"OutletChildUser"> | string
+    phone?: StringNullableFilter<"OutletChildUser"> | string | null
+    password?: StringFilter<"OutletChildUser"> | string
+    isActive?: BoolFilter<"OutletChildUser"> | boolean
+    createdAt?: DateTimeFilter<"OutletChildUser"> | Date | string
+    updatedAt?: DateTimeFilter<"OutletChildUser"> | Date | string
+    outlet?: XOR<OutletScalarRelationFilter, outletWhereInput>
+    userRoles?: OutletUserRoleListRelationFilter
+  }, "id" | "email_outletId">
 
-  export type DiagnosticChildUserOrderByWithAggregationInput = {
+  export type OutletChildUserOrderByWithAggregationInput = {
     id?: SortOrder
-    DiagnosticAccountId?: SortOrder
+    outletId?: SortOrder
     name?: SortOrder
     email?: SortOrder
     phone?: SortOrderInput | SortOrder
@@ -12581,24 +12654,24 @@ export namespace Prisma {
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    _count?: DiagnosticChildUserCountOrderByAggregateInput
-    _max?: DiagnosticChildUserMaxOrderByAggregateInput
-    _min?: DiagnosticChildUserMinOrderByAggregateInput
+    _count?: OutletChildUserCountOrderByAggregateInput
+    _max?: OutletChildUserMaxOrderByAggregateInput
+    _min?: OutletChildUserMinOrderByAggregateInput
   }
 
-  export type DiagnosticChildUserScalarWhereWithAggregatesInput = {
-    AND?: DiagnosticChildUserScalarWhereWithAggregatesInput | DiagnosticChildUserScalarWhereWithAggregatesInput[]
-    OR?: DiagnosticChildUserScalarWhereWithAggregatesInput[]
-    NOT?: DiagnosticChildUserScalarWhereWithAggregatesInput | DiagnosticChildUserScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"DiagnosticChildUser"> | string
-    DiagnosticAccountId?: StringWithAggregatesFilter<"DiagnosticChildUser"> | string
-    name?: StringWithAggregatesFilter<"DiagnosticChildUser"> | string
-    email?: StringWithAggregatesFilter<"DiagnosticChildUser"> | string
-    phone?: StringNullableWithAggregatesFilter<"DiagnosticChildUser"> | string | null
-    password?: StringWithAggregatesFilter<"DiagnosticChildUser"> | string
-    isActive?: BoolWithAggregatesFilter<"DiagnosticChildUser"> | boolean
-    createdAt?: DateTimeWithAggregatesFilter<"DiagnosticChildUser"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"DiagnosticChildUser"> | Date | string
+  export type OutletChildUserScalarWhereWithAggregatesInput = {
+    AND?: OutletChildUserScalarWhereWithAggregatesInput | OutletChildUserScalarWhereWithAggregatesInput[]
+    OR?: OutletChildUserScalarWhereWithAggregatesInput[]
+    NOT?: OutletChildUserScalarWhereWithAggregatesInput | OutletChildUserScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"OutletChildUser"> | string
+    outletId?: StringWithAggregatesFilter<"OutletChildUser"> | string
+    name?: StringWithAggregatesFilter<"OutletChildUser"> | string
+    email?: StringWithAggregatesFilter<"OutletChildUser"> | string
+    phone?: StringNullableWithAggregatesFilter<"OutletChildUser"> | string | null
+    password?: StringWithAggregatesFilter<"OutletChildUser"> | string
+    isActive?: BoolWithAggregatesFilter<"OutletChildUser"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"OutletChildUser"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"OutletChildUser"> | Date | string
   }
 
   export type RoleWhereInput = {
@@ -12608,14 +12681,14 @@ export namespace Prisma {
     id?: StringFilter<"Role"> | string
     name?: StringFilter<"Role"> | string
     ownerType?: EnumRoleOwnerTypeFilter<"Role"> | $Enums.RoleOwnerType
-    DiagnosticAccountId?: StringNullableFilter<"Role"> | string | null
+    outletId?: StringNullableFilter<"Role"> | string | null
     superAdminId?: StringNullableFilter<"Role"> | string | null
     createdAt?: DateTimeFilter<"Role"> | Date | string
     updatedAt?: DateTimeFilter<"Role"> | Date | string
-    DiagnosticAccount?: XOR<DiagnosticAccountNullableScalarRelationFilter, DiagnosticAccountWhereInput> | null
+    outlet?: XOR<OutletNullableScalarRelationFilter, outletWhereInput> | null
     superAdmin?: XOR<SuperAdminsNullableScalarRelationFilter, SuperAdminsWhereInput> | null
     rolePermissions?: RolePermissionListRelationFilter
-    diagnosticUserRoles?: DiagnosticUserRoleListRelationFilter
+    OutletUserRoles?: OutletUserRoleListRelationFilter
     superAdminUserRoles?: SuperAdminUserRoleListRelationFilter
   }
 
@@ -12623,43 +12696,43 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     ownerType?: SortOrder
-    DiagnosticAccountId?: SortOrderInput | SortOrder
+    outletId?: SortOrderInput | SortOrder
     superAdminId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    DiagnosticAccount?: DiagnosticAccountOrderByWithRelationInput
+    outlet?: outletOrderByWithRelationInput
     superAdmin?: SuperAdminsOrderByWithRelationInput
     rolePermissions?: RolePermissionOrderByRelationAggregateInput
-    diagnosticUserRoles?: DiagnosticUserRoleOrderByRelationAggregateInput
+    OutletUserRoles?: OutletUserRoleOrderByRelationAggregateInput
     superAdminUserRoles?: SuperAdminUserRoleOrderByRelationAggregateInput
     _relevance?: RoleOrderByRelevanceInput
   }
 
   export type RoleWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    name_DiagnosticAccountId?: RoleNameDiagnosticAccountIdCompoundUniqueInput
+    name_outletId?: RoleNameOutletIdCompoundUniqueInput
     name_superAdminId?: RoleNameSuperAdminIdCompoundUniqueInput
     AND?: RoleWhereInput | RoleWhereInput[]
     OR?: RoleWhereInput[]
     NOT?: RoleWhereInput | RoleWhereInput[]
     name?: StringFilter<"Role"> | string
     ownerType?: EnumRoleOwnerTypeFilter<"Role"> | $Enums.RoleOwnerType
-    DiagnosticAccountId?: StringNullableFilter<"Role"> | string | null
+    outletId?: StringNullableFilter<"Role"> | string | null
     superAdminId?: StringNullableFilter<"Role"> | string | null
     createdAt?: DateTimeFilter<"Role"> | Date | string
     updatedAt?: DateTimeFilter<"Role"> | Date | string
-    DiagnosticAccount?: XOR<DiagnosticAccountNullableScalarRelationFilter, DiagnosticAccountWhereInput> | null
+    outlet?: XOR<OutletNullableScalarRelationFilter, outletWhereInput> | null
     superAdmin?: XOR<SuperAdminsNullableScalarRelationFilter, SuperAdminsWhereInput> | null
     rolePermissions?: RolePermissionListRelationFilter
-    diagnosticUserRoles?: DiagnosticUserRoleListRelationFilter
+    OutletUserRoles?: OutletUserRoleListRelationFilter
     superAdminUserRoles?: SuperAdminUserRoleListRelationFilter
-  }, "id" | "name_DiagnosticAccountId" | "name_superAdminId">
+  }, "id" | "name_outletId" | "name_superAdminId">
 
   export type RoleOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
     ownerType?: SortOrder
-    DiagnosticAccountId?: SortOrderInput | SortOrder
+    outletId?: SortOrderInput | SortOrder
     superAdminId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -12675,7 +12748,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Role"> | string
     name?: StringWithAggregatesFilter<"Role"> | string
     ownerType?: EnumRoleOwnerTypeWithAggregatesFilter<"Role"> | $Enums.RoleOwnerType
-    DiagnosticAccountId?: StringNullableWithAggregatesFilter<"Role"> | string | null
+    outletId?: StringNullableWithAggregatesFilter<"Role"> | string | null
     superAdminId?: StringNullableWithAggregatesFilter<"Role"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Role"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Role"> | Date | string
@@ -12792,59 +12865,59 @@ export namespace Prisma {
     permissionId?: StringWithAggregatesFilter<"RolePermission"> | string
   }
 
-  export type DiagnosticUserRoleWhereInput = {
-    AND?: DiagnosticUserRoleWhereInput | DiagnosticUserRoleWhereInput[]
-    OR?: DiagnosticUserRoleWhereInput[]
-    NOT?: DiagnosticUserRoleWhereInput | DiagnosticUserRoleWhereInput[]
-    id?: StringFilter<"DiagnosticUserRole"> | string
-    DiagnosticChildUserId?: StringFilter<"DiagnosticUserRole"> | string
-    roleId?: StringFilter<"DiagnosticUserRole"> | string
-    createdAt?: DateTimeFilter<"DiagnosticUserRole"> | Date | string
-    DiagnosticChildUser?: XOR<DiagnosticChildUserScalarRelationFilter, DiagnosticChildUserWhereInput>
+  export type OutletUserRoleWhereInput = {
+    AND?: OutletUserRoleWhereInput | OutletUserRoleWhereInput[]
+    OR?: OutletUserRoleWhereInput[]
+    NOT?: OutletUserRoleWhereInput | OutletUserRoleWhereInput[]
+    id?: StringFilter<"OutletUserRole"> | string
+    OutletChildUserId?: StringFilter<"OutletUserRole"> | string
+    roleId?: StringFilter<"OutletUserRole"> | string
+    createdAt?: DateTimeFilter<"OutletUserRole"> | Date | string
+    OutletChildUser?: XOR<OutletChildUserScalarRelationFilter, OutletChildUserWhereInput>
     role?: XOR<RoleScalarRelationFilter, RoleWhereInput>
   }
 
-  export type DiagnosticUserRoleOrderByWithRelationInput = {
+  export type OutletUserRoleOrderByWithRelationInput = {
     id?: SortOrder
-    DiagnosticChildUserId?: SortOrder
+    OutletChildUserId?: SortOrder
     roleId?: SortOrder
     createdAt?: SortOrder
-    DiagnosticChildUser?: DiagnosticChildUserOrderByWithRelationInput
+    OutletChildUser?: OutletChildUserOrderByWithRelationInput
     role?: RoleOrderByWithRelationInput
-    _relevance?: DiagnosticUserRoleOrderByRelevanceInput
+    _relevance?: OutletUserRoleOrderByRelevanceInput
   }
 
-  export type DiagnosticUserRoleWhereUniqueInput = Prisma.AtLeast<{
+  export type OutletUserRoleWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    DiagnosticChildUserId_roleId?: DiagnosticUserRoleDiagnosticChildUserIdRoleIdCompoundUniqueInput
-    AND?: DiagnosticUserRoleWhereInput | DiagnosticUserRoleWhereInput[]
-    OR?: DiagnosticUserRoleWhereInput[]
-    NOT?: DiagnosticUserRoleWhereInput | DiagnosticUserRoleWhereInput[]
-    DiagnosticChildUserId?: StringFilter<"DiagnosticUserRole"> | string
-    roleId?: StringFilter<"DiagnosticUserRole"> | string
-    createdAt?: DateTimeFilter<"DiagnosticUserRole"> | Date | string
-    DiagnosticChildUser?: XOR<DiagnosticChildUserScalarRelationFilter, DiagnosticChildUserWhereInput>
+    OutletChildUserId_roleId?: OutletUserRoleOutletChildUserIdRoleIdCompoundUniqueInput
+    AND?: OutletUserRoleWhereInput | OutletUserRoleWhereInput[]
+    OR?: OutletUserRoleWhereInput[]
+    NOT?: OutletUserRoleWhereInput | OutletUserRoleWhereInput[]
+    OutletChildUserId?: StringFilter<"OutletUserRole"> | string
+    roleId?: StringFilter<"OutletUserRole"> | string
+    createdAt?: DateTimeFilter<"OutletUserRole"> | Date | string
+    OutletChildUser?: XOR<OutletChildUserScalarRelationFilter, OutletChildUserWhereInput>
     role?: XOR<RoleScalarRelationFilter, RoleWhereInput>
-  }, "id" | "DiagnosticChildUserId_roleId">
+  }, "id" | "OutletChildUserId_roleId">
 
-  export type DiagnosticUserRoleOrderByWithAggregationInput = {
+  export type OutletUserRoleOrderByWithAggregationInput = {
     id?: SortOrder
-    DiagnosticChildUserId?: SortOrder
+    OutletChildUserId?: SortOrder
     roleId?: SortOrder
     createdAt?: SortOrder
-    _count?: DiagnosticUserRoleCountOrderByAggregateInput
-    _max?: DiagnosticUserRoleMaxOrderByAggregateInput
-    _min?: DiagnosticUserRoleMinOrderByAggregateInput
+    _count?: OutletUserRoleCountOrderByAggregateInput
+    _max?: OutletUserRoleMaxOrderByAggregateInput
+    _min?: OutletUserRoleMinOrderByAggregateInput
   }
 
-  export type DiagnosticUserRoleScalarWhereWithAggregatesInput = {
-    AND?: DiagnosticUserRoleScalarWhereWithAggregatesInput | DiagnosticUserRoleScalarWhereWithAggregatesInput[]
-    OR?: DiagnosticUserRoleScalarWhereWithAggregatesInput[]
-    NOT?: DiagnosticUserRoleScalarWhereWithAggregatesInput | DiagnosticUserRoleScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"DiagnosticUserRole"> | string
-    DiagnosticChildUserId?: StringWithAggregatesFilter<"DiagnosticUserRole"> | string
-    roleId?: StringWithAggregatesFilter<"DiagnosticUserRole"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"DiagnosticUserRole"> | Date | string
+  export type OutletUserRoleScalarWhereWithAggregatesInput = {
+    AND?: OutletUserRoleScalarWhereWithAggregatesInput | OutletUserRoleScalarWhereWithAggregatesInput[]
+    OR?: OutletUserRoleScalarWhereWithAggregatesInput[]
+    NOT?: OutletUserRoleScalarWhereWithAggregatesInput | OutletUserRoleScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"OutletUserRole"> | string
+    OutletChildUserId?: StringWithAggregatesFilter<"OutletUserRole"> | string
+    roleId?: StringWithAggregatesFilter<"OutletUserRole"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"OutletUserRole"> | Date | string
   }
 
   export type SuperAdminUserRoleWhereInput = {
@@ -12989,35 +13062,41 @@ export namespace Prisma {
 
   export type PatientCreateInput = {
     id?: string
+    referenceName?: string | null
     fullName: string
     mobileNumber: string
-    otp?: string | null
-    otpExpiresAt?: Date | string | null
     email?: string | null
     dateOfBirth?: Date | string | null
     age?: number | null
     bloodGroup?: string | null
     gender?: string | null
     address?: string | null
+    emergencyContact?: string | null
+    status?: $Enums.PatientStatus
+    otp?: string | null
+    otpExpiresAt?: Date | string | null
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    diagnosticAccount?: DiagnosticAccountCreateNestedOneWithoutPatientsInput
+    outlet?: outletCreateNestedOneWithoutPatientsInput
   }
 
   export type PatientUncheckedCreateInput = {
     id?: string
+    referenceName?: string | null
     fullName: string
     mobileNumber: string
-    otp?: string | null
-    otpExpiresAt?: Date | string | null
     email?: string | null
     dateOfBirth?: Date | string | null
     age?: number | null
     bloodGroup?: string | null
     gender?: string | null
     address?: string | null
-    diagnosticAccountId?: string | null
+    emergencyContact?: string | null
+    status?: $Enums.PatientStatus
+    otp?: string | null
+    otpExpiresAt?: Date | string | null
+    outletId?: string | null
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -13025,35 +13104,41 @@ export namespace Prisma {
 
   export type PatientUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    referenceName?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: StringFieldUpdateOperationsInput | string
     mobileNumber?: StringFieldUpdateOperationsInput | string
-    otp?: NullableStringFieldUpdateOperationsInput | string | null
-    otpExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContact?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumPatientStatusFieldUpdateOperationsInput | $Enums.PatientStatus
+    otp?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    diagnosticAccount?: DiagnosticAccountUpdateOneWithoutPatientsNestedInput
+    outlet?: outletUpdateOneWithoutPatientsNestedInput
   }
 
   export type PatientUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    referenceName?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: StringFieldUpdateOperationsInput | string
     mobileNumber?: StringFieldUpdateOperationsInput | string
-    otp?: NullableStringFieldUpdateOperationsInput | string | null
-    otpExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
-    diagnosticAccountId?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContact?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumPatientStatusFieldUpdateOperationsInput | $Enums.PatientStatus
+    otp?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    outletId?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13061,17 +13146,20 @@ export namespace Prisma {
 
   export type PatientCreateManyInput = {
     id?: string
+    referenceName?: string | null
     fullName: string
     mobileNumber: string
-    otp?: string | null
-    otpExpiresAt?: Date | string | null
     email?: string | null
     dateOfBirth?: Date | string | null
     age?: number | null
     bloodGroup?: string | null
     gender?: string | null
     address?: string | null
-    diagnosticAccountId?: string | null
+    emergencyContact?: string | null
+    status?: $Enums.PatientStatus
+    otp?: string | null
+    otpExpiresAt?: Date | string | null
+    outletId?: string | null
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -13079,16 +13167,19 @@ export namespace Prisma {
 
   export type PatientUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    referenceName?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: StringFieldUpdateOperationsInput | string
     mobileNumber?: StringFieldUpdateOperationsInput | string
-    otp?: NullableStringFieldUpdateOperationsInput | string | null
-    otpExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContact?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumPatientStatusFieldUpdateOperationsInput | $Enums.PatientStatus
+    otp?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13096,17 +13187,20 @@ export namespace Prisma {
 
   export type PatientUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    referenceName?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: StringFieldUpdateOperationsInput | string
     mobileNumber?: StringFieldUpdateOperationsInput | string
-    otp?: NullableStringFieldUpdateOperationsInput | string | null
-    otpExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
-    diagnosticAccountId?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContact?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumPatientStatusFieldUpdateOperationsInput | $Enums.PatientStatus
+    otp?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    outletId?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13217,7 +13311,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type DiagnosticAccountCreateInput = {
+  export type outletCreateInput = {
     id?: string
     name: string
     email: string
@@ -13230,12 +13324,12 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    childUsers?: DiagnosticChildUserCreateNestedManyWithoutDiagnosticAccountInput
-    roles?: RoleCreateNestedManyWithoutDiagnosticAccountInput
-    patients?: PatientCreateNestedManyWithoutDiagnosticAccountInput
+    childUsers?: OutletChildUserCreateNestedManyWithoutOutletInput
+    roles?: RoleCreateNestedManyWithoutOutletInput
+    patients?: PatientCreateNestedManyWithoutOutletInput
   }
 
-  export type DiagnosticAccountUncheckedCreateInput = {
+  export type outletUncheckedCreateInput = {
     id?: string
     name: string
     email: string
@@ -13248,12 +13342,12 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    childUsers?: DiagnosticChildUserUncheckedCreateNestedManyWithoutDiagnosticAccountInput
-    roles?: RoleUncheckedCreateNestedManyWithoutDiagnosticAccountInput
-    patients?: PatientUncheckedCreateNestedManyWithoutDiagnosticAccountInput
+    childUsers?: OutletChildUserUncheckedCreateNestedManyWithoutOutletInput
+    roles?: RoleUncheckedCreateNestedManyWithoutOutletInput
+    patients?: PatientUncheckedCreateNestedManyWithoutOutletInput
   }
 
-  export type DiagnosticAccountUpdateInput = {
+  export type outletUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -13266,12 +13360,12 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    childUsers?: DiagnosticChildUserUpdateManyWithoutDiagnosticAccountNestedInput
-    roles?: RoleUpdateManyWithoutDiagnosticAccountNestedInput
-    patients?: PatientUpdateManyWithoutDiagnosticAccountNestedInput
+    childUsers?: OutletChildUserUpdateManyWithoutOutletNestedInput
+    roles?: RoleUpdateManyWithoutOutletNestedInput
+    patients?: PatientUpdateManyWithoutOutletNestedInput
   }
 
-  export type DiagnosticAccountUncheckedUpdateInput = {
+  export type outletUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -13284,12 +13378,12 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    childUsers?: DiagnosticChildUserUncheckedUpdateManyWithoutDiagnosticAccountNestedInput
-    roles?: RoleUncheckedUpdateManyWithoutDiagnosticAccountNestedInput
-    patients?: PatientUncheckedUpdateManyWithoutDiagnosticAccountNestedInput
+    childUsers?: OutletChildUserUncheckedUpdateManyWithoutOutletNestedInput
+    roles?: RoleUncheckedUpdateManyWithoutOutletNestedInput
+    patients?: PatientUncheckedUpdateManyWithoutOutletNestedInput
   }
 
-  export type DiagnosticAccountCreateManyInput = {
+  export type outletCreateManyInput = {
     id?: string
     name: string
     email: string
@@ -13304,7 +13398,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type DiagnosticAccountUpdateManyMutationInput = {
+  export type outletUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -13319,7 +13413,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type DiagnosticAccountUncheckedUpdateManyInput = {
+  export type outletUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -13334,7 +13428,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type DiagnosticChildUserCreateInput = {
+  export type OutletChildUserCreateInput = {
     id?: string
     name: string
     email: string
@@ -13343,13 +13437,13 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    DiagnosticAccount: DiagnosticAccountCreateNestedOneWithoutChildUsersInput
-    userRoles?: DiagnosticUserRoleCreateNestedManyWithoutDiagnosticChildUserInput
+    outlet: outletCreateNestedOneWithoutChildUsersInput
+    userRoles?: OutletUserRoleCreateNestedManyWithoutOutletChildUserInput
   }
 
-  export type DiagnosticChildUserUncheckedCreateInput = {
+  export type OutletChildUserUncheckedCreateInput = {
     id?: string
-    DiagnosticAccountId: string
+    outletId: string
     name: string
     email: string
     phone?: string | null
@@ -13357,10 +13451,10 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    userRoles?: DiagnosticUserRoleUncheckedCreateNestedManyWithoutDiagnosticChildUserInput
+    userRoles?: OutletUserRoleUncheckedCreateNestedManyWithoutOutletChildUserInput
   }
 
-  export type DiagnosticChildUserUpdateInput = {
+  export type OutletChildUserUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -13369,13 +13463,13 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    DiagnosticAccount?: DiagnosticAccountUpdateOneRequiredWithoutChildUsersNestedInput
-    userRoles?: DiagnosticUserRoleUpdateManyWithoutDiagnosticChildUserNestedInput
+    outlet?: outletUpdateOneRequiredWithoutChildUsersNestedInput
+    userRoles?: OutletUserRoleUpdateManyWithoutOutletChildUserNestedInput
   }
 
-  export type DiagnosticChildUserUncheckedUpdateInput = {
+  export type OutletChildUserUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    DiagnosticAccountId?: StringFieldUpdateOperationsInput | string
+    outletId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone?: NullableStringFieldUpdateOperationsInput | string | null
@@ -13383,12 +13477,12 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userRoles?: DiagnosticUserRoleUncheckedUpdateManyWithoutDiagnosticChildUserNestedInput
+    userRoles?: OutletUserRoleUncheckedUpdateManyWithoutOutletChildUserNestedInput
   }
 
-  export type DiagnosticChildUserCreateManyInput = {
+  export type OutletChildUserCreateManyInput = {
     id?: string
-    DiagnosticAccountId: string
+    outletId: string
     name: string
     email: string
     phone?: string | null
@@ -13398,7 +13492,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type DiagnosticChildUserUpdateManyMutationInput = {
+  export type OutletChildUserUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -13409,9 +13503,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type DiagnosticChildUserUncheckedUpdateManyInput = {
+  export type OutletChildUserUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    DiagnosticAccountId?: StringFieldUpdateOperationsInput | string
+    outletId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone?: NullableStringFieldUpdateOperationsInput | string | null
@@ -13427,10 +13521,10 @@ export namespace Prisma {
     ownerType: $Enums.RoleOwnerType
     createdAt?: Date | string
     updatedAt?: Date | string
-    DiagnosticAccount?: DiagnosticAccountCreateNestedOneWithoutRolesInput
+    outlet?: outletCreateNestedOneWithoutRolesInput
     superAdmin?: SuperAdminsCreateNestedOneWithoutRolesInput
     rolePermissions?: RolePermissionCreateNestedManyWithoutRoleInput
-    diagnosticUserRoles?: DiagnosticUserRoleCreateNestedManyWithoutRoleInput
+    OutletUserRoles?: OutletUserRoleCreateNestedManyWithoutRoleInput
     superAdminUserRoles?: SuperAdminUserRoleCreateNestedManyWithoutRoleInput
   }
 
@@ -13438,12 +13532,12 @@ export namespace Prisma {
     id?: string
     name: string
     ownerType: $Enums.RoleOwnerType
-    DiagnosticAccountId?: string | null
+    outletId?: string | null
     superAdminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     rolePermissions?: RolePermissionUncheckedCreateNestedManyWithoutRoleInput
-    diagnosticUserRoles?: DiagnosticUserRoleUncheckedCreateNestedManyWithoutRoleInput
+    OutletUserRoles?: OutletUserRoleUncheckedCreateNestedManyWithoutRoleInput
     superAdminUserRoles?: SuperAdminUserRoleUncheckedCreateNestedManyWithoutRoleInput
   }
 
@@ -13453,10 +13547,10 @@ export namespace Prisma {
     ownerType?: EnumRoleOwnerTypeFieldUpdateOperationsInput | $Enums.RoleOwnerType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    DiagnosticAccount?: DiagnosticAccountUpdateOneWithoutRolesNestedInput
+    outlet?: outletUpdateOneWithoutRolesNestedInput
     superAdmin?: SuperAdminsUpdateOneWithoutRolesNestedInput
     rolePermissions?: RolePermissionUpdateManyWithoutRoleNestedInput
-    diagnosticUserRoles?: DiagnosticUserRoleUpdateManyWithoutRoleNestedInput
+    OutletUserRoles?: OutletUserRoleUpdateManyWithoutRoleNestedInput
     superAdminUserRoles?: SuperAdminUserRoleUpdateManyWithoutRoleNestedInput
   }
 
@@ -13464,12 +13558,12 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     ownerType?: EnumRoleOwnerTypeFieldUpdateOperationsInput | $Enums.RoleOwnerType
-    DiagnosticAccountId?: NullableStringFieldUpdateOperationsInput | string | null
+    outletId?: NullableStringFieldUpdateOperationsInput | string | null
     superAdminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     rolePermissions?: RolePermissionUncheckedUpdateManyWithoutRoleNestedInput
-    diagnosticUserRoles?: DiagnosticUserRoleUncheckedUpdateManyWithoutRoleNestedInput
+    OutletUserRoles?: OutletUserRoleUncheckedUpdateManyWithoutRoleNestedInput
     superAdminUserRoles?: SuperAdminUserRoleUncheckedUpdateManyWithoutRoleNestedInput
   }
 
@@ -13477,7 +13571,7 @@ export namespace Prisma {
     id?: string
     name: string
     ownerType: $Enums.RoleOwnerType
-    DiagnosticAccountId?: string | null
+    outletId?: string | null
     superAdminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -13495,7 +13589,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     ownerType?: EnumRoleOwnerTypeFieldUpdateOperationsInput | $Enums.RoleOwnerType
-    DiagnosticAccountId?: NullableStringFieldUpdateOperationsInput | string | null
+    outletId?: NullableStringFieldUpdateOperationsInput | string | null
     superAdminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13608,49 +13702,49 @@ export namespace Prisma {
     permissionId?: StringFieldUpdateOperationsInput | string
   }
 
-  export type DiagnosticUserRoleCreateInput = {
+  export type OutletUserRoleCreateInput = {
     id?: string
     createdAt?: Date | string
-    DiagnosticChildUser: DiagnosticChildUserCreateNestedOneWithoutUserRolesInput
-    role: RoleCreateNestedOneWithoutDiagnosticUserRolesInput
+    OutletChildUser: OutletChildUserCreateNestedOneWithoutUserRolesInput
+    role: RoleCreateNestedOneWithoutOutletUserRolesInput
   }
 
-  export type DiagnosticUserRoleUncheckedCreateInput = {
+  export type OutletUserRoleUncheckedCreateInput = {
     id?: string
-    DiagnosticChildUserId: string
+    OutletChildUserId: string
     roleId: string
     createdAt?: Date | string
   }
 
-  export type DiagnosticUserRoleUpdateInput = {
+  export type OutletUserRoleUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    DiagnosticChildUser?: DiagnosticChildUserUpdateOneRequiredWithoutUserRolesNestedInput
-    role?: RoleUpdateOneRequiredWithoutDiagnosticUserRolesNestedInput
+    OutletChildUser?: OutletChildUserUpdateOneRequiredWithoutUserRolesNestedInput
+    role?: RoleUpdateOneRequiredWithoutOutletUserRolesNestedInput
   }
 
-  export type DiagnosticUserRoleUncheckedUpdateInput = {
+  export type OutletUserRoleUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    DiagnosticChildUserId?: StringFieldUpdateOperationsInput | string
+    OutletChildUserId?: StringFieldUpdateOperationsInput | string
     roleId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type DiagnosticUserRoleCreateManyInput = {
+  export type OutletUserRoleCreateManyInput = {
     id?: string
-    DiagnosticChildUserId: string
+    OutletChildUserId: string
     roleId: string
     createdAt?: Date | string
   }
 
-  export type DiagnosticUserRoleUpdateManyMutationInput = {
+  export type OutletUserRoleUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type DiagnosticUserRoleUncheckedUpdateManyInput = {
+  export type OutletUserRoleUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    DiagnosticChildUserId?: StringFieldUpdateOperationsInput | string
+    OutletChildUserId?: StringFieldUpdateOperationsInput | string
     roleId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -13892,9 +13986,16 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type DiagnosticAccountNullableScalarRelationFilter = {
-    is?: DiagnosticAccountWhereInput | null
-    isNot?: DiagnosticAccountWhereInput | null
+  export type EnumPatientStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.PatientStatus | EnumPatientStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.PatientStatus[]
+    notIn?: $Enums.PatientStatus[]
+    not?: NestedEnumPatientStatusFilter<$PrismaModel> | $Enums.PatientStatus
+  }
+
+  export type OutletNullableScalarRelationFilter = {
+    is?: outletWhereInput | null
+    isNot?: outletWhereInput | null
   }
 
   export type PatientOrderByRelevanceInput = {
@@ -13905,17 +14006,20 @@ export namespace Prisma {
 
   export type PatientCountOrderByAggregateInput = {
     id?: SortOrder
+    referenceName?: SortOrder
     fullName?: SortOrder
     mobileNumber?: SortOrder
-    otp?: SortOrder
-    otpExpiresAt?: SortOrder
     email?: SortOrder
     dateOfBirth?: SortOrder
     age?: SortOrder
     bloodGroup?: SortOrder
     gender?: SortOrder
     address?: SortOrder
-    diagnosticAccountId?: SortOrder
+    emergencyContact?: SortOrder
+    status?: SortOrder
+    otp?: SortOrder
+    otpExpiresAt?: SortOrder
+    outletId?: SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -13927,17 +14031,20 @@ export namespace Prisma {
 
   export type PatientMaxOrderByAggregateInput = {
     id?: SortOrder
+    referenceName?: SortOrder
     fullName?: SortOrder
     mobileNumber?: SortOrder
-    otp?: SortOrder
-    otpExpiresAt?: SortOrder
     email?: SortOrder
     dateOfBirth?: SortOrder
     age?: SortOrder
     bloodGroup?: SortOrder
     gender?: SortOrder
     address?: SortOrder
-    diagnosticAccountId?: SortOrder
+    emergencyContact?: SortOrder
+    status?: SortOrder
+    otp?: SortOrder
+    otpExpiresAt?: SortOrder
+    outletId?: SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -13945,17 +14052,20 @@ export namespace Prisma {
 
   export type PatientMinOrderByAggregateInput = {
     id?: SortOrder
+    referenceName?: SortOrder
     fullName?: SortOrder
     mobileNumber?: SortOrder
-    otp?: SortOrder
-    otpExpiresAt?: SortOrder
     email?: SortOrder
     dateOfBirth?: SortOrder
     age?: SortOrder
     bloodGroup?: SortOrder
     gender?: SortOrder
     address?: SortOrder
-    diagnosticAccountId?: SortOrder
+    emergencyContact?: SortOrder
+    status?: SortOrder
+    otp?: SortOrder
+    otpExpiresAt?: SortOrder
+    outletId?: SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -13993,6 +14103,16 @@ export namespace Prisma {
     _sum?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedIntNullableFilter<$PrismaModel>
     _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type EnumPatientStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.PatientStatus | EnumPatientStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.PatientStatus[]
+    notIn?: $Enums.PatientStatus[]
+    not?: NestedEnumPatientStatusWithAggregatesFilter<$PrismaModel> | $Enums.PatientStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumPatientStatusFilter<$PrismaModel>
+    _max?: NestedEnumPatientStatusFilter<$PrismaModel>
   }
 
   export type DecimalNullableFilter<$PrismaModel = never> = {
@@ -14083,10 +14203,10 @@ export namespace Prisma {
     _max?: NestedDecimalNullableFilter<$PrismaModel>
   }
 
-  export type DiagnosticChildUserListRelationFilter = {
-    every?: DiagnosticChildUserWhereInput
-    some?: DiagnosticChildUserWhereInput
-    none?: DiagnosticChildUserWhereInput
+  export type OutletChildUserListRelationFilter = {
+    every?: OutletChildUserWhereInput
+    some?: OutletChildUserWhereInput
+    none?: OutletChildUserWhereInput
   }
 
   export type PatientListRelationFilter = {
@@ -14095,7 +14215,7 @@ export namespace Prisma {
     none?: PatientWhereInput
   }
 
-  export type DiagnosticChildUserOrderByRelationAggregateInput = {
+  export type OutletChildUserOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -14103,13 +14223,13 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type DiagnosticAccountOrderByRelevanceInput = {
-    fields: DiagnosticAccountOrderByRelevanceFieldEnum | DiagnosticAccountOrderByRelevanceFieldEnum[]
+  export type outletOrderByRelevanceInput = {
+    fields: outletOrderByRelevanceFieldEnum | outletOrderByRelevanceFieldEnum[]
     sort: SortOrder
     search: string
   }
 
-  export type DiagnosticAccountCountOrderByAggregateInput = {
+  export type outletCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrder
@@ -14124,7 +14244,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type DiagnosticAccountMaxOrderByAggregateInput = {
+  export type outletMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrder
@@ -14139,7 +14259,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type DiagnosticAccountMinOrderByAggregateInput = {
+  export type outletMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrder
@@ -14154,35 +14274,35 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type DiagnosticAccountScalarRelationFilter = {
-    is?: DiagnosticAccountWhereInput
-    isNot?: DiagnosticAccountWhereInput
+  export type OutletScalarRelationFilter = {
+    is?: outletWhereInput
+    isNot?: outletWhereInput
   }
 
-  export type DiagnosticUserRoleListRelationFilter = {
-    every?: DiagnosticUserRoleWhereInput
-    some?: DiagnosticUserRoleWhereInput
-    none?: DiagnosticUserRoleWhereInput
+  export type OutletUserRoleListRelationFilter = {
+    every?: OutletUserRoleWhereInput
+    some?: OutletUserRoleWhereInput
+    none?: OutletUserRoleWhereInput
   }
 
-  export type DiagnosticUserRoleOrderByRelationAggregateInput = {
+  export type OutletUserRoleOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
-  export type DiagnosticChildUserOrderByRelevanceInput = {
-    fields: DiagnosticChildUserOrderByRelevanceFieldEnum | DiagnosticChildUserOrderByRelevanceFieldEnum[]
+  export type OutletChildUserOrderByRelevanceInput = {
+    fields: OutletChildUserOrderByRelevanceFieldEnum | OutletChildUserOrderByRelevanceFieldEnum[]
     sort: SortOrder
     search: string
   }
 
-  export type DiagnosticChildUserEmailDiagnosticAccountIdCompoundUniqueInput = {
+  export type OutletChildUserEmailOutletIdCompoundUniqueInput = {
     email: string
-    DiagnosticAccountId: string
+    outletId: string
   }
 
-  export type DiagnosticChildUserCountOrderByAggregateInput = {
+  export type OutletChildUserCountOrderByAggregateInput = {
     id?: SortOrder
-    DiagnosticAccountId?: SortOrder
+    outletId?: SortOrder
     name?: SortOrder
     email?: SortOrder
     phone?: SortOrder
@@ -14192,9 +14312,9 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type DiagnosticChildUserMaxOrderByAggregateInput = {
+  export type OutletChildUserMaxOrderByAggregateInput = {
     id?: SortOrder
-    DiagnosticAccountId?: SortOrder
+    outletId?: SortOrder
     name?: SortOrder
     email?: SortOrder
     phone?: SortOrder
@@ -14204,9 +14324,9 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type DiagnosticChildUserMinOrderByAggregateInput = {
+  export type OutletChildUserMinOrderByAggregateInput = {
     id?: SortOrder
-    DiagnosticAccountId?: SortOrder
+    outletId?: SortOrder
     name?: SortOrder
     email?: SortOrder
     phone?: SortOrder
@@ -14244,9 +14364,9 @@ export namespace Prisma {
     search: string
   }
 
-  export type RoleNameDiagnosticAccountIdCompoundUniqueInput = {
+  export type RoleNameOutletIdCompoundUniqueInput = {
     name: string
-    DiagnosticAccountId: string
+    outletId: string
   }
 
   export type RoleNameSuperAdminIdCompoundUniqueInput = {
@@ -14258,7 +14378,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     ownerType?: SortOrder
-    DiagnosticAccountId?: SortOrder
+    outletId?: SortOrder
     superAdminId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -14268,7 +14388,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     ownerType?: SortOrder
-    DiagnosticAccountId?: SortOrder
+    outletId?: SortOrder
     superAdminId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -14278,7 +14398,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     ownerType?: SortOrder
-    DiagnosticAccountId?: SortOrder
+    outletId?: SortOrder
     superAdminId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -14366,39 +14486,39 @@ export namespace Prisma {
     permissionId?: SortOrder
   }
 
-  export type DiagnosticChildUserScalarRelationFilter = {
-    is?: DiagnosticChildUserWhereInput
-    isNot?: DiagnosticChildUserWhereInput
+  export type OutletChildUserScalarRelationFilter = {
+    is?: OutletChildUserWhereInput
+    isNot?: OutletChildUserWhereInput
   }
 
-  export type DiagnosticUserRoleOrderByRelevanceInput = {
-    fields: DiagnosticUserRoleOrderByRelevanceFieldEnum | DiagnosticUserRoleOrderByRelevanceFieldEnum[]
+  export type OutletUserRoleOrderByRelevanceInput = {
+    fields: OutletUserRoleOrderByRelevanceFieldEnum | OutletUserRoleOrderByRelevanceFieldEnum[]
     sort: SortOrder
     search: string
   }
 
-  export type DiagnosticUserRoleDiagnosticChildUserIdRoleIdCompoundUniqueInput = {
-    DiagnosticChildUserId: string
+  export type OutletUserRoleOutletChildUserIdRoleIdCompoundUniqueInput = {
+    OutletChildUserId: string
     roleId: string
   }
 
-  export type DiagnosticUserRoleCountOrderByAggregateInput = {
+  export type OutletUserRoleCountOrderByAggregateInput = {
     id?: SortOrder
-    DiagnosticChildUserId?: SortOrder
+    OutletChildUserId?: SortOrder
     roleId?: SortOrder
     createdAt?: SortOrder
   }
 
-  export type DiagnosticUserRoleMaxOrderByAggregateInput = {
+  export type OutletUserRoleMaxOrderByAggregateInput = {
     id?: SortOrder
-    DiagnosticChildUserId?: SortOrder
+    OutletChildUserId?: SortOrder
     roleId?: SortOrder
     createdAt?: SortOrder
   }
 
-  export type DiagnosticUserRoleMinOrderByAggregateInput = {
+  export type OutletUserRoleMinOrderByAggregateInput = {
     id?: SortOrder
-    DiagnosticChildUserId?: SortOrder
+    OutletChildUserId?: SortOrder
     roleId?: SortOrder
     createdAt?: SortOrder
   }
@@ -14540,10 +14660,10 @@ export namespace Prisma {
     deleteMany?: SuperAdminUserRoleScalarWhereInput | SuperAdminUserRoleScalarWhereInput[]
   }
 
-  export type DiagnosticAccountCreateNestedOneWithoutPatientsInput = {
-    create?: XOR<DiagnosticAccountCreateWithoutPatientsInput, DiagnosticAccountUncheckedCreateWithoutPatientsInput>
-    connectOrCreate?: DiagnosticAccountCreateOrConnectWithoutPatientsInput
-    connect?: DiagnosticAccountWhereUniqueInput
+  export type outletCreateNestedOneWithoutPatientsInput = {
+    create?: XOR<outletCreateWithoutPatientsInput, outletUncheckedCreateWithoutPatientsInput>
+    connectOrCreate?: outletCreateOrConnectWithoutPatientsInput
+    connect?: outletWhereUniqueInput
   }
 
   export type NullableDateTimeFieldUpdateOperationsInput = {
@@ -14558,14 +14678,18 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type DiagnosticAccountUpdateOneWithoutPatientsNestedInput = {
-    create?: XOR<DiagnosticAccountCreateWithoutPatientsInput, DiagnosticAccountUncheckedCreateWithoutPatientsInput>
-    connectOrCreate?: DiagnosticAccountCreateOrConnectWithoutPatientsInput
-    upsert?: DiagnosticAccountUpsertWithoutPatientsInput
-    disconnect?: DiagnosticAccountWhereInput | boolean
-    delete?: DiagnosticAccountWhereInput | boolean
-    connect?: DiagnosticAccountWhereUniqueInput
-    update?: XOR<XOR<DiagnosticAccountUpdateToOneWithWhereWithoutPatientsInput, DiagnosticAccountUpdateWithoutPatientsInput>, DiagnosticAccountUncheckedUpdateWithoutPatientsInput>
+  export type EnumPatientStatusFieldUpdateOperationsInput = {
+    set?: $Enums.PatientStatus
+  }
+
+  export type outletUpdateOneWithoutPatientsNestedInput = {
+    create?: XOR<outletCreateWithoutPatientsInput, outletUncheckedCreateWithoutPatientsInput>
+    connectOrCreate?: outletCreateOrConnectWithoutPatientsInput
+    upsert?: outletUpsertWithoutPatientsInput
+    disconnect?: outletWhereInput | boolean
+    delete?: outletWhereInput | boolean
+    connect?: outletWhereUniqueInput
+    update?: XOR<XOR<outletUpdateToOneWithWhereWithoutPatientsInput, outletUpdateWithoutPatientsInput>, outletUncheckedUpdateWithoutPatientsInput>
   }
 
   export type NullableDecimalFieldUpdateOperationsInput = {
@@ -14576,192 +14700,192 @@ export namespace Prisma {
     divide?: Decimal | DecimalJsLike | number | string
   }
 
-  export type DiagnosticChildUserCreateNestedManyWithoutDiagnosticAccountInput = {
-    create?: XOR<DiagnosticChildUserCreateWithoutDiagnosticAccountInput, DiagnosticChildUserUncheckedCreateWithoutDiagnosticAccountInput> | DiagnosticChildUserCreateWithoutDiagnosticAccountInput[] | DiagnosticChildUserUncheckedCreateWithoutDiagnosticAccountInput[]
-    connectOrCreate?: DiagnosticChildUserCreateOrConnectWithoutDiagnosticAccountInput | DiagnosticChildUserCreateOrConnectWithoutDiagnosticAccountInput[]
-    createMany?: DiagnosticChildUserCreateManyDiagnosticAccountInputEnvelope
-    connect?: DiagnosticChildUserWhereUniqueInput | DiagnosticChildUserWhereUniqueInput[]
+  export type OutletChildUserCreateNestedManyWithoutOutletInput = {
+    create?: XOR<OutletChildUserCreateWithoutOutletInput, OutletChildUserUncheckedCreateWithoutOutletInput> | OutletChildUserCreateWithoutOutletInput[] | OutletChildUserUncheckedCreateWithoutOutletInput[]
+    connectOrCreate?: OutletChildUserCreateOrConnectWithoutOutletInput | OutletChildUserCreateOrConnectWithoutOutletInput[]
+    createMany?: OutletChildUserCreateManyOutletInputEnvelope
+    connect?: OutletChildUserWhereUniqueInput | OutletChildUserWhereUniqueInput[]
   }
 
-  export type RoleCreateNestedManyWithoutDiagnosticAccountInput = {
-    create?: XOR<RoleCreateWithoutDiagnosticAccountInput, RoleUncheckedCreateWithoutDiagnosticAccountInput> | RoleCreateWithoutDiagnosticAccountInput[] | RoleUncheckedCreateWithoutDiagnosticAccountInput[]
-    connectOrCreate?: RoleCreateOrConnectWithoutDiagnosticAccountInput | RoleCreateOrConnectWithoutDiagnosticAccountInput[]
-    createMany?: RoleCreateManyDiagnosticAccountInputEnvelope
+  export type RoleCreateNestedManyWithoutOutletInput = {
+    create?: XOR<RoleCreateWithoutOutletInput, RoleUncheckedCreateWithoutOutletInput> | RoleCreateWithoutOutletInput[] | RoleUncheckedCreateWithoutOutletInput[]
+    connectOrCreate?: RoleCreateOrConnectWithoutOutletInput | RoleCreateOrConnectWithoutOutletInput[]
+    createMany?: RoleCreateManyOutletInputEnvelope
     connect?: RoleWhereUniqueInput | RoleWhereUniqueInput[]
   }
 
-  export type PatientCreateNestedManyWithoutDiagnosticAccountInput = {
-    create?: XOR<PatientCreateWithoutDiagnosticAccountInput, PatientUncheckedCreateWithoutDiagnosticAccountInput> | PatientCreateWithoutDiagnosticAccountInput[] | PatientUncheckedCreateWithoutDiagnosticAccountInput[]
-    connectOrCreate?: PatientCreateOrConnectWithoutDiagnosticAccountInput | PatientCreateOrConnectWithoutDiagnosticAccountInput[]
-    createMany?: PatientCreateManyDiagnosticAccountInputEnvelope
+  export type PatientCreateNestedManyWithoutOutletInput = {
+    create?: XOR<PatientCreateWithoutOutletInput, PatientUncheckedCreateWithoutOutletInput> | PatientCreateWithoutOutletInput[] | PatientUncheckedCreateWithoutOutletInput[]
+    connectOrCreate?: PatientCreateOrConnectWithoutOutletInput | PatientCreateOrConnectWithoutOutletInput[]
+    createMany?: PatientCreateManyOutletInputEnvelope
     connect?: PatientWhereUniqueInput | PatientWhereUniqueInput[]
   }
 
-  export type DiagnosticChildUserUncheckedCreateNestedManyWithoutDiagnosticAccountInput = {
-    create?: XOR<DiagnosticChildUserCreateWithoutDiagnosticAccountInput, DiagnosticChildUserUncheckedCreateWithoutDiagnosticAccountInput> | DiagnosticChildUserCreateWithoutDiagnosticAccountInput[] | DiagnosticChildUserUncheckedCreateWithoutDiagnosticAccountInput[]
-    connectOrCreate?: DiagnosticChildUserCreateOrConnectWithoutDiagnosticAccountInput | DiagnosticChildUserCreateOrConnectWithoutDiagnosticAccountInput[]
-    createMany?: DiagnosticChildUserCreateManyDiagnosticAccountInputEnvelope
-    connect?: DiagnosticChildUserWhereUniqueInput | DiagnosticChildUserWhereUniqueInput[]
+  export type OutletChildUserUncheckedCreateNestedManyWithoutOutletInput = {
+    create?: XOR<OutletChildUserCreateWithoutOutletInput, OutletChildUserUncheckedCreateWithoutOutletInput> | OutletChildUserCreateWithoutOutletInput[] | OutletChildUserUncheckedCreateWithoutOutletInput[]
+    connectOrCreate?: OutletChildUserCreateOrConnectWithoutOutletInput | OutletChildUserCreateOrConnectWithoutOutletInput[]
+    createMany?: OutletChildUserCreateManyOutletInputEnvelope
+    connect?: OutletChildUserWhereUniqueInput | OutletChildUserWhereUniqueInput[]
   }
 
-  export type RoleUncheckedCreateNestedManyWithoutDiagnosticAccountInput = {
-    create?: XOR<RoleCreateWithoutDiagnosticAccountInput, RoleUncheckedCreateWithoutDiagnosticAccountInput> | RoleCreateWithoutDiagnosticAccountInput[] | RoleUncheckedCreateWithoutDiagnosticAccountInput[]
-    connectOrCreate?: RoleCreateOrConnectWithoutDiagnosticAccountInput | RoleCreateOrConnectWithoutDiagnosticAccountInput[]
-    createMany?: RoleCreateManyDiagnosticAccountInputEnvelope
+  export type RoleUncheckedCreateNestedManyWithoutOutletInput = {
+    create?: XOR<RoleCreateWithoutOutletInput, RoleUncheckedCreateWithoutOutletInput> | RoleCreateWithoutOutletInput[] | RoleUncheckedCreateWithoutOutletInput[]
+    connectOrCreate?: RoleCreateOrConnectWithoutOutletInput | RoleCreateOrConnectWithoutOutletInput[]
+    createMany?: RoleCreateManyOutletInputEnvelope
     connect?: RoleWhereUniqueInput | RoleWhereUniqueInput[]
   }
 
-  export type PatientUncheckedCreateNestedManyWithoutDiagnosticAccountInput = {
-    create?: XOR<PatientCreateWithoutDiagnosticAccountInput, PatientUncheckedCreateWithoutDiagnosticAccountInput> | PatientCreateWithoutDiagnosticAccountInput[] | PatientUncheckedCreateWithoutDiagnosticAccountInput[]
-    connectOrCreate?: PatientCreateOrConnectWithoutDiagnosticAccountInput | PatientCreateOrConnectWithoutDiagnosticAccountInput[]
-    createMany?: PatientCreateManyDiagnosticAccountInputEnvelope
+  export type PatientUncheckedCreateNestedManyWithoutOutletInput = {
+    create?: XOR<PatientCreateWithoutOutletInput, PatientUncheckedCreateWithoutOutletInput> | PatientCreateWithoutOutletInput[] | PatientUncheckedCreateWithoutOutletInput[]
+    connectOrCreate?: PatientCreateOrConnectWithoutOutletInput | PatientCreateOrConnectWithoutOutletInput[]
+    createMany?: PatientCreateManyOutletInputEnvelope
     connect?: PatientWhereUniqueInput | PatientWhereUniqueInput[]
   }
 
-  export type DiagnosticChildUserUpdateManyWithoutDiagnosticAccountNestedInput = {
-    create?: XOR<DiagnosticChildUserCreateWithoutDiagnosticAccountInput, DiagnosticChildUserUncheckedCreateWithoutDiagnosticAccountInput> | DiagnosticChildUserCreateWithoutDiagnosticAccountInput[] | DiagnosticChildUserUncheckedCreateWithoutDiagnosticAccountInput[]
-    connectOrCreate?: DiagnosticChildUserCreateOrConnectWithoutDiagnosticAccountInput | DiagnosticChildUserCreateOrConnectWithoutDiagnosticAccountInput[]
-    upsert?: DiagnosticChildUserUpsertWithWhereUniqueWithoutDiagnosticAccountInput | DiagnosticChildUserUpsertWithWhereUniqueWithoutDiagnosticAccountInput[]
-    createMany?: DiagnosticChildUserCreateManyDiagnosticAccountInputEnvelope
-    set?: DiagnosticChildUserWhereUniqueInput | DiagnosticChildUserWhereUniqueInput[]
-    disconnect?: DiagnosticChildUserWhereUniqueInput | DiagnosticChildUserWhereUniqueInput[]
-    delete?: DiagnosticChildUserWhereUniqueInput | DiagnosticChildUserWhereUniqueInput[]
-    connect?: DiagnosticChildUserWhereUniqueInput | DiagnosticChildUserWhereUniqueInput[]
-    update?: DiagnosticChildUserUpdateWithWhereUniqueWithoutDiagnosticAccountInput | DiagnosticChildUserUpdateWithWhereUniqueWithoutDiagnosticAccountInput[]
-    updateMany?: DiagnosticChildUserUpdateManyWithWhereWithoutDiagnosticAccountInput | DiagnosticChildUserUpdateManyWithWhereWithoutDiagnosticAccountInput[]
-    deleteMany?: DiagnosticChildUserScalarWhereInput | DiagnosticChildUserScalarWhereInput[]
+  export type OutletChildUserUpdateManyWithoutOutletNestedInput = {
+    create?: XOR<OutletChildUserCreateWithoutOutletInput, OutletChildUserUncheckedCreateWithoutOutletInput> | OutletChildUserCreateWithoutOutletInput[] | OutletChildUserUncheckedCreateWithoutOutletInput[]
+    connectOrCreate?: OutletChildUserCreateOrConnectWithoutOutletInput | OutletChildUserCreateOrConnectWithoutOutletInput[]
+    upsert?: OutletChildUserUpsertWithWhereUniqueWithoutOutletInput | OutletChildUserUpsertWithWhereUniqueWithoutOutletInput[]
+    createMany?: OutletChildUserCreateManyOutletInputEnvelope
+    set?: OutletChildUserWhereUniqueInput | OutletChildUserWhereUniqueInput[]
+    disconnect?: OutletChildUserWhereUniqueInput | OutletChildUserWhereUniqueInput[]
+    delete?: OutletChildUserWhereUniqueInput | OutletChildUserWhereUniqueInput[]
+    connect?: OutletChildUserWhereUniqueInput | OutletChildUserWhereUniqueInput[]
+    update?: OutletChildUserUpdateWithWhereUniqueWithoutOutletInput | OutletChildUserUpdateWithWhereUniqueWithoutOutletInput[]
+    updateMany?: OutletChildUserUpdateManyWithWhereWithoutOutletInput | OutletChildUserUpdateManyWithWhereWithoutOutletInput[]
+    deleteMany?: OutletChildUserScalarWhereInput | OutletChildUserScalarWhereInput[]
   }
 
-  export type RoleUpdateManyWithoutDiagnosticAccountNestedInput = {
-    create?: XOR<RoleCreateWithoutDiagnosticAccountInput, RoleUncheckedCreateWithoutDiagnosticAccountInput> | RoleCreateWithoutDiagnosticAccountInput[] | RoleUncheckedCreateWithoutDiagnosticAccountInput[]
-    connectOrCreate?: RoleCreateOrConnectWithoutDiagnosticAccountInput | RoleCreateOrConnectWithoutDiagnosticAccountInput[]
-    upsert?: RoleUpsertWithWhereUniqueWithoutDiagnosticAccountInput | RoleUpsertWithWhereUniqueWithoutDiagnosticAccountInput[]
-    createMany?: RoleCreateManyDiagnosticAccountInputEnvelope
+  export type RoleUpdateManyWithoutOutletNestedInput = {
+    create?: XOR<RoleCreateWithoutOutletInput, RoleUncheckedCreateWithoutOutletInput> | RoleCreateWithoutOutletInput[] | RoleUncheckedCreateWithoutOutletInput[]
+    connectOrCreate?: RoleCreateOrConnectWithoutOutletInput | RoleCreateOrConnectWithoutOutletInput[]
+    upsert?: RoleUpsertWithWhereUniqueWithoutOutletInput | RoleUpsertWithWhereUniqueWithoutOutletInput[]
+    createMany?: RoleCreateManyOutletInputEnvelope
     set?: RoleWhereUniqueInput | RoleWhereUniqueInput[]
     disconnect?: RoleWhereUniqueInput | RoleWhereUniqueInput[]
     delete?: RoleWhereUniqueInput | RoleWhereUniqueInput[]
     connect?: RoleWhereUniqueInput | RoleWhereUniqueInput[]
-    update?: RoleUpdateWithWhereUniqueWithoutDiagnosticAccountInput | RoleUpdateWithWhereUniqueWithoutDiagnosticAccountInput[]
-    updateMany?: RoleUpdateManyWithWhereWithoutDiagnosticAccountInput | RoleUpdateManyWithWhereWithoutDiagnosticAccountInput[]
+    update?: RoleUpdateWithWhereUniqueWithoutOutletInput | RoleUpdateWithWhereUniqueWithoutOutletInput[]
+    updateMany?: RoleUpdateManyWithWhereWithoutOutletInput | RoleUpdateManyWithWhereWithoutOutletInput[]
     deleteMany?: RoleScalarWhereInput | RoleScalarWhereInput[]
   }
 
-  export type PatientUpdateManyWithoutDiagnosticAccountNestedInput = {
-    create?: XOR<PatientCreateWithoutDiagnosticAccountInput, PatientUncheckedCreateWithoutDiagnosticAccountInput> | PatientCreateWithoutDiagnosticAccountInput[] | PatientUncheckedCreateWithoutDiagnosticAccountInput[]
-    connectOrCreate?: PatientCreateOrConnectWithoutDiagnosticAccountInput | PatientCreateOrConnectWithoutDiagnosticAccountInput[]
-    upsert?: PatientUpsertWithWhereUniqueWithoutDiagnosticAccountInput | PatientUpsertWithWhereUniqueWithoutDiagnosticAccountInput[]
-    createMany?: PatientCreateManyDiagnosticAccountInputEnvelope
+  export type PatientUpdateManyWithoutOutletNestedInput = {
+    create?: XOR<PatientCreateWithoutOutletInput, PatientUncheckedCreateWithoutOutletInput> | PatientCreateWithoutOutletInput[] | PatientUncheckedCreateWithoutOutletInput[]
+    connectOrCreate?: PatientCreateOrConnectWithoutOutletInput | PatientCreateOrConnectWithoutOutletInput[]
+    upsert?: PatientUpsertWithWhereUniqueWithoutOutletInput | PatientUpsertWithWhereUniqueWithoutOutletInput[]
+    createMany?: PatientCreateManyOutletInputEnvelope
     set?: PatientWhereUniqueInput | PatientWhereUniqueInput[]
     disconnect?: PatientWhereUniqueInput | PatientWhereUniqueInput[]
     delete?: PatientWhereUniqueInput | PatientWhereUniqueInput[]
     connect?: PatientWhereUniqueInput | PatientWhereUniqueInput[]
-    update?: PatientUpdateWithWhereUniqueWithoutDiagnosticAccountInput | PatientUpdateWithWhereUniqueWithoutDiagnosticAccountInput[]
-    updateMany?: PatientUpdateManyWithWhereWithoutDiagnosticAccountInput | PatientUpdateManyWithWhereWithoutDiagnosticAccountInput[]
+    update?: PatientUpdateWithWhereUniqueWithoutOutletInput | PatientUpdateWithWhereUniqueWithoutOutletInput[]
+    updateMany?: PatientUpdateManyWithWhereWithoutOutletInput | PatientUpdateManyWithWhereWithoutOutletInput[]
     deleteMany?: PatientScalarWhereInput | PatientScalarWhereInput[]
   }
 
-  export type DiagnosticChildUserUncheckedUpdateManyWithoutDiagnosticAccountNestedInput = {
-    create?: XOR<DiagnosticChildUserCreateWithoutDiagnosticAccountInput, DiagnosticChildUserUncheckedCreateWithoutDiagnosticAccountInput> | DiagnosticChildUserCreateWithoutDiagnosticAccountInput[] | DiagnosticChildUserUncheckedCreateWithoutDiagnosticAccountInput[]
-    connectOrCreate?: DiagnosticChildUserCreateOrConnectWithoutDiagnosticAccountInput | DiagnosticChildUserCreateOrConnectWithoutDiagnosticAccountInput[]
-    upsert?: DiagnosticChildUserUpsertWithWhereUniqueWithoutDiagnosticAccountInput | DiagnosticChildUserUpsertWithWhereUniqueWithoutDiagnosticAccountInput[]
-    createMany?: DiagnosticChildUserCreateManyDiagnosticAccountInputEnvelope
-    set?: DiagnosticChildUserWhereUniqueInput | DiagnosticChildUserWhereUniqueInput[]
-    disconnect?: DiagnosticChildUserWhereUniqueInput | DiagnosticChildUserWhereUniqueInput[]
-    delete?: DiagnosticChildUserWhereUniqueInput | DiagnosticChildUserWhereUniqueInput[]
-    connect?: DiagnosticChildUserWhereUniqueInput | DiagnosticChildUserWhereUniqueInput[]
-    update?: DiagnosticChildUserUpdateWithWhereUniqueWithoutDiagnosticAccountInput | DiagnosticChildUserUpdateWithWhereUniqueWithoutDiagnosticAccountInput[]
-    updateMany?: DiagnosticChildUserUpdateManyWithWhereWithoutDiagnosticAccountInput | DiagnosticChildUserUpdateManyWithWhereWithoutDiagnosticAccountInput[]
-    deleteMany?: DiagnosticChildUserScalarWhereInput | DiagnosticChildUserScalarWhereInput[]
+  export type OutletChildUserUncheckedUpdateManyWithoutOutletNestedInput = {
+    create?: XOR<OutletChildUserCreateWithoutOutletInput, OutletChildUserUncheckedCreateWithoutOutletInput> | OutletChildUserCreateWithoutOutletInput[] | OutletChildUserUncheckedCreateWithoutOutletInput[]
+    connectOrCreate?: OutletChildUserCreateOrConnectWithoutOutletInput | OutletChildUserCreateOrConnectWithoutOutletInput[]
+    upsert?: OutletChildUserUpsertWithWhereUniqueWithoutOutletInput | OutletChildUserUpsertWithWhereUniqueWithoutOutletInput[]
+    createMany?: OutletChildUserCreateManyOutletInputEnvelope
+    set?: OutletChildUserWhereUniqueInput | OutletChildUserWhereUniqueInput[]
+    disconnect?: OutletChildUserWhereUniqueInput | OutletChildUserWhereUniqueInput[]
+    delete?: OutletChildUserWhereUniqueInput | OutletChildUserWhereUniqueInput[]
+    connect?: OutletChildUserWhereUniqueInput | OutletChildUserWhereUniqueInput[]
+    update?: OutletChildUserUpdateWithWhereUniqueWithoutOutletInput | OutletChildUserUpdateWithWhereUniqueWithoutOutletInput[]
+    updateMany?: OutletChildUserUpdateManyWithWhereWithoutOutletInput | OutletChildUserUpdateManyWithWhereWithoutOutletInput[]
+    deleteMany?: OutletChildUserScalarWhereInput | OutletChildUserScalarWhereInput[]
   }
 
-  export type RoleUncheckedUpdateManyWithoutDiagnosticAccountNestedInput = {
-    create?: XOR<RoleCreateWithoutDiagnosticAccountInput, RoleUncheckedCreateWithoutDiagnosticAccountInput> | RoleCreateWithoutDiagnosticAccountInput[] | RoleUncheckedCreateWithoutDiagnosticAccountInput[]
-    connectOrCreate?: RoleCreateOrConnectWithoutDiagnosticAccountInput | RoleCreateOrConnectWithoutDiagnosticAccountInput[]
-    upsert?: RoleUpsertWithWhereUniqueWithoutDiagnosticAccountInput | RoleUpsertWithWhereUniqueWithoutDiagnosticAccountInput[]
-    createMany?: RoleCreateManyDiagnosticAccountInputEnvelope
+  export type RoleUncheckedUpdateManyWithoutOutletNestedInput = {
+    create?: XOR<RoleCreateWithoutOutletInput, RoleUncheckedCreateWithoutOutletInput> | RoleCreateWithoutOutletInput[] | RoleUncheckedCreateWithoutOutletInput[]
+    connectOrCreate?: RoleCreateOrConnectWithoutOutletInput | RoleCreateOrConnectWithoutOutletInput[]
+    upsert?: RoleUpsertWithWhereUniqueWithoutOutletInput | RoleUpsertWithWhereUniqueWithoutOutletInput[]
+    createMany?: RoleCreateManyOutletInputEnvelope
     set?: RoleWhereUniqueInput | RoleWhereUniqueInput[]
     disconnect?: RoleWhereUniqueInput | RoleWhereUniqueInput[]
     delete?: RoleWhereUniqueInput | RoleWhereUniqueInput[]
     connect?: RoleWhereUniqueInput | RoleWhereUniqueInput[]
-    update?: RoleUpdateWithWhereUniqueWithoutDiagnosticAccountInput | RoleUpdateWithWhereUniqueWithoutDiagnosticAccountInput[]
-    updateMany?: RoleUpdateManyWithWhereWithoutDiagnosticAccountInput | RoleUpdateManyWithWhereWithoutDiagnosticAccountInput[]
+    update?: RoleUpdateWithWhereUniqueWithoutOutletInput | RoleUpdateWithWhereUniqueWithoutOutletInput[]
+    updateMany?: RoleUpdateManyWithWhereWithoutOutletInput | RoleUpdateManyWithWhereWithoutOutletInput[]
     deleteMany?: RoleScalarWhereInput | RoleScalarWhereInput[]
   }
 
-  export type PatientUncheckedUpdateManyWithoutDiagnosticAccountNestedInput = {
-    create?: XOR<PatientCreateWithoutDiagnosticAccountInput, PatientUncheckedCreateWithoutDiagnosticAccountInput> | PatientCreateWithoutDiagnosticAccountInput[] | PatientUncheckedCreateWithoutDiagnosticAccountInput[]
-    connectOrCreate?: PatientCreateOrConnectWithoutDiagnosticAccountInput | PatientCreateOrConnectWithoutDiagnosticAccountInput[]
-    upsert?: PatientUpsertWithWhereUniqueWithoutDiagnosticAccountInput | PatientUpsertWithWhereUniqueWithoutDiagnosticAccountInput[]
-    createMany?: PatientCreateManyDiagnosticAccountInputEnvelope
+  export type PatientUncheckedUpdateManyWithoutOutletNestedInput = {
+    create?: XOR<PatientCreateWithoutOutletInput, PatientUncheckedCreateWithoutOutletInput> | PatientCreateWithoutOutletInput[] | PatientUncheckedCreateWithoutOutletInput[]
+    connectOrCreate?: PatientCreateOrConnectWithoutOutletInput | PatientCreateOrConnectWithoutOutletInput[]
+    upsert?: PatientUpsertWithWhereUniqueWithoutOutletInput | PatientUpsertWithWhereUniqueWithoutOutletInput[]
+    createMany?: PatientCreateManyOutletInputEnvelope
     set?: PatientWhereUniqueInput | PatientWhereUniqueInput[]
     disconnect?: PatientWhereUniqueInput | PatientWhereUniqueInput[]
     delete?: PatientWhereUniqueInput | PatientWhereUniqueInput[]
     connect?: PatientWhereUniqueInput | PatientWhereUniqueInput[]
-    update?: PatientUpdateWithWhereUniqueWithoutDiagnosticAccountInput | PatientUpdateWithWhereUniqueWithoutDiagnosticAccountInput[]
-    updateMany?: PatientUpdateManyWithWhereWithoutDiagnosticAccountInput | PatientUpdateManyWithWhereWithoutDiagnosticAccountInput[]
+    update?: PatientUpdateWithWhereUniqueWithoutOutletInput | PatientUpdateWithWhereUniqueWithoutOutletInput[]
+    updateMany?: PatientUpdateManyWithWhereWithoutOutletInput | PatientUpdateManyWithWhereWithoutOutletInput[]
     deleteMany?: PatientScalarWhereInput | PatientScalarWhereInput[]
   }
 
-  export type DiagnosticAccountCreateNestedOneWithoutChildUsersInput = {
-    create?: XOR<DiagnosticAccountCreateWithoutChildUsersInput, DiagnosticAccountUncheckedCreateWithoutChildUsersInput>
-    connectOrCreate?: DiagnosticAccountCreateOrConnectWithoutChildUsersInput
-    connect?: DiagnosticAccountWhereUniqueInput
+  export type outletCreateNestedOneWithoutChildUsersInput = {
+    create?: XOR<outletCreateWithoutChildUsersInput, outletUncheckedCreateWithoutChildUsersInput>
+    connectOrCreate?: outletCreateOrConnectWithoutChildUsersInput
+    connect?: outletWhereUniqueInput
   }
 
-  export type DiagnosticUserRoleCreateNestedManyWithoutDiagnosticChildUserInput = {
-    create?: XOR<DiagnosticUserRoleCreateWithoutDiagnosticChildUserInput, DiagnosticUserRoleUncheckedCreateWithoutDiagnosticChildUserInput> | DiagnosticUserRoleCreateWithoutDiagnosticChildUserInput[] | DiagnosticUserRoleUncheckedCreateWithoutDiagnosticChildUserInput[]
-    connectOrCreate?: DiagnosticUserRoleCreateOrConnectWithoutDiagnosticChildUserInput | DiagnosticUserRoleCreateOrConnectWithoutDiagnosticChildUserInput[]
-    createMany?: DiagnosticUserRoleCreateManyDiagnosticChildUserInputEnvelope
-    connect?: DiagnosticUserRoleWhereUniqueInput | DiagnosticUserRoleWhereUniqueInput[]
+  export type OutletUserRoleCreateNestedManyWithoutOutletChildUserInput = {
+    create?: XOR<OutletUserRoleCreateWithoutOutletChildUserInput, OutletUserRoleUncheckedCreateWithoutOutletChildUserInput> | OutletUserRoleCreateWithoutOutletChildUserInput[] | OutletUserRoleUncheckedCreateWithoutOutletChildUserInput[]
+    connectOrCreate?: OutletUserRoleCreateOrConnectWithoutOutletChildUserInput | OutletUserRoleCreateOrConnectWithoutOutletChildUserInput[]
+    createMany?: OutletUserRoleCreateManyOutletChildUserInputEnvelope
+    connect?: OutletUserRoleWhereUniqueInput | OutletUserRoleWhereUniqueInput[]
   }
 
-  export type DiagnosticUserRoleUncheckedCreateNestedManyWithoutDiagnosticChildUserInput = {
-    create?: XOR<DiagnosticUserRoleCreateWithoutDiagnosticChildUserInput, DiagnosticUserRoleUncheckedCreateWithoutDiagnosticChildUserInput> | DiagnosticUserRoleCreateWithoutDiagnosticChildUserInput[] | DiagnosticUserRoleUncheckedCreateWithoutDiagnosticChildUserInput[]
-    connectOrCreate?: DiagnosticUserRoleCreateOrConnectWithoutDiagnosticChildUserInput | DiagnosticUserRoleCreateOrConnectWithoutDiagnosticChildUserInput[]
-    createMany?: DiagnosticUserRoleCreateManyDiagnosticChildUserInputEnvelope
-    connect?: DiagnosticUserRoleWhereUniqueInput | DiagnosticUserRoleWhereUniqueInput[]
+  export type OutletUserRoleUncheckedCreateNestedManyWithoutOutletChildUserInput = {
+    create?: XOR<OutletUserRoleCreateWithoutOutletChildUserInput, OutletUserRoleUncheckedCreateWithoutOutletChildUserInput> | OutletUserRoleCreateWithoutOutletChildUserInput[] | OutletUserRoleUncheckedCreateWithoutOutletChildUserInput[]
+    connectOrCreate?: OutletUserRoleCreateOrConnectWithoutOutletChildUserInput | OutletUserRoleCreateOrConnectWithoutOutletChildUserInput[]
+    createMany?: OutletUserRoleCreateManyOutletChildUserInputEnvelope
+    connect?: OutletUserRoleWhereUniqueInput | OutletUserRoleWhereUniqueInput[]
   }
 
-  export type DiagnosticAccountUpdateOneRequiredWithoutChildUsersNestedInput = {
-    create?: XOR<DiagnosticAccountCreateWithoutChildUsersInput, DiagnosticAccountUncheckedCreateWithoutChildUsersInput>
-    connectOrCreate?: DiagnosticAccountCreateOrConnectWithoutChildUsersInput
-    upsert?: DiagnosticAccountUpsertWithoutChildUsersInput
-    connect?: DiagnosticAccountWhereUniqueInput
-    update?: XOR<XOR<DiagnosticAccountUpdateToOneWithWhereWithoutChildUsersInput, DiagnosticAccountUpdateWithoutChildUsersInput>, DiagnosticAccountUncheckedUpdateWithoutChildUsersInput>
+  export type outletUpdateOneRequiredWithoutChildUsersNestedInput = {
+    create?: XOR<outletCreateWithoutChildUsersInput, outletUncheckedCreateWithoutChildUsersInput>
+    connectOrCreate?: outletCreateOrConnectWithoutChildUsersInput
+    upsert?: outletUpsertWithoutChildUsersInput
+    connect?: outletWhereUniqueInput
+    update?: XOR<XOR<outletUpdateToOneWithWhereWithoutChildUsersInput, outletUpdateWithoutChildUsersInput>, outletUncheckedUpdateWithoutChildUsersInput>
   }
 
-  export type DiagnosticUserRoleUpdateManyWithoutDiagnosticChildUserNestedInput = {
-    create?: XOR<DiagnosticUserRoleCreateWithoutDiagnosticChildUserInput, DiagnosticUserRoleUncheckedCreateWithoutDiagnosticChildUserInput> | DiagnosticUserRoleCreateWithoutDiagnosticChildUserInput[] | DiagnosticUserRoleUncheckedCreateWithoutDiagnosticChildUserInput[]
-    connectOrCreate?: DiagnosticUserRoleCreateOrConnectWithoutDiagnosticChildUserInput | DiagnosticUserRoleCreateOrConnectWithoutDiagnosticChildUserInput[]
-    upsert?: DiagnosticUserRoleUpsertWithWhereUniqueWithoutDiagnosticChildUserInput | DiagnosticUserRoleUpsertWithWhereUniqueWithoutDiagnosticChildUserInput[]
-    createMany?: DiagnosticUserRoleCreateManyDiagnosticChildUserInputEnvelope
-    set?: DiagnosticUserRoleWhereUniqueInput | DiagnosticUserRoleWhereUniqueInput[]
-    disconnect?: DiagnosticUserRoleWhereUniqueInput | DiagnosticUserRoleWhereUniqueInput[]
-    delete?: DiagnosticUserRoleWhereUniqueInput | DiagnosticUserRoleWhereUniqueInput[]
-    connect?: DiagnosticUserRoleWhereUniqueInput | DiagnosticUserRoleWhereUniqueInput[]
-    update?: DiagnosticUserRoleUpdateWithWhereUniqueWithoutDiagnosticChildUserInput | DiagnosticUserRoleUpdateWithWhereUniqueWithoutDiagnosticChildUserInput[]
-    updateMany?: DiagnosticUserRoleUpdateManyWithWhereWithoutDiagnosticChildUserInput | DiagnosticUserRoleUpdateManyWithWhereWithoutDiagnosticChildUserInput[]
-    deleteMany?: DiagnosticUserRoleScalarWhereInput | DiagnosticUserRoleScalarWhereInput[]
+  export type OutletUserRoleUpdateManyWithoutOutletChildUserNestedInput = {
+    create?: XOR<OutletUserRoleCreateWithoutOutletChildUserInput, OutletUserRoleUncheckedCreateWithoutOutletChildUserInput> | OutletUserRoleCreateWithoutOutletChildUserInput[] | OutletUserRoleUncheckedCreateWithoutOutletChildUserInput[]
+    connectOrCreate?: OutletUserRoleCreateOrConnectWithoutOutletChildUserInput | OutletUserRoleCreateOrConnectWithoutOutletChildUserInput[]
+    upsert?: OutletUserRoleUpsertWithWhereUniqueWithoutOutletChildUserInput | OutletUserRoleUpsertWithWhereUniqueWithoutOutletChildUserInput[]
+    createMany?: OutletUserRoleCreateManyOutletChildUserInputEnvelope
+    set?: OutletUserRoleWhereUniqueInput | OutletUserRoleWhereUniqueInput[]
+    disconnect?: OutletUserRoleWhereUniqueInput | OutletUserRoleWhereUniqueInput[]
+    delete?: OutletUserRoleWhereUniqueInput | OutletUserRoleWhereUniqueInput[]
+    connect?: OutletUserRoleWhereUniqueInput | OutletUserRoleWhereUniqueInput[]
+    update?: OutletUserRoleUpdateWithWhereUniqueWithoutOutletChildUserInput | OutletUserRoleUpdateWithWhereUniqueWithoutOutletChildUserInput[]
+    updateMany?: OutletUserRoleUpdateManyWithWhereWithoutOutletChildUserInput | OutletUserRoleUpdateManyWithWhereWithoutOutletChildUserInput[]
+    deleteMany?: OutletUserRoleScalarWhereInput | OutletUserRoleScalarWhereInput[]
   }
 
-  export type DiagnosticUserRoleUncheckedUpdateManyWithoutDiagnosticChildUserNestedInput = {
-    create?: XOR<DiagnosticUserRoleCreateWithoutDiagnosticChildUserInput, DiagnosticUserRoleUncheckedCreateWithoutDiagnosticChildUserInput> | DiagnosticUserRoleCreateWithoutDiagnosticChildUserInput[] | DiagnosticUserRoleUncheckedCreateWithoutDiagnosticChildUserInput[]
-    connectOrCreate?: DiagnosticUserRoleCreateOrConnectWithoutDiagnosticChildUserInput | DiagnosticUserRoleCreateOrConnectWithoutDiagnosticChildUserInput[]
-    upsert?: DiagnosticUserRoleUpsertWithWhereUniqueWithoutDiagnosticChildUserInput | DiagnosticUserRoleUpsertWithWhereUniqueWithoutDiagnosticChildUserInput[]
-    createMany?: DiagnosticUserRoleCreateManyDiagnosticChildUserInputEnvelope
-    set?: DiagnosticUserRoleWhereUniqueInput | DiagnosticUserRoleWhereUniqueInput[]
-    disconnect?: DiagnosticUserRoleWhereUniqueInput | DiagnosticUserRoleWhereUniqueInput[]
-    delete?: DiagnosticUserRoleWhereUniqueInput | DiagnosticUserRoleWhereUniqueInput[]
-    connect?: DiagnosticUserRoleWhereUniqueInput | DiagnosticUserRoleWhereUniqueInput[]
-    update?: DiagnosticUserRoleUpdateWithWhereUniqueWithoutDiagnosticChildUserInput | DiagnosticUserRoleUpdateWithWhereUniqueWithoutDiagnosticChildUserInput[]
-    updateMany?: DiagnosticUserRoleUpdateManyWithWhereWithoutDiagnosticChildUserInput | DiagnosticUserRoleUpdateManyWithWhereWithoutDiagnosticChildUserInput[]
-    deleteMany?: DiagnosticUserRoleScalarWhereInput | DiagnosticUserRoleScalarWhereInput[]
+  export type OutletUserRoleUncheckedUpdateManyWithoutOutletChildUserNestedInput = {
+    create?: XOR<OutletUserRoleCreateWithoutOutletChildUserInput, OutletUserRoleUncheckedCreateWithoutOutletChildUserInput> | OutletUserRoleCreateWithoutOutletChildUserInput[] | OutletUserRoleUncheckedCreateWithoutOutletChildUserInput[]
+    connectOrCreate?: OutletUserRoleCreateOrConnectWithoutOutletChildUserInput | OutletUserRoleCreateOrConnectWithoutOutletChildUserInput[]
+    upsert?: OutletUserRoleUpsertWithWhereUniqueWithoutOutletChildUserInput | OutletUserRoleUpsertWithWhereUniqueWithoutOutletChildUserInput[]
+    createMany?: OutletUserRoleCreateManyOutletChildUserInputEnvelope
+    set?: OutletUserRoleWhereUniqueInput | OutletUserRoleWhereUniqueInput[]
+    disconnect?: OutletUserRoleWhereUniqueInput | OutletUserRoleWhereUniqueInput[]
+    delete?: OutletUserRoleWhereUniqueInput | OutletUserRoleWhereUniqueInput[]
+    connect?: OutletUserRoleWhereUniqueInput | OutletUserRoleWhereUniqueInput[]
+    update?: OutletUserRoleUpdateWithWhereUniqueWithoutOutletChildUserInput | OutletUserRoleUpdateWithWhereUniqueWithoutOutletChildUserInput[]
+    updateMany?: OutletUserRoleUpdateManyWithWhereWithoutOutletChildUserInput | OutletUserRoleUpdateManyWithWhereWithoutOutletChildUserInput[]
+    deleteMany?: OutletUserRoleScalarWhereInput | OutletUserRoleScalarWhereInput[]
   }
 
-  export type DiagnosticAccountCreateNestedOneWithoutRolesInput = {
-    create?: XOR<DiagnosticAccountCreateWithoutRolesInput, DiagnosticAccountUncheckedCreateWithoutRolesInput>
-    connectOrCreate?: DiagnosticAccountCreateOrConnectWithoutRolesInput
-    connect?: DiagnosticAccountWhereUniqueInput
+  export type outletCreateNestedOneWithoutRolesInput = {
+    create?: XOR<outletCreateWithoutRolesInput, outletUncheckedCreateWithoutRolesInput>
+    connectOrCreate?: outletCreateOrConnectWithoutRolesInput
+    connect?: outletWhereUniqueInput
   }
 
   export type SuperAdminsCreateNestedOneWithoutRolesInput = {
@@ -14777,11 +14901,11 @@ export namespace Prisma {
     connect?: RolePermissionWhereUniqueInput | RolePermissionWhereUniqueInput[]
   }
 
-  export type DiagnosticUserRoleCreateNestedManyWithoutRoleInput = {
-    create?: XOR<DiagnosticUserRoleCreateWithoutRoleInput, DiagnosticUserRoleUncheckedCreateWithoutRoleInput> | DiagnosticUserRoleCreateWithoutRoleInput[] | DiagnosticUserRoleUncheckedCreateWithoutRoleInput[]
-    connectOrCreate?: DiagnosticUserRoleCreateOrConnectWithoutRoleInput | DiagnosticUserRoleCreateOrConnectWithoutRoleInput[]
-    createMany?: DiagnosticUserRoleCreateManyRoleInputEnvelope
-    connect?: DiagnosticUserRoleWhereUniqueInput | DiagnosticUserRoleWhereUniqueInput[]
+  export type OutletUserRoleCreateNestedManyWithoutRoleInput = {
+    create?: XOR<OutletUserRoleCreateWithoutRoleInput, OutletUserRoleUncheckedCreateWithoutRoleInput> | OutletUserRoleCreateWithoutRoleInput[] | OutletUserRoleUncheckedCreateWithoutRoleInput[]
+    connectOrCreate?: OutletUserRoleCreateOrConnectWithoutRoleInput | OutletUserRoleCreateOrConnectWithoutRoleInput[]
+    createMany?: OutletUserRoleCreateManyRoleInputEnvelope
+    connect?: OutletUserRoleWhereUniqueInput | OutletUserRoleWhereUniqueInput[]
   }
 
   export type SuperAdminUserRoleCreateNestedManyWithoutRoleInput = {
@@ -14798,11 +14922,11 @@ export namespace Prisma {
     connect?: RolePermissionWhereUniqueInput | RolePermissionWhereUniqueInput[]
   }
 
-  export type DiagnosticUserRoleUncheckedCreateNestedManyWithoutRoleInput = {
-    create?: XOR<DiagnosticUserRoleCreateWithoutRoleInput, DiagnosticUserRoleUncheckedCreateWithoutRoleInput> | DiagnosticUserRoleCreateWithoutRoleInput[] | DiagnosticUserRoleUncheckedCreateWithoutRoleInput[]
-    connectOrCreate?: DiagnosticUserRoleCreateOrConnectWithoutRoleInput | DiagnosticUserRoleCreateOrConnectWithoutRoleInput[]
-    createMany?: DiagnosticUserRoleCreateManyRoleInputEnvelope
-    connect?: DiagnosticUserRoleWhereUniqueInput | DiagnosticUserRoleWhereUniqueInput[]
+  export type OutletUserRoleUncheckedCreateNestedManyWithoutRoleInput = {
+    create?: XOR<OutletUserRoleCreateWithoutRoleInput, OutletUserRoleUncheckedCreateWithoutRoleInput> | OutletUserRoleCreateWithoutRoleInput[] | OutletUserRoleUncheckedCreateWithoutRoleInput[]
+    connectOrCreate?: OutletUserRoleCreateOrConnectWithoutRoleInput | OutletUserRoleCreateOrConnectWithoutRoleInput[]
+    createMany?: OutletUserRoleCreateManyRoleInputEnvelope
+    connect?: OutletUserRoleWhereUniqueInput | OutletUserRoleWhereUniqueInput[]
   }
 
   export type SuperAdminUserRoleUncheckedCreateNestedManyWithoutRoleInput = {
@@ -14816,14 +14940,14 @@ export namespace Prisma {
     set?: $Enums.RoleOwnerType
   }
 
-  export type DiagnosticAccountUpdateOneWithoutRolesNestedInput = {
-    create?: XOR<DiagnosticAccountCreateWithoutRolesInput, DiagnosticAccountUncheckedCreateWithoutRolesInput>
-    connectOrCreate?: DiagnosticAccountCreateOrConnectWithoutRolesInput
-    upsert?: DiagnosticAccountUpsertWithoutRolesInput
-    disconnect?: DiagnosticAccountWhereInput | boolean
-    delete?: DiagnosticAccountWhereInput | boolean
-    connect?: DiagnosticAccountWhereUniqueInput
-    update?: XOR<XOR<DiagnosticAccountUpdateToOneWithWhereWithoutRolesInput, DiagnosticAccountUpdateWithoutRolesInput>, DiagnosticAccountUncheckedUpdateWithoutRolesInput>
+  export type outletUpdateOneWithoutRolesNestedInput = {
+    create?: XOR<outletCreateWithoutRolesInput, outletUncheckedCreateWithoutRolesInput>
+    connectOrCreate?: outletCreateOrConnectWithoutRolesInput
+    upsert?: outletUpsertWithoutRolesInput
+    disconnect?: outletWhereInput | boolean
+    delete?: outletWhereInput | boolean
+    connect?: outletWhereUniqueInput
+    update?: XOR<XOR<outletUpdateToOneWithWhereWithoutRolesInput, outletUpdateWithoutRolesInput>, outletUncheckedUpdateWithoutRolesInput>
   }
 
   export type SuperAdminsUpdateOneWithoutRolesNestedInput = {
@@ -14850,18 +14974,18 @@ export namespace Prisma {
     deleteMany?: RolePermissionScalarWhereInput | RolePermissionScalarWhereInput[]
   }
 
-  export type DiagnosticUserRoleUpdateManyWithoutRoleNestedInput = {
-    create?: XOR<DiagnosticUserRoleCreateWithoutRoleInput, DiagnosticUserRoleUncheckedCreateWithoutRoleInput> | DiagnosticUserRoleCreateWithoutRoleInput[] | DiagnosticUserRoleUncheckedCreateWithoutRoleInput[]
-    connectOrCreate?: DiagnosticUserRoleCreateOrConnectWithoutRoleInput | DiagnosticUserRoleCreateOrConnectWithoutRoleInput[]
-    upsert?: DiagnosticUserRoleUpsertWithWhereUniqueWithoutRoleInput | DiagnosticUserRoleUpsertWithWhereUniqueWithoutRoleInput[]
-    createMany?: DiagnosticUserRoleCreateManyRoleInputEnvelope
-    set?: DiagnosticUserRoleWhereUniqueInput | DiagnosticUserRoleWhereUniqueInput[]
-    disconnect?: DiagnosticUserRoleWhereUniqueInput | DiagnosticUserRoleWhereUniqueInput[]
-    delete?: DiagnosticUserRoleWhereUniqueInput | DiagnosticUserRoleWhereUniqueInput[]
-    connect?: DiagnosticUserRoleWhereUniqueInput | DiagnosticUserRoleWhereUniqueInput[]
-    update?: DiagnosticUserRoleUpdateWithWhereUniqueWithoutRoleInput | DiagnosticUserRoleUpdateWithWhereUniqueWithoutRoleInput[]
-    updateMany?: DiagnosticUserRoleUpdateManyWithWhereWithoutRoleInput | DiagnosticUserRoleUpdateManyWithWhereWithoutRoleInput[]
-    deleteMany?: DiagnosticUserRoleScalarWhereInput | DiagnosticUserRoleScalarWhereInput[]
+  export type OutletUserRoleUpdateManyWithoutRoleNestedInput = {
+    create?: XOR<OutletUserRoleCreateWithoutRoleInput, OutletUserRoleUncheckedCreateWithoutRoleInput> | OutletUserRoleCreateWithoutRoleInput[] | OutletUserRoleUncheckedCreateWithoutRoleInput[]
+    connectOrCreate?: OutletUserRoleCreateOrConnectWithoutRoleInput | OutletUserRoleCreateOrConnectWithoutRoleInput[]
+    upsert?: OutletUserRoleUpsertWithWhereUniqueWithoutRoleInput | OutletUserRoleUpsertWithWhereUniqueWithoutRoleInput[]
+    createMany?: OutletUserRoleCreateManyRoleInputEnvelope
+    set?: OutletUserRoleWhereUniqueInput | OutletUserRoleWhereUniqueInput[]
+    disconnect?: OutletUserRoleWhereUniqueInput | OutletUserRoleWhereUniqueInput[]
+    delete?: OutletUserRoleWhereUniqueInput | OutletUserRoleWhereUniqueInput[]
+    connect?: OutletUserRoleWhereUniqueInput | OutletUserRoleWhereUniqueInput[]
+    update?: OutletUserRoleUpdateWithWhereUniqueWithoutRoleInput | OutletUserRoleUpdateWithWhereUniqueWithoutRoleInput[]
+    updateMany?: OutletUserRoleUpdateManyWithWhereWithoutRoleInput | OutletUserRoleUpdateManyWithWhereWithoutRoleInput[]
+    deleteMany?: OutletUserRoleScalarWhereInput | OutletUserRoleScalarWhereInput[]
   }
 
   export type SuperAdminUserRoleUpdateManyWithoutRoleNestedInput = {
@@ -14892,18 +15016,18 @@ export namespace Prisma {
     deleteMany?: RolePermissionScalarWhereInput | RolePermissionScalarWhereInput[]
   }
 
-  export type DiagnosticUserRoleUncheckedUpdateManyWithoutRoleNestedInput = {
-    create?: XOR<DiagnosticUserRoleCreateWithoutRoleInput, DiagnosticUserRoleUncheckedCreateWithoutRoleInput> | DiagnosticUserRoleCreateWithoutRoleInput[] | DiagnosticUserRoleUncheckedCreateWithoutRoleInput[]
-    connectOrCreate?: DiagnosticUserRoleCreateOrConnectWithoutRoleInput | DiagnosticUserRoleCreateOrConnectWithoutRoleInput[]
-    upsert?: DiagnosticUserRoleUpsertWithWhereUniqueWithoutRoleInput | DiagnosticUserRoleUpsertWithWhereUniqueWithoutRoleInput[]
-    createMany?: DiagnosticUserRoleCreateManyRoleInputEnvelope
-    set?: DiagnosticUserRoleWhereUniqueInput | DiagnosticUserRoleWhereUniqueInput[]
-    disconnect?: DiagnosticUserRoleWhereUniqueInput | DiagnosticUserRoleWhereUniqueInput[]
-    delete?: DiagnosticUserRoleWhereUniqueInput | DiagnosticUserRoleWhereUniqueInput[]
-    connect?: DiagnosticUserRoleWhereUniqueInput | DiagnosticUserRoleWhereUniqueInput[]
-    update?: DiagnosticUserRoleUpdateWithWhereUniqueWithoutRoleInput | DiagnosticUserRoleUpdateWithWhereUniqueWithoutRoleInput[]
-    updateMany?: DiagnosticUserRoleUpdateManyWithWhereWithoutRoleInput | DiagnosticUserRoleUpdateManyWithWhereWithoutRoleInput[]
-    deleteMany?: DiagnosticUserRoleScalarWhereInput | DiagnosticUserRoleScalarWhereInput[]
+  export type OutletUserRoleUncheckedUpdateManyWithoutRoleNestedInput = {
+    create?: XOR<OutletUserRoleCreateWithoutRoleInput, OutletUserRoleUncheckedCreateWithoutRoleInput> | OutletUserRoleCreateWithoutRoleInput[] | OutletUserRoleUncheckedCreateWithoutRoleInput[]
+    connectOrCreate?: OutletUserRoleCreateOrConnectWithoutRoleInput | OutletUserRoleCreateOrConnectWithoutRoleInput[]
+    upsert?: OutletUserRoleUpsertWithWhereUniqueWithoutRoleInput | OutletUserRoleUpsertWithWhereUniqueWithoutRoleInput[]
+    createMany?: OutletUserRoleCreateManyRoleInputEnvelope
+    set?: OutletUserRoleWhereUniqueInput | OutletUserRoleWhereUniqueInput[]
+    disconnect?: OutletUserRoleWhereUniqueInput | OutletUserRoleWhereUniqueInput[]
+    delete?: OutletUserRoleWhereUniqueInput | OutletUserRoleWhereUniqueInput[]
+    connect?: OutletUserRoleWhereUniqueInput | OutletUserRoleWhereUniqueInput[]
+    update?: OutletUserRoleUpdateWithWhereUniqueWithoutRoleInput | OutletUserRoleUpdateWithWhereUniqueWithoutRoleInput[]
+    updateMany?: OutletUserRoleUpdateManyWithWhereWithoutRoleInput | OutletUserRoleUpdateManyWithWhereWithoutRoleInput[]
+    deleteMany?: OutletUserRoleScalarWhereInput | OutletUserRoleScalarWhereInput[]
   }
 
   export type SuperAdminUserRoleUncheckedUpdateManyWithoutRoleNestedInput = {
@@ -14990,32 +15114,32 @@ export namespace Prisma {
     update?: XOR<XOR<PermissionUpdateToOneWithWhereWithoutRolePermissionsInput, PermissionUpdateWithoutRolePermissionsInput>, PermissionUncheckedUpdateWithoutRolePermissionsInput>
   }
 
-  export type DiagnosticChildUserCreateNestedOneWithoutUserRolesInput = {
-    create?: XOR<DiagnosticChildUserCreateWithoutUserRolesInput, DiagnosticChildUserUncheckedCreateWithoutUserRolesInput>
-    connectOrCreate?: DiagnosticChildUserCreateOrConnectWithoutUserRolesInput
-    connect?: DiagnosticChildUserWhereUniqueInput
+  export type OutletChildUserCreateNestedOneWithoutUserRolesInput = {
+    create?: XOR<OutletChildUserCreateWithoutUserRolesInput, OutletChildUserUncheckedCreateWithoutUserRolesInput>
+    connectOrCreate?: OutletChildUserCreateOrConnectWithoutUserRolesInput
+    connect?: OutletChildUserWhereUniqueInput
   }
 
-  export type RoleCreateNestedOneWithoutDiagnosticUserRolesInput = {
-    create?: XOR<RoleCreateWithoutDiagnosticUserRolesInput, RoleUncheckedCreateWithoutDiagnosticUserRolesInput>
-    connectOrCreate?: RoleCreateOrConnectWithoutDiagnosticUserRolesInput
+  export type RoleCreateNestedOneWithoutOutletUserRolesInput = {
+    create?: XOR<RoleCreateWithoutOutletUserRolesInput, RoleUncheckedCreateWithoutOutletUserRolesInput>
+    connectOrCreate?: RoleCreateOrConnectWithoutOutletUserRolesInput
     connect?: RoleWhereUniqueInput
   }
 
-  export type DiagnosticChildUserUpdateOneRequiredWithoutUserRolesNestedInput = {
-    create?: XOR<DiagnosticChildUserCreateWithoutUserRolesInput, DiagnosticChildUserUncheckedCreateWithoutUserRolesInput>
-    connectOrCreate?: DiagnosticChildUserCreateOrConnectWithoutUserRolesInput
-    upsert?: DiagnosticChildUserUpsertWithoutUserRolesInput
-    connect?: DiagnosticChildUserWhereUniqueInput
-    update?: XOR<XOR<DiagnosticChildUserUpdateToOneWithWhereWithoutUserRolesInput, DiagnosticChildUserUpdateWithoutUserRolesInput>, DiagnosticChildUserUncheckedUpdateWithoutUserRolesInput>
+  export type OutletChildUserUpdateOneRequiredWithoutUserRolesNestedInput = {
+    create?: XOR<OutletChildUserCreateWithoutUserRolesInput, OutletChildUserUncheckedCreateWithoutUserRolesInput>
+    connectOrCreate?: OutletChildUserCreateOrConnectWithoutUserRolesInput
+    upsert?: OutletChildUserUpsertWithoutUserRolesInput
+    connect?: OutletChildUserWhereUniqueInput
+    update?: XOR<XOR<OutletChildUserUpdateToOneWithWhereWithoutUserRolesInput, OutletChildUserUpdateWithoutUserRolesInput>, OutletChildUserUncheckedUpdateWithoutUserRolesInput>
   }
 
-  export type RoleUpdateOneRequiredWithoutDiagnosticUserRolesNestedInput = {
-    create?: XOR<RoleCreateWithoutDiagnosticUserRolesInput, RoleUncheckedCreateWithoutDiagnosticUserRolesInput>
-    connectOrCreate?: RoleCreateOrConnectWithoutDiagnosticUserRolesInput
-    upsert?: RoleUpsertWithoutDiagnosticUserRolesInput
+  export type RoleUpdateOneRequiredWithoutOutletUserRolesNestedInput = {
+    create?: XOR<RoleCreateWithoutOutletUserRolesInput, RoleUncheckedCreateWithoutOutletUserRolesInput>
+    connectOrCreate?: RoleCreateOrConnectWithoutOutletUserRolesInput
+    upsert?: RoleUpsertWithoutOutletUserRolesInput
     connect?: RoleWhereUniqueInput
-    update?: XOR<XOR<RoleUpdateToOneWithWhereWithoutDiagnosticUserRolesInput, RoleUpdateWithoutDiagnosticUserRolesInput>, RoleUncheckedUpdateWithoutDiagnosticUserRolesInput>
+    update?: XOR<XOR<RoleUpdateToOneWithWhereWithoutOutletUserRolesInput, RoleUpdateWithoutOutletUserRolesInput>, RoleUncheckedUpdateWithoutOutletUserRolesInput>
   }
 
   export type SuperAdminsCreateNestedOneWithoutUserRolesInput = {
@@ -15183,6 +15307,13 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
+  export type NestedEnumPatientStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.PatientStatus | EnumPatientStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.PatientStatus[]
+    notIn?: $Enums.PatientStatus[]
+    not?: NestedEnumPatientStatusFilter<$PrismaModel> | $Enums.PatientStatus
+  }
+
   export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | null
@@ -15222,6 +15353,16 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedEnumPatientStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.PatientStatus | EnumPatientStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.PatientStatus[]
+    notIn?: $Enums.PatientStatus[]
+    not?: NestedEnumPatientStatusWithAggregatesFilter<$PrismaModel> | $Enums.PatientStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumPatientStatusFilter<$PrismaModel>
+    _max?: NestedEnumPatientStatusFilter<$PrismaModel>
   }
 
   export type NestedDecimalNullableFilter<$PrismaModel = never> = {
@@ -15274,9 +15415,9 @@ export namespace Prisma {
     ownerType: $Enums.RoleOwnerType
     createdAt?: Date | string
     updatedAt?: Date | string
-    DiagnosticAccount?: DiagnosticAccountCreateNestedOneWithoutRolesInput
+    outlet?: outletCreateNestedOneWithoutRolesInput
     rolePermissions?: RolePermissionCreateNestedManyWithoutRoleInput
-    diagnosticUserRoles?: DiagnosticUserRoleCreateNestedManyWithoutRoleInput
+    OutletUserRoles?: OutletUserRoleCreateNestedManyWithoutRoleInput
     superAdminUserRoles?: SuperAdminUserRoleCreateNestedManyWithoutRoleInput
   }
 
@@ -15284,11 +15425,11 @@ export namespace Prisma {
     id?: string
     name: string
     ownerType: $Enums.RoleOwnerType
-    DiagnosticAccountId?: string | null
+    outletId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     rolePermissions?: RolePermissionUncheckedCreateNestedManyWithoutRoleInput
-    diagnosticUserRoles?: DiagnosticUserRoleUncheckedCreateNestedManyWithoutRoleInput
+    OutletUserRoles?: OutletUserRoleUncheckedCreateNestedManyWithoutRoleInput
     superAdminUserRoles?: SuperAdminUserRoleUncheckedCreateNestedManyWithoutRoleInput
   }
 
@@ -15347,7 +15488,7 @@ export namespace Prisma {
     id?: StringFilter<"Role"> | string
     name?: StringFilter<"Role"> | string
     ownerType?: EnumRoleOwnerTypeFilter<"Role"> | $Enums.RoleOwnerType
-    DiagnosticAccountId?: StringNullableFilter<"Role"> | string | null
+    outletId?: StringNullableFilter<"Role"> | string | null
     superAdminId?: StringNullableFilter<"Role"> | string | null
     createdAt?: DateTimeFilter<"Role"> | Date | string
     updatedAt?: DateTimeFilter<"Role"> | Date | string
@@ -15379,7 +15520,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"SuperAdminUserRole"> | Date | string
   }
 
-  export type DiagnosticAccountCreateWithoutPatientsInput = {
+  export type outletCreateWithoutPatientsInput = {
     id?: string
     name: string
     email: string
@@ -15392,11 +15533,11 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    childUsers?: DiagnosticChildUserCreateNestedManyWithoutDiagnosticAccountInput
-    roles?: RoleCreateNestedManyWithoutDiagnosticAccountInput
+    childUsers?: OutletChildUserCreateNestedManyWithoutOutletInput
+    roles?: RoleCreateNestedManyWithoutOutletInput
   }
 
-  export type DiagnosticAccountUncheckedCreateWithoutPatientsInput = {
+  export type outletUncheckedCreateWithoutPatientsInput = {
     id?: string
     name: string
     email: string
@@ -15409,27 +15550,27 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    childUsers?: DiagnosticChildUserUncheckedCreateNestedManyWithoutDiagnosticAccountInput
-    roles?: RoleUncheckedCreateNestedManyWithoutDiagnosticAccountInput
+    childUsers?: OutletChildUserUncheckedCreateNestedManyWithoutOutletInput
+    roles?: RoleUncheckedCreateNestedManyWithoutOutletInput
   }
 
-  export type DiagnosticAccountCreateOrConnectWithoutPatientsInput = {
-    where: DiagnosticAccountWhereUniqueInput
-    create: XOR<DiagnosticAccountCreateWithoutPatientsInput, DiagnosticAccountUncheckedCreateWithoutPatientsInput>
+  export type outletCreateOrConnectWithoutPatientsInput = {
+    where: outletWhereUniqueInput
+    create: XOR<outletCreateWithoutPatientsInput, outletUncheckedCreateWithoutPatientsInput>
   }
 
-  export type DiagnosticAccountUpsertWithoutPatientsInput = {
-    update: XOR<DiagnosticAccountUpdateWithoutPatientsInput, DiagnosticAccountUncheckedUpdateWithoutPatientsInput>
-    create: XOR<DiagnosticAccountCreateWithoutPatientsInput, DiagnosticAccountUncheckedCreateWithoutPatientsInput>
-    where?: DiagnosticAccountWhereInput
+  export type outletUpsertWithoutPatientsInput = {
+    update: XOR<outletUpdateWithoutPatientsInput, outletUncheckedUpdateWithoutPatientsInput>
+    create: XOR<outletCreateWithoutPatientsInput, outletUncheckedCreateWithoutPatientsInput>
+    where?: outletWhereInput
   }
 
-  export type DiagnosticAccountUpdateToOneWithWhereWithoutPatientsInput = {
-    where?: DiagnosticAccountWhereInput
-    data: XOR<DiagnosticAccountUpdateWithoutPatientsInput, DiagnosticAccountUncheckedUpdateWithoutPatientsInput>
+  export type outletUpdateToOneWithWhereWithoutPatientsInput = {
+    where?: outletWhereInput
+    data: XOR<outletUpdateWithoutPatientsInput, outletUncheckedUpdateWithoutPatientsInput>
   }
 
-  export type DiagnosticAccountUpdateWithoutPatientsInput = {
+  export type outletUpdateWithoutPatientsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -15442,11 +15583,11 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    childUsers?: DiagnosticChildUserUpdateManyWithoutDiagnosticAccountNestedInput
-    roles?: RoleUpdateManyWithoutDiagnosticAccountNestedInput
+    childUsers?: OutletChildUserUpdateManyWithoutOutletNestedInput
+    roles?: RoleUpdateManyWithoutOutletNestedInput
   }
 
-  export type DiagnosticAccountUncheckedUpdateWithoutPatientsInput = {
+  export type outletUncheckedUpdateWithoutPatientsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -15459,11 +15600,11 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    childUsers?: DiagnosticChildUserUncheckedUpdateManyWithoutDiagnosticAccountNestedInput
-    roles?: RoleUncheckedUpdateManyWithoutDiagnosticAccountNestedInput
+    childUsers?: OutletChildUserUncheckedUpdateManyWithoutOutletNestedInput
+    roles?: RoleUncheckedUpdateManyWithoutOutletNestedInput
   }
 
-  export type DiagnosticChildUserCreateWithoutDiagnosticAccountInput = {
+  export type OutletChildUserCreateWithoutOutletInput = {
     id?: string
     name: string
     email: string
@@ -15472,10 +15613,10 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    userRoles?: DiagnosticUserRoleCreateNestedManyWithoutDiagnosticChildUserInput
+    userRoles?: OutletUserRoleCreateNestedManyWithoutOutletChildUserInput
   }
 
-  export type DiagnosticChildUserUncheckedCreateWithoutDiagnosticAccountInput = {
+  export type OutletChildUserUncheckedCreateWithoutOutletInput = {
     id?: string
     name: string
     email: string
@@ -15484,20 +15625,20 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    userRoles?: DiagnosticUserRoleUncheckedCreateNestedManyWithoutDiagnosticChildUserInput
+    userRoles?: OutletUserRoleUncheckedCreateNestedManyWithoutOutletChildUserInput
   }
 
-  export type DiagnosticChildUserCreateOrConnectWithoutDiagnosticAccountInput = {
-    where: DiagnosticChildUserWhereUniqueInput
-    create: XOR<DiagnosticChildUserCreateWithoutDiagnosticAccountInput, DiagnosticChildUserUncheckedCreateWithoutDiagnosticAccountInput>
+  export type OutletChildUserCreateOrConnectWithoutOutletInput = {
+    where: OutletChildUserWhereUniqueInput
+    create: XOR<OutletChildUserCreateWithoutOutletInput, OutletChildUserUncheckedCreateWithoutOutletInput>
   }
 
-  export type DiagnosticChildUserCreateManyDiagnosticAccountInputEnvelope = {
-    data: DiagnosticChildUserCreateManyDiagnosticAccountInput | DiagnosticChildUserCreateManyDiagnosticAccountInput[]
+  export type OutletChildUserCreateManyOutletInputEnvelope = {
+    data: OutletChildUserCreateManyOutletInput | OutletChildUserCreateManyOutletInput[]
     skipDuplicates?: boolean
   }
 
-  export type RoleCreateWithoutDiagnosticAccountInput = {
+  export type RoleCreateWithoutOutletInput = {
     id?: string
     name: string
     ownerType: $Enums.RoleOwnerType
@@ -15505,11 +15646,11 @@ export namespace Prisma {
     updatedAt?: Date | string
     superAdmin?: SuperAdminsCreateNestedOneWithoutRolesInput
     rolePermissions?: RolePermissionCreateNestedManyWithoutRoleInput
-    diagnosticUserRoles?: DiagnosticUserRoleCreateNestedManyWithoutRoleInput
+    OutletUserRoles?: OutletUserRoleCreateNestedManyWithoutRoleInput
     superAdminUserRoles?: SuperAdminUserRoleCreateNestedManyWithoutRoleInput
   }
 
-  export type RoleUncheckedCreateWithoutDiagnosticAccountInput = {
+  export type RoleUncheckedCreateWithoutOutletInput = {
     id?: string
     name: string
     ownerType: $Enums.RoleOwnerType
@@ -15517,125 +15658,131 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     rolePermissions?: RolePermissionUncheckedCreateNestedManyWithoutRoleInput
-    diagnosticUserRoles?: DiagnosticUserRoleUncheckedCreateNestedManyWithoutRoleInput
+    OutletUserRoles?: OutletUserRoleUncheckedCreateNestedManyWithoutRoleInput
     superAdminUserRoles?: SuperAdminUserRoleUncheckedCreateNestedManyWithoutRoleInput
   }
 
-  export type RoleCreateOrConnectWithoutDiagnosticAccountInput = {
+  export type RoleCreateOrConnectWithoutOutletInput = {
     where: RoleWhereUniqueInput
-    create: XOR<RoleCreateWithoutDiagnosticAccountInput, RoleUncheckedCreateWithoutDiagnosticAccountInput>
+    create: XOR<RoleCreateWithoutOutletInput, RoleUncheckedCreateWithoutOutletInput>
   }
 
-  export type RoleCreateManyDiagnosticAccountInputEnvelope = {
-    data: RoleCreateManyDiagnosticAccountInput | RoleCreateManyDiagnosticAccountInput[]
+  export type RoleCreateManyOutletInputEnvelope = {
+    data: RoleCreateManyOutletInput | RoleCreateManyOutletInput[]
     skipDuplicates?: boolean
   }
 
-  export type PatientCreateWithoutDiagnosticAccountInput = {
+  export type PatientCreateWithoutOutletInput = {
     id?: string
+    referenceName?: string | null
     fullName: string
     mobileNumber: string
-    otp?: string | null
-    otpExpiresAt?: Date | string | null
     email?: string | null
     dateOfBirth?: Date | string | null
     age?: number | null
     bloodGroup?: string | null
     gender?: string | null
     address?: string | null
+    emergencyContact?: string | null
+    status?: $Enums.PatientStatus
+    otp?: string | null
+    otpExpiresAt?: Date | string | null
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type PatientUncheckedCreateWithoutDiagnosticAccountInput = {
+  export type PatientUncheckedCreateWithoutOutletInput = {
     id?: string
+    referenceName?: string | null
     fullName: string
     mobileNumber: string
-    otp?: string | null
-    otpExpiresAt?: Date | string | null
     email?: string | null
     dateOfBirth?: Date | string | null
     age?: number | null
     bloodGroup?: string | null
     gender?: string | null
     address?: string | null
+    emergencyContact?: string | null
+    status?: $Enums.PatientStatus
+    otp?: string | null
+    otpExpiresAt?: Date | string | null
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type PatientCreateOrConnectWithoutDiagnosticAccountInput = {
+  export type PatientCreateOrConnectWithoutOutletInput = {
     where: PatientWhereUniqueInput
-    create: XOR<PatientCreateWithoutDiagnosticAccountInput, PatientUncheckedCreateWithoutDiagnosticAccountInput>
+    create: XOR<PatientCreateWithoutOutletInput, PatientUncheckedCreateWithoutOutletInput>
   }
 
-  export type PatientCreateManyDiagnosticAccountInputEnvelope = {
-    data: PatientCreateManyDiagnosticAccountInput | PatientCreateManyDiagnosticAccountInput[]
+  export type PatientCreateManyOutletInputEnvelope = {
+    data: PatientCreateManyOutletInput | PatientCreateManyOutletInput[]
     skipDuplicates?: boolean
   }
 
-  export type DiagnosticChildUserUpsertWithWhereUniqueWithoutDiagnosticAccountInput = {
-    where: DiagnosticChildUserWhereUniqueInput
-    update: XOR<DiagnosticChildUserUpdateWithoutDiagnosticAccountInput, DiagnosticChildUserUncheckedUpdateWithoutDiagnosticAccountInput>
-    create: XOR<DiagnosticChildUserCreateWithoutDiagnosticAccountInput, DiagnosticChildUserUncheckedCreateWithoutDiagnosticAccountInput>
+  export type OutletChildUserUpsertWithWhereUniqueWithoutOutletInput = {
+    where: OutletChildUserWhereUniqueInput
+    update: XOR<OutletChildUserUpdateWithoutOutletInput, OutletChildUserUncheckedUpdateWithoutOutletInput>
+    create: XOR<OutletChildUserCreateWithoutOutletInput, OutletChildUserUncheckedCreateWithoutOutletInput>
   }
 
-  export type DiagnosticChildUserUpdateWithWhereUniqueWithoutDiagnosticAccountInput = {
-    where: DiagnosticChildUserWhereUniqueInput
-    data: XOR<DiagnosticChildUserUpdateWithoutDiagnosticAccountInput, DiagnosticChildUserUncheckedUpdateWithoutDiagnosticAccountInput>
+  export type OutletChildUserUpdateWithWhereUniqueWithoutOutletInput = {
+    where: OutletChildUserWhereUniqueInput
+    data: XOR<OutletChildUserUpdateWithoutOutletInput, OutletChildUserUncheckedUpdateWithoutOutletInput>
   }
 
-  export type DiagnosticChildUserUpdateManyWithWhereWithoutDiagnosticAccountInput = {
-    where: DiagnosticChildUserScalarWhereInput
-    data: XOR<DiagnosticChildUserUpdateManyMutationInput, DiagnosticChildUserUncheckedUpdateManyWithoutDiagnosticAccountInput>
+  export type OutletChildUserUpdateManyWithWhereWithoutOutletInput = {
+    where: OutletChildUserScalarWhereInput
+    data: XOR<OutletChildUserUpdateManyMutationInput, OutletChildUserUncheckedUpdateManyWithoutOutletInput>
   }
 
-  export type DiagnosticChildUserScalarWhereInput = {
-    AND?: DiagnosticChildUserScalarWhereInput | DiagnosticChildUserScalarWhereInput[]
-    OR?: DiagnosticChildUserScalarWhereInput[]
-    NOT?: DiagnosticChildUserScalarWhereInput | DiagnosticChildUserScalarWhereInput[]
-    id?: StringFilter<"DiagnosticChildUser"> | string
-    DiagnosticAccountId?: StringFilter<"DiagnosticChildUser"> | string
-    name?: StringFilter<"DiagnosticChildUser"> | string
-    email?: StringFilter<"DiagnosticChildUser"> | string
-    phone?: StringNullableFilter<"DiagnosticChildUser"> | string | null
-    password?: StringFilter<"DiagnosticChildUser"> | string
-    isActive?: BoolFilter<"DiagnosticChildUser"> | boolean
-    createdAt?: DateTimeFilter<"DiagnosticChildUser"> | Date | string
-    updatedAt?: DateTimeFilter<"DiagnosticChildUser"> | Date | string
+  export type OutletChildUserScalarWhereInput = {
+    AND?: OutletChildUserScalarWhereInput | OutletChildUserScalarWhereInput[]
+    OR?: OutletChildUserScalarWhereInput[]
+    NOT?: OutletChildUserScalarWhereInput | OutletChildUserScalarWhereInput[]
+    id?: StringFilter<"OutletChildUser"> | string
+    outletId?: StringFilter<"OutletChildUser"> | string
+    name?: StringFilter<"OutletChildUser"> | string
+    email?: StringFilter<"OutletChildUser"> | string
+    phone?: StringNullableFilter<"OutletChildUser"> | string | null
+    password?: StringFilter<"OutletChildUser"> | string
+    isActive?: BoolFilter<"OutletChildUser"> | boolean
+    createdAt?: DateTimeFilter<"OutletChildUser"> | Date | string
+    updatedAt?: DateTimeFilter<"OutletChildUser"> | Date | string
   }
 
-  export type RoleUpsertWithWhereUniqueWithoutDiagnosticAccountInput = {
+  export type RoleUpsertWithWhereUniqueWithoutOutletInput = {
     where: RoleWhereUniqueInput
-    update: XOR<RoleUpdateWithoutDiagnosticAccountInput, RoleUncheckedUpdateWithoutDiagnosticAccountInput>
-    create: XOR<RoleCreateWithoutDiagnosticAccountInput, RoleUncheckedCreateWithoutDiagnosticAccountInput>
+    update: XOR<RoleUpdateWithoutOutletInput, RoleUncheckedUpdateWithoutOutletInput>
+    create: XOR<RoleCreateWithoutOutletInput, RoleUncheckedCreateWithoutOutletInput>
   }
 
-  export type RoleUpdateWithWhereUniqueWithoutDiagnosticAccountInput = {
+  export type RoleUpdateWithWhereUniqueWithoutOutletInput = {
     where: RoleWhereUniqueInput
-    data: XOR<RoleUpdateWithoutDiagnosticAccountInput, RoleUncheckedUpdateWithoutDiagnosticAccountInput>
+    data: XOR<RoleUpdateWithoutOutletInput, RoleUncheckedUpdateWithoutOutletInput>
   }
 
-  export type RoleUpdateManyWithWhereWithoutDiagnosticAccountInput = {
+  export type RoleUpdateManyWithWhereWithoutOutletInput = {
     where: RoleScalarWhereInput
-    data: XOR<RoleUpdateManyMutationInput, RoleUncheckedUpdateManyWithoutDiagnosticAccountInput>
+    data: XOR<RoleUpdateManyMutationInput, RoleUncheckedUpdateManyWithoutOutletInput>
   }
 
-  export type PatientUpsertWithWhereUniqueWithoutDiagnosticAccountInput = {
+  export type PatientUpsertWithWhereUniqueWithoutOutletInput = {
     where: PatientWhereUniqueInput
-    update: XOR<PatientUpdateWithoutDiagnosticAccountInput, PatientUncheckedUpdateWithoutDiagnosticAccountInput>
-    create: XOR<PatientCreateWithoutDiagnosticAccountInput, PatientUncheckedCreateWithoutDiagnosticAccountInput>
+    update: XOR<PatientUpdateWithoutOutletInput, PatientUncheckedUpdateWithoutOutletInput>
+    create: XOR<PatientCreateWithoutOutletInput, PatientUncheckedCreateWithoutOutletInput>
   }
 
-  export type PatientUpdateWithWhereUniqueWithoutDiagnosticAccountInput = {
+  export type PatientUpdateWithWhereUniqueWithoutOutletInput = {
     where: PatientWhereUniqueInput
-    data: XOR<PatientUpdateWithoutDiagnosticAccountInput, PatientUncheckedUpdateWithoutDiagnosticAccountInput>
+    data: XOR<PatientUpdateWithoutOutletInput, PatientUncheckedUpdateWithoutOutletInput>
   }
 
-  export type PatientUpdateManyWithWhereWithoutDiagnosticAccountInput = {
+  export type PatientUpdateManyWithWhereWithoutOutletInput = {
     where: PatientScalarWhereInput
-    data: XOR<PatientUpdateManyMutationInput, PatientUncheckedUpdateManyWithoutDiagnosticAccountInput>
+    data: XOR<PatientUpdateManyMutationInput, PatientUncheckedUpdateManyWithoutOutletInput>
   }
 
   export type PatientScalarWhereInput = {
@@ -15643,23 +15790,26 @@ export namespace Prisma {
     OR?: PatientScalarWhereInput[]
     NOT?: PatientScalarWhereInput | PatientScalarWhereInput[]
     id?: StringFilter<"Patient"> | string
+    referenceName?: StringNullableFilter<"Patient"> | string | null
     fullName?: StringFilter<"Patient"> | string
     mobileNumber?: StringFilter<"Patient"> | string
-    otp?: StringNullableFilter<"Patient"> | string | null
-    otpExpiresAt?: DateTimeNullableFilter<"Patient"> | Date | string | null
     email?: StringNullableFilter<"Patient"> | string | null
     dateOfBirth?: DateTimeNullableFilter<"Patient"> | Date | string | null
     age?: IntNullableFilter<"Patient"> | number | null
     bloodGroup?: StringNullableFilter<"Patient"> | string | null
     gender?: StringNullableFilter<"Patient"> | string | null
     address?: StringNullableFilter<"Patient"> | string | null
-    diagnosticAccountId?: StringNullableFilter<"Patient"> | string | null
+    emergencyContact?: StringNullableFilter<"Patient"> | string | null
+    status?: EnumPatientStatusFilter<"Patient"> | $Enums.PatientStatus
+    otp?: StringNullableFilter<"Patient"> | string | null
+    otpExpiresAt?: DateTimeNullableFilter<"Patient"> | Date | string | null
+    outletId?: StringNullableFilter<"Patient"> | string | null
     isActive?: BoolFilter<"Patient"> | boolean
     createdAt?: DateTimeFilter<"Patient"> | Date | string
     updatedAt?: DateTimeFilter<"Patient"> | Date | string
   }
 
-  export type DiagnosticAccountCreateWithoutChildUsersInput = {
+  export type outletCreateWithoutChildUsersInput = {
     id?: string
     name: string
     email: string
@@ -15672,11 +15822,11 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    roles?: RoleCreateNestedManyWithoutDiagnosticAccountInput
-    patients?: PatientCreateNestedManyWithoutDiagnosticAccountInput
+    roles?: RoleCreateNestedManyWithoutOutletInput
+    patients?: PatientCreateNestedManyWithoutOutletInput
   }
 
-  export type DiagnosticAccountUncheckedCreateWithoutChildUsersInput = {
+  export type outletUncheckedCreateWithoutChildUsersInput = {
     id?: string
     name: string
     email: string
@@ -15689,49 +15839,49 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    roles?: RoleUncheckedCreateNestedManyWithoutDiagnosticAccountInput
-    patients?: PatientUncheckedCreateNestedManyWithoutDiagnosticAccountInput
+    roles?: RoleUncheckedCreateNestedManyWithoutOutletInput
+    patients?: PatientUncheckedCreateNestedManyWithoutOutletInput
   }
 
-  export type DiagnosticAccountCreateOrConnectWithoutChildUsersInput = {
-    where: DiagnosticAccountWhereUniqueInput
-    create: XOR<DiagnosticAccountCreateWithoutChildUsersInput, DiagnosticAccountUncheckedCreateWithoutChildUsersInput>
+  export type outletCreateOrConnectWithoutChildUsersInput = {
+    where: outletWhereUniqueInput
+    create: XOR<outletCreateWithoutChildUsersInput, outletUncheckedCreateWithoutChildUsersInput>
   }
 
-  export type DiagnosticUserRoleCreateWithoutDiagnosticChildUserInput = {
+  export type OutletUserRoleCreateWithoutOutletChildUserInput = {
     id?: string
     createdAt?: Date | string
-    role: RoleCreateNestedOneWithoutDiagnosticUserRolesInput
+    role: RoleCreateNestedOneWithoutOutletUserRolesInput
   }
 
-  export type DiagnosticUserRoleUncheckedCreateWithoutDiagnosticChildUserInput = {
+  export type OutletUserRoleUncheckedCreateWithoutOutletChildUserInput = {
     id?: string
     roleId: string
     createdAt?: Date | string
   }
 
-  export type DiagnosticUserRoleCreateOrConnectWithoutDiagnosticChildUserInput = {
-    where: DiagnosticUserRoleWhereUniqueInput
-    create: XOR<DiagnosticUserRoleCreateWithoutDiagnosticChildUserInput, DiagnosticUserRoleUncheckedCreateWithoutDiagnosticChildUserInput>
+  export type OutletUserRoleCreateOrConnectWithoutOutletChildUserInput = {
+    where: OutletUserRoleWhereUniqueInput
+    create: XOR<OutletUserRoleCreateWithoutOutletChildUserInput, OutletUserRoleUncheckedCreateWithoutOutletChildUserInput>
   }
 
-  export type DiagnosticUserRoleCreateManyDiagnosticChildUserInputEnvelope = {
-    data: DiagnosticUserRoleCreateManyDiagnosticChildUserInput | DiagnosticUserRoleCreateManyDiagnosticChildUserInput[]
+  export type OutletUserRoleCreateManyOutletChildUserInputEnvelope = {
+    data: OutletUserRoleCreateManyOutletChildUserInput | OutletUserRoleCreateManyOutletChildUserInput[]
     skipDuplicates?: boolean
   }
 
-  export type DiagnosticAccountUpsertWithoutChildUsersInput = {
-    update: XOR<DiagnosticAccountUpdateWithoutChildUsersInput, DiagnosticAccountUncheckedUpdateWithoutChildUsersInput>
-    create: XOR<DiagnosticAccountCreateWithoutChildUsersInput, DiagnosticAccountUncheckedCreateWithoutChildUsersInput>
-    where?: DiagnosticAccountWhereInput
+  export type outletUpsertWithoutChildUsersInput = {
+    update: XOR<outletUpdateWithoutChildUsersInput, outletUncheckedUpdateWithoutChildUsersInput>
+    create: XOR<outletCreateWithoutChildUsersInput, outletUncheckedCreateWithoutChildUsersInput>
+    where?: outletWhereInput
   }
 
-  export type DiagnosticAccountUpdateToOneWithWhereWithoutChildUsersInput = {
-    where?: DiagnosticAccountWhereInput
-    data: XOR<DiagnosticAccountUpdateWithoutChildUsersInput, DiagnosticAccountUncheckedUpdateWithoutChildUsersInput>
+  export type outletUpdateToOneWithWhereWithoutChildUsersInput = {
+    where?: outletWhereInput
+    data: XOR<outletUpdateWithoutChildUsersInput, outletUncheckedUpdateWithoutChildUsersInput>
   }
 
-  export type DiagnosticAccountUpdateWithoutChildUsersInput = {
+  export type outletUpdateWithoutChildUsersInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -15744,11 +15894,11 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    roles?: RoleUpdateManyWithoutDiagnosticAccountNestedInput
-    patients?: PatientUpdateManyWithoutDiagnosticAccountNestedInput
+    roles?: RoleUpdateManyWithoutOutletNestedInput
+    patients?: PatientUpdateManyWithoutOutletNestedInput
   }
 
-  export type DiagnosticAccountUncheckedUpdateWithoutChildUsersInput = {
+  export type outletUncheckedUpdateWithoutChildUsersInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -15761,37 +15911,37 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    roles?: RoleUncheckedUpdateManyWithoutDiagnosticAccountNestedInput
-    patients?: PatientUncheckedUpdateManyWithoutDiagnosticAccountNestedInput
+    roles?: RoleUncheckedUpdateManyWithoutOutletNestedInput
+    patients?: PatientUncheckedUpdateManyWithoutOutletNestedInput
   }
 
-  export type DiagnosticUserRoleUpsertWithWhereUniqueWithoutDiagnosticChildUserInput = {
-    where: DiagnosticUserRoleWhereUniqueInput
-    update: XOR<DiagnosticUserRoleUpdateWithoutDiagnosticChildUserInput, DiagnosticUserRoleUncheckedUpdateWithoutDiagnosticChildUserInput>
-    create: XOR<DiagnosticUserRoleCreateWithoutDiagnosticChildUserInput, DiagnosticUserRoleUncheckedCreateWithoutDiagnosticChildUserInput>
+  export type OutletUserRoleUpsertWithWhereUniqueWithoutOutletChildUserInput = {
+    where: OutletUserRoleWhereUniqueInput
+    update: XOR<OutletUserRoleUpdateWithoutOutletChildUserInput, OutletUserRoleUncheckedUpdateWithoutOutletChildUserInput>
+    create: XOR<OutletUserRoleCreateWithoutOutletChildUserInput, OutletUserRoleUncheckedCreateWithoutOutletChildUserInput>
   }
 
-  export type DiagnosticUserRoleUpdateWithWhereUniqueWithoutDiagnosticChildUserInput = {
-    where: DiagnosticUserRoleWhereUniqueInput
-    data: XOR<DiagnosticUserRoleUpdateWithoutDiagnosticChildUserInput, DiagnosticUserRoleUncheckedUpdateWithoutDiagnosticChildUserInput>
+  export type OutletUserRoleUpdateWithWhereUniqueWithoutOutletChildUserInput = {
+    where: OutletUserRoleWhereUniqueInput
+    data: XOR<OutletUserRoleUpdateWithoutOutletChildUserInput, OutletUserRoleUncheckedUpdateWithoutOutletChildUserInput>
   }
 
-  export type DiagnosticUserRoleUpdateManyWithWhereWithoutDiagnosticChildUserInput = {
-    where: DiagnosticUserRoleScalarWhereInput
-    data: XOR<DiagnosticUserRoleUpdateManyMutationInput, DiagnosticUserRoleUncheckedUpdateManyWithoutDiagnosticChildUserInput>
+  export type OutletUserRoleUpdateManyWithWhereWithoutOutletChildUserInput = {
+    where: OutletUserRoleScalarWhereInput
+    data: XOR<OutletUserRoleUpdateManyMutationInput, OutletUserRoleUncheckedUpdateManyWithoutOutletChildUserInput>
   }
 
-  export type DiagnosticUserRoleScalarWhereInput = {
-    AND?: DiagnosticUserRoleScalarWhereInput | DiagnosticUserRoleScalarWhereInput[]
-    OR?: DiagnosticUserRoleScalarWhereInput[]
-    NOT?: DiagnosticUserRoleScalarWhereInput | DiagnosticUserRoleScalarWhereInput[]
-    id?: StringFilter<"DiagnosticUserRole"> | string
-    DiagnosticChildUserId?: StringFilter<"DiagnosticUserRole"> | string
-    roleId?: StringFilter<"DiagnosticUserRole"> | string
-    createdAt?: DateTimeFilter<"DiagnosticUserRole"> | Date | string
+  export type OutletUserRoleScalarWhereInput = {
+    AND?: OutletUserRoleScalarWhereInput | OutletUserRoleScalarWhereInput[]
+    OR?: OutletUserRoleScalarWhereInput[]
+    NOT?: OutletUserRoleScalarWhereInput | OutletUserRoleScalarWhereInput[]
+    id?: StringFilter<"OutletUserRole"> | string
+    OutletChildUserId?: StringFilter<"OutletUserRole"> | string
+    roleId?: StringFilter<"OutletUserRole"> | string
+    createdAt?: DateTimeFilter<"OutletUserRole"> | Date | string
   }
 
-  export type DiagnosticAccountCreateWithoutRolesInput = {
+  export type outletCreateWithoutRolesInput = {
     id?: string
     name: string
     email: string
@@ -15804,11 +15954,11 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    childUsers?: DiagnosticChildUserCreateNestedManyWithoutDiagnosticAccountInput
-    patients?: PatientCreateNestedManyWithoutDiagnosticAccountInput
+    childUsers?: OutletChildUserCreateNestedManyWithoutOutletInput
+    patients?: PatientCreateNestedManyWithoutOutletInput
   }
 
-  export type DiagnosticAccountUncheckedCreateWithoutRolesInput = {
+  export type outletUncheckedCreateWithoutRolesInput = {
     id?: string
     name: string
     email: string
@@ -15821,13 +15971,13 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    childUsers?: DiagnosticChildUserUncheckedCreateNestedManyWithoutDiagnosticAccountInput
-    patients?: PatientUncheckedCreateNestedManyWithoutDiagnosticAccountInput
+    childUsers?: OutletChildUserUncheckedCreateNestedManyWithoutOutletInput
+    patients?: PatientUncheckedCreateNestedManyWithoutOutletInput
   }
 
-  export type DiagnosticAccountCreateOrConnectWithoutRolesInput = {
-    where: DiagnosticAccountWhereUniqueInput
-    create: XOR<DiagnosticAccountCreateWithoutRolesInput, DiagnosticAccountUncheckedCreateWithoutRolesInput>
+  export type outletCreateOrConnectWithoutRolesInput = {
+    where: outletWhereUniqueInput
+    create: XOR<outletCreateWithoutRolesInput, outletUncheckedCreateWithoutRolesInput>
   }
 
   export type SuperAdminsCreateWithoutRolesInput = {
@@ -15879,25 +16029,25 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type DiagnosticUserRoleCreateWithoutRoleInput = {
+  export type OutletUserRoleCreateWithoutRoleInput = {
     id?: string
     createdAt?: Date | string
-    DiagnosticChildUser: DiagnosticChildUserCreateNestedOneWithoutUserRolesInput
+    OutletChildUser: OutletChildUserCreateNestedOneWithoutUserRolesInput
   }
 
-  export type DiagnosticUserRoleUncheckedCreateWithoutRoleInput = {
+  export type OutletUserRoleUncheckedCreateWithoutRoleInput = {
     id?: string
-    DiagnosticChildUserId: string
+    OutletChildUserId: string
     createdAt?: Date | string
   }
 
-  export type DiagnosticUserRoleCreateOrConnectWithoutRoleInput = {
-    where: DiagnosticUserRoleWhereUniqueInput
-    create: XOR<DiagnosticUserRoleCreateWithoutRoleInput, DiagnosticUserRoleUncheckedCreateWithoutRoleInput>
+  export type OutletUserRoleCreateOrConnectWithoutRoleInput = {
+    where: OutletUserRoleWhereUniqueInput
+    create: XOR<OutletUserRoleCreateWithoutRoleInput, OutletUserRoleUncheckedCreateWithoutRoleInput>
   }
 
-  export type DiagnosticUserRoleCreateManyRoleInputEnvelope = {
-    data: DiagnosticUserRoleCreateManyRoleInput | DiagnosticUserRoleCreateManyRoleInput[]
+  export type OutletUserRoleCreateManyRoleInputEnvelope = {
+    data: OutletUserRoleCreateManyRoleInput | OutletUserRoleCreateManyRoleInput[]
     skipDuplicates?: boolean
   }
 
@@ -15923,18 +16073,18 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type DiagnosticAccountUpsertWithoutRolesInput = {
-    update: XOR<DiagnosticAccountUpdateWithoutRolesInput, DiagnosticAccountUncheckedUpdateWithoutRolesInput>
-    create: XOR<DiagnosticAccountCreateWithoutRolesInput, DiagnosticAccountUncheckedCreateWithoutRolesInput>
-    where?: DiagnosticAccountWhereInput
+  export type outletUpsertWithoutRolesInput = {
+    update: XOR<outletUpdateWithoutRolesInput, outletUncheckedUpdateWithoutRolesInput>
+    create: XOR<outletCreateWithoutRolesInput, outletUncheckedCreateWithoutRolesInput>
+    where?: outletWhereInput
   }
 
-  export type DiagnosticAccountUpdateToOneWithWhereWithoutRolesInput = {
-    where?: DiagnosticAccountWhereInput
-    data: XOR<DiagnosticAccountUpdateWithoutRolesInput, DiagnosticAccountUncheckedUpdateWithoutRolesInput>
+  export type outletUpdateToOneWithWhereWithoutRolesInput = {
+    where?: outletWhereInput
+    data: XOR<outletUpdateWithoutRolesInput, outletUncheckedUpdateWithoutRolesInput>
   }
 
-  export type DiagnosticAccountUpdateWithoutRolesInput = {
+  export type outletUpdateWithoutRolesInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -15947,11 +16097,11 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    childUsers?: DiagnosticChildUserUpdateManyWithoutDiagnosticAccountNestedInput
-    patients?: PatientUpdateManyWithoutDiagnosticAccountNestedInput
+    childUsers?: OutletChildUserUpdateManyWithoutOutletNestedInput
+    patients?: PatientUpdateManyWithoutOutletNestedInput
   }
 
-  export type DiagnosticAccountUncheckedUpdateWithoutRolesInput = {
+  export type outletUncheckedUpdateWithoutRolesInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -15964,8 +16114,8 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    childUsers?: DiagnosticChildUserUncheckedUpdateManyWithoutDiagnosticAccountNestedInput
-    patients?: PatientUncheckedUpdateManyWithoutDiagnosticAccountNestedInput
+    childUsers?: OutletChildUserUncheckedUpdateManyWithoutOutletNestedInput
+    patients?: PatientUncheckedUpdateManyWithoutOutletNestedInput
   }
 
   export type SuperAdminsUpsertWithoutRolesInput = {
@@ -16028,20 +16178,20 @@ export namespace Prisma {
     permissionId?: StringFilter<"RolePermission"> | string
   }
 
-  export type DiagnosticUserRoleUpsertWithWhereUniqueWithoutRoleInput = {
-    where: DiagnosticUserRoleWhereUniqueInput
-    update: XOR<DiagnosticUserRoleUpdateWithoutRoleInput, DiagnosticUserRoleUncheckedUpdateWithoutRoleInput>
-    create: XOR<DiagnosticUserRoleCreateWithoutRoleInput, DiagnosticUserRoleUncheckedCreateWithoutRoleInput>
+  export type OutletUserRoleUpsertWithWhereUniqueWithoutRoleInput = {
+    where: OutletUserRoleWhereUniqueInput
+    update: XOR<OutletUserRoleUpdateWithoutRoleInput, OutletUserRoleUncheckedUpdateWithoutRoleInput>
+    create: XOR<OutletUserRoleCreateWithoutRoleInput, OutletUserRoleUncheckedCreateWithoutRoleInput>
   }
 
-  export type DiagnosticUserRoleUpdateWithWhereUniqueWithoutRoleInput = {
-    where: DiagnosticUserRoleWhereUniqueInput
-    data: XOR<DiagnosticUserRoleUpdateWithoutRoleInput, DiagnosticUserRoleUncheckedUpdateWithoutRoleInput>
+  export type OutletUserRoleUpdateWithWhereUniqueWithoutRoleInput = {
+    where: OutletUserRoleWhereUniqueInput
+    data: XOR<OutletUserRoleUpdateWithoutRoleInput, OutletUserRoleUncheckedUpdateWithoutRoleInput>
   }
 
-  export type DiagnosticUserRoleUpdateManyWithWhereWithoutRoleInput = {
-    where: DiagnosticUserRoleScalarWhereInput
-    data: XOR<DiagnosticUserRoleUpdateManyMutationInput, DiagnosticUserRoleUncheckedUpdateManyWithoutRoleInput>
+  export type OutletUserRoleUpdateManyWithWhereWithoutRoleInput = {
+    where: OutletUserRoleScalarWhereInput
+    data: XOR<OutletUserRoleUpdateManyMutationInput, OutletUserRoleUncheckedUpdateManyWithoutRoleInput>
   }
 
   export type SuperAdminUserRoleUpsertWithWhereUniqueWithoutRoleInput = {
@@ -16102,9 +16252,9 @@ export namespace Prisma {
     ownerType: $Enums.RoleOwnerType
     createdAt?: Date | string
     updatedAt?: Date | string
-    DiagnosticAccount?: DiagnosticAccountCreateNestedOneWithoutRolesInput
+    outlet?: outletCreateNestedOneWithoutRolesInput
     superAdmin?: SuperAdminsCreateNestedOneWithoutRolesInput
-    diagnosticUserRoles?: DiagnosticUserRoleCreateNestedManyWithoutRoleInput
+    OutletUserRoles?: OutletUserRoleCreateNestedManyWithoutRoleInput
     superAdminUserRoles?: SuperAdminUserRoleCreateNestedManyWithoutRoleInput
   }
 
@@ -16112,11 +16262,11 @@ export namespace Prisma {
     id?: string
     name: string
     ownerType: $Enums.RoleOwnerType
-    DiagnosticAccountId?: string | null
+    outletId?: string | null
     superAdminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    diagnosticUserRoles?: DiagnosticUserRoleUncheckedCreateNestedManyWithoutRoleInput
+    OutletUserRoles?: OutletUserRoleUncheckedCreateNestedManyWithoutRoleInput
     superAdminUserRoles?: SuperAdminUserRoleUncheckedCreateNestedManyWithoutRoleInput
   }
 
@@ -16165,9 +16315,9 @@ export namespace Prisma {
     ownerType?: EnumRoleOwnerTypeFieldUpdateOperationsInput | $Enums.RoleOwnerType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    DiagnosticAccount?: DiagnosticAccountUpdateOneWithoutRolesNestedInput
+    outlet?: outletUpdateOneWithoutRolesNestedInput
     superAdmin?: SuperAdminsUpdateOneWithoutRolesNestedInput
-    diagnosticUserRoles?: DiagnosticUserRoleUpdateManyWithoutRoleNestedInput
+    OutletUserRoles?: OutletUserRoleUpdateManyWithoutRoleNestedInput
     superAdminUserRoles?: SuperAdminUserRoleUpdateManyWithoutRoleNestedInput
   }
 
@@ -16175,11 +16325,11 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     ownerType?: EnumRoleOwnerTypeFieldUpdateOperationsInput | $Enums.RoleOwnerType
-    DiagnosticAccountId?: NullableStringFieldUpdateOperationsInput | string | null
+    outletId?: NullableStringFieldUpdateOperationsInput | string | null
     superAdminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    diagnosticUserRoles?: DiagnosticUserRoleUncheckedUpdateManyWithoutRoleNestedInput
+    OutletUserRoles?: OutletUserRoleUncheckedUpdateManyWithoutRoleNestedInput
     superAdminUserRoles?: SuperAdminUserRoleUncheckedUpdateManyWithoutRoleNestedInput
   }
 
@@ -16212,7 +16362,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type DiagnosticChildUserCreateWithoutUserRolesInput = {
+  export type OutletChildUserCreateWithoutUserRolesInput = {
     id?: string
     name: string
     email: string
@@ -16221,12 +16371,12 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    DiagnosticAccount: DiagnosticAccountCreateNestedOneWithoutChildUsersInput
+    outlet: outletCreateNestedOneWithoutChildUsersInput
   }
 
-  export type DiagnosticChildUserUncheckedCreateWithoutUserRolesInput = {
+  export type OutletChildUserUncheckedCreateWithoutUserRolesInput = {
     id?: string
-    DiagnosticAccountId: string
+    outletId: string
     name: string
     email: string
     phone?: string | null
@@ -16236,28 +16386,28 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type DiagnosticChildUserCreateOrConnectWithoutUserRolesInput = {
-    where: DiagnosticChildUserWhereUniqueInput
-    create: XOR<DiagnosticChildUserCreateWithoutUserRolesInput, DiagnosticChildUserUncheckedCreateWithoutUserRolesInput>
+  export type OutletChildUserCreateOrConnectWithoutUserRolesInput = {
+    where: OutletChildUserWhereUniqueInput
+    create: XOR<OutletChildUserCreateWithoutUserRolesInput, OutletChildUserUncheckedCreateWithoutUserRolesInput>
   }
 
-  export type RoleCreateWithoutDiagnosticUserRolesInput = {
+  export type RoleCreateWithoutOutletUserRolesInput = {
     id?: string
     name: string
     ownerType: $Enums.RoleOwnerType
     createdAt?: Date | string
     updatedAt?: Date | string
-    DiagnosticAccount?: DiagnosticAccountCreateNestedOneWithoutRolesInput
+    outlet?: outletCreateNestedOneWithoutRolesInput
     superAdmin?: SuperAdminsCreateNestedOneWithoutRolesInput
     rolePermissions?: RolePermissionCreateNestedManyWithoutRoleInput
     superAdminUserRoles?: SuperAdminUserRoleCreateNestedManyWithoutRoleInput
   }
 
-  export type RoleUncheckedCreateWithoutDiagnosticUserRolesInput = {
+  export type RoleUncheckedCreateWithoutOutletUserRolesInput = {
     id?: string
     name: string
     ownerType: $Enums.RoleOwnerType
-    DiagnosticAccountId?: string | null
+    outletId?: string | null
     superAdminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -16265,23 +16415,23 @@ export namespace Prisma {
     superAdminUserRoles?: SuperAdminUserRoleUncheckedCreateNestedManyWithoutRoleInput
   }
 
-  export type RoleCreateOrConnectWithoutDiagnosticUserRolesInput = {
+  export type RoleCreateOrConnectWithoutOutletUserRolesInput = {
     where: RoleWhereUniqueInput
-    create: XOR<RoleCreateWithoutDiagnosticUserRolesInput, RoleUncheckedCreateWithoutDiagnosticUserRolesInput>
+    create: XOR<RoleCreateWithoutOutletUserRolesInput, RoleUncheckedCreateWithoutOutletUserRolesInput>
   }
 
-  export type DiagnosticChildUserUpsertWithoutUserRolesInput = {
-    update: XOR<DiagnosticChildUserUpdateWithoutUserRolesInput, DiagnosticChildUserUncheckedUpdateWithoutUserRolesInput>
-    create: XOR<DiagnosticChildUserCreateWithoutUserRolesInput, DiagnosticChildUserUncheckedCreateWithoutUserRolesInput>
-    where?: DiagnosticChildUserWhereInput
+  export type OutletChildUserUpsertWithoutUserRolesInput = {
+    update: XOR<OutletChildUserUpdateWithoutUserRolesInput, OutletChildUserUncheckedUpdateWithoutUserRolesInput>
+    create: XOR<OutletChildUserCreateWithoutUserRolesInput, OutletChildUserUncheckedCreateWithoutUserRolesInput>
+    where?: OutletChildUserWhereInput
   }
 
-  export type DiagnosticChildUserUpdateToOneWithWhereWithoutUserRolesInput = {
-    where?: DiagnosticChildUserWhereInput
-    data: XOR<DiagnosticChildUserUpdateWithoutUserRolesInput, DiagnosticChildUserUncheckedUpdateWithoutUserRolesInput>
+  export type OutletChildUserUpdateToOneWithWhereWithoutUserRolesInput = {
+    where?: OutletChildUserWhereInput
+    data: XOR<OutletChildUserUpdateWithoutUserRolesInput, OutletChildUserUncheckedUpdateWithoutUserRolesInput>
   }
 
-  export type DiagnosticChildUserUpdateWithoutUserRolesInput = {
+  export type OutletChildUserUpdateWithoutUserRolesInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -16290,12 +16440,12 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    DiagnosticAccount?: DiagnosticAccountUpdateOneRequiredWithoutChildUsersNestedInput
+    outlet?: outletUpdateOneRequiredWithoutChildUsersNestedInput
   }
 
-  export type DiagnosticChildUserUncheckedUpdateWithoutUserRolesInput = {
+  export type OutletChildUserUncheckedUpdateWithoutUserRolesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    DiagnosticAccountId?: StringFieldUpdateOperationsInput | string
+    outletId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16305,34 +16455,34 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type RoleUpsertWithoutDiagnosticUserRolesInput = {
-    update: XOR<RoleUpdateWithoutDiagnosticUserRolesInput, RoleUncheckedUpdateWithoutDiagnosticUserRolesInput>
-    create: XOR<RoleCreateWithoutDiagnosticUserRolesInput, RoleUncheckedCreateWithoutDiagnosticUserRolesInput>
+  export type RoleUpsertWithoutOutletUserRolesInput = {
+    update: XOR<RoleUpdateWithoutOutletUserRolesInput, RoleUncheckedUpdateWithoutOutletUserRolesInput>
+    create: XOR<RoleCreateWithoutOutletUserRolesInput, RoleUncheckedCreateWithoutOutletUserRolesInput>
     where?: RoleWhereInput
   }
 
-  export type RoleUpdateToOneWithWhereWithoutDiagnosticUserRolesInput = {
+  export type RoleUpdateToOneWithWhereWithoutOutletUserRolesInput = {
     where?: RoleWhereInput
-    data: XOR<RoleUpdateWithoutDiagnosticUserRolesInput, RoleUncheckedUpdateWithoutDiagnosticUserRolesInput>
+    data: XOR<RoleUpdateWithoutOutletUserRolesInput, RoleUncheckedUpdateWithoutOutletUserRolesInput>
   }
 
-  export type RoleUpdateWithoutDiagnosticUserRolesInput = {
+  export type RoleUpdateWithoutOutletUserRolesInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     ownerType?: EnumRoleOwnerTypeFieldUpdateOperationsInput | $Enums.RoleOwnerType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    DiagnosticAccount?: DiagnosticAccountUpdateOneWithoutRolesNestedInput
+    outlet?: outletUpdateOneWithoutRolesNestedInput
     superAdmin?: SuperAdminsUpdateOneWithoutRolesNestedInput
     rolePermissions?: RolePermissionUpdateManyWithoutRoleNestedInput
     superAdminUserRoles?: SuperAdminUserRoleUpdateManyWithoutRoleNestedInput
   }
 
-  export type RoleUncheckedUpdateWithoutDiagnosticUserRolesInput = {
+  export type RoleUncheckedUpdateWithoutOutletUserRolesInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     ownerType?: EnumRoleOwnerTypeFieldUpdateOperationsInput | $Enums.RoleOwnerType
-    DiagnosticAccountId?: NullableStringFieldUpdateOperationsInput | string | null
+    outletId?: NullableStringFieldUpdateOperationsInput | string | null
     superAdminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16375,22 +16525,22 @@ export namespace Prisma {
     ownerType: $Enums.RoleOwnerType
     createdAt?: Date | string
     updatedAt?: Date | string
-    DiagnosticAccount?: DiagnosticAccountCreateNestedOneWithoutRolesInput
+    outlet?: outletCreateNestedOneWithoutRolesInput
     superAdmin?: SuperAdminsCreateNestedOneWithoutRolesInput
     rolePermissions?: RolePermissionCreateNestedManyWithoutRoleInput
-    diagnosticUserRoles?: DiagnosticUserRoleCreateNestedManyWithoutRoleInput
+    OutletUserRoles?: OutletUserRoleCreateNestedManyWithoutRoleInput
   }
 
   export type RoleUncheckedCreateWithoutSuperAdminUserRolesInput = {
     id?: string
     name: string
     ownerType: $Enums.RoleOwnerType
-    DiagnosticAccountId?: string | null
+    outletId?: string | null
     superAdminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     rolePermissions?: RolePermissionUncheckedCreateNestedManyWithoutRoleInput
-    diagnosticUserRoles?: DiagnosticUserRoleUncheckedCreateNestedManyWithoutRoleInput
+    OutletUserRoles?: OutletUserRoleUncheckedCreateNestedManyWithoutRoleInput
   }
 
   export type RoleCreateOrConnectWithoutSuperAdminUserRolesInput = {
@@ -16450,29 +16600,29 @@ export namespace Prisma {
     ownerType?: EnumRoleOwnerTypeFieldUpdateOperationsInput | $Enums.RoleOwnerType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    DiagnosticAccount?: DiagnosticAccountUpdateOneWithoutRolesNestedInput
+    outlet?: outletUpdateOneWithoutRolesNestedInput
     superAdmin?: SuperAdminsUpdateOneWithoutRolesNestedInput
     rolePermissions?: RolePermissionUpdateManyWithoutRoleNestedInput
-    diagnosticUserRoles?: DiagnosticUserRoleUpdateManyWithoutRoleNestedInput
+    OutletUserRoles?: OutletUserRoleUpdateManyWithoutRoleNestedInput
   }
 
   export type RoleUncheckedUpdateWithoutSuperAdminUserRolesInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     ownerType?: EnumRoleOwnerTypeFieldUpdateOperationsInput | $Enums.RoleOwnerType
-    DiagnosticAccountId?: NullableStringFieldUpdateOperationsInput | string | null
+    outletId?: NullableStringFieldUpdateOperationsInput | string | null
     superAdminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     rolePermissions?: RolePermissionUncheckedUpdateManyWithoutRoleNestedInput
-    diagnosticUserRoles?: DiagnosticUserRoleUncheckedUpdateManyWithoutRoleNestedInput
+    OutletUserRoles?: OutletUserRoleUncheckedUpdateManyWithoutRoleNestedInput
   }
 
   export type RoleCreateManySuperAdminInput = {
     id?: string
     name: string
     ownerType: $Enums.RoleOwnerType
-    DiagnosticAccountId?: string | null
+    outletId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -16489,9 +16639,9 @@ export namespace Prisma {
     ownerType?: EnumRoleOwnerTypeFieldUpdateOperationsInput | $Enums.RoleOwnerType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    DiagnosticAccount?: DiagnosticAccountUpdateOneWithoutRolesNestedInput
+    outlet?: outletUpdateOneWithoutRolesNestedInput
     rolePermissions?: RolePermissionUpdateManyWithoutRoleNestedInput
-    diagnosticUserRoles?: DiagnosticUserRoleUpdateManyWithoutRoleNestedInput
+    OutletUserRoles?: OutletUserRoleUpdateManyWithoutRoleNestedInput
     superAdminUserRoles?: SuperAdminUserRoleUpdateManyWithoutRoleNestedInput
   }
 
@@ -16499,11 +16649,11 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     ownerType?: EnumRoleOwnerTypeFieldUpdateOperationsInput | $Enums.RoleOwnerType
-    DiagnosticAccountId?: NullableStringFieldUpdateOperationsInput | string | null
+    outletId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     rolePermissions?: RolePermissionUncheckedUpdateManyWithoutRoleNestedInput
-    diagnosticUserRoles?: DiagnosticUserRoleUncheckedUpdateManyWithoutRoleNestedInput
+    OutletUserRoles?: OutletUserRoleUncheckedUpdateManyWithoutRoleNestedInput
     superAdminUserRoles?: SuperAdminUserRoleUncheckedUpdateManyWithoutRoleNestedInput
   }
 
@@ -16511,7 +16661,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     ownerType?: EnumRoleOwnerTypeFieldUpdateOperationsInput | $Enums.RoleOwnerType
-    DiagnosticAccountId?: NullableStringFieldUpdateOperationsInput | string | null
+    outletId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -16534,7 +16684,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type DiagnosticChildUserCreateManyDiagnosticAccountInput = {
+  export type OutletChildUserCreateManyOutletInput = {
     id?: string
     name: string
     email: string
@@ -16545,7 +16695,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type RoleCreateManyDiagnosticAccountInput = {
+  export type RoleCreateManyOutletInput = {
     id?: string
     name: string
     ownerType: $Enums.RoleOwnerType
@@ -16554,24 +16704,27 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type PatientCreateManyDiagnosticAccountInput = {
+  export type PatientCreateManyOutletInput = {
     id?: string
+    referenceName?: string | null
     fullName: string
     mobileNumber: string
-    otp?: string | null
-    otpExpiresAt?: Date | string | null
     email?: string | null
     dateOfBirth?: Date | string | null
     age?: number | null
     bloodGroup?: string | null
     gender?: string | null
     address?: string | null
+    emergencyContact?: string | null
+    status?: $Enums.PatientStatus
+    otp?: string | null
+    otpExpiresAt?: Date | string | null
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type DiagnosticChildUserUpdateWithoutDiagnosticAccountInput = {
+  export type OutletChildUserUpdateWithoutOutletInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -16580,10 +16733,10 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userRoles?: DiagnosticUserRoleUpdateManyWithoutDiagnosticChildUserNestedInput
+    userRoles?: OutletUserRoleUpdateManyWithoutOutletChildUserNestedInput
   }
 
-  export type DiagnosticChildUserUncheckedUpdateWithoutDiagnosticAccountInput = {
+  export type OutletChildUserUncheckedUpdateWithoutOutletInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -16592,10 +16745,10 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userRoles?: DiagnosticUserRoleUncheckedUpdateManyWithoutDiagnosticChildUserNestedInput
+    userRoles?: OutletUserRoleUncheckedUpdateManyWithoutOutletChildUserNestedInput
   }
 
-  export type DiagnosticChildUserUncheckedUpdateManyWithoutDiagnosticAccountInput = {
+  export type OutletChildUserUncheckedUpdateManyWithoutOutletInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -16606,7 +16759,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type RoleUpdateWithoutDiagnosticAccountInput = {
+  export type RoleUpdateWithoutOutletInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     ownerType?: EnumRoleOwnerTypeFieldUpdateOperationsInput | $Enums.RoleOwnerType
@@ -16614,11 +16767,11 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     superAdmin?: SuperAdminsUpdateOneWithoutRolesNestedInput
     rolePermissions?: RolePermissionUpdateManyWithoutRoleNestedInput
-    diagnosticUserRoles?: DiagnosticUserRoleUpdateManyWithoutRoleNestedInput
+    OutletUserRoles?: OutletUserRoleUpdateManyWithoutRoleNestedInput
     superAdminUserRoles?: SuperAdminUserRoleUpdateManyWithoutRoleNestedInput
   }
 
-  export type RoleUncheckedUpdateWithoutDiagnosticAccountInput = {
+  export type RoleUncheckedUpdateWithoutOutletInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     ownerType?: EnumRoleOwnerTypeFieldUpdateOperationsInput | $Enums.RoleOwnerType
@@ -16626,11 +16779,11 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     rolePermissions?: RolePermissionUncheckedUpdateManyWithoutRoleNestedInput
-    diagnosticUserRoles?: DiagnosticUserRoleUncheckedUpdateManyWithoutRoleNestedInput
+    OutletUserRoles?: OutletUserRoleUncheckedUpdateManyWithoutRoleNestedInput
     superAdminUserRoles?: SuperAdminUserRoleUncheckedUpdateManyWithoutRoleNestedInput
   }
 
-  export type RoleUncheckedUpdateManyWithoutDiagnosticAccountInput = {
+  export type RoleUncheckedUpdateManyWithoutOutletInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     ownerType?: EnumRoleOwnerTypeFieldUpdateOperationsInput | $Enums.RoleOwnerType
@@ -16639,76 +16792,85 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PatientUpdateWithoutDiagnosticAccountInput = {
+  export type PatientUpdateWithoutOutletInput = {
     id?: StringFieldUpdateOperationsInput | string
+    referenceName?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: StringFieldUpdateOperationsInput | string
     mobileNumber?: StringFieldUpdateOperationsInput | string
-    otp?: NullableStringFieldUpdateOperationsInput | string | null
-    otpExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContact?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumPatientStatusFieldUpdateOperationsInput | $Enums.PatientStatus
+    otp?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PatientUncheckedUpdateWithoutDiagnosticAccountInput = {
+  export type PatientUncheckedUpdateWithoutOutletInput = {
     id?: StringFieldUpdateOperationsInput | string
+    referenceName?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: StringFieldUpdateOperationsInput | string
     mobileNumber?: StringFieldUpdateOperationsInput | string
-    otp?: NullableStringFieldUpdateOperationsInput | string | null
-    otpExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContact?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumPatientStatusFieldUpdateOperationsInput | $Enums.PatientStatus
+    otp?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PatientUncheckedUpdateManyWithoutDiagnosticAccountInput = {
+  export type PatientUncheckedUpdateManyWithoutOutletInput = {
     id?: StringFieldUpdateOperationsInput | string
+    referenceName?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: StringFieldUpdateOperationsInput | string
     mobileNumber?: StringFieldUpdateOperationsInput | string
-    otp?: NullableStringFieldUpdateOperationsInput | string | null
-    otpExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContact?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumPatientStatusFieldUpdateOperationsInput | $Enums.PatientStatus
+    otp?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type DiagnosticUserRoleCreateManyDiagnosticChildUserInput = {
+  export type OutletUserRoleCreateManyOutletChildUserInput = {
     id?: string
     roleId: string
     createdAt?: Date | string
   }
 
-  export type DiagnosticUserRoleUpdateWithoutDiagnosticChildUserInput = {
+  export type OutletUserRoleUpdateWithoutOutletChildUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    role?: RoleUpdateOneRequiredWithoutDiagnosticUserRolesNestedInput
+    role?: RoleUpdateOneRequiredWithoutOutletUserRolesNestedInput
   }
 
-  export type DiagnosticUserRoleUncheckedUpdateWithoutDiagnosticChildUserInput = {
+  export type OutletUserRoleUncheckedUpdateWithoutOutletChildUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     roleId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type DiagnosticUserRoleUncheckedUpdateManyWithoutDiagnosticChildUserInput = {
+  export type OutletUserRoleUncheckedUpdateManyWithoutOutletChildUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     roleId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16719,9 +16881,9 @@ export namespace Prisma {
     permissionId: string
   }
 
-  export type DiagnosticUserRoleCreateManyRoleInput = {
+  export type OutletUserRoleCreateManyRoleInput = {
     id?: string
-    DiagnosticChildUserId: string
+    OutletChildUserId: string
     createdAt?: Date | string
   }
 
@@ -16746,21 +16908,21 @@ export namespace Prisma {
     permissionId?: StringFieldUpdateOperationsInput | string
   }
 
-  export type DiagnosticUserRoleUpdateWithoutRoleInput = {
+  export type OutletUserRoleUpdateWithoutRoleInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    DiagnosticChildUser?: DiagnosticChildUserUpdateOneRequiredWithoutUserRolesNestedInput
+    OutletChildUser?: OutletChildUserUpdateOneRequiredWithoutUserRolesNestedInput
   }
 
-  export type DiagnosticUserRoleUncheckedUpdateWithoutRoleInput = {
+  export type OutletUserRoleUncheckedUpdateWithoutRoleInput = {
     id?: StringFieldUpdateOperationsInput | string
-    DiagnosticChildUserId?: StringFieldUpdateOperationsInput | string
+    OutletChildUserId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type DiagnosticUserRoleUncheckedUpdateManyWithoutRoleInput = {
+  export type OutletUserRoleUncheckedUpdateManyWithoutRoleInput = {
     id?: StringFieldUpdateOperationsInput | string
-    DiagnosticChildUserId?: StringFieldUpdateOperationsInput | string
+    OutletChildUserId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

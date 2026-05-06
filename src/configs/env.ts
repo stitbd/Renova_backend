@@ -8,6 +8,7 @@ const requiredEnv = [
   "ECOMMERCE_DATABASE_URL",
   "APPOINTMENT_DATABASE_URL",
   "JWT_SECRET",
+  "BCRYPT_SALT_ROUNDS",
 ];
 
 requiredEnv.forEach((key) => {
@@ -21,4 +22,5 @@ export const env = {
   nodeEnv: process.env.NODE_ENV || "development",
   jwtSecret: process.env.JWT_SECRET as string,
   jwtExpiresIn: process.env.JWT_EXPIRES_IN || "7d",
+  bcrypt_salt_rounds: Number(process.env.BCRYPT_SALT_ROUNDS),
 };
