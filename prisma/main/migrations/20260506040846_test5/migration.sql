@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE `patient` ADD COLUMN `emergencyContact` VARCHAR(191) NULL,
+    ADD COLUMN `referenceName` VARCHAR(191) NULL,
+    ADD COLUMN `status` ENUM('ACTIVE', 'INACTIVE', 'PENDING') NOT NULL DEFAULT 'ACTIVE';

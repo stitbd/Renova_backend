@@ -7,22 +7,30 @@
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
+
+    "prisma:generate": "npm run prisma:generate:main && npm run prisma:generate:ecommerce && npm run prisma:generate:appointment",
     
-"prisma:generate": "npm run prisma:generate:main && npm run prisma:generate:ecommerce && npm run prisma:generate:appointment",
-"prisma:generate:main": "prisma generate --schema=prisma/main/schema.prisma",
-"prisma:generate:ecommerce": "prisma generate --schema=prisma/ecommerce/schema.prisma",
-"prisma:generate:appointment": "prisma generate --schema=prisma/appointment/schema.prisma",
+    "prisma:generate:main": "prisma generate --schema=prisma/main/schema.prisma",
+    "prisma:generate:ecommerce": "prisma generate --schema=prisma/ecommerce/schema.prisma",
+    "prisma:generate:appointment": "prisma generate --schema=prisma/appointment/schema.prisma",
 
 
     "migrate:main": "prisma migrate dev --schema=prisma/main/schema.prisma",
     "migrate:ecommerce": "prisma migrate dev --schema=prisma/ecommerce/schema.prisma",
     "migrate:appointment": "prisma migrate dev --schema=prisma/appointment/schema.prisma",
+
+
+    "reset:main": "prisma migrate reset --schema=prisma/main/schema.prisma",
+    "reset:ecommerce": "prisma migrate reset --schema=prisma/ecommerce/schema.prisma",
+    "reset:appointment": "prisma migrate reset --schema=prisma/appointment/schema.prisma",
+
     "studio:main": "prisma studio --schema=prisma/main/schema.prisma",
     "studio:ecommerce": "prisma studio --schema=prisma/ecommerce/schema.prisma",
     "studio:appointment": "prisma studio --schema=prisma/appointment/schema.prisma"
   },
   "dependencies": {
     "@prisma/client": "^6.19.0",
+    "bcrypt": "^6.0.0",
     "bcryptjs": "^3.0.3",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
@@ -31,9 +39,10 @@
     "http-status": "^2.1.0",
     "jsonwebtoken": "^9.0.2",
     "prisma": "^6.19.0",
-    "zod": "^4.1.12"
+    "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
     "@types/cookie-parser": "^1.4.10",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.5",

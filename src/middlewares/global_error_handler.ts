@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction, ErrorRequestHandler } from 'express'
 import { ZodError } from 'zod'
 import handleZodError from '../errors/zodError'
-import handleValidationError from '../errors/validationError'
+
 import handleCastError from '../errors/castError'
 import { TErrorSources } from '../types/error'
 import handleDuplicateError from '../errors/duplicateError'
@@ -23,11 +23,7 @@ const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
         statusCode = simplifiedError?.statusCode
         message = simplifiedError?.message
         errorSources = simplifiedError?.errorSources
-    } else if (err?.name === 'ValidationError') {
-        const simplifiedError = handleValidationError(err)
-        statusCode = simplifiedError?.statusCode
-        message = simplifiedError?.message
-        errorSources = simplifiedError?.errorSources
+    
     } else if (err?.name === 'CastError') {
         const simplifiedError = handleCastError(err)
         statusCode = simplifiedError?.statusCode

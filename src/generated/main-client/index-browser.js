@@ -121,9 +121,323 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
+exports.Prisma.SuperAdminsScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  phone: 'phone',
+  password: 'password',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.PatientScalarFieldEnum = {
+  id: 'id',
+  referenceName: 'referenceName',
+  fullName: 'fullName',
+  mobileNumber: 'mobileNumber',
+  email: 'email',
+  password: 'password',
+  dateOfBirth: 'dateOfBirth',
+  age: 'age',
+  bloodGroup: 'bloodGroup',
+  gender: 'gender',
+  address: 'address',
+  emergencyContact: 'emergencyContact',
+  status: 'status',
+  otp: 'otp',
+  otpExpiresAt: 'otpExpiresAt',
+  outletId: 'outletId',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.DoctorScalarFieldEnum = {
+  id: 'id',
+  doctorCode: 'doctorCode',
+  fullName: 'fullName',
+  mobile: 'mobile',
+  email: 'email',
+  password: 'password',
+  bmdcNumber: 'bmdcNumber',
+  subSpecialization: 'subSpecialization',
+  qualification: 'qualification',
+  experienceYears: 'experienceYears',
+  currentDesignation: 'currentDesignation',
+  consultationFee: 'consultationFee',
+  status: 'status',
+  onlineStatus: 'onlineStatus',
+  outletId: 'outletId',
+  specializationId: 'specializationId',
+  documentId: 'documentId',
+  scheduleId: 'scheduleId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.DoctorSpecializationScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  status: 'status'
+};
+
+exports.Prisma.DoctorDocumentScalarFieldEnum = {
+  id: 'id',
+  documentType: 'documentType',
+  fileUrl: 'fileUrl',
+  verificationStatus: 'verificationStatus',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.DoctorScheduleScalarFieldEnum = {
+  id: 'id',
+  dayName: 'dayName',
+  startTime: 'startTime',
+  endTime: 'endTime',
+  slotDuration: 'slotDuration',
+  status: 'status'
+};
+
+exports.Prisma.OutletScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  phone: 'phone',
+  password: 'password',
+  centerName: 'centerName',
+  slug: 'slug',
+  logo: 'logo',
+  address: 'address',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.OutletChildUserScalarFieldEnum = {
+  id: 'id',
+  outletId: 'outletId',
+  name: 'name',
+  email: 'email',
+  phone: 'phone',
+  password: 'password',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.RoleScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  ownerType: 'ownerType',
+  outletId: 'outletId',
+  superAdminId: 'superAdminId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.PermissionScalarFieldEnum = {
+  id: 'id',
+  key: 'key',
+  module: 'module',
+  description: 'description',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.RolePermissionScalarFieldEnum = {
+  id: 'id',
+  roleId: 'roleId',
+  permissionId: 'permissionId'
+};
+
+exports.Prisma.OutletUserRoleScalarFieldEnum = {
+  id: 'id',
+  OutletChildUserId: 'OutletChildUserId',
+  roleId: 'roleId',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.SuperAdminUserRoleScalarFieldEnum = {
+  id: 'id',
+  superAdminId: 'superAdminId',
+  roleId: 'roleId',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.SortOrder = {
+  asc: 'asc',
+  desc: 'desc'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
+exports.Prisma.SuperAdminsOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  phone: 'phone',
+  password: 'password'
+};
+
+exports.Prisma.PatientOrderByRelevanceFieldEnum = {
+  id: 'id',
+  referenceName: 'referenceName',
+  fullName: 'fullName',
+  mobileNumber: 'mobileNumber',
+  email: 'email',
+  password: 'password',
+  bloodGroup: 'bloodGroup',
+  gender: 'gender',
+  address: 'address',
+  emergencyContact: 'emergencyContact',
+  otp: 'otp',
+  outletId: 'outletId'
+};
+
+exports.Prisma.DoctorOrderByRelevanceFieldEnum = {
+  id: 'id',
+  doctorCode: 'doctorCode',
+  fullName: 'fullName',
+  mobile: 'mobile',
+  email: 'email',
+  password: 'password',
+  bmdcNumber: 'bmdcNumber',
+  subSpecialization: 'subSpecialization',
+  qualification: 'qualification',
+  currentDesignation: 'currentDesignation',
+  outletId: 'outletId',
+  specializationId: 'specializationId',
+  documentId: 'documentId',
+  scheduleId: 'scheduleId'
+};
+
+exports.Prisma.DoctorSpecializationOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.DoctorDocumentOrderByRelevanceFieldEnum = {
+  id: 'id',
+  fileUrl: 'fileUrl'
+};
+
+exports.Prisma.DoctorScheduleOrderByRelevanceFieldEnum = {
+  id: 'id',
+  dayName: 'dayName',
+  startTime: 'startTime',
+  endTime: 'endTime'
+};
+
+exports.Prisma.outletOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  phone: 'phone',
+  password: 'password',
+  centerName: 'centerName',
+  slug: 'slug',
+  logo: 'logo',
+  address: 'address'
+};
+
+exports.Prisma.OutletChildUserOrderByRelevanceFieldEnum = {
+  id: 'id',
+  outletId: 'outletId',
+  name: 'name',
+  email: 'email',
+  phone: 'phone',
+  password: 'password'
+};
+
+exports.Prisma.RoleOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  outletId: 'outletId',
+  superAdminId: 'superAdminId'
+};
+
+exports.Prisma.PermissionOrderByRelevanceFieldEnum = {
+  id: 'id',
+  key: 'key',
+  module: 'module',
+  description: 'description'
+};
+
+exports.Prisma.RolePermissionOrderByRelevanceFieldEnum = {
+  id: 'id',
+  roleId: 'roleId',
+  permissionId: 'permissionId'
+};
+
+exports.Prisma.OutletUserRoleOrderByRelevanceFieldEnum = {
+  id: 'id',
+  OutletChildUserId: 'OutletChildUserId',
+  roleId: 'roleId'
+};
+
+exports.Prisma.SuperAdminUserRoleOrderByRelevanceFieldEnum = {
+  id: 'id',
+  superAdminId: 'superAdminId',
+  roleId: 'roleId'
+};
+exports.PatientStatus = exports.$Enums.PatientStatus = {
+  ACTIVE: 'ACTIVE',
+  INACTIVE: 'INACTIVE'
+};
+
+exports.DoctorStatus = exports.$Enums.DoctorStatus = {
+  ACTIVE: 'ACTIVE',
+  INACTIVE: 'INACTIVE'
+};
+
+exports.DoctorOnlineStatus = exports.$Enums.DoctorOnlineStatus = {
+  ONLINE: 'ONLINE',
+  OFFLINE: 'OFFLINE'
+};
+
+exports.DocumentType = exports.$Enums.DocumentType = {
+  LICENSE: 'LICENSE',
+  CERTIFICATE: 'CERTIFICATE',
+  DEGREE: 'DEGREE',
+  NID: 'NID',
+  OTHER: 'OTHER'
+};
+
+exports.VerificationStatus = exports.$Enums.VerificationStatus = {
+  PENDING: 'PENDING',
+  VERIFIED: 'VERIFIED',
+  REJECTED: 'REJECTED'
+};
+
+exports.ScheduleStatus = exports.$Enums.ScheduleStatus = {
+  ACTIVE: 'ACTIVE',
+  INACTIVE: 'INACTIVE'
+};
+
+exports.RoleOwnerType = exports.$Enums.RoleOwnerType = {
+  OUTLET: 'OUTLET',
+  SUPER_ADMIN: 'SUPER_ADMIN'
+};
 
 exports.Prisma.ModelName = {
-
+  SuperAdmins: 'SuperAdmins',
+  Patient: 'Patient',
+  Doctor: 'Doctor',
+  DoctorSpecialization: 'DoctorSpecialization',
+  DoctorDocument: 'DoctorDocument',
+  DoctorSchedule: 'DoctorSchedule',
+  outlet: 'outlet',
+  OutletChildUser: 'OutletChildUser',
+  Role: 'Role',
+  Permission: 'Permission',
+  RolePermission: 'RolePermission',
+  OutletUserRole: 'OutletUserRole',
+  SuperAdminUserRole: 'SuperAdminUserRole'
 };
 
 /**

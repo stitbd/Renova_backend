@@ -17,7 +17,6 @@ const manageResponse = <T>(res: Response, payload: IResponse<T>) => {
         success: payload.success,
         message: payload.message,
         data: payload.data || undefined || null,
-        meta: payload.meta || undefined || null
     })
 }
 

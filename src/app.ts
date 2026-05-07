@@ -3,6 +3,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import routes from "./routes";
 import globalErrorHandler from "./middlewares/global_error_handler";
+import { createDefaultSuperAdmin } from "./utils/createDefaultSuperAdmin";
 
 const app: Application = express();
 
@@ -24,7 +25,11 @@ app.get("/", (_req: Request, res: Response) => {
   });
 });
 
+// API routes
 app.use("/api/v1", routes);
+
+// Create default super admin if it doesn't exist
+createDefaultSuperAdmin();
 
 app.use((req: Request, res: Response) => {
   res.status(404).json({
@@ -33,6 +38,7 @@ app.use((req: Request, res: Response) => {
   });
 });
 
+// Global error handler
 app.use(globalErrorHandler);
 
 
