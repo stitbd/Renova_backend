@@ -6,6 +6,7 @@ export const createPatientSchema = z.object({
   fullName: z.string().min(2, "Full name is required"),
   mobileNumber: z.string().min(10, "Mobile number is required"),
   email: z.string().email().optional(),
+   password: z.string().min(6, "Password must be at least 6 characters"),
 
   dateOfBirth: z.string().optional(),
   age: z.number().int().positive().optional(),

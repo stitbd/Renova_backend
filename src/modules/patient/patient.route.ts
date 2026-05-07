@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { patientController } from "./patient.controller";
+import auth from "../../middlewares/auth";
 
 const router = Router();
 

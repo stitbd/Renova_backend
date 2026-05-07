@@ -7,7 +7,6 @@ const requiredEnv = [
   "MAIN_DATABASE_URL",
   "ECOMMERCE_DATABASE_URL",
   "APPOINTMENT_DATABASE_URL",
-  "JWT_SECRET",
   "BCRYPT_SALT_ROUNDS",
 ];
 
@@ -20,7 +19,13 @@ requiredEnv.forEach((key) => {
 export const env = {
   port: Number(process.env.PORT),
   nodeEnv: process.env.NODE_ENV || "development",
-  jwtSecret: process.env.JWT_SECRET as string,
-  jwtExpiresIn: process.env.JWT_EXPIRES_IN || "7d",
+  patientAccessTokenSecret: process.env.PATIENT_ACCESS_JWT_SECRET as string,
+  patientAccessTokenExpiresIn: process.env.PATIENT_ACCESS_JWT_EXPIRES_IN || "7d",
+  patientRefreshTokenSecret: process.env.PATIENT_REFRESH_JWT_SECRET as string,
+  patientRefreshTokenExpiresIn: process.env.PATIENT_REFRESH_JWT_EXPIRES_IN || "30d",
+  doctorAccessTokenSecret: process.env.DOCTOR_ACCESS_JWT_SECRET as string,
+  doctorAccessTokenExpiresIn: process.env.DOCTOR_ACCESS_JWT_EXPIRES_IN || "7d",
+  doctorRefreshTokenSecret: process.env.DOCTOR_REFRESH_JWT_SECRET as string,
+  doctorRefreshTokenExpiresIn: process.env.DOCTOR_REFRESH_JWT_EXPIRES_IN || "30d",
   bcrypt_salt_rounds: Number(process.env.BCRYPT_SALT_ROUNDS),
 };

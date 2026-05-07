@@ -11,6 +11,7 @@ export type CreateDoctorInput = {
   fullName: string;
   mobile?: string;
   email: string;
+  password: string;
   bmdcNumber?: string;
   subSpecialization?: string;
   qualification?: string;

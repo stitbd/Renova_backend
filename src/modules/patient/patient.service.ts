@@ -1,6 +1,8 @@
+import { env } from "../../configs/env";
 import { PatientStatus } from "../../generated/main-client";
 import { patientRepository } from "./patient.repository";
 import { CreatePatientInput } from "./patient.types";
+import bcrypt from "bcryptjs";
 
 export const patientService = {
   async create(data: CreatePatientInput) {
@@ -19,12 +21,17 @@ export const patientService = {
         throw new Error("Patient already exists with this email");
       }
     }
+    const hashedPassword = await bcrypt.hash(
+      data.password,
+      env.bcrypt_salt_rounds
+    );
 
     return patientRepository.create({
       referenceName: data.referenceName,
       fullName: data.fullName,
       mobileNumber: data.mobileNumber,
       email: data.email,
+        password: hashedPassword,
 
       dateOfBirth: data.dateOfBirth
         ? new Date(data.dateOfBirth)
@@ -90,7 +97,6 @@ export const patientService = {
       fullName: data.fullName,
       mobileNumber: data.mobileNumber,
       email: data.email,
-
       dateOfBirth: data.dateOfBirth
         ? new Date(data.dateOfBirth)
         : undefined,

@@ -3285,6 +3285,7 @@ export namespace Prisma {
     fullName: string | null
     mobileNumber: string | null
     email: string | null
+    password: string | null
     dateOfBirth: Date | null
     age: number | null
     bloodGroup: string | null
@@ -3306,6 +3307,7 @@ export namespace Prisma {
     fullName: string | null
     mobileNumber: string | null
     email: string | null
+    password: string | null
     dateOfBirth: Date | null
     age: number | null
     bloodGroup: string | null
@@ -3327,6 +3329,7 @@ export namespace Prisma {
     fullName: number
     mobileNumber: number
     email: number
+    password: number
     dateOfBirth: number
     age: number
     bloodGroup: number
@@ -3358,6 +3361,7 @@ export namespace Prisma {
     fullName?: true
     mobileNumber?: true
     email?: true
+    password?: true
     dateOfBirth?: true
     age?: true
     bloodGroup?: true
@@ -3379,6 +3383,7 @@ export namespace Prisma {
     fullName?: true
     mobileNumber?: true
     email?: true
+    password?: true
     dateOfBirth?: true
     age?: true
     bloodGroup?: true
@@ -3400,6 +3405,7 @@ export namespace Prisma {
     fullName?: true
     mobileNumber?: true
     email?: true
+    password?: true
     dateOfBirth?: true
     age?: true
     bloodGroup?: true
@@ -3508,6 +3514,7 @@ export namespace Prisma {
     fullName: string
     mobileNumber: string
     email: string | null
+    password: string
     dateOfBirth: Date | null
     age: number | null
     bloodGroup: string | null
@@ -3548,6 +3555,7 @@ export namespace Prisma {
     fullName?: boolean
     mobileNumber?: boolean
     email?: boolean
+    password?: boolean
     dateOfBirth?: boolean
     age?: boolean
     bloodGroup?: boolean
@@ -3572,6 +3580,7 @@ export namespace Prisma {
     fullName?: boolean
     mobileNumber?: boolean
     email?: boolean
+    password?: boolean
     dateOfBirth?: boolean
     age?: boolean
     bloodGroup?: boolean
@@ -3587,7 +3596,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type PatientOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "referenceName" | "fullName" | "mobileNumber" | "email" | "dateOfBirth" | "age" | "bloodGroup" | "gender" | "address" | "emergencyContact" | "status" | "otp" | "otpExpiresAt" | "outletId" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["patient"]>
+  export type PatientOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "referenceName" | "fullName" | "mobileNumber" | "email" | "password" | "dateOfBirth" | "age" | "bloodGroup" | "gender" | "address" | "emergencyContact" | "status" | "otp" | "otpExpiresAt" | "outletId" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["patient"]>
   export type PatientInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     outlet?: boolean | Patient$outletArgs<ExtArgs>
   }
@@ -3603,6 +3612,7 @@ export namespace Prisma {
       fullName: string
       mobileNumber: string
       email: string | null
+      password: string
       dateOfBirth: Date | null
       age: number | null
       bloodGroup: string | null
@@ -3991,6 +4001,7 @@ export namespace Prisma {
     readonly fullName: FieldRef<"Patient", 'String'>
     readonly mobileNumber: FieldRef<"Patient", 'String'>
     readonly email: FieldRef<"Patient", 'String'>
+    readonly password: FieldRef<"Patient", 'String'>
     readonly dateOfBirth: FieldRef<"Patient", 'DateTime'>
     readonly age: FieldRef<"Patient", 'Int'>
     readonly bloodGroup: FieldRef<"Patient", 'String'>
@@ -4412,6 +4423,7 @@ export namespace Prisma {
     fullName: string | null
     mobile: string | null
     email: string | null
+    password: string | null
     bmdcNumber: string | null
     subSpecialization: string | null
     qualification: string | null
@@ -4434,6 +4446,7 @@ export namespace Prisma {
     fullName: string | null
     mobile: string | null
     email: string | null
+    password: string | null
     bmdcNumber: string | null
     subSpecialization: string | null
     qualification: string | null
@@ -4456,6 +4469,7 @@ export namespace Prisma {
     fullName: number
     mobile: number
     email: number
+    password: number
     bmdcNumber: number
     subSpecialization: number
     qualification: number
@@ -4490,6 +4504,7 @@ export namespace Prisma {
     fullName?: true
     mobile?: true
     email?: true
+    password?: true
     bmdcNumber?: true
     subSpecialization?: true
     qualification?: true
@@ -4512,6 +4527,7 @@ export namespace Prisma {
     fullName?: true
     mobile?: true
     email?: true
+    password?: true
     bmdcNumber?: true
     subSpecialization?: true
     qualification?: true
@@ -4534,6 +4550,7 @@ export namespace Prisma {
     fullName?: true
     mobile?: true
     email?: true
+    password?: true
     bmdcNumber?: true
     subSpecialization?: true
     qualification?: true
@@ -4643,6 +4660,7 @@ export namespace Prisma {
     fullName: string
     mobile: string | null
     email: string
+    password: string
     bmdcNumber: string | null
     subSpecialization: string | null
     qualification: string | null
@@ -4684,6 +4702,7 @@ export namespace Prisma {
     fullName?: boolean
     mobile?: boolean
     email?: boolean
+    password?: boolean
     bmdcNumber?: boolean
     subSpecialization?: boolean
     qualification?: boolean
@@ -4712,6 +4731,7 @@ export namespace Prisma {
     fullName?: boolean
     mobile?: boolean
     email?: boolean
+    password?: boolean
     bmdcNumber?: boolean
     subSpecialization?: boolean
     qualification?: boolean
@@ -4728,7 +4748,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type DoctorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "doctorCode" | "fullName" | "mobile" | "email" | "bmdcNumber" | "subSpecialization" | "qualification" | "experienceYears" | "currentDesignation" | "consultationFee" | "status" | "onlineStatus" | "outletId" | "specializationId" | "documentId" | "scheduleId" | "createdAt" | "updatedAt", ExtArgs["result"]["doctor"]>
+  export type DoctorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "doctorCode" | "fullName" | "mobile" | "email" | "password" | "bmdcNumber" | "subSpecialization" | "qualification" | "experienceYears" | "currentDesignation" | "consultationFee" | "status" | "onlineStatus" | "outletId" | "specializationId" | "documentId" | "scheduleId" | "createdAt" | "updatedAt", ExtArgs["result"]["doctor"]>
   export type DoctorInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     outlet?: boolean | Doctor$outletArgs<ExtArgs>
     specialization?: boolean | DoctorSpecializationDefaultArgs<ExtArgs>
@@ -4750,6 +4770,7 @@ export namespace Prisma {
       fullName: string
       mobile: string | null
       email: string
+      password: string
       bmdcNumber: string | null
       subSpecialization: string | null
       qualification: string | null
@@ -5142,6 +5163,7 @@ export namespace Prisma {
     readonly fullName: FieldRef<"Doctor", 'String'>
     readonly mobile: FieldRef<"Doctor", 'String'>
     readonly email: FieldRef<"Doctor", 'String'>
+    readonly password: FieldRef<"Doctor", 'String'>
     readonly bmdcNumber: FieldRef<"Doctor", 'String'>
     readonly subSpecialization: FieldRef<"Doctor", 'String'>
     readonly qualification: FieldRef<"Doctor", 'String'>
@@ -15396,6 +15418,7 @@ export namespace Prisma {
     fullName: 'fullName',
     mobileNumber: 'mobileNumber',
     email: 'email',
+    password: 'password',
     dateOfBirth: 'dateOfBirth',
     age: 'age',
     bloodGroup: 'bloodGroup',
@@ -15420,6 +15443,7 @@ export namespace Prisma {
     fullName: 'fullName',
     mobile: 'mobile',
     email: 'email',
+    password: 'password',
     bmdcNumber: 'bmdcNumber',
     subSpecialization: 'subSpecialization',
     qualification: 'qualification',
@@ -15591,6 +15615,7 @@ export namespace Prisma {
     fullName: 'fullName',
     mobileNumber: 'mobileNumber',
     email: 'email',
+    password: 'password',
     bloodGroup: 'bloodGroup',
     gender: 'gender',
     address: 'address',
@@ -15608,6 +15633,7 @@ export namespace Prisma {
     fullName: 'fullName',
     mobile: 'mobile',
     email: 'email',
+    password: 'password',
     bmdcNumber: 'bmdcNumber',
     subSpecialization: 'subSpecialization',
     qualification: 'qualification',
@@ -15903,6 +15929,7 @@ export namespace Prisma {
     fullName?: StringFilter<"Patient"> | string
     mobileNumber?: StringFilter<"Patient"> | string
     email?: StringNullableFilter<"Patient"> | string | null
+    password?: StringFilter<"Patient"> | string
     dateOfBirth?: DateTimeNullableFilter<"Patient"> | Date | string | null
     age?: IntNullableFilter<"Patient"> | number | null
     bloodGroup?: StringNullableFilter<"Patient"> | string | null
@@ -15925,6 +15952,7 @@ export namespace Prisma {
     fullName?: SortOrder
     mobileNumber?: SortOrder
     email?: SortOrderInput | SortOrder
+    password?: SortOrder
     dateOfBirth?: SortOrderInput | SortOrder
     age?: SortOrderInput | SortOrder
     bloodGroup?: SortOrderInput | SortOrder
@@ -15951,6 +15979,7 @@ export namespace Prisma {
     referenceName?: StringNullableFilter<"Patient"> | string | null
     fullName?: StringFilter<"Patient"> | string
     email?: StringNullableFilter<"Patient"> | string | null
+    password?: StringFilter<"Patient"> | string
     dateOfBirth?: DateTimeNullableFilter<"Patient"> | Date | string | null
     age?: IntNullableFilter<"Patient"> | number | null
     bloodGroup?: StringNullableFilter<"Patient"> | string | null
@@ -15973,6 +16002,7 @@ export namespace Prisma {
     fullName?: SortOrder
     mobileNumber?: SortOrder
     email?: SortOrderInput | SortOrder
+    password?: SortOrder
     dateOfBirth?: SortOrderInput | SortOrder
     age?: SortOrderInput | SortOrder
     bloodGroup?: SortOrderInput | SortOrder
@@ -16002,6 +16032,7 @@ export namespace Prisma {
     fullName?: StringWithAggregatesFilter<"Patient"> | string
     mobileNumber?: StringWithAggregatesFilter<"Patient"> | string
     email?: StringNullableWithAggregatesFilter<"Patient"> | string | null
+    password?: StringWithAggregatesFilter<"Patient"> | string
     dateOfBirth?: DateTimeNullableWithAggregatesFilter<"Patient"> | Date | string | null
     age?: IntNullableWithAggregatesFilter<"Patient"> | number | null
     bloodGroup?: StringNullableWithAggregatesFilter<"Patient"> | string | null
@@ -16026,6 +16057,7 @@ export namespace Prisma {
     fullName?: StringFilter<"Doctor"> | string
     mobile?: StringNullableFilter<"Doctor"> | string | null
     email?: StringFilter<"Doctor"> | string
+    password?: StringFilter<"Doctor"> | string
     bmdcNumber?: StringNullableFilter<"Doctor"> | string | null
     subSpecialization?: StringNullableFilter<"Doctor"> | string | null
     qualification?: StringNullableFilter<"Doctor"> | string | null
@@ -16052,6 +16084,7 @@ export namespace Prisma {
     fullName?: SortOrder
     mobile?: SortOrderInput | SortOrder
     email?: SortOrder
+    password?: SortOrder
     bmdcNumber?: SortOrderInput | SortOrder
     subSpecialization?: SortOrderInput | SortOrder
     qualification?: SortOrderInput | SortOrder
@@ -16083,6 +16116,7 @@ export namespace Prisma {
     NOT?: DoctorWhereInput | DoctorWhereInput[]
     fullName?: StringFilter<"Doctor"> | string
     mobile?: StringNullableFilter<"Doctor"> | string | null
+    password?: StringFilter<"Doctor"> | string
     subSpecialization?: StringNullableFilter<"Doctor"> | string | null
     qualification?: StringNullableFilter<"Doctor"> | string | null
     experienceYears?: IntNullableFilter<"Doctor"> | number | null
@@ -16108,6 +16142,7 @@ export namespace Prisma {
     fullName?: SortOrder
     mobile?: SortOrderInput | SortOrder
     email?: SortOrder
+    password?: SortOrder
     bmdcNumber?: SortOrderInput | SortOrder
     subSpecialization?: SortOrderInput | SortOrder
     qualification?: SortOrderInput | SortOrder
@@ -16138,6 +16173,7 @@ export namespace Prisma {
     fullName?: StringWithAggregatesFilter<"Doctor"> | string
     mobile?: StringNullableWithAggregatesFilter<"Doctor"> | string | null
     email?: StringWithAggregatesFilter<"Doctor"> | string
+    password?: StringWithAggregatesFilter<"Doctor"> | string
     bmdcNumber?: StringNullableWithAggregatesFilter<"Doctor"> | string | null
     subSpecialization?: StringNullableWithAggregatesFilter<"Doctor"> | string | null
     qualification?: StringNullableWithAggregatesFilter<"Doctor"> | string | null
@@ -16891,6 +16927,7 @@ export namespace Prisma {
     fullName: string
     mobileNumber: string
     email?: string | null
+    password: string
     dateOfBirth?: Date | string | null
     age?: number | null
     bloodGroup?: string | null
@@ -16912,6 +16949,7 @@ export namespace Prisma {
     fullName: string
     mobileNumber: string
     email?: string | null
+    password: string
     dateOfBirth?: Date | string | null
     age?: number | null
     bloodGroup?: string | null
@@ -16933,6 +16971,7 @@ export namespace Prisma {
     fullName?: StringFieldUpdateOperationsInput | string
     mobileNumber?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16954,6 +16993,7 @@ export namespace Prisma {
     fullName?: StringFieldUpdateOperationsInput | string
     mobileNumber?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16975,6 +17015,7 @@ export namespace Prisma {
     fullName: string
     mobileNumber: string
     email?: string | null
+    password: string
     dateOfBirth?: Date | string | null
     age?: number | null
     bloodGroup?: string | null
@@ -16996,6 +17037,7 @@ export namespace Prisma {
     fullName?: StringFieldUpdateOperationsInput | string
     mobileNumber?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17016,6 +17058,7 @@ export namespace Prisma {
     fullName?: StringFieldUpdateOperationsInput | string
     mobileNumber?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17037,6 +17080,7 @@ export namespace Prisma {
     fullName: string
     mobile?: string | null
     email: string
+    password: string
     bmdcNumber?: string | null
     subSpecialization?: string | null
     qualification?: string | null
@@ -17059,6 +17103,7 @@ export namespace Prisma {
     fullName: string
     mobile?: string | null
     email: string
+    password: string
     bmdcNumber?: string | null
     subSpecialization?: string | null
     qualification?: string | null
@@ -17081,6 +17126,7 @@ export namespace Prisma {
     fullName?: StringFieldUpdateOperationsInput | string
     mobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     bmdcNumber?: NullableStringFieldUpdateOperationsInput | string | null
     subSpecialization?: NullableStringFieldUpdateOperationsInput | string | null
     qualification?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17103,6 +17149,7 @@ export namespace Prisma {
     fullName?: StringFieldUpdateOperationsInput | string
     mobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     bmdcNumber?: NullableStringFieldUpdateOperationsInput | string | null
     subSpecialization?: NullableStringFieldUpdateOperationsInput | string | null
     qualification?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17125,6 +17172,7 @@ export namespace Prisma {
     fullName: string
     mobile?: string | null
     email: string
+    password: string
     bmdcNumber?: string | null
     subSpecialization?: string | null
     qualification?: string | null
@@ -17147,6 +17195,7 @@ export namespace Prisma {
     fullName?: StringFieldUpdateOperationsInput | string
     mobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     bmdcNumber?: NullableStringFieldUpdateOperationsInput | string | null
     subSpecialization?: NullableStringFieldUpdateOperationsInput | string | null
     qualification?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17165,6 +17214,7 @@ export namespace Prisma {
     fullName?: StringFieldUpdateOperationsInput | string
     mobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     bmdcNumber?: NullableStringFieldUpdateOperationsInput | string | null
     subSpecialization?: NullableStringFieldUpdateOperationsInput | string | null
     qualification?: NullableStringFieldUpdateOperationsInput | string | null
@@ -18057,6 +18107,7 @@ export namespace Prisma {
     fullName?: SortOrder
     mobileNumber?: SortOrder
     email?: SortOrder
+    password?: SortOrder
     dateOfBirth?: SortOrder
     age?: SortOrder
     bloodGroup?: SortOrder
@@ -18082,6 +18133,7 @@ export namespace Prisma {
     fullName?: SortOrder
     mobileNumber?: SortOrder
     email?: SortOrder
+    password?: SortOrder
     dateOfBirth?: SortOrder
     age?: SortOrder
     bloodGroup?: SortOrder
@@ -18103,6 +18155,7 @@ export namespace Prisma {
     fullName?: SortOrder
     mobileNumber?: SortOrder
     email?: SortOrder
+    password?: SortOrder
     dateOfBirth?: SortOrder
     age?: SortOrder
     bloodGroup?: SortOrder
@@ -18214,6 +18267,7 @@ export namespace Prisma {
     fullName?: SortOrder
     mobile?: SortOrder
     email?: SortOrder
+    password?: SortOrder
     bmdcNumber?: SortOrder
     subSpecialization?: SortOrder
     qualification?: SortOrder
@@ -18241,6 +18295,7 @@ export namespace Prisma {
     fullName?: SortOrder
     mobile?: SortOrder
     email?: SortOrder
+    password?: SortOrder
     bmdcNumber?: SortOrder
     subSpecialization?: SortOrder
     qualification?: SortOrder
@@ -18263,6 +18318,7 @@ export namespace Prisma {
     fullName?: SortOrder
     mobile?: SortOrder
     email?: SortOrder
+    password?: SortOrder
     bmdcNumber?: SortOrder
     subSpecialization?: SortOrder
     qualification?: SortOrder
@@ -20510,6 +20566,7 @@ export namespace Prisma {
     fullName: string
     mobile?: string | null
     email: string
+    password: string
     bmdcNumber?: string | null
     subSpecialization?: string | null
     qualification?: string | null
@@ -20531,6 +20588,7 @@ export namespace Prisma {
     fullName: string
     mobile?: string | null
     email: string
+    password: string
     bmdcNumber?: string | null
     subSpecialization?: string | null
     qualification?: string | null
@@ -20581,6 +20639,7 @@ export namespace Prisma {
     fullName?: StringFilter<"Doctor"> | string
     mobile?: StringNullableFilter<"Doctor"> | string | null
     email?: StringFilter<"Doctor"> | string
+    password?: StringFilter<"Doctor"> | string
     bmdcNumber?: StringNullableFilter<"Doctor"> | string | null
     subSpecialization?: StringNullableFilter<"Doctor"> | string | null
     qualification?: StringNullableFilter<"Doctor"> | string | null
@@ -20603,6 +20662,7 @@ export namespace Prisma {
     fullName: string
     mobile?: string | null
     email: string
+    password: string
     bmdcNumber?: string | null
     subSpecialization?: string | null
     qualification?: string | null
@@ -20624,6 +20684,7 @@ export namespace Prisma {
     fullName: string
     mobile?: string | null
     email: string
+    password: string
     bmdcNumber?: string | null
     subSpecialization?: string | null
     qualification?: string | null
@@ -20671,6 +20732,7 @@ export namespace Prisma {
     fullName: string
     mobile?: string | null
     email: string
+    password: string
     bmdcNumber?: string | null
     subSpecialization?: string | null
     qualification?: string | null
@@ -20692,6 +20754,7 @@ export namespace Prisma {
     fullName: string
     mobile?: string | null
     email: string
+    password: string
     bmdcNumber?: string | null
     subSpecialization?: string | null
     qualification?: string | null
@@ -20807,6 +20870,7 @@ export namespace Prisma {
     fullName: string
     mobileNumber: string
     email?: string | null
+    password: string
     dateOfBirth?: Date | string | null
     age?: number | null
     bloodGroup?: string | null
@@ -20827,6 +20891,7 @@ export namespace Prisma {
     fullName: string
     mobileNumber: string
     email?: string | null
+    password: string
     dateOfBirth?: Date | string | null
     age?: number | null
     bloodGroup?: string | null
@@ -20857,6 +20922,7 @@ export namespace Prisma {
     fullName: string
     mobile?: string | null
     email: string
+    password: string
     bmdcNumber?: string | null
     subSpecialization?: string | null
     qualification?: string | null
@@ -20878,6 +20944,7 @@ export namespace Prisma {
     fullName: string
     mobile?: string | null
     email: string
+    password: string
     bmdcNumber?: string | null
     subSpecialization?: string | null
     qualification?: string | null
@@ -20975,6 +21042,7 @@ export namespace Prisma {
     fullName?: StringFilter<"Patient"> | string
     mobileNumber?: StringFilter<"Patient"> | string
     email?: StringNullableFilter<"Patient"> | string | null
+    password?: StringFilter<"Patient"> | string
     dateOfBirth?: DateTimeNullableFilter<"Patient"> | Date | string | null
     age?: IntNullableFilter<"Patient"> | number | null
     bloodGroup?: StringNullableFilter<"Patient"> | string | null
@@ -21895,6 +21963,7 @@ export namespace Prisma {
     fullName: string
     mobile?: string | null
     email: string
+    password: string
     bmdcNumber?: string | null
     subSpecialization?: string | null
     qualification?: string | null
@@ -21916,6 +21985,7 @@ export namespace Prisma {
     fullName?: StringFieldUpdateOperationsInput | string
     mobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     bmdcNumber?: NullableStringFieldUpdateOperationsInput | string | null
     subSpecialization?: NullableStringFieldUpdateOperationsInput | string | null
     qualification?: NullableStringFieldUpdateOperationsInput | string | null
@@ -21937,6 +22007,7 @@ export namespace Prisma {
     fullName?: StringFieldUpdateOperationsInput | string
     mobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     bmdcNumber?: NullableStringFieldUpdateOperationsInput | string | null
     subSpecialization?: NullableStringFieldUpdateOperationsInput | string | null
     qualification?: NullableStringFieldUpdateOperationsInput | string | null
@@ -21958,6 +22029,7 @@ export namespace Prisma {
     fullName?: StringFieldUpdateOperationsInput | string
     mobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     bmdcNumber?: NullableStringFieldUpdateOperationsInput | string | null
     subSpecialization?: NullableStringFieldUpdateOperationsInput | string | null
     qualification?: NullableStringFieldUpdateOperationsInput | string | null
@@ -21979,6 +22051,7 @@ export namespace Prisma {
     fullName: string
     mobile?: string | null
     email: string
+    password: string
     bmdcNumber?: string | null
     subSpecialization?: string | null
     qualification?: string | null
@@ -22000,6 +22073,7 @@ export namespace Prisma {
     fullName?: StringFieldUpdateOperationsInput | string
     mobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     bmdcNumber?: NullableStringFieldUpdateOperationsInput | string | null
     subSpecialization?: NullableStringFieldUpdateOperationsInput | string | null
     qualification?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22021,6 +22095,7 @@ export namespace Prisma {
     fullName?: StringFieldUpdateOperationsInput | string
     mobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     bmdcNumber?: NullableStringFieldUpdateOperationsInput | string | null
     subSpecialization?: NullableStringFieldUpdateOperationsInput | string | null
     qualification?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22042,6 +22117,7 @@ export namespace Prisma {
     fullName?: StringFieldUpdateOperationsInput | string
     mobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     bmdcNumber?: NullableStringFieldUpdateOperationsInput | string | null
     subSpecialization?: NullableStringFieldUpdateOperationsInput | string | null
     qualification?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22063,6 +22139,7 @@ export namespace Prisma {
     fullName: string
     mobile?: string | null
     email: string
+    password: string
     bmdcNumber?: string | null
     subSpecialization?: string | null
     qualification?: string | null
@@ -22084,6 +22161,7 @@ export namespace Prisma {
     fullName?: StringFieldUpdateOperationsInput | string
     mobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     bmdcNumber?: NullableStringFieldUpdateOperationsInput | string | null
     subSpecialization?: NullableStringFieldUpdateOperationsInput | string | null
     qualification?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22105,6 +22183,7 @@ export namespace Prisma {
     fullName?: StringFieldUpdateOperationsInput | string
     mobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     bmdcNumber?: NullableStringFieldUpdateOperationsInput | string | null
     subSpecialization?: NullableStringFieldUpdateOperationsInput | string | null
     qualification?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22126,6 +22205,7 @@ export namespace Prisma {
     fullName?: StringFieldUpdateOperationsInput | string
     mobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     bmdcNumber?: NullableStringFieldUpdateOperationsInput | string | null
     subSpecialization?: NullableStringFieldUpdateOperationsInput | string | null
     qualification?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22167,6 +22247,7 @@ export namespace Prisma {
     fullName: string
     mobileNumber: string
     email?: string | null
+    password: string
     dateOfBirth?: Date | string | null
     age?: number | null
     bloodGroup?: string | null
@@ -22187,6 +22268,7 @@ export namespace Prisma {
     fullName: string
     mobile?: string | null
     email: string
+    password: string
     bmdcNumber?: string | null
     subSpecialization?: string | null
     qualification?: string | null
@@ -22276,6 +22358,7 @@ export namespace Prisma {
     fullName?: StringFieldUpdateOperationsInput | string
     mobileNumber?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22296,6 +22379,7 @@ export namespace Prisma {
     fullName?: StringFieldUpdateOperationsInput | string
     mobileNumber?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22316,6 +22400,7 @@ export namespace Prisma {
     fullName?: StringFieldUpdateOperationsInput | string
     mobileNumber?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22336,6 +22421,7 @@ export namespace Prisma {
     fullName?: StringFieldUpdateOperationsInput | string
     mobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     bmdcNumber?: NullableStringFieldUpdateOperationsInput | string | null
     subSpecialization?: NullableStringFieldUpdateOperationsInput | string | null
     qualification?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22357,6 +22443,7 @@ export namespace Prisma {
     fullName?: StringFieldUpdateOperationsInput | string
     mobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     bmdcNumber?: NullableStringFieldUpdateOperationsInput | string | null
     subSpecialization?: NullableStringFieldUpdateOperationsInput | string | null
     qualification?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22378,6 +22465,7 @@ export namespace Prisma {
     fullName?: StringFieldUpdateOperationsInput | string
     mobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     bmdcNumber?: NullableStringFieldUpdateOperationsInput | string | null
     subSpecialization?: NullableStringFieldUpdateOperationsInput | string | null
     qualification?: NullableStringFieldUpdateOperationsInput | string | null

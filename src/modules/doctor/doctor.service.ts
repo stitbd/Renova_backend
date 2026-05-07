@@ -1,3 +1,4 @@
+import { env } from "../../configs/env";
 import {
   DoctorOnlineStatus,
   DoctorStatus,
@@ -9,6 +10,7 @@ import {
   CreateDoctorInput,
   UpdateDoctorInput,
 } from "./doctor.types";
+import bcrypt from "bcryptjs";
 
 export const doctorService = {
   async create(data: CreateDoctorInput) {
@@ -50,11 +52,14 @@ export const doctorService = {
       doctorCode = `DOC_${String(nextNumber).padStart(4, "0")}`;
     }
 
+    const hashedPassword = await bcrypt.hash(data.password, env.bcrypt_salt_rounds);
+
     return doctorRepository.create({
       doctorCode,
       fullName: data.fullName,
       mobile: data.mobile,
       email: data.email,
+      password: hashedPassword,
       bmdcNumber: data.bmdcNumber,
       subSpecialization: data.subSpecialization,
       qualification: data.qualification,

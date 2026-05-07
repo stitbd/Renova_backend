@@ -3,6 +3,7 @@ export type CreatePatientInput = {
   fullName: string;
   mobileNumber: string;
   email?: string;
+  password: string;
   dateOfBirth?: string;
   age?: number;
   bloodGroup?: string;
