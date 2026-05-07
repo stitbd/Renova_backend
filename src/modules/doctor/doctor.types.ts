@@ -22,8 +22,6 @@ export type CreateDoctorInput = {
   onlineStatus?: DoctorOnlineStatus;
   outletId?: string;
   specializationId?: string;
-  documentId?: string;
-  scheduleId?: string;
 };
 
 export type UpdateDoctorInput = Partial<CreateDoctorInput>;

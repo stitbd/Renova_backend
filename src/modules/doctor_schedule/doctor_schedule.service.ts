@@ -6,8 +6,16 @@ import { CreateDoctorScheduleInput, UpdateDoctorScheduleInput } from "./doctor_s
 export const doctorScheduleService = {
 
     async createSchedule(data: CreateDoctorScheduleInput) {
+        if (!data.doctorId) {
+            throw new Error("Doctor ID is required");
+        }
 
         return doctorScheduleRepository.createSchedule({
+            doctor: {
+                connect: {
+                    id: data.doctorId,
+                },
+            },
             dayName: data.dayName,
             startTime: data.startTime,
             endTime: data.endTime,
@@ -15,7 +23,6 @@ export const doctorScheduleService = {
             status: data.status,
         });
     },
-
 
     async getScheduleById(id: string) {
         const schedule = await doctorScheduleRepository.findScheduleById(id);
@@ -36,6 +43,7 @@ export const doctorScheduleService = {
             endTime: data.endTime,
             slotDuration: data.slotDuration,
             status: data.status,
+
         });
     },
 

@@ -116,11 +116,8 @@ model Doctor {
   specializationId String
   specialization   DoctorSpecialization @relation(fields: [specializationId], references: [id], onDelete: Cascade)
 
-  documentId String?
-  document   DoctorDocument? @relation(fields: [documentId], references: [id], onDelete: Cascade)
-
-  scheduleId String
-  schedule   DoctorSchedule @relation(fields: [scheduleId], references: [id], onDelete: Cascade)
+  documents DoctorDocument[]
+  schedules DoctorSchedule[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -139,7 +136,8 @@ model DoctorDocument {
   fileUrl            String
   verificationStatus VerificationStatus @default(PENDING)
 
-  doctors Doctor[]
+  doctorId String
+  doctor   Doctor @relation(fields: [doctorId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
 }
@@ -147,7 +145,8 @@ model DoctorDocument {
 model DoctorSchedule {
   id String @id @default(uuid())
 
-  doctors Doctor[]
+  doctorId String
+  doctor   Doctor @relation(fields: [doctorId], references: [id], onDelete: Cascade)
 
   dayName      String
   startTime    String

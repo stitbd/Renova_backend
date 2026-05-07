@@ -38,10 +38,6 @@ export const doctorService = {
       throw new Error("Specialization ID is required");
     }
 
-    if (!data.scheduleId) {
-      throw new Error("Schedule ID is required");
-    }
-
     const lastDoctor = await doctorRepository.findLastDoctor();
 
     let doctorCode = "DOC_0001";
@@ -82,20 +78,6 @@ export const doctorService = {
           id: data.specializationId,
         },
       },
-
-      schedule: {
-        connect: {
-          id: data.scheduleId,
-        },
-      },
-
-      document: data.documentId
-        ? {
-          connect: {
-            id: data.documentId,
-          },
-        }
-        : undefined,
     });
   }
   ,
@@ -171,21 +153,6 @@ export const doctorService = {
         }
         : undefined,
 
-      schedule: data.scheduleId
-        ? {
-          connect: {
-            id: data.scheduleId,
-          },
-        }
-        : undefined,
-
-      document: data.documentId
-        ? {
-          connect: {
-            id: data.documentId,
-          },
-        }
-        : undefined,
     });
   },
 

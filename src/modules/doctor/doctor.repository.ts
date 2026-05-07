@@ -11,8 +11,8 @@ export const doctorRepository = {
       data,
       include: {
         specialization: true,
-        document: true,
-        schedule: true,
+        documents: true,
+        schedules: true,
         outlet: true,
       },
     });
@@ -21,8 +21,8 @@ export const doctorRepository = {
     return mainPrisma.doctor.findMany({
       include: {
         specialization: true,
-        document: true,
-        schedule: true,
+        documents: true,
+        schedules: true,
         outlet: true,
       },
       orderBy: {
@@ -36,8 +36,8 @@ export const doctorRepository = {
       where: { id },
       include: {
         specialization: true,
-        document: true,
-        schedule: true,
+        documents: true,
+        schedules: true,
         outlet: true,
       },
     });
@@ -84,8 +84,8 @@ export const doctorRepository = {
       data,
       include: {
         specialization: true,
-        document: true,
-        schedule: true,
+        documents: true,
+        schedules: true,
         outlet: true,
       },
     });

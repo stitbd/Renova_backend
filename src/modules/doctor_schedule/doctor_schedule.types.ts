@@ -7,6 +7,7 @@ export type CreateDoctorScheduleInput = {
   endTime: string;
   slotDuration: number;
   status?: ScheduleStatus;
+  doctorId: string;
 };
 
 export type UpdateDoctorScheduleInput =

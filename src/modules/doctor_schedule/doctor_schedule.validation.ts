@@ -7,6 +7,7 @@ export const createDoctorScheduleSchema = z.object({
   endTime: z.string().min(1, "End time is required"),
   slotDuration: z.number().int().positive(),
   status: z.enum(["ACTIVE", "INACTIVE"]).optional(),
+  doctorId: z.string(),
 });
 
 export const updateDoctorScheduleSchema =

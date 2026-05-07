@@ -14,8 +14,6 @@ export const createDoctorSchema = z.object({
   status: z.enum(["ACTIVE", "INACTIVE"]).optional(),
   onlineStatus: z.enum(["ONLINE", "OFFLINE"]).optional(),
   specializationId: z.string(),
-  scheduleId: z.string(),
-  documentId: z.string().optional(),
 });
 
 export const updateDoctorSchema = createDoctorSchema.partial();
