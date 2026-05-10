@@ -107,6 +107,7 @@ export const outletAuthService = {
       throw new Error("Account is inactive");
     }
 
+  
     const permissions =
       user.userRoles.flatMap((userRole) =>
         userRole.role.rolePermissions.map(
@@ -115,17 +116,14 @@ export const outletAuthService = {
         )
       );
 
+      
+
     const payload = {
       id: user.id,
-
       phone: user.phone,
-
       role: "OUTLET_USER",
-
       outletId: user.outletId,
-
       isOwner: user.isOwner,
-
       permissions,
     };
 

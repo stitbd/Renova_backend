@@ -25,9 +25,7 @@ export const outletAuthController = {
 
         res.status(200).json({
             success: true,
-            message:
-                "Outlet user login successful",
-
+            message: "Outlet user login successful",
             data: {
                 accessToken: result.accessToken,
                 user: result.user,
@@ -49,9 +47,7 @@ export const outletAuthController = {
 
         res.status(200).json({
             success: true,
-            message:
-                "Access token generated successfully",
-
+            message: "Access token generated successfully",
             data: result,
         });
     },
