@@ -35,11 +35,11 @@ enum PatientStatus {
 }
 
 model Patient {
-  id               String   @id @default(uuid())
+  id String @id @default(uuid())
 
   referenceName    String?
   fullName         String
-  mobileNumber     String   @unique
+  mobileNumber     String        @unique
   email            String?
   password         String
   dateOfBirth      DateTime?
@@ -52,17 +52,13 @@ model Patient {
   otp              String?
   otpExpiresAt     DateTime?
 
-  outletId         String?
-  outlet           outlet? @relation(fields: [outletId], references: [id] , onDelete : Cascade)
+  outletId String?
+  outlet   outlet? @relation(fields: [outletId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
-  isActive         Boolean @default(true)
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
-
-
-
-
 
 //Doctor models 
 //---------------
@@ -96,124 +92,124 @@ enum ScheduleStatus {
   INACTIVE
 }
 
-
-
 model Doctor {
-  id                 String   @id @default(uuid())
+  id String @id @default(uuid())
 
-  doctorCode         String?  @unique
-  fullName           String
-  mobile             String?
-  email              String   @unique
-  password         String
-  bmdcNumber         String?  @unique
-
- 
+  doctorCode String? @unique
+  fullName   String
+  mobile     String?
+  email      String  @unique
+  password   String
+  bmdcNumber String? @unique
 
   subSpecialization  String?
   qualification      String?
   experienceYears    Int?
   currentDesignation String?
-  consultationFee    Decimal? @db.Decimal(10, 2)
-  status             DoctorStatus @default(ACTIVE)
+  consultationFee    Decimal?           @db.Decimal(10, 2)
+  status             DoctorStatus       @default(ACTIVE)
   onlineStatus       DoctorOnlineStatus @default(OFFLINE)
 
-  outletId         String?
-  outlet           outlet? @relation(fields: [outletId], references: [id] , onDelete: Cascade)
+  outletId String?
+  outlet   outlet? @relation(fields: [outletId], references: [id], onUpdate: Cascade, onDelete: Cascade)
 
-  specializationId  String
-  specialization   DoctorSpecialization @relation( fields : [specializationId],references:[id], onDelete : Cascade)
+  specializationId String
+  specialization   DoctorSpecialization @relation(fields: [specializationId], references: [id], onUpdate: Cascade, onDelete: Cascade)
 
   documents DoctorDocument[]
   schedules DoctorSchedule[]
 
-
-
-
-  createdAt          DateTime @default(now())
-  updatedAt          DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model DoctorSpecialization {
-  id        String   @id @default(uuid())
-  name      String   @unique
-  status    DoctorStatus @default(ACTIVE)
-  doctors   Doctor[]
+  id      String       @id @default(uuid())
+  name    String       @unique
+  status  DoctorStatus @default(ACTIVE)
+  doctors Doctor[]
 }
 
 model DoctorDocument {
-  id                 String @id @default(uuid())
+  id                 String             @id @default(uuid())
   documentType       DocumentType
   fileUrl            String
   verificationStatus VerificationStatus @default(PENDING)
 
-  doctorId  String
-  doctor    Doctor @relation(fields: [doctorId], references: [id], onDelete: Cascade)
+  doctorId String
+  doctor   Doctor @relation(fields: [doctorId], references: [id], onUpdate: Cascade, onDelete: Cascade)
 
-  createdAt          DateTime @default(now())
+  createdAt DateTime @default(now())
 }
 
 model DoctorSchedule {
-  id           String @id @default(uuid())
+  id String @id @default(uuid())
 
-  doctorId  String
-  doctor    Doctor @relation(fields: [doctorId], references: [id], onDelete: Cascade)
+  doctorId String
+  doctor   Doctor @relation(fields: [doctorId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   dayName      String
   startTime    String
   endTime      String
   slotDuration Int
 
-  status       ScheduleStatus @default(ACTIVE)
+  status ScheduleStatus @default(ACTIVE)
 }
-
-
-
-
-
-
-
-
-
 
 // Outlet_parent model 
 //--------------------
 
-model outlet {
-  id         String  @id @default(uuid())
-  name       String
-  email      String  @unique
-  phone      String?
-  password   String
-  centerName String
-  slug       String  @unique
-  logo       String?
-  address    String?
-  isActive   Boolean @default(true)
+enum OutletStatus {
+  ACTIVE
+  INACTIVE
+}
 
-  childUsers OutletChildUser[]
-  roles      Role[]
-  patients   Patient[] // ✅ ADD THIS
-  doctors    Doctor[]
+model outlet {
+  id         String @id @default(uuid())
+  outletCode String @unique
+  outletName String
+  subdomain  String @unique
+
+  division      String
+  district      String
+  area          String
+  address       String
+  contactNumber String
+  email         String @unique
+  password      String
+
+  latitude  Decimal? @db.Decimal(10, 8)
+  longitude Decimal? @db.Decimal(11, 8)
+
+  status OutletStatus @default(ACTIVE)
+
+  users    OutletUser[]
+  roles    Role[]
+  patients Patient[]
+  doctors  Doctor[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@map("outlets")
 }
 
 // Outlet_child model
 //-----------------------
 
-model OutletChildUser {
-  id                  String  @id @default(uuid())
+model OutletUser {
+  id       String @id @default(uuid())
   outletId String
-  name                String
-  email               String
-  phone               String?
-  password            String
-  isActive            Boolean @default(true)
 
-  outlet outlet    @relation(fields: [outletId], references: [id] , onDelete: Cascade )
-  userRoles         OutletUserRole[]
+  name     String
+  email    String
+  phone    String?
+  password String
+  isOwner  Boolean @default(false)
+  isActive Boolean @default(true)
+
+  outlet    outlet           @relation(fields: [outletId], references: [id], onDelete: Cascade)
+  userRoles OutletUserRole[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -234,14 +230,14 @@ model Role {
   ownerType RoleOwnerType
 
   // owner references
-  outletId String?
-  superAdminId        String? // ✅ NEW
+  outletId     String?
+  superAdminId String? // ✅ NEW
 
-  outlet outlet? @relation(fields: [outletId], references: [id] , onDelete: Cascade )
-  superAdmin        SuperAdmins?       @relation(fields: [superAdminId], references: [id] , onDelete: Cascade )
+  outlet     outlet?      @relation(fields: [outletId], references: [id], onDelete: Cascade)
+  superAdmin SuperAdmins? @relation(fields: [superAdminId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   rolePermissions     RolePermission[]
-  OutletUserRoles OutletUserRole[]
+  outletUserRoles     OutletUserRole[]
   superAdminUserRoles SuperAdminUserRole[] // ✅ NEW
 
   createdAt DateTime @default(now())
@@ -268,26 +264,26 @@ model RolePermission {
   roleId       String
   permissionId String
 
-  role       Role       @relation(fields: [roleId], references: [id] , onDelete: Cascade )
-  permission Permission @relation(fields: [permissionId], references: [id] , onDelete: Cascade )
+  role       Role       @relation(fields: [roleId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  permission Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   @@unique([roleId, permissionId])
 }
 
-// assaigning role to child users in  diagnostic accounts and superAdmin 
+// assaigning role to child users in  outlet and superAdmin 
 //--------------------------------------------------------------------
 
 model OutletUserRole {
-  id                    String @id @default(uuid())
-  OutletChildUserId String
-  roleId                String
+  id           String @id @default(uuid())
+  outletUserId String
+  roleId       String
 
-  OutletChildUser OutletChildUser @relation(fields: [OutletChildUserId], references: [id] , onDelete: Cascade )
-  role                Role                @relation(fields: [roleId], references: [id] , onDelete: Cascade )
+  outletUser OutletUser @relation(fields: [outletUserId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  role       Role       @relation(fields: [roleId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   createdAt DateTime @default(now())
 
-  @@unique([OutletChildUserId, roleId])
+  @@unique([outletUserId, roleId])
 }
 
 model SuperAdminUserRole {
@@ -295,10 +291,12 @@ model SuperAdminUserRole {
   superAdminId String
   roleId       String
 
-  superAdmin SuperAdmins @relation(fields: [superAdminId], references: [id] , onDelete: Cascade )
-  role       Role        @relation(fields: [roleId], references: [id] , onDelete: Cascade )
+  superAdmin SuperAdmins @relation(fields: [superAdminId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  role       Role        @relation(fields: [roleId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   createdAt DateTime @default(now())
 
   @@unique([superAdminId, roleId])
 }
+
+

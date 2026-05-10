@@ -27,5 +27,9 @@ export const env = {
   doctorAccessTokenExpiresIn: process.env.DOCTOR_ACCESS_JWT_EXPIRES_IN || "7d",
   doctorRefreshTokenSecret: process.env.DOCTOR_REFRESH_JWT_SECRET as string,
   doctorRefreshTokenExpiresIn: process.env.DOCTOR_REFRESH_JWT_EXPIRES_IN || "30d",
+  outletUserAccessTokenSecret: process.env.OUTLET_USER_ACCESS_JWT_SECRET as string,
+  outletUserAccessTokenExpiresIn: process.env.OUTLET_USER_ACCESS_JWT_EXPIRES_IN || "7d",
+  outletUserRefreshTokenSecret: process.env.OUTLET_USER_REFRESH_JWT_SECRET as string,
+  outletUserRefreshTokenExpiresIn: process.env.OUTLET_USER_REFRESH_JWT_EXPIRES_IN || "30d",
   bcrypt_salt_rounds: Number(process.env.BCRYPT_SALT_ROUNDS),
 };

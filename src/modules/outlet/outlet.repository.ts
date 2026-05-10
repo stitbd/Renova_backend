@@ -1,0 +1,80 @@
+import { mainPrisma } from "../../databases/prisma";
+import { Prisma } from "../../generated/main-client";
+
+export const outletRepository = {
+    create(data: Prisma.outletCreateInput) {
+        return mainPrisma.outlet.create({
+            data,
+            include: {
+                users: true,
+                roles: true,
+            },
+        });
+    },
+
+    findAll() {
+        return mainPrisma.outlet.findMany({
+            orderBy: {
+                createdAt: "desc",
+            },
+            include: {
+                users: true,
+                roles: true,
+            },
+        });
+    },
+
+    findById(id: string) {
+        return mainPrisma.outlet.findUnique({
+            where: { id },
+            include: {
+                users: true,
+                roles: true,
+                patients: true,
+                doctors: true,
+            },
+        });
+    },
+
+    findLastOutlet() {
+        return mainPrisma.outlet.findFirst({
+            orderBy: {
+                createdAt: "desc",
+            },
+            select: {
+                outletCode: true,
+            },
+        });
+    },
+
+    findByEmail(email: string) {
+        return mainPrisma.outlet.findUnique({
+            where: { email },
+        });
+    },
+
+    findOutletUserByEmail(email: string) {
+        return mainPrisma.outletUser.findFirst({
+            where: { email },
+        });
+    },
+
+    findBySubdomain(subdomain: string) {
+        return mainPrisma.outlet.findUnique({
+            where: { subdomain },
+        });
+    },
+
+    update(id: string, data: Prisma.outletUpdateInput) {
+        return mainPrisma.outlet.update({
+            where: { id },
+            data,
+        });
+    },
+
+    delete(id: string) {
+        return mainPrisma.outlet.delete({
+            where: { id },
+        });
+    },
+};

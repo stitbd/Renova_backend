@@ -202,26 +202,31 @@ exports.Prisma.DoctorScheduleScalarFieldEnum = {
 
 exports.Prisma.OutletScalarFieldEnum = {
   id: 'id',
-  name: 'name',
-  email: 'email',
-  phone: 'phone',
-  password: 'password',
-  centerName: 'centerName',
-  slug: 'slug',
-  logo: 'logo',
+  outletCode: 'outletCode',
+  outletName: 'outletName',
+  subdomain: 'subdomain',
+  division: 'division',
+  district: 'district',
+  area: 'area',
   address: 'address',
-  isActive: 'isActive',
+  contactNumber: 'contactNumber',
+  email: 'email',
+  password: 'password',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  status: 'status',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.OutletChildUserScalarFieldEnum = {
+exports.Prisma.OutletUserScalarFieldEnum = {
   id: 'id',
   outletId: 'outletId',
   name: 'name',
   email: 'email',
   phone: 'phone',
   password: 'password',
+  isOwner: 'isOwner',
   isActive: 'isActive',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -254,7 +259,7 @@ exports.Prisma.RolePermissionScalarFieldEnum = {
 
 exports.Prisma.OutletUserRoleScalarFieldEnum = {
   id: 'id',
-  OutletChildUserId: 'OutletChildUserId',
+  outletUserId: 'outletUserId',
   roleId: 'roleId',
   createdAt: 'createdAt'
 };
@@ -335,17 +340,19 @@ exports.Prisma.DoctorScheduleOrderByRelevanceFieldEnum = {
 
 exports.Prisma.outletOrderByRelevanceFieldEnum = {
   id: 'id',
-  name: 'name',
+  outletCode: 'outletCode',
+  outletName: 'outletName',
+  subdomain: 'subdomain',
+  division: 'division',
+  district: 'district',
+  area: 'area',
+  address: 'address',
+  contactNumber: 'contactNumber',
   email: 'email',
-  phone: 'phone',
-  password: 'password',
-  centerName: 'centerName',
-  slug: 'slug',
-  logo: 'logo',
-  address: 'address'
+  password: 'password'
 };
 
-exports.Prisma.OutletChildUserOrderByRelevanceFieldEnum = {
+exports.Prisma.OutletUserOrderByRelevanceFieldEnum = {
   id: 'id',
   outletId: 'outletId',
   name: 'name',
@@ -376,7 +383,7 @@ exports.Prisma.RolePermissionOrderByRelevanceFieldEnum = {
 
 exports.Prisma.OutletUserRoleOrderByRelevanceFieldEnum = {
   id: 'id',
-  OutletChildUserId: 'OutletChildUserId',
+  outletUserId: 'outletUserId',
   roleId: 'roleId'
 };
 
@@ -419,6 +426,11 @@ exports.ScheduleStatus = exports.$Enums.ScheduleStatus = {
   INACTIVE: 'INACTIVE'
 };
 
+exports.OutletStatus = exports.$Enums.OutletStatus = {
+  ACTIVE: 'ACTIVE',
+  INACTIVE: 'INACTIVE'
+};
+
 exports.RoleOwnerType = exports.$Enums.RoleOwnerType = {
   OUTLET: 'OUTLET',
   SUPER_ADMIN: 'SUPER_ADMIN'
@@ -432,7 +444,7 @@ exports.Prisma.ModelName = {
   DoctorDocument: 'DoctorDocument',
   DoctorSchedule: 'DoctorSchedule',
   outlet: 'outlet',
-  OutletChildUser: 'OutletChildUser',
+  OutletUser: 'OutletUser',
   Role: 'Role',
   Permission: 'Permission',
   RolePermission: 'RolePermission',

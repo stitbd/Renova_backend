@@ -49,10 +49,10 @@ export type DoctorSchedule = $Result.DefaultSelection<Prisma.$DoctorSchedulePayl
  */
 export type outlet = $Result.DefaultSelection<Prisma.$outletPayload>
 /**
- * Model OutletChildUser
+ * Model OutletUser
  * 
  */
-export type OutletChildUser = $Result.DefaultSelection<Prisma.$OutletChildUserPayload>
+export type OutletUser = $Result.DefaultSelection<Prisma.$OutletUserPayload>
 /**
  * Model Role
  * 
@@ -135,6 +135,14 @@ export const ScheduleStatus: {
 export type ScheduleStatus = (typeof ScheduleStatus)[keyof typeof ScheduleStatus]
 
 
+export const OutletStatus: {
+  ACTIVE: 'ACTIVE',
+  INACTIVE: 'INACTIVE'
+};
+
+export type OutletStatus = (typeof OutletStatus)[keyof typeof OutletStatus]
+
+
 export const RoleOwnerType: {
   OUTLET: 'OUTLET',
   SUPER_ADMIN: 'SUPER_ADMIN'
@@ -167,6 +175,10 @@ export const VerificationStatus: typeof $Enums.VerificationStatus
 export type ScheduleStatus = $Enums.ScheduleStatus
 
 export const ScheduleStatus: typeof $Enums.ScheduleStatus
+
+export type OutletStatus = $Enums.OutletStatus
+
+export const OutletStatus: typeof $Enums.OutletStatus
 
 export type RoleOwnerType = $Enums.RoleOwnerType
 
@@ -361,14 +373,14 @@ export class PrismaClient<
   get outlet(): Prisma.outletDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.outletChildUser`: Exposes CRUD operations for the **OutletChildUser** model.
+   * `prisma.outletUser`: Exposes CRUD operations for the **OutletUser** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more OutletChildUsers
-    * const outletChildUsers = await prisma.outletChildUser.findMany()
+    * // Fetch zero or more OutletUsers
+    * const outletUsers = await prisma.outletUser.findMany()
     * ```
     */
-  get outletChildUser(): Prisma.OutletChildUserDelegate<ExtArgs, ClientOptions>;
+  get outletUser(): Prisma.OutletUserDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.role`: Exposes CRUD operations for the **Role** model.
@@ -867,7 +879,7 @@ export namespace Prisma {
     DoctorDocument: 'DoctorDocument',
     DoctorSchedule: 'DoctorSchedule',
     outlet: 'outlet',
-    OutletChildUser: 'OutletChildUser',
+    OutletUser: 'OutletUser',
     Role: 'Role',
     Permission: 'Permission',
     RolePermission: 'RolePermission',
@@ -891,7 +903,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "superAdmins" | "patient" | "doctor" | "doctorSpecialization" | "doctorDocument" | "doctorSchedule" | "outlet" | "outletChildUser" | "role" | "permission" | "rolePermission" | "outletUserRole" | "superAdminUserRole"
+      modelProps: "superAdmins" | "patient" | "doctor" | "doctorSpecialization" | "doctorDocument" | "doctorSchedule" | "outlet" | "outletUser" | "role" | "permission" | "rolePermission" | "outletUserRole" | "superAdminUserRole"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1357,69 +1369,69 @@ export namespace Prisma {
           }
         }
       }
-      OutletChildUser: {
-        payload: Prisma.$OutletChildUserPayload<ExtArgs>
-        fields: Prisma.OutletChildUserFieldRefs
+      OutletUser: {
+        payload: Prisma.$OutletUserPayload<ExtArgs>
+        fields: Prisma.OutletUserFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.OutletChildUserFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$OutletChildUserPayload> | null
+            args: Prisma.OutletUserFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutletUserPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.OutletChildUserFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$OutletChildUserPayload>
+            args: Prisma.OutletUserFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutletUserPayload>
           }
           findFirst: {
-            args: Prisma.OutletChildUserFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$OutletChildUserPayload> | null
+            args: Prisma.OutletUserFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutletUserPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.OutletChildUserFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$OutletChildUserPayload>
+            args: Prisma.OutletUserFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutletUserPayload>
           }
           findMany: {
-            args: Prisma.OutletChildUserFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$OutletChildUserPayload>[]
+            args: Prisma.OutletUserFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutletUserPayload>[]
           }
           create: {
-            args: Prisma.OutletChildUserCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$OutletChildUserPayload>
+            args: Prisma.OutletUserCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutletUserPayload>
           }
           createMany: {
-            args: Prisma.OutletChildUserCreateManyArgs<ExtArgs>
+            args: Prisma.OutletUserCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           delete: {
-            args: Prisma.OutletChildUserDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$OutletChildUserPayload>
+            args: Prisma.OutletUserDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutletUserPayload>
           }
           update: {
-            args: Prisma.OutletChildUserUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$OutletChildUserPayload>
+            args: Prisma.OutletUserUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutletUserPayload>
           }
           deleteMany: {
-            args: Prisma.OutletChildUserDeleteManyArgs<ExtArgs>
+            args: Prisma.OutletUserDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.OutletChildUserUpdateManyArgs<ExtArgs>
+            args: Prisma.OutletUserUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           upsert: {
-            args: Prisma.OutletChildUserUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$OutletChildUserPayload>
+            args: Prisma.OutletUserUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutletUserPayload>
           }
           aggregate: {
-            args: Prisma.OutletChildUserAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateOutletChildUser>
+            args: Prisma.OutletUserAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateOutletUser>
           }
           groupBy: {
-            args: Prisma.OutletChildUserGroupByArgs<ExtArgs>
-            result: $Utils.Optional<OutletChildUserGroupByOutputType>[]
+            args: Prisma.OutletUserGroupByArgs<ExtArgs>
+            result: $Utils.Optional<OutletUserGroupByOutputType>[]
           }
           count: {
-            args: Prisma.OutletChildUserCountArgs<ExtArgs>
-            result: $Utils.Optional<OutletChildUserCountAggregateOutputType> | number
+            args: Prisma.OutletUserCountArgs<ExtArgs>
+            result: $Utils.Optional<OutletUserCountAggregateOutputType> | number
           }
         }
       }
@@ -1856,7 +1868,7 @@ export namespace Prisma {
     doctorDocument?: DoctorDocumentOmit
     doctorSchedule?: DoctorScheduleOmit
     outlet?: outletOmit
-    outletChildUser?: OutletChildUserOmit
+    outletUser?: OutletUserOmit
     role?: RoleOmit
     permission?: PermissionOmit
     rolePermission?: RolePermissionOmit
@@ -2053,14 +2065,14 @@ export namespace Prisma {
    */
 
   export type OutletCountOutputType = {
-    childUsers: number
+    users: number
     roles: number
     patients: number
     doctors: number
   }
 
   export type OutletCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    childUsers?: boolean | OutletCountOutputTypeCountChildUsersArgs
+    users?: boolean | OutletCountOutputTypeCountUsersArgs
     roles?: boolean | OutletCountOutputTypeCountRolesArgs
     patients?: boolean | OutletCountOutputTypeCountPatientsArgs
     doctors?: boolean | OutletCountOutputTypeCountDoctorsArgs
@@ -2080,8 +2092,8 @@ export namespace Prisma {
   /**
    * OutletCountOutputType without action
    */
-  export type OutletCountOutputTypeCountChildUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: OutletChildUserWhereInput
+  export type OutletCountOutputTypeCountUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OutletUserWhereInput
   }
 
   /**
@@ -2107,32 +2119,32 @@ export namespace Prisma {
 
 
   /**
-   * Count Type OutletChildUserCountOutputType
+   * Count Type OutletUserCountOutputType
    */
 
-  export type OutletChildUserCountOutputType = {
+  export type OutletUserCountOutputType = {
     userRoles: number
   }
 
-  export type OutletChildUserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    userRoles?: boolean | OutletChildUserCountOutputTypeCountUserRolesArgs
+  export type OutletUserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    userRoles?: boolean | OutletUserCountOutputTypeCountUserRolesArgs
   }
 
   // Custom InputTypes
   /**
-   * OutletChildUserCountOutputType without action
+   * OutletUserCountOutputType without action
    */
-  export type OutletChildUserCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletUserCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the OutletChildUserCountOutputType
+     * Select specific fields to fetch from the OutletUserCountOutputType
      */
-    select?: OutletChildUserCountOutputTypeSelect<ExtArgs> | null
+    select?: OutletUserCountOutputTypeSelect<ExtArgs> | null
   }
 
   /**
-   * OutletChildUserCountOutputType without action
+   * OutletUserCountOutputType without action
    */
-  export type OutletChildUserCountOutputTypeCountUserRolesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletUserCountOutputTypeCountUserRolesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: OutletUserRoleWhereInput
   }
 
@@ -2143,13 +2155,13 @@ export namespace Prisma {
 
   export type RoleCountOutputType = {
     rolePermissions: number
-    OutletUserRoles: number
+    outletUserRoles: number
     superAdminUserRoles: number
   }
 
   export type RoleCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     rolePermissions?: boolean | RoleCountOutputTypeCountRolePermissionsArgs
-    OutletUserRoles?: boolean | RoleCountOutputTypeCountOutletUserRolesArgs
+    outletUserRoles?: boolean | RoleCountOutputTypeCountOutletUserRolesArgs
     superAdminUserRoles?: boolean | RoleCountOutputTypeCountSuperAdminUserRolesArgs
   }
 
@@ -8428,98 +8440,144 @@ export namespace Prisma {
 
   export type AggregateOutlet = {
     _count: OutletCountAggregateOutputType | null
+    _avg: OutletAvgAggregateOutputType | null
+    _sum: OutletSumAggregateOutputType | null
     _min: OutletMinAggregateOutputType | null
     _max: OutletMaxAggregateOutputType | null
   }
 
+  export type OutletAvgAggregateOutputType = {
+    latitude: Decimal | null
+    longitude: Decimal | null
+  }
+
+  export type OutletSumAggregateOutputType = {
+    latitude: Decimal | null
+    longitude: Decimal | null
+  }
+
   export type OutletMinAggregateOutputType = {
     id: string | null
-    name: string | null
-    email: string | null
-    phone: string | null
-    password: string | null
-    centerName: string | null
-    slug: string | null
-    logo: string | null
+    outletCode: string | null
+    outletName: string | null
+    subdomain: string | null
+    division: string | null
+    district: string | null
+    area: string | null
     address: string | null
-    isActive: boolean | null
+    contactNumber: string | null
+    email: string | null
+    password: string | null
+    latitude: Decimal | null
+    longitude: Decimal | null
+    status: $Enums.OutletStatus | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
   export type OutletMaxAggregateOutputType = {
     id: string | null
-    name: string | null
-    email: string | null
-    phone: string | null
-    password: string | null
-    centerName: string | null
-    slug: string | null
-    logo: string | null
+    outletCode: string | null
+    outletName: string | null
+    subdomain: string | null
+    division: string | null
+    district: string | null
+    area: string | null
     address: string | null
-    isActive: boolean | null
+    contactNumber: string | null
+    email: string | null
+    password: string | null
+    latitude: Decimal | null
+    longitude: Decimal | null
+    status: $Enums.OutletStatus | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
   export type OutletCountAggregateOutputType = {
     id: number
-    name: number
-    email: number
-    phone: number
-    password: number
-    centerName: number
-    slug: number
-    logo: number
+    outletCode: number
+    outletName: number
+    subdomain: number
+    division: number
+    district: number
+    area: number
     address: number
-    isActive: number
+    contactNumber: number
+    email: number
+    password: number
+    latitude: number
+    longitude: number
+    status: number
     createdAt: number
     updatedAt: number
     _all: number
   }
 
 
+  export type OutletAvgAggregateInputType = {
+    latitude?: true
+    longitude?: true
+  }
+
+  export type OutletSumAggregateInputType = {
+    latitude?: true
+    longitude?: true
+  }
+
   export type OutletMinAggregateInputType = {
     id?: true
-    name?: true
-    email?: true
-    phone?: true
-    password?: true
-    centerName?: true
-    slug?: true
-    logo?: true
+    outletCode?: true
+    outletName?: true
+    subdomain?: true
+    division?: true
+    district?: true
+    area?: true
     address?: true
-    isActive?: true
+    contactNumber?: true
+    email?: true
+    password?: true
+    latitude?: true
+    longitude?: true
+    status?: true
     createdAt?: true
     updatedAt?: true
   }
 
   export type OutletMaxAggregateInputType = {
     id?: true
-    name?: true
-    email?: true
-    phone?: true
-    password?: true
-    centerName?: true
-    slug?: true
-    logo?: true
+    outletCode?: true
+    outletName?: true
+    subdomain?: true
+    division?: true
+    district?: true
+    area?: true
     address?: true
-    isActive?: true
+    contactNumber?: true
+    email?: true
+    password?: true
+    latitude?: true
+    longitude?: true
+    status?: true
     createdAt?: true
     updatedAt?: true
   }
 
   export type OutletCountAggregateInputType = {
     id?: true
-    name?: true
-    email?: true
-    phone?: true
-    password?: true
-    centerName?: true
-    slug?: true
-    logo?: true
+    outletCode?: true
+    outletName?: true
+    subdomain?: true
+    division?: true
+    district?: true
+    area?: true
     address?: true
-    isActive?: true
+    contactNumber?: true
+    email?: true
+    password?: true
+    latitude?: true
+    longitude?: true
+    status?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -8563,6 +8621,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: OutletAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: OutletSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: OutletMinAggregateInputType
@@ -8593,24 +8663,32 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: OutletCountAggregateInputType | true
+    _avg?: OutletAvgAggregateInputType
+    _sum?: OutletSumAggregateInputType
     _min?: OutletMinAggregateInputType
     _max?: OutletMaxAggregateInputType
   }
 
   export type OutletGroupByOutputType = {
     id: string
-    name: string
+    outletCode: string
+    outletName: string
+    subdomain: string
+    division: string
+    district: string
+    area: string
+    address: string
+    contactNumber: string
     email: string
-    phone: string | null
     password: string
-    centerName: string
-    slug: string
-    logo: string | null
-    address: string | null
-    isActive: boolean
+    latitude: Decimal | null
+    longitude: Decimal | null
+    status: $Enums.OutletStatus
     createdAt: Date
     updatedAt: Date
     _count: OutletCountAggregateOutputType | null
+    _avg: OutletAvgAggregateOutputType | null
+    _sum: OutletSumAggregateOutputType | null
     _min: OutletMinAggregateOutputType | null
     _max: OutletMaxAggregateOutputType | null
   }
@@ -8631,18 +8709,22 @@ export namespace Prisma {
 
   export type outletSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    name?: boolean
-    email?: boolean
-    phone?: boolean
-    password?: boolean
-    centerName?: boolean
-    slug?: boolean
-    logo?: boolean
+    outletCode?: boolean
+    outletName?: boolean
+    subdomain?: boolean
+    division?: boolean
+    district?: boolean
+    area?: boolean
     address?: boolean
-    isActive?: boolean
+    contactNumber?: boolean
+    email?: boolean
+    password?: boolean
+    latitude?: boolean
+    longitude?: boolean
+    status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    childUsers?: boolean | outlet$childUsersArgs<ExtArgs>
+    users?: boolean | outlet$usersArgs<ExtArgs>
     roles?: boolean | outlet$rolesArgs<ExtArgs>
     patients?: boolean | outlet$patientsArgs<ExtArgs>
     doctors?: boolean | outlet$doctorsArgs<ExtArgs>
@@ -8653,22 +8735,26 @@ export namespace Prisma {
 
   export type outletSelectScalar = {
     id?: boolean
-    name?: boolean
-    email?: boolean
-    phone?: boolean
-    password?: boolean
-    centerName?: boolean
-    slug?: boolean
-    logo?: boolean
+    outletCode?: boolean
+    outletName?: boolean
+    subdomain?: boolean
+    division?: boolean
+    district?: boolean
+    area?: boolean
     address?: boolean
-    isActive?: boolean
+    contactNumber?: boolean
+    email?: boolean
+    password?: boolean
+    latitude?: boolean
+    longitude?: boolean
+    status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type outletOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "phone" | "password" | "centerName" | "slug" | "logo" | "address" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["outlet"]>
+  export type outletOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "outletCode" | "outletName" | "subdomain" | "division" | "district" | "area" | "address" | "contactNumber" | "email" | "password" | "latitude" | "longitude" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["outlet"]>
   export type outletInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    childUsers?: boolean | outlet$childUsersArgs<ExtArgs>
+    users?: boolean | outlet$usersArgs<ExtArgs>
     roles?: boolean | outlet$rolesArgs<ExtArgs>
     patients?: boolean | outlet$patientsArgs<ExtArgs>
     doctors?: boolean | outlet$doctorsArgs<ExtArgs>
@@ -8678,22 +8764,26 @@ export namespace Prisma {
   export type $outletPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "outlet"
     objects: {
-      childUsers: Prisma.$OutletChildUserPayload<ExtArgs>[]
+      users: Prisma.$OutletUserPayload<ExtArgs>[]
       roles: Prisma.$RolePayload<ExtArgs>[]
       patients: Prisma.$PatientPayload<ExtArgs>[]
       doctors: Prisma.$DoctorPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      name: string
+      outletCode: string
+      outletName: string
+      subdomain: string
+      division: string
+      district: string
+      area: string
+      address: string
+      contactNumber: string
       email: string
-      phone: string | null
       password: string
-      centerName: string
-      slug: string
-      logo: string | null
-      address: string | null
-      isActive: boolean
+      latitude: Prisma.Decimal | null
+      longitude: Prisma.Decimal | null
+      status: $Enums.OutletStatus
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["outlet"]>
@@ -9036,7 +9126,7 @@ export namespace Prisma {
    */
   export interface Prisma__outletClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    childUsers<T extends outlet$childUsersArgs<ExtArgs> = {}>(args?: Subset<T, outlet$childUsersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OutletChildUserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    users<T extends outlet$usersArgs<ExtArgs> = {}>(args?: Subset<T, outlet$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OutletUserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     roles<T extends outlet$rolesArgs<ExtArgs> = {}>(args?: Subset<T, outlet$rolesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     patients<T extends outlet$patientsArgs<ExtArgs> = {}>(args?: Subset<T, outlet$patientsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PatientPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     doctors<T extends outlet$doctorsArgs<ExtArgs> = {}>(args?: Subset<T, outlet$doctorsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DoctorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -9070,15 +9160,19 @@ export namespace Prisma {
    */
   interface outletFieldRefs {
     readonly id: FieldRef<"outlet", 'String'>
-    readonly name: FieldRef<"outlet", 'String'>
-    readonly email: FieldRef<"outlet", 'String'>
-    readonly phone: FieldRef<"outlet", 'String'>
-    readonly password: FieldRef<"outlet", 'String'>
-    readonly centerName: FieldRef<"outlet", 'String'>
-    readonly slug: FieldRef<"outlet", 'String'>
-    readonly logo: FieldRef<"outlet", 'String'>
+    readonly outletCode: FieldRef<"outlet", 'String'>
+    readonly outletName: FieldRef<"outlet", 'String'>
+    readonly subdomain: FieldRef<"outlet", 'String'>
+    readonly division: FieldRef<"outlet", 'String'>
+    readonly district: FieldRef<"outlet", 'String'>
+    readonly area: FieldRef<"outlet", 'String'>
     readonly address: FieldRef<"outlet", 'String'>
-    readonly isActive: FieldRef<"outlet", 'Boolean'>
+    readonly contactNumber: FieldRef<"outlet", 'String'>
+    readonly email: FieldRef<"outlet", 'String'>
+    readonly password: FieldRef<"outlet", 'String'>
+    readonly latitude: FieldRef<"outlet", 'Decimal'>
+    readonly longitude: FieldRef<"outlet", 'Decimal'>
+    readonly status: FieldRef<"outlet", 'OutletStatus'>
     readonly createdAt: FieldRef<"outlet", 'DateTime'>
     readonly updatedAt: FieldRef<"outlet", 'DateTime'>
   }
@@ -9424,27 +9518,27 @@ export namespace Prisma {
   }
 
   /**
-   * outlet.childUsers
+   * outlet.users
    */
-  export type outlet$childUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type outlet$usersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the OutletChildUser
+     * Select specific fields to fetch from the OutletUser
      */
-    select?: OutletChildUserSelect<ExtArgs> | null
+    select?: OutletUserSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the OutletChildUser
+     * Omit specific fields from the OutletUser
      */
-    omit?: OutletChildUserOmit<ExtArgs> | null
+    omit?: OutletUserOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: OutletChildUserInclude<ExtArgs> | null
-    where?: OutletChildUserWhereInput
-    orderBy?: OutletChildUserOrderByWithRelationInput | OutletChildUserOrderByWithRelationInput[]
-    cursor?: OutletChildUserWhereUniqueInput
+    include?: OutletUserInclude<ExtArgs> | null
+    where?: OutletUserWhereInput
+    orderBy?: OutletUserOrderByWithRelationInput | OutletUserOrderByWithRelationInput[]
+    cursor?: OutletUserWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: OutletChildUserScalarFieldEnum | OutletChildUserScalarFieldEnum[]
+    distinct?: OutletUserScalarFieldEnum | OutletUserScalarFieldEnum[]
   }
 
   /**
@@ -9539,46 +9633,49 @@ export namespace Prisma {
 
 
   /**
-   * Model OutletChildUser
+   * Model OutletUser
    */
 
-  export type AggregateOutletChildUser = {
-    _count: OutletChildUserCountAggregateOutputType | null
-    _min: OutletChildUserMinAggregateOutputType | null
-    _max: OutletChildUserMaxAggregateOutputType | null
+  export type AggregateOutletUser = {
+    _count: OutletUserCountAggregateOutputType | null
+    _min: OutletUserMinAggregateOutputType | null
+    _max: OutletUserMaxAggregateOutputType | null
   }
 
-  export type OutletChildUserMinAggregateOutputType = {
+  export type OutletUserMinAggregateOutputType = {
     id: string | null
     outletId: string | null
     name: string | null
     email: string | null
     phone: string | null
     password: string | null
+    isOwner: boolean | null
     isActive: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
-  export type OutletChildUserMaxAggregateOutputType = {
+  export type OutletUserMaxAggregateOutputType = {
     id: string | null
     outletId: string | null
     name: string | null
     email: string | null
     phone: string | null
     password: string | null
+    isOwner: boolean | null
     isActive: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
-  export type OutletChildUserCountAggregateOutputType = {
+  export type OutletUserCountAggregateOutputType = {
     id: number
     outletId: number
     name: number
     email: number
     phone: number
     password: number
+    isOwner: number
     isActive: number
     createdAt: number
     updatedAt: number
@@ -9586,182 +9683,188 @@ export namespace Prisma {
   }
 
 
-  export type OutletChildUserMinAggregateInputType = {
+  export type OutletUserMinAggregateInputType = {
     id?: true
     outletId?: true
     name?: true
     email?: true
     phone?: true
     password?: true
+    isOwner?: true
     isActive?: true
     createdAt?: true
     updatedAt?: true
   }
 
-  export type OutletChildUserMaxAggregateInputType = {
+  export type OutletUserMaxAggregateInputType = {
     id?: true
     outletId?: true
     name?: true
     email?: true
     phone?: true
     password?: true
+    isOwner?: true
     isActive?: true
     createdAt?: true
     updatedAt?: true
   }
 
-  export type OutletChildUserCountAggregateInputType = {
+  export type OutletUserCountAggregateInputType = {
     id?: true
     outletId?: true
     name?: true
     email?: true
     phone?: true
     password?: true
+    isOwner?: true
     isActive?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
   }
 
-  export type OutletChildUserAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletUserAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which OutletChildUser to aggregate.
+     * Filter which OutletUser to aggregate.
      */
-    where?: OutletChildUserWhereInput
+    where?: OutletUserWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of OutletChildUsers to fetch.
+     * Determine the order of OutletUsers to fetch.
      */
-    orderBy?: OutletChildUserOrderByWithRelationInput | OutletChildUserOrderByWithRelationInput[]
+    orderBy?: OutletUserOrderByWithRelationInput | OutletUserOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: OutletChildUserWhereUniqueInput
+    cursor?: OutletUserWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` OutletChildUsers from the position of the cursor.
+     * Take `±n` OutletUsers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` OutletChildUsers.
+     * Skip the first `n` OutletUsers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned OutletChildUsers
+     * Count returned OutletUsers
     **/
-    _count?: true | OutletChildUserCountAggregateInputType
+    _count?: true | OutletUserCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: OutletChildUserMinAggregateInputType
+    _min?: OutletUserMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: OutletChildUserMaxAggregateInputType
+    _max?: OutletUserMaxAggregateInputType
   }
 
-  export type GetOutletChildUserAggregateType<T extends OutletChildUserAggregateArgs> = {
-        [P in keyof T & keyof AggregateOutletChildUser]: P extends '_count' | 'count'
+  export type GetOutletUserAggregateType<T extends OutletUserAggregateArgs> = {
+        [P in keyof T & keyof AggregateOutletUser]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateOutletChildUser[P]>
-      : GetScalarType<T[P], AggregateOutletChildUser[P]>
+        : GetScalarType<T[P], AggregateOutletUser[P]>
+      : GetScalarType<T[P], AggregateOutletUser[P]>
   }
 
 
 
 
-  export type OutletChildUserGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: OutletChildUserWhereInput
-    orderBy?: OutletChildUserOrderByWithAggregationInput | OutletChildUserOrderByWithAggregationInput[]
-    by: OutletChildUserScalarFieldEnum[] | OutletChildUserScalarFieldEnum
-    having?: OutletChildUserScalarWhereWithAggregatesInput
+  export type OutletUserGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OutletUserWhereInput
+    orderBy?: OutletUserOrderByWithAggregationInput | OutletUserOrderByWithAggregationInput[]
+    by: OutletUserScalarFieldEnum[] | OutletUserScalarFieldEnum
+    having?: OutletUserScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: OutletChildUserCountAggregateInputType | true
-    _min?: OutletChildUserMinAggregateInputType
-    _max?: OutletChildUserMaxAggregateInputType
+    _count?: OutletUserCountAggregateInputType | true
+    _min?: OutletUserMinAggregateInputType
+    _max?: OutletUserMaxAggregateInputType
   }
 
-  export type OutletChildUserGroupByOutputType = {
+  export type OutletUserGroupByOutputType = {
     id: string
     outletId: string
     name: string
     email: string
     phone: string | null
     password: string
+    isOwner: boolean
     isActive: boolean
     createdAt: Date
     updatedAt: Date
-    _count: OutletChildUserCountAggregateOutputType | null
-    _min: OutletChildUserMinAggregateOutputType | null
-    _max: OutletChildUserMaxAggregateOutputType | null
+    _count: OutletUserCountAggregateOutputType | null
+    _min: OutletUserMinAggregateOutputType | null
+    _max: OutletUserMaxAggregateOutputType | null
   }
 
-  type GetOutletChildUserGroupByPayload<T extends OutletChildUserGroupByArgs> = Prisma.PrismaPromise<
+  type GetOutletUserGroupByPayload<T extends OutletUserGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<OutletChildUserGroupByOutputType, T['by']> &
+      PickEnumerable<OutletUserGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof OutletChildUserGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof OutletUserGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], OutletChildUserGroupByOutputType[P]>
-            : GetScalarType<T[P], OutletChildUserGroupByOutputType[P]>
+              : GetScalarType<T[P], OutletUserGroupByOutputType[P]>
+            : GetScalarType<T[P], OutletUserGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type OutletChildUserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type OutletUserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     outletId?: boolean
     name?: boolean
     email?: boolean
     phone?: boolean
     password?: boolean
+    isOwner?: boolean
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     outlet?: boolean | outletDefaultArgs<ExtArgs>
-    userRoles?: boolean | OutletChildUser$userRolesArgs<ExtArgs>
-    _count?: boolean | OutletChildUserCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["outletChildUser"]>
+    userRoles?: boolean | OutletUser$userRolesArgs<ExtArgs>
+    _count?: boolean | OutletUserCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["outletUser"]>
 
 
 
-  export type OutletChildUserSelectScalar = {
+  export type OutletUserSelectScalar = {
     id?: boolean
     outletId?: boolean
     name?: boolean
     email?: boolean
     phone?: boolean
     password?: boolean
+    isOwner?: boolean
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type OutletChildUserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "outletId" | "name" | "email" | "phone" | "password" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["outletChildUser"]>
-  export type OutletChildUserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletUserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "outletId" | "name" | "email" | "phone" | "password" | "isOwner" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["outletUser"]>
+  export type OutletUserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     outlet?: boolean | outletDefaultArgs<ExtArgs>
-    userRoles?: boolean | OutletChildUser$userRolesArgs<ExtArgs>
-    _count?: boolean | OutletChildUserCountOutputTypeDefaultArgs<ExtArgs>
+    userRoles?: boolean | OutletUser$userRolesArgs<ExtArgs>
+    _count?: boolean | OutletUserCountOutputTypeDefaultArgs<ExtArgs>
   }
 
-  export type $OutletChildUserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "OutletChildUser"
+  export type $OutletUserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "OutletUser"
     objects: {
       outlet: Prisma.$outletPayload<ExtArgs>
       userRoles: Prisma.$OutletUserRolePayload<ExtArgs>[]
@@ -9773,146 +9876,147 @@ export namespace Prisma {
       email: string
       phone: string | null
       password: string
+      isOwner: boolean
       isActive: boolean
       createdAt: Date
       updatedAt: Date
-    }, ExtArgs["result"]["outletChildUser"]>
+    }, ExtArgs["result"]["outletUser"]>
     composites: {}
   }
 
-  type OutletChildUserGetPayload<S extends boolean | null | undefined | OutletChildUserDefaultArgs> = $Result.GetResult<Prisma.$OutletChildUserPayload, S>
+  type OutletUserGetPayload<S extends boolean | null | undefined | OutletUserDefaultArgs> = $Result.GetResult<Prisma.$OutletUserPayload, S>
 
-  type OutletChildUserCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<OutletChildUserFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: OutletChildUserCountAggregateInputType | true
+  type OutletUserCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<OutletUserFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: OutletUserCountAggregateInputType | true
     }
 
-  export interface OutletChildUserDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['OutletChildUser'], meta: { name: 'OutletChildUser' } }
+  export interface OutletUserDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['OutletUser'], meta: { name: 'OutletUser' } }
     /**
-     * Find zero or one OutletChildUser that matches the filter.
-     * @param {OutletChildUserFindUniqueArgs} args - Arguments to find a OutletChildUser
+     * Find zero or one OutletUser that matches the filter.
+     * @param {OutletUserFindUniqueArgs} args - Arguments to find a OutletUser
      * @example
-     * // Get one OutletChildUser
-     * const outletChildUser = await prisma.outletChildUser.findUnique({
+     * // Get one OutletUser
+     * const outletUser = await prisma.outletUser.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends OutletChildUserFindUniqueArgs>(args: SelectSubset<T, OutletChildUserFindUniqueArgs<ExtArgs>>): Prisma__OutletChildUserClient<$Result.GetResult<Prisma.$OutletChildUserPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends OutletUserFindUniqueArgs>(args: SelectSubset<T, OutletUserFindUniqueArgs<ExtArgs>>): Prisma__OutletUserClient<$Result.GetResult<Prisma.$OutletUserPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one OutletChildUser that matches the filter or throw an error with `error.code='P2025'`
+     * Find one OutletUser that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {OutletChildUserFindUniqueOrThrowArgs} args - Arguments to find a OutletChildUser
+     * @param {OutletUserFindUniqueOrThrowArgs} args - Arguments to find a OutletUser
      * @example
-     * // Get one OutletChildUser
-     * const outletChildUser = await prisma.outletChildUser.findUniqueOrThrow({
+     * // Get one OutletUser
+     * const outletUser = await prisma.outletUser.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends OutletChildUserFindUniqueOrThrowArgs>(args: SelectSubset<T, OutletChildUserFindUniqueOrThrowArgs<ExtArgs>>): Prisma__OutletChildUserClient<$Result.GetResult<Prisma.$OutletChildUserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends OutletUserFindUniqueOrThrowArgs>(args: SelectSubset<T, OutletUserFindUniqueOrThrowArgs<ExtArgs>>): Prisma__OutletUserClient<$Result.GetResult<Prisma.$OutletUserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first OutletChildUser that matches the filter.
+     * Find the first OutletUser that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {OutletChildUserFindFirstArgs} args - Arguments to find a OutletChildUser
+     * @param {OutletUserFindFirstArgs} args - Arguments to find a OutletUser
      * @example
-     * // Get one OutletChildUser
-     * const outletChildUser = await prisma.outletChildUser.findFirst({
+     * // Get one OutletUser
+     * const outletUser = await prisma.outletUser.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends OutletChildUserFindFirstArgs>(args?: SelectSubset<T, OutletChildUserFindFirstArgs<ExtArgs>>): Prisma__OutletChildUserClient<$Result.GetResult<Prisma.$OutletChildUserPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends OutletUserFindFirstArgs>(args?: SelectSubset<T, OutletUserFindFirstArgs<ExtArgs>>): Prisma__OutletUserClient<$Result.GetResult<Prisma.$OutletUserPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first OutletChildUser that matches the filter or
+     * Find the first OutletUser that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {OutletChildUserFindFirstOrThrowArgs} args - Arguments to find a OutletChildUser
+     * @param {OutletUserFindFirstOrThrowArgs} args - Arguments to find a OutletUser
      * @example
-     * // Get one OutletChildUser
-     * const outletChildUser = await prisma.outletChildUser.findFirstOrThrow({
+     * // Get one OutletUser
+     * const outletUser = await prisma.outletUser.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends OutletChildUserFindFirstOrThrowArgs>(args?: SelectSubset<T, OutletChildUserFindFirstOrThrowArgs<ExtArgs>>): Prisma__OutletChildUserClient<$Result.GetResult<Prisma.$OutletChildUserPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends OutletUserFindFirstOrThrowArgs>(args?: SelectSubset<T, OutletUserFindFirstOrThrowArgs<ExtArgs>>): Prisma__OutletUserClient<$Result.GetResult<Prisma.$OutletUserPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more OutletChildUsers that matches the filter.
+     * Find zero or more OutletUsers that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {OutletChildUserFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {OutletUserFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all OutletChildUsers
-     * const outletChildUsers = await prisma.outletChildUser.findMany()
+     * // Get all OutletUsers
+     * const outletUsers = await prisma.outletUser.findMany()
      * 
-     * // Get first 10 OutletChildUsers
-     * const outletChildUsers = await prisma.outletChildUser.findMany({ take: 10 })
+     * // Get first 10 OutletUsers
+     * const outletUsers = await prisma.outletUser.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const outletChildUserWithIdOnly = await prisma.outletChildUser.findMany({ select: { id: true } })
+     * const outletUserWithIdOnly = await prisma.outletUser.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends OutletChildUserFindManyArgs>(args?: SelectSubset<T, OutletChildUserFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OutletChildUserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends OutletUserFindManyArgs>(args?: SelectSubset<T, OutletUserFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OutletUserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a OutletChildUser.
-     * @param {OutletChildUserCreateArgs} args - Arguments to create a OutletChildUser.
+     * Create a OutletUser.
+     * @param {OutletUserCreateArgs} args - Arguments to create a OutletUser.
      * @example
-     * // Create one OutletChildUser
-     * const OutletChildUser = await prisma.outletChildUser.create({
+     * // Create one OutletUser
+     * const OutletUser = await prisma.outletUser.create({
      *   data: {
-     *     // ... data to create a OutletChildUser
+     *     // ... data to create a OutletUser
      *   }
      * })
      * 
      */
-    create<T extends OutletChildUserCreateArgs>(args: SelectSubset<T, OutletChildUserCreateArgs<ExtArgs>>): Prisma__OutletChildUserClient<$Result.GetResult<Prisma.$OutletChildUserPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends OutletUserCreateArgs>(args: SelectSubset<T, OutletUserCreateArgs<ExtArgs>>): Prisma__OutletUserClient<$Result.GetResult<Prisma.$OutletUserPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many OutletChildUsers.
-     * @param {OutletChildUserCreateManyArgs} args - Arguments to create many OutletChildUsers.
+     * Create many OutletUsers.
+     * @param {OutletUserCreateManyArgs} args - Arguments to create many OutletUsers.
      * @example
-     * // Create many OutletChildUsers
-     * const outletChildUser = await prisma.outletChildUser.createMany({
+     * // Create many OutletUsers
+     * const outletUser = await prisma.outletUser.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends OutletChildUserCreateManyArgs>(args?: SelectSubset<T, OutletChildUserCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends OutletUserCreateManyArgs>(args?: SelectSubset<T, OutletUserCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a OutletChildUser.
-     * @param {OutletChildUserDeleteArgs} args - Arguments to delete one OutletChildUser.
+     * Delete a OutletUser.
+     * @param {OutletUserDeleteArgs} args - Arguments to delete one OutletUser.
      * @example
-     * // Delete one OutletChildUser
-     * const OutletChildUser = await prisma.outletChildUser.delete({
+     * // Delete one OutletUser
+     * const OutletUser = await prisma.outletUser.delete({
      *   where: {
-     *     // ... filter to delete one OutletChildUser
+     *     // ... filter to delete one OutletUser
      *   }
      * })
      * 
      */
-    delete<T extends OutletChildUserDeleteArgs>(args: SelectSubset<T, OutletChildUserDeleteArgs<ExtArgs>>): Prisma__OutletChildUserClient<$Result.GetResult<Prisma.$OutletChildUserPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends OutletUserDeleteArgs>(args: SelectSubset<T, OutletUserDeleteArgs<ExtArgs>>): Prisma__OutletUserClient<$Result.GetResult<Prisma.$OutletUserPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one OutletChildUser.
-     * @param {OutletChildUserUpdateArgs} args - Arguments to update one OutletChildUser.
+     * Update one OutletUser.
+     * @param {OutletUserUpdateArgs} args - Arguments to update one OutletUser.
      * @example
-     * // Update one OutletChildUser
-     * const outletChildUser = await prisma.outletChildUser.update({
+     * // Update one OutletUser
+     * const outletUser = await prisma.outletUser.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -9922,30 +10026,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends OutletChildUserUpdateArgs>(args: SelectSubset<T, OutletChildUserUpdateArgs<ExtArgs>>): Prisma__OutletChildUserClient<$Result.GetResult<Prisma.$OutletChildUserPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends OutletUserUpdateArgs>(args: SelectSubset<T, OutletUserUpdateArgs<ExtArgs>>): Prisma__OutletUserClient<$Result.GetResult<Prisma.$OutletUserPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more OutletChildUsers.
-     * @param {OutletChildUserDeleteManyArgs} args - Arguments to filter OutletChildUsers to delete.
+     * Delete zero or more OutletUsers.
+     * @param {OutletUserDeleteManyArgs} args - Arguments to filter OutletUsers to delete.
      * @example
-     * // Delete a few OutletChildUsers
-     * const { count } = await prisma.outletChildUser.deleteMany({
+     * // Delete a few OutletUsers
+     * const { count } = await prisma.outletUser.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends OutletChildUserDeleteManyArgs>(args?: SelectSubset<T, OutletChildUserDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends OutletUserDeleteManyArgs>(args?: SelectSubset<T, OutletUserDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more OutletChildUsers.
+     * Update zero or more OutletUsers.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {OutletChildUserUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {OutletUserUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many OutletChildUsers
-     * const outletChildUser = await prisma.outletChildUser.updateMany({
+     * // Update many OutletUsers
+     * const outletUser = await prisma.outletUser.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -9955,56 +10059,56 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends OutletChildUserUpdateManyArgs>(args: SelectSubset<T, OutletChildUserUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends OutletUserUpdateManyArgs>(args: SelectSubset<T, OutletUserUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one OutletChildUser.
-     * @param {OutletChildUserUpsertArgs} args - Arguments to update or create a OutletChildUser.
+     * Create or update one OutletUser.
+     * @param {OutletUserUpsertArgs} args - Arguments to update or create a OutletUser.
      * @example
-     * // Update or create a OutletChildUser
-     * const outletChildUser = await prisma.outletChildUser.upsert({
+     * // Update or create a OutletUser
+     * const outletUser = await prisma.outletUser.upsert({
      *   create: {
-     *     // ... data to create a OutletChildUser
+     *     // ... data to create a OutletUser
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the OutletChildUser we want to update
+     *     // ... the filter for the OutletUser we want to update
      *   }
      * })
      */
-    upsert<T extends OutletChildUserUpsertArgs>(args: SelectSubset<T, OutletChildUserUpsertArgs<ExtArgs>>): Prisma__OutletChildUserClient<$Result.GetResult<Prisma.$OutletChildUserPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends OutletUserUpsertArgs>(args: SelectSubset<T, OutletUserUpsertArgs<ExtArgs>>): Prisma__OutletUserClient<$Result.GetResult<Prisma.$OutletUserPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of OutletChildUsers.
+     * Count the number of OutletUsers.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {OutletChildUserCountArgs} args - Arguments to filter OutletChildUsers to count.
+     * @param {OutletUserCountArgs} args - Arguments to filter OutletUsers to count.
      * @example
-     * // Count the number of OutletChildUsers
-     * const count = await prisma.outletChildUser.count({
+     * // Count the number of OutletUsers
+     * const count = await prisma.outletUser.count({
      *   where: {
-     *     // ... the filter for the OutletChildUsers we want to count
+     *     // ... the filter for the OutletUsers we want to count
      *   }
      * })
     **/
-    count<T extends OutletChildUserCountArgs>(
-      args?: Subset<T, OutletChildUserCountArgs>,
+    count<T extends OutletUserCountArgs>(
+      args?: Subset<T, OutletUserCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], OutletChildUserCountAggregateOutputType>
+          : GetScalarType<T['select'], OutletUserCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a OutletChildUser.
+     * Allows you to perform aggregations operations on a OutletUser.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {OutletChildUserAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {OutletUserAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -10024,13 +10128,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends OutletChildUserAggregateArgs>(args: Subset<T, OutletChildUserAggregateArgs>): Prisma.PrismaPromise<GetOutletChildUserAggregateType<T>>
+    aggregate<T extends OutletUserAggregateArgs>(args: Subset<T, OutletUserAggregateArgs>): Prisma.PrismaPromise<GetOutletUserAggregateType<T>>
 
     /**
-     * Group by OutletChildUser.
+     * Group by OutletUser.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {OutletChildUserGroupByArgs} args - Group by arguments.
+     * @param {OutletUserGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -10045,14 +10149,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends OutletChildUserGroupByArgs,
+      T extends OutletUserGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: OutletChildUserGroupByArgs['orderBy'] }
-        : { orderBy?: OutletChildUserGroupByArgs['orderBy'] },
+        ? { orderBy: OutletUserGroupByArgs['orderBy'] }
+        : { orderBy?: OutletUserGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -10101,23 +10205,23 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, OutletChildUserGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetOutletChildUserGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, OutletUserGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetOutletUserGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the OutletChildUser model
+   * Fields of the OutletUser model
    */
-  readonly fields: OutletChildUserFieldRefs;
+  readonly fields: OutletUserFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for OutletChildUser.
+   * The delegate class that acts as a "Promise-like" for OutletUser.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__OutletChildUserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__OutletUserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     outlet<T extends outletDefaultArgs<ExtArgs> = {}>(args?: Subset<T, outletDefaultArgs<ExtArgs>>): Prisma__outletClient<$Result.GetResult<Prisma.$outletPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    userRoles<T extends OutletChildUser$userRolesArgs<ExtArgs> = {}>(args?: Subset<T, OutletChildUser$userRolesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OutletUserRolePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    userRoles<T extends OutletUser$userRolesArgs<ExtArgs> = {}>(args?: Subset<T, OutletUser$userRolesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OutletUserRolePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -10144,364 +10248,365 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the OutletChildUser model
+   * Fields of the OutletUser model
    */
-  interface OutletChildUserFieldRefs {
-    readonly id: FieldRef<"OutletChildUser", 'String'>
-    readonly outletId: FieldRef<"OutletChildUser", 'String'>
-    readonly name: FieldRef<"OutletChildUser", 'String'>
-    readonly email: FieldRef<"OutletChildUser", 'String'>
-    readonly phone: FieldRef<"OutletChildUser", 'String'>
-    readonly password: FieldRef<"OutletChildUser", 'String'>
-    readonly isActive: FieldRef<"OutletChildUser", 'Boolean'>
-    readonly createdAt: FieldRef<"OutletChildUser", 'DateTime'>
-    readonly updatedAt: FieldRef<"OutletChildUser", 'DateTime'>
+  interface OutletUserFieldRefs {
+    readonly id: FieldRef<"OutletUser", 'String'>
+    readonly outletId: FieldRef<"OutletUser", 'String'>
+    readonly name: FieldRef<"OutletUser", 'String'>
+    readonly email: FieldRef<"OutletUser", 'String'>
+    readonly phone: FieldRef<"OutletUser", 'String'>
+    readonly password: FieldRef<"OutletUser", 'String'>
+    readonly isOwner: FieldRef<"OutletUser", 'Boolean'>
+    readonly isActive: FieldRef<"OutletUser", 'Boolean'>
+    readonly createdAt: FieldRef<"OutletUser", 'DateTime'>
+    readonly updatedAt: FieldRef<"OutletUser", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * OutletChildUser findUnique
+   * OutletUser findUnique
    */
-  export type OutletChildUserFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletUserFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the OutletChildUser
+     * Select specific fields to fetch from the OutletUser
      */
-    select?: OutletChildUserSelect<ExtArgs> | null
+    select?: OutletUserSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the OutletChildUser
+     * Omit specific fields from the OutletUser
      */
-    omit?: OutletChildUserOmit<ExtArgs> | null
+    omit?: OutletUserOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: OutletChildUserInclude<ExtArgs> | null
+    include?: OutletUserInclude<ExtArgs> | null
     /**
-     * Filter, which OutletChildUser to fetch.
+     * Filter, which OutletUser to fetch.
      */
-    where: OutletChildUserWhereUniqueInput
+    where: OutletUserWhereUniqueInput
   }
 
   /**
-   * OutletChildUser findUniqueOrThrow
+   * OutletUser findUniqueOrThrow
    */
-  export type OutletChildUserFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletUserFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the OutletChildUser
+     * Select specific fields to fetch from the OutletUser
      */
-    select?: OutletChildUserSelect<ExtArgs> | null
+    select?: OutletUserSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the OutletChildUser
+     * Omit specific fields from the OutletUser
      */
-    omit?: OutletChildUserOmit<ExtArgs> | null
+    omit?: OutletUserOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: OutletChildUserInclude<ExtArgs> | null
+    include?: OutletUserInclude<ExtArgs> | null
     /**
-     * Filter, which OutletChildUser to fetch.
+     * Filter, which OutletUser to fetch.
      */
-    where: OutletChildUserWhereUniqueInput
+    where: OutletUserWhereUniqueInput
   }
 
   /**
-   * OutletChildUser findFirst
+   * OutletUser findFirst
    */
-  export type OutletChildUserFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletUserFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the OutletChildUser
+     * Select specific fields to fetch from the OutletUser
      */
-    select?: OutletChildUserSelect<ExtArgs> | null
+    select?: OutletUserSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the OutletChildUser
+     * Omit specific fields from the OutletUser
      */
-    omit?: OutletChildUserOmit<ExtArgs> | null
+    omit?: OutletUserOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: OutletChildUserInclude<ExtArgs> | null
+    include?: OutletUserInclude<ExtArgs> | null
     /**
-     * Filter, which OutletChildUser to fetch.
+     * Filter, which OutletUser to fetch.
      */
-    where?: OutletChildUserWhereInput
+    where?: OutletUserWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of OutletChildUsers to fetch.
+     * Determine the order of OutletUsers to fetch.
      */
-    orderBy?: OutletChildUserOrderByWithRelationInput | OutletChildUserOrderByWithRelationInput[]
+    orderBy?: OutletUserOrderByWithRelationInput | OutletUserOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for OutletChildUsers.
+     * Sets the position for searching for OutletUsers.
      */
-    cursor?: OutletChildUserWhereUniqueInput
+    cursor?: OutletUserWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` OutletChildUsers from the position of the cursor.
+     * Take `±n` OutletUsers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` OutletChildUsers.
+     * Skip the first `n` OutletUsers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of OutletChildUsers.
+     * Filter by unique combinations of OutletUsers.
      */
-    distinct?: OutletChildUserScalarFieldEnum | OutletChildUserScalarFieldEnum[]
+    distinct?: OutletUserScalarFieldEnum | OutletUserScalarFieldEnum[]
   }
 
   /**
-   * OutletChildUser findFirstOrThrow
+   * OutletUser findFirstOrThrow
    */
-  export type OutletChildUserFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletUserFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the OutletChildUser
+     * Select specific fields to fetch from the OutletUser
      */
-    select?: OutletChildUserSelect<ExtArgs> | null
+    select?: OutletUserSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the OutletChildUser
+     * Omit specific fields from the OutletUser
      */
-    omit?: OutletChildUserOmit<ExtArgs> | null
+    omit?: OutletUserOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: OutletChildUserInclude<ExtArgs> | null
+    include?: OutletUserInclude<ExtArgs> | null
     /**
-     * Filter, which OutletChildUser to fetch.
+     * Filter, which OutletUser to fetch.
      */
-    where?: OutletChildUserWhereInput
+    where?: OutletUserWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of OutletChildUsers to fetch.
+     * Determine the order of OutletUsers to fetch.
      */
-    orderBy?: OutletChildUserOrderByWithRelationInput | OutletChildUserOrderByWithRelationInput[]
+    orderBy?: OutletUserOrderByWithRelationInput | OutletUserOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for OutletChildUsers.
+     * Sets the position for searching for OutletUsers.
      */
-    cursor?: OutletChildUserWhereUniqueInput
+    cursor?: OutletUserWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` OutletChildUsers from the position of the cursor.
+     * Take `±n` OutletUsers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` OutletChildUsers.
+     * Skip the first `n` OutletUsers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of OutletChildUsers.
+     * Filter by unique combinations of OutletUsers.
      */
-    distinct?: OutletChildUserScalarFieldEnum | OutletChildUserScalarFieldEnum[]
+    distinct?: OutletUserScalarFieldEnum | OutletUserScalarFieldEnum[]
   }
 
   /**
-   * OutletChildUser findMany
+   * OutletUser findMany
    */
-  export type OutletChildUserFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletUserFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the OutletChildUser
+     * Select specific fields to fetch from the OutletUser
      */
-    select?: OutletChildUserSelect<ExtArgs> | null
+    select?: OutletUserSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the OutletChildUser
+     * Omit specific fields from the OutletUser
      */
-    omit?: OutletChildUserOmit<ExtArgs> | null
+    omit?: OutletUserOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: OutletChildUserInclude<ExtArgs> | null
+    include?: OutletUserInclude<ExtArgs> | null
     /**
-     * Filter, which OutletChildUsers to fetch.
+     * Filter, which OutletUsers to fetch.
      */
-    where?: OutletChildUserWhereInput
+    where?: OutletUserWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of OutletChildUsers to fetch.
+     * Determine the order of OutletUsers to fetch.
      */
-    orderBy?: OutletChildUserOrderByWithRelationInput | OutletChildUserOrderByWithRelationInput[]
+    orderBy?: OutletUserOrderByWithRelationInput | OutletUserOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing OutletChildUsers.
+     * Sets the position for listing OutletUsers.
      */
-    cursor?: OutletChildUserWhereUniqueInput
+    cursor?: OutletUserWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` OutletChildUsers from the position of the cursor.
+     * Take `±n` OutletUsers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` OutletChildUsers.
+     * Skip the first `n` OutletUsers.
      */
     skip?: number
-    distinct?: OutletChildUserScalarFieldEnum | OutletChildUserScalarFieldEnum[]
+    distinct?: OutletUserScalarFieldEnum | OutletUserScalarFieldEnum[]
   }
 
   /**
-   * OutletChildUser create
+   * OutletUser create
    */
-  export type OutletChildUserCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletUserCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the OutletChildUser
+     * Select specific fields to fetch from the OutletUser
      */
-    select?: OutletChildUserSelect<ExtArgs> | null
+    select?: OutletUserSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the OutletChildUser
+     * Omit specific fields from the OutletUser
      */
-    omit?: OutletChildUserOmit<ExtArgs> | null
+    omit?: OutletUserOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: OutletChildUserInclude<ExtArgs> | null
+    include?: OutletUserInclude<ExtArgs> | null
     /**
-     * The data needed to create a OutletChildUser.
+     * The data needed to create a OutletUser.
      */
-    data: XOR<OutletChildUserCreateInput, OutletChildUserUncheckedCreateInput>
+    data: XOR<OutletUserCreateInput, OutletUserUncheckedCreateInput>
   }
 
   /**
-   * OutletChildUser createMany
+   * OutletUser createMany
    */
-  export type OutletChildUserCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletUserCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many OutletChildUsers.
+     * The data used to create many OutletUsers.
      */
-    data: OutletChildUserCreateManyInput | OutletChildUserCreateManyInput[]
+    data: OutletUserCreateManyInput | OutletUserCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * OutletChildUser update
+   * OutletUser update
    */
-  export type OutletChildUserUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletUserUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the OutletChildUser
+     * Select specific fields to fetch from the OutletUser
      */
-    select?: OutletChildUserSelect<ExtArgs> | null
+    select?: OutletUserSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the OutletChildUser
+     * Omit specific fields from the OutletUser
      */
-    omit?: OutletChildUserOmit<ExtArgs> | null
+    omit?: OutletUserOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: OutletChildUserInclude<ExtArgs> | null
+    include?: OutletUserInclude<ExtArgs> | null
     /**
-     * The data needed to update a OutletChildUser.
+     * The data needed to update a OutletUser.
      */
-    data: XOR<OutletChildUserUpdateInput, OutletChildUserUncheckedUpdateInput>
+    data: XOR<OutletUserUpdateInput, OutletUserUncheckedUpdateInput>
     /**
-     * Choose, which OutletChildUser to update.
+     * Choose, which OutletUser to update.
      */
-    where: OutletChildUserWhereUniqueInput
+    where: OutletUserWhereUniqueInput
   }
 
   /**
-   * OutletChildUser updateMany
+   * OutletUser updateMany
    */
-  export type OutletChildUserUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletUserUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update OutletChildUsers.
+     * The data used to update OutletUsers.
      */
-    data: XOR<OutletChildUserUpdateManyMutationInput, OutletChildUserUncheckedUpdateManyInput>
+    data: XOR<OutletUserUpdateManyMutationInput, OutletUserUncheckedUpdateManyInput>
     /**
-     * Filter which OutletChildUsers to update
+     * Filter which OutletUsers to update
      */
-    where?: OutletChildUserWhereInput
+    where?: OutletUserWhereInput
     /**
-     * Limit how many OutletChildUsers to update.
+     * Limit how many OutletUsers to update.
      */
     limit?: number
   }
 
   /**
-   * OutletChildUser upsert
+   * OutletUser upsert
    */
-  export type OutletChildUserUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletUserUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the OutletChildUser
+     * Select specific fields to fetch from the OutletUser
      */
-    select?: OutletChildUserSelect<ExtArgs> | null
+    select?: OutletUserSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the OutletChildUser
+     * Omit specific fields from the OutletUser
      */
-    omit?: OutletChildUserOmit<ExtArgs> | null
+    omit?: OutletUserOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: OutletChildUserInclude<ExtArgs> | null
+    include?: OutletUserInclude<ExtArgs> | null
     /**
-     * The filter to search for the OutletChildUser to update in case it exists.
+     * The filter to search for the OutletUser to update in case it exists.
      */
-    where: OutletChildUserWhereUniqueInput
+    where: OutletUserWhereUniqueInput
     /**
-     * In case the OutletChildUser found by the `where` argument doesn't exist, create a new OutletChildUser with this data.
+     * In case the OutletUser found by the `where` argument doesn't exist, create a new OutletUser with this data.
      */
-    create: XOR<OutletChildUserCreateInput, OutletChildUserUncheckedCreateInput>
+    create: XOR<OutletUserCreateInput, OutletUserUncheckedCreateInput>
     /**
-     * In case the OutletChildUser was found with the provided `where` argument, update it with this data.
+     * In case the OutletUser was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<OutletChildUserUpdateInput, OutletChildUserUncheckedUpdateInput>
+    update: XOR<OutletUserUpdateInput, OutletUserUncheckedUpdateInput>
   }
 
   /**
-   * OutletChildUser delete
+   * OutletUser delete
    */
-  export type OutletChildUserDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletUserDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the OutletChildUser
+     * Select specific fields to fetch from the OutletUser
      */
-    select?: OutletChildUserSelect<ExtArgs> | null
+    select?: OutletUserSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the OutletChildUser
+     * Omit specific fields from the OutletUser
      */
-    omit?: OutletChildUserOmit<ExtArgs> | null
+    omit?: OutletUserOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: OutletChildUserInclude<ExtArgs> | null
+    include?: OutletUserInclude<ExtArgs> | null
     /**
-     * Filter which OutletChildUser to delete.
+     * Filter which OutletUser to delete.
      */
-    where: OutletChildUserWhereUniqueInput
+    where: OutletUserWhereUniqueInput
   }
 
   /**
-   * OutletChildUser deleteMany
+   * OutletUser deleteMany
    */
-  export type OutletChildUserDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletUserDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which OutletChildUsers to delete
+     * Filter which OutletUsers to delete
      */
-    where?: OutletChildUserWhereInput
+    where?: OutletUserWhereInput
     /**
-     * Limit how many OutletChildUsers to delete.
+     * Limit how many OutletUsers to delete.
      */
     limit?: number
   }
 
   /**
-   * OutletChildUser.userRoles
+   * OutletUser.userRoles
    */
-  export type OutletChildUser$userRolesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletUser$userRolesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the OutletUserRole
      */
@@ -10523,21 +10628,21 @@ export namespace Prisma {
   }
 
   /**
-   * OutletChildUser without action
+   * OutletUser without action
    */
-  export type OutletChildUserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OutletUserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the OutletChildUser
+     * Select specific fields to fetch from the OutletUser
      */
-    select?: OutletChildUserSelect<ExtArgs> | null
+    select?: OutletUserSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the OutletChildUser
+     * Omit specific fields from the OutletUser
      */
-    omit?: OutletChildUserOmit<ExtArgs> | null
+    omit?: OutletUserOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: OutletChildUserInclude<ExtArgs> | null
+    include?: OutletUserInclude<ExtArgs> | null
   }
 
 
@@ -10724,7 +10829,7 @@ export namespace Prisma {
     outlet?: boolean | Role$outletArgs<ExtArgs>
     superAdmin?: boolean | Role$superAdminArgs<ExtArgs>
     rolePermissions?: boolean | Role$rolePermissionsArgs<ExtArgs>
-    OutletUserRoles?: boolean | Role$OutletUserRolesArgs<ExtArgs>
+    outletUserRoles?: boolean | Role$outletUserRolesArgs<ExtArgs>
     superAdminUserRoles?: boolean | Role$superAdminUserRolesArgs<ExtArgs>
     _count?: boolean | RoleCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["role"]>
@@ -10746,7 +10851,7 @@ export namespace Prisma {
     outlet?: boolean | Role$outletArgs<ExtArgs>
     superAdmin?: boolean | Role$superAdminArgs<ExtArgs>
     rolePermissions?: boolean | Role$rolePermissionsArgs<ExtArgs>
-    OutletUserRoles?: boolean | Role$OutletUserRolesArgs<ExtArgs>
+    outletUserRoles?: boolean | Role$outletUserRolesArgs<ExtArgs>
     superAdminUserRoles?: boolean | Role$superAdminUserRolesArgs<ExtArgs>
     _count?: boolean | RoleCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -10757,7 +10862,7 @@ export namespace Prisma {
       outlet: Prisma.$outletPayload<ExtArgs> | null
       superAdmin: Prisma.$SuperAdminsPayload<ExtArgs> | null
       rolePermissions: Prisma.$RolePermissionPayload<ExtArgs>[]
-      OutletUserRoles: Prisma.$OutletUserRolePayload<ExtArgs>[]
+      outletUserRoles: Prisma.$OutletUserRolePayload<ExtArgs>[]
       superAdminUserRoles: Prisma.$SuperAdminUserRolePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -11111,7 +11216,7 @@ export namespace Prisma {
     outlet<T extends Role$outletArgs<ExtArgs> = {}>(args?: Subset<T, Role$outletArgs<ExtArgs>>): Prisma__outletClient<$Result.GetResult<Prisma.$outletPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     superAdmin<T extends Role$superAdminArgs<ExtArgs> = {}>(args?: Subset<T, Role$superAdminArgs<ExtArgs>>): Prisma__SuperAdminsClient<$Result.GetResult<Prisma.$SuperAdminsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     rolePermissions<T extends Role$rolePermissionsArgs<ExtArgs> = {}>(args?: Subset<T, Role$rolePermissionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RolePermissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    OutletUserRoles<T extends Role$OutletUserRolesArgs<ExtArgs> = {}>(args?: Subset<T, Role$OutletUserRolesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OutletUserRolePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    outletUserRoles<T extends Role$outletUserRolesArgs<ExtArgs> = {}>(args?: Subset<T, Role$outletUserRolesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OutletUserRolePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     superAdminUserRoles<T extends Role$superAdminUserRolesArgs<ExtArgs> = {}>(args?: Subset<T, Role$superAdminUserRolesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SuperAdminUserRolePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -11554,9 +11659,9 @@ export namespace Prisma {
   }
 
   /**
-   * Role.OutletUserRoles
+   * Role.outletUserRoles
    */
-  export type Role$OutletUserRolesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Role$outletUserRolesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the OutletUserRole
      */
@@ -13509,21 +13614,21 @@ export namespace Prisma {
 
   export type OutletUserRoleMinAggregateOutputType = {
     id: string | null
-    OutletChildUserId: string | null
+    outletUserId: string | null
     roleId: string | null
     createdAt: Date | null
   }
 
   export type OutletUserRoleMaxAggregateOutputType = {
     id: string | null
-    OutletChildUserId: string | null
+    outletUserId: string | null
     roleId: string | null
     createdAt: Date | null
   }
 
   export type OutletUserRoleCountAggregateOutputType = {
     id: number
-    OutletChildUserId: number
+    outletUserId: number
     roleId: number
     createdAt: number
     _all: number
@@ -13532,21 +13637,21 @@ export namespace Prisma {
 
   export type OutletUserRoleMinAggregateInputType = {
     id?: true
-    OutletChildUserId?: true
+    outletUserId?: true
     roleId?: true
     createdAt?: true
   }
 
   export type OutletUserRoleMaxAggregateInputType = {
     id?: true
-    OutletChildUserId?: true
+    outletUserId?: true
     roleId?: true
     createdAt?: true
   }
 
   export type OutletUserRoleCountAggregateInputType = {
     id?: true
-    OutletChildUserId?: true
+    outletUserId?: true
     roleId?: true
     createdAt?: true
     _all?: true
@@ -13626,7 +13731,7 @@ export namespace Prisma {
 
   export type OutletUserRoleGroupByOutputType = {
     id: string
-    OutletChildUserId: string
+    outletUserId: string
     roleId: string
     createdAt: Date
     _count: OutletUserRoleCountAggregateOutputType | null
@@ -13650,10 +13755,10 @@ export namespace Prisma {
 
   export type OutletUserRoleSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    OutletChildUserId?: boolean
+    outletUserId?: boolean
     roleId?: boolean
     createdAt?: boolean
-    OutletChildUser?: boolean | OutletChildUserDefaultArgs<ExtArgs>
+    outletUser?: boolean | OutletUserDefaultArgs<ExtArgs>
     role?: boolean | RoleDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["outletUserRole"]>
 
@@ -13661,26 +13766,26 @@ export namespace Prisma {
 
   export type OutletUserRoleSelectScalar = {
     id?: boolean
-    OutletChildUserId?: boolean
+    outletUserId?: boolean
     roleId?: boolean
     createdAt?: boolean
   }
 
-  export type OutletUserRoleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "OutletChildUserId" | "roleId" | "createdAt", ExtArgs["result"]["outletUserRole"]>
+  export type OutletUserRoleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "outletUserId" | "roleId" | "createdAt", ExtArgs["result"]["outletUserRole"]>
   export type OutletUserRoleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    OutletChildUser?: boolean | OutletChildUserDefaultArgs<ExtArgs>
+    outletUser?: boolean | OutletUserDefaultArgs<ExtArgs>
     role?: boolean | RoleDefaultArgs<ExtArgs>
   }
 
   export type $OutletUserRolePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "OutletUserRole"
     objects: {
-      OutletChildUser: Prisma.$OutletChildUserPayload<ExtArgs>
+      outletUser: Prisma.$OutletUserPayload<ExtArgs>
       role: Prisma.$RolePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      OutletChildUserId: string
+      outletUserId: string
       roleId: string
       createdAt: Date
     }, ExtArgs["result"]["outletUserRole"]>
@@ -14023,7 +14128,7 @@ export namespace Prisma {
    */
   export interface Prisma__OutletUserRoleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    OutletChildUser<T extends OutletChildUserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, OutletChildUserDefaultArgs<ExtArgs>>): Prisma__OutletChildUserClient<$Result.GetResult<Prisma.$OutletChildUserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    outletUser<T extends OutletUserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, OutletUserDefaultArgs<ExtArgs>>): Prisma__OutletUserClient<$Result.GetResult<Prisma.$OutletUserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     role<T extends RoleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, RoleDefaultArgs<ExtArgs>>): Prisma__RoleClient<$Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -14055,7 +14160,7 @@ export namespace Prisma {
    */
   interface OutletUserRoleFieldRefs {
     readonly id: FieldRef<"OutletUserRole", 'String'>
-    readonly OutletChildUserId: FieldRef<"OutletUserRole", 'String'>
+    readonly outletUserId: FieldRef<"OutletUserRole", 'String'>
     readonly roleId: FieldRef<"OutletUserRole", 'String'>
     readonly createdAt: FieldRef<"OutletUserRole", 'DateTime'>
   }
@@ -15454,15 +15559,19 @@ export namespace Prisma {
 
   export const OutletScalarFieldEnum: {
     id: 'id',
-    name: 'name',
-    email: 'email',
-    phone: 'phone',
-    password: 'password',
-    centerName: 'centerName',
-    slug: 'slug',
-    logo: 'logo',
+    outletCode: 'outletCode',
+    outletName: 'outletName',
+    subdomain: 'subdomain',
+    division: 'division',
+    district: 'district',
+    area: 'area',
     address: 'address',
-    isActive: 'isActive',
+    contactNumber: 'contactNumber',
+    email: 'email',
+    password: 'password',
+    latitude: 'latitude',
+    longitude: 'longitude',
+    status: 'status',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -15470,19 +15579,20 @@ export namespace Prisma {
   export type OutletScalarFieldEnum = (typeof OutletScalarFieldEnum)[keyof typeof OutletScalarFieldEnum]
 
 
-  export const OutletChildUserScalarFieldEnum: {
+  export const OutletUserScalarFieldEnum: {
     id: 'id',
     outletId: 'outletId',
     name: 'name',
     email: 'email',
     phone: 'phone',
     password: 'password',
+    isOwner: 'isOwner',
     isActive: 'isActive',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
 
-  export type OutletChildUserScalarFieldEnum = (typeof OutletChildUserScalarFieldEnum)[keyof typeof OutletChildUserScalarFieldEnum]
+  export type OutletUserScalarFieldEnum = (typeof OutletUserScalarFieldEnum)[keyof typeof OutletUserScalarFieldEnum]
 
 
   export const RoleScalarFieldEnum: {
@@ -15521,7 +15631,7 @@ export namespace Prisma {
 
   export const OutletUserRoleScalarFieldEnum: {
     id: 'id',
-    OutletChildUserId: 'OutletChildUserId',
+    outletUserId: 'outletUserId',
     roleId: 'roleId',
     createdAt: 'createdAt'
   };
@@ -15632,20 +15742,22 @@ export namespace Prisma {
 
   export const outletOrderByRelevanceFieldEnum: {
     id: 'id',
-    name: 'name',
+    outletCode: 'outletCode',
+    outletName: 'outletName',
+    subdomain: 'subdomain',
+    division: 'division',
+    district: 'district',
+    area: 'area',
+    address: 'address',
+    contactNumber: 'contactNumber',
     email: 'email',
-    phone: 'phone',
-    password: 'password',
-    centerName: 'centerName',
-    slug: 'slug',
-    logo: 'logo',
-    address: 'address'
+    password: 'password'
   };
 
   export type outletOrderByRelevanceFieldEnum = (typeof outletOrderByRelevanceFieldEnum)[keyof typeof outletOrderByRelevanceFieldEnum]
 
 
-  export const OutletChildUserOrderByRelevanceFieldEnum: {
+  export const OutletUserOrderByRelevanceFieldEnum: {
     id: 'id',
     outletId: 'outletId',
     name: 'name',
@@ -15654,7 +15766,7 @@ export namespace Prisma {
     password: 'password'
   };
 
-  export type OutletChildUserOrderByRelevanceFieldEnum = (typeof OutletChildUserOrderByRelevanceFieldEnum)[keyof typeof OutletChildUserOrderByRelevanceFieldEnum]
+  export type OutletUserOrderByRelevanceFieldEnum = (typeof OutletUserOrderByRelevanceFieldEnum)[keyof typeof OutletUserOrderByRelevanceFieldEnum]
 
 
   export const RoleOrderByRelevanceFieldEnum: {
@@ -15688,7 +15800,7 @@ export namespace Prisma {
 
   export const OutletUserRoleOrderByRelevanceFieldEnum: {
     id: 'id',
-    OutletChildUserId: 'OutletChildUserId',
+    outletUserId: 'outletUserId',
     roleId: 'roleId'
   };
 
@@ -15783,6 +15895,13 @@ export namespace Prisma {
    * Reference to a field of type 'ScheduleStatus'
    */
   export type EnumScheduleStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ScheduleStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'OutletStatus'
+   */
+  export type EnumOutletStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'OutletStatus'>
     
 
 
@@ -16317,18 +16436,22 @@ export namespace Prisma {
     OR?: outletWhereInput[]
     NOT?: outletWhereInput | outletWhereInput[]
     id?: StringFilter<"outlet"> | string
-    name?: StringFilter<"outlet"> | string
+    outletCode?: StringFilter<"outlet"> | string
+    outletName?: StringFilter<"outlet"> | string
+    subdomain?: StringFilter<"outlet"> | string
+    division?: StringFilter<"outlet"> | string
+    district?: StringFilter<"outlet"> | string
+    area?: StringFilter<"outlet"> | string
+    address?: StringFilter<"outlet"> | string
+    contactNumber?: StringFilter<"outlet"> | string
     email?: StringFilter<"outlet"> | string
-    phone?: StringNullableFilter<"outlet"> | string | null
     password?: StringFilter<"outlet"> | string
-    centerName?: StringFilter<"outlet"> | string
-    slug?: StringFilter<"outlet"> | string
-    logo?: StringNullableFilter<"outlet"> | string | null
-    address?: StringNullableFilter<"outlet"> | string | null
-    isActive?: BoolFilter<"outlet"> | boolean
+    latitude?: DecimalNullableFilter<"outlet"> | Decimal | DecimalJsLike | number | string | null
+    longitude?: DecimalNullableFilter<"outlet"> | Decimal | DecimalJsLike | number | string | null
+    status?: EnumOutletStatusFilter<"outlet"> | $Enums.OutletStatus
     createdAt?: DateTimeFilter<"outlet"> | Date | string
     updatedAt?: DateTimeFilter<"outlet"> | Date | string
-    childUsers?: OutletChildUserListRelationFilter
+    users?: OutletUserListRelationFilter
     roles?: RoleListRelationFilter
     patients?: PatientListRelationFilter
     doctors?: DoctorListRelationFilter
@@ -16336,18 +16459,22 @@ export namespace Prisma {
 
   export type outletOrderByWithRelationInput = {
     id?: SortOrder
-    name?: SortOrder
+    outletCode?: SortOrder
+    outletName?: SortOrder
+    subdomain?: SortOrder
+    division?: SortOrder
+    district?: SortOrder
+    area?: SortOrder
+    address?: SortOrder
+    contactNumber?: SortOrder
     email?: SortOrder
-    phone?: SortOrderInput | SortOrder
     password?: SortOrder
-    centerName?: SortOrder
-    slug?: SortOrder
-    logo?: SortOrderInput | SortOrder
-    address?: SortOrderInput | SortOrder
-    isActive?: SortOrder
+    latitude?: SortOrderInput | SortOrder
+    longitude?: SortOrderInput | SortOrder
+    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    childUsers?: OutletChildUserOrderByRelationAggregateInput
+    users?: OutletUserOrderByRelationAggregateInput
     roles?: RoleOrderByRelationAggregateInput
     patients?: PatientOrderByRelationAggregateInput
     doctors?: DoctorOrderByRelationAggregateInput
@@ -16356,42 +16483,52 @@ export namespace Prisma {
 
   export type outletWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    outletCode?: string
+    subdomain?: string
     email?: string
-    slug?: string
     AND?: outletWhereInput | outletWhereInput[]
     OR?: outletWhereInput[]
     NOT?: outletWhereInput | outletWhereInput[]
-    name?: StringFilter<"outlet"> | string
-    phone?: StringNullableFilter<"outlet"> | string | null
+    outletName?: StringFilter<"outlet"> | string
+    division?: StringFilter<"outlet"> | string
+    district?: StringFilter<"outlet"> | string
+    area?: StringFilter<"outlet"> | string
+    address?: StringFilter<"outlet"> | string
+    contactNumber?: StringFilter<"outlet"> | string
     password?: StringFilter<"outlet"> | string
-    centerName?: StringFilter<"outlet"> | string
-    logo?: StringNullableFilter<"outlet"> | string | null
-    address?: StringNullableFilter<"outlet"> | string | null
-    isActive?: BoolFilter<"outlet"> | boolean
+    latitude?: DecimalNullableFilter<"outlet"> | Decimal | DecimalJsLike | number | string | null
+    longitude?: DecimalNullableFilter<"outlet"> | Decimal | DecimalJsLike | number | string | null
+    status?: EnumOutletStatusFilter<"outlet"> | $Enums.OutletStatus
     createdAt?: DateTimeFilter<"outlet"> | Date | string
     updatedAt?: DateTimeFilter<"outlet"> | Date | string
-    childUsers?: OutletChildUserListRelationFilter
+    users?: OutletUserListRelationFilter
     roles?: RoleListRelationFilter
     patients?: PatientListRelationFilter
     doctors?: DoctorListRelationFilter
-  }, "id" | "email" | "slug">
+  }, "id" | "outletCode" | "subdomain" | "email">
 
   export type outletOrderByWithAggregationInput = {
     id?: SortOrder
-    name?: SortOrder
+    outletCode?: SortOrder
+    outletName?: SortOrder
+    subdomain?: SortOrder
+    division?: SortOrder
+    district?: SortOrder
+    area?: SortOrder
+    address?: SortOrder
+    contactNumber?: SortOrder
     email?: SortOrder
-    phone?: SortOrderInput | SortOrder
     password?: SortOrder
-    centerName?: SortOrder
-    slug?: SortOrder
-    logo?: SortOrderInput | SortOrder
-    address?: SortOrderInput | SortOrder
-    isActive?: SortOrder
+    latitude?: SortOrderInput | SortOrder
+    longitude?: SortOrderInput | SortOrder
+    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: outletCountOrderByAggregateInput
+    _avg?: outletAvgOrderByAggregateInput
     _max?: outletMaxOrderByAggregateInput
     _min?: outletMinOrderByAggregateInput
+    _sum?: outletSumOrderByAggregateInput
   }
 
   export type outletScalarWhereWithAggregatesInput = {
@@ -16399,97 +16536,106 @@ export namespace Prisma {
     OR?: outletScalarWhereWithAggregatesInput[]
     NOT?: outletScalarWhereWithAggregatesInput | outletScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"outlet"> | string
-    name?: StringWithAggregatesFilter<"outlet"> | string
+    outletCode?: StringWithAggregatesFilter<"outlet"> | string
+    outletName?: StringWithAggregatesFilter<"outlet"> | string
+    subdomain?: StringWithAggregatesFilter<"outlet"> | string
+    division?: StringWithAggregatesFilter<"outlet"> | string
+    district?: StringWithAggregatesFilter<"outlet"> | string
+    area?: StringWithAggregatesFilter<"outlet"> | string
+    address?: StringWithAggregatesFilter<"outlet"> | string
+    contactNumber?: StringWithAggregatesFilter<"outlet"> | string
     email?: StringWithAggregatesFilter<"outlet"> | string
-    phone?: StringNullableWithAggregatesFilter<"outlet"> | string | null
     password?: StringWithAggregatesFilter<"outlet"> | string
-    centerName?: StringWithAggregatesFilter<"outlet"> | string
-    slug?: StringWithAggregatesFilter<"outlet"> | string
-    logo?: StringNullableWithAggregatesFilter<"outlet"> | string | null
-    address?: StringNullableWithAggregatesFilter<"outlet"> | string | null
-    isActive?: BoolWithAggregatesFilter<"outlet"> | boolean
+    latitude?: DecimalNullableWithAggregatesFilter<"outlet"> | Decimal | DecimalJsLike | number | string | null
+    longitude?: DecimalNullableWithAggregatesFilter<"outlet"> | Decimal | DecimalJsLike | number | string | null
+    status?: EnumOutletStatusWithAggregatesFilter<"outlet"> | $Enums.OutletStatus
     createdAt?: DateTimeWithAggregatesFilter<"outlet"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"outlet"> | Date | string
   }
 
-  export type OutletChildUserWhereInput = {
-    AND?: OutletChildUserWhereInput | OutletChildUserWhereInput[]
-    OR?: OutletChildUserWhereInput[]
-    NOT?: OutletChildUserWhereInput | OutletChildUserWhereInput[]
-    id?: StringFilter<"OutletChildUser"> | string
-    outletId?: StringFilter<"OutletChildUser"> | string
-    name?: StringFilter<"OutletChildUser"> | string
-    email?: StringFilter<"OutletChildUser"> | string
-    phone?: StringNullableFilter<"OutletChildUser"> | string | null
-    password?: StringFilter<"OutletChildUser"> | string
-    isActive?: BoolFilter<"OutletChildUser"> | boolean
-    createdAt?: DateTimeFilter<"OutletChildUser"> | Date | string
-    updatedAt?: DateTimeFilter<"OutletChildUser"> | Date | string
+  export type OutletUserWhereInput = {
+    AND?: OutletUserWhereInput | OutletUserWhereInput[]
+    OR?: OutletUserWhereInput[]
+    NOT?: OutletUserWhereInput | OutletUserWhereInput[]
+    id?: StringFilter<"OutletUser"> | string
+    outletId?: StringFilter<"OutletUser"> | string
+    name?: StringFilter<"OutletUser"> | string
+    email?: StringFilter<"OutletUser"> | string
+    phone?: StringNullableFilter<"OutletUser"> | string | null
+    password?: StringFilter<"OutletUser"> | string
+    isOwner?: BoolFilter<"OutletUser"> | boolean
+    isActive?: BoolFilter<"OutletUser"> | boolean
+    createdAt?: DateTimeFilter<"OutletUser"> | Date | string
+    updatedAt?: DateTimeFilter<"OutletUser"> | Date | string
     outlet?: XOR<OutletScalarRelationFilter, outletWhereInput>
     userRoles?: OutletUserRoleListRelationFilter
   }
 
-  export type OutletChildUserOrderByWithRelationInput = {
+  export type OutletUserOrderByWithRelationInput = {
     id?: SortOrder
     outletId?: SortOrder
     name?: SortOrder
     email?: SortOrder
     phone?: SortOrderInput | SortOrder
     password?: SortOrder
+    isOwner?: SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     outlet?: outletOrderByWithRelationInput
     userRoles?: OutletUserRoleOrderByRelationAggregateInput
-    _relevance?: OutletChildUserOrderByRelevanceInput
+    _relevance?: OutletUserOrderByRelevanceInput
   }
 
-  export type OutletChildUserWhereUniqueInput = Prisma.AtLeast<{
+  export type OutletUserWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    email_outletId?: OutletChildUserEmailOutletIdCompoundUniqueInput
-    AND?: OutletChildUserWhereInput | OutletChildUserWhereInput[]
-    OR?: OutletChildUserWhereInput[]
-    NOT?: OutletChildUserWhereInput | OutletChildUserWhereInput[]
-    outletId?: StringFilter<"OutletChildUser"> | string
-    name?: StringFilter<"OutletChildUser"> | string
-    email?: StringFilter<"OutletChildUser"> | string
-    phone?: StringNullableFilter<"OutletChildUser"> | string | null
-    password?: StringFilter<"OutletChildUser"> | string
-    isActive?: BoolFilter<"OutletChildUser"> | boolean
-    createdAt?: DateTimeFilter<"OutletChildUser"> | Date | string
-    updatedAt?: DateTimeFilter<"OutletChildUser"> | Date | string
+    email_outletId?: OutletUserEmailOutletIdCompoundUniqueInput
+    AND?: OutletUserWhereInput | OutletUserWhereInput[]
+    OR?: OutletUserWhereInput[]
+    NOT?: OutletUserWhereInput | OutletUserWhereInput[]
+    outletId?: StringFilter<"OutletUser"> | string
+    name?: StringFilter<"OutletUser"> | string
+    email?: StringFilter<"OutletUser"> | string
+    phone?: StringNullableFilter<"OutletUser"> | string | null
+    password?: StringFilter<"OutletUser"> | string
+    isOwner?: BoolFilter<"OutletUser"> | boolean
+    isActive?: BoolFilter<"OutletUser"> | boolean
+    createdAt?: DateTimeFilter<"OutletUser"> | Date | string
+    updatedAt?: DateTimeFilter<"OutletUser"> | Date | string
     outlet?: XOR<OutletScalarRelationFilter, outletWhereInput>
     userRoles?: OutletUserRoleListRelationFilter
   }, "id" | "email_outletId">
 
-  export type OutletChildUserOrderByWithAggregationInput = {
+  export type OutletUserOrderByWithAggregationInput = {
     id?: SortOrder
     outletId?: SortOrder
     name?: SortOrder
     email?: SortOrder
     phone?: SortOrderInput | SortOrder
     password?: SortOrder
+    isOwner?: SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    _count?: OutletChildUserCountOrderByAggregateInput
-    _max?: OutletChildUserMaxOrderByAggregateInput
-    _min?: OutletChildUserMinOrderByAggregateInput
+    _count?: OutletUserCountOrderByAggregateInput
+    _max?: OutletUserMaxOrderByAggregateInput
+    _min?: OutletUserMinOrderByAggregateInput
   }
 
-  export type OutletChildUserScalarWhereWithAggregatesInput = {
-    AND?: OutletChildUserScalarWhereWithAggregatesInput | OutletChildUserScalarWhereWithAggregatesInput[]
-    OR?: OutletChildUserScalarWhereWithAggregatesInput[]
-    NOT?: OutletChildUserScalarWhereWithAggregatesInput | OutletChildUserScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"OutletChildUser"> | string
-    outletId?: StringWithAggregatesFilter<"OutletChildUser"> | string
-    name?: StringWithAggregatesFilter<"OutletChildUser"> | string
-    email?: StringWithAggregatesFilter<"OutletChildUser"> | string
-    phone?: StringNullableWithAggregatesFilter<"OutletChildUser"> | string | null
-    password?: StringWithAggregatesFilter<"OutletChildUser"> | string
-    isActive?: BoolWithAggregatesFilter<"OutletChildUser"> | boolean
-    createdAt?: DateTimeWithAggregatesFilter<"OutletChildUser"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"OutletChildUser"> | Date | string
+  export type OutletUserScalarWhereWithAggregatesInput = {
+    AND?: OutletUserScalarWhereWithAggregatesInput | OutletUserScalarWhereWithAggregatesInput[]
+    OR?: OutletUserScalarWhereWithAggregatesInput[]
+    NOT?: OutletUserScalarWhereWithAggregatesInput | OutletUserScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"OutletUser"> | string
+    outletId?: StringWithAggregatesFilter<"OutletUser"> | string
+    name?: StringWithAggregatesFilter<"OutletUser"> | string
+    email?: StringWithAggregatesFilter<"OutletUser"> | string
+    phone?: StringNullableWithAggregatesFilter<"OutletUser"> | string | null
+    password?: StringWithAggregatesFilter<"OutletUser"> | string
+    isOwner?: BoolWithAggregatesFilter<"OutletUser"> | boolean
+    isActive?: BoolWithAggregatesFilter<"OutletUser"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"OutletUser"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"OutletUser"> | Date | string
   }
 
   export type RoleWhereInput = {
@@ -16506,7 +16652,7 @@ export namespace Prisma {
     outlet?: XOR<OutletNullableScalarRelationFilter, outletWhereInput> | null
     superAdmin?: XOR<SuperAdminsNullableScalarRelationFilter, SuperAdminsWhereInput> | null
     rolePermissions?: RolePermissionListRelationFilter
-    OutletUserRoles?: OutletUserRoleListRelationFilter
+    outletUserRoles?: OutletUserRoleListRelationFilter
     superAdminUserRoles?: SuperAdminUserRoleListRelationFilter
   }
 
@@ -16521,7 +16667,7 @@ export namespace Prisma {
     outlet?: outletOrderByWithRelationInput
     superAdmin?: SuperAdminsOrderByWithRelationInput
     rolePermissions?: RolePermissionOrderByRelationAggregateInput
-    OutletUserRoles?: OutletUserRoleOrderByRelationAggregateInput
+    outletUserRoles?: OutletUserRoleOrderByRelationAggregateInput
     superAdminUserRoles?: SuperAdminUserRoleOrderByRelationAggregateInput
     _relevance?: RoleOrderByRelevanceInput
   }
@@ -16542,7 +16688,7 @@ export namespace Prisma {
     outlet?: XOR<OutletNullableScalarRelationFilter, outletWhereInput> | null
     superAdmin?: XOR<SuperAdminsNullableScalarRelationFilter, SuperAdminsWhereInput> | null
     rolePermissions?: RolePermissionListRelationFilter
-    OutletUserRoles?: OutletUserRoleListRelationFilter
+    outletUserRoles?: OutletUserRoleListRelationFilter
     superAdminUserRoles?: SuperAdminUserRoleListRelationFilter
   }, "id" | "name_outletId" | "name_superAdminId">
 
@@ -16688,39 +16834,39 @@ export namespace Prisma {
     OR?: OutletUserRoleWhereInput[]
     NOT?: OutletUserRoleWhereInput | OutletUserRoleWhereInput[]
     id?: StringFilter<"OutletUserRole"> | string
-    OutletChildUserId?: StringFilter<"OutletUserRole"> | string
+    outletUserId?: StringFilter<"OutletUserRole"> | string
     roleId?: StringFilter<"OutletUserRole"> | string
     createdAt?: DateTimeFilter<"OutletUserRole"> | Date | string
-    OutletChildUser?: XOR<OutletChildUserScalarRelationFilter, OutletChildUserWhereInput>
+    outletUser?: XOR<OutletUserScalarRelationFilter, OutletUserWhereInput>
     role?: XOR<RoleScalarRelationFilter, RoleWhereInput>
   }
 
   export type OutletUserRoleOrderByWithRelationInput = {
     id?: SortOrder
-    OutletChildUserId?: SortOrder
+    outletUserId?: SortOrder
     roleId?: SortOrder
     createdAt?: SortOrder
-    OutletChildUser?: OutletChildUserOrderByWithRelationInput
+    outletUser?: OutletUserOrderByWithRelationInput
     role?: RoleOrderByWithRelationInput
     _relevance?: OutletUserRoleOrderByRelevanceInput
   }
 
   export type OutletUserRoleWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    OutletChildUserId_roleId?: OutletUserRoleOutletChildUserIdRoleIdCompoundUniqueInput
+    outletUserId_roleId?: OutletUserRoleOutletUserIdRoleIdCompoundUniqueInput
     AND?: OutletUserRoleWhereInput | OutletUserRoleWhereInput[]
     OR?: OutletUserRoleWhereInput[]
     NOT?: OutletUserRoleWhereInput | OutletUserRoleWhereInput[]
-    OutletChildUserId?: StringFilter<"OutletUserRole"> | string
+    outletUserId?: StringFilter<"OutletUserRole"> | string
     roleId?: StringFilter<"OutletUserRole"> | string
     createdAt?: DateTimeFilter<"OutletUserRole"> | Date | string
-    OutletChildUser?: XOR<OutletChildUserScalarRelationFilter, OutletChildUserWhereInput>
+    outletUser?: XOR<OutletUserScalarRelationFilter, OutletUserWhereInput>
     role?: XOR<RoleScalarRelationFilter, RoleWhereInput>
-  }, "id" | "OutletChildUserId_roleId">
+  }, "id" | "outletUserId_roleId">
 
   export type OutletUserRoleOrderByWithAggregationInput = {
     id?: SortOrder
-    OutletChildUserId?: SortOrder
+    outletUserId?: SortOrder
     roleId?: SortOrder
     createdAt?: SortOrder
     _count?: OutletUserRoleCountOrderByAggregateInput
@@ -16733,7 +16879,7 @@ export namespace Prisma {
     OR?: OutletUserRoleScalarWhereWithAggregatesInput[]
     NOT?: OutletUserRoleScalarWhereWithAggregatesInput | OutletUserRoleScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"OutletUserRole"> | string
-    OutletChildUserId?: StringWithAggregatesFilter<"OutletUserRole"> | string
+    outletUserId?: StringWithAggregatesFilter<"OutletUserRole"> | string
     roleId?: StringWithAggregatesFilter<"OutletUserRole"> | string
     createdAt?: DateTimeWithAggregatesFilter<"OutletUserRole"> | Date | string
   }
@@ -17363,18 +17509,22 @@ export namespace Prisma {
 
   export type outletCreateInput = {
     id?: string
-    name: string
+    outletCode: string
+    outletName: string
+    subdomain: string
+    division: string
+    district: string
+    area: string
+    address: string
+    contactNumber: string
     email: string
-    phone?: string | null
     password: string
-    centerName: string
-    slug: string
-    logo?: string | null
-    address?: string | null
-    isActive?: boolean
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    status?: $Enums.OutletStatus
     createdAt?: Date | string
     updatedAt?: Date | string
-    childUsers?: OutletChildUserCreateNestedManyWithoutOutletInput
+    users?: OutletUserCreateNestedManyWithoutOutletInput
     roles?: RoleCreateNestedManyWithoutOutletInput
     patients?: PatientCreateNestedManyWithoutOutletInput
     doctors?: DoctorCreateNestedManyWithoutOutletInput
@@ -17382,18 +17532,22 @@ export namespace Prisma {
 
   export type outletUncheckedCreateInput = {
     id?: string
-    name: string
+    outletCode: string
+    outletName: string
+    subdomain: string
+    division: string
+    district: string
+    area: string
+    address: string
+    contactNumber: string
     email: string
-    phone?: string | null
     password: string
-    centerName: string
-    slug: string
-    logo?: string | null
-    address?: string | null
-    isActive?: boolean
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    status?: $Enums.OutletStatus
     createdAt?: Date | string
     updatedAt?: Date | string
-    childUsers?: OutletChildUserUncheckedCreateNestedManyWithoutOutletInput
+    users?: OutletUserUncheckedCreateNestedManyWithoutOutletInput
     roles?: RoleUncheckedCreateNestedManyWithoutOutletInput
     patients?: PatientUncheckedCreateNestedManyWithoutOutletInput
     doctors?: DoctorUncheckedCreateNestedManyWithoutOutletInput
@@ -17401,18 +17555,22 @@ export namespace Prisma {
 
   export type outletUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    outletCode?: StringFieldUpdateOperationsInput | string
+    outletName?: StringFieldUpdateOperationsInput | string
+    subdomain?: StringFieldUpdateOperationsInput | string
+    division?: StringFieldUpdateOperationsInput | string
+    district?: StringFieldUpdateOperationsInput | string
+    area?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    contactNumber?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
-    centerName?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    logo?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
-    isActive?: BoolFieldUpdateOperationsInput | boolean
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: EnumOutletStatusFieldUpdateOperationsInput | $Enums.OutletStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    childUsers?: OutletChildUserUpdateManyWithoutOutletNestedInput
+    users?: OutletUserUpdateManyWithoutOutletNestedInput
     roles?: RoleUpdateManyWithoutOutletNestedInput
     patients?: PatientUpdateManyWithoutOutletNestedInput
     doctors?: DoctorUpdateManyWithoutOutletNestedInput
@@ -17420,18 +17578,22 @@ export namespace Prisma {
 
   export type outletUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    outletCode?: StringFieldUpdateOperationsInput | string
+    outletName?: StringFieldUpdateOperationsInput | string
+    subdomain?: StringFieldUpdateOperationsInput | string
+    division?: StringFieldUpdateOperationsInput | string
+    district?: StringFieldUpdateOperationsInput | string
+    area?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    contactNumber?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
-    centerName?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    logo?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
-    isActive?: BoolFieldUpdateOperationsInput | boolean
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: EnumOutletStatusFieldUpdateOperationsInput | $Enums.OutletStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    childUsers?: OutletChildUserUncheckedUpdateManyWithoutOutletNestedInput
+    users?: OutletUserUncheckedUpdateManyWithoutOutletNestedInput
     roles?: RoleUncheckedUpdateManyWithoutOutletNestedInput
     patients?: PatientUncheckedUpdateManyWithoutOutletNestedInput
     doctors?: DoctorUncheckedUpdateManyWithoutOutletNestedInput
@@ -17439,131 +17601,150 @@ export namespace Prisma {
 
   export type outletCreateManyInput = {
     id?: string
-    name: string
+    outletCode: string
+    outletName: string
+    subdomain: string
+    division: string
+    district: string
+    area: string
+    address: string
+    contactNumber: string
     email: string
-    phone?: string | null
     password: string
-    centerName: string
-    slug: string
-    logo?: string | null
-    address?: string | null
-    isActive?: boolean
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    status?: $Enums.OutletStatus
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type outletUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    outletCode?: StringFieldUpdateOperationsInput | string
+    outletName?: StringFieldUpdateOperationsInput | string
+    subdomain?: StringFieldUpdateOperationsInput | string
+    division?: StringFieldUpdateOperationsInput | string
+    district?: StringFieldUpdateOperationsInput | string
+    area?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    contactNumber?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
-    centerName?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    logo?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
-    isActive?: BoolFieldUpdateOperationsInput | boolean
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: EnumOutletStatusFieldUpdateOperationsInput | $Enums.OutletStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type outletUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    outletCode?: StringFieldUpdateOperationsInput | string
+    outletName?: StringFieldUpdateOperationsInput | string
+    subdomain?: StringFieldUpdateOperationsInput | string
+    division?: StringFieldUpdateOperationsInput | string
+    district?: StringFieldUpdateOperationsInput | string
+    area?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    contactNumber?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
-    centerName?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    logo?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
-    isActive?: BoolFieldUpdateOperationsInput | boolean
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: EnumOutletStatusFieldUpdateOperationsInput | $Enums.OutletStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type OutletChildUserCreateInput = {
+  export type OutletUserCreateInput = {
     id?: string
     name: string
     email: string
     phone?: string | null
     password: string
+    isOwner?: boolean
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    outlet: outletCreateNestedOneWithoutChildUsersInput
-    userRoles?: OutletUserRoleCreateNestedManyWithoutOutletChildUserInput
+    outlet: outletCreateNestedOneWithoutUsersInput
+    userRoles?: OutletUserRoleCreateNestedManyWithoutOutletUserInput
   }
 
-  export type OutletChildUserUncheckedCreateInput = {
-    id?: string
-    outletId: string
-    name: string
-    email: string
-    phone?: string | null
-    password: string
-    isActive?: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    userRoles?: OutletUserRoleUncheckedCreateNestedManyWithoutOutletChildUserInput
-  }
-
-  export type OutletChildUserUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: StringFieldUpdateOperationsInput | string
-    isActive?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    outlet?: outletUpdateOneRequiredWithoutChildUsersNestedInput
-    userRoles?: OutletUserRoleUpdateManyWithoutOutletChildUserNestedInput
-  }
-
-  export type OutletChildUserUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    outletId?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: StringFieldUpdateOperationsInput | string
-    isActive?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userRoles?: OutletUserRoleUncheckedUpdateManyWithoutOutletChildUserNestedInput
-  }
-
-  export type OutletChildUserCreateManyInput = {
+  export type OutletUserUncheckedCreateInput = {
     id?: string
     outletId: string
     name: string
     email: string
     phone?: string | null
     password: string
+    isOwner?: boolean
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    userRoles?: OutletUserRoleUncheckedCreateNestedManyWithoutOutletUserInput
   }
 
-  export type OutletChildUserUpdateManyMutationInput = {
+  export type OutletUserUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
+    isOwner?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    outlet?: outletUpdateOneRequiredWithoutUsersNestedInput
+    userRoles?: OutletUserRoleUpdateManyWithoutOutletUserNestedInput
   }
 
-  export type OutletChildUserUncheckedUpdateManyInput = {
+  export type OutletUserUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     outletId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
+    isOwner?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userRoles?: OutletUserRoleUncheckedUpdateManyWithoutOutletUserNestedInput
+  }
+
+  export type OutletUserCreateManyInput = {
+    id?: string
+    outletId: string
+    name: string
+    email: string
+    phone?: string | null
+    password: string
+    isOwner?: boolean
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type OutletUserUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    isOwner?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OutletUserUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    outletId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    isOwner?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17578,7 +17759,7 @@ export namespace Prisma {
     outlet?: outletCreateNestedOneWithoutRolesInput
     superAdmin?: SuperAdminsCreateNestedOneWithoutRolesInput
     rolePermissions?: RolePermissionCreateNestedManyWithoutRoleInput
-    OutletUserRoles?: OutletUserRoleCreateNestedManyWithoutRoleInput
+    outletUserRoles?: OutletUserRoleCreateNestedManyWithoutRoleInput
     superAdminUserRoles?: SuperAdminUserRoleCreateNestedManyWithoutRoleInput
   }
 
@@ -17591,7 +17772,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     rolePermissions?: RolePermissionUncheckedCreateNestedManyWithoutRoleInput
-    OutletUserRoles?: OutletUserRoleUncheckedCreateNestedManyWithoutRoleInput
+    outletUserRoles?: OutletUserRoleUncheckedCreateNestedManyWithoutRoleInput
     superAdminUserRoles?: SuperAdminUserRoleUncheckedCreateNestedManyWithoutRoleInput
   }
 
@@ -17604,7 +17785,7 @@ export namespace Prisma {
     outlet?: outletUpdateOneWithoutRolesNestedInput
     superAdmin?: SuperAdminsUpdateOneWithoutRolesNestedInput
     rolePermissions?: RolePermissionUpdateManyWithoutRoleNestedInput
-    OutletUserRoles?: OutletUserRoleUpdateManyWithoutRoleNestedInput
+    outletUserRoles?: OutletUserRoleUpdateManyWithoutRoleNestedInput
     superAdminUserRoles?: SuperAdminUserRoleUpdateManyWithoutRoleNestedInput
   }
 
@@ -17617,7 +17798,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     rolePermissions?: RolePermissionUncheckedUpdateManyWithoutRoleNestedInput
-    OutletUserRoles?: OutletUserRoleUncheckedUpdateManyWithoutRoleNestedInput
+    outletUserRoles?: OutletUserRoleUncheckedUpdateManyWithoutRoleNestedInput
     superAdminUserRoles?: SuperAdminUserRoleUncheckedUpdateManyWithoutRoleNestedInput
   }
 
@@ -17759,13 +17940,13 @@ export namespace Prisma {
   export type OutletUserRoleCreateInput = {
     id?: string
     createdAt?: Date | string
-    OutletChildUser: OutletChildUserCreateNestedOneWithoutUserRolesInput
+    outletUser: OutletUserCreateNestedOneWithoutUserRolesInput
     role: RoleCreateNestedOneWithoutOutletUserRolesInput
   }
 
   export type OutletUserRoleUncheckedCreateInput = {
     id?: string
-    OutletChildUserId: string
+    outletUserId: string
     roleId: string
     createdAt?: Date | string
   }
@@ -17773,20 +17954,20 @@ export namespace Prisma {
   export type OutletUserRoleUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    OutletChildUser?: OutletChildUserUpdateOneRequiredWithoutUserRolesNestedInput
+    outletUser?: OutletUserUpdateOneRequiredWithoutUserRolesNestedInput
     role?: RoleUpdateOneRequiredWithoutOutletUserRolesNestedInput
   }
 
   export type OutletUserRoleUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    OutletChildUserId?: StringFieldUpdateOperationsInput | string
+    outletUserId?: StringFieldUpdateOperationsInput | string
     roleId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type OutletUserRoleCreateManyInput = {
     id?: string
-    OutletChildUserId: string
+    outletUserId: string
     roleId: string
     createdAt?: Date | string
   }
@@ -17798,7 +17979,7 @@ export namespace Prisma {
 
   export type OutletUserRoleUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    OutletChildUserId?: StringFieldUpdateOperationsInput | string
+    outletUserId?: StringFieldUpdateOperationsInput | string
     roleId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -18531,10 +18712,17 @@ export namespace Prisma {
     _max?: NestedEnumScheduleStatusFilter<$PrismaModel>
   }
 
-  export type OutletChildUserListRelationFilter = {
-    every?: OutletChildUserWhereInput
-    some?: OutletChildUserWhereInput
-    none?: OutletChildUserWhereInput
+  export type EnumOutletStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.OutletStatus | EnumOutletStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.OutletStatus[]
+    notIn?: $Enums.OutletStatus[]
+    not?: NestedEnumOutletStatusFilter<$PrismaModel> | $Enums.OutletStatus
+  }
+
+  export type OutletUserListRelationFilter = {
+    every?: OutletUserWhereInput
+    some?: OutletUserWhereInput
+    none?: OutletUserWhereInput
   }
 
   export type PatientListRelationFilter = {
@@ -18543,7 +18731,7 @@ export namespace Prisma {
     none?: PatientWhereInput
   }
 
-  export type OutletChildUserOrderByRelationAggregateInput = {
+  export type OutletUserOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -18559,47 +18747,79 @@ export namespace Prisma {
 
   export type outletCountOrderByAggregateInput = {
     id?: SortOrder
-    name?: SortOrder
-    email?: SortOrder
-    phone?: SortOrder
-    password?: SortOrder
-    centerName?: SortOrder
-    slug?: SortOrder
-    logo?: SortOrder
+    outletCode?: SortOrder
+    outletName?: SortOrder
+    subdomain?: SortOrder
+    division?: SortOrder
+    district?: SortOrder
+    area?: SortOrder
     address?: SortOrder
-    isActive?: SortOrder
+    contactNumber?: SortOrder
+    email?: SortOrder
+    password?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
+    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
+  export type outletAvgOrderByAggregateInput = {
+    latitude?: SortOrder
+    longitude?: SortOrder
+  }
+
   export type outletMaxOrderByAggregateInput = {
     id?: SortOrder
-    name?: SortOrder
-    email?: SortOrder
-    phone?: SortOrder
-    password?: SortOrder
-    centerName?: SortOrder
-    slug?: SortOrder
-    logo?: SortOrder
+    outletCode?: SortOrder
+    outletName?: SortOrder
+    subdomain?: SortOrder
+    division?: SortOrder
+    district?: SortOrder
+    area?: SortOrder
     address?: SortOrder
-    isActive?: SortOrder
+    contactNumber?: SortOrder
+    email?: SortOrder
+    password?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
+    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type outletMinOrderByAggregateInput = {
     id?: SortOrder
-    name?: SortOrder
-    email?: SortOrder
-    phone?: SortOrder
-    password?: SortOrder
-    centerName?: SortOrder
-    slug?: SortOrder
-    logo?: SortOrder
+    outletCode?: SortOrder
+    outletName?: SortOrder
+    subdomain?: SortOrder
+    division?: SortOrder
+    district?: SortOrder
+    area?: SortOrder
     address?: SortOrder
-    isActive?: SortOrder
+    contactNumber?: SortOrder
+    email?: SortOrder
+    password?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
+    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type outletSumOrderByAggregateInput = {
+    latitude?: SortOrder
+    longitude?: SortOrder
+  }
+
+  export type EnumOutletStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.OutletStatus | EnumOutletStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.OutletStatus[]
+    notIn?: $Enums.OutletStatus[]
+    not?: NestedEnumOutletStatusWithAggregatesFilter<$PrismaModel> | $Enums.OutletStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumOutletStatusFilter<$PrismaModel>
+    _max?: NestedEnumOutletStatusFilter<$PrismaModel>
   }
 
   export type OutletScalarRelationFilter = {
@@ -18617,48 +18837,51 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type OutletChildUserOrderByRelevanceInput = {
-    fields: OutletChildUserOrderByRelevanceFieldEnum | OutletChildUserOrderByRelevanceFieldEnum[]
+  export type OutletUserOrderByRelevanceInput = {
+    fields: OutletUserOrderByRelevanceFieldEnum | OutletUserOrderByRelevanceFieldEnum[]
     sort: SortOrder
     search: string
   }
 
-  export type OutletChildUserEmailOutletIdCompoundUniqueInput = {
+  export type OutletUserEmailOutletIdCompoundUniqueInput = {
     email: string
     outletId: string
   }
 
-  export type OutletChildUserCountOrderByAggregateInput = {
+  export type OutletUserCountOrderByAggregateInput = {
     id?: SortOrder
     outletId?: SortOrder
     name?: SortOrder
     email?: SortOrder
     phone?: SortOrder
     password?: SortOrder
+    isOwner?: SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type OutletChildUserMaxOrderByAggregateInput = {
+  export type OutletUserMaxOrderByAggregateInput = {
     id?: SortOrder
     outletId?: SortOrder
     name?: SortOrder
     email?: SortOrder
     phone?: SortOrder
     password?: SortOrder
+    isOwner?: SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type OutletChildUserMinOrderByAggregateInput = {
+  export type OutletUserMinOrderByAggregateInput = {
     id?: SortOrder
     outletId?: SortOrder
     name?: SortOrder
     email?: SortOrder
     phone?: SortOrder
     password?: SortOrder
+    isOwner?: SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -18814,9 +19037,9 @@ export namespace Prisma {
     permissionId?: SortOrder
   }
 
-  export type OutletChildUserScalarRelationFilter = {
-    is?: OutletChildUserWhereInput
-    isNot?: OutletChildUserWhereInput
+  export type OutletUserScalarRelationFilter = {
+    is?: OutletUserWhereInput
+    isNot?: OutletUserWhereInput
   }
 
   export type OutletUserRoleOrderByRelevanceInput = {
@@ -18825,28 +19048,28 @@ export namespace Prisma {
     search: string
   }
 
-  export type OutletUserRoleOutletChildUserIdRoleIdCompoundUniqueInput = {
-    OutletChildUserId: string
+  export type OutletUserRoleOutletUserIdRoleIdCompoundUniqueInput = {
+    outletUserId: string
     roleId: string
   }
 
   export type OutletUserRoleCountOrderByAggregateInput = {
     id?: SortOrder
-    OutletChildUserId?: SortOrder
+    outletUserId?: SortOrder
     roleId?: SortOrder
     createdAt?: SortOrder
   }
 
   export type OutletUserRoleMaxOrderByAggregateInput = {
     id?: SortOrder
-    OutletChildUserId?: SortOrder
+    outletUserId?: SortOrder
     roleId?: SortOrder
     createdAt?: SortOrder
   }
 
   export type OutletUserRoleMinOrderByAggregateInput = {
     id?: SortOrder
-    OutletChildUserId?: SortOrder
+    outletUserId?: SortOrder
     roleId?: SortOrder
     createdAt?: SortOrder
   }
@@ -19240,11 +19463,11 @@ export namespace Prisma {
     update?: XOR<XOR<DoctorUpdateToOneWithWhereWithoutSchedulesInput, DoctorUpdateWithoutSchedulesInput>, DoctorUncheckedUpdateWithoutSchedulesInput>
   }
 
-  export type OutletChildUserCreateNestedManyWithoutOutletInput = {
-    create?: XOR<OutletChildUserCreateWithoutOutletInput, OutletChildUserUncheckedCreateWithoutOutletInput> | OutletChildUserCreateWithoutOutletInput[] | OutletChildUserUncheckedCreateWithoutOutletInput[]
-    connectOrCreate?: OutletChildUserCreateOrConnectWithoutOutletInput | OutletChildUserCreateOrConnectWithoutOutletInput[]
-    createMany?: OutletChildUserCreateManyOutletInputEnvelope
-    connect?: OutletChildUserWhereUniqueInput | OutletChildUserWhereUniqueInput[]
+  export type OutletUserCreateNestedManyWithoutOutletInput = {
+    create?: XOR<OutletUserCreateWithoutOutletInput, OutletUserUncheckedCreateWithoutOutletInput> | OutletUserCreateWithoutOutletInput[] | OutletUserUncheckedCreateWithoutOutletInput[]
+    connectOrCreate?: OutletUserCreateOrConnectWithoutOutletInput | OutletUserCreateOrConnectWithoutOutletInput[]
+    createMany?: OutletUserCreateManyOutletInputEnvelope
+    connect?: OutletUserWhereUniqueInput | OutletUserWhereUniqueInput[]
   }
 
   export type RoleCreateNestedManyWithoutOutletInput = {
@@ -19268,11 +19491,11 @@ export namespace Prisma {
     connect?: DoctorWhereUniqueInput | DoctorWhereUniqueInput[]
   }
 
-  export type OutletChildUserUncheckedCreateNestedManyWithoutOutletInput = {
-    create?: XOR<OutletChildUserCreateWithoutOutletInput, OutletChildUserUncheckedCreateWithoutOutletInput> | OutletChildUserCreateWithoutOutletInput[] | OutletChildUserUncheckedCreateWithoutOutletInput[]
-    connectOrCreate?: OutletChildUserCreateOrConnectWithoutOutletInput | OutletChildUserCreateOrConnectWithoutOutletInput[]
-    createMany?: OutletChildUserCreateManyOutletInputEnvelope
-    connect?: OutletChildUserWhereUniqueInput | OutletChildUserWhereUniqueInput[]
+  export type OutletUserUncheckedCreateNestedManyWithoutOutletInput = {
+    create?: XOR<OutletUserCreateWithoutOutletInput, OutletUserUncheckedCreateWithoutOutletInput> | OutletUserCreateWithoutOutletInput[] | OutletUserUncheckedCreateWithoutOutletInput[]
+    connectOrCreate?: OutletUserCreateOrConnectWithoutOutletInput | OutletUserCreateOrConnectWithoutOutletInput[]
+    createMany?: OutletUserCreateManyOutletInputEnvelope
+    connect?: OutletUserWhereUniqueInput | OutletUserWhereUniqueInput[]
   }
 
   export type RoleUncheckedCreateNestedManyWithoutOutletInput = {
@@ -19296,18 +19519,22 @@ export namespace Prisma {
     connect?: DoctorWhereUniqueInput | DoctorWhereUniqueInput[]
   }
 
-  export type OutletChildUserUpdateManyWithoutOutletNestedInput = {
-    create?: XOR<OutletChildUserCreateWithoutOutletInput, OutletChildUserUncheckedCreateWithoutOutletInput> | OutletChildUserCreateWithoutOutletInput[] | OutletChildUserUncheckedCreateWithoutOutletInput[]
-    connectOrCreate?: OutletChildUserCreateOrConnectWithoutOutletInput | OutletChildUserCreateOrConnectWithoutOutletInput[]
-    upsert?: OutletChildUserUpsertWithWhereUniqueWithoutOutletInput | OutletChildUserUpsertWithWhereUniqueWithoutOutletInput[]
-    createMany?: OutletChildUserCreateManyOutletInputEnvelope
-    set?: OutletChildUserWhereUniqueInput | OutletChildUserWhereUniqueInput[]
-    disconnect?: OutletChildUserWhereUniqueInput | OutletChildUserWhereUniqueInput[]
-    delete?: OutletChildUserWhereUniqueInput | OutletChildUserWhereUniqueInput[]
-    connect?: OutletChildUserWhereUniqueInput | OutletChildUserWhereUniqueInput[]
-    update?: OutletChildUserUpdateWithWhereUniqueWithoutOutletInput | OutletChildUserUpdateWithWhereUniqueWithoutOutletInput[]
-    updateMany?: OutletChildUserUpdateManyWithWhereWithoutOutletInput | OutletChildUserUpdateManyWithWhereWithoutOutletInput[]
-    deleteMany?: OutletChildUserScalarWhereInput | OutletChildUserScalarWhereInput[]
+  export type EnumOutletStatusFieldUpdateOperationsInput = {
+    set?: $Enums.OutletStatus
+  }
+
+  export type OutletUserUpdateManyWithoutOutletNestedInput = {
+    create?: XOR<OutletUserCreateWithoutOutletInput, OutletUserUncheckedCreateWithoutOutletInput> | OutletUserCreateWithoutOutletInput[] | OutletUserUncheckedCreateWithoutOutletInput[]
+    connectOrCreate?: OutletUserCreateOrConnectWithoutOutletInput | OutletUserCreateOrConnectWithoutOutletInput[]
+    upsert?: OutletUserUpsertWithWhereUniqueWithoutOutletInput | OutletUserUpsertWithWhereUniqueWithoutOutletInput[]
+    createMany?: OutletUserCreateManyOutletInputEnvelope
+    set?: OutletUserWhereUniqueInput | OutletUserWhereUniqueInput[]
+    disconnect?: OutletUserWhereUniqueInput | OutletUserWhereUniqueInput[]
+    delete?: OutletUserWhereUniqueInput | OutletUserWhereUniqueInput[]
+    connect?: OutletUserWhereUniqueInput | OutletUserWhereUniqueInput[]
+    update?: OutletUserUpdateWithWhereUniqueWithoutOutletInput | OutletUserUpdateWithWhereUniqueWithoutOutletInput[]
+    updateMany?: OutletUserUpdateManyWithWhereWithoutOutletInput | OutletUserUpdateManyWithWhereWithoutOutletInput[]
+    deleteMany?: OutletUserScalarWhereInput | OutletUserScalarWhereInput[]
   }
 
   export type RoleUpdateManyWithoutOutletNestedInput = {
@@ -19352,18 +19579,18 @@ export namespace Prisma {
     deleteMany?: DoctorScalarWhereInput | DoctorScalarWhereInput[]
   }
 
-  export type OutletChildUserUncheckedUpdateManyWithoutOutletNestedInput = {
-    create?: XOR<OutletChildUserCreateWithoutOutletInput, OutletChildUserUncheckedCreateWithoutOutletInput> | OutletChildUserCreateWithoutOutletInput[] | OutletChildUserUncheckedCreateWithoutOutletInput[]
-    connectOrCreate?: OutletChildUserCreateOrConnectWithoutOutletInput | OutletChildUserCreateOrConnectWithoutOutletInput[]
-    upsert?: OutletChildUserUpsertWithWhereUniqueWithoutOutletInput | OutletChildUserUpsertWithWhereUniqueWithoutOutletInput[]
-    createMany?: OutletChildUserCreateManyOutletInputEnvelope
-    set?: OutletChildUserWhereUniqueInput | OutletChildUserWhereUniqueInput[]
-    disconnect?: OutletChildUserWhereUniqueInput | OutletChildUserWhereUniqueInput[]
-    delete?: OutletChildUserWhereUniqueInput | OutletChildUserWhereUniqueInput[]
-    connect?: OutletChildUserWhereUniqueInput | OutletChildUserWhereUniqueInput[]
-    update?: OutletChildUserUpdateWithWhereUniqueWithoutOutletInput | OutletChildUserUpdateWithWhereUniqueWithoutOutletInput[]
-    updateMany?: OutletChildUserUpdateManyWithWhereWithoutOutletInput | OutletChildUserUpdateManyWithWhereWithoutOutletInput[]
-    deleteMany?: OutletChildUserScalarWhereInput | OutletChildUserScalarWhereInput[]
+  export type OutletUserUncheckedUpdateManyWithoutOutletNestedInput = {
+    create?: XOR<OutletUserCreateWithoutOutletInput, OutletUserUncheckedCreateWithoutOutletInput> | OutletUserCreateWithoutOutletInput[] | OutletUserUncheckedCreateWithoutOutletInput[]
+    connectOrCreate?: OutletUserCreateOrConnectWithoutOutletInput | OutletUserCreateOrConnectWithoutOutletInput[]
+    upsert?: OutletUserUpsertWithWhereUniqueWithoutOutletInput | OutletUserUpsertWithWhereUniqueWithoutOutletInput[]
+    createMany?: OutletUserCreateManyOutletInputEnvelope
+    set?: OutletUserWhereUniqueInput | OutletUserWhereUniqueInput[]
+    disconnect?: OutletUserWhereUniqueInput | OutletUserWhereUniqueInput[]
+    delete?: OutletUserWhereUniqueInput | OutletUserWhereUniqueInput[]
+    connect?: OutletUserWhereUniqueInput | OutletUserWhereUniqueInput[]
+    update?: OutletUserUpdateWithWhereUniqueWithoutOutletInput | OutletUserUpdateWithWhereUniqueWithoutOutletInput[]
+    updateMany?: OutletUserUpdateManyWithWhereWithoutOutletInput | OutletUserUpdateManyWithWhereWithoutOutletInput[]
+    deleteMany?: OutletUserScalarWhereInput | OutletUserScalarWhereInput[]
   }
 
   export type RoleUncheckedUpdateManyWithoutOutletNestedInput = {
@@ -19408,59 +19635,59 @@ export namespace Prisma {
     deleteMany?: DoctorScalarWhereInput | DoctorScalarWhereInput[]
   }
 
-  export type outletCreateNestedOneWithoutChildUsersInput = {
-    create?: XOR<outletCreateWithoutChildUsersInput, outletUncheckedCreateWithoutChildUsersInput>
-    connectOrCreate?: outletCreateOrConnectWithoutChildUsersInput
+  export type outletCreateNestedOneWithoutUsersInput = {
+    create?: XOR<outletCreateWithoutUsersInput, outletUncheckedCreateWithoutUsersInput>
+    connectOrCreate?: outletCreateOrConnectWithoutUsersInput
     connect?: outletWhereUniqueInput
   }
 
-  export type OutletUserRoleCreateNestedManyWithoutOutletChildUserInput = {
-    create?: XOR<OutletUserRoleCreateWithoutOutletChildUserInput, OutletUserRoleUncheckedCreateWithoutOutletChildUserInput> | OutletUserRoleCreateWithoutOutletChildUserInput[] | OutletUserRoleUncheckedCreateWithoutOutletChildUserInput[]
-    connectOrCreate?: OutletUserRoleCreateOrConnectWithoutOutletChildUserInput | OutletUserRoleCreateOrConnectWithoutOutletChildUserInput[]
-    createMany?: OutletUserRoleCreateManyOutletChildUserInputEnvelope
+  export type OutletUserRoleCreateNestedManyWithoutOutletUserInput = {
+    create?: XOR<OutletUserRoleCreateWithoutOutletUserInput, OutletUserRoleUncheckedCreateWithoutOutletUserInput> | OutletUserRoleCreateWithoutOutletUserInput[] | OutletUserRoleUncheckedCreateWithoutOutletUserInput[]
+    connectOrCreate?: OutletUserRoleCreateOrConnectWithoutOutletUserInput | OutletUserRoleCreateOrConnectWithoutOutletUserInput[]
+    createMany?: OutletUserRoleCreateManyOutletUserInputEnvelope
     connect?: OutletUserRoleWhereUniqueInput | OutletUserRoleWhereUniqueInput[]
   }
 
-  export type OutletUserRoleUncheckedCreateNestedManyWithoutOutletChildUserInput = {
-    create?: XOR<OutletUserRoleCreateWithoutOutletChildUserInput, OutletUserRoleUncheckedCreateWithoutOutletChildUserInput> | OutletUserRoleCreateWithoutOutletChildUserInput[] | OutletUserRoleUncheckedCreateWithoutOutletChildUserInput[]
-    connectOrCreate?: OutletUserRoleCreateOrConnectWithoutOutletChildUserInput | OutletUserRoleCreateOrConnectWithoutOutletChildUserInput[]
-    createMany?: OutletUserRoleCreateManyOutletChildUserInputEnvelope
+  export type OutletUserRoleUncheckedCreateNestedManyWithoutOutletUserInput = {
+    create?: XOR<OutletUserRoleCreateWithoutOutletUserInput, OutletUserRoleUncheckedCreateWithoutOutletUserInput> | OutletUserRoleCreateWithoutOutletUserInput[] | OutletUserRoleUncheckedCreateWithoutOutletUserInput[]
+    connectOrCreate?: OutletUserRoleCreateOrConnectWithoutOutletUserInput | OutletUserRoleCreateOrConnectWithoutOutletUserInput[]
+    createMany?: OutletUserRoleCreateManyOutletUserInputEnvelope
     connect?: OutletUserRoleWhereUniqueInput | OutletUserRoleWhereUniqueInput[]
   }
 
-  export type outletUpdateOneRequiredWithoutChildUsersNestedInput = {
-    create?: XOR<outletCreateWithoutChildUsersInput, outletUncheckedCreateWithoutChildUsersInput>
-    connectOrCreate?: outletCreateOrConnectWithoutChildUsersInput
-    upsert?: outletUpsertWithoutChildUsersInput
+  export type outletUpdateOneRequiredWithoutUsersNestedInput = {
+    create?: XOR<outletCreateWithoutUsersInput, outletUncheckedCreateWithoutUsersInput>
+    connectOrCreate?: outletCreateOrConnectWithoutUsersInput
+    upsert?: outletUpsertWithoutUsersInput
     connect?: outletWhereUniqueInput
-    update?: XOR<XOR<outletUpdateToOneWithWhereWithoutChildUsersInput, outletUpdateWithoutChildUsersInput>, outletUncheckedUpdateWithoutChildUsersInput>
+    update?: XOR<XOR<outletUpdateToOneWithWhereWithoutUsersInput, outletUpdateWithoutUsersInput>, outletUncheckedUpdateWithoutUsersInput>
   }
 
-  export type OutletUserRoleUpdateManyWithoutOutletChildUserNestedInput = {
-    create?: XOR<OutletUserRoleCreateWithoutOutletChildUserInput, OutletUserRoleUncheckedCreateWithoutOutletChildUserInput> | OutletUserRoleCreateWithoutOutletChildUserInput[] | OutletUserRoleUncheckedCreateWithoutOutletChildUserInput[]
-    connectOrCreate?: OutletUserRoleCreateOrConnectWithoutOutletChildUserInput | OutletUserRoleCreateOrConnectWithoutOutletChildUserInput[]
-    upsert?: OutletUserRoleUpsertWithWhereUniqueWithoutOutletChildUserInput | OutletUserRoleUpsertWithWhereUniqueWithoutOutletChildUserInput[]
-    createMany?: OutletUserRoleCreateManyOutletChildUserInputEnvelope
+  export type OutletUserRoleUpdateManyWithoutOutletUserNestedInput = {
+    create?: XOR<OutletUserRoleCreateWithoutOutletUserInput, OutletUserRoleUncheckedCreateWithoutOutletUserInput> | OutletUserRoleCreateWithoutOutletUserInput[] | OutletUserRoleUncheckedCreateWithoutOutletUserInput[]
+    connectOrCreate?: OutletUserRoleCreateOrConnectWithoutOutletUserInput | OutletUserRoleCreateOrConnectWithoutOutletUserInput[]
+    upsert?: OutletUserRoleUpsertWithWhereUniqueWithoutOutletUserInput | OutletUserRoleUpsertWithWhereUniqueWithoutOutletUserInput[]
+    createMany?: OutletUserRoleCreateManyOutletUserInputEnvelope
     set?: OutletUserRoleWhereUniqueInput | OutletUserRoleWhereUniqueInput[]
     disconnect?: OutletUserRoleWhereUniqueInput | OutletUserRoleWhereUniqueInput[]
     delete?: OutletUserRoleWhereUniqueInput | OutletUserRoleWhereUniqueInput[]
     connect?: OutletUserRoleWhereUniqueInput | OutletUserRoleWhereUniqueInput[]
-    update?: OutletUserRoleUpdateWithWhereUniqueWithoutOutletChildUserInput | OutletUserRoleUpdateWithWhereUniqueWithoutOutletChildUserInput[]
-    updateMany?: OutletUserRoleUpdateManyWithWhereWithoutOutletChildUserInput | OutletUserRoleUpdateManyWithWhereWithoutOutletChildUserInput[]
+    update?: OutletUserRoleUpdateWithWhereUniqueWithoutOutletUserInput | OutletUserRoleUpdateWithWhereUniqueWithoutOutletUserInput[]
+    updateMany?: OutletUserRoleUpdateManyWithWhereWithoutOutletUserInput | OutletUserRoleUpdateManyWithWhereWithoutOutletUserInput[]
     deleteMany?: OutletUserRoleScalarWhereInput | OutletUserRoleScalarWhereInput[]
   }
 
-  export type OutletUserRoleUncheckedUpdateManyWithoutOutletChildUserNestedInput = {
-    create?: XOR<OutletUserRoleCreateWithoutOutletChildUserInput, OutletUserRoleUncheckedCreateWithoutOutletChildUserInput> | OutletUserRoleCreateWithoutOutletChildUserInput[] | OutletUserRoleUncheckedCreateWithoutOutletChildUserInput[]
-    connectOrCreate?: OutletUserRoleCreateOrConnectWithoutOutletChildUserInput | OutletUserRoleCreateOrConnectWithoutOutletChildUserInput[]
-    upsert?: OutletUserRoleUpsertWithWhereUniqueWithoutOutletChildUserInput | OutletUserRoleUpsertWithWhereUniqueWithoutOutletChildUserInput[]
-    createMany?: OutletUserRoleCreateManyOutletChildUserInputEnvelope
+  export type OutletUserRoleUncheckedUpdateManyWithoutOutletUserNestedInput = {
+    create?: XOR<OutletUserRoleCreateWithoutOutletUserInput, OutletUserRoleUncheckedCreateWithoutOutletUserInput> | OutletUserRoleCreateWithoutOutletUserInput[] | OutletUserRoleUncheckedCreateWithoutOutletUserInput[]
+    connectOrCreate?: OutletUserRoleCreateOrConnectWithoutOutletUserInput | OutletUserRoleCreateOrConnectWithoutOutletUserInput[]
+    upsert?: OutletUserRoleUpsertWithWhereUniqueWithoutOutletUserInput | OutletUserRoleUpsertWithWhereUniqueWithoutOutletUserInput[]
+    createMany?: OutletUserRoleCreateManyOutletUserInputEnvelope
     set?: OutletUserRoleWhereUniqueInput | OutletUserRoleWhereUniqueInput[]
     disconnect?: OutletUserRoleWhereUniqueInput | OutletUserRoleWhereUniqueInput[]
     delete?: OutletUserRoleWhereUniqueInput | OutletUserRoleWhereUniqueInput[]
     connect?: OutletUserRoleWhereUniqueInput | OutletUserRoleWhereUniqueInput[]
-    update?: OutletUserRoleUpdateWithWhereUniqueWithoutOutletChildUserInput | OutletUserRoleUpdateWithWhereUniqueWithoutOutletChildUserInput[]
-    updateMany?: OutletUserRoleUpdateManyWithWhereWithoutOutletChildUserInput | OutletUserRoleUpdateManyWithWhereWithoutOutletChildUserInput[]
+    update?: OutletUserRoleUpdateWithWhereUniqueWithoutOutletUserInput | OutletUserRoleUpdateWithWhereUniqueWithoutOutletUserInput[]
+    updateMany?: OutletUserRoleUpdateManyWithWhereWithoutOutletUserInput | OutletUserRoleUpdateManyWithWhereWithoutOutletUserInput[]
     deleteMany?: OutletUserRoleScalarWhereInput | OutletUserRoleScalarWhereInput[]
   }
 
@@ -19696,10 +19923,10 @@ export namespace Prisma {
     update?: XOR<XOR<PermissionUpdateToOneWithWhereWithoutRolePermissionsInput, PermissionUpdateWithoutRolePermissionsInput>, PermissionUncheckedUpdateWithoutRolePermissionsInput>
   }
 
-  export type OutletChildUserCreateNestedOneWithoutUserRolesInput = {
-    create?: XOR<OutletChildUserCreateWithoutUserRolesInput, OutletChildUserUncheckedCreateWithoutUserRolesInput>
-    connectOrCreate?: OutletChildUserCreateOrConnectWithoutUserRolesInput
-    connect?: OutletChildUserWhereUniqueInput
+  export type OutletUserCreateNestedOneWithoutUserRolesInput = {
+    create?: XOR<OutletUserCreateWithoutUserRolesInput, OutletUserUncheckedCreateWithoutUserRolesInput>
+    connectOrCreate?: OutletUserCreateOrConnectWithoutUserRolesInput
+    connect?: OutletUserWhereUniqueInput
   }
 
   export type RoleCreateNestedOneWithoutOutletUserRolesInput = {
@@ -19708,12 +19935,12 @@ export namespace Prisma {
     connect?: RoleWhereUniqueInput
   }
 
-  export type OutletChildUserUpdateOneRequiredWithoutUserRolesNestedInput = {
-    create?: XOR<OutletChildUserCreateWithoutUserRolesInput, OutletChildUserUncheckedCreateWithoutUserRolesInput>
-    connectOrCreate?: OutletChildUserCreateOrConnectWithoutUserRolesInput
-    upsert?: OutletChildUserUpsertWithoutUserRolesInput
-    connect?: OutletChildUserWhereUniqueInput
-    update?: XOR<XOR<OutletChildUserUpdateToOneWithWhereWithoutUserRolesInput, OutletChildUserUpdateWithoutUserRolesInput>, OutletChildUserUncheckedUpdateWithoutUserRolesInput>
+  export type OutletUserUpdateOneRequiredWithoutUserRolesNestedInput = {
+    create?: XOR<OutletUserCreateWithoutUserRolesInput, OutletUserUncheckedCreateWithoutUserRolesInput>
+    connectOrCreate?: OutletUserCreateOrConnectWithoutUserRolesInput
+    upsert?: OutletUserUpsertWithoutUserRolesInput
+    connect?: OutletUserWhereUniqueInput
+    update?: XOR<XOR<OutletUserUpdateToOneWithWhereWithoutUserRolesInput, OutletUserUpdateWithoutUserRolesInput>, OutletUserUncheckedUpdateWithoutUserRolesInput>
   }
 
   export type RoleUpdateOneRequiredWithoutOutletUserRolesNestedInput = {
@@ -20086,6 +20313,23 @@ export namespace Prisma {
     _max?: NestedEnumScheduleStatusFilter<$PrismaModel>
   }
 
+  export type NestedEnumOutletStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.OutletStatus | EnumOutletStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.OutletStatus[]
+    notIn?: $Enums.OutletStatus[]
+    not?: NestedEnumOutletStatusFilter<$PrismaModel> | $Enums.OutletStatus
+  }
+
+  export type NestedEnumOutletStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.OutletStatus | EnumOutletStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.OutletStatus[]
+    notIn?: $Enums.OutletStatus[]
+    not?: NestedEnumOutletStatusWithAggregatesFilter<$PrismaModel> | $Enums.OutletStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumOutletStatusFilter<$PrismaModel>
+    _max?: NestedEnumOutletStatusFilter<$PrismaModel>
+  }
+
   export type NestedEnumRoleOwnerTypeFilter<$PrismaModel = never> = {
     equals?: $Enums.RoleOwnerType | EnumRoleOwnerTypeFieldRefInput<$PrismaModel>
     in?: $Enums.RoleOwnerType[]
@@ -20111,7 +20355,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     outlet?: outletCreateNestedOneWithoutRolesInput
     rolePermissions?: RolePermissionCreateNestedManyWithoutRoleInput
-    OutletUserRoles?: OutletUserRoleCreateNestedManyWithoutRoleInput
+    outletUserRoles?: OutletUserRoleCreateNestedManyWithoutRoleInput
     superAdminUserRoles?: SuperAdminUserRoleCreateNestedManyWithoutRoleInput
   }
 
@@ -20123,7 +20367,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     rolePermissions?: RolePermissionUncheckedCreateNestedManyWithoutRoleInput
-    OutletUserRoles?: OutletUserRoleUncheckedCreateNestedManyWithoutRoleInput
+    outletUserRoles?: OutletUserRoleUncheckedCreateNestedManyWithoutRoleInput
     superAdminUserRoles?: SuperAdminUserRoleUncheckedCreateNestedManyWithoutRoleInput
   }
 
@@ -20216,36 +20460,44 @@ export namespace Prisma {
 
   export type outletCreateWithoutPatientsInput = {
     id?: string
-    name: string
+    outletCode: string
+    outletName: string
+    subdomain: string
+    division: string
+    district: string
+    area: string
+    address: string
+    contactNumber: string
     email: string
-    phone?: string | null
     password: string
-    centerName: string
-    slug: string
-    logo?: string | null
-    address?: string | null
-    isActive?: boolean
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    status?: $Enums.OutletStatus
     createdAt?: Date | string
     updatedAt?: Date | string
-    childUsers?: OutletChildUserCreateNestedManyWithoutOutletInput
+    users?: OutletUserCreateNestedManyWithoutOutletInput
     roles?: RoleCreateNestedManyWithoutOutletInput
     doctors?: DoctorCreateNestedManyWithoutOutletInput
   }
 
   export type outletUncheckedCreateWithoutPatientsInput = {
     id?: string
-    name: string
+    outletCode: string
+    outletName: string
+    subdomain: string
+    division: string
+    district: string
+    area: string
+    address: string
+    contactNumber: string
     email: string
-    phone?: string | null
     password: string
-    centerName: string
-    slug: string
-    logo?: string | null
-    address?: string | null
-    isActive?: boolean
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    status?: $Enums.OutletStatus
     createdAt?: Date | string
     updatedAt?: Date | string
-    childUsers?: OutletChildUserUncheckedCreateNestedManyWithoutOutletInput
+    users?: OutletUserUncheckedCreateNestedManyWithoutOutletInput
     roles?: RoleUncheckedCreateNestedManyWithoutOutletInput
     doctors?: DoctorUncheckedCreateNestedManyWithoutOutletInput
   }
@@ -20268,72 +20520,88 @@ export namespace Prisma {
 
   export type outletUpdateWithoutPatientsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    outletCode?: StringFieldUpdateOperationsInput | string
+    outletName?: StringFieldUpdateOperationsInput | string
+    subdomain?: StringFieldUpdateOperationsInput | string
+    division?: StringFieldUpdateOperationsInput | string
+    district?: StringFieldUpdateOperationsInput | string
+    area?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    contactNumber?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
-    centerName?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    logo?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
-    isActive?: BoolFieldUpdateOperationsInput | boolean
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: EnumOutletStatusFieldUpdateOperationsInput | $Enums.OutletStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    childUsers?: OutletChildUserUpdateManyWithoutOutletNestedInput
+    users?: OutletUserUpdateManyWithoutOutletNestedInput
     roles?: RoleUpdateManyWithoutOutletNestedInput
     doctors?: DoctorUpdateManyWithoutOutletNestedInput
   }
 
   export type outletUncheckedUpdateWithoutPatientsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    outletCode?: StringFieldUpdateOperationsInput | string
+    outletName?: StringFieldUpdateOperationsInput | string
+    subdomain?: StringFieldUpdateOperationsInput | string
+    division?: StringFieldUpdateOperationsInput | string
+    district?: StringFieldUpdateOperationsInput | string
+    area?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    contactNumber?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
-    centerName?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    logo?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
-    isActive?: BoolFieldUpdateOperationsInput | boolean
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: EnumOutletStatusFieldUpdateOperationsInput | $Enums.OutletStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    childUsers?: OutletChildUserUncheckedUpdateManyWithoutOutletNestedInput
+    users?: OutletUserUncheckedUpdateManyWithoutOutletNestedInput
     roles?: RoleUncheckedUpdateManyWithoutOutletNestedInput
     doctors?: DoctorUncheckedUpdateManyWithoutOutletNestedInput
   }
 
   export type outletCreateWithoutDoctorsInput = {
     id?: string
-    name: string
+    outletCode: string
+    outletName: string
+    subdomain: string
+    division: string
+    district: string
+    area: string
+    address: string
+    contactNumber: string
     email: string
-    phone?: string | null
     password: string
-    centerName: string
-    slug: string
-    logo?: string | null
-    address?: string | null
-    isActive?: boolean
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    status?: $Enums.OutletStatus
     createdAt?: Date | string
     updatedAt?: Date | string
-    childUsers?: OutletChildUserCreateNestedManyWithoutOutletInput
+    users?: OutletUserCreateNestedManyWithoutOutletInput
     roles?: RoleCreateNestedManyWithoutOutletInput
     patients?: PatientCreateNestedManyWithoutOutletInput
   }
 
   export type outletUncheckedCreateWithoutDoctorsInput = {
     id?: string
-    name: string
+    outletCode: string
+    outletName: string
+    subdomain: string
+    division: string
+    district: string
+    area: string
+    address: string
+    contactNumber: string
     email: string
-    phone?: string | null
     password: string
-    centerName: string
-    slug: string
-    logo?: string | null
-    address?: string | null
-    isActive?: boolean
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    status?: $Enums.OutletStatus
     createdAt?: Date | string
     updatedAt?: Date | string
-    childUsers?: OutletChildUserUncheckedCreateNestedManyWithoutOutletInput
+    users?: OutletUserUncheckedCreateNestedManyWithoutOutletInput
     roles?: RoleUncheckedCreateNestedManyWithoutOutletInput
     patients?: PatientUncheckedCreateNestedManyWithoutOutletInput
   }
@@ -20427,36 +20695,44 @@ export namespace Prisma {
 
   export type outletUpdateWithoutDoctorsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    outletCode?: StringFieldUpdateOperationsInput | string
+    outletName?: StringFieldUpdateOperationsInput | string
+    subdomain?: StringFieldUpdateOperationsInput | string
+    division?: StringFieldUpdateOperationsInput | string
+    district?: StringFieldUpdateOperationsInput | string
+    area?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    contactNumber?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
-    centerName?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    logo?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
-    isActive?: BoolFieldUpdateOperationsInput | boolean
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: EnumOutletStatusFieldUpdateOperationsInput | $Enums.OutletStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    childUsers?: OutletChildUserUpdateManyWithoutOutletNestedInput
+    users?: OutletUserUpdateManyWithoutOutletNestedInput
     roles?: RoleUpdateManyWithoutOutletNestedInput
     patients?: PatientUpdateManyWithoutOutletNestedInput
   }
 
   export type outletUncheckedUpdateWithoutDoctorsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    outletCode?: StringFieldUpdateOperationsInput | string
+    outletName?: StringFieldUpdateOperationsInput | string
+    subdomain?: StringFieldUpdateOperationsInput | string
+    division?: StringFieldUpdateOperationsInput | string
+    district?: StringFieldUpdateOperationsInput | string
+    area?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    contactNumber?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
-    centerName?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    logo?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
-    isActive?: BoolFieldUpdateOperationsInput | boolean
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: EnumOutletStatusFieldUpdateOperationsInput | $Enums.OutletStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    childUsers?: OutletChildUserUncheckedUpdateManyWithoutOutletNestedInput
+    users?: OutletUserUncheckedUpdateManyWithoutOutletNestedInput
     roles?: RoleUncheckedUpdateManyWithoutOutletNestedInput
     patients?: PatientUncheckedUpdateManyWithoutOutletNestedInput
   }
@@ -20843,37 +21119,39 @@ export namespace Prisma {
     documents?: DoctorDocumentUncheckedUpdateManyWithoutDoctorNestedInput
   }
 
-  export type OutletChildUserCreateWithoutOutletInput = {
+  export type OutletUserCreateWithoutOutletInput = {
     id?: string
     name: string
     email: string
     phone?: string | null
     password: string
+    isOwner?: boolean
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    userRoles?: OutletUserRoleCreateNestedManyWithoutOutletChildUserInput
+    userRoles?: OutletUserRoleCreateNestedManyWithoutOutletUserInput
   }
 
-  export type OutletChildUserUncheckedCreateWithoutOutletInput = {
+  export type OutletUserUncheckedCreateWithoutOutletInput = {
     id?: string
     name: string
     email: string
     phone?: string | null
     password: string
+    isOwner?: boolean
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    userRoles?: OutletUserRoleUncheckedCreateNestedManyWithoutOutletChildUserInput
+    userRoles?: OutletUserRoleUncheckedCreateNestedManyWithoutOutletUserInput
   }
 
-  export type OutletChildUserCreateOrConnectWithoutOutletInput = {
-    where: OutletChildUserWhereUniqueInput
-    create: XOR<OutletChildUserCreateWithoutOutletInput, OutletChildUserUncheckedCreateWithoutOutletInput>
+  export type OutletUserCreateOrConnectWithoutOutletInput = {
+    where: OutletUserWhereUniqueInput
+    create: XOR<OutletUserCreateWithoutOutletInput, OutletUserUncheckedCreateWithoutOutletInput>
   }
 
-  export type OutletChildUserCreateManyOutletInputEnvelope = {
-    data: OutletChildUserCreateManyOutletInput | OutletChildUserCreateManyOutletInput[]
+  export type OutletUserCreateManyOutletInputEnvelope = {
+    data: OutletUserCreateManyOutletInput | OutletUserCreateManyOutletInput[]
     skipDuplicates?: boolean
   }
 
@@ -20885,7 +21163,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     superAdmin?: SuperAdminsCreateNestedOneWithoutRolesInput
     rolePermissions?: RolePermissionCreateNestedManyWithoutRoleInput
-    OutletUserRoles?: OutletUserRoleCreateNestedManyWithoutRoleInput
+    outletUserRoles?: OutletUserRoleCreateNestedManyWithoutRoleInput
     superAdminUserRoles?: SuperAdminUserRoleCreateNestedManyWithoutRoleInput
   }
 
@@ -20897,7 +21175,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     rolePermissions?: RolePermissionUncheckedCreateNestedManyWithoutRoleInput
-    OutletUserRoles?: OutletUserRoleUncheckedCreateNestedManyWithoutRoleInput
+    outletUserRoles?: OutletUserRoleUncheckedCreateNestedManyWithoutRoleInput
     superAdminUserRoles?: SuperAdminUserRoleUncheckedCreateNestedManyWithoutRoleInput
   }
 
@@ -21017,35 +21295,36 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type OutletChildUserUpsertWithWhereUniqueWithoutOutletInput = {
-    where: OutletChildUserWhereUniqueInput
-    update: XOR<OutletChildUserUpdateWithoutOutletInput, OutletChildUserUncheckedUpdateWithoutOutletInput>
-    create: XOR<OutletChildUserCreateWithoutOutletInput, OutletChildUserUncheckedCreateWithoutOutletInput>
+  export type OutletUserUpsertWithWhereUniqueWithoutOutletInput = {
+    where: OutletUserWhereUniqueInput
+    update: XOR<OutletUserUpdateWithoutOutletInput, OutletUserUncheckedUpdateWithoutOutletInput>
+    create: XOR<OutletUserCreateWithoutOutletInput, OutletUserUncheckedCreateWithoutOutletInput>
   }
 
-  export type OutletChildUserUpdateWithWhereUniqueWithoutOutletInput = {
-    where: OutletChildUserWhereUniqueInput
-    data: XOR<OutletChildUserUpdateWithoutOutletInput, OutletChildUserUncheckedUpdateWithoutOutletInput>
+  export type OutletUserUpdateWithWhereUniqueWithoutOutletInput = {
+    where: OutletUserWhereUniqueInput
+    data: XOR<OutletUserUpdateWithoutOutletInput, OutletUserUncheckedUpdateWithoutOutletInput>
   }
 
-  export type OutletChildUserUpdateManyWithWhereWithoutOutletInput = {
-    where: OutletChildUserScalarWhereInput
-    data: XOR<OutletChildUserUpdateManyMutationInput, OutletChildUserUncheckedUpdateManyWithoutOutletInput>
+  export type OutletUserUpdateManyWithWhereWithoutOutletInput = {
+    where: OutletUserScalarWhereInput
+    data: XOR<OutletUserUpdateManyMutationInput, OutletUserUncheckedUpdateManyWithoutOutletInput>
   }
 
-  export type OutletChildUserScalarWhereInput = {
-    AND?: OutletChildUserScalarWhereInput | OutletChildUserScalarWhereInput[]
-    OR?: OutletChildUserScalarWhereInput[]
-    NOT?: OutletChildUserScalarWhereInput | OutletChildUserScalarWhereInput[]
-    id?: StringFilter<"OutletChildUser"> | string
-    outletId?: StringFilter<"OutletChildUser"> | string
-    name?: StringFilter<"OutletChildUser"> | string
-    email?: StringFilter<"OutletChildUser"> | string
-    phone?: StringNullableFilter<"OutletChildUser"> | string | null
-    password?: StringFilter<"OutletChildUser"> | string
-    isActive?: BoolFilter<"OutletChildUser"> | boolean
-    createdAt?: DateTimeFilter<"OutletChildUser"> | Date | string
-    updatedAt?: DateTimeFilter<"OutletChildUser"> | Date | string
+  export type OutletUserScalarWhereInput = {
+    AND?: OutletUserScalarWhereInput | OutletUserScalarWhereInput[]
+    OR?: OutletUserScalarWhereInput[]
+    NOT?: OutletUserScalarWhereInput | OutletUserScalarWhereInput[]
+    id?: StringFilter<"OutletUser"> | string
+    outletId?: StringFilter<"OutletUser"> | string
+    name?: StringFilter<"OutletUser"> | string
+    email?: StringFilter<"OutletUser"> | string
+    phone?: StringNullableFilter<"OutletUser"> | string | null
+    password?: StringFilter<"OutletUser"> | string
+    isOwner?: BoolFilter<"OutletUser"> | boolean
+    isActive?: BoolFilter<"OutletUser"> | boolean
+    createdAt?: DateTimeFilter<"OutletUser"> | Date | string
+    updatedAt?: DateTimeFilter<"OutletUser"> | Date | string
   }
 
   export type RoleUpsertWithWhereUniqueWithoutOutletInput = {
@@ -21121,17 +21400,21 @@ export namespace Prisma {
     data: XOR<DoctorUpdateManyMutationInput, DoctorUncheckedUpdateManyWithoutOutletInput>
   }
 
-  export type outletCreateWithoutChildUsersInput = {
+  export type outletCreateWithoutUsersInput = {
     id?: string
-    name: string
+    outletCode: string
+    outletName: string
+    subdomain: string
+    division: string
+    district: string
+    area: string
+    address: string
+    contactNumber: string
     email: string
-    phone?: string | null
     password: string
-    centerName: string
-    slug: string
-    logo?: string | null
-    address?: string | null
-    isActive?: boolean
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    status?: $Enums.OutletStatus
     createdAt?: Date | string
     updatedAt?: Date | string
     roles?: RoleCreateNestedManyWithoutOutletInput
@@ -21139,17 +21422,21 @@ export namespace Prisma {
     doctors?: DoctorCreateNestedManyWithoutOutletInput
   }
 
-  export type outletUncheckedCreateWithoutChildUsersInput = {
+  export type outletUncheckedCreateWithoutUsersInput = {
     id?: string
-    name: string
+    outletCode: string
+    outletName: string
+    subdomain: string
+    division: string
+    district: string
+    area: string
+    address: string
+    contactNumber: string
     email: string
-    phone?: string | null
     password: string
-    centerName: string
-    slug: string
-    logo?: string | null
-    address?: string | null
-    isActive?: boolean
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    status?: $Enums.OutletStatus
     createdAt?: Date | string
     updatedAt?: Date | string
     roles?: RoleUncheckedCreateNestedManyWithoutOutletInput
@@ -21157,55 +21444,59 @@ export namespace Prisma {
     doctors?: DoctorUncheckedCreateNestedManyWithoutOutletInput
   }
 
-  export type outletCreateOrConnectWithoutChildUsersInput = {
+  export type outletCreateOrConnectWithoutUsersInput = {
     where: outletWhereUniqueInput
-    create: XOR<outletCreateWithoutChildUsersInput, outletUncheckedCreateWithoutChildUsersInput>
+    create: XOR<outletCreateWithoutUsersInput, outletUncheckedCreateWithoutUsersInput>
   }
 
-  export type OutletUserRoleCreateWithoutOutletChildUserInput = {
+  export type OutletUserRoleCreateWithoutOutletUserInput = {
     id?: string
     createdAt?: Date | string
     role: RoleCreateNestedOneWithoutOutletUserRolesInput
   }
 
-  export type OutletUserRoleUncheckedCreateWithoutOutletChildUserInput = {
+  export type OutletUserRoleUncheckedCreateWithoutOutletUserInput = {
     id?: string
     roleId: string
     createdAt?: Date | string
   }
 
-  export type OutletUserRoleCreateOrConnectWithoutOutletChildUserInput = {
+  export type OutletUserRoleCreateOrConnectWithoutOutletUserInput = {
     where: OutletUserRoleWhereUniqueInput
-    create: XOR<OutletUserRoleCreateWithoutOutletChildUserInput, OutletUserRoleUncheckedCreateWithoutOutletChildUserInput>
+    create: XOR<OutletUserRoleCreateWithoutOutletUserInput, OutletUserRoleUncheckedCreateWithoutOutletUserInput>
   }
 
-  export type OutletUserRoleCreateManyOutletChildUserInputEnvelope = {
-    data: OutletUserRoleCreateManyOutletChildUserInput | OutletUserRoleCreateManyOutletChildUserInput[]
+  export type OutletUserRoleCreateManyOutletUserInputEnvelope = {
+    data: OutletUserRoleCreateManyOutletUserInput | OutletUserRoleCreateManyOutletUserInput[]
     skipDuplicates?: boolean
   }
 
-  export type outletUpsertWithoutChildUsersInput = {
-    update: XOR<outletUpdateWithoutChildUsersInput, outletUncheckedUpdateWithoutChildUsersInput>
-    create: XOR<outletCreateWithoutChildUsersInput, outletUncheckedCreateWithoutChildUsersInput>
+  export type outletUpsertWithoutUsersInput = {
+    update: XOR<outletUpdateWithoutUsersInput, outletUncheckedUpdateWithoutUsersInput>
+    create: XOR<outletCreateWithoutUsersInput, outletUncheckedCreateWithoutUsersInput>
     where?: outletWhereInput
   }
 
-  export type outletUpdateToOneWithWhereWithoutChildUsersInput = {
+  export type outletUpdateToOneWithWhereWithoutUsersInput = {
     where?: outletWhereInput
-    data: XOR<outletUpdateWithoutChildUsersInput, outletUncheckedUpdateWithoutChildUsersInput>
+    data: XOR<outletUpdateWithoutUsersInput, outletUncheckedUpdateWithoutUsersInput>
   }
 
-  export type outletUpdateWithoutChildUsersInput = {
+  export type outletUpdateWithoutUsersInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    outletCode?: StringFieldUpdateOperationsInput | string
+    outletName?: StringFieldUpdateOperationsInput | string
+    subdomain?: StringFieldUpdateOperationsInput | string
+    division?: StringFieldUpdateOperationsInput | string
+    district?: StringFieldUpdateOperationsInput | string
+    area?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    contactNumber?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
-    centerName?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    logo?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
-    isActive?: BoolFieldUpdateOperationsInput | boolean
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: EnumOutletStatusFieldUpdateOperationsInput | $Enums.OutletStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     roles?: RoleUpdateManyWithoutOutletNestedInput
@@ -21213,17 +21504,21 @@ export namespace Prisma {
     doctors?: DoctorUpdateManyWithoutOutletNestedInput
   }
 
-  export type outletUncheckedUpdateWithoutChildUsersInput = {
+  export type outletUncheckedUpdateWithoutUsersInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    outletCode?: StringFieldUpdateOperationsInput | string
+    outletName?: StringFieldUpdateOperationsInput | string
+    subdomain?: StringFieldUpdateOperationsInput | string
+    division?: StringFieldUpdateOperationsInput | string
+    district?: StringFieldUpdateOperationsInput | string
+    area?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    contactNumber?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
-    centerName?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    logo?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
-    isActive?: BoolFieldUpdateOperationsInput | boolean
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: EnumOutletStatusFieldUpdateOperationsInput | $Enums.OutletStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     roles?: RoleUncheckedUpdateManyWithoutOutletNestedInput
@@ -21231,20 +21526,20 @@ export namespace Prisma {
     doctors?: DoctorUncheckedUpdateManyWithoutOutletNestedInput
   }
 
-  export type OutletUserRoleUpsertWithWhereUniqueWithoutOutletChildUserInput = {
+  export type OutletUserRoleUpsertWithWhereUniqueWithoutOutletUserInput = {
     where: OutletUserRoleWhereUniqueInput
-    update: XOR<OutletUserRoleUpdateWithoutOutletChildUserInput, OutletUserRoleUncheckedUpdateWithoutOutletChildUserInput>
-    create: XOR<OutletUserRoleCreateWithoutOutletChildUserInput, OutletUserRoleUncheckedCreateWithoutOutletChildUserInput>
+    update: XOR<OutletUserRoleUpdateWithoutOutletUserInput, OutletUserRoleUncheckedUpdateWithoutOutletUserInput>
+    create: XOR<OutletUserRoleCreateWithoutOutletUserInput, OutletUserRoleUncheckedCreateWithoutOutletUserInput>
   }
 
-  export type OutletUserRoleUpdateWithWhereUniqueWithoutOutletChildUserInput = {
+  export type OutletUserRoleUpdateWithWhereUniqueWithoutOutletUserInput = {
     where: OutletUserRoleWhereUniqueInput
-    data: XOR<OutletUserRoleUpdateWithoutOutletChildUserInput, OutletUserRoleUncheckedUpdateWithoutOutletChildUserInput>
+    data: XOR<OutletUserRoleUpdateWithoutOutletUserInput, OutletUserRoleUncheckedUpdateWithoutOutletUserInput>
   }
 
-  export type OutletUserRoleUpdateManyWithWhereWithoutOutletChildUserInput = {
+  export type OutletUserRoleUpdateManyWithWhereWithoutOutletUserInput = {
     where: OutletUserRoleScalarWhereInput
-    data: XOR<OutletUserRoleUpdateManyMutationInput, OutletUserRoleUncheckedUpdateManyWithoutOutletChildUserInput>
+    data: XOR<OutletUserRoleUpdateManyMutationInput, OutletUserRoleUncheckedUpdateManyWithoutOutletUserInput>
   }
 
   export type OutletUserRoleScalarWhereInput = {
@@ -21252,43 +21547,51 @@ export namespace Prisma {
     OR?: OutletUserRoleScalarWhereInput[]
     NOT?: OutletUserRoleScalarWhereInput | OutletUserRoleScalarWhereInput[]
     id?: StringFilter<"OutletUserRole"> | string
-    OutletChildUserId?: StringFilter<"OutletUserRole"> | string
+    outletUserId?: StringFilter<"OutletUserRole"> | string
     roleId?: StringFilter<"OutletUserRole"> | string
     createdAt?: DateTimeFilter<"OutletUserRole"> | Date | string
   }
 
   export type outletCreateWithoutRolesInput = {
     id?: string
-    name: string
+    outletCode: string
+    outletName: string
+    subdomain: string
+    division: string
+    district: string
+    area: string
+    address: string
+    contactNumber: string
     email: string
-    phone?: string | null
     password: string
-    centerName: string
-    slug: string
-    logo?: string | null
-    address?: string | null
-    isActive?: boolean
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    status?: $Enums.OutletStatus
     createdAt?: Date | string
     updatedAt?: Date | string
-    childUsers?: OutletChildUserCreateNestedManyWithoutOutletInput
+    users?: OutletUserCreateNestedManyWithoutOutletInput
     patients?: PatientCreateNestedManyWithoutOutletInput
     doctors?: DoctorCreateNestedManyWithoutOutletInput
   }
 
   export type outletUncheckedCreateWithoutRolesInput = {
     id?: string
-    name: string
+    outletCode: string
+    outletName: string
+    subdomain: string
+    division: string
+    district: string
+    area: string
+    address: string
+    contactNumber: string
     email: string
-    phone?: string | null
     password: string
-    centerName: string
-    slug: string
-    logo?: string | null
-    address?: string | null
-    isActive?: boolean
+    latitude?: Decimal | DecimalJsLike | number | string | null
+    longitude?: Decimal | DecimalJsLike | number | string | null
+    status?: $Enums.OutletStatus
     createdAt?: Date | string
     updatedAt?: Date | string
-    childUsers?: OutletChildUserUncheckedCreateNestedManyWithoutOutletInput
+    users?: OutletUserUncheckedCreateNestedManyWithoutOutletInput
     patients?: PatientUncheckedCreateNestedManyWithoutOutletInput
     doctors?: DoctorUncheckedCreateNestedManyWithoutOutletInput
   }
@@ -21350,12 +21653,12 @@ export namespace Prisma {
   export type OutletUserRoleCreateWithoutRoleInput = {
     id?: string
     createdAt?: Date | string
-    OutletChildUser: OutletChildUserCreateNestedOneWithoutUserRolesInput
+    outletUser: OutletUserCreateNestedOneWithoutUserRolesInput
   }
 
   export type OutletUserRoleUncheckedCreateWithoutRoleInput = {
     id?: string
-    OutletChildUserId: string
+    outletUserId: string
     createdAt?: Date | string
   }
 
@@ -21404,36 +21707,44 @@ export namespace Prisma {
 
   export type outletUpdateWithoutRolesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    outletCode?: StringFieldUpdateOperationsInput | string
+    outletName?: StringFieldUpdateOperationsInput | string
+    subdomain?: StringFieldUpdateOperationsInput | string
+    division?: StringFieldUpdateOperationsInput | string
+    district?: StringFieldUpdateOperationsInput | string
+    area?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    contactNumber?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
-    centerName?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    logo?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
-    isActive?: BoolFieldUpdateOperationsInput | boolean
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: EnumOutletStatusFieldUpdateOperationsInput | $Enums.OutletStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    childUsers?: OutletChildUserUpdateManyWithoutOutletNestedInput
+    users?: OutletUserUpdateManyWithoutOutletNestedInput
     patients?: PatientUpdateManyWithoutOutletNestedInput
     doctors?: DoctorUpdateManyWithoutOutletNestedInput
   }
 
   export type outletUncheckedUpdateWithoutRolesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    outletCode?: StringFieldUpdateOperationsInput | string
+    outletName?: StringFieldUpdateOperationsInput | string
+    subdomain?: StringFieldUpdateOperationsInput | string
+    division?: StringFieldUpdateOperationsInput | string
+    district?: StringFieldUpdateOperationsInput | string
+    area?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    contactNumber?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
-    centerName?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    logo?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
-    isActive?: BoolFieldUpdateOperationsInput | boolean
+    latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: EnumOutletStatusFieldUpdateOperationsInput | $Enums.OutletStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    childUsers?: OutletChildUserUncheckedUpdateManyWithoutOutletNestedInput
+    users?: OutletUserUncheckedUpdateManyWithoutOutletNestedInput
     patients?: PatientUncheckedUpdateManyWithoutOutletNestedInput
     doctors?: DoctorUncheckedUpdateManyWithoutOutletNestedInput
   }
@@ -21574,7 +21885,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     outlet?: outletCreateNestedOneWithoutRolesInput
     superAdmin?: SuperAdminsCreateNestedOneWithoutRolesInput
-    OutletUserRoles?: OutletUserRoleCreateNestedManyWithoutRoleInput
+    outletUserRoles?: OutletUserRoleCreateNestedManyWithoutRoleInput
     superAdminUserRoles?: SuperAdminUserRoleCreateNestedManyWithoutRoleInput
   }
 
@@ -21586,7 +21897,7 @@ export namespace Prisma {
     superAdminId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    OutletUserRoles?: OutletUserRoleUncheckedCreateNestedManyWithoutRoleInput
+    outletUserRoles?: OutletUserRoleUncheckedCreateNestedManyWithoutRoleInput
     superAdminUserRoles?: SuperAdminUserRoleUncheckedCreateNestedManyWithoutRoleInput
   }
 
@@ -21637,7 +21948,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     outlet?: outletUpdateOneWithoutRolesNestedInput
     superAdmin?: SuperAdminsUpdateOneWithoutRolesNestedInput
-    OutletUserRoles?: OutletUserRoleUpdateManyWithoutRoleNestedInput
+    outletUserRoles?: OutletUserRoleUpdateManyWithoutRoleNestedInput
     superAdminUserRoles?: SuperAdminUserRoleUpdateManyWithoutRoleNestedInput
   }
 
@@ -21649,7 +21960,7 @@ export namespace Prisma {
     superAdminId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    OutletUserRoles?: OutletUserRoleUncheckedUpdateManyWithoutRoleNestedInput
+    outletUserRoles?: OutletUserRoleUncheckedUpdateManyWithoutRoleNestedInput
     superAdminUserRoles?: SuperAdminUserRoleUncheckedUpdateManyWithoutRoleNestedInput
   }
 
@@ -21682,33 +21993,35 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type OutletChildUserCreateWithoutUserRolesInput = {
+  export type OutletUserCreateWithoutUserRolesInput = {
     id?: string
     name: string
     email: string
     phone?: string | null
     password: string
+    isOwner?: boolean
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    outlet: outletCreateNestedOneWithoutChildUsersInput
+    outlet: outletCreateNestedOneWithoutUsersInput
   }
 
-  export type OutletChildUserUncheckedCreateWithoutUserRolesInput = {
+  export type OutletUserUncheckedCreateWithoutUserRolesInput = {
     id?: string
     outletId: string
     name: string
     email: string
     phone?: string | null
     password: string
+    isOwner?: boolean
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type OutletChildUserCreateOrConnectWithoutUserRolesInput = {
-    where: OutletChildUserWhereUniqueInput
-    create: XOR<OutletChildUserCreateWithoutUserRolesInput, OutletChildUserUncheckedCreateWithoutUserRolesInput>
+  export type OutletUserCreateOrConnectWithoutUserRolesInput = {
+    where: OutletUserWhereUniqueInput
+    create: XOR<OutletUserCreateWithoutUserRolesInput, OutletUserUncheckedCreateWithoutUserRolesInput>
   }
 
   export type RoleCreateWithoutOutletUserRolesInput = {
@@ -21740,36 +22053,38 @@ export namespace Prisma {
     create: XOR<RoleCreateWithoutOutletUserRolesInput, RoleUncheckedCreateWithoutOutletUserRolesInput>
   }
 
-  export type OutletChildUserUpsertWithoutUserRolesInput = {
-    update: XOR<OutletChildUserUpdateWithoutUserRolesInput, OutletChildUserUncheckedUpdateWithoutUserRolesInput>
-    create: XOR<OutletChildUserCreateWithoutUserRolesInput, OutletChildUserUncheckedCreateWithoutUserRolesInput>
-    where?: OutletChildUserWhereInput
+  export type OutletUserUpsertWithoutUserRolesInput = {
+    update: XOR<OutletUserUpdateWithoutUserRolesInput, OutletUserUncheckedUpdateWithoutUserRolesInput>
+    create: XOR<OutletUserCreateWithoutUserRolesInput, OutletUserUncheckedCreateWithoutUserRolesInput>
+    where?: OutletUserWhereInput
   }
 
-  export type OutletChildUserUpdateToOneWithWhereWithoutUserRolesInput = {
-    where?: OutletChildUserWhereInput
-    data: XOR<OutletChildUserUpdateWithoutUserRolesInput, OutletChildUserUncheckedUpdateWithoutUserRolesInput>
+  export type OutletUserUpdateToOneWithWhereWithoutUserRolesInput = {
+    where?: OutletUserWhereInput
+    data: XOR<OutletUserUpdateWithoutUserRolesInput, OutletUserUncheckedUpdateWithoutUserRolesInput>
   }
 
-  export type OutletChildUserUpdateWithoutUserRolesInput = {
+  export type OutletUserUpdateWithoutUserRolesInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
+    isOwner?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    outlet?: outletUpdateOneRequiredWithoutChildUsersNestedInput
+    outlet?: outletUpdateOneRequiredWithoutUsersNestedInput
   }
 
-  export type OutletChildUserUncheckedUpdateWithoutUserRolesInput = {
+  export type OutletUserUncheckedUpdateWithoutUserRolesInput = {
     id?: StringFieldUpdateOperationsInput | string
     outletId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
+    isOwner?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21848,7 +22163,7 @@ export namespace Prisma {
     outlet?: outletCreateNestedOneWithoutRolesInput
     superAdmin?: SuperAdminsCreateNestedOneWithoutRolesInput
     rolePermissions?: RolePermissionCreateNestedManyWithoutRoleInput
-    OutletUserRoles?: OutletUserRoleCreateNestedManyWithoutRoleInput
+    outletUserRoles?: OutletUserRoleCreateNestedManyWithoutRoleInput
   }
 
   export type RoleUncheckedCreateWithoutSuperAdminUserRolesInput = {
@@ -21860,7 +22175,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     rolePermissions?: RolePermissionUncheckedCreateNestedManyWithoutRoleInput
-    OutletUserRoles?: OutletUserRoleUncheckedCreateNestedManyWithoutRoleInput
+    outletUserRoles?: OutletUserRoleUncheckedCreateNestedManyWithoutRoleInput
   }
 
   export type RoleCreateOrConnectWithoutSuperAdminUserRolesInput = {
@@ -21923,7 +22238,7 @@ export namespace Prisma {
     outlet?: outletUpdateOneWithoutRolesNestedInput
     superAdmin?: SuperAdminsUpdateOneWithoutRolesNestedInput
     rolePermissions?: RolePermissionUpdateManyWithoutRoleNestedInput
-    OutletUserRoles?: OutletUserRoleUpdateManyWithoutRoleNestedInput
+    outletUserRoles?: OutletUserRoleUpdateManyWithoutRoleNestedInput
   }
 
   export type RoleUncheckedUpdateWithoutSuperAdminUserRolesInput = {
@@ -21935,7 +22250,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     rolePermissions?: RolePermissionUncheckedUpdateManyWithoutRoleNestedInput
-    OutletUserRoles?: OutletUserRoleUncheckedUpdateManyWithoutRoleNestedInput
+    outletUserRoles?: OutletUserRoleUncheckedUpdateManyWithoutRoleNestedInput
   }
 
   export type RoleCreateManySuperAdminInput = {
@@ -21961,7 +22276,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     outlet?: outletUpdateOneWithoutRolesNestedInput
     rolePermissions?: RolePermissionUpdateManyWithoutRoleNestedInput
-    OutletUserRoles?: OutletUserRoleUpdateManyWithoutRoleNestedInput
+    outletUserRoles?: OutletUserRoleUpdateManyWithoutRoleNestedInput
     superAdminUserRoles?: SuperAdminUserRoleUpdateManyWithoutRoleNestedInput
   }
 
@@ -21973,7 +22288,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     rolePermissions?: RolePermissionUncheckedUpdateManyWithoutRoleNestedInput
-    OutletUserRoles?: OutletUserRoleUncheckedUpdateManyWithoutRoleNestedInput
+    outletUserRoles?: OutletUserRoleUncheckedUpdateManyWithoutRoleNestedInput
     superAdminUserRoles?: SuperAdminUserRoleUncheckedUpdateManyWithoutRoleNestedInput
   }
 
@@ -22156,12 +22471,13 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type OutletChildUserCreateManyOutletInput = {
+  export type OutletUserCreateManyOutletInput = {
     id?: string
     name: string
     email: string
     phone?: string | null
     password: string
+    isOwner?: boolean
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -22217,36 +22533,39 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type OutletChildUserUpdateWithoutOutletInput = {
+  export type OutletUserUpdateWithoutOutletInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
+    isOwner?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userRoles?: OutletUserRoleUpdateManyWithoutOutletChildUserNestedInput
+    userRoles?: OutletUserRoleUpdateManyWithoutOutletUserNestedInput
   }
 
-  export type OutletChildUserUncheckedUpdateWithoutOutletInput = {
+  export type OutletUserUncheckedUpdateWithoutOutletInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
+    isOwner?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userRoles?: OutletUserRoleUncheckedUpdateManyWithoutOutletChildUserNestedInput
+    userRoles?: OutletUserRoleUncheckedUpdateManyWithoutOutletUserNestedInput
   }
 
-  export type OutletChildUserUncheckedUpdateManyWithoutOutletInput = {
+  export type OutletUserUncheckedUpdateManyWithoutOutletInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
+    isOwner?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22260,7 +22579,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     superAdmin?: SuperAdminsUpdateOneWithoutRolesNestedInput
     rolePermissions?: RolePermissionUpdateManyWithoutRoleNestedInput
-    OutletUserRoles?: OutletUserRoleUpdateManyWithoutRoleNestedInput
+    outletUserRoles?: OutletUserRoleUpdateManyWithoutRoleNestedInput
     superAdminUserRoles?: SuperAdminUserRoleUpdateManyWithoutRoleNestedInput
   }
 
@@ -22272,7 +22591,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     rolePermissions?: RolePermissionUncheckedUpdateManyWithoutRoleNestedInput
-    OutletUserRoles?: OutletUserRoleUncheckedUpdateManyWithoutRoleNestedInput
+    outletUserRoles?: OutletUserRoleUncheckedUpdateManyWithoutRoleNestedInput
     superAdminUserRoles?: SuperAdminUserRoleUncheckedUpdateManyWithoutRoleNestedInput
   }
 
@@ -22412,25 +22731,25 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type OutletUserRoleCreateManyOutletChildUserInput = {
+  export type OutletUserRoleCreateManyOutletUserInput = {
     id?: string
     roleId: string
     createdAt?: Date | string
   }
 
-  export type OutletUserRoleUpdateWithoutOutletChildUserInput = {
+  export type OutletUserRoleUpdateWithoutOutletUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     role?: RoleUpdateOneRequiredWithoutOutletUserRolesNestedInput
   }
 
-  export type OutletUserRoleUncheckedUpdateWithoutOutletChildUserInput = {
+  export type OutletUserRoleUncheckedUpdateWithoutOutletUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     roleId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type OutletUserRoleUncheckedUpdateManyWithoutOutletChildUserInput = {
+  export type OutletUserRoleUncheckedUpdateManyWithoutOutletUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     roleId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22443,7 +22762,7 @@ export namespace Prisma {
 
   export type OutletUserRoleCreateManyRoleInput = {
     id?: string
-    OutletChildUserId: string
+    outletUserId: string
     createdAt?: Date | string
   }
 
@@ -22471,18 +22790,18 @@ export namespace Prisma {
   export type OutletUserRoleUpdateWithoutRoleInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    OutletChildUser?: OutletChildUserUpdateOneRequiredWithoutUserRolesNestedInput
+    outletUser?: OutletUserUpdateOneRequiredWithoutUserRolesNestedInput
   }
 
   export type OutletUserRoleUncheckedUpdateWithoutRoleInput = {
     id?: StringFieldUpdateOperationsInput | string
-    OutletChildUserId?: StringFieldUpdateOperationsInput | string
+    outletUserId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type OutletUserRoleUncheckedUpdateManyWithoutRoleInput = {
     id?: StringFieldUpdateOperationsInput | string
-    OutletChildUserId?: StringFieldUpdateOperationsInput | string
+    outletUserId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
