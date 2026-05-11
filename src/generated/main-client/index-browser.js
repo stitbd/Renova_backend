@@ -297,6 +297,164 @@ exports.Prisma.HomeBannerScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.AboutSectionScalarFieldEnum = {
+  id: 'id',
+  sectionLabel: 'sectionLabel',
+  title1: 'title1',
+  highlightedText: 'highlightedText',
+  title2: 'title2',
+  description: 'description',
+  image: 'image',
+  feature1Icon: 'feature1Icon',
+  feature1Title: 'feature1Title',
+  feature1Description: 'feature1Description',
+  feature2Icon: 'feature2Icon',
+  feature2Title: 'feature2Title',
+  feature2Description: 'feature2Description',
+  feature3Icon: 'feature3Icon',
+  feature3Title: 'feature3Title',
+  feature3Description: 'feature3Description',
+  patientsCount: 'patientsCount',
+  doctorsCount: 'doctorsCount',
+  departmentsCount: 'departmentsCount',
+  experienceYears: 'experienceYears',
+  patientsLabel: 'patientsLabel',
+  doctorsLabel: 'doctorsLabel',
+  departmentsLabel: 'departmentsLabel',
+  experienceLabel: 'experienceLabel',
+  certificationTitle: 'certificationTitle',
+  certificationSubtitle: 'certificationSubtitle',
+  cardExperienceCount: 'cardExperienceCount',
+  cardExperienceLabel: 'cardExperienceLabel',
+  cardPatientsCount: 'cardPatientsCount',
+  cardPatientsLabel: 'cardPatientsLabel',
+  primaryButtonText: 'primaryButtonText',
+  secondaryButtonText: 'secondaryButtonText',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ServiceSectionScalarFieldEnum = {
+  id: 'id',
+  sectionLabel: 'sectionLabel',
+  title: 'title',
+  description: 'description',
+  buttonText: 'buttonText',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ServiceItemScalarFieldEnum = {
+  id: 'id',
+  serviceSectionId: 'serviceSectionId',
+  icon: 'icon',
+  title: 'title',
+  description: 'description',
+  linkText: 'linkText',
+  serial: 'serial',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.DoctorSectionScalarFieldEnum = {
+  id: 'id',
+  sectionLabel: 'sectionLabel',
+  title1: 'title1',
+  highlightedText: 'highlightedText',
+  title2: 'title2',
+  description: 'description',
+  appoinmentButtonText: 'appoinmentButtonText',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.AppointmentSectionScalarFieldEnum = {
+  id: 'id',
+  badgeText: 'badgeText',
+  title1: 'title1',
+  highlightedText: 'highlightedText',
+  title2: 'title2',
+  description: 'description',
+  feature1Text: 'feature1Text',
+  feature2Text: 'feature2Text',
+  feature3Text: 'feature3Text',
+  feature4Text: 'feature4Text',
+  patientsServedCount: 'patientsServedCount',
+  doctorsCount: 'doctorsCount',
+  ratingCount: 'ratingCount',
+  patientsServedLabel: 'patientsServedLabel',
+  doctorsLabel: 'doctorsLabel',
+  ratingLabel: 'ratingLabel',
+  phoneLabel: 'phoneLabel',
+  phoneNumber: 'phoneNumber',
+  formTitle: 'formTitle',
+  formDescription: 'formDescription',
+  submitButtonText: 'submitButtonText',
+  sslText: 'sslText',
+  confirmText: 'confirmText',
+  reviewText: 'reviewText',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ProductSectionScalarFieldEnum = {
+  id: 'id',
+  sectionLabel: 'sectionLabel',
+  title: 'title',
+  description: 'description',
+  buttonText: 'buttonText',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.FacilitySectionScalarFieldEnum = {
+  id: 'id',
+  sectionLabel: 'sectionLabel',
+  title: 'title',
+  description: 'description',
+  buttonText: 'buttonText',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.TestimonialSectionScalarFieldEnum = {
+  id: 'id',
+  sectionLabel: 'sectionLabel',
+  title: 'title',
+  description: 'description',
+  satisfactionCount: 'satisfactionCount',
+  ratingCount: 'ratingCount',
+  reviewCount: 'reviewCount',
+  satisfactionLabel: 'satisfactionLabel',
+  ratingLabel: 'ratingLabel',
+  reviewLabel: 'reviewLabel',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.BlogSectionScalarFieldEnum = {
+  id: 'id',
+  sectionLabel: 'sectionLabel',
+  title: 'title',
+  description: 'description',
+  buttonText: 'buttonText',
+  emergencyTitle: 'emergencyTitle',
+  emergencyDescription: 'emergencyDescription',
+  phoneNumber1: 'phoneNumber1',
+  phoneNumber2: 'phoneNumber2',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -441,6 +599,136 @@ exports.Prisma.HomeBannerOrderByRelevanceFieldEnum = {
   certificationSubtitle: 'certificationSubtitle',
   emergencyText: 'emergencyText'
 };
+
+exports.Prisma.AboutSectionOrderByRelevanceFieldEnum = {
+  id: 'id',
+  sectionLabel: 'sectionLabel',
+  title1: 'title1',
+  highlightedText: 'highlightedText',
+  title2: 'title2',
+  description: 'description',
+  image: 'image',
+  feature1Icon: 'feature1Icon',
+  feature1Title: 'feature1Title',
+  feature1Description: 'feature1Description',
+  feature2Icon: 'feature2Icon',
+  feature2Title: 'feature2Title',
+  feature2Description: 'feature2Description',
+  feature3Icon: 'feature3Icon',
+  feature3Title: 'feature3Title',
+  feature3Description: 'feature3Description',
+  patientsCount: 'patientsCount',
+  doctorsCount: 'doctorsCount',
+  departmentsCount: 'departmentsCount',
+  experienceYears: 'experienceYears',
+  patientsLabel: 'patientsLabel',
+  doctorsLabel: 'doctorsLabel',
+  departmentsLabel: 'departmentsLabel',
+  experienceLabel: 'experienceLabel',
+  certificationTitle: 'certificationTitle',
+  certificationSubtitle: 'certificationSubtitle',
+  cardExperienceCount: 'cardExperienceCount',
+  cardExperienceLabel: 'cardExperienceLabel',
+  cardPatientsCount: 'cardPatientsCount',
+  cardPatientsLabel: 'cardPatientsLabel',
+  primaryButtonText: 'primaryButtonText',
+  secondaryButtonText: 'secondaryButtonText'
+};
+
+exports.Prisma.ServiceSectionOrderByRelevanceFieldEnum = {
+  id: 'id',
+  sectionLabel: 'sectionLabel',
+  title: 'title',
+  description: 'description',
+  buttonText: 'buttonText'
+};
+
+exports.Prisma.ServiceItemOrderByRelevanceFieldEnum = {
+  id: 'id',
+  serviceSectionId: 'serviceSectionId',
+  icon: 'icon',
+  title: 'title',
+  description: 'description',
+  linkText: 'linkText'
+};
+
+exports.Prisma.DoctorSectionOrderByRelevanceFieldEnum = {
+  id: 'id',
+  sectionLabel: 'sectionLabel',
+  title1: 'title1',
+  highlightedText: 'highlightedText',
+  title2: 'title2',
+  description: 'description',
+  appoinmentButtonText: 'appoinmentButtonText'
+};
+
+exports.Prisma.AppointmentSectionOrderByRelevanceFieldEnum = {
+  id: 'id',
+  badgeText: 'badgeText',
+  title1: 'title1',
+  highlightedText: 'highlightedText',
+  title2: 'title2',
+  description: 'description',
+  feature1Text: 'feature1Text',
+  feature2Text: 'feature2Text',
+  feature3Text: 'feature3Text',
+  feature4Text: 'feature4Text',
+  patientsServedCount: 'patientsServedCount',
+  doctorsCount: 'doctorsCount',
+  ratingCount: 'ratingCount',
+  patientsServedLabel: 'patientsServedLabel',
+  doctorsLabel: 'doctorsLabel',
+  ratingLabel: 'ratingLabel',
+  phoneLabel: 'phoneLabel',
+  phoneNumber: 'phoneNumber',
+  formTitle: 'formTitle',
+  formDescription: 'formDescription',
+  submitButtonText: 'submitButtonText',
+  sslText: 'sslText',
+  confirmText: 'confirmText',
+  reviewText: 'reviewText'
+};
+
+exports.Prisma.ProductSectionOrderByRelevanceFieldEnum = {
+  id: 'id',
+  sectionLabel: 'sectionLabel',
+  title: 'title',
+  description: 'description',
+  buttonText: 'buttonText'
+};
+
+exports.Prisma.FacilitySectionOrderByRelevanceFieldEnum = {
+  id: 'id',
+  sectionLabel: 'sectionLabel',
+  title: 'title',
+  description: 'description',
+  buttonText: 'buttonText'
+};
+
+exports.Prisma.TestimonialSectionOrderByRelevanceFieldEnum = {
+  id: 'id',
+  sectionLabel: 'sectionLabel',
+  title: 'title',
+  description: 'description',
+  satisfactionCount: 'satisfactionCount',
+  ratingCount: 'ratingCount',
+  reviewCount: 'reviewCount',
+  satisfactionLabel: 'satisfactionLabel',
+  ratingLabel: 'ratingLabel',
+  reviewLabel: 'reviewLabel'
+};
+
+exports.Prisma.BlogSectionOrderByRelevanceFieldEnum = {
+  id: 'id',
+  sectionLabel: 'sectionLabel',
+  title: 'title',
+  description: 'description',
+  buttonText: 'buttonText',
+  emergencyTitle: 'emergencyTitle',
+  emergencyDescription: 'emergencyDescription',
+  phoneNumber1: 'phoneNumber1',
+  phoneNumber2: 'phoneNumber2'
+};
 exports.PatientStatus = exports.$Enums.PatientStatus = {
   ACTIVE: 'ACTIVE',
   INACTIVE: 'INACTIVE'
@@ -499,7 +787,16 @@ exports.Prisma.ModelName = {
   RolePermission: 'RolePermission',
   OutletUserRole: 'OutletUserRole',
   SuperAdminUserRole: 'SuperAdminUserRole',
-  HomeBanner: 'HomeBanner'
+  HomeBanner: 'HomeBanner',
+  AboutSection: 'AboutSection',
+  ServiceSection: 'ServiceSection',
+  ServiceItem: 'ServiceItem',
+  DoctorSection: 'DoctorSection',
+  AppointmentSection: 'AppointmentSection',
+  ProductSection: 'ProductSection',
+  FacilitySection: 'FacilitySection',
+  TestimonialSection: 'TestimonialSection',
+  BlogSection: 'BlogSection'
 };
 
 /**

@@ -21,7 +21,7 @@ app.use(cookieParser());
 app.get("/", (_req: Request, res: Response) => {
   res.status(200).json({
     success: true,
-    message: "Renova backend is running",
+    message: "Renova backend is running smoothly!",
   });
 });
 

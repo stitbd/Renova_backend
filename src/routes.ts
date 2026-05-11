@@ -14,7 +14,15 @@ import { permissionRoutes } from "./modules/permission/permission.route";
 import { outletAuthRoutes } from "./modules/auth/outlet_user_auth/outlet_user_auth.route";
 import { superAdminRoutes } from "./modules/super_admin/super_admin.route";
 import { superAdminRoleRoutes } from "./modules/super_admin_role/super_admin_role.route";
-import { HomeBannerRoutes } from "./modules/website_content/home/homeBanner/homeBanner.route";
+import { HomeBannerRoutes } from "./modules/website_content/home/banner/banner.route";
+import { AboutSectionRoutes } from "./modules/website_content/home/aboutSection/aboutSection.route";
+import { ServiceSectionRoutes } from "./modules/website_content/home/serviceSection/serviceSection.route";
+import { DoctorSectionRoutes } from "./modules/website_content/home/doctorSection/doctorSection.route";
+import { AppointmentSectionRoutes } from "./modules/website_content/home/appointmentSection/appointmentSection.route";
+import { ProductSectionRoutes } from "./modules/website_content/home/productSection/productSection.route";
+import { FacilitySectionRoutes } from "./modules/website_content/home/facilitySection/facilitySection.route";
+import { TestimonialSectionRoutes } from "./modules/website_content/home/testimonialSection/testimonialSection.route";
+import { BlogSectionRoutes } from "./modules/website_content/home/blogSection/blogSection.route";
 
 
 const appRouter = Router();
@@ -42,7 +50,15 @@ const moduleRoutes = [
   // dynamic website content routes
   {
     path: "/website-content/home-banner", route: HomeBannerRoutes
-  }
+  },
+  { path: "/website-content/home-about", route: AboutSectionRoutes },
+  { path: "/website-content/home-services", route: ServiceSectionRoutes },
+  { path: "/website-content/home-doctors", route: DoctorSectionRoutes },
+  { path: "/website-content/home-appointment", route: AppointmentSectionRoutes },
+  { path: "/website-content/home-product", route: ProductSectionRoutes },
+  { path: "/website-content/home-facility", route: FacilitySectionRoutes },
+  { path: "/website-content/home-testimonial", route: TestimonialSectionRoutes },
+  { path: "/website-content/home-blog", route: BlogSectionRoutes },
 
 ];
 

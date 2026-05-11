@@ -339,3 +339,274 @@ model HomeBanner {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+// ===========home/about us ======================
+
+model AboutSection {
+  id String @id @default(uuid())
+
+  // Section Label
+  sectionLabel String? @default("ABOUT US")
+
+  // Main Content
+  title1          String
+  highlightedText String?
+  title2          String?
+  description     String
+
+  // Image
+  image String?
+
+  // Features
+  feature1Icon        String?
+  feature1Title       String?
+  feature1Description String?
+
+  feature2Icon        String?
+  feature2Title       String?
+  feature2Description String?
+
+  feature3Icon        String?
+  feature3Title       String?
+  feature3Description String?
+
+  // Statistics
+  patientsCount    String?
+  doctorsCount     String?
+  departmentsCount String?
+  experienceYears  String?
+
+  patientsLabel    String? @default("Happy Patients")
+  doctorsLabel     String? @default("Expert Doctors")
+  departmentsLabel String? @default("Departments")
+  experienceLabel  String? @default("Years Experience")
+
+  // Image Bottom Card
+  certificationTitle    String?
+  certificationSubtitle String?
+
+  cardExperienceCount String?
+  cardExperienceLabel String? @default("Years")
+
+  cardPatientsCount String?
+  cardPatientsLabel String? @default("Patients")
+
+  // Buttons
+  primaryButtonText   String?
+  secondaryButtonText String?
+
+  isActive Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ============= home/service section ====================
+
+model ServiceSection {
+  id String @id @default(uuid())
+
+  // Section Header
+  sectionLabel String? @default("OUR SERVICES")
+  title        String
+  description  String?
+
+  // Button
+  buttonText String?
+
+  isActive Boolean @default(true)
+
+  services ServiceItem[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ServiceItem {
+  id String @id @default(uuid())
+
+  serviceSectionId String
+  serviceSection   ServiceSection @relation(fields: [serviceSectionId], references: [id], onDelete: Cascade)
+
+  icon        String?
+  title       String
+  description String
+  linkText    String? @default("Learn More")
+
+  serial Int @default(0)
+
+  isActive Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+//===============home/doctor section ===========
+
+model DoctorSection {
+  id String @id @default(uuid())
+
+  // Section Header
+  sectionLabel String? @default("MEET OUR TEAM")
+
+  // Main Content
+  title1          String
+  highlightedText String?
+  title2          String?
+
+  description String?
+
+  // Button
+  appoinmentButtonText String?
+
+  isActive Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+//===============home/appoinment section==============
+
+model AppointmentSection {
+  id String @id @default(uuid())
+
+  // Top Badge
+  badgeText String? @default("NOW ACCEPTING PATIENTS")
+
+  // Main Content
+  title1          String
+  highlightedText String?
+  title2          String?
+
+  description String?
+
+  // Features
+  feature1Text String?
+  feature2Text String?
+  feature3Text String?
+  feature4Text String?
+
+  // Statistics
+  patientsServedCount String?
+  doctorsCount        String?
+  ratingCount         String?
+
+  patientsServedLabel String? @default("PATIENTS SERVED")
+  doctorsLabel        String? @default("SPECIALIST DOCTORS")
+  ratingLabel         String? @default("AVERAGE RATING")
+
+  // Contact
+  phoneLabel  String? @default("PREFER A CALL?")
+  phoneNumber String?
+
+  // Form Section
+  formTitle       String?
+  formDescription String?
+
+  submitButtonText String?
+
+  // Bottom Form Info
+  sslText     String?
+  confirmText String?
+  reviewText  String?
+
+  isActive Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+//==============home/products==================
+
+model ProductSection {
+  id String @id @default(uuid())
+
+  // Section Header
+  sectionLabel String? @default("OUR SHOP")
+
+  // Main Content
+  title       String
+  description String?
+
+  // Button
+  buttonText String?
+
+  isActive Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ================= home/Faculty section =============
+model FacilitySection {
+  id String @id @default(uuid())
+
+  // Section Header
+  sectionLabel String? @default("OUR FACILITIES")
+
+  // Main Content
+  title       String
+  description String?
+
+  buttonText String?
+
+  isActive Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// =========== home/testimonial =================
+
+model TestimonialSection {
+  id String @id @default(uuid())
+
+  // Section Header
+  sectionLabel String? @default("PATIENT STORIES")
+
+  // Main Content
+  title       String
+  description String?
+
+  // Bottom Statistics
+  satisfactionCount String?
+  ratingCount       String?
+  reviewCount       String?
+
+  satisfactionLabel String? @default("Patient Satisfaction")
+  ratingLabel       String? @default("Average Rating")
+  reviewLabel       String? @default("Reviews Collected")
+
+  isActive Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ================home/blog =============
+
+model BlogSection {
+  id String @id @default(uuid())
+
+  // Section Header
+  sectionLabel String? @default("HEALTH INSIGHTS")
+
+  // Main Content
+  title       String
+  description String?
+
+  // Button
+  buttonText String?
+
+  // Emergency Banner
+  emergencyTitle       String?
+  emergencyDescription String?
+
+  phoneNumber1 String?
+  phoneNumber2 String?
+
+  isActive Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

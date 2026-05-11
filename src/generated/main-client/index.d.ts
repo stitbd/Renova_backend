@@ -83,6 +83,51 @@ export type SuperAdminUserRole = $Result.DefaultSelection<Prisma.$SuperAdminUser
  * 
  */
 export type HomeBanner = $Result.DefaultSelection<Prisma.$HomeBannerPayload>
+/**
+ * Model AboutSection
+ * 
+ */
+export type AboutSection = $Result.DefaultSelection<Prisma.$AboutSectionPayload>
+/**
+ * Model ServiceSection
+ * 
+ */
+export type ServiceSection = $Result.DefaultSelection<Prisma.$ServiceSectionPayload>
+/**
+ * Model ServiceItem
+ * 
+ */
+export type ServiceItem = $Result.DefaultSelection<Prisma.$ServiceItemPayload>
+/**
+ * Model DoctorSection
+ * 
+ */
+export type DoctorSection = $Result.DefaultSelection<Prisma.$DoctorSectionPayload>
+/**
+ * Model AppointmentSection
+ * 
+ */
+export type AppointmentSection = $Result.DefaultSelection<Prisma.$AppointmentSectionPayload>
+/**
+ * Model ProductSection
+ * 
+ */
+export type ProductSection = $Result.DefaultSelection<Prisma.$ProductSectionPayload>
+/**
+ * Model FacilitySection
+ * 
+ */
+export type FacilitySection = $Result.DefaultSelection<Prisma.$FacilitySectionPayload>
+/**
+ * Model TestimonialSection
+ * 
+ */
+export type TestimonialSection = $Result.DefaultSelection<Prisma.$TestimonialSectionPayload>
+/**
+ * Model BlogSection
+ * 
+ */
+export type BlogSection = $Result.DefaultSelection<Prisma.$BlogSectionPayload>
 
 /**
  * Enums
@@ -446,6 +491,96 @@ export class PrismaClient<
     * ```
     */
   get homeBanner(): Prisma.HomeBannerDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.aboutSection`: Exposes CRUD operations for the **AboutSection** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more AboutSections
+    * const aboutSections = await prisma.aboutSection.findMany()
+    * ```
+    */
+  get aboutSection(): Prisma.AboutSectionDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.serviceSection`: Exposes CRUD operations for the **ServiceSection** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ServiceSections
+    * const serviceSections = await prisma.serviceSection.findMany()
+    * ```
+    */
+  get serviceSection(): Prisma.ServiceSectionDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.serviceItem`: Exposes CRUD operations for the **ServiceItem** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ServiceItems
+    * const serviceItems = await prisma.serviceItem.findMany()
+    * ```
+    */
+  get serviceItem(): Prisma.ServiceItemDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.doctorSection`: Exposes CRUD operations for the **DoctorSection** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more DoctorSections
+    * const doctorSections = await prisma.doctorSection.findMany()
+    * ```
+    */
+  get doctorSection(): Prisma.DoctorSectionDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.appointmentSection`: Exposes CRUD operations for the **AppointmentSection** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more AppointmentSections
+    * const appointmentSections = await prisma.appointmentSection.findMany()
+    * ```
+    */
+  get appointmentSection(): Prisma.AppointmentSectionDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.productSection`: Exposes CRUD operations for the **ProductSection** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ProductSections
+    * const productSections = await prisma.productSection.findMany()
+    * ```
+    */
+  get productSection(): Prisma.ProductSectionDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.facilitySection`: Exposes CRUD operations for the **FacilitySection** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more FacilitySections
+    * const facilitySections = await prisma.facilitySection.findMany()
+    * ```
+    */
+  get facilitySection(): Prisma.FacilitySectionDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.testimonialSection`: Exposes CRUD operations for the **TestimonialSection** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TestimonialSections
+    * const testimonialSections = await prisma.testimonialSection.findMany()
+    * ```
+    */
+  get testimonialSection(): Prisma.TestimonialSectionDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.blogSection`: Exposes CRUD operations for the **BlogSection** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more BlogSections
+    * const blogSections = await prisma.blogSection.findMany()
+    * ```
+    */
+  get blogSection(): Prisma.BlogSectionDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -900,7 +1035,16 @@ export namespace Prisma {
     RolePermission: 'RolePermission',
     OutletUserRole: 'OutletUserRole',
     SuperAdminUserRole: 'SuperAdminUserRole',
-    HomeBanner: 'HomeBanner'
+    HomeBanner: 'HomeBanner',
+    AboutSection: 'AboutSection',
+    ServiceSection: 'ServiceSection',
+    ServiceItem: 'ServiceItem',
+    DoctorSection: 'DoctorSection',
+    AppointmentSection: 'AppointmentSection',
+    ProductSection: 'ProductSection',
+    FacilitySection: 'FacilitySection',
+    TestimonialSection: 'TestimonialSection',
+    BlogSection: 'BlogSection'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -919,7 +1063,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "superAdmins" | "patient" | "doctor" | "doctorSpecialization" | "doctorDocument" | "doctorSchedule" | "outlet" | "outletUser" | "role" | "permission" | "rolePermission" | "outletUserRole" | "superAdminUserRole" | "homeBanner"
+      modelProps: "superAdmins" | "patient" | "doctor" | "doctorSpecialization" | "doctorDocument" | "doctorSchedule" | "outlet" | "outletUser" | "role" | "permission" | "rolePermission" | "outletUserRole" | "superAdminUserRole" | "homeBanner" | "aboutSection" | "serviceSection" | "serviceItem" | "doctorSection" | "appointmentSection" | "productSection" | "facilitySection" | "testimonialSection" | "blogSection"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1847,6 +1991,600 @@ export namespace Prisma {
           }
         }
       }
+      AboutSection: {
+        payload: Prisma.$AboutSectionPayload<ExtArgs>
+        fields: Prisma.AboutSectionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AboutSectionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AboutSectionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AboutSectionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AboutSectionPayload>
+          }
+          findFirst: {
+            args: Prisma.AboutSectionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AboutSectionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AboutSectionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AboutSectionPayload>
+          }
+          findMany: {
+            args: Prisma.AboutSectionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AboutSectionPayload>[]
+          }
+          create: {
+            args: Prisma.AboutSectionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AboutSectionPayload>
+          }
+          createMany: {
+            args: Prisma.AboutSectionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.AboutSectionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AboutSectionPayload>
+          }
+          update: {
+            args: Prisma.AboutSectionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AboutSectionPayload>
+          }
+          deleteMany: {
+            args: Prisma.AboutSectionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AboutSectionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.AboutSectionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AboutSectionPayload>
+          }
+          aggregate: {
+            args: Prisma.AboutSectionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAboutSection>
+          }
+          groupBy: {
+            args: Prisma.AboutSectionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AboutSectionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AboutSectionCountArgs<ExtArgs>
+            result: $Utils.Optional<AboutSectionCountAggregateOutputType> | number
+          }
+        }
+      }
+      ServiceSection: {
+        payload: Prisma.$ServiceSectionPayload<ExtArgs>
+        fields: Prisma.ServiceSectionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ServiceSectionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceSectionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ServiceSectionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceSectionPayload>
+          }
+          findFirst: {
+            args: Prisma.ServiceSectionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceSectionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ServiceSectionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceSectionPayload>
+          }
+          findMany: {
+            args: Prisma.ServiceSectionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceSectionPayload>[]
+          }
+          create: {
+            args: Prisma.ServiceSectionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceSectionPayload>
+          }
+          createMany: {
+            args: Prisma.ServiceSectionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.ServiceSectionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceSectionPayload>
+          }
+          update: {
+            args: Prisma.ServiceSectionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceSectionPayload>
+          }
+          deleteMany: {
+            args: Prisma.ServiceSectionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ServiceSectionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.ServiceSectionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceSectionPayload>
+          }
+          aggregate: {
+            args: Prisma.ServiceSectionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateServiceSection>
+          }
+          groupBy: {
+            args: Prisma.ServiceSectionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ServiceSectionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ServiceSectionCountArgs<ExtArgs>
+            result: $Utils.Optional<ServiceSectionCountAggregateOutputType> | number
+          }
+        }
+      }
+      ServiceItem: {
+        payload: Prisma.$ServiceItemPayload<ExtArgs>
+        fields: Prisma.ServiceItemFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ServiceItemFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceItemPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ServiceItemFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceItemPayload>
+          }
+          findFirst: {
+            args: Prisma.ServiceItemFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceItemPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ServiceItemFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceItemPayload>
+          }
+          findMany: {
+            args: Prisma.ServiceItemFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceItemPayload>[]
+          }
+          create: {
+            args: Prisma.ServiceItemCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceItemPayload>
+          }
+          createMany: {
+            args: Prisma.ServiceItemCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.ServiceItemDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceItemPayload>
+          }
+          update: {
+            args: Prisma.ServiceItemUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceItemPayload>
+          }
+          deleteMany: {
+            args: Prisma.ServiceItemDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ServiceItemUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.ServiceItemUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceItemPayload>
+          }
+          aggregate: {
+            args: Prisma.ServiceItemAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateServiceItem>
+          }
+          groupBy: {
+            args: Prisma.ServiceItemGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ServiceItemGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ServiceItemCountArgs<ExtArgs>
+            result: $Utils.Optional<ServiceItemCountAggregateOutputType> | number
+          }
+        }
+      }
+      DoctorSection: {
+        payload: Prisma.$DoctorSectionPayload<ExtArgs>
+        fields: Prisma.DoctorSectionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DoctorSectionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DoctorSectionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DoctorSectionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DoctorSectionPayload>
+          }
+          findFirst: {
+            args: Prisma.DoctorSectionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DoctorSectionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DoctorSectionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DoctorSectionPayload>
+          }
+          findMany: {
+            args: Prisma.DoctorSectionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DoctorSectionPayload>[]
+          }
+          create: {
+            args: Prisma.DoctorSectionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DoctorSectionPayload>
+          }
+          createMany: {
+            args: Prisma.DoctorSectionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.DoctorSectionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DoctorSectionPayload>
+          }
+          update: {
+            args: Prisma.DoctorSectionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DoctorSectionPayload>
+          }
+          deleteMany: {
+            args: Prisma.DoctorSectionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DoctorSectionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.DoctorSectionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DoctorSectionPayload>
+          }
+          aggregate: {
+            args: Prisma.DoctorSectionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDoctorSection>
+          }
+          groupBy: {
+            args: Prisma.DoctorSectionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DoctorSectionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DoctorSectionCountArgs<ExtArgs>
+            result: $Utils.Optional<DoctorSectionCountAggregateOutputType> | number
+          }
+        }
+      }
+      AppointmentSection: {
+        payload: Prisma.$AppointmentSectionPayload<ExtArgs>
+        fields: Prisma.AppointmentSectionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AppointmentSectionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AppointmentSectionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AppointmentSectionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AppointmentSectionPayload>
+          }
+          findFirst: {
+            args: Prisma.AppointmentSectionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AppointmentSectionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AppointmentSectionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AppointmentSectionPayload>
+          }
+          findMany: {
+            args: Prisma.AppointmentSectionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AppointmentSectionPayload>[]
+          }
+          create: {
+            args: Prisma.AppointmentSectionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AppointmentSectionPayload>
+          }
+          createMany: {
+            args: Prisma.AppointmentSectionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.AppointmentSectionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AppointmentSectionPayload>
+          }
+          update: {
+            args: Prisma.AppointmentSectionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AppointmentSectionPayload>
+          }
+          deleteMany: {
+            args: Prisma.AppointmentSectionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AppointmentSectionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.AppointmentSectionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AppointmentSectionPayload>
+          }
+          aggregate: {
+            args: Prisma.AppointmentSectionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAppointmentSection>
+          }
+          groupBy: {
+            args: Prisma.AppointmentSectionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AppointmentSectionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AppointmentSectionCountArgs<ExtArgs>
+            result: $Utils.Optional<AppointmentSectionCountAggregateOutputType> | number
+          }
+        }
+      }
+      ProductSection: {
+        payload: Prisma.$ProductSectionPayload<ExtArgs>
+        fields: Prisma.ProductSectionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ProductSectionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductSectionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ProductSectionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductSectionPayload>
+          }
+          findFirst: {
+            args: Prisma.ProductSectionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductSectionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ProductSectionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductSectionPayload>
+          }
+          findMany: {
+            args: Prisma.ProductSectionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductSectionPayload>[]
+          }
+          create: {
+            args: Prisma.ProductSectionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductSectionPayload>
+          }
+          createMany: {
+            args: Prisma.ProductSectionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.ProductSectionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductSectionPayload>
+          }
+          update: {
+            args: Prisma.ProductSectionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductSectionPayload>
+          }
+          deleteMany: {
+            args: Prisma.ProductSectionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ProductSectionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.ProductSectionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductSectionPayload>
+          }
+          aggregate: {
+            args: Prisma.ProductSectionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProductSection>
+          }
+          groupBy: {
+            args: Prisma.ProductSectionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ProductSectionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ProductSectionCountArgs<ExtArgs>
+            result: $Utils.Optional<ProductSectionCountAggregateOutputType> | number
+          }
+        }
+      }
+      FacilitySection: {
+        payload: Prisma.$FacilitySectionPayload<ExtArgs>
+        fields: Prisma.FacilitySectionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.FacilitySectionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FacilitySectionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.FacilitySectionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FacilitySectionPayload>
+          }
+          findFirst: {
+            args: Prisma.FacilitySectionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FacilitySectionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.FacilitySectionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FacilitySectionPayload>
+          }
+          findMany: {
+            args: Prisma.FacilitySectionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FacilitySectionPayload>[]
+          }
+          create: {
+            args: Prisma.FacilitySectionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FacilitySectionPayload>
+          }
+          createMany: {
+            args: Prisma.FacilitySectionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.FacilitySectionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FacilitySectionPayload>
+          }
+          update: {
+            args: Prisma.FacilitySectionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FacilitySectionPayload>
+          }
+          deleteMany: {
+            args: Prisma.FacilitySectionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.FacilitySectionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.FacilitySectionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FacilitySectionPayload>
+          }
+          aggregate: {
+            args: Prisma.FacilitySectionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateFacilitySection>
+          }
+          groupBy: {
+            args: Prisma.FacilitySectionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<FacilitySectionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.FacilitySectionCountArgs<ExtArgs>
+            result: $Utils.Optional<FacilitySectionCountAggregateOutputType> | number
+          }
+        }
+      }
+      TestimonialSection: {
+        payload: Prisma.$TestimonialSectionPayload<ExtArgs>
+        fields: Prisma.TestimonialSectionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TestimonialSectionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TestimonialSectionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TestimonialSectionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TestimonialSectionPayload>
+          }
+          findFirst: {
+            args: Prisma.TestimonialSectionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TestimonialSectionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TestimonialSectionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TestimonialSectionPayload>
+          }
+          findMany: {
+            args: Prisma.TestimonialSectionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TestimonialSectionPayload>[]
+          }
+          create: {
+            args: Prisma.TestimonialSectionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TestimonialSectionPayload>
+          }
+          createMany: {
+            args: Prisma.TestimonialSectionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.TestimonialSectionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TestimonialSectionPayload>
+          }
+          update: {
+            args: Prisma.TestimonialSectionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TestimonialSectionPayload>
+          }
+          deleteMany: {
+            args: Prisma.TestimonialSectionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TestimonialSectionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.TestimonialSectionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TestimonialSectionPayload>
+          }
+          aggregate: {
+            args: Prisma.TestimonialSectionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTestimonialSection>
+          }
+          groupBy: {
+            args: Prisma.TestimonialSectionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TestimonialSectionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TestimonialSectionCountArgs<ExtArgs>
+            result: $Utils.Optional<TestimonialSectionCountAggregateOutputType> | number
+          }
+        }
+      }
+      BlogSection: {
+        payload: Prisma.$BlogSectionPayload<ExtArgs>
+        fields: Prisma.BlogSectionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BlogSectionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlogSectionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BlogSectionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlogSectionPayload>
+          }
+          findFirst: {
+            args: Prisma.BlogSectionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlogSectionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BlogSectionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlogSectionPayload>
+          }
+          findMany: {
+            args: Prisma.BlogSectionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlogSectionPayload>[]
+          }
+          create: {
+            args: Prisma.BlogSectionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlogSectionPayload>
+          }
+          createMany: {
+            args: Prisma.BlogSectionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.BlogSectionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlogSectionPayload>
+          }
+          update: {
+            args: Prisma.BlogSectionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlogSectionPayload>
+          }
+          deleteMany: {
+            args: Prisma.BlogSectionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BlogSectionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.BlogSectionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlogSectionPayload>
+          }
+          aggregate: {
+            args: Prisma.BlogSectionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBlogSection>
+          }
+          groupBy: {
+            args: Prisma.BlogSectionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BlogSectionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.BlogSectionCountArgs<ExtArgs>
+            result: $Utils.Optional<BlogSectionCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1957,6 +2695,15 @@ export namespace Prisma {
     outletUserRole?: OutletUserRoleOmit
     superAdminUserRole?: SuperAdminUserRoleOmit
     homeBanner?: HomeBannerOmit
+    aboutSection?: AboutSectionOmit
+    serviceSection?: ServiceSectionOmit
+    serviceItem?: ServiceItemOmit
+    doctorSection?: DoctorSectionOmit
+    appointmentSection?: AppointmentSectionOmit
+    productSection?: ProductSectionOmit
+    facilitySection?: FacilitySectionOmit
+    testimonialSection?: TestimonialSectionOmit
+    blogSection?: BlogSectionOmit
   }
 
   /* Types for Logging */
@@ -2309,6 +3056,37 @@ export namespace Prisma {
    */
   export type PermissionCountOutputTypeCountRolePermissionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: RolePermissionWhereInput
+  }
+
+
+  /**
+   * Count Type ServiceSectionCountOutputType
+   */
+
+  export type ServiceSectionCountOutputType = {
+    services: number
+  }
+
+  export type ServiceSectionCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    services?: boolean | ServiceSectionCountOutputTypeCountServicesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ServiceSectionCountOutputType without action
+   */
+  export type ServiceSectionCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceSectionCountOutputType
+     */
+    select?: ServiceSectionCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ServiceSectionCountOutputType without action
+   */
+  export type ServiceSectionCountOutputTypeCountServicesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ServiceItemWhereInput
   }
 
 
@@ -16610,6 +17388,9044 @@ export namespace Prisma {
 
 
   /**
+   * Model AboutSection
+   */
+
+  export type AggregateAboutSection = {
+    _count: AboutSectionCountAggregateOutputType | null
+    _min: AboutSectionMinAggregateOutputType | null
+    _max: AboutSectionMaxAggregateOutputType | null
+  }
+
+  export type AboutSectionMinAggregateOutputType = {
+    id: string | null
+    sectionLabel: string | null
+    title1: string | null
+    highlightedText: string | null
+    title2: string | null
+    description: string | null
+    image: string | null
+    feature1Icon: string | null
+    feature1Title: string | null
+    feature1Description: string | null
+    feature2Icon: string | null
+    feature2Title: string | null
+    feature2Description: string | null
+    feature3Icon: string | null
+    feature3Title: string | null
+    feature3Description: string | null
+    patientsCount: string | null
+    doctorsCount: string | null
+    departmentsCount: string | null
+    experienceYears: string | null
+    patientsLabel: string | null
+    doctorsLabel: string | null
+    departmentsLabel: string | null
+    experienceLabel: string | null
+    certificationTitle: string | null
+    certificationSubtitle: string | null
+    cardExperienceCount: string | null
+    cardExperienceLabel: string | null
+    cardPatientsCount: string | null
+    cardPatientsLabel: string | null
+    primaryButtonText: string | null
+    secondaryButtonText: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type AboutSectionMaxAggregateOutputType = {
+    id: string | null
+    sectionLabel: string | null
+    title1: string | null
+    highlightedText: string | null
+    title2: string | null
+    description: string | null
+    image: string | null
+    feature1Icon: string | null
+    feature1Title: string | null
+    feature1Description: string | null
+    feature2Icon: string | null
+    feature2Title: string | null
+    feature2Description: string | null
+    feature3Icon: string | null
+    feature3Title: string | null
+    feature3Description: string | null
+    patientsCount: string | null
+    doctorsCount: string | null
+    departmentsCount: string | null
+    experienceYears: string | null
+    patientsLabel: string | null
+    doctorsLabel: string | null
+    departmentsLabel: string | null
+    experienceLabel: string | null
+    certificationTitle: string | null
+    certificationSubtitle: string | null
+    cardExperienceCount: string | null
+    cardExperienceLabel: string | null
+    cardPatientsCount: string | null
+    cardPatientsLabel: string | null
+    primaryButtonText: string | null
+    secondaryButtonText: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type AboutSectionCountAggregateOutputType = {
+    id: number
+    sectionLabel: number
+    title1: number
+    highlightedText: number
+    title2: number
+    description: number
+    image: number
+    feature1Icon: number
+    feature1Title: number
+    feature1Description: number
+    feature2Icon: number
+    feature2Title: number
+    feature2Description: number
+    feature3Icon: number
+    feature3Title: number
+    feature3Description: number
+    patientsCount: number
+    doctorsCount: number
+    departmentsCount: number
+    experienceYears: number
+    patientsLabel: number
+    doctorsLabel: number
+    departmentsLabel: number
+    experienceLabel: number
+    certificationTitle: number
+    certificationSubtitle: number
+    cardExperienceCount: number
+    cardExperienceLabel: number
+    cardPatientsCount: number
+    cardPatientsLabel: number
+    primaryButtonText: number
+    secondaryButtonText: number
+    isActive: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type AboutSectionMinAggregateInputType = {
+    id?: true
+    sectionLabel?: true
+    title1?: true
+    highlightedText?: true
+    title2?: true
+    description?: true
+    image?: true
+    feature1Icon?: true
+    feature1Title?: true
+    feature1Description?: true
+    feature2Icon?: true
+    feature2Title?: true
+    feature2Description?: true
+    feature3Icon?: true
+    feature3Title?: true
+    feature3Description?: true
+    patientsCount?: true
+    doctorsCount?: true
+    departmentsCount?: true
+    experienceYears?: true
+    patientsLabel?: true
+    doctorsLabel?: true
+    departmentsLabel?: true
+    experienceLabel?: true
+    certificationTitle?: true
+    certificationSubtitle?: true
+    cardExperienceCount?: true
+    cardExperienceLabel?: true
+    cardPatientsCount?: true
+    cardPatientsLabel?: true
+    primaryButtonText?: true
+    secondaryButtonText?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type AboutSectionMaxAggregateInputType = {
+    id?: true
+    sectionLabel?: true
+    title1?: true
+    highlightedText?: true
+    title2?: true
+    description?: true
+    image?: true
+    feature1Icon?: true
+    feature1Title?: true
+    feature1Description?: true
+    feature2Icon?: true
+    feature2Title?: true
+    feature2Description?: true
+    feature3Icon?: true
+    feature3Title?: true
+    feature3Description?: true
+    patientsCount?: true
+    doctorsCount?: true
+    departmentsCount?: true
+    experienceYears?: true
+    patientsLabel?: true
+    doctorsLabel?: true
+    departmentsLabel?: true
+    experienceLabel?: true
+    certificationTitle?: true
+    certificationSubtitle?: true
+    cardExperienceCount?: true
+    cardExperienceLabel?: true
+    cardPatientsCount?: true
+    cardPatientsLabel?: true
+    primaryButtonText?: true
+    secondaryButtonText?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type AboutSectionCountAggregateInputType = {
+    id?: true
+    sectionLabel?: true
+    title1?: true
+    highlightedText?: true
+    title2?: true
+    description?: true
+    image?: true
+    feature1Icon?: true
+    feature1Title?: true
+    feature1Description?: true
+    feature2Icon?: true
+    feature2Title?: true
+    feature2Description?: true
+    feature3Icon?: true
+    feature3Title?: true
+    feature3Description?: true
+    patientsCount?: true
+    doctorsCount?: true
+    departmentsCount?: true
+    experienceYears?: true
+    patientsLabel?: true
+    doctorsLabel?: true
+    departmentsLabel?: true
+    experienceLabel?: true
+    certificationTitle?: true
+    certificationSubtitle?: true
+    cardExperienceCount?: true
+    cardExperienceLabel?: true
+    cardPatientsCount?: true
+    cardPatientsLabel?: true
+    primaryButtonText?: true
+    secondaryButtonText?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type AboutSectionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AboutSection to aggregate.
+     */
+    where?: AboutSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AboutSections to fetch.
+     */
+    orderBy?: AboutSectionOrderByWithRelationInput | AboutSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AboutSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AboutSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AboutSections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned AboutSections
+    **/
+    _count?: true | AboutSectionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AboutSectionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AboutSectionMaxAggregateInputType
+  }
+
+  export type GetAboutSectionAggregateType<T extends AboutSectionAggregateArgs> = {
+        [P in keyof T & keyof AggregateAboutSection]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAboutSection[P]>
+      : GetScalarType<T[P], AggregateAboutSection[P]>
+  }
+
+
+
+
+  export type AboutSectionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AboutSectionWhereInput
+    orderBy?: AboutSectionOrderByWithAggregationInput | AboutSectionOrderByWithAggregationInput[]
+    by: AboutSectionScalarFieldEnum[] | AboutSectionScalarFieldEnum
+    having?: AboutSectionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AboutSectionCountAggregateInputType | true
+    _min?: AboutSectionMinAggregateInputType
+    _max?: AboutSectionMaxAggregateInputType
+  }
+
+  export type AboutSectionGroupByOutputType = {
+    id: string
+    sectionLabel: string | null
+    title1: string
+    highlightedText: string | null
+    title2: string | null
+    description: string
+    image: string | null
+    feature1Icon: string | null
+    feature1Title: string | null
+    feature1Description: string | null
+    feature2Icon: string | null
+    feature2Title: string | null
+    feature2Description: string | null
+    feature3Icon: string | null
+    feature3Title: string | null
+    feature3Description: string | null
+    patientsCount: string | null
+    doctorsCount: string | null
+    departmentsCount: string | null
+    experienceYears: string | null
+    patientsLabel: string | null
+    doctorsLabel: string | null
+    departmentsLabel: string | null
+    experienceLabel: string | null
+    certificationTitle: string | null
+    certificationSubtitle: string | null
+    cardExperienceCount: string | null
+    cardExperienceLabel: string | null
+    cardPatientsCount: string | null
+    cardPatientsLabel: string | null
+    primaryButtonText: string | null
+    secondaryButtonText: string | null
+    isActive: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: AboutSectionCountAggregateOutputType | null
+    _min: AboutSectionMinAggregateOutputType | null
+    _max: AboutSectionMaxAggregateOutputType | null
+  }
+
+  type GetAboutSectionGroupByPayload<T extends AboutSectionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AboutSectionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AboutSectionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AboutSectionGroupByOutputType[P]>
+            : GetScalarType<T[P], AboutSectionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AboutSectionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    sectionLabel?: boolean
+    title1?: boolean
+    highlightedText?: boolean
+    title2?: boolean
+    description?: boolean
+    image?: boolean
+    feature1Icon?: boolean
+    feature1Title?: boolean
+    feature1Description?: boolean
+    feature2Icon?: boolean
+    feature2Title?: boolean
+    feature2Description?: boolean
+    feature3Icon?: boolean
+    feature3Title?: boolean
+    feature3Description?: boolean
+    patientsCount?: boolean
+    doctorsCount?: boolean
+    departmentsCount?: boolean
+    experienceYears?: boolean
+    patientsLabel?: boolean
+    doctorsLabel?: boolean
+    departmentsLabel?: boolean
+    experienceLabel?: boolean
+    certificationTitle?: boolean
+    certificationSubtitle?: boolean
+    cardExperienceCount?: boolean
+    cardExperienceLabel?: boolean
+    cardPatientsCount?: boolean
+    cardPatientsLabel?: boolean
+    primaryButtonText?: boolean
+    secondaryButtonText?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["aboutSection"]>
+
+
+
+  export type AboutSectionSelectScalar = {
+    id?: boolean
+    sectionLabel?: boolean
+    title1?: boolean
+    highlightedText?: boolean
+    title2?: boolean
+    description?: boolean
+    image?: boolean
+    feature1Icon?: boolean
+    feature1Title?: boolean
+    feature1Description?: boolean
+    feature2Icon?: boolean
+    feature2Title?: boolean
+    feature2Description?: boolean
+    feature3Icon?: boolean
+    feature3Title?: boolean
+    feature3Description?: boolean
+    patientsCount?: boolean
+    doctorsCount?: boolean
+    departmentsCount?: boolean
+    experienceYears?: boolean
+    patientsLabel?: boolean
+    doctorsLabel?: boolean
+    departmentsLabel?: boolean
+    experienceLabel?: boolean
+    certificationTitle?: boolean
+    certificationSubtitle?: boolean
+    cardExperienceCount?: boolean
+    cardExperienceLabel?: boolean
+    cardPatientsCount?: boolean
+    cardPatientsLabel?: boolean
+    primaryButtonText?: boolean
+    secondaryButtonText?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type AboutSectionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "sectionLabel" | "title1" | "highlightedText" | "title2" | "description" | "image" | "feature1Icon" | "feature1Title" | "feature1Description" | "feature2Icon" | "feature2Title" | "feature2Description" | "feature3Icon" | "feature3Title" | "feature3Description" | "patientsCount" | "doctorsCount" | "departmentsCount" | "experienceYears" | "patientsLabel" | "doctorsLabel" | "departmentsLabel" | "experienceLabel" | "certificationTitle" | "certificationSubtitle" | "cardExperienceCount" | "cardExperienceLabel" | "cardPatientsCount" | "cardPatientsLabel" | "primaryButtonText" | "secondaryButtonText" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["aboutSection"]>
+
+  export type $AboutSectionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "AboutSection"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      sectionLabel: string | null
+      title1: string
+      highlightedText: string | null
+      title2: string | null
+      description: string
+      image: string | null
+      feature1Icon: string | null
+      feature1Title: string | null
+      feature1Description: string | null
+      feature2Icon: string | null
+      feature2Title: string | null
+      feature2Description: string | null
+      feature3Icon: string | null
+      feature3Title: string | null
+      feature3Description: string | null
+      patientsCount: string | null
+      doctorsCount: string | null
+      departmentsCount: string | null
+      experienceYears: string | null
+      patientsLabel: string | null
+      doctorsLabel: string | null
+      departmentsLabel: string | null
+      experienceLabel: string | null
+      certificationTitle: string | null
+      certificationSubtitle: string | null
+      cardExperienceCount: string | null
+      cardExperienceLabel: string | null
+      cardPatientsCount: string | null
+      cardPatientsLabel: string | null
+      primaryButtonText: string | null
+      secondaryButtonText: string | null
+      isActive: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["aboutSection"]>
+    composites: {}
+  }
+
+  type AboutSectionGetPayload<S extends boolean | null | undefined | AboutSectionDefaultArgs> = $Result.GetResult<Prisma.$AboutSectionPayload, S>
+
+  type AboutSectionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AboutSectionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AboutSectionCountAggregateInputType | true
+    }
+
+  export interface AboutSectionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['AboutSection'], meta: { name: 'AboutSection' } }
+    /**
+     * Find zero or one AboutSection that matches the filter.
+     * @param {AboutSectionFindUniqueArgs} args - Arguments to find a AboutSection
+     * @example
+     * // Get one AboutSection
+     * const aboutSection = await prisma.aboutSection.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AboutSectionFindUniqueArgs>(args: SelectSubset<T, AboutSectionFindUniqueArgs<ExtArgs>>): Prisma__AboutSectionClient<$Result.GetResult<Prisma.$AboutSectionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one AboutSection that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {AboutSectionFindUniqueOrThrowArgs} args - Arguments to find a AboutSection
+     * @example
+     * // Get one AboutSection
+     * const aboutSection = await prisma.aboutSection.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AboutSectionFindUniqueOrThrowArgs>(args: SelectSubset<T, AboutSectionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AboutSectionClient<$Result.GetResult<Prisma.$AboutSectionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first AboutSection that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AboutSectionFindFirstArgs} args - Arguments to find a AboutSection
+     * @example
+     * // Get one AboutSection
+     * const aboutSection = await prisma.aboutSection.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AboutSectionFindFirstArgs>(args?: SelectSubset<T, AboutSectionFindFirstArgs<ExtArgs>>): Prisma__AboutSectionClient<$Result.GetResult<Prisma.$AboutSectionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first AboutSection that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AboutSectionFindFirstOrThrowArgs} args - Arguments to find a AboutSection
+     * @example
+     * // Get one AboutSection
+     * const aboutSection = await prisma.aboutSection.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AboutSectionFindFirstOrThrowArgs>(args?: SelectSubset<T, AboutSectionFindFirstOrThrowArgs<ExtArgs>>): Prisma__AboutSectionClient<$Result.GetResult<Prisma.$AboutSectionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more AboutSections that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AboutSectionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all AboutSections
+     * const aboutSections = await prisma.aboutSection.findMany()
+     * 
+     * // Get first 10 AboutSections
+     * const aboutSections = await prisma.aboutSection.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const aboutSectionWithIdOnly = await prisma.aboutSection.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends AboutSectionFindManyArgs>(args?: SelectSubset<T, AboutSectionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AboutSectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a AboutSection.
+     * @param {AboutSectionCreateArgs} args - Arguments to create a AboutSection.
+     * @example
+     * // Create one AboutSection
+     * const AboutSection = await prisma.aboutSection.create({
+     *   data: {
+     *     // ... data to create a AboutSection
+     *   }
+     * })
+     * 
+     */
+    create<T extends AboutSectionCreateArgs>(args: SelectSubset<T, AboutSectionCreateArgs<ExtArgs>>): Prisma__AboutSectionClient<$Result.GetResult<Prisma.$AboutSectionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many AboutSections.
+     * @param {AboutSectionCreateManyArgs} args - Arguments to create many AboutSections.
+     * @example
+     * // Create many AboutSections
+     * const aboutSection = await prisma.aboutSection.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AboutSectionCreateManyArgs>(args?: SelectSubset<T, AboutSectionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a AboutSection.
+     * @param {AboutSectionDeleteArgs} args - Arguments to delete one AboutSection.
+     * @example
+     * // Delete one AboutSection
+     * const AboutSection = await prisma.aboutSection.delete({
+     *   where: {
+     *     // ... filter to delete one AboutSection
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AboutSectionDeleteArgs>(args: SelectSubset<T, AboutSectionDeleteArgs<ExtArgs>>): Prisma__AboutSectionClient<$Result.GetResult<Prisma.$AboutSectionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one AboutSection.
+     * @param {AboutSectionUpdateArgs} args - Arguments to update one AboutSection.
+     * @example
+     * // Update one AboutSection
+     * const aboutSection = await prisma.aboutSection.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AboutSectionUpdateArgs>(args: SelectSubset<T, AboutSectionUpdateArgs<ExtArgs>>): Prisma__AboutSectionClient<$Result.GetResult<Prisma.$AboutSectionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more AboutSections.
+     * @param {AboutSectionDeleteManyArgs} args - Arguments to filter AboutSections to delete.
+     * @example
+     * // Delete a few AboutSections
+     * const { count } = await prisma.aboutSection.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AboutSectionDeleteManyArgs>(args?: SelectSubset<T, AboutSectionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AboutSections.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AboutSectionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many AboutSections
+     * const aboutSection = await prisma.aboutSection.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AboutSectionUpdateManyArgs>(args: SelectSubset<T, AboutSectionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one AboutSection.
+     * @param {AboutSectionUpsertArgs} args - Arguments to update or create a AboutSection.
+     * @example
+     * // Update or create a AboutSection
+     * const aboutSection = await prisma.aboutSection.upsert({
+     *   create: {
+     *     // ... data to create a AboutSection
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the AboutSection we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AboutSectionUpsertArgs>(args: SelectSubset<T, AboutSectionUpsertArgs<ExtArgs>>): Prisma__AboutSectionClient<$Result.GetResult<Prisma.$AboutSectionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of AboutSections.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AboutSectionCountArgs} args - Arguments to filter AboutSections to count.
+     * @example
+     * // Count the number of AboutSections
+     * const count = await prisma.aboutSection.count({
+     *   where: {
+     *     // ... the filter for the AboutSections we want to count
+     *   }
+     * })
+    **/
+    count<T extends AboutSectionCountArgs>(
+      args?: Subset<T, AboutSectionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AboutSectionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a AboutSection.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AboutSectionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AboutSectionAggregateArgs>(args: Subset<T, AboutSectionAggregateArgs>): Prisma.PrismaPromise<GetAboutSectionAggregateType<T>>
+
+    /**
+     * Group by AboutSection.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AboutSectionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AboutSectionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AboutSectionGroupByArgs['orderBy'] }
+        : { orderBy?: AboutSectionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AboutSectionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAboutSectionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the AboutSection model
+   */
+  readonly fields: AboutSectionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for AboutSection.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AboutSectionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the AboutSection model
+   */
+  interface AboutSectionFieldRefs {
+    readonly id: FieldRef<"AboutSection", 'String'>
+    readonly sectionLabel: FieldRef<"AboutSection", 'String'>
+    readonly title1: FieldRef<"AboutSection", 'String'>
+    readonly highlightedText: FieldRef<"AboutSection", 'String'>
+    readonly title2: FieldRef<"AboutSection", 'String'>
+    readonly description: FieldRef<"AboutSection", 'String'>
+    readonly image: FieldRef<"AboutSection", 'String'>
+    readonly feature1Icon: FieldRef<"AboutSection", 'String'>
+    readonly feature1Title: FieldRef<"AboutSection", 'String'>
+    readonly feature1Description: FieldRef<"AboutSection", 'String'>
+    readonly feature2Icon: FieldRef<"AboutSection", 'String'>
+    readonly feature2Title: FieldRef<"AboutSection", 'String'>
+    readonly feature2Description: FieldRef<"AboutSection", 'String'>
+    readonly feature3Icon: FieldRef<"AboutSection", 'String'>
+    readonly feature3Title: FieldRef<"AboutSection", 'String'>
+    readonly feature3Description: FieldRef<"AboutSection", 'String'>
+    readonly patientsCount: FieldRef<"AboutSection", 'String'>
+    readonly doctorsCount: FieldRef<"AboutSection", 'String'>
+    readonly departmentsCount: FieldRef<"AboutSection", 'String'>
+    readonly experienceYears: FieldRef<"AboutSection", 'String'>
+    readonly patientsLabel: FieldRef<"AboutSection", 'String'>
+    readonly doctorsLabel: FieldRef<"AboutSection", 'String'>
+    readonly departmentsLabel: FieldRef<"AboutSection", 'String'>
+    readonly experienceLabel: FieldRef<"AboutSection", 'String'>
+    readonly certificationTitle: FieldRef<"AboutSection", 'String'>
+    readonly certificationSubtitle: FieldRef<"AboutSection", 'String'>
+    readonly cardExperienceCount: FieldRef<"AboutSection", 'String'>
+    readonly cardExperienceLabel: FieldRef<"AboutSection", 'String'>
+    readonly cardPatientsCount: FieldRef<"AboutSection", 'String'>
+    readonly cardPatientsLabel: FieldRef<"AboutSection", 'String'>
+    readonly primaryButtonText: FieldRef<"AboutSection", 'String'>
+    readonly secondaryButtonText: FieldRef<"AboutSection", 'String'>
+    readonly isActive: FieldRef<"AboutSection", 'Boolean'>
+    readonly createdAt: FieldRef<"AboutSection", 'DateTime'>
+    readonly updatedAt: FieldRef<"AboutSection", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * AboutSection findUnique
+   */
+  export type AboutSectionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AboutSection
+     */
+    select?: AboutSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AboutSection
+     */
+    omit?: AboutSectionOmit<ExtArgs> | null
+    /**
+     * Filter, which AboutSection to fetch.
+     */
+    where: AboutSectionWhereUniqueInput
+  }
+
+  /**
+   * AboutSection findUniqueOrThrow
+   */
+  export type AboutSectionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AboutSection
+     */
+    select?: AboutSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AboutSection
+     */
+    omit?: AboutSectionOmit<ExtArgs> | null
+    /**
+     * Filter, which AboutSection to fetch.
+     */
+    where: AboutSectionWhereUniqueInput
+  }
+
+  /**
+   * AboutSection findFirst
+   */
+  export type AboutSectionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AboutSection
+     */
+    select?: AboutSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AboutSection
+     */
+    omit?: AboutSectionOmit<ExtArgs> | null
+    /**
+     * Filter, which AboutSection to fetch.
+     */
+    where?: AboutSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AboutSections to fetch.
+     */
+    orderBy?: AboutSectionOrderByWithRelationInput | AboutSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AboutSections.
+     */
+    cursor?: AboutSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AboutSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AboutSections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AboutSections.
+     */
+    distinct?: AboutSectionScalarFieldEnum | AboutSectionScalarFieldEnum[]
+  }
+
+  /**
+   * AboutSection findFirstOrThrow
+   */
+  export type AboutSectionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AboutSection
+     */
+    select?: AboutSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AboutSection
+     */
+    omit?: AboutSectionOmit<ExtArgs> | null
+    /**
+     * Filter, which AboutSection to fetch.
+     */
+    where?: AboutSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AboutSections to fetch.
+     */
+    orderBy?: AboutSectionOrderByWithRelationInput | AboutSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AboutSections.
+     */
+    cursor?: AboutSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AboutSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AboutSections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AboutSections.
+     */
+    distinct?: AboutSectionScalarFieldEnum | AboutSectionScalarFieldEnum[]
+  }
+
+  /**
+   * AboutSection findMany
+   */
+  export type AboutSectionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AboutSection
+     */
+    select?: AboutSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AboutSection
+     */
+    omit?: AboutSectionOmit<ExtArgs> | null
+    /**
+     * Filter, which AboutSections to fetch.
+     */
+    where?: AboutSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AboutSections to fetch.
+     */
+    orderBy?: AboutSectionOrderByWithRelationInput | AboutSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing AboutSections.
+     */
+    cursor?: AboutSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AboutSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AboutSections.
+     */
+    skip?: number
+    distinct?: AboutSectionScalarFieldEnum | AboutSectionScalarFieldEnum[]
+  }
+
+  /**
+   * AboutSection create
+   */
+  export type AboutSectionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AboutSection
+     */
+    select?: AboutSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AboutSection
+     */
+    omit?: AboutSectionOmit<ExtArgs> | null
+    /**
+     * The data needed to create a AboutSection.
+     */
+    data: XOR<AboutSectionCreateInput, AboutSectionUncheckedCreateInput>
+  }
+
+  /**
+   * AboutSection createMany
+   */
+  export type AboutSectionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many AboutSections.
+     */
+    data: AboutSectionCreateManyInput | AboutSectionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * AboutSection update
+   */
+  export type AboutSectionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AboutSection
+     */
+    select?: AboutSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AboutSection
+     */
+    omit?: AboutSectionOmit<ExtArgs> | null
+    /**
+     * The data needed to update a AboutSection.
+     */
+    data: XOR<AboutSectionUpdateInput, AboutSectionUncheckedUpdateInput>
+    /**
+     * Choose, which AboutSection to update.
+     */
+    where: AboutSectionWhereUniqueInput
+  }
+
+  /**
+   * AboutSection updateMany
+   */
+  export type AboutSectionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update AboutSections.
+     */
+    data: XOR<AboutSectionUpdateManyMutationInput, AboutSectionUncheckedUpdateManyInput>
+    /**
+     * Filter which AboutSections to update
+     */
+    where?: AboutSectionWhereInput
+    /**
+     * Limit how many AboutSections to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * AboutSection upsert
+   */
+  export type AboutSectionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AboutSection
+     */
+    select?: AboutSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AboutSection
+     */
+    omit?: AboutSectionOmit<ExtArgs> | null
+    /**
+     * The filter to search for the AboutSection to update in case it exists.
+     */
+    where: AboutSectionWhereUniqueInput
+    /**
+     * In case the AboutSection found by the `where` argument doesn't exist, create a new AboutSection with this data.
+     */
+    create: XOR<AboutSectionCreateInput, AboutSectionUncheckedCreateInput>
+    /**
+     * In case the AboutSection was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AboutSectionUpdateInput, AboutSectionUncheckedUpdateInput>
+  }
+
+  /**
+   * AboutSection delete
+   */
+  export type AboutSectionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AboutSection
+     */
+    select?: AboutSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AboutSection
+     */
+    omit?: AboutSectionOmit<ExtArgs> | null
+    /**
+     * Filter which AboutSection to delete.
+     */
+    where: AboutSectionWhereUniqueInput
+  }
+
+  /**
+   * AboutSection deleteMany
+   */
+  export type AboutSectionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AboutSections to delete
+     */
+    where?: AboutSectionWhereInput
+    /**
+     * Limit how many AboutSections to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * AboutSection without action
+   */
+  export type AboutSectionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AboutSection
+     */
+    select?: AboutSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AboutSection
+     */
+    omit?: AboutSectionOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ServiceSection
+   */
+
+  export type AggregateServiceSection = {
+    _count: ServiceSectionCountAggregateOutputType | null
+    _min: ServiceSectionMinAggregateOutputType | null
+    _max: ServiceSectionMaxAggregateOutputType | null
+  }
+
+  export type ServiceSectionMinAggregateOutputType = {
+    id: string | null
+    sectionLabel: string | null
+    title: string | null
+    description: string | null
+    buttonText: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ServiceSectionMaxAggregateOutputType = {
+    id: string | null
+    sectionLabel: string | null
+    title: string | null
+    description: string | null
+    buttonText: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ServiceSectionCountAggregateOutputType = {
+    id: number
+    sectionLabel: number
+    title: number
+    description: number
+    buttonText: number
+    isActive: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ServiceSectionMinAggregateInputType = {
+    id?: true
+    sectionLabel?: true
+    title?: true
+    description?: true
+    buttonText?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ServiceSectionMaxAggregateInputType = {
+    id?: true
+    sectionLabel?: true
+    title?: true
+    description?: true
+    buttonText?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ServiceSectionCountAggregateInputType = {
+    id?: true
+    sectionLabel?: true
+    title?: true
+    description?: true
+    buttonText?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ServiceSectionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ServiceSection to aggregate.
+     */
+    where?: ServiceSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ServiceSections to fetch.
+     */
+    orderBy?: ServiceSectionOrderByWithRelationInput | ServiceSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ServiceSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ServiceSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ServiceSections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ServiceSections
+    **/
+    _count?: true | ServiceSectionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ServiceSectionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ServiceSectionMaxAggregateInputType
+  }
+
+  export type GetServiceSectionAggregateType<T extends ServiceSectionAggregateArgs> = {
+        [P in keyof T & keyof AggregateServiceSection]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateServiceSection[P]>
+      : GetScalarType<T[P], AggregateServiceSection[P]>
+  }
+
+
+
+
+  export type ServiceSectionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ServiceSectionWhereInput
+    orderBy?: ServiceSectionOrderByWithAggregationInput | ServiceSectionOrderByWithAggregationInput[]
+    by: ServiceSectionScalarFieldEnum[] | ServiceSectionScalarFieldEnum
+    having?: ServiceSectionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ServiceSectionCountAggregateInputType | true
+    _min?: ServiceSectionMinAggregateInputType
+    _max?: ServiceSectionMaxAggregateInputType
+  }
+
+  export type ServiceSectionGroupByOutputType = {
+    id: string
+    sectionLabel: string | null
+    title: string
+    description: string | null
+    buttonText: string | null
+    isActive: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: ServiceSectionCountAggregateOutputType | null
+    _min: ServiceSectionMinAggregateOutputType | null
+    _max: ServiceSectionMaxAggregateOutputType | null
+  }
+
+  type GetServiceSectionGroupByPayload<T extends ServiceSectionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ServiceSectionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ServiceSectionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ServiceSectionGroupByOutputType[P]>
+            : GetScalarType<T[P], ServiceSectionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ServiceSectionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    sectionLabel?: boolean
+    title?: boolean
+    description?: boolean
+    buttonText?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    services?: boolean | ServiceSection$servicesArgs<ExtArgs>
+    _count?: boolean | ServiceSectionCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["serviceSection"]>
+
+
+
+  export type ServiceSectionSelectScalar = {
+    id?: boolean
+    sectionLabel?: boolean
+    title?: boolean
+    description?: boolean
+    buttonText?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type ServiceSectionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "sectionLabel" | "title" | "description" | "buttonText" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["serviceSection"]>
+  export type ServiceSectionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    services?: boolean | ServiceSection$servicesArgs<ExtArgs>
+    _count?: boolean | ServiceSectionCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $ServiceSectionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ServiceSection"
+    objects: {
+      services: Prisma.$ServiceItemPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      sectionLabel: string | null
+      title: string
+      description: string | null
+      buttonText: string | null
+      isActive: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["serviceSection"]>
+    composites: {}
+  }
+
+  type ServiceSectionGetPayload<S extends boolean | null | undefined | ServiceSectionDefaultArgs> = $Result.GetResult<Prisma.$ServiceSectionPayload, S>
+
+  type ServiceSectionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ServiceSectionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ServiceSectionCountAggregateInputType | true
+    }
+
+  export interface ServiceSectionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ServiceSection'], meta: { name: 'ServiceSection' } }
+    /**
+     * Find zero or one ServiceSection that matches the filter.
+     * @param {ServiceSectionFindUniqueArgs} args - Arguments to find a ServiceSection
+     * @example
+     * // Get one ServiceSection
+     * const serviceSection = await prisma.serviceSection.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ServiceSectionFindUniqueArgs>(args: SelectSubset<T, ServiceSectionFindUniqueArgs<ExtArgs>>): Prisma__ServiceSectionClient<$Result.GetResult<Prisma.$ServiceSectionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ServiceSection that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ServiceSectionFindUniqueOrThrowArgs} args - Arguments to find a ServiceSection
+     * @example
+     * // Get one ServiceSection
+     * const serviceSection = await prisma.serviceSection.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ServiceSectionFindUniqueOrThrowArgs>(args: SelectSubset<T, ServiceSectionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ServiceSectionClient<$Result.GetResult<Prisma.$ServiceSectionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ServiceSection that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServiceSectionFindFirstArgs} args - Arguments to find a ServiceSection
+     * @example
+     * // Get one ServiceSection
+     * const serviceSection = await prisma.serviceSection.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ServiceSectionFindFirstArgs>(args?: SelectSubset<T, ServiceSectionFindFirstArgs<ExtArgs>>): Prisma__ServiceSectionClient<$Result.GetResult<Prisma.$ServiceSectionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ServiceSection that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServiceSectionFindFirstOrThrowArgs} args - Arguments to find a ServiceSection
+     * @example
+     * // Get one ServiceSection
+     * const serviceSection = await prisma.serviceSection.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ServiceSectionFindFirstOrThrowArgs>(args?: SelectSubset<T, ServiceSectionFindFirstOrThrowArgs<ExtArgs>>): Prisma__ServiceSectionClient<$Result.GetResult<Prisma.$ServiceSectionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ServiceSections that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServiceSectionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ServiceSections
+     * const serviceSections = await prisma.serviceSection.findMany()
+     * 
+     * // Get first 10 ServiceSections
+     * const serviceSections = await prisma.serviceSection.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const serviceSectionWithIdOnly = await prisma.serviceSection.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ServiceSectionFindManyArgs>(args?: SelectSubset<T, ServiceSectionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ServiceSectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ServiceSection.
+     * @param {ServiceSectionCreateArgs} args - Arguments to create a ServiceSection.
+     * @example
+     * // Create one ServiceSection
+     * const ServiceSection = await prisma.serviceSection.create({
+     *   data: {
+     *     // ... data to create a ServiceSection
+     *   }
+     * })
+     * 
+     */
+    create<T extends ServiceSectionCreateArgs>(args: SelectSubset<T, ServiceSectionCreateArgs<ExtArgs>>): Prisma__ServiceSectionClient<$Result.GetResult<Prisma.$ServiceSectionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ServiceSections.
+     * @param {ServiceSectionCreateManyArgs} args - Arguments to create many ServiceSections.
+     * @example
+     * // Create many ServiceSections
+     * const serviceSection = await prisma.serviceSection.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ServiceSectionCreateManyArgs>(args?: SelectSubset<T, ServiceSectionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a ServiceSection.
+     * @param {ServiceSectionDeleteArgs} args - Arguments to delete one ServiceSection.
+     * @example
+     * // Delete one ServiceSection
+     * const ServiceSection = await prisma.serviceSection.delete({
+     *   where: {
+     *     // ... filter to delete one ServiceSection
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ServiceSectionDeleteArgs>(args: SelectSubset<T, ServiceSectionDeleteArgs<ExtArgs>>): Prisma__ServiceSectionClient<$Result.GetResult<Prisma.$ServiceSectionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ServiceSection.
+     * @param {ServiceSectionUpdateArgs} args - Arguments to update one ServiceSection.
+     * @example
+     * // Update one ServiceSection
+     * const serviceSection = await prisma.serviceSection.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ServiceSectionUpdateArgs>(args: SelectSubset<T, ServiceSectionUpdateArgs<ExtArgs>>): Prisma__ServiceSectionClient<$Result.GetResult<Prisma.$ServiceSectionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ServiceSections.
+     * @param {ServiceSectionDeleteManyArgs} args - Arguments to filter ServiceSections to delete.
+     * @example
+     * // Delete a few ServiceSections
+     * const { count } = await prisma.serviceSection.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ServiceSectionDeleteManyArgs>(args?: SelectSubset<T, ServiceSectionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ServiceSections.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServiceSectionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ServiceSections
+     * const serviceSection = await prisma.serviceSection.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ServiceSectionUpdateManyArgs>(args: SelectSubset<T, ServiceSectionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one ServiceSection.
+     * @param {ServiceSectionUpsertArgs} args - Arguments to update or create a ServiceSection.
+     * @example
+     * // Update or create a ServiceSection
+     * const serviceSection = await prisma.serviceSection.upsert({
+     *   create: {
+     *     // ... data to create a ServiceSection
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ServiceSection we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ServiceSectionUpsertArgs>(args: SelectSubset<T, ServiceSectionUpsertArgs<ExtArgs>>): Prisma__ServiceSectionClient<$Result.GetResult<Prisma.$ServiceSectionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ServiceSections.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServiceSectionCountArgs} args - Arguments to filter ServiceSections to count.
+     * @example
+     * // Count the number of ServiceSections
+     * const count = await prisma.serviceSection.count({
+     *   where: {
+     *     // ... the filter for the ServiceSections we want to count
+     *   }
+     * })
+    **/
+    count<T extends ServiceSectionCountArgs>(
+      args?: Subset<T, ServiceSectionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ServiceSectionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ServiceSection.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServiceSectionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ServiceSectionAggregateArgs>(args: Subset<T, ServiceSectionAggregateArgs>): Prisma.PrismaPromise<GetServiceSectionAggregateType<T>>
+
+    /**
+     * Group by ServiceSection.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServiceSectionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ServiceSectionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ServiceSectionGroupByArgs['orderBy'] }
+        : { orderBy?: ServiceSectionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ServiceSectionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetServiceSectionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ServiceSection model
+   */
+  readonly fields: ServiceSectionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ServiceSection.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ServiceSectionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    services<T extends ServiceSection$servicesArgs<ExtArgs> = {}>(args?: Subset<T, ServiceSection$servicesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ServiceItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ServiceSection model
+   */
+  interface ServiceSectionFieldRefs {
+    readonly id: FieldRef<"ServiceSection", 'String'>
+    readonly sectionLabel: FieldRef<"ServiceSection", 'String'>
+    readonly title: FieldRef<"ServiceSection", 'String'>
+    readonly description: FieldRef<"ServiceSection", 'String'>
+    readonly buttonText: FieldRef<"ServiceSection", 'String'>
+    readonly isActive: FieldRef<"ServiceSection", 'Boolean'>
+    readonly createdAt: FieldRef<"ServiceSection", 'DateTime'>
+    readonly updatedAt: FieldRef<"ServiceSection", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ServiceSection findUnique
+   */
+  export type ServiceSectionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceSection
+     */
+    select?: ServiceSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceSection
+     */
+    omit?: ServiceSectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceSectionInclude<ExtArgs> | null
+    /**
+     * Filter, which ServiceSection to fetch.
+     */
+    where: ServiceSectionWhereUniqueInput
+  }
+
+  /**
+   * ServiceSection findUniqueOrThrow
+   */
+  export type ServiceSectionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceSection
+     */
+    select?: ServiceSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceSection
+     */
+    omit?: ServiceSectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceSectionInclude<ExtArgs> | null
+    /**
+     * Filter, which ServiceSection to fetch.
+     */
+    where: ServiceSectionWhereUniqueInput
+  }
+
+  /**
+   * ServiceSection findFirst
+   */
+  export type ServiceSectionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceSection
+     */
+    select?: ServiceSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceSection
+     */
+    omit?: ServiceSectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceSectionInclude<ExtArgs> | null
+    /**
+     * Filter, which ServiceSection to fetch.
+     */
+    where?: ServiceSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ServiceSections to fetch.
+     */
+    orderBy?: ServiceSectionOrderByWithRelationInput | ServiceSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ServiceSections.
+     */
+    cursor?: ServiceSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ServiceSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ServiceSections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ServiceSections.
+     */
+    distinct?: ServiceSectionScalarFieldEnum | ServiceSectionScalarFieldEnum[]
+  }
+
+  /**
+   * ServiceSection findFirstOrThrow
+   */
+  export type ServiceSectionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceSection
+     */
+    select?: ServiceSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceSection
+     */
+    omit?: ServiceSectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceSectionInclude<ExtArgs> | null
+    /**
+     * Filter, which ServiceSection to fetch.
+     */
+    where?: ServiceSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ServiceSections to fetch.
+     */
+    orderBy?: ServiceSectionOrderByWithRelationInput | ServiceSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ServiceSections.
+     */
+    cursor?: ServiceSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ServiceSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ServiceSections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ServiceSections.
+     */
+    distinct?: ServiceSectionScalarFieldEnum | ServiceSectionScalarFieldEnum[]
+  }
+
+  /**
+   * ServiceSection findMany
+   */
+  export type ServiceSectionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceSection
+     */
+    select?: ServiceSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceSection
+     */
+    omit?: ServiceSectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceSectionInclude<ExtArgs> | null
+    /**
+     * Filter, which ServiceSections to fetch.
+     */
+    where?: ServiceSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ServiceSections to fetch.
+     */
+    orderBy?: ServiceSectionOrderByWithRelationInput | ServiceSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ServiceSections.
+     */
+    cursor?: ServiceSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ServiceSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ServiceSections.
+     */
+    skip?: number
+    distinct?: ServiceSectionScalarFieldEnum | ServiceSectionScalarFieldEnum[]
+  }
+
+  /**
+   * ServiceSection create
+   */
+  export type ServiceSectionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceSection
+     */
+    select?: ServiceSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceSection
+     */
+    omit?: ServiceSectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceSectionInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ServiceSection.
+     */
+    data: XOR<ServiceSectionCreateInput, ServiceSectionUncheckedCreateInput>
+  }
+
+  /**
+   * ServiceSection createMany
+   */
+  export type ServiceSectionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ServiceSections.
+     */
+    data: ServiceSectionCreateManyInput | ServiceSectionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ServiceSection update
+   */
+  export type ServiceSectionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceSection
+     */
+    select?: ServiceSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceSection
+     */
+    omit?: ServiceSectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceSectionInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ServiceSection.
+     */
+    data: XOR<ServiceSectionUpdateInput, ServiceSectionUncheckedUpdateInput>
+    /**
+     * Choose, which ServiceSection to update.
+     */
+    where: ServiceSectionWhereUniqueInput
+  }
+
+  /**
+   * ServiceSection updateMany
+   */
+  export type ServiceSectionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ServiceSections.
+     */
+    data: XOR<ServiceSectionUpdateManyMutationInput, ServiceSectionUncheckedUpdateManyInput>
+    /**
+     * Filter which ServiceSections to update
+     */
+    where?: ServiceSectionWhereInput
+    /**
+     * Limit how many ServiceSections to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ServiceSection upsert
+   */
+  export type ServiceSectionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceSection
+     */
+    select?: ServiceSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceSection
+     */
+    omit?: ServiceSectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceSectionInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ServiceSection to update in case it exists.
+     */
+    where: ServiceSectionWhereUniqueInput
+    /**
+     * In case the ServiceSection found by the `where` argument doesn't exist, create a new ServiceSection with this data.
+     */
+    create: XOR<ServiceSectionCreateInput, ServiceSectionUncheckedCreateInput>
+    /**
+     * In case the ServiceSection was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ServiceSectionUpdateInput, ServiceSectionUncheckedUpdateInput>
+  }
+
+  /**
+   * ServiceSection delete
+   */
+  export type ServiceSectionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceSection
+     */
+    select?: ServiceSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceSection
+     */
+    omit?: ServiceSectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceSectionInclude<ExtArgs> | null
+    /**
+     * Filter which ServiceSection to delete.
+     */
+    where: ServiceSectionWhereUniqueInput
+  }
+
+  /**
+   * ServiceSection deleteMany
+   */
+  export type ServiceSectionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ServiceSections to delete
+     */
+    where?: ServiceSectionWhereInput
+    /**
+     * Limit how many ServiceSections to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ServiceSection.services
+   */
+  export type ServiceSection$servicesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceItem
+     */
+    select?: ServiceItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceItem
+     */
+    omit?: ServiceItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceItemInclude<ExtArgs> | null
+    where?: ServiceItemWhereInput
+    orderBy?: ServiceItemOrderByWithRelationInput | ServiceItemOrderByWithRelationInput[]
+    cursor?: ServiceItemWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ServiceItemScalarFieldEnum | ServiceItemScalarFieldEnum[]
+  }
+
+  /**
+   * ServiceSection without action
+   */
+  export type ServiceSectionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceSection
+     */
+    select?: ServiceSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceSection
+     */
+    omit?: ServiceSectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceSectionInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ServiceItem
+   */
+
+  export type AggregateServiceItem = {
+    _count: ServiceItemCountAggregateOutputType | null
+    _avg: ServiceItemAvgAggregateOutputType | null
+    _sum: ServiceItemSumAggregateOutputType | null
+    _min: ServiceItemMinAggregateOutputType | null
+    _max: ServiceItemMaxAggregateOutputType | null
+  }
+
+  export type ServiceItemAvgAggregateOutputType = {
+    serial: number | null
+  }
+
+  export type ServiceItemSumAggregateOutputType = {
+    serial: number | null
+  }
+
+  export type ServiceItemMinAggregateOutputType = {
+    id: string | null
+    serviceSectionId: string | null
+    icon: string | null
+    title: string | null
+    description: string | null
+    linkText: string | null
+    serial: number | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ServiceItemMaxAggregateOutputType = {
+    id: string | null
+    serviceSectionId: string | null
+    icon: string | null
+    title: string | null
+    description: string | null
+    linkText: string | null
+    serial: number | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ServiceItemCountAggregateOutputType = {
+    id: number
+    serviceSectionId: number
+    icon: number
+    title: number
+    description: number
+    linkText: number
+    serial: number
+    isActive: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ServiceItemAvgAggregateInputType = {
+    serial?: true
+  }
+
+  export type ServiceItemSumAggregateInputType = {
+    serial?: true
+  }
+
+  export type ServiceItemMinAggregateInputType = {
+    id?: true
+    serviceSectionId?: true
+    icon?: true
+    title?: true
+    description?: true
+    linkText?: true
+    serial?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ServiceItemMaxAggregateInputType = {
+    id?: true
+    serviceSectionId?: true
+    icon?: true
+    title?: true
+    description?: true
+    linkText?: true
+    serial?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ServiceItemCountAggregateInputType = {
+    id?: true
+    serviceSectionId?: true
+    icon?: true
+    title?: true
+    description?: true
+    linkText?: true
+    serial?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ServiceItemAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ServiceItem to aggregate.
+     */
+    where?: ServiceItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ServiceItems to fetch.
+     */
+    orderBy?: ServiceItemOrderByWithRelationInput | ServiceItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ServiceItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ServiceItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ServiceItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ServiceItems
+    **/
+    _count?: true | ServiceItemCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ServiceItemAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ServiceItemSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ServiceItemMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ServiceItemMaxAggregateInputType
+  }
+
+  export type GetServiceItemAggregateType<T extends ServiceItemAggregateArgs> = {
+        [P in keyof T & keyof AggregateServiceItem]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateServiceItem[P]>
+      : GetScalarType<T[P], AggregateServiceItem[P]>
+  }
+
+
+
+
+  export type ServiceItemGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ServiceItemWhereInput
+    orderBy?: ServiceItemOrderByWithAggregationInput | ServiceItemOrderByWithAggregationInput[]
+    by: ServiceItemScalarFieldEnum[] | ServiceItemScalarFieldEnum
+    having?: ServiceItemScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ServiceItemCountAggregateInputType | true
+    _avg?: ServiceItemAvgAggregateInputType
+    _sum?: ServiceItemSumAggregateInputType
+    _min?: ServiceItemMinAggregateInputType
+    _max?: ServiceItemMaxAggregateInputType
+  }
+
+  export type ServiceItemGroupByOutputType = {
+    id: string
+    serviceSectionId: string
+    icon: string | null
+    title: string
+    description: string
+    linkText: string | null
+    serial: number
+    isActive: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: ServiceItemCountAggregateOutputType | null
+    _avg: ServiceItemAvgAggregateOutputType | null
+    _sum: ServiceItemSumAggregateOutputType | null
+    _min: ServiceItemMinAggregateOutputType | null
+    _max: ServiceItemMaxAggregateOutputType | null
+  }
+
+  type GetServiceItemGroupByPayload<T extends ServiceItemGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ServiceItemGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ServiceItemGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ServiceItemGroupByOutputType[P]>
+            : GetScalarType<T[P], ServiceItemGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ServiceItemSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    serviceSectionId?: boolean
+    icon?: boolean
+    title?: boolean
+    description?: boolean
+    linkText?: boolean
+    serial?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    serviceSection?: boolean | ServiceSectionDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["serviceItem"]>
+
+
+
+  export type ServiceItemSelectScalar = {
+    id?: boolean
+    serviceSectionId?: boolean
+    icon?: boolean
+    title?: boolean
+    description?: boolean
+    linkText?: boolean
+    serial?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type ServiceItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "serviceSectionId" | "icon" | "title" | "description" | "linkText" | "serial" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["serviceItem"]>
+  export type ServiceItemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    serviceSection?: boolean | ServiceSectionDefaultArgs<ExtArgs>
+  }
+
+  export type $ServiceItemPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ServiceItem"
+    objects: {
+      serviceSection: Prisma.$ServiceSectionPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      serviceSectionId: string
+      icon: string | null
+      title: string
+      description: string
+      linkText: string | null
+      serial: number
+      isActive: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["serviceItem"]>
+    composites: {}
+  }
+
+  type ServiceItemGetPayload<S extends boolean | null | undefined | ServiceItemDefaultArgs> = $Result.GetResult<Prisma.$ServiceItemPayload, S>
+
+  type ServiceItemCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ServiceItemFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ServiceItemCountAggregateInputType | true
+    }
+
+  export interface ServiceItemDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ServiceItem'], meta: { name: 'ServiceItem' } }
+    /**
+     * Find zero or one ServiceItem that matches the filter.
+     * @param {ServiceItemFindUniqueArgs} args - Arguments to find a ServiceItem
+     * @example
+     * // Get one ServiceItem
+     * const serviceItem = await prisma.serviceItem.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ServiceItemFindUniqueArgs>(args: SelectSubset<T, ServiceItemFindUniqueArgs<ExtArgs>>): Prisma__ServiceItemClient<$Result.GetResult<Prisma.$ServiceItemPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ServiceItem that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ServiceItemFindUniqueOrThrowArgs} args - Arguments to find a ServiceItem
+     * @example
+     * // Get one ServiceItem
+     * const serviceItem = await prisma.serviceItem.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ServiceItemFindUniqueOrThrowArgs>(args: SelectSubset<T, ServiceItemFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ServiceItemClient<$Result.GetResult<Prisma.$ServiceItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ServiceItem that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServiceItemFindFirstArgs} args - Arguments to find a ServiceItem
+     * @example
+     * // Get one ServiceItem
+     * const serviceItem = await prisma.serviceItem.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ServiceItemFindFirstArgs>(args?: SelectSubset<T, ServiceItemFindFirstArgs<ExtArgs>>): Prisma__ServiceItemClient<$Result.GetResult<Prisma.$ServiceItemPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ServiceItem that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServiceItemFindFirstOrThrowArgs} args - Arguments to find a ServiceItem
+     * @example
+     * // Get one ServiceItem
+     * const serviceItem = await prisma.serviceItem.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ServiceItemFindFirstOrThrowArgs>(args?: SelectSubset<T, ServiceItemFindFirstOrThrowArgs<ExtArgs>>): Prisma__ServiceItemClient<$Result.GetResult<Prisma.$ServiceItemPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ServiceItems that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServiceItemFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ServiceItems
+     * const serviceItems = await prisma.serviceItem.findMany()
+     * 
+     * // Get first 10 ServiceItems
+     * const serviceItems = await prisma.serviceItem.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const serviceItemWithIdOnly = await prisma.serviceItem.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ServiceItemFindManyArgs>(args?: SelectSubset<T, ServiceItemFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ServiceItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ServiceItem.
+     * @param {ServiceItemCreateArgs} args - Arguments to create a ServiceItem.
+     * @example
+     * // Create one ServiceItem
+     * const ServiceItem = await prisma.serviceItem.create({
+     *   data: {
+     *     // ... data to create a ServiceItem
+     *   }
+     * })
+     * 
+     */
+    create<T extends ServiceItemCreateArgs>(args: SelectSubset<T, ServiceItemCreateArgs<ExtArgs>>): Prisma__ServiceItemClient<$Result.GetResult<Prisma.$ServiceItemPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ServiceItems.
+     * @param {ServiceItemCreateManyArgs} args - Arguments to create many ServiceItems.
+     * @example
+     * // Create many ServiceItems
+     * const serviceItem = await prisma.serviceItem.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ServiceItemCreateManyArgs>(args?: SelectSubset<T, ServiceItemCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a ServiceItem.
+     * @param {ServiceItemDeleteArgs} args - Arguments to delete one ServiceItem.
+     * @example
+     * // Delete one ServiceItem
+     * const ServiceItem = await prisma.serviceItem.delete({
+     *   where: {
+     *     // ... filter to delete one ServiceItem
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ServiceItemDeleteArgs>(args: SelectSubset<T, ServiceItemDeleteArgs<ExtArgs>>): Prisma__ServiceItemClient<$Result.GetResult<Prisma.$ServiceItemPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ServiceItem.
+     * @param {ServiceItemUpdateArgs} args - Arguments to update one ServiceItem.
+     * @example
+     * // Update one ServiceItem
+     * const serviceItem = await prisma.serviceItem.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ServiceItemUpdateArgs>(args: SelectSubset<T, ServiceItemUpdateArgs<ExtArgs>>): Prisma__ServiceItemClient<$Result.GetResult<Prisma.$ServiceItemPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ServiceItems.
+     * @param {ServiceItemDeleteManyArgs} args - Arguments to filter ServiceItems to delete.
+     * @example
+     * // Delete a few ServiceItems
+     * const { count } = await prisma.serviceItem.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ServiceItemDeleteManyArgs>(args?: SelectSubset<T, ServiceItemDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ServiceItems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServiceItemUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ServiceItems
+     * const serviceItem = await prisma.serviceItem.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ServiceItemUpdateManyArgs>(args: SelectSubset<T, ServiceItemUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one ServiceItem.
+     * @param {ServiceItemUpsertArgs} args - Arguments to update or create a ServiceItem.
+     * @example
+     * // Update or create a ServiceItem
+     * const serviceItem = await prisma.serviceItem.upsert({
+     *   create: {
+     *     // ... data to create a ServiceItem
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ServiceItem we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ServiceItemUpsertArgs>(args: SelectSubset<T, ServiceItemUpsertArgs<ExtArgs>>): Prisma__ServiceItemClient<$Result.GetResult<Prisma.$ServiceItemPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ServiceItems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServiceItemCountArgs} args - Arguments to filter ServiceItems to count.
+     * @example
+     * // Count the number of ServiceItems
+     * const count = await prisma.serviceItem.count({
+     *   where: {
+     *     // ... the filter for the ServiceItems we want to count
+     *   }
+     * })
+    **/
+    count<T extends ServiceItemCountArgs>(
+      args?: Subset<T, ServiceItemCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ServiceItemCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ServiceItem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServiceItemAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ServiceItemAggregateArgs>(args: Subset<T, ServiceItemAggregateArgs>): Prisma.PrismaPromise<GetServiceItemAggregateType<T>>
+
+    /**
+     * Group by ServiceItem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServiceItemGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ServiceItemGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ServiceItemGroupByArgs['orderBy'] }
+        : { orderBy?: ServiceItemGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ServiceItemGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetServiceItemGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ServiceItem model
+   */
+  readonly fields: ServiceItemFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ServiceItem.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ServiceItemClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    serviceSection<T extends ServiceSectionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ServiceSectionDefaultArgs<ExtArgs>>): Prisma__ServiceSectionClient<$Result.GetResult<Prisma.$ServiceSectionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ServiceItem model
+   */
+  interface ServiceItemFieldRefs {
+    readonly id: FieldRef<"ServiceItem", 'String'>
+    readonly serviceSectionId: FieldRef<"ServiceItem", 'String'>
+    readonly icon: FieldRef<"ServiceItem", 'String'>
+    readonly title: FieldRef<"ServiceItem", 'String'>
+    readonly description: FieldRef<"ServiceItem", 'String'>
+    readonly linkText: FieldRef<"ServiceItem", 'String'>
+    readonly serial: FieldRef<"ServiceItem", 'Int'>
+    readonly isActive: FieldRef<"ServiceItem", 'Boolean'>
+    readonly createdAt: FieldRef<"ServiceItem", 'DateTime'>
+    readonly updatedAt: FieldRef<"ServiceItem", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ServiceItem findUnique
+   */
+  export type ServiceItemFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceItem
+     */
+    select?: ServiceItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceItem
+     */
+    omit?: ServiceItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceItemInclude<ExtArgs> | null
+    /**
+     * Filter, which ServiceItem to fetch.
+     */
+    where: ServiceItemWhereUniqueInput
+  }
+
+  /**
+   * ServiceItem findUniqueOrThrow
+   */
+  export type ServiceItemFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceItem
+     */
+    select?: ServiceItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceItem
+     */
+    omit?: ServiceItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceItemInclude<ExtArgs> | null
+    /**
+     * Filter, which ServiceItem to fetch.
+     */
+    where: ServiceItemWhereUniqueInput
+  }
+
+  /**
+   * ServiceItem findFirst
+   */
+  export type ServiceItemFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceItem
+     */
+    select?: ServiceItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceItem
+     */
+    omit?: ServiceItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceItemInclude<ExtArgs> | null
+    /**
+     * Filter, which ServiceItem to fetch.
+     */
+    where?: ServiceItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ServiceItems to fetch.
+     */
+    orderBy?: ServiceItemOrderByWithRelationInput | ServiceItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ServiceItems.
+     */
+    cursor?: ServiceItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ServiceItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ServiceItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ServiceItems.
+     */
+    distinct?: ServiceItemScalarFieldEnum | ServiceItemScalarFieldEnum[]
+  }
+
+  /**
+   * ServiceItem findFirstOrThrow
+   */
+  export type ServiceItemFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceItem
+     */
+    select?: ServiceItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceItem
+     */
+    omit?: ServiceItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceItemInclude<ExtArgs> | null
+    /**
+     * Filter, which ServiceItem to fetch.
+     */
+    where?: ServiceItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ServiceItems to fetch.
+     */
+    orderBy?: ServiceItemOrderByWithRelationInput | ServiceItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ServiceItems.
+     */
+    cursor?: ServiceItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ServiceItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ServiceItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ServiceItems.
+     */
+    distinct?: ServiceItemScalarFieldEnum | ServiceItemScalarFieldEnum[]
+  }
+
+  /**
+   * ServiceItem findMany
+   */
+  export type ServiceItemFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceItem
+     */
+    select?: ServiceItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceItem
+     */
+    omit?: ServiceItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceItemInclude<ExtArgs> | null
+    /**
+     * Filter, which ServiceItems to fetch.
+     */
+    where?: ServiceItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ServiceItems to fetch.
+     */
+    orderBy?: ServiceItemOrderByWithRelationInput | ServiceItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ServiceItems.
+     */
+    cursor?: ServiceItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ServiceItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ServiceItems.
+     */
+    skip?: number
+    distinct?: ServiceItemScalarFieldEnum | ServiceItemScalarFieldEnum[]
+  }
+
+  /**
+   * ServiceItem create
+   */
+  export type ServiceItemCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceItem
+     */
+    select?: ServiceItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceItem
+     */
+    omit?: ServiceItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceItemInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ServiceItem.
+     */
+    data: XOR<ServiceItemCreateInput, ServiceItemUncheckedCreateInput>
+  }
+
+  /**
+   * ServiceItem createMany
+   */
+  export type ServiceItemCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ServiceItems.
+     */
+    data: ServiceItemCreateManyInput | ServiceItemCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ServiceItem update
+   */
+  export type ServiceItemUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceItem
+     */
+    select?: ServiceItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceItem
+     */
+    omit?: ServiceItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceItemInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ServiceItem.
+     */
+    data: XOR<ServiceItemUpdateInput, ServiceItemUncheckedUpdateInput>
+    /**
+     * Choose, which ServiceItem to update.
+     */
+    where: ServiceItemWhereUniqueInput
+  }
+
+  /**
+   * ServiceItem updateMany
+   */
+  export type ServiceItemUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ServiceItems.
+     */
+    data: XOR<ServiceItemUpdateManyMutationInput, ServiceItemUncheckedUpdateManyInput>
+    /**
+     * Filter which ServiceItems to update
+     */
+    where?: ServiceItemWhereInput
+    /**
+     * Limit how many ServiceItems to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ServiceItem upsert
+   */
+  export type ServiceItemUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceItem
+     */
+    select?: ServiceItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceItem
+     */
+    omit?: ServiceItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceItemInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ServiceItem to update in case it exists.
+     */
+    where: ServiceItemWhereUniqueInput
+    /**
+     * In case the ServiceItem found by the `where` argument doesn't exist, create a new ServiceItem with this data.
+     */
+    create: XOR<ServiceItemCreateInput, ServiceItemUncheckedCreateInput>
+    /**
+     * In case the ServiceItem was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ServiceItemUpdateInput, ServiceItemUncheckedUpdateInput>
+  }
+
+  /**
+   * ServiceItem delete
+   */
+  export type ServiceItemDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceItem
+     */
+    select?: ServiceItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceItem
+     */
+    omit?: ServiceItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceItemInclude<ExtArgs> | null
+    /**
+     * Filter which ServiceItem to delete.
+     */
+    where: ServiceItemWhereUniqueInput
+  }
+
+  /**
+   * ServiceItem deleteMany
+   */
+  export type ServiceItemDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ServiceItems to delete
+     */
+    where?: ServiceItemWhereInput
+    /**
+     * Limit how many ServiceItems to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ServiceItem without action
+   */
+  export type ServiceItemDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceItem
+     */
+    select?: ServiceItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceItem
+     */
+    omit?: ServiceItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceItemInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model DoctorSection
+   */
+
+  export type AggregateDoctorSection = {
+    _count: DoctorSectionCountAggregateOutputType | null
+    _min: DoctorSectionMinAggregateOutputType | null
+    _max: DoctorSectionMaxAggregateOutputType | null
+  }
+
+  export type DoctorSectionMinAggregateOutputType = {
+    id: string | null
+    sectionLabel: string | null
+    title1: string | null
+    highlightedText: string | null
+    title2: string | null
+    description: string | null
+    appoinmentButtonText: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type DoctorSectionMaxAggregateOutputType = {
+    id: string | null
+    sectionLabel: string | null
+    title1: string | null
+    highlightedText: string | null
+    title2: string | null
+    description: string | null
+    appoinmentButtonText: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type DoctorSectionCountAggregateOutputType = {
+    id: number
+    sectionLabel: number
+    title1: number
+    highlightedText: number
+    title2: number
+    description: number
+    appoinmentButtonText: number
+    isActive: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type DoctorSectionMinAggregateInputType = {
+    id?: true
+    sectionLabel?: true
+    title1?: true
+    highlightedText?: true
+    title2?: true
+    description?: true
+    appoinmentButtonText?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type DoctorSectionMaxAggregateInputType = {
+    id?: true
+    sectionLabel?: true
+    title1?: true
+    highlightedText?: true
+    title2?: true
+    description?: true
+    appoinmentButtonText?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type DoctorSectionCountAggregateInputType = {
+    id?: true
+    sectionLabel?: true
+    title1?: true
+    highlightedText?: true
+    title2?: true
+    description?: true
+    appoinmentButtonText?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type DoctorSectionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DoctorSection to aggregate.
+     */
+    where?: DoctorSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DoctorSections to fetch.
+     */
+    orderBy?: DoctorSectionOrderByWithRelationInput | DoctorSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DoctorSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DoctorSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DoctorSections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned DoctorSections
+    **/
+    _count?: true | DoctorSectionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DoctorSectionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DoctorSectionMaxAggregateInputType
+  }
+
+  export type GetDoctorSectionAggregateType<T extends DoctorSectionAggregateArgs> = {
+        [P in keyof T & keyof AggregateDoctorSection]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDoctorSection[P]>
+      : GetScalarType<T[P], AggregateDoctorSection[P]>
+  }
+
+
+
+
+  export type DoctorSectionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DoctorSectionWhereInput
+    orderBy?: DoctorSectionOrderByWithAggregationInput | DoctorSectionOrderByWithAggregationInput[]
+    by: DoctorSectionScalarFieldEnum[] | DoctorSectionScalarFieldEnum
+    having?: DoctorSectionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DoctorSectionCountAggregateInputType | true
+    _min?: DoctorSectionMinAggregateInputType
+    _max?: DoctorSectionMaxAggregateInputType
+  }
+
+  export type DoctorSectionGroupByOutputType = {
+    id: string
+    sectionLabel: string | null
+    title1: string
+    highlightedText: string | null
+    title2: string | null
+    description: string | null
+    appoinmentButtonText: string | null
+    isActive: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: DoctorSectionCountAggregateOutputType | null
+    _min: DoctorSectionMinAggregateOutputType | null
+    _max: DoctorSectionMaxAggregateOutputType | null
+  }
+
+  type GetDoctorSectionGroupByPayload<T extends DoctorSectionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DoctorSectionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DoctorSectionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DoctorSectionGroupByOutputType[P]>
+            : GetScalarType<T[P], DoctorSectionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DoctorSectionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    sectionLabel?: boolean
+    title1?: boolean
+    highlightedText?: boolean
+    title2?: boolean
+    description?: boolean
+    appoinmentButtonText?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["doctorSection"]>
+
+
+
+  export type DoctorSectionSelectScalar = {
+    id?: boolean
+    sectionLabel?: boolean
+    title1?: boolean
+    highlightedText?: boolean
+    title2?: boolean
+    description?: boolean
+    appoinmentButtonText?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type DoctorSectionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "sectionLabel" | "title1" | "highlightedText" | "title2" | "description" | "appoinmentButtonText" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["doctorSection"]>
+
+  export type $DoctorSectionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "DoctorSection"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      sectionLabel: string | null
+      title1: string
+      highlightedText: string | null
+      title2: string | null
+      description: string | null
+      appoinmentButtonText: string | null
+      isActive: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["doctorSection"]>
+    composites: {}
+  }
+
+  type DoctorSectionGetPayload<S extends boolean | null | undefined | DoctorSectionDefaultArgs> = $Result.GetResult<Prisma.$DoctorSectionPayload, S>
+
+  type DoctorSectionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DoctorSectionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DoctorSectionCountAggregateInputType | true
+    }
+
+  export interface DoctorSectionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['DoctorSection'], meta: { name: 'DoctorSection' } }
+    /**
+     * Find zero or one DoctorSection that matches the filter.
+     * @param {DoctorSectionFindUniqueArgs} args - Arguments to find a DoctorSection
+     * @example
+     * // Get one DoctorSection
+     * const doctorSection = await prisma.doctorSection.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DoctorSectionFindUniqueArgs>(args: SelectSubset<T, DoctorSectionFindUniqueArgs<ExtArgs>>): Prisma__DoctorSectionClient<$Result.GetResult<Prisma.$DoctorSectionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one DoctorSection that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DoctorSectionFindUniqueOrThrowArgs} args - Arguments to find a DoctorSection
+     * @example
+     * // Get one DoctorSection
+     * const doctorSection = await prisma.doctorSection.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DoctorSectionFindUniqueOrThrowArgs>(args: SelectSubset<T, DoctorSectionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DoctorSectionClient<$Result.GetResult<Prisma.$DoctorSectionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DoctorSection that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DoctorSectionFindFirstArgs} args - Arguments to find a DoctorSection
+     * @example
+     * // Get one DoctorSection
+     * const doctorSection = await prisma.doctorSection.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DoctorSectionFindFirstArgs>(args?: SelectSubset<T, DoctorSectionFindFirstArgs<ExtArgs>>): Prisma__DoctorSectionClient<$Result.GetResult<Prisma.$DoctorSectionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DoctorSection that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DoctorSectionFindFirstOrThrowArgs} args - Arguments to find a DoctorSection
+     * @example
+     * // Get one DoctorSection
+     * const doctorSection = await prisma.doctorSection.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DoctorSectionFindFirstOrThrowArgs>(args?: SelectSubset<T, DoctorSectionFindFirstOrThrowArgs<ExtArgs>>): Prisma__DoctorSectionClient<$Result.GetResult<Prisma.$DoctorSectionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more DoctorSections that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DoctorSectionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all DoctorSections
+     * const doctorSections = await prisma.doctorSection.findMany()
+     * 
+     * // Get first 10 DoctorSections
+     * const doctorSections = await prisma.doctorSection.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const doctorSectionWithIdOnly = await prisma.doctorSection.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DoctorSectionFindManyArgs>(args?: SelectSubset<T, DoctorSectionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DoctorSectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a DoctorSection.
+     * @param {DoctorSectionCreateArgs} args - Arguments to create a DoctorSection.
+     * @example
+     * // Create one DoctorSection
+     * const DoctorSection = await prisma.doctorSection.create({
+     *   data: {
+     *     // ... data to create a DoctorSection
+     *   }
+     * })
+     * 
+     */
+    create<T extends DoctorSectionCreateArgs>(args: SelectSubset<T, DoctorSectionCreateArgs<ExtArgs>>): Prisma__DoctorSectionClient<$Result.GetResult<Prisma.$DoctorSectionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many DoctorSections.
+     * @param {DoctorSectionCreateManyArgs} args - Arguments to create many DoctorSections.
+     * @example
+     * // Create many DoctorSections
+     * const doctorSection = await prisma.doctorSection.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DoctorSectionCreateManyArgs>(args?: SelectSubset<T, DoctorSectionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a DoctorSection.
+     * @param {DoctorSectionDeleteArgs} args - Arguments to delete one DoctorSection.
+     * @example
+     * // Delete one DoctorSection
+     * const DoctorSection = await prisma.doctorSection.delete({
+     *   where: {
+     *     // ... filter to delete one DoctorSection
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DoctorSectionDeleteArgs>(args: SelectSubset<T, DoctorSectionDeleteArgs<ExtArgs>>): Prisma__DoctorSectionClient<$Result.GetResult<Prisma.$DoctorSectionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one DoctorSection.
+     * @param {DoctorSectionUpdateArgs} args - Arguments to update one DoctorSection.
+     * @example
+     * // Update one DoctorSection
+     * const doctorSection = await prisma.doctorSection.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DoctorSectionUpdateArgs>(args: SelectSubset<T, DoctorSectionUpdateArgs<ExtArgs>>): Prisma__DoctorSectionClient<$Result.GetResult<Prisma.$DoctorSectionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more DoctorSections.
+     * @param {DoctorSectionDeleteManyArgs} args - Arguments to filter DoctorSections to delete.
+     * @example
+     * // Delete a few DoctorSections
+     * const { count } = await prisma.doctorSection.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DoctorSectionDeleteManyArgs>(args?: SelectSubset<T, DoctorSectionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DoctorSections.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DoctorSectionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many DoctorSections
+     * const doctorSection = await prisma.doctorSection.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DoctorSectionUpdateManyArgs>(args: SelectSubset<T, DoctorSectionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one DoctorSection.
+     * @param {DoctorSectionUpsertArgs} args - Arguments to update or create a DoctorSection.
+     * @example
+     * // Update or create a DoctorSection
+     * const doctorSection = await prisma.doctorSection.upsert({
+     *   create: {
+     *     // ... data to create a DoctorSection
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the DoctorSection we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DoctorSectionUpsertArgs>(args: SelectSubset<T, DoctorSectionUpsertArgs<ExtArgs>>): Prisma__DoctorSectionClient<$Result.GetResult<Prisma.$DoctorSectionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of DoctorSections.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DoctorSectionCountArgs} args - Arguments to filter DoctorSections to count.
+     * @example
+     * // Count the number of DoctorSections
+     * const count = await prisma.doctorSection.count({
+     *   where: {
+     *     // ... the filter for the DoctorSections we want to count
+     *   }
+     * })
+    **/
+    count<T extends DoctorSectionCountArgs>(
+      args?: Subset<T, DoctorSectionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DoctorSectionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a DoctorSection.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DoctorSectionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DoctorSectionAggregateArgs>(args: Subset<T, DoctorSectionAggregateArgs>): Prisma.PrismaPromise<GetDoctorSectionAggregateType<T>>
+
+    /**
+     * Group by DoctorSection.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DoctorSectionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DoctorSectionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DoctorSectionGroupByArgs['orderBy'] }
+        : { orderBy?: DoctorSectionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DoctorSectionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDoctorSectionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the DoctorSection model
+   */
+  readonly fields: DoctorSectionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for DoctorSection.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DoctorSectionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the DoctorSection model
+   */
+  interface DoctorSectionFieldRefs {
+    readonly id: FieldRef<"DoctorSection", 'String'>
+    readonly sectionLabel: FieldRef<"DoctorSection", 'String'>
+    readonly title1: FieldRef<"DoctorSection", 'String'>
+    readonly highlightedText: FieldRef<"DoctorSection", 'String'>
+    readonly title2: FieldRef<"DoctorSection", 'String'>
+    readonly description: FieldRef<"DoctorSection", 'String'>
+    readonly appoinmentButtonText: FieldRef<"DoctorSection", 'String'>
+    readonly isActive: FieldRef<"DoctorSection", 'Boolean'>
+    readonly createdAt: FieldRef<"DoctorSection", 'DateTime'>
+    readonly updatedAt: FieldRef<"DoctorSection", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * DoctorSection findUnique
+   */
+  export type DoctorSectionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DoctorSection
+     */
+    select?: DoctorSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DoctorSection
+     */
+    omit?: DoctorSectionOmit<ExtArgs> | null
+    /**
+     * Filter, which DoctorSection to fetch.
+     */
+    where: DoctorSectionWhereUniqueInput
+  }
+
+  /**
+   * DoctorSection findUniqueOrThrow
+   */
+  export type DoctorSectionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DoctorSection
+     */
+    select?: DoctorSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DoctorSection
+     */
+    omit?: DoctorSectionOmit<ExtArgs> | null
+    /**
+     * Filter, which DoctorSection to fetch.
+     */
+    where: DoctorSectionWhereUniqueInput
+  }
+
+  /**
+   * DoctorSection findFirst
+   */
+  export type DoctorSectionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DoctorSection
+     */
+    select?: DoctorSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DoctorSection
+     */
+    omit?: DoctorSectionOmit<ExtArgs> | null
+    /**
+     * Filter, which DoctorSection to fetch.
+     */
+    where?: DoctorSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DoctorSections to fetch.
+     */
+    orderBy?: DoctorSectionOrderByWithRelationInput | DoctorSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DoctorSections.
+     */
+    cursor?: DoctorSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DoctorSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DoctorSections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DoctorSections.
+     */
+    distinct?: DoctorSectionScalarFieldEnum | DoctorSectionScalarFieldEnum[]
+  }
+
+  /**
+   * DoctorSection findFirstOrThrow
+   */
+  export type DoctorSectionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DoctorSection
+     */
+    select?: DoctorSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DoctorSection
+     */
+    omit?: DoctorSectionOmit<ExtArgs> | null
+    /**
+     * Filter, which DoctorSection to fetch.
+     */
+    where?: DoctorSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DoctorSections to fetch.
+     */
+    orderBy?: DoctorSectionOrderByWithRelationInput | DoctorSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DoctorSections.
+     */
+    cursor?: DoctorSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DoctorSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DoctorSections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DoctorSections.
+     */
+    distinct?: DoctorSectionScalarFieldEnum | DoctorSectionScalarFieldEnum[]
+  }
+
+  /**
+   * DoctorSection findMany
+   */
+  export type DoctorSectionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DoctorSection
+     */
+    select?: DoctorSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DoctorSection
+     */
+    omit?: DoctorSectionOmit<ExtArgs> | null
+    /**
+     * Filter, which DoctorSections to fetch.
+     */
+    where?: DoctorSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DoctorSections to fetch.
+     */
+    orderBy?: DoctorSectionOrderByWithRelationInput | DoctorSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing DoctorSections.
+     */
+    cursor?: DoctorSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DoctorSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DoctorSections.
+     */
+    skip?: number
+    distinct?: DoctorSectionScalarFieldEnum | DoctorSectionScalarFieldEnum[]
+  }
+
+  /**
+   * DoctorSection create
+   */
+  export type DoctorSectionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DoctorSection
+     */
+    select?: DoctorSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DoctorSection
+     */
+    omit?: DoctorSectionOmit<ExtArgs> | null
+    /**
+     * The data needed to create a DoctorSection.
+     */
+    data: XOR<DoctorSectionCreateInput, DoctorSectionUncheckedCreateInput>
+  }
+
+  /**
+   * DoctorSection createMany
+   */
+  export type DoctorSectionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many DoctorSections.
+     */
+    data: DoctorSectionCreateManyInput | DoctorSectionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * DoctorSection update
+   */
+  export type DoctorSectionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DoctorSection
+     */
+    select?: DoctorSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DoctorSection
+     */
+    omit?: DoctorSectionOmit<ExtArgs> | null
+    /**
+     * The data needed to update a DoctorSection.
+     */
+    data: XOR<DoctorSectionUpdateInput, DoctorSectionUncheckedUpdateInput>
+    /**
+     * Choose, which DoctorSection to update.
+     */
+    where: DoctorSectionWhereUniqueInput
+  }
+
+  /**
+   * DoctorSection updateMany
+   */
+  export type DoctorSectionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update DoctorSections.
+     */
+    data: XOR<DoctorSectionUpdateManyMutationInput, DoctorSectionUncheckedUpdateManyInput>
+    /**
+     * Filter which DoctorSections to update
+     */
+    where?: DoctorSectionWhereInput
+    /**
+     * Limit how many DoctorSections to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * DoctorSection upsert
+   */
+  export type DoctorSectionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DoctorSection
+     */
+    select?: DoctorSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DoctorSection
+     */
+    omit?: DoctorSectionOmit<ExtArgs> | null
+    /**
+     * The filter to search for the DoctorSection to update in case it exists.
+     */
+    where: DoctorSectionWhereUniqueInput
+    /**
+     * In case the DoctorSection found by the `where` argument doesn't exist, create a new DoctorSection with this data.
+     */
+    create: XOR<DoctorSectionCreateInput, DoctorSectionUncheckedCreateInput>
+    /**
+     * In case the DoctorSection was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DoctorSectionUpdateInput, DoctorSectionUncheckedUpdateInput>
+  }
+
+  /**
+   * DoctorSection delete
+   */
+  export type DoctorSectionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DoctorSection
+     */
+    select?: DoctorSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DoctorSection
+     */
+    omit?: DoctorSectionOmit<ExtArgs> | null
+    /**
+     * Filter which DoctorSection to delete.
+     */
+    where: DoctorSectionWhereUniqueInput
+  }
+
+  /**
+   * DoctorSection deleteMany
+   */
+  export type DoctorSectionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DoctorSections to delete
+     */
+    where?: DoctorSectionWhereInput
+    /**
+     * Limit how many DoctorSections to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * DoctorSection without action
+   */
+  export type DoctorSectionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DoctorSection
+     */
+    select?: DoctorSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DoctorSection
+     */
+    omit?: DoctorSectionOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model AppointmentSection
+   */
+
+  export type AggregateAppointmentSection = {
+    _count: AppointmentSectionCountAggregateOutputType | null
+    _min: AppointmentSectionMinAggregateOutputType | null
+    _max: AppointmentSectionMaxAggregateOutputType | null
+  }
+
+  export type AppointmentSectionMinAggregateOutputType = {
+    id: string | null
+    badgeText: string | null
+    title1: string | null
+    highlightedText: string | null
+    title2: string | null
+    description: string | null
+    feature1Text: string | null
+    feature2Text: string | null
+    feature3Text: string | null
+    feature4Text: string | null
+    patientsServedCount: string | null
+    doctorsCount: string | null
+    ratingCount: string | null
+    patientsServedLabel: string | null
+    doctorsLabel: string | null
+    ratingLabel: string | null
+    phoneLabel: string | null
+    phoneNumber: string | null
+    formTitle: string | null
+    formDescription: string | null
+    submitButtonText: string | null
+    sslText: string | null
+    confirmText: string | null
+    reviewText: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type AppointmentSectionMaxAggregateOutputType = {
+    id: string | null
+    badgeText: string | null
+    title1: string | null
+    highlightedText: string | null
+    title2: string | null
+    description: string | null
+    feature1Text: string | null
+    feature2Text: string | null
+    feature3Text: string | null
+    feature4Text: string | null
+    patientsServedCount: string | null
+    doctorsCount: string | null
+    ratingCount: string | null
+    patientsServedLabel: string | null
+    doctorsLabel: string | null
+    ratingLabel: string | null
+    phoneLabel: string | null
+    phoneNumber: string | null
+    formTitle: string | null
+    formDescription: string | null
+    submitButtonText: string | null
+    sslText: string | null
+    confirmText: string | null
+    reviewText: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type AppointmentSectionCountAggregateOutputType = {
+    id: number
+    badgeText: number
+    title1: number
+    highlightedText: number
+    title2: number
+    description: number
+    feature1Text: number
+    feature2Text: number
+    feature3Text: number
+    feature4Text: number
+    patientsServedCount: number
+    doctorsCount: number
+    ratingCount: number
+    patientsServedLabel: number
+    doctorsLabel: number
+    ratingLabel: number
+    phoneLabel: number
+    phoneNumber: number
+    formTitle: number
+    formDescription: number
+    submitButtonText: number
+    sslText: number
+    confirmText: number
+    reviewText: number
+    isActive: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type AppointmentSectionMinAggregateInputType = {
+    id?: true
+    badgeText?: true
+    title1?: true
+    highlightedText?: true
+    title2?: true
+    description?: true
+    feature1Text?: true
+    feature2Text?: true
+    feature3Text?: true
+    feature4Text?: true
+    patientsServedCount?: true
+    doctorsCount?: true
+    ratingCount?: true
+    patientsServedLabel?: true
+    doctorsLabel?: true
+    ratingLabel?: true
+    phoneLabel?: true
+    phoneNumber?: true
+    formTitle?: true
+    formDescription?: true
+    submitButtonText?: true
+    sslText?: true
+    confirmText?: true
+    reviewText?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type AppointmentSectionMaxAggregateInputType = {
+    id?: true
+    badgeText?: true
+    title1?: true
+    highlightedText?: true
+    title2?: true
+    description?: true
+    feature1Text?: true
+    feature2Text?: true
+    feature3Text?: true
+    feature4Text?: true
+    patientsServedCount?: true
+    doctorsCount?: true
+    ratingCount?: true
+    patientsServedLabel?: true
+    doctorsLabel?: true
+    ratingLabel?: true
+    phoneLabel?: true
+    phoneNumber?: true
+    formTitle?: true
+    formDescription?: true
+    submitButtonText?: true
+    sslText?: true
+    confirmText?: true
+    reviewText?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type AppointmentSectionCountAggregateInputType = {
+    id?: true
+    badgeText?: true
+    title1?: true
+    highlightedText?: true
+    title2?: true
+    description?: true
+    feature1Text?: true
+    feature2Text?: true
+    feature3Text?: true
+    feature4Text?: true
+    patientsServedCount?: true
+    doctorsCount?: true
+    ratingCount?: true
+    patientsServedLabel?: true
+    doctorsLabel?: true
+    ratingLabel?: true
+    phoneLabel?: true
+    phoneNumber?: true
+    formTitle?: true
+    formDescription?: true
+    submitButtonText?: true
+    sslText?: true
+    confirmText?: true
+    reviewText?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type AppointmentSectionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AppointmentSection to aggregate.
+     */
+    where?: AppointmentSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AppointmentSections to fetch.
+     */
+    orderBy?: AppointmentSectionOrderByWithRelationInput | AppointmentSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AppointmentSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AppointmentSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AppointmentSections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned AppointmentSections
+    **/
+    _count?: true | AppointmentSectionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AppointmentSectionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AppointmentSectionMaxAggregateInputType
+  }
+
+  export type GetAppointmentSectionAggregateType<T extends AppointmentSectionAggregateArgs> = {
+        [P in keyof T & keyof AggregateAppointmentSection]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAppointmentSection[P]>
+      : GetScalarType<T[P], AggregateAppointmentSection[P]>
+  }
+
+
+
+
+  export type AppointmentSectionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AppointmentSectionWhereInput
+    orderBy?: AppointmentSectionOrderByWithAggregationInput | AppointmentSectionOrderByWithAggregationInput[]
+    by: AppointmentSectionScalarFieldEnum[] | AppointmentSectionScalarFieldEnum
+    having?: AppointmentSectionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AppointmentSectionCountAggregateInputType | true
+    _min?: AppointmentSectionMinAggregateInputType
+    _max?: AppointmentSectionMaxAggregateInputType
+  }
+
+  export type AppointmentSectionGroupByOutputType = {
+    id: string
+    badgeText: string | null
+    title1: string
+    highlightedText: string | null
+    title2: string | null
+    description: string | null
+    feature1Text: string | null
+    feature2Text: string | null
+    feature3Text: string | null
+    feature4Text: string | null
+    patientsServedCount: string | null
+    doctorsCount: string | null
+    ratingCount: string | null
+    patientsServedLabel: string | null
+    doctorsLabel: string | null
+    ratingLabel: string | null
+    phoneLabel: string | null
+    phoneNumber: string | null
+    formTitle: string | null
+    formDescription: string | null
+    submitButtonText: string | null
+    sslText: string | null
+    confirmText: string | null
+    reviewText: string | null
+    isActive: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: AppointmentSectionCountAggregateOutputType | null
+    _min: AppointmentSectionMinAggregateOutputType | null
+    _max: AppointmentSectionMaxAggregateOutputType | null
+  }
+
+  type GetAppointmentSectionGroupByPayload<T extends AppointmentSectionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AppointmentSectionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AppointmentSectionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AppointmentSectionGroupByOutputType[P]>
+            : GetScalarType<T[P], AppointmentSectionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AppointmentSectionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    badgeText?: boolean
+    title1?: boolean
+    highlightedText?: boolean
+    title2?: boolean
+    description?: boolean
+    feature1Text?: boolean
+    feature2Text?: boolean
+    feature3Text?: boolean
+    feature4Text?: boolean
+    patientsServedCount?: boolean
+    doctorsCount?: boolean
+    ratingCount?: boolean
+    patientsServedLabel?: boolean
+    doctorsLabel?: boolean
+    ratingLabel?: boolean
+    phoneLabel?: boolean
+    phoneNumber?: boolean
+    formTitle?: boolean
+    formDescription?: boolean
+    submitButtonText?: boolean
+    sslText?: boolean
+    confirmText?: boolean
+    reviewText?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["appointmentSection"]>
+
+
+
+  export type AppointmentSectionSelectScalar = {
+    id?: boolean
+    badgeText?: boolean
+    title1?: boolean
+    highlightedText?: boolean
+    title2?: boolean
+    description?: boolean
+    feature1Text?: boolean
+    feature2Text?: boolean
+    feature3Text?: boolean
+    feature4Text?: boolean
+    patientsServedCount?: boolean
+    doctorsCount?: boolean
+    ratingCount?: boolean
+    patientsServedLabel?: boolean
+    doctorsLabel?: boolean
+    ratingLabel?: boolean
+    phoneLabel?: boolean
+    phoneNumber?: boolean
+    formTitle?: boolean
+    formDescription?: boolean
+    submitButtonText?: boolean
+    sslText?: boolean
+    confirmText?: boolean
+    reviewText?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type AppointmentSectionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "badgeText" | "title1" | "highlightedText" | "title2" | "description" | "feature1Text" | "feature2Text" | "feature3Text" | "feature4Text" | "patientsServedCount" | "doctorsCount" | "ratingCount" | "patientsServedLabel" | "doctorsLabel" | "ratingLabel" | "phoneLabel" | "phoneNumber" | "formTitle" | "formDescription" | "submitButtonText" | "sslText" | "confirmText" | "reviewText" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["appointmentSection"]>
+
+  export type $AppointmentSectionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "AppointmentSection"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      badgeText: string | null
+      title1: string
+      highlightedText: string | null
+      title2: string | null
+      description: string | null
+      feature1Text: string | null
+      feature2Text: string | null
+      feature3Text: string | null
+      feature4Text: string | null
+      patientsServedCount: string | null
+      doctorsCount: string | null
+      ratingCount: string | null
+      patientsServedLabel: string | null
+      doctorsLabel: string | null
+      ratingLabel: string | null
+      phoneLabel: string | null
+      phoneNumber: string | null
+      formTitle: string | null
+      formDescription: string | null
+      submitButtonText: string | null
+      sslText: string | null
+      confirmText: string | null
+      reviewText: string | null
+      isActive: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["appointmentSection"]>
+    composites: {}
+  }
+
+  type AppointmentSectionGetPayload<S extends boolean | null | undefined | AppointmentSectionDefaultArgs> = $Result.GetResult<Prisma.$AppointmentSectionPayload, S>
+
+  type AppointmentSectionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AppointmentSectionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AppointmentSectionCountAggregateInputType | true
+    }
+
+  export interface AppointmentSectionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['AppointmentSection'], meta: { name: 'AppointmentSection' } }
+    /**
+     * Find zero or one AppointmentSection that matches the filter.
+     * @param {AppointmentSectionFindUniqueArgs} args - Arguments to find a AppointmentSection
+     * @example
+     * // Get one AppointmentSection
+     * const appointmentSection = await prisma.appointmentSection.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AppointmentSectionFindUniqueArgs>(args: SelectSubset<T, AppointmentSectionFindUniqueArgs<ExtArgs>>): Prisma__AppointmentSectionClient<$Result.GetResult<Prisma.$AppointmentSectionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one AppointmentSection that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {AppointmentSectionFindUniqueOrThrowArgs} args - Arguments to find a AppointmentSection
+     * @example
+     * // Get one AppointmentSection
+     * const appointmentSection = await prisma.appointmentSection.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AppointmentSectionFindUniqueOrThrowArgs>(args: SelectSubset<T, AppointmentSectionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AppointmentSectionClient<$Result.GetResult<Prisma.$AppointmentSectionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first AppointmentSection that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AppointmentSectionFindFirstArgs} args - Arguments to find a AppointmentSection
+     * @example
+     * // Get one AppointmentSection
+     * const appointmentSection = await prisma.appointmentSection.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AppointmentSectionFindFirstArgs>(args?: SelectSubset<T, AppointmentSectionFindFirstArgs<ExtArgs>>): Prisma__AppointmentSectionClient<$Result.GetResult<Prisma.$AppointmentSectionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first AppointmentSection that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AppointmentSectionFindFirstOrThrowArgs} args - Arguments to find a AppointmentSection
+     * @example
+     * // Get one AppointmentSection
+     * const appointmentSection = await prisma.appointmentSection.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AppointmentSectionFindFirstOrThrowArgs>(args?: SelectSubset<T, AppointmentSectionFindFirstOrThrowArgs<ExtArgs>>): Prisma__AppointmentSectionClient<$Result.GetResult<Prisma.$AppointmentSectionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more AppointmentSections that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AppointmentSectionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all AppointmentSections
+     * const appointmentSections = await prisma.appointmentSection.findMany()
+     * 
+     * // Get first 10 AppointmentSections
+     * const appointmentSections = await prisma.appointmentSection.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const appointmentSectionWithIdOnly = await prisma.appointmentSection.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends AppointmentSectionFindManyArgs>(args?: SelectSubset<T, AppointmentSectionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AppointmentSectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a AppointmentSection.
+     * @param {AppointmentSectionCreateArgs} args - Arguments to create a AppointmentSection.
+     * @example
+     * // Create one AppointmentSection
+     * const AppointmentSection = await prisma.appointmentSection.create({
+     *   data: {
+     *     // ... data to create a AppointmentSection
+     *   }
+     * })
+     * 
+     */
+    create<T extends AppointmentSectionCreateArgs>(args: SelectSubset<T, AppointmentSectionCreateArgs<ExtArgs>>): Prisma__AppointmentSectionClient<$Result.GetResult<Prisma.$AppointmentSectionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many AppointmentSections.
+     * @param {AppointmentSectionCreateManyArgs} args - Arguments to create many AppointmentSections.
+     * @example
+     * // Create many AppointmentSections
+     * const appointmentSection = await prisma.appointmentSection.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AppointmentSectionCreateManyArgs>(args?: SelectSubset<T, AppointmentSectionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a AppointmentSection.
+     * @param {AppointmentSectionDeleteArgs} args - Arguments to delete one AppointmentSection.
+     * @example
+     * // Delete one AppointmentSection
+     * const AppointmentSection = await prisma.appointmentSection.delete({
+     *   where: {
+     *     // ... filter to delete one AppointmentSection
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AppointmentSectionDeleteArgs>(args: SelectSubset<T, AppointmentSectionDeleteArgs<ExtArgs>>): Prisma__AppointmentSectionClient<$Result.GetResult<Prisma.$AppointmentSectionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one AppointmentSection.
+     * @param {AppointmentSectionUpdateArgs} args - Arguments to update one AppointmentSection.
+     * @example
+     * // Update one AppointmentSection
+     * const appointmentSection = await prisma.appointmentSection.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AppointmentSectionUpdateArgs>(args: SelectSubset<T, AppointmentSectionUpdateArgs<ExtArgs>>): Prisma__AppointmentSectionClient<$Result.GetResult<Prisma.$AppointmentSectionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more AppointmentSections.
+     * @param {AppointmentSectionDeleteManyArgs} args - Arguments to filter AppointmentSections to delete.
+     * @example
+     * // Delete a few AppointmentSections
+     * const { count } = await prisma.appointmentSection.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AppointmentSectionDeleteManyArgs>(args?: SelectSubset<T, AppointmentSectionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AppointmentSections.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AppointmentSectionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many AppointmentSections
+     * const appointmentSection = await prisma.appointmentSection.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AppointmentSectionUpdateManyArgs>(args: SelectSubset<T, AppointmentSectionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one AppointmentSection.
+     * @param {AppointmentSectionUpsertArgs} args - Arguments to update or create a AppointmentSection.
+     * @example
+     * // Update or create a AppointmentSection
+     * const appointmentSection = await prisma.appointmentSection.upsert({
+     *   create: {
+     *     // ... data to create a AppointmentSection
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the AppointmentSection we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AppointmentSectionUpsertArgs>(args: SelectSubset<T, AppointmentSectionUpsertArgs<ExtArgs>>): Prisma__AppointmentSectionClient<$Result.GetResult<Prisma.$AppointmentSectionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of AppointmentSections.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AppointmentSectionCountArgs} args - Arguments to filter AppointmentSections to count.
+     * @example
+     * // Count the number of AppointmentSections
+     * const count = await prisma.appointmentSection.count({
+     *   where: {
+     *     // ... the filter for the AppointmentSections we want to count
+     *   }
+     * })
+    **/
+    count<T extends AppointmentSectionCountArgs>(
+      args?: Subset<T, AppointmentSectionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AppointmentSectionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a AppointmentSection.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AppointmentSectionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AppointmentSectionAggregateArgs>(args: Subset<T, AppointmentSectionAggregateArgs>): Prisma.PrismaPromise<GetAppointmentSectionAggregateType<T>>
+
+    /**
+     * Group by AppointmentSection.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AppointmentSectionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AppointmentSectionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AppointmentSectionGroupByArgs['orderBy'] }
+        : { orderBy?: AppointmentSectionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AppointmentSectionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAppointmentSectionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the AppointmentSection model
+   */
+  readonly fields: AppointmentSectionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for AppointmentSection.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AppointmentSectionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the AppointmentSection model
+   */
+  interface AppointmentSectionFieldRefs {
+    readonly id: FieldRef<"AppointmentSection", 'String'>
+    readonly badgeText: FieldRef<"AppointmentSection", 'String'>
+    readonly title1: FieldRef<"AppointmentSection", 'String'>
+    readonly highlightedText: FieldRef<"AppointmentSection", 'String'>
+    readonly title2: FieldRef<"AppointmentSection", 'String'>
+    readonly description: FieldRef<"AppointmentSection", 'String'>
+    readonly feature1Text: FieldRef<"AppointmentSection", 'String'>
+    readonly feature2Text: FieldRef<"AppointmentSection", 'String'>
+    readonly feature3Text: FieldRef<"AppointmentSection", 'String'>
+    readonly feature4Text: FieldRef<"AppointmentSection", 'String'>
+    readonly patientsServedCount: FieldRef<"AppointmentSection", 'String'>
+    readonly doctorsCount: FieldRef<"AppointmentSection", 'String'>
+    readonly ratingCount: FieldRef<"AppointmentSection", 'String'>
+    readonly patientsServedLabel: FieldRef<"AppointmentSection", 'String'>
+    readonly doctorsLabel: FieldRef<"AppointmentSection", 'String'>
+    readonly ratingLabel: FieldRef<"AppointmentSection", 'String'>
+    readonly phoneLabel: FieldRef<"AppointmentSection", 'String'>
+    readonly phoneNumber: FieldRef<"AppointmentSection", 'String'>
+    readonly formTitle: FieldRef<"AppointmentSection", 'String'>
+    readonly formDescription: FieldRef<"AppointmentSection", 'String'>
+    readonly submitButtonText: FieldRef<"AppointmentSection", 'String'>
+    readonly sslText: FieldRef<"AppointmentSection", 'String'>
+    readonly confirmText: FieldRef<"AppointmentSection", 'String'>
+    readonly reviewText: FieldRef<"AppointmentSection", 'String'>
+    readonly isActive: FieldRef<"AppointmentSection", 'Boolean'>
+    readonly createdAt: FieldRef<"AppointmentSection", 'DateTime'>
+    readonly updatedAt: FieldRef<"AppointmentSection", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * AppointmentSection findUnique
+   */
+  export type AppointmentSectionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AppointmentSection
+     */
+    select?: AppointmentSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AppointmentSection
+     */
+    omit?: AppointmentSectionOmit<ExtArgs> | null
+    /**
+     * Filter, which AppointmentSection to fetch.
+     */
+    where: AppointmentSectionWhereUniqueInput
+  }
+
+  /**
+   * AppointmentSection findUniqueOrThrow
+   */
+  export type AppointmentSectionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AppointmentSection
+     */
+    select?: AppointmentSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AppointmentSection
+     */
+    omit?: AppointmentSectionOmit<ExtArgs> | null
+    /**
+     * Filter, which AppointmentSection to fetch.
+     */
+    where: AppointmentSectionWhereUniqueInput
+  }
+
+  /**
+   * AppointmentSection findFirst
+   */
+  export type AppointmentSectionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AppointmentSection
+     */
+    select?: AppointmentSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AppointmentSection
+     */
+    omit?: AppointmentSectionOmit<ExtArgs> | null
+    /**
+     * Filter, which AppointmentSection to fetch.
+     */
+    where?: AppointmentSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AppointmentSections to fetch.
+     */
+    orderBy?: AppointmentSectionOrderByWithRelationInput | AppointmentSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AppointmentSections.
+     */
+    cursor?: AppointmentSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AppointmentSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AppointmentSections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AppointmentSections.
+     */
+    distinct?: AppointmentSectionScalarFieldEnum | AppointmentSectionScalarFieldEnum[]
+  }
+
+  /**
+   * AppointmentSection findFirstOrThrow
+   */
+  export type AppointmentSectionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AppointmentSection
+     */
+    select?: AppointmentSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AppointmentSection
+     */
+    omit?: AppointmentSectionOmit<ExtArgs> | null
+    /**
+     * Filter, which AppointmentSection to fetch.
+     */
+    where?: AppointmentSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AppointmentSections to fetch.
+     */
+    orderBy?: AppointmentSectionOrderByWithRelationInput | AppointmentSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AppointmentSections.
+     */
+    cursor?: AppointmentSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AppointmentSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AppointmentSections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AppointmentSections.
+     */
+    distinct?: AppointmentSectionScalarFieldEnum | AppointmentSectionScalarFieldEnum[]
+  }
+
+  /**
+   * AppointmentSection findMany
+   */
+  export type AppointmentSectionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AppointmentSection
+     */
+    select?: AppointmentSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AppointmentSection
+     */
+    omit?: AppointmentSectionOmit<ExtArgs> | null
+    /**
+     * Filter, which AppointmentSections to fetch.
+     */
+    where?: AppointmentSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AppointmentSections to fetch.
+     */
+    orderBy?: AppointmentSectionOrderByWithRelationInput | AppointmentSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing AppointmentSections.
+     */
+    cursor?: AppointmentSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AppointmentSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AppointmentSections.
+     */
+    skip?: number
+    distinct?: AppointmentSectionScalarFieldEnum | AppointmentSectionScalarFieldEnum[]
+  }
+
+  /**
+   * AppointmentSection create
+   */
+  export type AppointmentSectionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AppointmentSection
+     */
+    select?: AppointmentSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AppointmentSection
+     */
+    omit?: AppointmentSectionOmit<ExtArgs> | null
+    /**
+     * The data needed to create a AppointmentSection.
+     */
+    data: XOR<AppointmentSectionCreateInput, AppointmentSectionUncheckedCreateInput>
+  }
+
+  /**
+   * AppointmentSection createMany
+   */
+  export type AppointmentSectionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many AppointmentSections.
+     */
+    data: AppointmentSectionCreateManyInput | AppointmentSectionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * AppointmentSection update
+   */
+  export type AppointmentSectionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AppointmentSection
+     */
+    select?: AppointmentSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AppointmentSection
+     */
+    omit?: AppointmentSectionOmit<ExtArgs> | null
+    /**
+     * The data needed to update a AppointmentSection.
+     */
+    data: XOR<AppointmentSectionUpdateInput, AppointmentSectionUncheckedUpdateInput>
+    /**
+     * Choose, which AppointmentSection to update.
+     */
+    where: AppointmentSectionWhereUniqueInput
+  }
+
+  /**
+   * AppointmentSection updateMany
+   */
+  export type AppointmentSectionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update AppointmentSections.
+     */
+    data: XOR<AppointmentSectionUpdateManyMutationInput, AppointmentSectionUncheckedUpdateManyInput>
+    /**
+     * Filter which AppointmentSections to update
+     */
+    where?: AppointmentSectionWhereInput
+    /**
+     * Limit how many AppointmentSections to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * AppointmentSection upsert
+   */
+  export type AppointmentSectionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AppointmentSection
+     */
+    select?: AppointmentSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AppointmentSection
+     */
+    omit?: AppointmentSectionOmit<ExtArgs> | null
+    /**
+     * The filter to search for the AppointmentSection to update in case it exists.
+     */
+    where: AppointmentSectionWhereUniqueInput
+    /**
+     * In case the AppointmentSection found by the `where` argument doesn't exist, create a new AppointmentSection with this data.
+     */
+    create: XOR<AppointmentSectionCreateInput, AppointmentSectionUncheckedCreateInput>
+    /**
+     * In case the AppointmentSection was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AppointmentSectionUpdateInput, AppointmentSectionUncheckedUpdateInput>
+  }
+
+  /**
+   * AppointmentSection delete
+   */
+  export type AppointmentSectionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AppointmentSection
+     */
+    select?: AppointmentSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AppointmentSection
+     */
+    omit?: AppointmentSectionOmit<ExtArgs> | null
+    /**
+     * Filter which AppointmentSection to delete.
+     */
+    where: AppointmentSectionWhereUniqueInput
+  }
+
+  /**
+   * AppointmentSection deleteMany
+   */
+  export type AppointmentSectionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AppointmentSections to delete
+     */
+    where?: AppointmentSectionWhereInput
+    /**
+     * Limit how many AppointmentSections to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * AppointmentSection without action
+   */
+  export type AppointmentSectionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AppointmentSection
+     */
+    select?: AppointmentSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AppointmentSection
+     */
+    omit?: AppointmentSectionOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ProductSection
+   */
+
+  export type AggregateProductSection = {
+    _count: ProductSectionCountAggregateOutputType | null
+    _min: ProductSectionMinAggregateOutputType | null
+    _max: ProductSectionMaxAggregateOutputType | null
+  }
+
+  export type ProductSectionMinAggregateOutputType = {
+    id: string | null
+    sectionLabel: string | null
+    title: string | null
+    description: string | null
+    buttonText: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ProductSectionMaxAggregateOutputType = {
+    id: string | null
+    sectionLabel: string | null
+    title: string | null
+    description: string | null
+    buttonText: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ProductSectionCountAggregateOutputType = {
+    id: number
+    sectionLabel: number
+    title: number
+    description: number
+    buttonText: number
+    isActive: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ProductSectionMinAggregateInputType = {
+    id?: true
+    sectionLabel?: true
+    title?: true
+    description?: true
+    buttonText?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ProductSectionMaxAggregateInputType = {
+    id?: true
+    sectionLabel?: true
+    title?: true
+    description?: true
+    buttonText?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ProductSectionCountAggregateInputType = {
+    id?: true
+    sectionLabel?: true
+    title?: true
+    description?: true
+    buttonText?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ProductSectionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ProductSection to aggregate.
+     */
+    where?: ProductSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProductSections to fetch.
+     */
+    orderBy?: ProductSectionOrderByWithRelationInput | ProductSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ProductSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProductSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProductSections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ProductSections
+    **/
+    _count?: true | ProductSectionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ProductSectionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ProductSectionMaxAggregateInputType
+  }
+
+  export type GetProductSectionAggregateType<T extends ProductSectionAggregateArgs> = {
+        [P in keyof T & keyof AggregateProductSection]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProductSection[P]>
+      : GetScalarType<T[P], AggregateProductSection[P]>
+  }
+
+
+
+
+  export type ProductSectionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProductSectionWhereInput
+    orderBy?: ProductSectionOrderByWithAggregationInput | ProductSectionOrderByWithAggregationInput[]
+    by: ProductSectionScalarFieldEnum[] | ProductSectionScalarFieldEnum
+    having?: ProductSectionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ProductSectionCountAggregateInputType | true
+    _min?: ProductSectionMinAggregateInputType
+    _max?: ProductSectionMaxAggregateInputType
+  }
+
+  export type ProductSectionGroupByOutputType = {
+    id: string
+    sectionLabel: string | null
+    title: string
+    description: string | null
+    buttonText: string | null
+    isActive: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: ProductSectionCountAggregateOutputType | null
+    _min: ProductSectionMinAggregateOutputType | null
+    _max: ProductSectionMaxAggregateOutputType | null
+  }
+
+  type GetProductSectionGroupByPayload<T extends ProductSectionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ProductSectionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ProductSectionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ProductSectionGroupByOutputType[P]>
+            : GetScalarType<T[P], ProductSectionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ProductSectionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    sectionLabel?: boolean
+    title?: boolean
+    description?: boolean
+    buttonText?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["productSection"]>
+
+
+
+  export type ProductSectionSelectScalar = {
+    id?: boolean
+    sectionLabel?: boolean
+    title?: boolean
+    description?: boolean
+    buttonText?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type ProductSectionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "sectionLabel" | "title" | "description" | "buttonText" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["productSection"]>
+
+  export type $ProductSectionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ProductSection"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      sectionLabel: string | null
+      title: string
+      description: string | null
+      buttonText: string | null
+      isActive: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["productSection"]>
+    composites: {}
+  }
+
+  type ProductSectionGetPayload<S extends boolean | null | undefined | ProductSectionDefaultArgs> = $Result.GetResult<Prisma.$ProductSectionPayload, S>
+
+  type ProductSectionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ProductSectionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ProductSectionCountAggregateInputType | true
+    }
+
+  export interface ProductSectionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ProductSection'], meta: { name: 'ProductSection' } }
+    /**
+     * Find zero or one ProductSection that matches the filter.
+     * @param {ProductSectionFindUniqueArgs} args - Arguments to find a ProductSection
+     * @example
+     * // Get one ProductSection
+     * const productSection = await prisma.productSection.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ProductSectionFindUniqueArgs>(args: SelectSubset<T, ProductSectionFindUniqueArgs<ExtArgs>>): Prisma__ProductSectionClient<$Result.GetResult<Prisma.$ProductSectionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ProductSection that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ProductSectionFindUniqueOrThrowArgs} args - Arguments to find a ProductSection
+     * @example
+     * // Get one ProductSection
+     * const productSection = await prisma.productSection.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ProductSectionFindUniqueOrThrowArgs>(args: SelectSubset<T, ProductSectionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ProductSectionClient<$Result.GetResult<Prisma.$ProductSectionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ProductSection that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProductSectionFindFirstArgs} args - Arguments to find a ProductSection
+     * @example
+     * // Get one ProductSection
+     * const productSection = await prisma.productSection.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ProductSectionFindFirstArgs>(args?: SelectSubset<T, ProductSectionFindFirstArgs<ExtArgs>>): Prisma__ProductSectionClient<$Result.GetResult<Prisma.$ProductSectionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ProductSection that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProductSectionFindFirstOrThrowArgs} args - Arguments to find a ProductSection
+     * @example
+     * // Get one ProductSection
+     * const productSection = await prisma.productSection.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ProductSectionFindFirstOrThrowArgs>(args?: SelectSubset<T, ProductSectionFindFirstOrThrowArgs<ExtArgs>>): Prisma__ProductSectionClient<$Result.GetResult<Prisma.$ProductSectionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ProductSections that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProductSectionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ProductSections
+     * const productSections = await prisma.productSection.findMany()
+     * 
+     * // Get first 10 ProductSections
+     * const productSections = await prisma.productSection.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const productSectionWithIdOnly = await prisma.productSection.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ProductSectionFindManyArgs>(args?: SelectSubset<T, ProductSectionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductSectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ProductSection.
+     * @param {ProductSectionCreateArgs} args - Arguments to create a ProductSection.
+     * @example
+     * // Create one ProductSection
+     * const ProductSection = await prisma.productSection.create({
+     *   data: {
+     *     // ... data to create a ProductSection
+     *   }
+     * })
+     * 
+     */
+    create<T extends ProductSectionCreateArgs>(args: SelectSubset<T, ProductSectionCreateArgs<ExtArgs>>): Prisma__ProductSectionClient<$Result.GetResult<Prisma.$ProductSectionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ProductSections.
+     * @param {ProductSectionCreateManyArgs} args - Arguments to create many ProductSections.
+     * @example
+     * // Create many ProductSections
+     * const productSection = await prisma.productSection.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ProductSectionCreateManyArgs>(args?: SelectSubset<T, ProductSectionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a ProductSection.
+     * @param {ProductSectionDeleteArgs} args - Arguments to delete one ProductSection.
+     * @example
+     * // Delete one ProductSection
+     * const ProductSection = await prisma.productSection.delete({
+     *   where: {
+     *     // ... filter to delete one ProductSection
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ProductSectionDeleteArgs>(args: SelectSubset<T, ProductSectionDeleteArgs<ExtArgs>>): Prisma__ProductSectionClient<$Result.GetResult<Prisma.$ProductSectionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ProductSection.
+     * @param {ProductSectionUpdateArgs} args - Arguments to update one ProductSection.
+     * @example
+     * // Update one ProductSection
+     * const productSection = await prisma.productSection.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ProductSectionUpdateArgs>(args: SelectSubset<T, ProductSectionUpdateArgs<ExtArgs>>): Prisma__ProductSectionClient<$Result.GetResult<Prisma.$ProductSectionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ProductSections.
+     * @param {ProductSectionDeleteManyArgs} args - Arguments to filter ProductSections to delete.
+     * @example
+     * // Delete a few ProductSections
+     * const { count } = await prisma.productSection.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ProductSectionDeleteManyArgs>(args?: SelectSubset<T, ProductSectionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ProductSections.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProductSectionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ProductSections
+     * const productSection = await prisma.productSection.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ProductSectionUpdateManyArgs>(args: SelectSubset<T, ProductSectionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one ProductSection.
+     * @param {ProductSectionUpsertArgs} args - Arguments to update or create a ProductSection.
+     * @example
+     * // Update or create a ProductSection
+     * const productSection = await prisma.productSection.upsert({
+     *   create: {
+     *     // ... data to create a ProductSection
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ProductSection we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ProductSectionUpsertArgs>(args: SelectSubset<T, ProductSectionUpsertArgs<ExtArgs>>): Prisma__ProductSectionClient<$Result.GetResult<Prisma.$ProductSectionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ProductSections.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProductSectionCountArgs} args - Arguments to filter ProductSections to count.
+     * @example
+     * // Count the number of ProductSections
+     * const count = await prisma.productSection.count({
+     *   where: {
+     *     // ... the filter for the ProductSections we want to count
+     *   }
+     * })
+    **/
+    count<T extends ProductSectionCountArgs>(
+      args?: Subset<T, ProductSectionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ProductSectionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ProductSection.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProductSectionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ProductSectionAggregateArgs>(args: Subset<T, ProductSectionAggregateArgs>): Prisma.PrismaPromise<GetProductSectionAggregateType<T>>
+
+    /**
+     * Group by ProductSection.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProductSectionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ProductSectionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ProductSectionGroupByArgs['orderBy'] }
+        : { orderBy?: ProductSectionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ProductSectionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProductSectionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ProductSection model
+   */
+  readonly fields: ProductSectionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ProductSection.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ProductSectionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ProductSection model
+   */
+  interface ProductSectionFieldRefs {
+    readonly id: FieldRef<"ProductSection", 'String'>
+    readonly sectionLabel: FieldRef<"ProductSection", 'String'>
+    readonly title: FieldRef<"ProductSection", 'String'>
+    readonly description: FieldRef<"ProductSection", 'String'>
+    readonly buttonText: FieldRef<"ProductSection", 'String'>
+    readonly isActive: FieldRef<"ProductSection", 'Boolean'>
+    readonly createdAt: FieldRef<"ProductSection", 'DateTime'>
+    readonly updatedAt: FieldRef<"ProductSection", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ProductSection findUnique
+   */
+  export type ProductSectionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductSection
+     */
+    select?: ProductSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductSection
+     */
+    omit?: ProductSectionOmit<ExtArgs> | null
+    /**
+     * Filter, which ProductSection to fetch.
+     */
+    where: ProductSectionWhereUniqueInput
+  }
+
+  /**
+   * ProductSection findUniqueOrThrow
+   */
+  export type ProductSectionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductSection
+     */
+    select?: ProductSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductSection
+     */
+    omit?: ProductSectionOmit<ExtArgs> | null
+    /**
+     * Filter, which ProductSection to fetch.
+     */
+    where: ProductSectionWhereUniqueInput
+  }
+
+  /**
+   * ProductSection findFirst
+   */
+  export type ProductSectionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductSection
+     */
+    select?: ProductSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductSection
+     */
+    omit?: ProductSectionOmit<ExtArgs> | null
+    /**
+     * Filter, which ProductSection to fetch.
+     */
+    where?: ProductSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProductSections to fetch.
+     */
+    orderBy?: ProductSectionOrderByWithRelationInput | ProductSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ProductSections.
+     */
+    cursor?: ProductSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProductSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProductSections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProductSections.
+     */
+    distinct?: ProductSectionScalarFieldEnum | ProductSectionScalarFieldEnum[]
+  }
+
+  /**
+   * ProductSection findFirstOrThrow
+   */
+  export type ProductSectionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductSection
+     */
+    select?: ProductSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductSection
+     */
+    omit?: ProductSectionOmit<ExtArgs> | null
+    /**
+     * Filter, which ProductSection to fetch.
+     */
+    where?: ProductSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProductSections to fetch.
+     */
+    orderBy?: ProductSectionOrderByWithRelationInput | ProductSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ProductSections.
+     */
+    cursor?: ProductSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProductSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProductSections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProductSections.
+     */
+    distinct?: ProductSectionScalarFieldEnum | ProductSectionScalarFieldEnum[]
+  }
+
+  /**
+   * ProductSection findMany
+   */
+  export type ProductSectionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductSection
+     */
+    select?: ProductSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductSection
+     */
+    omit?: ProductSectionOmit<ExtArgs> | null
+    /**
+     * Filter, which ProductSections to fetch.
+     */
+    where?: ProductSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProductSections to fetch.
+     */
+    orderBy?: ProductSectionOrderByWithRelationInput | ProductSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ProductSections.
+     */
+    cursor?: ProductSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProductSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProductSections.
+     */
+    skip?: number
+    distinct?: ProductSectionScalarFieldEnum | ProductSectionScalarFieldEnum[]
+  }
+
+  /**
+   * ProductSection create
+   */
+  export type ProductSectionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductSection
+     */
+    select?: ProductSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductSection
+     */
+    omit?: ProductSectionOmit<ExtArgs> | null
+    /**
+     * The data needed to create a ProductSection.
+     */
+    data: XOR<ProductSectionCreateInput, ProductSectionUncheckedCreateInput>
+  }
+
+  /**
+   * ProductSection createMany
+   */
+  export type ProductSectionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ProductSections.
+     */
+    data: ProductSectionCreateManyInput | ProductSectionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ProductSection update
+   */
+  export type ProductSectionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductSection
+     */
+    select?: ProductSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductSection
+     */
+    omit?: ProductSectionOmit<ExtArgs> | null
+    /**
+     * The data needed to update a ProductSection.
+     */
+    data: XOR<ProductSectionUpdateInput, ProductSectionUncheckedUpdateInput>
+    /**
+     * Choose, which ProductSection to update.
+     */
+    where: ProductSectionWhereUniqueInput
+  }
+
+  /**
+   * ProductSection updateMany
+   */
+  export type ProductSectionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ProductSections.
+     */
+    data: XOR<ProductSectionUpdateManyMutationInput, ProductSectionUncheckedUpdateManyInput>
+    /**
+     * Filter which ProductSections to update
+     */
+    where?: ProductSectionWhereInput
+    /**
+     * Limit how many ProductSections to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ProductSection upsert
+   */
+  export type ProductSectionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductSection
+     */
+    select?: ProductSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductSection
+     */
+    omit?: ProductSectionOmit<ExtArgs> | null
+    /**
+     * The filter to search for the ProductSection to update in case it exists.
+     */
+    where: ProductSectionWhereUniqueInput
+    /**
+     * In case the ProductSection found by the `where` argument doesn't exist, create a new ProductSection with this data.
+     */
+    create: XOR<ProductSectionCreateInput, ProductSectionUncheckedCreateInput>
+    /**
+     * In case the ProductSection was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ProductSectionUpdateInput, ProductSectionUncheckedUpdateInput>
+  }
+
+  /**
+   * ProductSection delete
+   */
+  export type ProductSectionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductSection
+     */
+    select?: ProductSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductSection
+     */
+    omit?: ProductSectionOmit<ExtArgs> | null
+    /**
+     * Filter which ProductSection to delete.
+     */
+    where: ProductSectionWhereUniqueInput
+  }
+
+  /**
+   * ProductSection deleteMany
+   */
+  export type ProductSectionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ProductSections to delete
+     */
+    where?: ProductSectionWhereInput
+    /**
+     * Limit how many ProductSections to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ProductSection without action
+   */
+  export type ProductSectionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductSection
+     */
+    select?: ProductSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductSection
+     */
+    omit?: ProductSectionOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model FacilitySection
+   */
+
+  export type AggregateFacilitySection = {
+    _count: FacilitySectionCountAggregateOutputType | null
+    _min: FacilitySectionMinAggregateOutputType | null
+    _max: FacilitySectionMaxAggregateOutputType | null
+  }
+
+  export type FacilitySectionMinAggregateOutputType = {
+    id: string | null
+    sectionLabel: string | null
+    title: string | null
+    description: string | null
+    buttonText: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type FacilitySectionMaxAggregateOutputType = {
+    id: string | null
+    sectionLabel: string | null
+    title: string | null
+    description: string | null
+    buttonText: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type FacilitySectionCountAggregateOutputType = {
+    id: number
+    sectionLabel: number
+    title: number
+    description: number
+    buttonText: number
+    isActive: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type FacilitySectionMinAggregateInputType = {
+    id?: true
+    sectionLabel?: true
+    title?: true
+    description?: true
+    buttonText?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type FacilitySectionMaxAggregateInputType = {
+    id?: true
+    sectionLabel?: true
+    title?: true
+    description?: true
+    buttonText?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type FacilitySectionCountAggregateInputType = {
+    id?: true
+    sectionLabel?: true
+    title?: true
+    description?: true
+    buttonText?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type FacilitySectionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FacilitySection to aggregate.
+     */
+    where?: FacilitySectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FacilitySections to fetch.
+     */
+    orderBy?: FacilitySectionOrderByWithRelationInput | FacilitySectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: FacilitySectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FacilitySections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FacilitySections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned FacilitySections
+    **/
+    _count?: true | FacilitySectionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: FacilitySectionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: FacilitySectionMaxAggregateInputType
+  }
+
+  export type GetFacilitySectionAggregateType<T extends FacilitySectionAggregateArgs> = {
+        [P in keyof T & keyof AggregateFacilitySection]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateFacilitySection[P]>
+      : GetScalarType<T[P], AggregateFacilitySection[P]>
+  }
+
+
+
+
+  export type FacilitySectionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FacilitySectionWhereInput
+    orderBy?: FacilitySectionOrderByWithAggregationInput | FacilitySectionOrderByWithAggregationInput[]
+    by: FacilitySectionScalarFieldEnum[] | FacilitySectionScalarFieldEnum
+    having?: FacilitySectionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: FacilitySectionCountAggregateInputType | true
+    _min?: FacilitySectionMinAggregateInputType
+    _max?: FacilitySectionMaxAggregateInputType
+  }
+
+  export type FacilitySectionGroupByOutputType = {
+    id: string
+    sectionLabel: string | null
+    title: string
+    description: string | null
+    buttonText: string | null
+    isActive: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: FacilitySectionCountAggregateOutputType | null
+    _min: FacilitySectionMinAggregateOutputType | null
+    _max: FacilitySectionMaxAggregateOutputType | null
+  }
+
+  type GetFacilitySectionGroupByPayload<T extends FacilitySectionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<FacilitySectionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof FacilitySectionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], FacilitySectionGroupByOutputType[P]>
+            : GetScalarType<T[P], FacilitySectionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type FacilitySectionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    sectionLabel?: boolean
+    title?: boolean
+    description?: boolean
+    buttonText?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["facilitySection"]>
+
+
+
+  export type FacilitySectionSelectScalar = {
+    id?: boolean
+    sectionLabel?: boolean
+    title?: boolean
+    description?: boolean
+    buttonText?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type FacilitySectionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "sectionLabel" | "title" | "description" | "buttonText" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["facilitySection"]>
+
+  export type $FacilitySectionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "FacilitySection"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      sectionLabel: string | null
+      title: string
+      description: string | null
+      buttonText: string | null
+      isActive: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["facilitySection"]>
+    composites: {}
+  }
+
+  type FacilitySectionGetPayload<S extends boolean | null | undefined | FacilitySectionDefaultArgs> = $Result.GetResult<Prisma.$FacilitySectionPayload, S>
+
+  type FacilitySectionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<FacilitySectionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: FacilitySectionCountAggregateInputType | true
+    }
+
+  export interface FacilitySectionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['FacilitySection'], meta: { name: 'FacilitySection' } }
+    /**
+     * Find zero or one FacilitySection that matches the filter.
+     * @param {FacilitySectionFindUniqueArgs} args - Arguments to find a FacilitySection
+     * @example
+     * // Get one FacilitySection
+     * const facilitySection = await prisma.facilitySection.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends FacilitySectionFindUniqueArgs>(args: SelectSubset<T, FacilitySectionFindUniqueArgs<ExtArgs>>): Prisma__FacilitySectionClient<$Result.GetResult<Prisma.$FacilitySectionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one FacilitySection that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {FacilitySectionFindUniqueOrThrowArgs} args - Arguments to find a FacilitySection
+     * @example
+     * // Get one FacilitySection
+     * const facilitySection = await prisma.facilitySection.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends FacilitySectionFindUniqueOrThrowArgs>(args: SelectSubset<T, FacilitySectionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__FacilitySectionClient<$Result.GetResult<Prisma.$FacilitySectionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first FacilitySection that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FacilitySectionFindFirstArgs} args - Arguments to find a FacilitySection
+     * @example
+     * // Get one FacilitySection
+     * const facilitySection = await prisma.facilitySection.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends FacilitySectionFindFirstArgs>(args?: SelectSubset<T, FacilitySectionFindFirstArgs<ExtArgs>>): Prisma__FacilitySectionClient<$Result.GetResult<Prisma.$FacilitySectionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first FacilitySection that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FacilitySectionFindFirstOrThrowArgs} args - Arguments to find a FacilitySection
+     * @example
+     * // Get one FacilitySection
+     * const facilitySection = await prisma.facilitySection.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends FacilitySectionFindFirstOrThrowArgs>(args?: SelectSubset<T, FacilitySectionFindFirstOrThrowArgs<ExtArgs>>): Prisma__FacilitySectionClient<$Result.GetResult<Prisma.$FacilitySectionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more FacilitySections that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FacilitySectionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all FacilitySections
+     * const facilitySections = await prisma.facilitySection.findMany()
+     * 
+     * // Get first 10 FacilitySections
+     * const facilitySections = await prisma.facilitySection.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const facilitySectionWithIdOnly = await prisma.facilitySection.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends FacilitySectionFindManyArgs>(args?: SelectSubset<T, FacilitySectionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FacilitySectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a FacilitySection.
+     * @param {FacilitySectionCreateArgs} args - Arguments to create a FacilitySection.
+     * @example
+     * // Create one FacilitySection
+     * const FacilitySection = await prisma.facilitySection.create({
+     *   data: {
+     *     // ... data to create a FacilitySection
+     *   }
+     * })
+     * 
+     */
+    create<T extends FacilitySectionCreateArgs>(args: SelectSubset<T, FacilitySectionCreateArgs<ExtArgs>>): Prisma__FacilitySectionClient<$Result.GetResult<Prisma.$FacilitySectionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many FacilitySections.
+     * @param {FacilitySectionCreateManyArgs} args - Arguments to create many FacilitySections.
+     * @example
+     * // Create many FacilitySections
+     * const facilitySection = await prisma.facilitySection.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends FacilitySectionCreateManyArgs>(args?: SelectSubset<T, FacilitySectionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a FacilitySection.
+     * @param {FacilitySectionDeleteArgs} args - Arguments to delete one FacilitySection.
+     * @example
+     * // Delete one FacilitySection
+     * const FacilitySection = await prisma.facilitySection.delete({
+     *   where: {
+     *     // ... filter to delete one FacilitySection
+     *   }
+     * })
+     * 
+     */
+    delete<T extends FacilitySectionDeleteArgs>(args: SelectSubset<T, FacilitySectionDeleteArgs<ExtArgs>>): Prisma__FacilitySectionClient<$Result.GetResult<Prisma.$FacilitySectionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one FacilitySection.
+     * @param {FacilitySectionUpdateArgs} args - Arguments to update one FacilitySection.
+     * @example
+     * // Update one FacilitySection
+     * const facilitySection = await prisma.facilitySection.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends FacilitySectionUpdateArgs>(args: SelectSubset<T, FacilitySectionUpdateArgs<ExtArgs>>): Prisma__FacilitySectionClient<$Result.GetResult<Prisma.$FacilitySectionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more FacilitySections.
+     * @param {FacilitySectionDeleteManyArgs} args - Arguments to filter FacilitySections to delete.
+     * @example
+     * // Delete a few FacilitySections
+     * const { count } = await prisma.facilitySection.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends FacilitySectionDeleteManyArgs>(args?: SelectSubset<T, FacilitySectionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more FacilitySections.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FacilitySectionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many FacilitySections
+     * const facilitySection = await prisma.facilitySection.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends FacilitySectionUpdateManyArgs>(args: SelectSubset<T, FacilitySectionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one FacilitySection.
+     * @param {FacilitySectionUpsertArgs} args - Arguments to update or create a FacilitySection.
+     * @example
+     * // Update or create a FacilitySection
+     * const facilitySection = await prisma.facilitySection.upsert({
+     *   create: {
+     *     // ... data to create a FacilitySection
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the FacilitySection we want to update
+     *   }
+     * })
+     */
+    upsert<T extends FacilitySectionUpsertArgs>(args: SelectSubset<T, FacilitySectionUpsertArgs<ExtArgs>>): Prisma__FacilitySectionClient<$Result.GetResult<Prisma.$FacilitySectionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of FacilitySections.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FacilitySectionCountArgs} args - Arguments to filter FacilitySections to count.
+     * @example
+     * // Count the number of FacilitySections
+     * const count = await prisma.facilitySection.count({
+     *   where: {
+     *     // ... the filter for the FacilitySections we want to count
+     *   }
+     * })
+    **/
+    count<T extends FacilitySectionCountArgs>(
+      args?: Subset<T, FacilitySectionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], FacilitySectionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a FacilitySection.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FacilitySectionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends FacilitySectionAggregateArgs>(args: Subset<T, FacilitySectionAggregateArgs>): Prisma.PrismaPromise<GetFacilitySectionAggregateType<T>>
+
+    /**
+     * Group by FacilitySection.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FacilitySectionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends FacilitySectionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: FacilitySectionGroupByArgs['orderBy'] }
+        : { orderBy?: FacilitySectionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, FacilitySectionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFacilitySectionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the FacilitySection model
+   */
+  readonly fields: FacilitySectionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for FacilitySection.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__FacilitySectionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the FacilitySection model
+   */
+  interface FacilitySectionFieldRefs {
+    readonly id: FieldRef<"FacilitySection", 'String'>
+    readonly sectionLabel: FieldRef<"FacilitySection", 'String'>
+    readonly title: FieldRef<"FacilitySection", 'String'>
+    readonly description: FieldRef<"FacilitySection", 'String'>
+    readonly buttonText: FieldRef<"FacilitySection", 'String'>
+    readonly isActive: FieldRef<"FacilitySection", 'Boolean'>
+    readonly createdAt: FieldRef<"FacilitySection", 'DateTime'>
+    readonly updatedAt: FieldRef<"FacilitySection", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * FacilitySection findUnique
+   */
+  export type FacilitySectionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FacilitySection
+     */
+    select?: FacilitySectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FacilitySection
+     */
+    omit?: FacilitySectionOmit<ExtArgs> | null
+    /**
+     * Filter, which FacilitySection to fetch.
+     */
+    where: FacilitySectionWhereUniqueInput
+  }
+
+  /**
+   * FacilitySection findUniqueOrThrow
+   */
+  export type FacilitySectionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FacilitySection
+     */
+    select?: FacilitySectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FacilitySection
+     */
+    omit?: FacilitySectionOmit<ExtArgs> | null
+    /**
+     * Filter, which FacilitySection to fetch.
+     */
+    where: FacilitySectionWhereUniqueInput
+  }
+
+  /**
+   * FacilitySection findFirst
+   */
+  export type FacilitySectionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FacilitySection
+     */
+    select?: FacilitySectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FacilitySection
+     */
+    omit?: FacilitySectionOmit<ExtArgs> | null
+    /**
+     * Filter, which FacilitySection to fetch.
+     */
+    where?: FacilitySectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FacilitySections to fetch.
+     */
+    orderBy?: FacilitySectionOrderByWithRelationInput | FacilitySectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for FacilitySections.
+     */
+    cursor?: FacilitySectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FacilitySections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FacilitySections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of FacilitySections.
+     */
+    distinct?: FacilitySectionScalarFieldEnum | FacilitySectionScalarFieldEnum[]
+  }
+
+  /**
+   * FacilitySection findFirstOrThrow
+   */
+  export type FacilitySectionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FacilitySection
+     */
+    select?: FacilitySectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FacilitySection
+     */
+    omit?: FacilitySectionOmit<ExtArgs> | null
+    /**
+     * Filter, which FacilitySection to fetch.
+     */
+    where?: FacilitySectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FacilitySections to fetch.
+     */
+    orderBy?: FacilitySectionOrderByWithRelationInput | FacilitySectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for FacilitySections.
+     */
+    cursor?: FacilitySectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FacilitySections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FacilitySections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of FacilitySections.
+     */
+    distinct?: FacilitySectionScalarFieldEnum | FacilitySectionScalarFieldEnum[]
+  }
+
+  /**
+   * FacilitySection findMany
+   */
+  export type FacilitySectionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FacilitySection
+     */
+    select?: FacilitySectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FacilitySection
+     */
+    omit?: FacilitySectionOmit<ExtArgs> | null
+    /**
+     * Filter, which FacilitySections to fetch.
+     */
+    where?: FacilitySectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FacilitySections to fetch.
+     */
+    orderBy?: FacilitySectionOrderByWithRelationInput | FacilitySectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing FacilitySections.
+     */
+    cursor?: FacilitySectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FacilitySections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FacilitySections.
+     */
+    skip?: number
+    distinct?: FacilitySectionScalarFieldEnum | FacilitySectionScalarFieldEnum[]
+  }
+
+  /**
+   * FacilitySection create
+   */
+  export type FacilitySectionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FacilitySection
+     */
+    select?: FacilitySectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FacilitySection
+     */
+    omit?: FacilitySectionOmit<ExtArgs> | null
+    /**
+     * The data needed to create a FacilitySection.
+     */
+    data: XOR<FacilitySectionCreateInput, FacilitySectionUncheckedCreateInput>
+  }
+
+  /**
+   * FacilitySection createMany
+   */
+  export type FacilitySectionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many FacilitySections.
+     */
+    data: FacilitySectionCreateManyInput | FacilitySectionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * FacilitySection update
+   */
+  export type FacilitySectionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FacilitySection
+     */
+    select?: FacilitySectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FacilitySection
+     */
+    omit?: FacilitySectionOmit<ExtArgs> | null
+    /**
+     * The data needed to update a FacilitySection.
+     */
+    data: XOR<FacilitySectionUpdateInput, FacilitySectionUncheckedUpdateInput>
+    /**
+     * Choose, which FacilitySection to update.
+     */
+    where: FacilitySectionWhereUniqueInput
+  }
+
+  /**
+   * FacilitySection updateMany
+   */
+  export type FacilitySectionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update FacilitySections.
+     */
+    data: XOR<FacilitySectionUpdateManyMutationInput, FacilitySectionUncheckedUpdateManyInput>
+    /**
+     * Filter which FacilitySections to update
+     */
+    where?: FacilitySectionWhereInput
+    /**
+     * Limit how many FacilitySections to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * FacilitySection upsert
+   */
+  export type FacilitySectionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FacilitySection
+     */
+    select?: FacilitySectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FacilitySection
+     */
+    omit?: FacilitySectionOmit<ExtArgs> | null
+    /**
+     * The filter to search for the FacilitySection to update in case it exists.
+     */
+    where: FacilitySectionWhereUniqueInput
+    /**
+     * In case the FacilitySection found by the `where` argument doesn't exist, create a new FacilitySection with this data.
+     */
+    create: XOR<FacilitySectionCreateInput, FacilitySectionUncheckedCreateInput>
+    /**
+     * In case the FacilitySection was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<FacilitySectionUpdateInput, FacilitySectionUncheckedUpdateInput>
+  }
+
+  /**
+   * FacilitySection delete
+   */
+  export type FacilitySectionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FacilitySection
+     */
+    select?: FacilitySectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FacilitySection
+     */
+    omit?: FacilitySectionOmit<ExtArgs> | null
+    /**
+     * Filter which FacilitySection to delete.
+     */
+    where: FacilitySectionWhereUniqueInput
+  }
+
+  /**
+   * FacilitySection deleteMany
+   */
+  export type FacilitySectionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FacilitySections to delete
+     */
+    where?: FacilitySectionWhereInput
+    /**
+     * Limit how many FacilitySections to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * FacilitySection without action
+   */
+  export type FacilitySectionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FacilitySection
+     */
+    select?: FacilitySectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FacilitySection
+     */
+    omit?: FacilitySectionOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model TestimonialSection
+   */
+
+  export type AggregateTestimonialSection = {
+    _count: TestimonialSectionCountAggregateOutputType | null
+    _min: TestimonialSectionMinAggregateOutputType | null
+    _max: TestimonialSectionMaxAggregateOutputType | null
+  }
+
+  export type TestimonialSectionMinAggregateOutputType = {
+    id: string | null
+    sectionLabel: string | null
+    title: string | null
+    description: string | null
+    satisfactionCount: string | null
+    ratingCount: string | null
+    reviewCount: string | null
+    satisfactionLabel: string | null
+    ratingLabel: string | null
+    reviewLabel: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type TestimonialSectionMaxAggregateOutputType = {
+    id: string | null
+    sectionLabel: string | null
+    title: string | null
+    description: string | null
+    satisfactionCount: string | null
+    ratingCount: string | null
+    reviewCount: string | null
+    satisfactionLabel: string | null
+    ratingLabel: string | null
+    reviewLabel: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type TestimonialSectionCountAggregateOutputType = {
+    id: number
+    sectionLabel: number
+    title: number
+    description: number
+    satisfactionCount: number
+    ratingCount: number
+    reviewCount: number
+    satisfactionLabel: number
+    ratingLabel: number
+    reviewLabel: number
+    isActive: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type TestimonialSectionMinAggregateInputType = {
+    id?: true
+    sectionLabel?: true
+    title?: true
+    description?: true
+    satisfactionCount?: true
+    ratingCount?: true
+    reviewCount?: true
+    satisfactionLabel?: true
+    ratingLabel?: true
+    reviewLabel?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type TestimonialSectionMaxAggregateInputType = {
+    id?: true
+    sectionLabel?: true
+    title?: true
+    description?: true
+    satisfactionCount?: true
+    ratingCount?: true
+    reviewCount?: true
+    satisfactionLabel?: true
+    ratingLabel?: true
+    reviewLabel?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type TestimonialSectionCountAggregateInputType = {
+    id?: true
+    sectionLabel?: true
+    title?: true
+    description?: true
+    satisfactionCount?: true
+    ratingCount?: true
+    reviewCount?: true
+    satisfactionLabel?: true
+    ratingLabel?: true
+    reviewLabel?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type TestimonialSectionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TestimonialSection to aggregate.
+     */
+    where?: TestimonialSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TestimonialSections to fetch.
+     */
+    orderBy?: TestimonialSectionOrderByWithRelationInput | TestimonialSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TestimonialSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TestimonialSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TestimonialSections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TestimonialSections
+    **/
+    _count?: true | TestimonialSectionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TestimonialSectionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TestimonialSectionMaxAggregateInputType
+  }
+
+  export type GetTestimonialSectionAggregateType<T extends TestimonialSectionAggregateArgs> = {
+        [P in keyof T & keyof AggregateTestimonialSection]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTestimonialSection[P]>
+      : GetScalarType<T[P], AggregateTestimonialSection[P]>
+  }
+
+
+
+
+  export type TestimonialSectionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TestimonialSectionWhereInput
+    orderBy?: TestimonialSectionOrderByWithAggregationInput | TestimonialSectionOrderByWithAggregationInput[]
+    by: TestimonialSectionScalarFieldEnum[] | TestimonialSectionScalarFieldEnum
+    having?: TestimonialSectionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TestimonialSectionCountAggregateInputType | true
+    _min?: TestimonialSectionMinAggregateInputType
+    _max?: TestimonialSectionMaxAggregateInputType
+  }
+
+  export type TestimonialSectionGroupByOutputType = {
+    id: string
+    sectionLabel: string | null
+    title: string
+    description: string | null
+    satisfactionCount: string | null
+    ratingCount: string | null
+    reviewCount: string | null
+    satisfactionLabel: string | null
+    ratingLabel: string | null
+    reviewLabel: string | null
+    isActive: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: TestimonialSectionCountAggregateOutputType | null
+    _min: TestimonialSectionMinAggregateOutputType | null
+    _max: TestimonialSectionMaxAggregateOutputType | null
+  }
+
+  type GetTestimonialSectionGroupByPayload<T extends TestimonialSectionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TestimonialSectionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TestimonialSectionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TestimonialSectionGroupByOutputType[P]>
+            : GetScalarType<T[P], TestimonialSectionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TestimonialSectionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    sectionLabel?: boolean
+    title?: boolean
+    description?: boolean
+    satisfactionCount?: boolean
+    ratingCount?: boolean
+    reviewCount?: boolean
+    satisfactionLabel?: boolean
+    ratingLabel?: boolean
+    reviewLabel?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["testimonialSection"]>
+
+
+
+  export type TestimonialSectionSelectScalar = {
+    id?: boolean
+    sectionLabel?: boolean
+    title?: boolean
+    description?: boolean
+    satisfactionCount?: boolean
+    ratingCount?: boolean
+    reviewCount?: boolean
+    satisfactionLabel?: boolean
+    ratingLabel?: boolean
+    reviewLabel?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type TestimonialSectionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "sectionLabel" | "title" | "description" | "satisfactionCount" | "ratingCount" | "reviewCount" | "satisfactionLabel" | "ratingLabel" | "reviewLabel" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["testimonialSection"]>
+
+  export type $TestimonialSectionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TestimonialSection"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      sectionLabel: string | null
+      title: string
+      description: string | null
+      satisfactionCount: string | null
+      ratingCount: string | null
+      reviewCount: string | null
+      satisfactionLabel: string | null
+      ratingLabel: string | null
+      reviewLabel: string | null
+      isActive: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["testimonialSection"]>
+    composites: {}
+  }
+
+  type TestimonialSectionGetPayload<S extends boolean | null | undefined | TestimonialSectionDefaultArgs> = $Result.GetResult<Prisma.$TestimonialSectionPayload, S>
+
+  type TestimonialSectionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TestimonialSectionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TestimonialSectionCountAggregateInputType | true
+    }
+
+  export interface TestimonialSectionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TestimonialSection'], meta: { name: 'TestimonialSection' } }
+    /**
+     * Find zero or one TestimonialSection that matches the filter.
+     * @param {TestimonialSectionFindUniqueArgs} args - Arguments to find a TestimonialSection
+     * @example
+     * // Get one TestimonialSection
+     * const testimonialSection = await prisma.testimonialSection.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TestimonialSectionFindUniqueArgs>(args: SelectSubset<T, TestimonialSectionFindUniqueArgs<ExtArgs>>): Prisma__TestimonialSectionClient<$Result.GetResult<Prisma.$TestimonialSectionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TestimonialSection that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TestimonialSectionFindUniqueOrThrowArgs} args - Arguments to find a TestimonialSection
+     * @example
+     * // Get one TestimonialSection
+     * const testimonialSection = await prisma.testimonialSection.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TestimonialSectionFindUniqueOrThrowArgs>(args: SelectSubset<T, TestimonialSectionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TestimonialSectionClient<$Result.GetResult<Prisma.$TestimonialSectionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TestimonialSection that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TestimonialSectionFindFirstArgs} args - Arguments to find a TestimonialSection
+     * @example
+     * // Get one TestimonialSection
+     * const testimonialSection = await prisma.testimonialSection.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TestimonialSectionFindFirstArgs>(args?: SelectSubset<T, TestimonialSectionFindFirstArgs<ExtArgs>>): Prisma__TestimonialSectionClient<$Result.GetResult<Prisma.$TestimonialSectionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TestimonialSection that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TestimonialSectionFindFirstOrThrowArgs} args - Arguments to find a TestimonialSection
+     * @example
+     * // Get one TestimonialSection
+     * const testimonialSection = await prisma.testimonialSection.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TestimonialSectionFindFirstOrThrowArgs>(args?: SelectSubset<T, TestimonialSectionFindFirstOrThrowArgs<ExtArgs>>): Prisma__TestimonialSectionClient<$Result.GetResult<Prisma.$TestimonialSectionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TestimonialSections that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TestimonialSectionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TestimonialSections
+     * const testimonialSections = await prisma.testimonialSection.findMany()
+     * 
+     * // Get first 10 TestimonialSections
+     * const testimonialSections = await prisma.testimonialSection.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const testimonialSectionWithIdOnly = await prisma.testimonialSection.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TestimonialSectionFindManyArgs>(args?: SelectSubset<T, TestimonialSectionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TestimonialSectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TestimonialSection.
+     * @param {TestimonialSectionCreateArgs} args - Arguments to create a TestimonialSection.
+     * @example
+     * // Create one TestimonialSection
+     * const TestimonialSection = await prisma.testimonialSection.create({
+     *   data: {
+     *     // ... data to create a TestimonialSection
+     *   }
+     * })
+     * 
+     */
+    create<T extends TestimonialSectionCreateArgs>(args: SelectSubset<T, TestimonialSectionCreateArgs<ExtArgs>>): Prisma__TestimonialSectionClient<$Result.GetResult<Prisma.$TestimonialSectionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TestimonialSections.
+     * @param {TestimonialSectionCreateManyArgs} args - Arguments to create many TestimonialSections.
+     * @example
+     * // Create many TestimonialSections
+     * const testimonialSection = await prisma.testimonialSection.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TestimonialSectionCreateManyArgs>(args?: SelectSubset<T, TestimonialSectionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a TestimonialSection.
+     * @param {TestimonialSectionDeleteArgs} args - Arguments to delete one TestimonialSection.
+     * @example
+     * // Delete one TestimonialSection
+     * const TestimonialSection = await prisma.testimonialSection.delete({
+     *   where: {
+     *     // ... filter to delete one TestimonialSection
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TestimonialSectionDeleteArgs>(args: SelectSubset<T, TestimonialSectionDeleteArgs<ExtArgs>>): Prisma__TestimonialSectionClient<$Result.GetResult<Prisma.$TestimonialSectionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TestimonialSection.
+     * @param {TestimonialSectionUpdateArgs} args - Arguments to update one TestimonialSection.
+     * @example
+     * // Update one TestimonialSection
+     * const testimonialSection = await prisma.testimonialSection.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TestimonialSectionUpdateArgs>(args: SelectSubset<T, TestimonialSectionUpdateArgs<ExtArgs>>): Prisma__TestimonialSectionClient<$Result.GetResult<Prisma.$TestimonialSectionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TestimonialSections.
+     * @param {TestimonialSectionDeleteManyArgs} args - Arguments to filter TestimonialSections to delete.
+     * @example
+     * // Delete a few TestimonialSections
+     * const { count } = await prisma.testimonialSection.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TestimonialSectionDeleteManyArgs>(args?: SelectSubset<T, TestimonialSectionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TestimonialSections.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TestimonialSectionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TestimonialSections
+     * const testimonialSection = await prisma.testimonialSection.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TestimonialSectionUpdateManyArgs>(args: SelectSubset<T, TestimonialSectionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one TestimonialSection.
+     * @param {TestimonialSectionUpsertArgs} args - Arguments to update or create a TestimonialSection.
+     * @example
+     * // Update or create a TestimonialSection
+     * const testimonialSection = await prisma.testimonialSection.upsert({
+     *   create: {
+     *     // ... data to create a TestimonialSection
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TestimonialSection we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TestimonialSectionUpsertArgs>(args: SelectSubset<T, TestimonialSectionUpsertArgs<ExtArgs>>): Prisma__TestimonialSectionClient<$Result.GetResult<Prisma.$TestimonialSectionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TestimonialSections.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TestimonialSectionCountArgs} args - Arguments to filter TestimonialSections to count.
+     * @example
+     * // Count the number of TestimonialSections
+     * const count = await prisma.testimonialSection.count({
+     *   where: {
+     *     // ... the filter for the TestimonialSections we want to count
+     *   }
+     * })
+    **/
+    count<T extends TestimonialSectionCountArgs>(
+      args?: Subset<T, TestimonialSectionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TestimonialSectionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TestimonialSection.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TestimonialSectionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TestimonialSectionAggregateArgs>(args: Subset<T, TestimonialSectionAggregateArgs>): Prisma.PrismaPromise<GetTestimonialSectionAggregateType<T>>
+
+    /**
+     * Group by TestimonialSection.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TestimonialSectionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TestimonialSectionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TestimonialSectionGroupByArgs['orderBy'] }
+        : { orderBy?: TestimonialSectionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TestimonialSectionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTestimonialSectionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TestimonialSection model
+   */
+  readonly fields: TestimonialSectionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TestimonialSection.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TestimonialSectionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TestimonialSection model
+   */
+  interface TestimonialSectionFieldRefs {
+    readonly id: FieldRef<"TestimonialSection", 'String'>
+    readonly sectionLabel: FieldRef<"TestimonialSection", 'String'>
+    readonly title: FieldRef<"TestimonialSection", 'String'>
+    readonly description: FieldRef<"TestimonialSection", 'String'>
+    readonly satisfactionCount: FieldRef<"TestimonialSection", 'String'>
+    readonly ratingCount: FieldRef<"TestimonialSection", 'String'>
+    readonly reviewCount: FieldRef<"TestimonialSection", 'String'>
+    readonly satisfactionLabel: FieldRef<"TestimonialSection", 'String'>
+    readonly ratingLabel: FieldRef<"TestimonialSection", 'String'>
+    readonly reviewLabel: FieldRef<"TestimonialSection", 'String'>
+    readonly isActive: FieldRef<"TestimonialSection", 'Boolean'>
+    readonly createdAt: FieldRef<"TestimonialSection", 'DateTime'>
+    readonly updatedAt: FieldRef<"TestimonialSection", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TestimonialSection findUnique
+   */
+  export type TestimonialSectionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TestimonialSection
+     */
+    select?: TestimonialSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TestimonialSection
+     */
+    omit?: TestimonialSectionOmit<ExtArgs> | null
+    /**
+     * Filter, which TestimonialSection to fetch.
+     */
+    where: TestimonialSectionWhereUniqueInput
+  }
+
+  /**
+   * TestimonialSection findUniqueOrThrow
+   */
+  export type TestimonialSectionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TestimonialSection
+     */
+    select?: TestimonialSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TestimonialSection
+     */
+    omit?: TestimonialSectionOmit<ExtArgs> | null
+    /**
+     * Filter, which TestimonialSection to fetch.
+     */
+    where: TestimonialSectionWhereUniqueInput
+  }
+
+  /**
+   * TestimonialSection findFirst
+   */
+  export type TestimonialSectionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TestimonialSection
+     */
+    select?: TestimonialSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TestimonialSection
+     */
+    omit?: TestimonialSectionOmit<ExtArgs> | null
+    /**
+     * Filter, which TestimonialSection to fetch.
+     */
+    where?: TestimonialSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TestimonialSections to fetch.
+     */
+    orderBy?: TestimonialSectionOrderByWithRelationInput | TestimonialSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TestimonialSections.
+     */
+    cursor?: TestimonialSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TestimonialSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TestimonialSections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TestimonialSections.
+     */
+    distinct?: TestimonialSectionScalarFieldEnum | TestimonialSectionScalarFieldEnum[]
+  }
+
+  /**
+   * TestimonialSection findFirstOrThrow
+   */
+  export type TestimonialSectionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TestimonialSection
+     */
+    select?: TestimonialSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TestimonialSection
+     */
+    omit?: TestimonialSectionOmit<ExtArgs> | null
+    /**
+     * Filter, which TestimonialSection to fetch.
+     */
+    where?: TestimonialSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TestimonialSections to fetch.
+     */
+    orderBy?: TestimonialSectionOrderByWithRelationInput | TestimonialSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TestimonialSections.
+     */
+    cursor?: TestimonialSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TestimonialSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TestimonialSections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TestimonialSections.
+     */
+    distinct?: TestimonialSectionScalarFieldEnum | TestimonialSectionScalarFieldEnum[]
+  }
+
+  /**
+   * TestimonialSection findMany
+   */
+  export type TestimonialSectionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TestimonialSection
+     */
+    select?: TestimonialSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TestimonialSection
+     */
+    omit?: TestimonialSectionOmit<ExtArgs> | null
+    /**
+     * Filter, which TestimonialSections to fetch.
+     */
+    where?: TestimonialSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TestimonialSections to fetch.
+     */
+    orderBy?: TestimonialSectionOrderByWithRelationInput | TestimonialSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TestimonialSections.
+     */
+    cursor?: TestimonialSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TestimonialSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TestimonialSections.
+     */
+    skip?: number
+    distinct?: TestimonialSectionScalarFieldEnum | TestimonialSectionScalarFieldEnum[]
+  }
+
+  /**
+   * TestimonialSection create
+   */
+  export type TestimonialSectionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TestimonialSection
+     */
+    select?: TestimonialSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TestimonialSection
+     */
+    omit?: TestimonialSectionOmit<ExtArgs> | null
+    /**
+     * The data needed to create a TestimonialSection.
+     */
+    data: XOR<TestimonialSectionCreateInput, TestimonialSectionUncheckedCreateInput>
+  }
+
+  /**
+   * TestimonialSection createMany
+   */
+  export type TestimonialSectionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TestimonialSections.
+     */
+    data: TestimonialSectionCreateManyInput | TestimonialSectionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TestimonialSection update
+   */
+  export type TestimonialSectionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TestimonialSection
+     */
+    select?: TestimonialSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TestimonialSection
+     */
+    omit?: TestimonialSectionOmit<ExtArgs> | null
+    /**
+     * The data needed to update a TestimonialSection.
+     */
+    data: XOR<TestimonialSectionUpdateInput, TestimonialSectionUncheckedUpdateInput>
+    /**
+     * Choose, which TestimonialSection to update.
+     */
+    where: TestimonialSectionWhereUniqueInput
+  }
+
+  /**
+   * TestimonialSection updateMany
+   */
+  export type TestimonialSectionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TestimonialSections.
+     */
+    data: XOR<TestimonialSectionUpdateManyMutationInput, TestimonialSectionUncheckedUpdateManyInput>
+    /**
+     * Filter which TestimonialSections to update
+     */
+    where?: TestimonialSectionWhereInput
+    /**
+     * Limit how many TestimonialSections to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TestimonialSection upsert
+   */
+  export type TestimonialSectionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TestimonialSection
+     */
+    select?: TestimonialSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TestimonialSection
+     */
+    omit?: TestimonialSectionOmit<ExtArgs> | null
+    /**
+     * The filter to search for the TestimonialSection to update in case it exists.
+     */
+    where: TestimonialSectionWhereUniqueInput
+    /**
+     * In case the TestimonialSection found by the `where` argument doesn't exist, create a new TestimonialSection with this data.
+     */
+    create: XOR<TestimonialSectionCreateInput, TestimonialSectionUncheckedCreateInput>
+    /**
+     * In case the TestimonialSection was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TestimonialSectionUpdateInput, TestimonialSectionUncheckedUpdateInput>
+  }
+
+  /**
+   * TestimonialSection delete
+   */
+  export type TestimonialSectionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TestimonialSection
+     */
+    select?: TestimonialSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TestimonialSection
+     */
+    omit?: TestimonialSectionOmit<ExtArgs> | null
+    /**
+     * Filter which TestimonialSection to delete.
+     */
+    where: TestimonialSectionWhereUniqueInput
+  }
+
+  /**
+   * TestimonialSection deleteMany
+   */
+  export type TestimonialSectionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TestimonialSections to delete
+     */
+    where?: TestimonialSectionWhereInput
+    /**
+     * Limit how many TestimonialSections to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TestimonialSection without action
+   */
+  export type TestimonialSectionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TestimonialSection
+     */
+    select?: TestimonialSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TestimonialSection
+     */
+    omit?: TestimonialSectionOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model BlogSection
+   */
+
+  export type AggregateBlogSection = {
+    _count: BlogSectionCountAggregateOutputType | null
+    _min: BlogSectionMinAggregateOutputType | null
+    _max: BlogSectionMaxAggregateOutputType | null
+  }
+
+  export type BlogSectionMinAggregateOutputType = {
+    id: string | null
+    sectionLabel: string | null
+    title: string | null
+    description: string | null
+    buttonText: string | null
+    emergencyTitle: string | null
+    emergencyDescription: string | null
+    phoneNumber1: string | null
+    phoneNumber2: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BlogSectionMaxAggregateOutputType = {
+    id: string | null
+    sectionLabel: string | null
+    title: string | null
+    description: string | null
+    buttonText: string | null
+    emergencyTitle: string | null
+    emergencyDescription: string | null
+    phoneNumber1: string | null
+    phoneNumber2: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BlogSectionCountAggregateOutputType = {
+    id: number
+    sectionLabel: number
+    title: number
+    description: number
+    buttonText: number
+    emergencyTitle: number
+    emergencyDescription: number
+    phoneNumber1: number
+    phoneNumber2: number
+    isActive: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type BlogSectionMinAggregateInputType = {
+    id?: true
+    sectionLabel?: true
+    title?: true
+    description?: true
+    buttonText?: true
+    emergencyTitle?: true
+    emergencyDescription?: true
+    phoneNumber1?: true
+    phoneNumber2?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BlogSectionMaxAggregateInputType = {
+    id?: true
+    sectionLabel?: true
+    title?: true
+    description?: true
+    buttonText?: true
+    emergencyTitle?: true
+    emergencyDescription?: true
+    phoneNumber1?: true
+    phoneNumber2?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BlogSectionCountAggregateInputType = {
+    id?: true
+    sectionLabel?: true
+    title?: true
+    description?: true
+    buttonText?: true
+    emergencyTitle?: true
+    emergencyDescription?: true
+    phoneNumber1?: true
+    phoneNumber2?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type BlogSectionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BlogSection to aggregate.
+     */
+    where?: BlogSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BlogSections to fetch.
+     */
+    orderBy?: BlogSectionOrderByWithRelationInput | BlogSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BlogSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BlogSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BlogSections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned BlogSections
+    **/
+    _count?: true | BlogSectionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BlogSectionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BlogSectionMaxAggregateInputType
+  }
+
+  export type GetBlogSectionAggregateType<T extends BlogSectionAggregateArgs> = {
+        [P in keyof T & keyof AggregateBlogSection]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBlogSection[P]>
+      : GetScalarType<T[P], AggregateBlogSection[P]>
+  }
+
+
+
+
+  export type BlogSectionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BlogSectionWhereInput
+    orderBy?: BlogSectionOrderByWithAggregationInput | BlogSectionOrderByWithAggregationInput[]
+    by: BlogSectionScalarFieldEnum[] | BlogSectionScalarFieldEnum
+    having?: BlogSectionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BlogSectionCountAggregateInputType | true
+    _min?: BlogSectionMinAggregateInputType
+    _max?: BlogSectionMaxAggregateInputType
+  }
+
+  export type BlogSectionGroupByOutputType = {
+    id: string
+    sectionLabel: string | null
+    title: string
+    description: string | null
+    buttonText: string | null
+    emergencyTitle: string | null
+    emergencyDescription: string | null
+    phoneNumber1: string | null
+    phoneNumber2: string | null
+    isActive: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: BlogSectionCountAggregateOutputType | null
+    _min: BlogSectionMinAggregateOutputType | null
+    _max: BlogSectionMaxAggregateOutputType | null
+  }
+
+  type GetBlogSectionGroupByPayload<T extends BlogSectionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BlogSectionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BlogSectionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BlogSectionGroupByOutputType[P]>
+            : GetScalarType<T[P], BlogSectionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BlogSectionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    sectionLabel?: boolean
+    title?: boolean
+    description?: boolean
+    buttonText?: boolean
+    emergencyTitle?: boolean
+    emergencyDescription?: boolean
+    phoneNumber1?: boolean
+    phoneNumber2?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["blogSection"]>
+
+
+
+  export type BlogSectionSelectScalar = {
+    id?: boolean
+    sectionLabel?: boolean
+    title?: boolean
+    description?: boolean
+    buttonText?: boolean
+    emergencyTitle?: boolean
+    emergencyDescription?: boolean
+    phoneNumber1?: boolean
+    phoneNumber2?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type BlogSectionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "sectionLabel" | "title" | "description" | "buttonText" | "emergencyTitle" | "emergencyDescription" | "phoneNumber1" | "phoneNumber2" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["blogSection"]>
+
+  export type $BlogSectionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "BlogSection"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      sectionLabel: string | null
+      title: string
+      description: string | null
+      buttonText: string | null
+      emergencyTitle: string | null
+      emergencyDescription: string | null
+      phoneNumber1: string | null
+      phoneNumber2: string | null
+      isActive: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["blogSection"]>
+    composites: {}
+  }
+
+  type BlogSectionGetPayload<S extends boolean | null | undefined | BlogSectionDefaultArgs> = $Result.GetResult<Prisma.$BlogSectionPayload, S>
+
+  type BlogSectionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<BlogSectionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: BlogSectionCountAggregateInputType | true
+    }
+
+  export interface BlogSectionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['BlogSection'], meta: { name: 'BlogSection' } }
+    /**
+     * Find zero or one BlogSection that matches the filter.
+     * @param {BlogSectionFindUniqueArgs} args - Arguments to find a BlogSection
+     * @example
+     * // Get one BlogSection
+     * const blogSection = await prisma.blogSection.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BlogSectionFindUniqueArgs>(args: SelectSubset<T, BlogSectionFindUniqueArgs<ExtArgs>>): Prisma__BlogSectionClient<$Result.GetResult<Prisma.$BlogSectionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one BlogSection that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {BlogSectionFindUniqueOrThrowArgs} args - Arguments to find a BlogSection
+     * @example
+     * // Get one BlogSection
+     * const blogSection = await prisma.blogSection.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BlogSectionFindUniqueOrThrowArgs>(args: SelectSubset<T, BlogSectionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BlogSectionClient<$Result.GetResult<Prisma.$BlogSectionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BlogSection that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BlogSectionFindFirstArgs} args - Arguments to find a BlogSection
+     * @example
+     * // Get one BlogSection
+     * const blogSection = await prisma.blogSection.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BlogSectionFindFirstArgs>(args?: SelectSubset<T, BlogSectionFindFirstArgs<ExtArgs>>): Prisma__BlogSectionClient<$Result.GetResult<Prisma.$BlogSectionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BlogSection that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BlogSectionFindFirstOrThrowArgs} args - Arguments to find a BlogSection
+     * @example
+     * // Get one BlogSection
+     * const blogSection = await prisma.blogSection.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BlogSectionFindFirstOrThrowArgs>(args?: SelectSubset<T, BlogSectionFindFirstOrThrowArgs<ExtArgs>>): Prisma__BlogSectionClient<$Result.GetResult<Prisma.$BlogSectionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more BlogSections that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BlogSectionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all BlogSections
+     * const blogSections = await prisma.blogSection.findMany()
+     * 
+     * // Get first 10 BlogSections
+     * const blogSections = await prisma.blogSection.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const blogSectionWithIdOnly = await prisma.blogSection.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends BlogSectionFindManyArgs>(args?: SelectSubset<T, BlogSectionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BlogSectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a BlogSection.
+     * @param {BlogSectionCreateArgs} args - Arguments to create a BlogSection.
+     * @example
+     * // Create one BlogSection
+     * const BlogSection = await prisma.blogSection.create({
+     *   data: {
+     *     // ... data to create a BlogSection
+     *   }
+     * })
+     * 
+     */
+    create<T extends BlogSectionCreateArgs>(args: SelectSubset<T, BlogSectionCreateArgs<ExtArgs>>): Prisma__BlogSectionClient<$Result.GetResult<Prisma.$BlogSectionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many BlogSections.
+     * @param {BlogSectionCreateManyArgs} args - Arguments to create many BlogSections.
+     * @example
+     * // Create many BlogSections
+     * const blogSection = await prisma.blogSection.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends BlogSectionCreateManyArgs>(args?: SelectSubset<T, BlogSectionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a BlogSection.
+     * @param {BlogSectionDeleteArgs} args - Arguments to delete one BlogSection.
+     * @example
+     * // Delete one BlogSection
+     * const BlogSection = await prisma.blogSection.delete({
+     *   where: {
+     *     // ... filter to delete one BlogSection
+     *   }
+     * })
+     * 
+     */
+    delete<T extends BlogSectionDeleteArgs>(args: SelectSubset<T, BlogSectionDeleteArgs<ExtArgs>>): Prisma__BlogSectionClient<$Result.GetResult<Prisma.$BlogSectionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one BlogSection.
+     * @param {BlogSectionUpdateArgs} args - Arguments to update one BlogSection.
+     * @example
+     * // Update one BlogSection
+     * const blogSection = await prisma.blogSection.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends BlogSectionUpdateArgs>(args: SelectSubset<T, BlogSectionUpdateArgs<ExtArgs>>): Prisma__BlogSectionClient<$Result.GetResult<Prisma.$BlogSectionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more BlogSections.
+     * @param {BlogSectionDeleteManyArgs} args - Arguments to filter BlogSections to delete.
+     * @example
+     * // Delete a few BlogSections
+     * const { count } = await prisma.blogSection.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends BlogSectionDeleteManyArgs>(args?: SelectSubset<T, BlogSectionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BlogSections.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BlogSectionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many BlogSections
+     * const blogSection = await prisma.blogSection.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends BlogSectionUpdateManyArgs>(args: SelectSubset<T, BlogSectionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one BlogSection.
+     * @param {BlogSectionUpsertArgs} args - Arguments to update or create a BlogSection.
+     * @example
+     * // Update or create a BlogSection
+     * const blogSection = await prisma.blogSection.upsert({
+     *   create: {
+     *     // ... data to create a BlogSection
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the BlogSection we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BlogSectionUpsertArgs>(args: SelectSubset<T, BlogSectionUpsertArgs<ExtArgs>>): Prisma__BlogSectionClient<$Result.GetResult<Prisma.$BlogSectionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of BlogSections.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BlogSectionCountArgs} args - Arguments to filter BlogSections to count.
+     * @example
+     * // Count the number of BlogSections
+     * const count = await prisma.blogSection.count({
+     *   where: {
+     *     // ... the filter for the BlogSections we want to count
+     *   }
+     * })
+    **/
+    count<T extends BlogSectionCountArgs>(
+      args?: Subset<T, BlogSectionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BlogSectionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a BlogSection.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BlogSectionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BlogSectionAggregateArgs>(args: Subset<T, BlogSectionAggregateArgs>): Prisma.PrismaPromise<GetBlogSectionAggregateType<T>>
+
+    /**
+     * Group by BlogSection.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BlogSectionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BlogSectionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BlogSectionGroupByArgs['orderBy'] }
+        : { orderBy?: BlogSectionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BlogSectionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBlogSectionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the BlogSection model
+   */
+  readonly fields: BlogSectionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for BlogSection.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BlogSectionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the BlogSection model
+   */
+  interface BlogSectionFieldRefs {
+    readonly id: FieldRef<"BlogSection", 'String'>
+    readonly sectionLabel: FieldRef<"BlogSection", 'String'>
+    readonly title: FieldRef<"BlogSection", 'String'>
+    readonly description: FieldRef<"BlogSection", 'String'>
+    readonly buttonText: FieldRef<"BlogSection", 'String'>
+    readonly emergencyTitle: FieldRef<"BlogSection", 'String'>
+    readonly emergencyDescription: FieldRef<"BlogSection", 'String'>
+    readonly phoneNumber1: FieldRef<"BlogSection", 'String'>
+    readonly phoneNumber2: FieldRef<"BlogSection", 'String'>
+    readonly isActive: FieldRef<"BlogSection", 'Boolean'>
+    readonly createdAt: FieldRef<"BlogSection", 'DateTime'>
+    readonly updatedAt: FieldRef<"BlogSection", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * BlogSection findUnique
+   */
+  export type BlogSectionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlogSection
+     */
+    select?: BlogSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlogSection
+     */
+    omit?: BlogSectionOmit<ExtArgs> | null
+    /**
+     * Filter, which BlogSection to fetch.
+     */
+    where: BlogSectionWhereUniqueInput
+  }
+
+  /**
+   * BlogSection findUniqueOrThrow
+   */
+  export type BlogSectionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlogSection
+     */
+    select?: BlogSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlogSection
+     */
+    omit?: BlogSectionOmit<ExtArgs> | null
+    /**
+     * Filter, which BlogSection to fetch.
+     */
+    where: BlogSectionWhereUniqueInput
+  }
+
+  /**
+   * BlogSection findFirst
+   */
+  export type BlogSectionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlogSection
+     */
+    select?: BlogSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlogSection
+     */
+    omit?: BlogSectionOmit<ExtArgs> | null
+    /**
+     * Filter, which BlogSection to fetch.
+     */
+    where?: BlogSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BlogSections to fetch.
+     */
+    orderBy?: BlogSectionOrderByWithRelationInput | BlogSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BlogSections.
+     */
+    cursor?: BlogSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BlogSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BlogSections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BlogSections.
+     */
+    distinct?: BlogSectionScalarFieldEnum | BlogSectionScalarFieldEnum[]
+  }
+
+  /**
+   * BlogSection findFirstOrThrow
+   */
+  export type BlogSectionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlogSection
+     */
+    select?: BlogSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlogSection
+     */
+    omit?: BlogSectionOmit<ExtArgs> | null
+    /**
+     * Filter, which BlogSection to fetch.
+     */
+    where?: BlogSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BlogSections to fetch.
+     */
+    orderBy?: BlogSectionOrderByWithRelationInput | BlogSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BlogSections.
+     */
+    cursor?: BlogSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BlogSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BlogSections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BlogSections.
+     */
+    distinct?: BlogSectionScalarFieldEnum | BlogSectionScalarFieldEnum[]
+  }
+
+  /**
+   * BlogSection findMany
+   */
+  export type BlogSectionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlogSection
+     */
+    select?: BlogSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlogSection
+     */
+    omit?: BlogSectionOmit<ExtArgs> | null
+    /**
+     * Filter, which BlogSections to fetch.
+     */
+    where?: BlogSectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BlogSections to fetch.
+     */
+    orderBy?: BlogSectionOrderByWithRelationInput | BlogSectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing BlogSections.
+     */
+    cursor?: BlogSectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BlogSections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BlogSections.
+     */
+    skip?: number
+    distinct?: BlogSectionScalarFieldEnum | BlogSectionScalarFieldEnum[]
+  }
+
+  /**
+   * BlogSection create
+   */
+  export type BlogSectionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlogSection
+     */
+    select?: BlogSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlogSection
+     */
+    omit?: BlogSectionOmit<ExtArgs> | null
+    /**
+     * The data needed to create a BlogSection.
+     */
+    data: XOR<BlogSectionCreateInput, BlogSectionUncheckedCreateInput>
+  }
+
+  /**
+   * BlogSection createMany
+   */
+  export type BlogSectionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many BlogSections.
+     */
+    data: BlogSectionCreateManyInput | BlogSectionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * BlogSection update
+   */
+  export type BlogSectionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlogSection
+     */
+    select?: BlogSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlogSection
+     */
+    omit?: BlogSectionOmit<ExtArgs> | null
+    /**
+     * The data needed to update a BlogSection.
+     */
+    data: XOR<BlogSectionUpdateInput, BlogSectionUncheckedUpdateInput>
+    /**
+     * Choose, which BlogSection to update.
+     */
+    where: BlogSectionWhereUniqueInput
+  }
+
+  /**
+   * BlogSection updateMany
+   */
+  export type BlogSectionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update BlogSections.
+     */
+    data: XOR<BlogSectionUpdateManyMutationInput, BlogSectionUncheckedUpdateManyInput>
+    /**
+     * Filter which BlogSections to update
+     */
+    where?: BlogSectionWhereInput
+    /**
+     * Limit how many BlogSections to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * BlogSection upsert
+   */
+  export type BlogSectionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlogSection
+     */
+    select?: BlogSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlogSection
+     */
+    omit?: BlogSectionOmit<ExtArgs> | null
+    /**
+     * The filter to search for the BlogSection to update in case it exists.
+     */
+    where: BlogSectionWhereUniqueInput
+    /**
+     * In case the BlogSection found by the `where` argument doesn't exist, create a new BlogSection with this data.
+     */
+    create: XOR<BlogSectionCreateInput, BlogSectionUncheckedCreateInput>
+    /**
+     * In case the BlogSection was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BlogSectionUpdateInput, BlogSectionUncheckedUpdateInput>
+  }
+
+  /**
+   * BlogSection delete
+   */
+  export type BlogSectionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlogSection
+     */
+    select?: BlogSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlogSection
+     */
+    omit?: BlogSectionOmit<ExtArgs> | null
+    /**
+     * Filter which BlogSection to delete.
+     */
+    where: BlogSectionWhereUniqueInput
+  }
+
+  /**
+   * BlogSection deleteMany
+   */
+  export type BlogSectionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BlogSections to delete
+     */
+    where?: BlogSectionWhereInput
+    /**
+     * Limit how many BlogSections to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * BlogSection without action
+   */
+  export type BlogSectionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlogSection
+     */
+    select?: BlogSectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlogSection
+     */
+    omit?: BlogSectionOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -16841,6 +26657,191 @@ export namespace Prisma {
   export type HomeBannerScalarFieldEnum = (typeof HomeBannerScalarFieldEnum)[keyof typeof HomeBannerScalarFieldEnum]
 
 
+  export const AboutSectionScalarFieldEnum: {
+    id: 'id',
+    sectionLabel: 'sectionLabel',
+    title1: 'title1',
+    highlightedText: 'highlightedText',
+    title2: 'title2',
+    description: 'description',
+    image: 'image',
+    feature1Icon: 'feature1Icon',
+    feature1Title: 'feature1Title',
+    feature1Description: 'feature1Description',
+    feature2Icon: 'feature2Icon',
+    feature2Title: 'feature2Title',
+    feature2Description: 'feature2Description',
+    feature3Icon: 'feature3Icon',
+    feature3Title: 'feature3Title',
+    feature3Description: 'feature3Description',
+    patientsCount: 'patientsCount',
+    doctorsCount: 'doctorsCount',
+    departmentsCount: 'departmentsCount',
+    experienceYears: 'experienceYears',
+    patientsLabel: 'patientsLabel',
+    doctorsLabel: 'doctorsLabel',
+    departmentsLabel: 'departmentsLabel',
+    experienceLabel: 'experienceLabel',
+    certificationTitle: 'certificationTitle',
+    certificationSubtitle: 'certificationSubtitle',
+    cardExperienceCount: 'cardExperienceCount',
+    cardExperienceLabel: 'cardExperienceLabel',
+    cardPatientsCount: 'cardPatientsCount',
+    cardPatientsLabel: 'cardPatientsLabel',
+    primaryButtonText: 'primaryButtonText',
+    secondaryButtonText: 'secondaryButtonText',
+    isActive: 'isActive',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type AboutSectionScalarFieldEnum = (typeof AboutSectionScalarFieldEnum)[keyof typeof AboutSectionScalarFieldEnum]
+
+
+  export const ServiceSectionScalarFieldEnum: {
+    id: 'id',
+    sectionLabel: 'sectionLabel',
+    title: 'title',
+    description: 'description',
+    buttonText: 'buttonText',
+    isActive: 'isActive',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ServiceSectionScalarFieldEnum = (typeof ServiceSectionScalarFieldEnum)[keyof typeof ServiceSectionScalarFieldEnum]
+
+
+  export const ServiceItemScalarFieldEnum: {
+    id: 'id',
+    serviceSectionId: 'serviceSectionId',
+    icon: 'icon',
+    title: 'title',
+    description: 'description',
+    linkText: 'linkText',
+    serial: 'serial',
+    isActive: 'isActive',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ServiceItemScalarFieldEnum = (typeof ServiceItemScalarFieldEnum)[keyof typeof ServiceItemScalarFieldEnum]
+
+
+  export const DoctorSectionScalarFieldEnum: {
+    id: 'id',
+    sectionLabel: 'sectionLabel',
+    title1: 'title1',
+    highlightedText: 'highlightedText',
+    title2: 'title2',
+    description: 'description',
+    appoinmentButtonText: 'appoinmentButtonText',
+    isActive: 'isActive',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type DoctorSectionScalarFieldEnum = (typeof DoctorSectionScalarFieldEnum)[keyof typeof DoctorSectionScalarFieldEnum]
+
+
+  export const AppointmentSectionScalarFieldEnum: {
+    id: 'id',
+    badgeText: 'badgeText',
+    title1: 'title1',
+    highlightedText: 'highlightedText',
+    title2: 'title2',
+    description: 'description',
+    feature1Text: 'feature1Text',
+    feature2Text: 'feature2Text',
+    feature3Text: 'feature3Text',
+    feature4Text: 'feature4Text',
+    patientsServedCount: 'patientsServedCount',
+    doctorsCount: 'doctorsCount',
+    ratingCount: 'ratingCount',
+    patientsServedLabel: 'patientsServedLabel',
+    doctorsLabel: 'doctorsLabel',
+    ratingLabel: 'ratingLabel',
+    phoneLabel: 'phoneLabel',
+    phoneNumber: 'phoneNumber',
+    formTitle: 'formTitle',
+    formDescription: 'formDescription',
+    submitButtonText: 'submitButtonText',
+    sslText: 'sslText',
+    confirmText: 'confirmText',
+    reviewText: 'reviewText',
+    isActive: 'isActive',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type AppointmentSectionScalarFieldEnum = (typeof AppointmentSectionScalarFieldEnum)[keyof typeof AppointmentSectionScalarFieldEnum]
+
+
+  export const ProductSectionScalarFieldEnum: {
+    id: 'id',
+    sectionLabel: 'sectionLabel',
+    title: 'title',
+    description: 'description',
+    buttonText: 'buttonText',
+    isActive: 'isActive',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ProductSectionScalarFieldEnum = (typeof ProductSectionScalarFieldEnum)[keyof typeof ProductSectionScalarFieldEnum]
+
+
+  export const FacilitySectionScalarFieldEnum: {
+    id: 'id',
+    sectionLabel: 'sectionLabel',
+    title: 'title',
+    description: 'description',
+    buttonText: 'buttonText',
+    isActive: 'isActive',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type FacilitySectionScalarFieldEnum = (typeof FacilitySectionScalarFieldEnum)[keyof typeof FacilitySectionScalarFieldEnum]
+
+
+  export const TestimonialSectionScalarFieldEnum: {
+    id: 'id',
+    sectionLabel: 'sectionLabel',
+    title: 'title',
+    description: 'description',
+    satisfactionCount: 'satisfactionCount',
+    ratingCount: 'ratingCount',
+    reviewCount: 'reviewCount',
+    satisfactionLabel: 'satisfactionLabel',
+    ratingLabel: 'ratingLabel',
+    reviewLabel: 'reviewLabel',
+    isActive: 'isActive',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type TestimonialSectionScalarFieldEnum = (typeof TestimonialSectionScalarFieldEnum)[keyof typeof TestimonialSectionScalarFieldEnum]
+
+
+  export const BlogSectionScalarFieldEnum: {
+    id: 'id',
+    sectionLabel: 'sectionLabel',
+    title: 'title',
+    description: 'description',
+    buttonText: 'buttonText',
+    emergencyTitle: 'emergencyTitle',
+    emergencyDescription: 'emergencyDescription',
+    phoneNumber1: 'phoneNumber1',
+    phoneNumber2: 'phoneNumber2',
+    isActive: 'isActive',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type BlogSectionScalarFieldEnum = (typeof BlogSectionScalarFieldEnum)[keyof typeof BlogSectionScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -17032,6 +27033,163 @@ export namespace Prisma {
   };
 
   export type HomeBannerOrderByRelevanceFieldEnum = (typeof HomeBannerOrderByRelevanceFieldEnum)[keyof typeof HomeBannerOrderByRelevanceFieldEnum]
+
+
+  export const AboutSectionOrderByRelevanceFieldEnum: {
+    id: 'id',
+    sectionLabel: 'sectionLabel',
+    title1: 'title1',
+    highlightedText: 'highlightedText',
+    title2: 'title2',
+    description: 'description',
+    image: 'image',
+    feature1Icon: 'feature1Icon',
+    feature1Title: 'feature1Title',
+    feature1Description: 'feature1Description',
+    feature2Icon: 'feature2Icon',
+    feature2Title: 'feature2Title',
+    feature2Description: 'feature2Description',
+    feature3Icon: 'feature3Icon',
+    feature3Title: 'feature3Title',
+    feature3Description: 'feature3Description',
+    patientsCount: 'patientsCount',
+    doctorsCount: 'doctorsCount',
+    departmentsCount: 'departmentsCount',
+    experienceYears: 'experienceYears',
+    patientsLabel: 'patientsLabel',
+    doctorsLabel: 'doctorsLabel',
+    departmentsLabel: 'departmentsLabel',
+    experienceLabel: 'experienceLabel',
+    certificationTitle: 'certificationTitle',
+    certificationSubtitle: 'certificationSubtitle',
+    cardExperienceCount: 'cardExperienceCount',
+    cardExperienceLabel: 'cardExperienceLabel',
+    cardPatientsCount: 'cardPatientsCount',
+    cardPatientsLabel: 'cardPatientsLabel',
+    primaryButtonText: 'primaryButtonText',
+    secondaryButtonText: 'secondaryButtonText'
+  };
+
+  export type AboutSectionOrderByRelevanceFieldEnum = (typeof AboutSectionOrderByRelevanceFieldEnum)[keyof typeof AboutSectionOrderByRelevanceFieldEnum]
+
+
+  export const ServiceSectionOrderByRelevanceFieldEnum: {
+    id: 'id',
+    sectionLabel: 'sectionLabel',
+    title: 'title',
+    description: 'description',
+    buttonText: 'buttonText'
+  };
+
+  export type ServiceSectionOrderByRelevanceFieldEnum = (typeof ServiceSectionOrderByRelevanceFieldEnum)[keyof typeof ServiceSectionOrderByRelevanceFieldEnum]
+
+
+  export const ServiceItemOrderByRelevanceFieldEnum: {
+    id: 'id',
+    serviceSectionId: 'serviceSectionId',
+    icon: 'icon',
+    title: 'title',
+    description: 'description',
+    linkText: 'linkText'
+  };
+
+  export type ServiceItemOrderByRelevanceFieldEnum = (typeof ServiceItemOrderByRelevanceFieldEnum)[keyof typeof ServiceItemOrderByRelevanceFieldEnum]
+
+
+  export const DoctorSectionOrderByRelevanceFieldEnum: {
+    id: 'id',
+    sectionLabel: 'sectionLabel',
+    title1: 'title1',
+    highlightedText: 'highlightedText',
+    title2: 'title2',
+    description: 'description',
+    appoinmentButtonText: 'appoinmentButtonText'
+  };
+
+  export type DoctorSectionOrderByRelevanceFieldEnum = (typeof DoctorSectionOrderByRelevanceFieldEnum)[keyof typeof DoctorSectionOrderByRelevanceFieldEnum]
+
+
+  export const AppointmentSectionOrderByRelevanceFieldEnum: {
+    id: 'id',
+    badgeText: 'badgeText',
+    title1: 'title1',
+    highlightedText: 'highlightedText',
+    title2: 'title2',
+    description: 'description',
+    feature1Text: 'feature1Text',
+    feature2Text: 'feature2Text',
+    feature3Text: 'feature3Text',
+    feature4Text: 'feature4Text',
+    patientsServedCount: 'patientsServedCount',
+    doctorsCount: 'doctorsCount',
+    ratingCount: 'ratingCount',
+    patientsServedLabel: 'patientsServedLabel',
+    doctorsLabel: 'doctorsLabel',
+    ratingLabel: 'ratingLabel',
+    phoneLabel: 'phoneLabel',
+    phoneNumber: 'phoneNumber',
+    formTitle: 'formTitle',
+    formDescription: 'formDescription',
+    submitButtonText: 'submitButtonText',
+    sslText: 'sslText',
+    confirmText: 'confirmText',
+    reviewText: 'reviewText'
+  };
+
+  export type AppointmentSectionOrderByRelevanceFieldEnum = (typeof AppointmentSectionOrderByRelevanceFieldEnum)[keyof typeof AppointmentSectionOrderByRelevanceFieldEnum]
+
+
+  export const ProductSectionOrderByRelevanceFieldEnum: {
+    id: 'id',
+    sectionLabel: 'sectionLabel',
+    title: 'title',
+    description: 'description',
+    buttonText: 'buttonText'
+  };
+
+  export type ProductSectionOrderByRelevanceFieldEnum = (typeof ProductSectionOrderByRelevanceFieldEnum)[keyof typeof ProductSectionOrderByRelevanceFieldEnum]
+
+
+  export const FacilitySectionOrderByRelevanceFieldEnum: {
+    id: 'id',
+    sectionLabel: 'sectionLabel',
+    title: 'title',
+    description: 'description',
+    buttonText: 'buttonText'
+  };
+
+  export type FacilitySectionOrderByRelevanceFieldEnum = (typeof FacilitySectionOrderByRelevanceFieldEnum)[keyof typeof FacilitySectionOrderByRelevanceFieldEnum]
+
+
+  export const TestimonialSectionOrderByRelevanceFieldEnum: {
+    id: 'id',
+    sectionLabel: 'sectionLabel',
+    title: 'title',
+    description: 'description',
+    satisfactionCount: 'satisfactionCount',
+    ratingCount: 'ratingCount',
+    reviewCount: 'reviewCount',
+    satisfactionLabel: 'satisfactionLabel',
+    ratingLabel: 'ratingLabel',
+    reviewLabel: 'reviewLabel'
+  };
+
+  export type TestimonialSectionOrderByRelevanceFieldEnum = (typeof TestimonialSectionOrderByRelevanceFieldEnum)[keyof typeof TestimonialSectionOrderByRelevanceFieldEnum]
+
+
+  export const BlogSectionOrderByRelevanceFieldEnum: {
+    id: 'id',
+    sectionLabel: 'sectionLabel',
+    title: 'title',
+    description: 'description',
+    buttonText: 'buttonText',
+    emergencyTitle: 'emergencyTitle',
+    emergencyDescription: 'emergencyDescription',
+    phoneNumber1: 'phoneNumber1',
+    phoneNumber2: 'phoneNumber2'
+  };
+
+  export type BlogSectionOrderByRelevanceFieldEnum = (typeof BlogSectionOrderByRelevanceFieldEnum)[keyof typeof BlogSectionOrderByRelevanceFieldEnum]
 
 
   /**
@@ -18298,6 +28456,921 @@ export namespace Prisma {
     isActive?: BoolWithAggregatesFilter<"HomeBanner"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"HomeBanner"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"HomeBanner"> | Date | string
+  }
+
+  export type AboutSectionWhereInput = {
+    AND?: AboutSectionWhereInput | AboutSectionWhereInput[]
+    OR?: AboutSectionWhereInput[]
+    NOT?: AboutSectionWhereInput | AboutSectionWhereInput[]
+    id?: StringFilter<"AboutSection"> | string
+    sectionLabel?: StringNullableFilter<"AboutSection"> | string | null
+    title1?: StringFilter<"AboutSection"> | string
+    highlightedText?: StringNullableFilter<"AboutSection"> | string | null
+    title2?: StringNullableFilter<"AboutSection"> | string | null
+    description?: StringFilter<"AboutSection"> | string
+    image?: StringNullableFilter<"AboutSection"> | string | null
+    feature1Icon?: StringNullableFilter<"AboutSection"> | string | null
+    feature1Title?: StringNullableFilter<"AboutSection"> | string | null
+    feature1Description?: StringNullableFilter<"AboutSection"> | string | null
+    feature2Icon?: StringNullableFilter<"AboutSection"> | string | null
+    feature2Title?: StringNullableFilter<"AboutSection"> | string | null
+    feature2Description?: StringNullableFilter<"AboutSection"> | string | null
+    feature3Icon?: StringNullableFilter<"AboutSection"> | string | null
+    feature3Title?: StringNullableFilter<"AboutSection"> | string | null
+    feature3Description?: StringNullableFilter<"AboutSection"> | string | null
+    patientsCount?: StringNullableFilter<"AboutSection"> | string | null
+    doctorsCount?: StringNullableFilter<"AboutSection"> | string | null
+    departmentsCount?: StringNullableFilter<"AboutSection"> | string | null
+    experienceYears?: StringNullableFilter<"AboutSection"> | string | null
+    patientsLabel?: StringNullableFilter<"AboutSection"> | string | null
+    doctorsLabel?: StringNullableFilter<"AboutSection"> | string | null
+    departmentsLabel?: StringNullableFilter<"AboutSection"> | string | null
+    experienceLabel?: StringNullableFilter<"AboutSection"> | string | null
+    certificationTitle?: StringNullableFilter<"AboutSection"> | string | null
+    certificationSubtitle?: StringNullableFilter<"AboutSection"> | string | null
+    cardExperienceCount?: StringNullableFilter<"AboutSection"> | string | null
+    cardExperienceLabel?: StringNullableFilter<"AboutSection"> | string | null
+    cardPatientsCount?: StringNullableFilter<"AboutSection"> | string | null
+    cardPatientsLabel?: StringNullableFilter<"AboutSection"> | string | null
+    primaryButtonText?: StringNullableFilter<"AboutSection"> | string | null
+    secondaryButtonText?: StringNullableFilter<"AboutSection"> | string | null
+    isActive?: BoolFilter<"AboutSection"> | boolean
+    createdAt?: DateTimeFilter<"AboutSection"> | Date | string
+    updatedAt?: DateTimeFilter<"AboutSection"> | Date | string
+  }
+
+  export type AboutSectionOrderByWithRelationInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrderInput | SortOrder
+    title1?: SortOrder
+    highlightedText?: SortOrderInput | SortOrder
+    title2?: SortOrderInput | SortOrder
+    description?: SortOrder
+    image?: SortOrderInput | SortOrder
+    feature1Icon?: SortOrderInput | SortOrder
+    feature1Title?: SortOrderInput | SortOrder
+    feature1Description?: SortOrderInput | SortOrder
+    feature2Icon?: SortOrderInput | SortOrder
+    feature2Title?: SortOrderInput | SortOrder
+    feature2Description?: SortOrderInput | SortOrder
+    feature3Icon?: SortOrderInput | SortOrder
+    feature3Title?: SortOrderInput | SortOrder
+    feature3Description?: SortOrderInput | SortOrder
+    patientsCount?: SortOrderInput | SortOrder
+    doctorsCount?: SortOrderInput | SortOrder
+    departmentsCount?: SortOrderInput | SortOrder
+    experienceYears?: SortOrderInput | SortOrder
+    patientsLabel?: SortOrderInput | SortOrder
+    doctorsLabel?: SortOrderInput | SortOrder
+    departmentsLabel?: SortOrderInput | SortOrder
+    experienceLabel?: SortOrderInput | SortOrder
+    certificationTitle?: SortOrderInput | SortOrder
+    certificationSubtitle?: SortOrderInput | SortOrder
+    cardExperienceCount?: SortOrderInput | SortOrder
+    cardExperienceLabel?: SortOrderInput | SortOrder
+    cardPatientsCount?: SortOrderInput | SortOrder
+    cardPatientsLabel?: SortOrderInput | SortOrder
+    primaryButtonText?: SortOrderInput | SortOrder
+    secondaryButtonText?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _relevance?: AboutSectionOrderByRelevanceInput
+  }
+
+  export type AboutSectionWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: AboutSectionWhereInput | AboutSectionWhereInput[]
+    OR?: AboutSectionWhereInput[]
+    NOT?: AboutSectionWhereInput | AboutSectionWhereInput[]
+    sectionLabel?: StringNullableFilter<"AboutSection"> | string | null
+    title1?: StringFilter<"AboutSection"> | string
+    highlightedText?: StringNullableFilter<"AboutSection"> | string | null
+    title2?: StringNullableFilter<"AboutSection"> | string | null
+    description?: StringFilter<"AboutSection"> | string
+    image?: StringNullableFilter<"AboutSection"> | string | null
+    feature1Icon?: StringNullableFilter<"AboutSection"> | string | null
+    feature1Title?: StringNullableFilter<"AboutSection"> | string | null
+    feature1Description?: StringNullableFilter<"AboutSection"> | string | null
+    feature2Icon?: StringNullableFilter<"AboutSection"> | string | null
+    feature2Title?: StringNullableFilter<"AboutSection"> | string | null
+    feature2Description?: StringNullableFilter<"AboutSection"> | string | null
+    feature3Icon?: StringNullableFilter<"AboutSection"> | string | null
+    feature3Title?: StringNullableFilter<"AboutSection"> | string | null
+    feature3Description?: StringNullableFilter<"AboutSection"> | string | null
+    patientsCount?: StringNullableFilter<"AboutSection"> | string | null
+    doctorsCount?: StringNullableFilter<"AboutSection"> | string | null
+    departmentsCount?: StringNullableFilter<"AboutSection"> | string | null
+    experienceYears?: StringNullableFilter<"AboutSection"> | string | null
+    patientsLabel?: StringNullableFilter<"AboutSection"> | string | null
+    doctorsLabel?: StringNullableFilter<"AboutSection"> | string | null
+    departmentsLabel?: StringNullableFilter<"AboutSection"> | string | null
+    experienceLabel?: StringNullableFilter<"AboutSection"> | string | null
+    certificationTitle?: StringNullableFilter<"AboutSection"> | string | null
+    certificationSubtitle?: StringNullableFilter<"AboutSection"> | string | null
+    cardExperienceCount?: StringNullableFilter<"AboutSection"> | string | null
+    cardExperienceLabel?: StringNullableFilter<"AboutSection"> | string | null
+    cardPatientsCount?: StringNullableFilter<"AboutSection"> | string | null
+    cardPatientsLabel?: StringNullableFilter<"AboutSection"> | string | null
+    primaryButtonText?: StringNullableFilter<"AboutSection"> | string | null
+    secondaryButtonText?: StringNullableFilter<"AboutSection"> | string | null
+    isActive?: BoolFilter<"AboutSection"> | boolean
+    createdAt?: DateTimeFilter<"AboutSection"> | Date | string
+    updatedAt?: DateTimeFilter<"AboutSection"> | Date | string
+  }, "id">
+
+  export type AboutSectionOrderByWithAggregationInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrderInput | SortOrder
+    title1?: SortOrder
+    highlightedText?: SortOrderInput | SortOrder
+    title2?: SortOrderInput | SortOrder
+    description?: SortOrder
+    image?: SortOrderInput | SortOrder
+    feature1Icon?: SortOrderInput | SortOrder
+    feature1Title?: SortOrderInput | SortOrder
+    feature1Description?: SortOrderInput | SortOrder
+    feature2Icon?: SortOrderInput | SortOrder
+    feature2Title?: SortOrderInput | SortOrder
+    feature2Description?: SortOrderInput | SortOrder
+    feature3Icon?: SortOrderInput | SortOrder
+    feature3Title?: SortOrderInput | SortOrder
+    feature3Description?: SortOrderInput | SortOrder
+    patientsCount?: SortOrderInput | SortOrder
+    doctorsCount?: SortOrderInput | SortOrder
+    departmentsCount?: SortOrderInput | SortOrder
+    experienceYears?: SortOrderInput | SortOrder
+    patientsLabel?: SortOrderInput | SortOrder
+    doctorsLabel?: SortOrderInput | SortOrder
+    departmentsLabel?: SortOrderInput | SortOrder
+    experienceLabel?: SortOrderInput | SortOrder
+    certificationTitle?: SortOrderInput | SortOrder
+    certificationSubtitle?: SortOrderInput | SortOrder
+    cardExperienceCount?: SortOrderInput | SortOrder
+    cardExperienceLabel?: SortOrderInput | SortOrder
+    cardPatientsCount?: SortOrderInput | SortOrder
+    cardPatientsLabel?: SortOrderInput | SortOrder
+    primaryButtonText?: SortOrderInput | SortOrder
+    secondaryButtonText?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: AboutSectionCountOrderByAggregateInput
+    _max?: AboutSectionMaxOrderByAggregateInput
+    _min?: AboutSectionMinOrderByAggregateInput
+  }
+
+  export type AboutSectionScalarWhereWithAggregatesInput = {
+    AND?: AboutSectionScalarWhereWithAggregatesInput | AboutSectionScalarWhereWithAggregatesInput[]
+    OR?: AboutSectionScalarWhereWithAggregatesInput[]
+    NOT?: AboutSectionScalarWhereWithAggregatesInput | AboutSectionScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"AboutSection"> | string
+    sectionLabel?: StringNullableWithAggregatesFilter<"AboutSection"> | string | null
+    title1?: StringWithAggregatesFilter<"AboutSection"> | string
+    highlightedText?: StringNullableWithAggregatesFilter<"AboutSection"> | string | null
+    title2?: StringNullableWithAggregatesFilter<"AboutSection"> | string | null
+    description?: StringWithAggregatesFilter<"AboutSection"> | string
+    image?: StringNullableWithAggregatesFilter<"AboutSection"> | string | null
+    feature1Icon?: StringNullableWithAggregatesFilter<"AboutSection"> | string | null
+    feature1Title?: StringNullableWithAggregatesFilter<"AboutSection"> | string | null
+    feature1Description?: StringNullableWithAggregatesFilter<"AboutSection"> | string | null
+    feature2Icon?: StringNullableWithAggregatesFilter<"AboutSection"> | string | null
+    feature2Title?: StringNullableWithAggregatesFilter<"AboutSection"> | string | null
+    feature2Description?: StringNullableWithAggregatesFilter<"AboutSection"> | string | null
+    feature3Icon?: StringNullableWithAggregatesFilter<"AboutSection"> | string | null
+    feature3Title?: StringNullableWithAggregatesFilter<"AboutSection"> | string | null
+    feature3Description?: StringNullableWithAggregatesFilter<"AboutSection"> | string | null
+    patientsCount?: StringNullableWithAggregatesFilter<"AboutSection"> | string | null
+    doctorsCount?: StringNullableWithAggregatesFilter<"AboutSection"> | string | null
+    departmentsCount?: StringNullableWithAggregatesFilter<"AboutSection"> | string | null
+    experienceYears?: StringNullableWithAggregatesFilter<"AboutSection"> | string | null
+    patientsLabel?: StringNullableWithAggregatesFilter<"AboutSection"> | string | null
+    doctorsLabel?: StringNullableWithAggregatesFilter<"AboutSection"> | string | null
+    departmentsLabel?: StringNullableWithAggregatesFilter<"AboutSection"> | string | null
+    experienceLabel?: StringNullableWithAggregatesFilter<"AboutSection"> | string | null
+    certificationTitle?: StringNullableWithAggregatesFilter<"AboutSection"> | string | null
+    certificationSubtitle?: StringNullableWithAggregatesFilter<"AboutSection"> | string | null
+    cardExperienceCount?: StringNullableWithAggregatesFilter<"AboutSection"> | string | null
+    cardExperienceLabel?: StringNullableWithAggregatesFilter<"AboutSection"> | string | null
+    cardPatientsCount?: StringNullableWithAggregatesFilter<"AboutSection"> | string | null
+    cardPatientsLabel?: StringNullableWithAggregatesFilter<"AboutSection"> | string | null
+    primaryButtonText?: StringNullableWithAggregatesFilter<"AboutSection"> | string | null
+    secondaryButtonText?: StringNullableWithAggregatesFilter<"AboutSection"> | string | null
+    isActive?: BoolWithAggregatesFilter<"AboutSection"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"AboutSection"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"AboutSection"> | Date | string
+  }
+
+  export type ServiceSectionWhereInput = {
+    AND?: ServiceSectionWhereInput | ServiceSectionWhereInput[]
+    OR?: ServiceSectionWhereInput[]
+    NOT?: ServiceSectionWhereInput | ServiceSectionWhereInput[]
+    id?: StringFilter<"ServiceSection"> | string
+    sectionLabel?: StringNullableFilter<"ServiceSection"> | string | null
+    title?: StringFilter<"ServiceSection"> | string
+    description?: StringNullableFilter<"ServiceSection"> | string | null
+    buttonText?: StringNullableFilter<"ServiceSection"> | string | null
+    isActive?: BoolFilter<"ServiceSection"> | boolean
+    createdAt?: DateTimeFilter<"ServiceSection"> | Date | string
+    updatedAt?: DateTimeFilter<"ServiceSection"> | Date | string
+    services?: ServiceItemListRelationFilter
+  }
+
+  export type ServiceSectionOrderByWithRelationInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrderInput | SortOrder
+    title?: SortOrder
+    description?: SortOrderInput | SortOrder
+    buttonText?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    services?: ServiceItemOrderByRelationAggregateInput
+    _relevance?: ServiceSectionOrderByRelevanceInput
+  }
+
+  export type ServiceSectionWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ServiceSectionWhereInput | ServiceSectionWhereInput[]
+    OR?: ServiceSectionWhereInput[]
+    NOT?: ServiceSectionWhereInput | ServiceSectionWhereInput[]
+    sectionLabel?: StringNullableFilter<"ServiceSection"> | string | null
+    title?: StringFilter<"ServiceSection"> | string
+    description?: StringNullableFilter<"ServiceSection"> | string | null
+    buttonText?: StringNullableFilter<"ServiceSection"> | string | null
+    isActive?: BoolFilter<"ServiceSection"> | boolean
+    createdAt?: DateTimeFilter<"ServiceSection"> | Date | string
+    updatedAt?: DateTimeFilter<"ServiceSection"> | Date | string
+    services?: ServiceItemListRelationFilter
+  }, "id">
+
+  export type ServiceSectionOrderByWithAggregationInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrderInput | SortOrder
+    title?: SortOrder
+    description?: SortOrderInput | SortOrder
+    buttonText?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ServiceSectionCountOrderByAggregateInput
+    _max?: ServiceSectionMaxOrderByAggregateInput
+    _min?: ServiceSectionMinOrderByAggregateInput
+  }
+
+  export type ServiceSectionScalarWhereWithAggregatesInput = {
+    AND?: ServiceSectionScalarWhereWithAggregatesInput | ServiceSectionScalarWhereWithAggregatesInput[]
+    OR?: ServiceSectionScalarWhereWithAggregatesInput[]
+    NOT?: ServiceSectionScalarWhereWithAggregatesInput | ServiceSectionScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ServiceSection"> | string
+    sectionLabel?: StringNullableWithAggregatesFilter<"ServiceSection"> | string | null
+    title?: StringWithAggregatesFilter<"ServiceSection"> | string
+    description?: StringNullableWithAggregatesFilter<"ServiceSection"> | string | null
+    buttonText?: StringNullableWithAggregatesFilter<"ServiceSection"> | string | null
+    isActive?: BoolWithAggregatesFilter<"ServiceSection"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"ServiceSection"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"ServiceSection"> | Date | string
+  }
+
+  export type ServiceItemWhereInput = {
+    AND?: ServiceItemWhereInput | ServiceItemWhereInput[]
+    OR?: ServiceItemWhereInput[]
+    NOT?: ServiceItemWhereInput | ServiceItemWhereInput[]
+    id?: StringFilter<"ServiceItem"> | string
+    serviceSectionId?: StringFilter<"ServiceItem"> | string
+    icon?: StringNullableFilter<"ServiceItem"> | string | null
+    title?: StringFilter<"ServiceItem"> | string
+    description?: StringFilter<"ServiceItem"> | string
+    linkText?: StringNullableFilter<"ServiceItem"> | string | null
+    serial?: IntFilter<"ServiceItem"> | number
+    isActive?: BoolFilter<"ServiceItem"> | boolean
+    createdAt?: DateTimeFilter<"ServiceItem"> | Date | string
+    updatedAt?: DateTimeFilter<"ServiceItem"> | Date | string
+    serviceSection?: XOR<ServiceSectionScalarRelationFilter, ServiceSectionWhereInput>
+  }
+
+  export type ServiceItemOrderByWithRelationInput = {
+    id?: SortOrder
+    serviceSectionId?: SortOrder
+    icon?: SortOrderInput | SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    linkText?: SortOrderInput | SortOrder
+    serial?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    serviceSection?: ServiceSectionOrderByWithRelationInput
+    _relevance?: ServiceItemOrderByRelevanceInput
+  }
+
+  export type ServiceItemWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ServiceItemWhereInput | ServiceItemWhereInput[]
+    OR?: ServiceItemWhereInput[]
+    NOT?: ServiceItemWhereInput | ServiceItemWhereInput[]
+    serviceSectionId?: StringFilter<"ServiceItem"> | string
+    icon?: StringNullableFilter<"ServiceItem"> | string | null
+    title?: StringFilter<"ServiceItem"> | string
+    description?: StringFilter<"ServiceItem"> | string
+    linkText?: StringNullableFilter<"ServiceItem"> | string | null
+    serial?: IntFilter<"ServiceItem"> | number
+    isActive?: BoolFilter<"ServiceItem"> | boolean
+    createdAt?: DateTimeFilter<"ServiceItem"> | Date | string
+    updatedAt?: DateTimeFilter<"ServiceItem"> | Date | string
+    serviceSection?: XOR<ServiceSectionScalarRelationFilter, ServiceSectionWhereInput>
+  }, "id">
+
+  export type ServiceItemOrderByWithAggregationInput = {
+    id?: SortOrder
+    serviceSectionId?: SortOrder
+    icon?: SortOrderInput | SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    linkText?: SortOrderInput | SortOrder
+    serial?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ServiceItemCountOrderByAggregateInput
+    _avg?: ServiceItemAvgOrderByAggregateInput
+    _max?: ServiceItemMaxOrderByAggregateInput
+    _min?: ServiceItemMinOrderByAggregateInput
+    _sum?: ServiceItemSumOrderByAggregateInput
+  }
+
+  export type ServiceItemScalarWhereWithAggregatesInput = {
+    AND?: ServiceItemScalarWhereWithAggregatesInput | ServiceItemScalarWhereWithAggregatesInput[]
+    OR?: ServiceItemScalarWhereWithAggregatesInput[]
+    NOT?: ServiceItemScalarWhereWithAggregatesInput | ServiceItemScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ServiceItem"> | string
+    serviceSectionId?: StringWithAggregatesFilter<"ServiceItem"> | string
+    icon?: StringNullableWithAggregatesFilter<"ServiceItem"> | string | null
+    title?: StringWithAggregatesFilter<"ServiceItem"> | string
+    description?: StringWithAggregatesFilter<"ServiceItem"> | string
+    linkText?: StringNullableWithAggregatesFilter<"ServiceItem"> | string | null
+    serial?: IntWithAggregatesFilter<"ServiceItem"> | number
+    isActive?: BoolWithAggregatesFilter<"ServiceItem"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"ServiceItem"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"ServiceItem"> | Date | string
+  }
+
+  export type DoctorSectionWhereInput = {
+    AND?: DoctorSectionWhereInput | DoctorSectionWhereInput[]
+    OR?: DoctorSectionWhereInput[]
+    NOT?: DoctorSectionWhereInput | DoctorSectionWhereInput[]
+    id?: StringFilter<"DoctorSection"> | string
+    sectionLabel?: StringNullableFilter<"DoctorSection"> | string | null
+    title1?: StringFilter<"DoctorSection"> | string
+    highlightedText?: StringNullableFilter<"DoctorSection"> | string | null
+    title2?: StringNullableFilter<"DoctorSection"> | string | null
+    description?: StringNullableFilter<"DoctorSection"> | string | null
+    appoinmentButtonText?: StringNullableFilter<"DoctorSection"> | string | null
+    isActive?: BoolFilter<"DoctorSection"> | boolean
+    createdAt?: DateTimeFilter<"DoctorSection"> | Date | string
+    updatedAt?: DateTimeFilter<"DoctorSection"> | Date | string
+  }
+
+  export type DoctorSectionOrderByWithRelationInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrderInput | SortOrder
+    title1?: SortOrder
+    highlightedText?: SortOrderInput | SortOrder
+    title2?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
+    appoinmentButtonText?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _relevance?: DoctorSectionOrderByRelevanceInput
+  }
+
+  export type DoctorSectionWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: DoctorSectionWhereInput | DoctorSectionWhereInput[]
+    OR?: DoctorSectionWhereInput[]
+    NOT?: DoctorSectionWhereInput | DoctorSectionWhereInput[]
+    sectionLabel?: StringNullableFilter<"DoctorSection"> | string | null
+    title1?: StringFilter<"DoctorSection"> | string
+    highlightedText?: StringNullableFilter<"DoctorSection"> | string | null
+    title2?: StringNullableFilter<"DoctorSection"> | string | null
+    description?: StringNullableFilter<"DoctorSection"> | string | null
+    appoinmentButtonText?: StringNullableFilter<"DoctorSection"> | string | null
+    isActive?: BoolFilter<"DoctorSection"> | boolean
+    createdAt?: DateTimeFilter<"DoctorSection"> | Date | string
+    updatedAt?: DateTimeFilter<"DoctorSection"> | Date | string
+  }, "id">
+
+  export type DoctorSectionOrderByWithAggregationInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrderInput | SortOrder
+    title1?: SortOrder
+    highlightedText?: SortOrderInput | SortOrder
+    title2?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
+    appoinmentButtonText?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: DoctorSectionCountOrderByAggregateInput
+    _max?: DoctorSectionMaxOrderByAggregateInput
+    _min?: DoctorSectionMinOrderByAggregateInput
+  }
+
+  export type DoctorSectionScalarWhereWithAggregatesInput = {
+    AND?: DoctorSectionScalarWhereWithAggregatesInput | DoctorSectionScalarWhereWithAggregatesInput[]
+    OR?: DoctorSectionScalarWhereWithAggregatesInput[]
+    NOT?: DoctorSectionScalarWhereWithAggregatesInput | DoctorSectionScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"DoctorSection"> | string
+    sectionLabel?: StringNullableWithAggregatesFilter<"DoctorSection"> | string | null
+    title1?: StringWithAggregatesFilter<"DoctorSection"> | string
+    highlightedText?: StringNullableWithAggregatesFilter<"DoctorSection"> | string | null
+    title2?: StringNullableWithAggregatesFilter<"DoctorSection"> | string | null
+    description?: StringNullableWithAggregatesFilter<"DoctorSection"> | string | null
+    appoinmentButtonText?: StringNullableWithAggregatesFilter<"DoctorSection"> | string | null
+    isActive?: BoolWithAggregatesFilter<"DoctorSection"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"DoctorSection"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"DoctorSection"> | Date | string
+  }
+
+  export type AppointmentSectionWhereInput = {
+    AND?: AppointmentSectionWhereInput | AppointmentSectionWhereInput[]
+    OR?: AppointmentSectionWhereInput[]
+    NOT?: AppointmentSectionWhereInput | AppointmentSectionWhereInput[]
+    id?: StringFilter<"AppointmentSection"> | string
+    badgeText?: StringNullableFilter<"AppointmentSection"> | string | null
+    title1?: StringFilter<"AppointmentSection"> | string
+    highlightedText?: StringNullableFilter<"AppointmentSection"> | string | null
+    title2?: StringNullableFilter<"AppointmentSection"> | string | null
+    description?: StringNullableFilter<"AppointmentSection"> | string | null
+    feature1Text?: StringNullableFilter<"AppointmentSection"> | string | null
+    feature2Text?: StringNullableFilter<"AppointmentSection"> | string | null
+    feature3Text?: StringNullableFilter<"AppointmentSection"> | string | null
+    feature4Text?: StringNullableFilter<"AppointmentSection"> | string | null
+    patientsServedCount?: StringNullableFilter<"AppointmentSection"> | string | null
+    doctorsCount?: StringNullableFilter<"AppointmentSection"> | string | null
+    ratingCount?: StringNullableFilter<"AppointmentSection"> | string | null
+    patientsServedLabel?: StringNullableFilter<"AppointmentSection"> | string | null
+    doctorsLabel?: StringNullableFilter<"AppointmentSection"> | string | null
+    ratingLabel?: StringNullableFilter<"AppointmentSection"> | string | null
+    phoneLabel?: StringNullableFilter<"AppointmentSection"> | string | null
+    phoneNumber?: StringNullableFilter<"AppointmentSection"> | string | null
+    formTitle?: StringNullableFilter<"AppointmentSection"> | string | null
+    formDescription?: StringNullableFilter<"AppointmentSection"> | string | null
+    submitButtonText?: StringNullableFilter<"AppointmentSection"> | string | null
+    sslText?: StringNullableFilter<"AppointmentSection"> | string | null
+    confirmText?: StringNullableFilter<"AppointmentSection"> | string | null
+    reviewText?: StringNullableFilter<"AppointmentSection"> | string | null
+    isActive?: BoolFilter<"AppointmentSection"> | boolean
+    createdAt?: DateTimeFilter<"AppointmentSection"> | Date | string
+    updatedAt?: DateTimeFilter<"AppointmentSection"> | Date | string
+  }
+
+  export type AppointmentSectionOrderByWithRelationInput = {
+    id?: SortOrder
+    badgeText?: SortOrderInput | SortOrder
+    title1?: SortOrder
+    highlightedText?: SortOrderInput | SortOrder
+    title2?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
+    feature1Text?: SortOrderInput | SortOrder
+    feature2Text?: SortOrderInput | SortOrder
+    feature3Text?: SortOrderInput | SortOrder
+    feature4Text?: SortOrderInput | SortOrder
+    patientsServedCount?: SortOrderInput | SortOrder
+    doctorsCount?: SortOrderInput | SortOrder
+    ratingCount?: SortOrderInput | SortOrder
+    patientsServedLabel?: SortOrderInput | SortOrder
+    doctorsLabel?: SortOrderInput | SortOrder
+    ratingLabel?: SortOrderInput | SortOrder
+    phoneLabel?: SortOrderInput | SortOrder
+    phoneNumber?: SortOrderInput | SortOrder
+    formTitle?: SortOrderInput | SortOrder
+    formDescription?: SortOrderInput | SortOrder
+    submitButtonText?: SortOrderInput | SortOrder
+    sslText?: SortOrderInput | SortOrder
+    confirmText?: SortOrderInput | SortOrder
+    reviewText?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _relevance?: AppointmentSectionOrderByRelevanceInput
+  }
+
+  export type AppointmentSectionWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: AppointmentSectionWhereInput | AppointmentSectionWhereInput[]
+    OR?: AppointmentSectionWhereInput[]
+    NOT?: AppointmentSectionWhereInput | AppointmentSectionWhereInput[]
+    badgeText?: StringNullableFilter<"AppointmentSection"> | string | null
+    title1?: StringFilter<"AppointmentSection"> | string
+    highlightedText?: StringNullableFilter<"AppointmentSection"> | string | null
+    title2?: StringNullableFilter<"AppointmentSection"> | string | null
+    description?: StringNullableFilter<"AppointmentSection"> | string | null
+    feature1Text?: StringNullableFilter<"AppointmentSection"> | string | null
+    feature2Text?: StringNullableFilter<"AppointmentSection"> | string | null
+    feature3Text?: StringNullableFilter<"AppointmentSection"> | string | null
+    feature4Text?: StringNullableFilter<"AppointmentSection"> | string | null
+    patientsServedCount?: StringNullableFilter<"AppointmentSection"> | string | null
+    doctorsCount?: StringNullableFilter<"AppointmentSection"> | string | null
+    ratingCount?: StringNullableFilter<"AppointmentSection"> | string | null
+    patientsServedLabel?: StringNullableFilter<"AppointmentSection"> | string | null
+    doctorsLabel?: StringNullableFilter<"AppointmentSection"> | string | null
+    ratingLabel?: StringNullableFilter<"AppointmentSection"> | string | null
+    phoneLabel?: StringNullableFilter<"AppointmentSection"> | string | null
+    phoneNumber?: StringNullableFilter<"AppointmentSection"> | string | null
+    formTitle?: StringNullableFilter<"AppointmentSection"> | string | null
+    formDescription?: StringNullableFilter<"AppointmentSection"> | string | null
+    submitButtonText?: StringNullableFilter<"AppointmentSection"> | string | null
+    sslText?: StringNullableFilter<"AppointmentSection"> | string | null
+    confirmText?: StringNullableFilter<"AppointmentSection"> | string | null
+    reviewText?: StringNullableFilter<"AppointmentSection"> | string | null
+    isActive?: BoolFilter<"AppointmentSection"> | boolean
+    createdAt?: DateTimeFilter<"AppointmentSection"> | Date | string
+    updatedAt?: DateTimeFilter<"AppointmentSection"> | Date | string
+  }, "id">
+
+  export type AppointmentSectionOrderByWithAggregationInput = {
+    id?: SortOrder
+    badgeText?: SortOrderInput | SortOrder
+    title1?: SortOrder
+    highlightedText?: SortOrderInput | SortOrder
+    title2?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
+    feature1Text?: SortOrderInput | SortOrder
+    feature2Text?: SortOrderInput | SortOrder
+    feature3Text?: SortOrderInput | SortOrder
+    feature4Text?: SortOrderInput | SortOrder
+    patientsServedCount?: SortOrderInput | SortOrder
+    doctorsCount?: SortOrderInput | SortOrder
+    ratingCount?: SortOrderInput | SortOrder
+    patientsServedLabel?: SortOrderInput | SortOrder
+    doctorsLabel?: SortOrderInput | SortOrder
+    ratingLabel?: SortOrderInput | SortOrder
+    phoneLabel?: SortOrderInput | SortOrder
+    phoneNumber?: SortOrderInput | SortOrder
+    formTitle?: SortOrderInput | SortOrder
+    formDescription?: SortOrderInput | SortOrder
+    submitButtonText?: SortOrderInput | SortOrder
+    sslText?: SortOrderInput | SortOrder
+    confirmText?: SortOrderInput | SortOrder
+    reviewText?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: AppointmentSectionCountOrderByAggregateInput
+    _max?: AppointmentSectionMaxOrderByAggregateInput
+    _min?: AppointmentSectionMinOrderByAggregateInput
+  }
+
+  export type AppointmentSectionScalarWhereWithAggregatesInput = {
+    AND?: AppointmentSectionScalarWhereWithAggregatesInput | AppointmentSectionScalarWhereWithAggregatesInput[]
+    OR?: AppointmentSectionScalarWhereWithAggregatesInput[]
+    NOT?: AppointmentSectionScalarWhereWithAggregatesInput | AppointmentSectionScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"AppointmentSection"> | string
+    badgeText?: StringNullableWithAggregatesFilter<"AppointmentSection"> | string | null
+    title1?: StringWithAggregatesFilter<"AppointmentSection"> | string
+    highlightedText?: StringNullableWithAggregatesFilter<"AppointmentSection"> | string | null
+    title2?: StringNullableWithAggregatesFilter<"AppointmentSection"> | string | null
+    description?: StringNullableWithAggregatesFilter<"AppointmentSection"> | string | null
+    feature1Text?: StringNullableWithAggregatesFilter<"AppointmentSection"> | string | null
+    feature2Text?: StringNullableWithAggregatesFilter<"AppointmentSection"> | string | null
+    feature3Text?: StringNullableWithAggregatesFilter<"AppointmentSection"> | string | null
+    feature4Text?: StringNullableWithAggregatesFilter<"AppointmentSection"> | string | null
+    patientsServedCount?: StringNullableWithAggregatesFilter<"AppointmentSection"> | string | null
+    doctorsCount?: StringNullableWithAggregatesFilter<"AppointmentSection"> | string | null
+    ratingCount?: StringNullableWithAggregatesFilter<"AppointmentSection"> | string | null
+    patientsServedLabel?: StringNullableWithAggregatesFilter<"AppointmentSection"> | string | null
+    doctorsLabel?: StringNullableWithAggregatesFilter<"AppointmentSection"> | string | null
+    ratingLabel?: StringNullableWithAggregatesFilter<"AppointmentSection"> | string | null
+    phoneLabel?: StringNullableWithAggregatesFilter<"AppointmentSection"> | string | null
+    phoneNumber?: StringNullableWithAggregatesFilter<"AppointmentSection"> | string | null
+    formTitle?: StringNullableWithAggregatesFilter<"AppointmentSection"> | string | null
+    formDescription?: StringNullableWithAggregatesFilter<"AppointmentSection"> | string | null
+    submitButtonText?: StringNullableWithAggregatesFilter<"AppointmentSection"> | string | null
+    sslText?: StringNullableWithAggregatesFilter<"AppointmentSection"> | string | null
+    confirmText?: StringNullableWithAggregatesFilter<"AppointmentSection"> | string | null
+    reviewText?: StringNullableWithAggregatesFilter<"AppointmentSection"> | string | null
+    isActive?: BoolWithAggregatesFilter<"AppointmentSection"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"AppointmentSection"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"AppointmentSection"> | Date | string
+  }
+
+  export type ProductSectionWhereInput = {
+    AND?: ProductSectionWhereInput | ProductSectionWhereInput[]
+    OR?: ProductSectionWhereInput[]
+    NOT?: ProductSectionWhereInput | ProductSectionWhereInput[]
+    id?: StringFilter<"ProductSection"> | string
+    sectionLabel?: StringNullableFilter<"ProductSection"> | string | null
+    title?: StringFilter<"ProductSection"> | string
+    description?: StringNullableFilter<"ProductSection"> | string | null
+    buttonText?: StringNullableFilter<"ProductSection"> | string | null
+    isActive?: BoolFilter<"ProductSection"> | boolean
+    createdAt?: DateTimeFilter<"ProductSection"> | Date | string
+    updatedAt?: DateTimeFilter<"ProductSection"> | Date | string
+  }
+
+  export type ProductSectionOrderByWithRelationInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrderInput | SortOrder
+    title?: SortOrder
+    description?: SortOrderInput | SortOrder
+    buttonText?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _relevance?: ProductSectionOrderByRelevanceInput
+  }
+
+  export type ProductSectionWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ProductSectionWhereInput | ProductSectionWhereInput[]
+    OR?: ProductSectionWhereInput[]
+    NOT?: ProductSectionWhereInput | ProductSectionWhereInput[]
+    sectionLabel?: StringNullableFilter<"ProductSection"> | string | null
+    title?: StringFilter<"ProductSection"> | string
+    description?: StringNullableFilter<"ProductSection"> | string | null
+    buttonText?: StringNullableFilter<"ProductSection"> | string | null
+    isActive?: BoolFilter<"ProductSection"> | boolean
+    createdAt?: DateTimeFilter<"ProductSection"> | Date | string
+    updatedAt?: DateTimeFilter<"ProductSection"> | Date | string
+  }, "id">
+
+  export type ProductSectionOrderByWithAggregationInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrderInput | SortOrder
+    title?: SortOrder
+    description?: SortOrderInput | SortOrder
+    buttonText?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ProductSectionCountOrderByAggregateInput
+    _max?: ProductSectionMaxOrderByAggregateInput
+    _min?: ProductSectionMinOrderByAggregateInput
+  }
+
+  export type ProductSectionScalarWhereWithAggregatesInput = {
+    AND?: ProductSectionScalarWhereWithAggregatesInput | ProductSectionScalarWhereWithAggregatesInput[]
+    OR?: ProductSectionScalarWhereWithAggregatesInput[]
+    NOT?: ProductSectionScalarWhereWithAggregatesInput | ProductSectionScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ProductSection"> | string
+    sectionLabel?: StringNullableWithAggregatesFilter<"ProductSection"> | string | null
+    title?: StringWithAggregatesFilter<"ProductSection"> | string
+    description?: StringNullableWithAggregatesFilter<"ProductSection"> | string | null
+    buttonText?: StringNullableWithAggregatesFilter<"ProductSection"> | string | null
+    isActive?: BoolWithAggregatesFilter<"ProductSection"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"ProductSection"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"ProductSection"> | Date | string
+  }
+
+  export type FacilitySectionWhereInput = {
+    AND?: FacilitySectionWhereInput | FacilitySectionWhereInput[]
+    OR?: FacilitySectionWhereInput[]
+    NOT?: FacilitySectionWhereInput | FacilitySectionWhereInput[]
+    id?: StringFilter<"FacilitySection"> | string
+    sectionLabel?: StringNullableFilter<"FacilitySection"> | string | null
+    title?: StringFilter<"FacilitySection"> | string
+    description?: StringNullableFilter<"FacilitySection"> | string | null
+    buttonText?: StringNullableFilter<"FacilitySection"> | string | null
+    isActive?: BoolFilter<"FacilitySection"> | boolean
+    createdAt?: DateTimeFilter<"FacilitySection"> | Date | string
+    updatedAt?: DateTimeFilter<"FacilitySection"> | Date | string
+  }
+
+  export type FacilitySectionOrderByWithRelationInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrderInput | SortOrder
+    title?: SortOrder
+    description?: SortOrderInput | SortOrder
+    buttonText?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _relevance?: FacilitySectionOrderByRelevanceInput
+  }
+
+  export type FacilitySectionWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: FacilitySectionWhereInput | FacilitySectionWhereInput[]
+    OR?: FacilitySectionWhereInput[]
+    NOT?: FacilitySectionWhereInput | FacilitySectionWhereInput[]
+    sectionLabel?: StringNullableFilter<"FacilitySection"> | string | null
+    title?: StringFilter<"FacilitySection"> | string
+    description?: StringNullableFilter<"FacilitySection"> | string | null
+    buttonText?: StringNullableFilter<"FacilitySection"> | string | null
+    isActive?: BoolFilter<"FacilitySection"> | boolean
+    createdAt?: DateTimeFilter<"FacilitySection"> | Date | string
+    updatedAt?: DateTimeFilter<"FacilitySection"> | Date | string
+  }, "id">
+
+  export type FacilitySectionOrderByWithAggregationInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrderInput | SortOrder
+    title?: SortOrder
+    description?: SortOrderInput | SortOrder
+    buttonText?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: FacilitySectionCountOrderByAggregateInput
+    _max?: FacilitySectionMaxOrderByAggregateInput
+    _min?: FacilitySectionMinOrderByAggregateInput
+  }
+
+  export type FacilitySectionScalarWhereWithAggregatesInput = {
+    AND?: FacilitySectionScalarWhereWithAggregatesInput | FacilitySectionScalarWhereWithAggregatesInput[]
+    OR?: FacilitySectionScalarWhereWithAggregatesInput[]
+    NOT?: FacilitySectionScalarWhereWithAggregatesInput | FacilitySectionScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"FacilitySection"> | string
+    sectionLabel?: StringNullableWithAggregatesFilter<"FacilitySection"> | string | null
+    title?: StringWithAggregatesFilter<"FacilitySection"> | string
+    description?: StringNullableWithAggregatesFilter<"FacilitySection"> | string | null
+    buttonText?: StringNullableWithAggregatesFilter<"FacilitySection"> | string | null
+    isActive?: BoolWithAggregatesFilter<"FacilitySection"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"FacilitySection"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"FacilitySection"> | Date | string
+  }
+
+  export type TestimonialSectionWhereInput = {
+    AND?: TestimonialSectionWhereInput | TestimonialSectionWhereInput[]
+    OR?: TestimonialSectionWhereInput[]
+    NOT?: TestimonialSectionWhereInput | TestimonialSectionWhereInput[]
+    id?: StringFilter<"TestimonialSection"> | string
+    sectionLabel?: StringNullableFilter<"TestimonialSection"> | string | null
+    title?: StringFilter<"TestimonialSection"> | string
+    description?: StringNullableFilter<"TestimonialSection"> | string | null
+    satisfactionCount?: StringNullableFilter<"TestimonialSection"> | string | null
+    ratingCount?: StringNullableFilter<"TestimonialSection"> | string | null
+    reviewCount?: StringNullableFilter<"TestimonialSection"> | string | null
+    satisfactionLabel?: StringNullableFilter<"TestimonialSection"> | string | null
+    ratingLabel?: StringNullableFilter<"TestimonialSection"> | string | null
+    reviewLabel?: StringNullableFilter<"TestimonialSection"> | string | null
+    isActive?: BoolFilter<"TestimonialSection"> | boolean
+    createdAt?: DateTimeFilter<"TestimonialSection"> | Date | string
+    updatedAt?: DateTimeFilter<"TestimonialSection"> | Date | string
+  }
+
+  export type TestimonialSectionOrderByWithRelationInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrderInput | SortOrder
+    title?: SortOrder
+    description?: SortOrderInput | SortOrder
+    satisfactionCount?: SortOrderInput | SortOrder
+    ratingCount?: SortOrderInput | SortOrder
+    reviewCount?: SortOrderInput | SortOrder
+    satisfactionLabel?: SortOrderInput | SortOrder
+    ratingLabel?: SortOrderInput | SortOrder
+    reviewLabel?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _relevance?: TestimonialSectionOrderByRelevanceInput
+  }
+
+  export type TestimonialSectionWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: TestimonialSectionWhereInput | TestimonialSectionWhereInput[]
+    OR?: TestimonialSectionWhereInput[]
+    NOT?: TestimonialSectionWhereInput | TestimonialSectionWhereInput[]
+    sectionLabel?: StringNullableFilter<"TestimonialSection"> | string | null
+    title?: StringFilter<"TestimonialSection"> | string
+    description?: StringNullableFilter<"TestimonialSection"> | string | null
+    satisfactionCount?: StringNullableFilter<"TestimonialSection"> | string | null
+    ratingCount?: StringNullableFilter<"TestimonialSection"> | string | null
+    reviewCount?: StringNullableFilter<"TestimonialSection"> | string | null
+    satisfactionLabel?: StringNullableFilter<"TestimonialSection"> | string | null
+    ratingLabel?: StringNullableFilter<"TestimonialSection"> | string | null
+    reviewLabel?: StringNullableFilter<"TestimonialSection"> | string | null
+    isActive?: BoolFilter<"TestimonialSection"> | boolean
+    createdAt?: DateTimeFilter<"TestimonialSection"> | Date | string
+    updatedAt?: DateTimeFilter<"TestimonialSection"> | Date | string
+  }, "id">
+
+  export type TestimonialSectionOrderByWithAggregationInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrderInput | SortOrder
+    title?: SortOrder
+    description?: SortOrderInput | SortOrder
+    satisfactionCount?: SortOrderInput | SortOrder
+    ratingCount?: SortOrderInput | SortOrder
+    reviewCount?: SortOrderInput | SortOrder
+    satisfactionLabel?: SortOrderInput | SortOrder
+    ratingLabel?: SortOrderInput | SortOrder
+    reviewLabel?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: TestimonialSectionCountOrderByAggregateInput
+    _max?: TestimonialSectionMaxOrderByAggregateInput
+    _min?: TestimonialSectionMinOrderByAggregateInput
+  }
+
+  export type TestimonialSectionScalarWhereWithAggregatesInput = {
+    AND?: TestimonialSectionScalarWhereWithAggregatesInput | TestimonialSectionScalarWhereWithAggregatesInput[]
+    OR?: TestimonialSectionScalarWhereWithAggregatesInput[]
+    NOT?: TestimonialSectionScalarWhereWithAggregatesInput | TestimonialSectionScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"TestimonialSection"> | string
+    sectionLabel?: StringNullableWithAggregatesFilter<"TestimonialSection"> | string | null
+    title?: StringWithAggregatesFilter<"TestimonialSection"> | string
+    description?: StringNullableWithAggregatesFilter<"TestimonialSection"> | string | null
+    satisfactionCount?: StringNullableWithAggregatesFilter<"TestimonialSection"> | string | null
+    ratingCount?: StringNullableWithAggregatesFilter<"TestimonialSection"> | string | null
+    reviewCount?: StringNullableWithAggregatesFilter<"TestimonialSection"> | string | null
+    satisfactionLabel?: StringNullableWithAggregatesFilter<"TestimonialSection"> | string | null
+    ratingLabel?: StringNullableWithAggregatesFilter<"TestimonialSection"> | string | null
+    reviewLabel?: StringNullableWithAggregatesFilter<"TestimonialSection"> | string | null
+    isActive?: BoolWithAggregatesFilter<"TestimonialSection"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"TestimonialSection"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"TestimonialSection"> | Date | string
+  }
+
+  export type BlogSectionWhereInput = {
+    AND?: BlogSectionWhereInput | BlogSectionWhereInput[]
+    OR?: BlogSectionWhereInput[]
+    NOT?: BlogSectionWhereInput | BlogSectionWhereInput[]
+    id?: StringFilter<"BlogSection"> | string
+    sectionLabel?: StringNullableFilter<"BlogSection"> | string | null
+    title?: StringFilter<"BlogSection"> | string
+    description?: StringNullableFilter<"BlogSection"> | string | null
+    buttonText?: StringNullableFilter<"BlogSection"> | string | null
+    emergencyTitle?: StringNullableFilter<"BlogSection"> | string | null
+    emergencyDescription?: StringNullableFilter<"BlogSection"> | string | null
+    phoneNumber1?: StringNullableFilter<"BlogSection"> | string | null
+    phoneNumber2?: StringNullableFilter<"BlogSection"> | string | null
+    isActive?: BoolFilter<"BlogSection"> | boolean
+    createdAt?: DateTimeFilter<"BlogSection"> | Date | string
+    updatedAt?: DateTimeFilter<"BlogSection"> | Date | string
+  }
+
+  export type BlogSectionOrderByWithRelationInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrderInput | SortOrder
+    title?: SortOrder
+    description?: SortOrderInput | SortOrder
+    buttonText?: SortOrderInput | SortOrder
+    emergencyTitle?: SortOrderInput | SortOrder
+    emergencyDescription?: SortOrderInput | SortOrder
+    phoneNumber1?: SortOrderInput | SortOrder
+    phoneNumber2?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _relevance?: BlogSectionOrderByRelevanceInput
+  }
+
+  export type BlogSectionWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: BlogSectionWhereInput | BlogSectionWhereInput[]
+    OR?: BlogSectionWhereInput[]
+    NOT?: BlogSectionWhereInput | BlogSectionWhereInput[]
+    sectionLabel?: StringNullableFilter<"BlogSection"> | string | null
+    title?: StringFilter<"BlogSection"> | string
+    description?: StringNullableFilter<"BlogSection"> | string | null
+    buttonText?: StringNullableFilter<"BlogSection"> | string | null
+    emergencyTitle?: StringNullableFilter<"BlogSection"> | string | null
+    emergencyDescription?: StringNullableFilter<"BlogSection"> | string | null
+    phoneNumber1?: StringNullableFilter<"BlogSection"> | string | null
+    phoneNumber2?: StringNullableFilter<"BlogSection"> | string | null
+    isActive?: BoolFilter<"BlogSection"> | boolean
+    createdAt?: DateTimeFilter<"BlogSection"> | Date | string
+    updatedAt?: DateTimeFilter<"BlogSection"> | Date | string
+  }, "id">
+
+  export type BlogSectionOrderByWithAggregationInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrderInput | SortOrder
+    title?: SortOrder
+    description?: SortOrderInput | SortOrder
+    buttonText?: SortOrderInput | SortOrder
+    emergencyTitle?: SortOrderInput | SortOrder
+    emergencyDescription?: SortOrderInput | SortOrder
+    phoneNumber1?: SortOrderInput | SortOrder
+    phoneNumber2?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: BlogSectionCountOrderByAggregateInput
+    _max?: BlogSectionMaxOrderByAggregateInput
+    _min?: BlogSectionMinOrderByAggregateInput
+  }
+
+  export type BlogSectionScalarWhereWithAggregatesInput = {
+    AND?: BlogSectionScalarWhereWithAggregatesInput | BlogSectionScalarWhereWithAggregatesInput[]
+    OR?: BlogSectionScalarWhereWithAggregatesInput[]
+    NOT?: BlogSectionScalarWhereWithAggregatesInput | BlogSectionScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"BlogSection"> | string
+    sectionLabel?: StringNullableWithAggregatesFilter<"BlogSection"> | string | null
+    title?: StringWithAggregatesFilter<"BlogSection"> | string
+    description?: StringNullableWithAggregatesFilter<"BlogSection"> | string | null
+    buttonText?: StringNullableWithAggregatesFilter<"BlogSection"> | string | null
+    emergencyTitle?: StringNullableWithAggregatesFilter<"BlogSection"> | string | null
+    emergencyDescription?: StringNullableWithAggregatesFilter<"BlogSection"> | string | null
+    phoneNumber1?: StringNullableWithAggregatesFilter<"BlogSection"> | string | null
+    phoneNumber2?: StringNullableWithAggregatesFilter<"BlogSection"> | string | null
+    isActive?: BoolWithAggregatesFilter<"BlogSection"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"BlogSection"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"BlogSection"> | Date | string
   }
 
   export type SuperAdminsCreateInput = {
@@ -19574,6 +30647,1115 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type AboutSectionCreateInput = {
+    id?: string
+    sectionLabel?: string | null
+    title1: string
+    highlightedText?: string | null
+    title2?: string | null
+    description: string
+    image?: string | null
+    feature1Icon?: string | null
+    feature1Title?: string | null
+    feature1Description?: string | null
+    feature2Icon?: string | null
+    feature2Title?: string | null
+    feature2Description?: string | null
+    feature3Icon?: string | null
+    feature3Title?: string | null
+    feature3Description?: string | null
+    patientsCount?: string | null
+    doctorsCount?: string | null
+    departmentsCount?: string | null
+    experienceYears?: string | null
+    patientsLabel?: string | null
+    doctorsLabel?: string | null
+    departmentsLabel?: string | null
+    experienceLabel?: string | null
+    certificationTitle?: string | null
+    certificationSubtitle?: string | null
+    cardExperienceCount?: string | null
+    cardExperienceLabel?: string | null
+    cardPatientsCount?: string | null
+    cardPatientsLabel?: string | null
+    primaryButtonText?: string | null
+    secondaryButtonText?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AboutSectionUncheckedCreateInput = {
+    id?: string
+    sectionLabel?: string | null
+    title1: string
+    highlightedText?: string | null
+    title2?: string | null
+    description: string
+    image?: string | null
+    feature1Icon?: string | null
+    feature1Title?: string | null
+    feature1Description?: string | null
+    feature2Icon?: string | null
+    feature2Title?: string | null
+    feature2Description?: string | null
+    feature3Icon?: string | null
+    feature3Title?: string | null
+    feature3Description?: string | null
+    patientsCount?: string | null
+    doctorsCount?: string | null
+    departmentsCount?: string | null
+    experienceYears?: string | null
+    patientsLabel?: string | null
+    doctorsLabel?: string | null
+    departmentsLabel?: string | null
+    experienceLabel?: string | null
+    certificationTitle?: string | null
+    certificationSubtitle?: string | null
+    cardExperienceCount?: string | null
+    cardExperienceLabel?: string | null
+    cardPatientsCount?: string | null
+    cardPatientsLabel?: string | null
+    primaryButtonText?: string | null
+    secondaryButtonText?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AboutSectionUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    title1?: StringFieldUpdateOperationsInput | string
+    highlightedText?: NullableStringFieldUpdateOperationsInput | string | null
+    title2?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    feature1Icon?: NullableStringFieldUpdateOperationsInput | string | null
+    feature1Title?: NullableStringFieldUpdateOperationsInput | string | null
+    feature1Description?: NullableStringFieldUpdateOperationsInput | string | null
+    feature2Icon?: NullableStringFieldUpdateOperationsInput | string | null
+    feature2Title?: NullableStringFieldUpdateOperationsInput | string | null
+    feature2Description?: NullableStringFieldUpdateOperationsInput | string | null
+    feature3Icon?: NullableStringFieldUpdateOperationsInput | string | null
+    feature3Title?: NullableStringFieldUpdateOperationsInput | string | null
+    feature3Description?: NullableStringFieldUpdateOperationsInput | string | null
+    patientsCount?: NullableStringFieldUpdateOperationsInput | string | null
+    doctorsCount?: NullableStringFieldUpdateOperationsInput | string | null
+    departmentsCount?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceYears?: NullableStringFieldUpdateOperationsInput | string | null
+    patientsLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    doctorsLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    departmentsLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    certificationTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    certificationSubtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    cardExperienceCount?: NullableStringFieldUpdateOperationsInput | string | null
+    cardExperienceLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    cardPatientsCount?: NullableStringFieldUpdateOperationsInput | string | null
+    cardPatientsLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryButtonText?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryButtonText?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AboutSectionUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    title1?: StringFieldUpdateOperationsInput | string
+    highlightedText?: NullableStringFieldUpdateOperationsInput | string | null
+    title2?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    feature1Icon?: NullableStringFieldUpdateOperationsInput | string | null
+    feature1Title?: NullableStringFieldUpdateOperationsInput | string | null
+    feature1Description?: NullableStringFieldUpdateOperationsInput | string | null
+    feature2Icon?: NullableStringFieldUpdateOperationsInput | string | null
+    feature2Title?: NullableStringFieldUpdateOperationsInput | string | null
+    feature2Description?: NullableStringFieldUpdateOperationsInput | string | null
+    feature3Icon?: NullableStringFieldUpdateOperationsInput | string | null
+    feature3Title?: NullableStringFieldUpdateOperationsInput | string | null
+    feature3Description?: NullableStringFieldUpdateOperationsInput | string | null
+    patientsCount?: NullableStringFieldUpdateOperationsInput | string | null
+    doctorsCount?: NullableStringFieldUpdateOperationsInput | string | null
+    departmentsCount?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceYears?: NullableStringFieldUpdateOperationsInput | string | null
+    patientsLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    doctorsLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    departmentsLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    certificationTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    certificationSubtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    cardExperienceCount?: NullableStringFieldUpdateOperationsInput | string | null
+    cardExperienceLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    cardPatientsCount?: NullableStringFieldUpdateOperationsInput | string | null
+    cardPatientsLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryButtonText?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryButtonText?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AboutSectionCreateManyInput = {
+    id?: string
+    sectionLabel?: string | null
+    title1: string
+    highlightedText?: string | null
+    title2?: string | null
+    description: string
+    image?: string | null
+    feature1Icon?: string | null
+    feature1Title?: string | null
+    feature1Description?: string | null
+    feature2Icon?: string | null
+    feature2Title?: string | null
+    feature2Description?: string | null
+    feature3Icon?: string | null
+    feature3Title?: string | null
+    feature3Description?: string | null
+    patientsCount?: string | null
+    doctorsCount?: string | null
+    departmentsCount?: string | null
+    experienceYears?: string | null
+    patientsLabel?: string | null
+    doctorsLabel?: string | null
+    departmentsLabel?: string | null
+    experienceLabel?: string | null
+    certificationTitle?: string | null
+    certificationSubtitle?: string | null
+    cardExperienceCount?: string | null
+    cardExperienceLabel?: string | null
+    cardPatientsCount?: string | null
+    cardPatientsLabel?: string | null
+    primaryButtonText?: string | null
+    secondaryButtonText?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AboutSectionUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    title1?: StringFieldUpdateOperationsInput | string
+    highlightedText?: NullableStringFieldUpdateOperationsInput | string | null
+    title2?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    feature1Icon?: NullableStringFieldUpdateOperationsInput | string | null
+    feature1Title?: NullableStringFieldUpdateOperationsInput | string | null
+    feature1Description?: NullableStringFieldUpdateOperationsInput | string | null
+    feature2Icon?: NullableStringFieldUpdateOperationsInput | string | null
+    feature2Title?: NullableStringFieldUpdateOperationsInput | string | null
+    feature2Description?: NullableStringFieldUpdateOperationsInput | string | null
+    feature3Icon?: NullableStringFieldUpdateOperationsInput | string | null
+    feature3Title?: NullableStringFieldUpdateOperationsInput | string | null
+    feature3Description?: NullableStringFieldUpdateOperationsInput | string | null
+    patientsCount?: NullableStringFieldUpdateOperationsInput | string | null
+    doctorsCount?: NullableStringFieldUpdateOperationsInput | string | null
+    departmentsCount?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceYears?: NullableStringFieldUpdateOperationsInput | string | null
+    patientsLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    doctorsLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    departmentsLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    certificationTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    certificationSubtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    cardExperienceCount?: NullableStringFieldUpdateOperationsInput | string | null
+    cardExperienceLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    cardPatientsCount?: NullableStringFieldUpdateOperationsInput | string | null
+    cardPatientsLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryButtonText?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryButtonText?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AboutSectionUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    title1?: StringFieldUpdateOperationsInput | string
+    highlightedText?: NullableStringFieldUpdateOperationsInput | string | null
+    title2?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    feature1Icon?: NullableStringFieldUpdateOperationsInput | string | null
+    feature1Title?: NullableStringFieldUpdateOperationsInput | string | null
+    feature1Description?: NullableStringFieldUpdateOperationsInput | string | null
+    feature2Icon?: NullableStringFieldUpdateOperationsInput | string | null
+    feature2Title?: NullableStringFieldUpdateOperationsInput | string | null
+    feature2Description?: NullableStringFieldUpdateOperationsInput | string | null
+    feature3Icon?: NullableStringFieldUpdateOperationsInput | string | null
+    feature3Title?: NullableStringFieldUpdateOperationsInput | string | null
+    feature3Description?: NullableStringFieldUpdateOperationsInput | string | null
+    patientsCount?: NullableStringFieldUpdateOperationsInput | string | null
+    doctorsCount?: NullableStringFieldUpdateOperationsInput | string | null
+    departmentsCount?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceYears?: NullableStringFieldUpdateOperationsInput | string | null
+    patientsLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    doctorsLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    departmentsLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    certificationTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    certificationSubtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    cardExperienceCount?: NullableStringFieldUpdateOperationsInput | string | null
+    cardExperienceLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    cardPatientsCount?: NullableStringFieldUpdateOperationsInput | string | null
+    cardPatientsLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryButtonText?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryButtonText?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ServiceSectionCreateInput = {
+    id?: string
+    sectionLabel?: string | null
+    title: string
+    description?: string | null
+    buttonText?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    services?: ServiceItemCreateNestedManyWithoutServiceSectionInput
+  }
+
+  export type ServiceSectionUncheckedCreateInput = {
+    id?: string
+    sectionLabel?: string | null
+    title: string
+    description?: string | null
+    buttonText?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    services?: ServiceItemUncheckedCreateNestedManyWithoutServiceSectionInput
+  }
+
+  export type ServiceSectionUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    buttonText?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    services?: ServiceItemUpdateManyWithoutServiceSectionNestedInput
+  }
+
+  export type ServiceSectionUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    buttonText?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    services?: ServiceItemUncheckedUpdateManyWithoutServiceSectionNestedInput
+  }
+
+  export type ServiceSectionCreateManyInput = {
+    id?: string
+    sectionLabel?: string | null
+    title: string
+    description?: string | null
+    buttonText?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ServiceSectionUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    buttonText?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ServiceSectionUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    buttonText?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ServiceItemCreateInput = {
+    id?: string
+    icon?: string | null
+    title: string
+    description: string
+    linkText?: string | null
+    serial?: number
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    serviceSection: ServiceSectionCreateNestedOneWithoutServicesInput
+  }
+
+  export type ServiceItemUncheckedCreateInput = {
+    id?: string
+    serviceSectionId: string
+    icon?: string | null
+    title: string
+    description: string
+    linkText?: string | null
+    serial?: number
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ServiceItemUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    linkText?: NullableStringFieldUpdateOperationsInput | string | null
+    serial?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    serviceSection?: ServiceSectionUpdateOneRequiredWithoutServicesNestedInput
+  }
+
+  export type ServiceItemUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    serviceSectionId?: StringFieldUpdateOperationsInput | string
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    linkText?: NullableStringFieldUpdateOperationsInput | string | null
+    serial?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ServiceItemCreateManyInput = {
+    id?: string
+    serviceSectionId: string
+    icon?: string | null
+    title: string
+    description: string
+    linkText?: string | null
+    serial?: number
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ServiceItemUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    linkText?: NullableStringFieldUpdateOperationsInput | string | null
+    serial?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ServiceItemUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    serviceSectionId?: StringFieldUpdateOperationsInput | string
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    linkText?: NullableStringFieldUpdateOperationsInput | string | null
+    serial?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DoctorSectionCreateInput = {
+    id?: string
+    sectionLabel?: string | null
+    title1: string
+    highlightedText?: string | null
+    title2?: string | null
+    description?: string | null
+    appoinmentButtonText?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DoctorSectionUncheckedCreateInput = {
+    id?: string
+    sectionLabel?: string | null
+    title1: string
+    highlightedText?: string | null
+    title2?: string | null
+    description?: string | null
+    appoinmentButtonText?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DoctorSectionUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    title1?: StringFieldUpdateOperationsInput | string
+    highlightedText?: NullableStringFieldUpdateOperationsInput | string | null
+    title2?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    appoinmentButtonText?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DoctorSectionUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    title1?: StringFieldUpdateOperationsInput | string
+    highlightedText?: NullableStringFieldUpdateOperationsInput | string | null
+    title2?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    appoinmentButtonText?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DoctorSectionCreateManyInput = {
+    id?: string
+    sectionLabel?: string | null
+    title1: string
+    highlightedText?: string | null
+    title2?: string | null
+    description?: string | null
+    appoinmentButtonText?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DoctorSectionUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    title1?: StringFieldUpdateOperationsInput | string
+    highlightedText?: NullableStringFieldUpdateOperationsInput | string | null
+    title2?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    appoinmentButtonText?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DoctorSectionUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    title1?: StringFieldUpdateOperationsInput | string
+    highlightedText?: NullableStringFieldUpdateOperationsInput | string | null
+    title2?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    appoinmentButtonText?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AppointmentSectionCreateInput = {
+    id?: string
+    badgeText?: string | null
+    title1: string
+    highlightedText?: string | null
+    title2?: string | null
+    description?: string | null
+    feature1Text?: string | null
+    feature2Text?: string | null
+    feature3Text?: string | null
+    feature4Text?: string | null
+    patientsServedCount?: string | null
+    doctorsCount?: string | null
+    ratingCount?: string | null
+    patientsServedLabel?: string | null
+    doctorsLabel?: string | null
+    ratingLabel?: string | null
+    phoneLabel?: string | null
+    phoneNumber?: string | null
+    formTitle?: string | null
+    formDescription?: string | null
+    submitButtonText?: string | null
+    sslText?: string | null
+    confirmText?: string | null
+    reviewText?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AppointmentSectionUncheckedCreateInput = {
+    id?: string
+    badgeText?: string | null
+    title1: string
+    highlightedText?: string | null
+    title2?: string | null
+    description?: string | null
+    feature1Text?: string | null
+    feature2Text?: string | null
+    feature3Text?: string | null
+    feature4Text?: string | null
+    patientsServedCount?: string | null
+    doctorsCount?: string | null
+    ratingCount?: string | null
+    patientsServedLabel?: string | null
+    doctorsLabel?: string | null
+    ratingLabel?: string | null
+    phoneLabel?: string | null
+    phoneNumber?: string | null
+    formTitle?: string | null
+    formDescription?: string | null
+    submitButtonText?: string | null
+    sslText?: string | null
+    confirmText?: string | null
+    reviewText?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AppointmentSectionUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    badgeText?: NullableStringFieldUpdateOperationsInput | string | null
+    title1?: StringFieldUpdateOperationsInput | string
+    highlightedText?: NullableStringFieldUpdateOperationsInput | string | null
+    title2?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    feature1Text?: NullableStringFieldUpdateOperationsInput | string | null
+    feature2Text?: NullableStringFieldUpdateOperationsInput | string | null
+    feature3Text?: NullableStringFieldUpdateOperationsInput | string | null
+    feature4Text?: NullableStringFieldUpdateOperationsInput | string | null
+    patientsServedCount?: NullableStringFieldUpdateOperationsInput | string | null
+    doctorsCount?: NullableStringFieldUpdateOperationsInput | string | null
+    ratingCount?: NullableStringFieldUpdateOperationsInput | string | null
+    patientsServedLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    doctorsLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    ratingLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    formTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    formDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    submitButtonText?: NullableStringFieldUpdateOperationsInput | string | null
+    sslText?: NullableStringFieldUpdateOperationsInput | string | null
+    confirmText?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewText?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AppointmentSectionUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    badgeText?: NullableStringFieldUpdateOperationsInput | string | null
+    title1?: StringFieldUpdateOperationsInput | string
+    highlightedText?: NullableStringFieldUpdateOperationsInput | string | null
+    title2?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    feature1Text?: NullableStringFieldUpdateOperationsInput | string | null
+    feature2Text?: NullableStringFieldUpdateOperationsInput | string | null
+    feature3Text?: NullableStringFieldUpdateOperationsInput | string | null
+    feature4Text?: NullableStringFieldUpdateOperationsInput | string | null
+    patientsServedCount?: NullableStringFieldUpdateOperationsInput | string | null
+    doctorsCount?: NullableStringFieldUpdateOperationsInput | string | null
+    ratingCount?: NullableStringFieldUpdateOperationsInput | string | null
+    patientsServedLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    doctorsLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    ratingLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    formTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    formDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    submitButtonText?: NullableStringFieldUpdateOperationsInput | string | null
+    sslText?: NullableStringFieldUpdateOperationsInput | string | null
+    confirmText?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewText?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AppointmentSectionCreateManyInput = {
+    id?: string
+    badgeText?: string | null
+    title1: string
+    highlightedText?: string | null
+    title2?: string | null
+    description?: string | null
+    feature1Text?: string | null
+    feature2Text?: string | null
+    feature3Text?: string | null
+    feature4Text?: string | null
+    patientsServedCount?: string | null
+    doctorsCount?: string | null
+    ratingCount?: string | null
+    patientsServedLabel?: string | null
+    doctorsLabel?: string | null
+    ratingLabel?: string | null
+    phoneLabel?: string | null
+    phoneNumber?: string | null
+    formTitle?: string | null
+    formDescription?: string | null
+    submitButtonText?: string | null
+    sslText?: string | null
+    confirmText?: string | null
+    reviewText?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AppointmentSectionUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    badgeText?: NullableStringFieldUpdateOperationsInput | string | null
+    title1?: StringFieldUpdateOperationsInput | string
+    highlightedText?: NullableStringFieldUpdateOperationsInput | string | null
+    title2?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    feature1Text?: NullableStringFieldUpdateOperationsInput | string | null
+    feature2Text?: NullableStringFieldUpdateOperationsInput | string | null
+    feature3Text?: NullableStringFieldUpdateOperationsInput | string | null
+    feature4Text?: NullableStringFieldUpdateOperationsInput | string | null
+    patientsServedCount?: NullableStringFieldUpdateOperationsInput | string | null
+    doctorsCount?: NullableStringFieldUpdateOperationsInput | string | null
+    ratingCount?: NullableStringFieldUpdateOperationsInput | string | null
+    patientsServedLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    doctorsLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    ratingLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    formTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    formDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    submitButtonText?: NullableStringFieldUpdateOperationsInput | string | null
+    sslText?: NullableStringFieldUpdateOperationsInput | string | null
+    confirmText?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewText?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AppointmentSectionUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    badgeText?: NullableStringFieldUpdateOperationsInput | string | null
+    title1?: StringFieldUpdateOperationsInput | string
+    highlightedText?: NullableStringFieldUpdateOperationsInput | string | null
+    title2?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    feature1Text?: NullableStringFieldUpdateOperationsInput | string | null
+    feature2Text?: NullableStringFieldUpdateOperationsInput | string | null
+    feature3Text?: NullableStringFieldUpdateOperationsInput | string | null
+    feature4Text?: NullableStringFieldUpdateOperationsInput | string | null
+    patientsServedCount?: NullableStringFieldUpdateOperationsInput | string | null
+    doctorsCount?: NullableStringFieldUpdateOperationsInput | string | null
+    ratingCount?: NullableStringFieldUpdateOperationsInput | string | null
+    patientsServedLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    doctorsLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    ratingLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    formTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    formDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    submitButtonText?: NullableStringFieldUpdateOperationsInput | string | null
+    sslText?: NullableStringFieldUpdateOperationsInput | string | null
+    confirmText?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewText?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProductSectionCreateInput = {
+    id?: string
+    sectionLabel?: string | null
+    title: string
+    description?: string | null
+    buttonText?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ProductSectionUncheckedCreateInput = {
+    id?: string
+    sectionLabel?: string | null
+    title: string
+    description?: string | null
+    buttonText?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ProductSectionUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    buttonText?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProductSectionUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    buttonText?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProductSectionCreateManyInput = {
+    id?: string
+    sectionLabel?: string | null
+    title: string
+    description?: string | null
+    buttonText?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ProductSectionUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    buttonText?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProductSectionUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    buttonText?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FacilitySectionCreateInput = {
+    id?: string
+    sectionLabel?: string | null
+    title: string
+    description?: string | null
+    buttonText?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FacilitySectionUncheckedCreateInput = {
+    id?: string
+    sectionLabel?: string | null
+    title: string
+    description?: string | null
+    buttonText?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FacilitySectionUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    buttonText?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FacilitySectionUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    buttonText?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FacilitySectionCreateManyInput = {
+    id?: string
+    sectionLabel?: string | null
+    title: string
+    description?: string | null
+    buttonText?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FacilitySectionUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    buttonText?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FacilitySectionUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    buttonText?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TestimonialSectionCreateInput = {
+    id?: string
+    sectionLabel?: string | null
+    title: string
+    description?: string | null
+    satisfactionCount?: string | null
+    ratingCount?: string | null
+    reviewCount?: string | null
+    satisfactionLabel?: string | null
+    ratingLabel?: string | null
+    reviewLabel?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TestimonialSectionUncheckedCreateInput = {
+    id?: string
+    sectionLabel?: string | null
+    title: string
+    description?: string | null
+    satisfactionCount?: string | null
+    ratingCount?: string | null
+    reviewCount?: string | null
+    satisfactionLabel?: string | null
+    ratingLabel?: string | null
+    reviewLabel?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TestimonialSectionUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    satisfactionCount?: NullableStringFieldUpdateOperationsInput | string | null
+    ratingCount?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewCount?: NullableStringFieldUpdateOperationsInput | string | null
+    satisfactionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    ratingLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TestimonialSectionUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    satisfactionCount?: NullableStringFieldUpdateOperationsInput | string | null
+    ratingCount?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewCount?: NullableStringFieldUpdateOperationsInput | string | null
+    satisfactionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    ratingLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TestimonialSectionCreateManyInput = {
+    id?: string
+    sectionLabel?: string | null
+    title: string
+    description?: string | null
+    satisfactionCount?: string | null
+    ratingCount?: string | null
+    reviewCount?: string | null
+    satisfactionLabel?: string | null
+    ratingLabel?: string | null
+    reviewLabel?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TestimonialSectionUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    satisfactionCount?: NullableStringFieldUpdateOperationsInput | string | null
+    ratingCount?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewCount?: NullableStringFieldUpdateOperationsInput | string | null
+    satisfactionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    ratingLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TestimonialSectionUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    satisfactionCount?: NullableStringFieldUpdateOperationsInput | string | null
+    ratingCount?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewCount?: NullableStringFieldUpdateOperationsInput | string | null
+    satisfactionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    ratingLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BlogSectionCreateInput = {
+    id?: string
+    sectionLabel?: string | null
+    title: string
+    description?: string | null
+    buttonText?: string | null
+    emergencyTitle?: string | null
+    emergencyDescription?: string | null
+    phoneNumber1?: string | null
+    phoneNumber2?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BlogSectionUncheckedCreateInput = {
+    id?: string
+    sectionLabel?: string | null
+    title: string
+    description?: string | null
+    buttonText?: string | null
+    emergencyTitle?: string | null
+    emergencyDescription?: string | null
+    phoneNumber1?: string | null
+    phoneNumber2?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BlogSectionUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    buttonText?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber1?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber2?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BlogSectionUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    buttonText?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber1?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber2?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BlogSectionCreateManyInput = {
+    id?: string
+    sectionLabel?: string | null
+    title: string
+    description?: string | null
+    buttonText?: string | null
+    emergencyTitle?: string | null
+    emergencyDescription?: string | null
+    phoneNumber1?: string | null
+    phoneNumber2?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BlogSectionUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    buttonText?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber1?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber2?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BlogSectionUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    buttonText?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber1?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber2?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[]
@@ -20738,6 +32920,557 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type AboutSectionOrderByRelevanceInput = {
+    fields: AboutSectionOrderByRelevanceFieldEnum | AboutSectionOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type AboutSectionCountOrderByAggregateInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrder
+    title1?: SortOrder
+    highlightedText?: SortOrder
+    title2?: SortOrder
+    description?: SortOrder
+    image?: SortOrder
+    feature1Icon?: SortOrder
+    feature1Title?: SortOrder
+    feature1Description?: SortOrder
+    feature2Icon?: SortOrder
+    feature2Title?: SortOrder
+    feature2Description?: SortOrder
+    feature3Icon?: SortOrder
+    feature3Title?: SortOrder
+    feature3Description?: SortOrder
+    patientsCount?: SortOrder
+    doctorsCount?: SortOrder
+    departmentsCount?: SortOrder
+    experienceYears?: SortOrder
+    patientsLabel?: SortOrder
+    doctorsLabel?: SortOrder
+    departmentsLabel?: SortOrder
+    experienceLabel?: SortOrder
+    certificationTitle?: SortOrder
+    certificationSubtitle?: SortOrder
+    cardExperienceCount?: SortOrder
+    cardExperienceLabel?: SortOrder
+    cardPatientsCount?: SortOrder
+    cardPatientsLabel?: SortOrder
+    primaryButtonText?: SortOrder
+    secondaryButtonText?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type AboutSectionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrder
+    title1?: SortOrder
+    highlightedText?: SortOrder
+    title2?: SortOrder
+    description?: SortOrder
+    image?: SortOrder
+    feature1Icon?: SortOrder
+    feature1Title?: SortOrder
+    feature1Description?: SortOrder
+    feature2Icon?: SortOrder
+    feature2Title?: SortOrder
+    feature2Description?: SortOrder
+    feature3Icon?: SortOrder
+    feature3Title?: SortOrder
+    feature3Description?: SortOrder
+    patientsCount?: SortOrder
+    doctorsCount?: SortOrder
+    departmentsCount?: SortOrder
+    experienceYears?: SortOrder
+    patientsLabel?: SortOrder
+    doctorsLabel?: SortOrder
+    departmentsLabel?: SortOrder
+    experienceLabel?: SortOrder
+    certificationTitle?: SortOrder
+    certificationSubtitle?: SortOrder
+    cardExperienceCount?: SortOrder
+    cardExperienceLabel?: SortOrder
+    cardPatientsCount?: SortOrder
+    cardPatientsLabel?: SortOrder
+    primaryButtonText?: SortOrder
+    secondaryButtonText?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type AboutSectionMinOrderByAggregateInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrder
+    title1?: SortOrder
+    highlightedText?: SortOrder
+    title2?: SortOrder
+    description?: SortOrder
+    image?: SortOrder
+    feature1Icon?: SortOrder
+    feature1Title?: SortOrder
+    feature1Description?: SortOrder
+    feature2Icon?: SortOrder
+    feature2Title?: SortOrder
+    feature2Description?: SortOrder
+    feature3Icon?: SortOrder
+    feature3Title?: SortOrder
+    feature3Description?: SortOrder
+    patientsCount?: SortOrder
+    doctorsCount?: SortOrder
+    departmentsCount?: SortOrder
+    experienceYears?: SortOrder
+    patientsLabel?: SortOrder
+    doctorsLabel?: SortOrder
+    departmentsLabel?: SortOrder
+    experienceLabel?: SortOrder
+    certificationTitle?: SortOrder
+    certificationSubtitle?: SortOrder
+    cardExperienceCount?: SortOrder
+    cardExperienceLabel?: SortOrder
+    cardPatientsCount?: SortOrder
+    cardPatientsLabel?: SortOrder
+    primaryButtonText?: SortOrder
+    secondaryButtonText?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ServiceItemListRelationFilter = {
+    every?: ServiceItemWhereInput
+    some?: ServiceItemWhereInput
+    none?: ServiceItemWhereInput
+  }
+
+  export type ServiceItemOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ServiceSectionOrderByRelevanceInput = {
+    fields: ServiceSectionOrderByRelevanceFieldEnum | ServiceSectionOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type ServiceSectionCountOrderByAggregateInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    buttonText?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ServiceSectionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    buttonText?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ServiceSectionMinOrderByAggregateInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    buttonText?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ServiceSectionScalarRelationFilter = {
+    is?: ServiceSectionWhereInput
+    isNot?: ServiceSectionWhereInput
+  }
+
+  export type ServiceItemOrderByRelevanceInput = {
+    fields: ServiceItemOrderByRelevanceFieldEnum | ServiceItemOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type ServiceItemCountOrderByAggregateInput = {
+    id?: SortOrder
+    serviceSectionId?: SortOrder
+    icon?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    linkText?: SortOrder
+    serial?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ServiceItemAvgOrderByAggregateInput = {
+    serial?: SortOrder
+  }
+
+  export type ServiceItemMaxOrderByAggregateInput = {
+    id?: SortOrder
+    serviceSectionId?: SortOrder
+    icon?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    linkText?: SortOrder
+    serial?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ServiceItemMinOrderByAggregateInput = {
+    id?: SortOrder
+    serviceSectionId?: SortOrder
+    icon?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    linkText?: SortOrder
+    serial?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ServiceItemSumOrderByAggregateInput = {
+    serial?: SortOrder
+  }
+
+  export type DoctorSectionOrderByRelevanceInput = {
+    fields: DoctorSectionOrderByRelevanceFieldEnum | DoctorSectionOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type DoctorSectionCountOrderByAggregateInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrder
+    title1?: SortOrder
+    highlightedText?: SortOrder
+    title2?: SortOrder
+    description?: SortOrder
+    appoinmentButtonText?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DoctorSectionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrder
+    title1?: SortOrder
+    highlightedText?: SortOrder
+    title2?: SortOrder
+    description?: SortOrder
+    appoinmentButtonText?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DoctorSectionMinOrderByAggregateInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrder
+    title1?: SortOrder
+    highlightedText?: SortOrder
+    title2?: SortOrder
+    description?: SortOrder
+    appoinmentButtonText?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type AppointmentSectionOrderByRelevanceInput = {
+    fields: AppointmentSectionOrderByRelevanceFieldEnum | AppointmentSectionOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type AppointmentSectionCountOrderByAggregateInput = {
+    id?: SortOrder
+    badgeText?: SortOrder
+    title1?: SortOrder
+    highlightedText?: SortOrder
+    title2?: SortOrder
+    description?: SortOrder
+    feature1Text?: SortOrder
+    feature2Text?: SortOrder
+    feature3Text?: SortOrder
+    feature4Text?: SortOrder
+    patientsServedCount?: SortOrder
+    doctorsCount?: SortOrder
+    ratingCount?: SortOrder
+    patientsServedLabel?: SortOrder
+    doctorsLabel?: SortOrder
+    ratingLabel?: SortOrder
+    phoneLabel?: SortOrder
+    phoneNumber?: SortOrder
+    formTitle?: SortOrder
+    formDescription?: SortOrder
+    submitButtonText?: SortOrder
+    sslText?: SortOrder
+    confirmText?: SortOrder
+    reviewText?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type AppointmentSectionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    badgeText?: SortOrder
+    title1?: SortOrder
+    highlightedText?: SortOrder
+    title2?: SortOrder
+    description?: SortOrder
+    feature1Text?: SortOrder
+    feature2Text?: SortOrder
+    feature3Text?: SortOrder
+    feature4Text?: SortOrder
+    patientsServedCount?: SortOrder
+    doctorsCount?: SortOrder
+    ratingCount?: SortOrder
+    patientsServedLabel?: SortOrder
+    doctorsLabel?: SortOrder
+    ratingLabel?: SortOrder
+    phoneLabel?: SortOrder
+    phoneNumber?: SortOrder
+    formTitle?: SortOrder
+    formDescription?: SortOrder
+    submitButtonText?: SortOrder
+    sslText?: SortOrder
+    confirmText?: SortOrder
+    reviewText?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type AppointmentSectionMinOrderByAggregateInput = {
+    id?: SortOrder
+    badgeText?: SortOrder
+    title1?: SortOrder
+    highlightedText?: SortOrder
+    title2?: SortOrder
+    description?: SortOrder
+    feature1Text?: SortOrder
+    feature2Text?: SortOrder
+    feature3Text?: SortOrder
+    feature4Text?: SortOrder
+    patientsServedCount?: SortOrder
+    doctorsCount?: SortOrder
+    ratingCount?: SortOrder
+    patientsServedLabel?: SortOrder
+    doctorsLabel?: SortOrder
+    ratingLabel?: SortOrder
+    phoneLabel?: SortOrder
+    phoneNumber?: SortOrder
+    formTitle?: SortOrder
+    formDescription?: SortOrder
+    submitButtonText?: SortOrder
+    sslText?: SortOrder
+    confirmText?: SortOrder
+    reviewText?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ProductSectionOrderByRelevanceInput = {
+    fields: ProductSectionOrderByRelevanceFieldEnum | ProductSectionOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type ProductSectionCountOrderByAggregateInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    buttonText?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ProductSectionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    buttonText?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ProductSectionMinOrderByAggregateInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    buttonText?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type FacilitySectionOrderByRelevanceInput = {
+    fields: FacilitySectionOrderByRelevanceFieldEnum | FacilitySectionOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type FacilitySectionCountOrderByAggregateInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    buttonText?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type FacilitySectionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    buttonText?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type FacilitySectionMinOrderByAggregateInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    buttonText?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type TestimonialSectionOrderByRelevanceInput = {
+    fields: TestimonialSectionOrderByRelevanceFieldEnum | TestimonialSectionOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type TestimonialSectionCountOrderByAggregateInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    satisfactionCount?: SortOrder
+    ratingCount?: SortOrder
+    reviewCount?: SortOrder
+    satisfactionLabel?: SortOrder
+    ratingLabel?: SortOrder
+    reviewLabel?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type TestimonialSectionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    satisfactionCount?: SortOrder
+    ratingCount?: SortOrder
+    reviewCount?: SortOrder
+    satisfactionLabel?: SortOrder
+    ratingLabel?: SortOrder
+    reviewLabel?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type TestimonialSectionMinOrderByAggregateInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    satisfactionCount?: SortOrder
+    ratingCount?: SortOrder
+    reviewCount?: SortOrder
+    satisfactionLabel?: SortOrder
+    ratingLabel?: SortOrder
+    reviewLabel?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BlogSectionOrderByRelevanceInput = {
+    fields: BlogSectionOrderByRelevanceFieldEnum | BlogSectionOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type BlogSectionCountOrderByAggregateInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    buttonText?: SortOrder
+    emergencyTitle?: SortOrder
+    emergencyDescription?: SortOrder
+    phoneNumber1?: SortOrder
+    phoneNumber2?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BlogSectionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    buttonText?: SortOrder
+    emergencyTitle?: SortOrder
+    emergencyDescription?: SortOrder
+    phoneNumber1?: SortOrder
+    phoneNumber2?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BlogSectionMinOrderByAggregateInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    buttonText?: SortOrder
+    emergencyTitle?: SortOrder
+    emergencyDescription?: SortOrder
+    phoneNumber1?: SortOrder
+    phoneNumber2?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
   export type RoleCreateNestedManyWithoutSuperAdminInput = {
     create?: XOR<RoleCreateWithoutSuperAdminInput, RoleUncheckedCreateWithoutSuperAdminInput> | RoleCreateWithoutSuperAdminInput[] | RoleUncheckedCreateWithoutSuperAdminInput[]
     connectOrCreate?: RoleCreateOrConnectWithoutSuperAdminInput | RoleCreateOrConnectWithoutSuperAdminInput[]
@@ -21604,6 +34337,62 @@ export namespace Prisma {
     upsert?: RoleUpsertWithoutSuperAdminUserRolesInput
     connect?: RoleWhereUniqueInput
     update?: XOR<XOR<RoleUpdateToOneWithWhereWithoutSuperAdminUserRolesInput, RoleUpdateWithoutSuperAdminUserRolesInput>, RoleUncheckedUpdateWithoutSuperAdminUserRolesInput>
+  }
+
+  export type ServiceItemCreateNestedManyWithoutServiceSectionInput = {
+    create?: XOR<ServiceItemCreateWithoutServiceSectionInput, ServiceItemUncheckedCreateWithoutServiceSectionInput> | ServiceItemCreateWithoutServiceSectionInput[] | ServiceItemUncheckedCreateWithoutServiceSectionInput[]
+    connectOrCreate?: ServiceItemCreateOrConnectWithoutServiceSectionInput | ServiceItemCreateOrConnectWithoutServiceSectionInput[]
+    createMany?: ServiceItemCreateManyServiceSectionInputEnvelope
+    connect?: ServiceItemWhereUniqueInput | ServiceItemWhereUniqueInput[]
+  }
+
+  export type ServiceItemUncheckedCreateNestedManyWithoutServiceSectionInput = {
+    create?: XOR<ServiceItemCreateWithoutServiceSectionInput, ServiceItemUncheckedCreateWithoutServiceSectionInput> | ServiceItemCreateWithoutServiceSectionInput[] | ServiceItemUncheckedCreateWithoutServiceSectionInput[]
+    connectOrCreate?: ServiceItemCreateOrConnectWithoutServiceSectionInput | ServiceItemCreateOrConnectWithoutServiceSectionInput[]
+    createMany?: ServiceItemCreateManyServiceSectionInputEnvelope
+    connect?: ServiceItemWhereUniqueInput | ServiceItemWhereUniqueInput[]
+  }
+
+  export type ServiceItemUpdateManyWithoutServiceSectionNestedInput = {
+    create?: XOR<ServiceItemCreateWithoutServiceSectionInput, ServiceItemUncheckedCreateWithoutServiceSectionInput> | ServiceItemCreateWithoutServiceSectionInput[] | ServiceItemUncheckedCreateWithoutServiceSectionInput[]
+    connectOrCreate?: ServiceItemCreateOrConnectWithoutServiceSectionInput | ServiceItemCreateOrConnectWithoutServiceSectionInput[]
+    upsert?: ServiceItemUpsertWithWhereUniqueWithoutServiceSectionInput | ServiceItemUpsertWithWhereUniqueWithoutServiceSectionInput[]
+    createMany?: ServiceItemCreateManyServiceSectionInputEnvelope
+    set?: ServiceItemWhereUniqueInput | ServiceItemWhereUniqueInput[]
+    disconnect?: ServiceItemWhereUniqueInput | ServiceItemWhereUniqueInput[]
+    delete?: ServiceItemWhereUniqueInput | ServiceItemWhereUniqueInput[]
+    connect?: ServiceItemWhereUniqueInput | ServiceItemWhereUniqueInput[]
+    update?: ServiceItemUpdateWithWhereUniqueWithoutServiceSectionInput | ServiceItemUpdateWithWhereUniqueWithoutServiceSectionInput[]
+    updateMany?: ServiceItemUpdateManyWithWhereWithoutServiceSectionInput | ServiceItemUpdateManyWithWhereWithoutServiceSectionInput[]
+    deleteMany?: ServiceItemScalarWhereInput | ServiceItemScalarWhereInput[]
+  }
+
+  export type ServiceItemUncheckedUpdateManyWithoutServiceSectionNestedInput = {
+    create?: XOR<ServiceItemCreateWithoutServiceSectionInput, ServiceItemUncheckedCreateWithoutServiceSectionInput> | ServiceItemCreateWithoutServiceSectionInput[] | ServiceItemUncheckedCreateWithoutServiceSectionInput[]
+    connectOrCreate?: ServiceItemCreateOrConnectWithoutServiceSectionInput | ServiceItemCreateOrConnectWithoutServiceSectionInput[]
+    upsert?: ServiceItemUpsertWithWhereUniqueWithoutServiceSectionInput | ServiceItemUpsertWithWhereUniqueWithoutServiceSectionInput[]
+    createMany?: ServiceItemCreateManyServiceSectionInputEnvelope
+    set?: ServiceItemWhereUniqueInput | ServiceItemWhereUniqueInput[]
+    disconnect?: ServiceItemWhereUniqueInput | ServiceItemWhereUniqueInput[]
+    delete?: ServiceItemWhereUniqueInput | ServiceItemWhereUniqueInput[]
+    connect?: ServiceItemWhereUniqueInput | ServiceItemWhereUniqueInput[]
+    update?: ServiceItemUpdateWithWhereUniqueWithoutServiceSectionInput | ServiceItemUpdateWithWhereUniqueWithoutServiceSectionInput[]
+    updateMany?: ServiceItemUpdateManyWithWhereWithoutServiceSectionInput | ServiceItemUpdateManyWithWhereWithoutServiceSectionInput[]
+    deleteMany?: ServiceItemScalarWhereInput | ServiceItemScalarWhereInput[]
+  }
+
+  export type ServiceSectionCreateNestedOneWithoutServicesInput = {
+    create?: XOR<ServiceSectionCreateWithoutServicesInput, ServiceSectionUncheckedCreateWithoutServicesInput>
+    connectOrCreate?: ServiceSectionCreateOrConnectWithoutServicesInput
+    connect?: ServiceSectionWhereUniqueInput
+  }
+
+  export type ServiceSectionUpdateOneRequiredWithoutServicesNestedInput = {
+    create?: XOR<ServiceSectionCreateWithoutServicesInput, ServiceSectionUncheckedCreateWithoutServicesInput>
+    connectOrCreate?: ServiceSectionCreateOrConnectWithoutServicesInput
+    upsert?: ServiceSectionUpsertWithoutServicesInput
+    connect?: ServiceSectionWhereUniqueInput
+    update?: XOR<XOR<ServiceSectionUpdateToOneWithWhereWithoutServicesInput, ServiceSectionUpdateWithoutServicesInput>, ServiceSectionUncheckedUpdateWithoutServicesInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -23880,6 +36669,132 @@ export namespace Prisma {
     outletUserRoles?: OutletUserRoleUncheckedUpdateManyWithoutRoleNestedInput
   }
 
+  export type ServiceItemCreateWithoutServiceSectionInput = {
+    id?: string
+    icon?: string | null
+    title: string
+    description: string
+    linkText?: string | null
+    serial?: number
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ServiceItemUncheckedCreateWithoutServiceSectionInput = {
+    id?: string
+    icon?: string | null
+    title: string
+    description: string
+    linkText?: string | null
+    serial?: number
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ServiceItemCreateOrConnectWithoutServiceSectionInput = {
+    where: ServiceItemWhereUniqueInput
+    create: XOR<ServiceItemCreateWithoutServiceSectionInput, ServiceItemUncheckedCreateWithoutServiceSectionInput>
+  }
+
+  export type ServiceItemCreateManyServiceSectionInputEnvelope = {
+    data: ServiceItemCreateManyServiceSectionInput | ServiceItemCreateManyServiceSectionInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ServiceItemUpsertWithWhereUniqueWithoutServiceSectionInput = {
+    where: ServiceItemWhereUniqueInput
+    update: XOR<ServiceItemUpdateWithoutServiceSectionInput, ServiceItemUncheckedUpdateWithoutServiceSectionInput>
+    create: XOR<ServiceItemCreateWithoutServiceSectionInput, ServiceItemUncheckedCreateWithoutServiceSectionInput>
+  }
+
+  export type ServiceItemUpdateWithWhereUniqueWithoutServiceSectionInput = {
+    where: ServiceItemWhereUniqueInput
+    data: XOR<ServiceItemUpdateWithoutServiceSectionInput, ServiceItemUncheckedUpdateWithoutServiceSectionInput>
+  }
+
+  export type ServiceItemUpdateManyWithWhereWithoutServiceSectionInput = {
+    where: ServiceItemScalarWhereInput
+    data: XOR<ServiceItemUpdateManyMutationInput, ServiceItemUncheckedUpdateManyWithoutServiceSectionInput>
+  }
+
+  export type ServiceItemScalarWhereInput = {
+    AND?: ServiceItemScalarWhereInput | ServiceItemScalarWhereInput[]
+    OR?: ServiceItemScalarWhereInput[]
+    NOT?: ServiceItemScalarWhereInput | ServiceItemScalarWhereInput[]
+    id?: StringFilter<"ServiceItem"> | string
+    serviceSectionId?: StringFilter<"ServiceItem"> | string
+    icon?: StringNullableFilter<"ServiceItem"> | string | null
+    title?: StringFilter<"ServiceItem"> | string
+    description?: StringFilter<"ServiceItem"> | string
+    linkText?: StringNullableFilter<"ServiceItem"> | string | null
+    serial?: IntFilter<"ServiceItem"> | number
+    isActive?: BoolFilter<"ServiceItem"> | boolean
+    createdAt?: DateTimeFilter<"ServiceItem"> | Date | string
+    updatedAt?: DateTimeFilter<"ServiceItem"> | Date | string
+  }
+
+  export type ServiceSectionCreateWithoutServicesInput = {
+    id?: string
+    sectionLabel?: string | null
+    title: string
+    description?: string | null
+    buttonText?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ServiceSectionUncheckedCreateWithoutServicesInput = {
+    id?: string
+    sectionLabel?: string | null
+    title: string
+    description?: string | null
+    buttonText?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ServiceSectionCreateOrConnectWithoutServicesInput = {
+    where: ServiceSectionWhereUniqueInput
+    create: XOR<ServiceSectionCreateWithoutServicesInput, ServiceSectionUncheckedCreateWithoutServicesInput>
+  }
+
+  export type ServiceSectionUpsertWithoutServicesInput = {
+    update: XOR<ServiceSectionUpdateWithoutServicesInput, ServiceSectionUncheckedUpdateWithoutServicesInput>
+    create: XOR<ServiceSectionCreateWithoutServicesInput, ServiceSectionUncheckedCreateWithoutServicesInput>
+    where?: ServiceSectionWhereInput
+  }
+
+  export type ServiceSectionUpdateToOneWithWhereWithoutServicesInput = {
+    where?: ServiceSectionWhereInput
+    data: XOR<ServiceSectionUpdateWithoutServicesInput, ServiceSectionUncheckedUpdateWithoutServicesInput>
+  }
+
+  export type ServiceSectionUpdateWithoutServicesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    buttonText?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ServiceSectionUncheckedUpdateWithoutServicesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    buttonText?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type RoleCreateManySuperAdminInput = {
     id?: string
     name: string
@@ -24468,6 +37383,54 @@ export namespace Prisma {
   export type RolePermissionUncheckedUpdateManyWithoutPermissionInput = {
     id?: StringFieldUpdateOperationsInput | string
     roleId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ServiceItemCreateManyServiceSectionInput = {
+    id?: string
+    icon?: string | null
+    title: string
+    description: string
+    linkText?: string | null
+    serial?: number
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ServiceItemUpdateWithoutServiceSectionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    linkText?: NullableStringFieldUpdateOperationsInput | string | null
+    serial?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ServiceItemUncheckedUpdateWithoutServiceSectionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    linkText?: NullableStringFieldUpdateOperationsInput | string | null
+    serial?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ServiceItemUncheckedUpdateManyWithoutServiceSectionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    linkText?: NullableStringFieldUpdateOperationsInput | string | null
+    serial?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

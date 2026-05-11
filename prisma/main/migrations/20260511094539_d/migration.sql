@@ -1,0 +1,13 @@
+-- CreateTable
+CREATE TABLE `ProductSection` (
+    `id` VARCHAR(191) NOT NULL,
+    `sectionLabel` VARCHAR(191) NULL DEFAULT 'OUR SHOP',
+    `title` VARCHAR(191) NOT NULL,
+    `description` VARCHAR(191) NULL,
+    `buttonText` VARCHAR(191) NULL,
+    `isActive` BOOLEAN NOT NULL DEFAULT true,
+    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updatedAt` DATETIME(3) NOT NULL,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

@@ -269,6 +269,164 @@ exports.Prisma.HomeBannerScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.AboutSectionScalarFieldEnum = {
+  id: 'id',
+  sectionLabel: 'sectionLabel',
+  title1: 'title1',
+  highlightedText: 'highlightedText',
+  title2: 'title2',
+  description: 'description',
+  image: 'image',
+  feature1Icon: 'feature1Icon',
+  feature1Title: 'feature1Title',
+  feature1Description: 'feature1Description',
+  feature2Icon: 'feature2Icon',
+  feature2Title: 'feature2Title',
+  feature2Description: 'feature2Description',
+  feature3Icon: 'feature3Icon',
+  feature3Title: 'feature3Title',
+  feature3Description: 'feature3Description',
+  patientsCount: 'patientsCount',
+  doctorsCount: 'doctorsCount',
+  departmentsCount: 'departmentsCount',
+  experienceYears: 'experienceYears',
+  patientsLabel: 'patientsLabel',
+  doctorsLabel: 'doctorsLabel',
+  departmentsLabel: 'departmentsLabel',
+  experienceLabel: 'experienceLabel',
+  certificationTitle: 'certificationTitle',
+  certificationSubtitle: 'certificationSubtitle',
+  cardExperienceCount: 'cardExperienceCount',
+  cardExperienceLabel: 'cardExperienceLabel',
+  cardPatientsCount: 'cardPatientsCount',
+  cardPatientsLabel: 'cardPatientsLabel',
+  primaryButtonText: 'primaryButtonText',
+  secondaryButtonText: 'secondaryButtonText',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ServiceSectionScalarFieldEnum = {
+  id: 'id',
+  sectionLabel: 'sectionLabel',
+  title: 'title',
+  description: 'description',
+  buttonText: 'buttonText',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ServiceItemScalarFieldEnum = {
+  id: 'id',
+  serviceSectionId: 'serviceSectionId',
+  icon: 'icon',
+  title: 'title',
+  description: 'description',
+  linkText: 'linkText',
+  serial: 'serial',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.DoctorSectionScalarFieldEnum = {
+  id: 'id',
+  sectionLabel: 'sectionLabel',
+  title1: 'title1',
+  highlightedText: 'highlightedText',
+  title2: 'title2',
+  description: 'description',
+  appoinmentButtonText: 'appoinmentButtonText',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.AppointmentSectionScalarFieldEnum = {
+  id: 'id',
+  badgeText: 'badgeText',
+  title1: 'title1',
+  highlightedText: 'highlightedText',
+  title2: 'title2',
+  description: 'description',
+  feature1Text: 'feature1Text',
+  feature2Text: 'feature2Text',
+  feature3Text: 'feature3Text',
+  feature4Text: 'feature4Text',
+  patientsServedCount: 'patientsServedCount',
+  doctorsCount: 'doctorsCount',
+  ratingCount: 'ratingCount',
+  patientsServedLabel: 'patientsServedLabel',
+  doctorsLabel: 'doctorsLabel',
+  ratingLabel: 'ratingLabel',
+  phoneLabel: 'phoneLabel',
+  phoneNumber: 'phoneNumber',
+  formTitle: 'formTitle',
+  formDescription: 'formDescription',
+  submitButtonText: 'submitButtonText',
+  sslText: 'sslText',
+  confirmText: 'confirmText',
+  reviewText: 'reviewText',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ProductSectionScalarFieldEnum = {
+  id: 'id',
+  sectionLabel: 'sectionLabel',
+  title: 'title',
+  description: 'description',
+  buttonText: 'buttonText',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.FacilitySectionScalarFieldEnum = {
+  id: 'id',
+  sectionLabel: 'sectionLabel',
+  title: 'title',
+  description: 'description',
+  buttonText: 'buttonText',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.TestimonialSectionScalarFieldEnum = {
+  id: 'id',
+  sectionLabel: 'sectionLabel',
+  title: 'title',
+  description: 'description',
+  satisfactionCount: 'satisfactionCount',
+  ratingCount: 'ratingCount',
+  reviewCount: 'reviewCount',
+  satisfactionLabel: 'satisfactionLabel',
+  ratingLabel: 'ratingLabel',
+  reviewLabel: 'reviewLabel',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.BlogSectionScalarFieldEnum = {
+  id: 'id',
+  sectionLabel: 'sectionLabel',
+  title: 'title',
+  description: 'description',
+  buttonText: 'buttonText',
+  emergencyTitle: 'emergencyTitle',
+  emergencyDescription: 'emergencyDescription',
+  phoneNumber1: 'phoneNumber1',
+  phoneNumber2: 'phoneNumber2',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -413,6 +571,136 @@ exports.Prisma.HomeBannerOrderByRelevanceFieldEnum = {
   certificationSubtitle: 'certificationSubtitle',
   emergencyText: 'emergencyText'
 };
+
+exports.Prisma.AboutSectionOrderByRelevanceFieldEnum = {
+  id: 'id',
+  sectionLabel: 'sectionLabel',
+  title1: 'title1',
+  highlightedText: 'highlightedText',
+  title2: 'title2',
+  description: 'description',
+  image: 'image',
+  feature1Icon: 'feature1Icon',
+  feature1Title: 'feature1Title',
+  feature1Description: 'feature1Description',
+  feature2Icon: 'feature2Icon',
+  feature2Title: 'feature2Title',
+  feature2Description: 'feature2Description',
+  feature3Icon: 'feature3Icon',
+  feature3Title: 'feature3Title',
+  feature3Description: 'feature3Description',
+  patientsCount: 'patientsCount',
+  doctorsCount: 'doctorsCount',
+  departmentsCount: 'departmentsCount',
+  experienceYears: 'experienceYears',
+  patientsLabel: 'patientsLabel',
+  doctorsLabel: 'doctorsLabel',
+  departmentsLabel: 'departmentsLabel',
+  experienceLabel: 'experienceLabel',
+  certificationTitle: 'certificationTitle',
+  certificationSubtitle: 'certificationSubtitle',
+  cardExperienceCount: 'cardExperienceCount',
+  cardExperienceLabel: 'cardExperienceLabel',
+  cardPatientsCount: 'cardPatientsCount',
+  cardPatientsLabel: 'cardPatientsLabel',
+  primaryButtonText: 'primaryButtonText',
+  secondaryButtonText: 'secondaryButtonText'
+};
+
+exports.Prisma.ServiceSectionOrderByRelevanceFieldEnum = {
+  id: 'id',
+  sectionLabel: 'sectionLabel',
+  title: 'title',
+  description: 'description',
+  buttonText: 'buttonText'
+};
+
+exports.Prisma.ServiceItemOrderByRelevanceFieldEnum = {
+  id: 'id',
+  serviceSectionId: 'serviceSectionId',
+  icon: 'icon',
+  title: 'title',
+  description: 'description',
+  linkText: 'linkText'
+};
+
+exports.Prisma.DoctorSectionOrderByRelevanceFieldEnum = {
+  id: 'id',
+  sectionLabel: 'sectionLabel',
+  title1: 'title1',
+  highlightedText: 'highlightedText',
+  title2: 'title2',
+  description: 'description',
+  appoinmentButtonText: 'appoinmentButtonText'
+};
+
+exports.Prisma.AppointmentSectionOrderByRelevanceFieldEnum = {
+  id: 'id',
+  badgeText: 'badgeText',
+  title1: 'title1',
+  highlightedText: 'highlightedText',
+  title2: 'title2',
+  description: 'description',
+  feature1Text: 'feature1Text',
+  feature2Text: 'feature2Text',
+  feature3Text: 'feature3Text',
+  feature4Text: 'feature4Text',
+  patientsServedCount: 'patientsServedCount',
+  doctorsCount: 'doctorsCount',
+  ratingCount: 'ratingCount',
+  patientsServedLabel: 'patientsServedLabel',
+  doctorsLabel: 'doctorsLabel',
+  ratingLabel: 'ratingLabel',
+  phoneLabel: 'phoneLabel',
+  phoneNumber: 'phoneNumber',
+  formTitle: 'formTitle',
+  formDescription: 'formDescription',
+  submitButtonText: 'submitButtonText',
+  sslText: 'sslText',
+  confirmText: 'confirmText',
+  reviewText: 'reviewText'
+};
+
+exports.Prisma.ProductSectionOrderByRelevanceFieldEnum = {
+  id: 'id',
+  sectionLabel: 'sectionLabel',
+  title: 'title',
+  description: 'description',
+  buttonText: 'buttonText'
+};
+
+exports.Prisma.FacilitySectionOrderByRelevanceFieldEnum = {
+  id: 'id',
+  sectionLabel: 'sectionLabel',
+  title: 'title',
+  description: 'description',
+  buttonText: 'buttonText'
+};
+
+exports.Prisma.TestimonialSectionOrderByRelevanceFieldEnum = {
+  id: 'id',
+  sectionLabel: 'sectionLabel',
+  title: 'title',
+  description: 'description',
+  satisfactionCount: 'satisfactionCount',
+  ratingCount: 'ratingCount',
+  reviewCount: 'reviewCount',
+  satisfactionLabel: 'satisfactionLabel',
+  ratingLabel: 'ratingLabel',
+  reviewLabel: 'reviewLabel'
+};
+
+exports.Prisma.BlogSectionOrderByRelevanceFieldEnum = {
+  id: 'id',
+  sectionLabel: 'sectionLabel',
+  title: 'title',
+  description: 'description',
+  buttonText: 'buttonText',
+  emergencyTitle: 'emergencyTitle',
+  emergencyDescription: 'emergencyDescription',
+  phoneNumber1: 'phoneNumber1',
+  phoneNumber2: 'phoneNumber2'
+};
 exports.PatientStatus = exports.$Enums.PatientStatus = {
   ACTIVE: 'ACTIVE',
   INACTIVE: 'INACTIVE'
@@ -471,7 +759,16 @@ exports.Prisma.ModelName = {
   RolePermission: 'RolePermission',
   OutletUserRole: 'OutletUserRole',
   SuperAdminUserRole: 'SuperAdminUserRole',
-  HomeBanner: 'HomeBanner'
+  HomeBanner: 'HomeBanner',
+  AboutSection: 'AboutSection',
+  ServiceSection: 'ServiceSection',
+  ServiceItem: 'ServiceItem',
+  DoctorSection: 'DoctorSection',
+  AppointmentSection: 'AppointmentSection',
+  ProductSection: 'ProductSection',
+  FacilitySection: 'FacilitySection',
+  TestimonialSection: 'TestimonialSection',
+  BlogSection: 'BlogSection'
 };
 /**
  * Create the Client
@@ -512,7 +809,6 @@ const config = {
     "db"
   ],
   "activeProvider": "mysql",
-  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -521,13 +817,13 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../../src/generated/main-client\"\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"MAIN_DATABASE_URL\")\n}\n\n//=================SuperAdmins model==================\n\nmodel SuperAdmins {\n  id       String  @id @default(uuid())\n  name     String\n  email    String  @unique\n  phone    String?\n  password String\n  isActive Boolean @default(true)\n\n  roles     Role[]\n  userRoles SuperAdminUserRole[]\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\n//===============patient model =============\n\nenum PatientStatus {\n  ACTIVE\n  INACTIVE\n}\n\nmodel Patient {\n  id String @id @default(uuid())\n\n  referenceName    String?\n  fullName         String\n  mobileNumber     String        @unique\n  email            String?\n  password         String\n  dateOfBirth      DateTime?\n  age              Int?\n  bloodGroup       String?\n  gender           String?\n  address          String?\n  emergencyContact String?\n  status           PatientStatus @default(ACTIVE)\n  otp              String?\n  otpExpiresAt     DateTime?\n\n  outletId String?\n  outlet   outlet? @relation(fields: [outletId], references: [id], onDelete: Cascade, onUpdate: Cascade)\n\n  isActive  Boolean  @default(true)\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\n//===============================Doctor models ==============================\n\nenum DoctorStatus {\n  ACTIVE\n  INACTIVE\n}\n\nenum DoctorOnlineStatus {\n  ONLINE\n  OFFLINE\n}\n\nenum DocumentType {\n  LICENSE\n  CERTIFICATE\n  DEGREE\n  NID\n  OTHER\n}\n\nenum VerificationStatus {\n  PENDING\n  VERIFIED\n  REJECTED\n}\n\nenum ScheduleStatus {\n  ACTIVE\n  INACTIVE\n}\n\nmodel Doctor {\n  id String @id @default(uuid())\n\n  doctorCode String? @unique\n  fullName   String\n  mobile     String?\n  email      String  @unique\n  password   String\n  bmdcNumber String? @unique\n\n  subSpecialization  String?\n  qualification      String?\n  experienceYears    Int?\n  currentDesignation String?\n  consultationFee    Decimal?           @db.Decimal(10, 2)\n  status             DoctorStatus       @default(ACTIVE)\n  onlineStatus       DoctorOnlineStatus @default(OFFLINE)\n\n  outletId String?\n  outlet   outlet? @relation(fields: [outletId], references: [id], onUpdate: Cascade, onDelete: Cascade)\n\n  specializationId String\n  specialization   DoctorSpecialization @relation(fields: [specializationId], references: [id], onUpdate: Cascade, onDelete: Cascade)\n\n  documents DoctorDocument[]\n  schedules DoctorSchedule[]\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\nmodel DoctorSpecialization {\n  id      String       @id @default(uuid())\n  name    String       @unique\n  status  DoctorStatus @default(ACTIVE)\n  doctors Doctor[]\n}\n\nmodel DoctorDocument {\n  id                 String             @id @default(uuid())\n  documentType       DocumentType\n  fileUrl            String\n  verificationStatus VerificationStatus @default(PENDING)\n\n  doctorId String\n  doctor   Doctor @relation(fields: [doctorId], references: [id], onUpdate: Cascade, onDelete: Cascade)\n\n  createdAt DateTime @default(now())\n}\n\nmodel DoctorSchedule {\n  id String @id @default(uuid())\n\n  doctorId String\n  doctor   Doctor @relation(fields: [doctorId], references: [id], onDelete: Cascade, onUpdate: Cascade)\n\n  dayName      String\n  startTime    String\n  endTime      String\n  slotDuration Int\n\n  status ScheduleStatus @default(ACTIVE)\n}\n\n// =================Outlet_parent model ========================\n\nenum OutletStatus {\n  ACTIVE\n  INACTIVE\n}\n\nmodel outlet {\n  id         String @id @default(uuid())\n  outletCode String @unique\n  outletName String\n  subdomain  String @unique\n\n  division      String\n  district      String\n  area          String\n  address       String\n  contactNumber String\n  email         String @unique\n  password      String\n\n  latitude  Decimal? @db.Decimal(10, 8)\n  longitude Decimal? @db.Decimal(11, 8)\n\n  status OutletStatus @default(ACTIVE)\n\n  users    OutletUser[]\n  roles    Role[]\n  patients Patient[]\n  doctors  Doctor[]\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  @@map(\"outlets\")\n}\n\n//======================= Outlet_child model=====================\n\nmodel OutletUser {\n  id       String @id @default(uuid())\n  outletId String\n\n  name     String\n  email    String\n  phone    String?\n  password String\n  isOwner  Boolean @default(false)\n  isActive Boolean @default(true)\n\n  outlet    outlet           @relation(fields: [outletId], references: [id], onDelete: Cascade)\n  userRoles OutletUserRole[]\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  @@unique([email, outletId])\n}\n\n// =======================Role and Permission models ==================\n\nenum RoleOwnerType {\n  OUTLET\n  SUPER_ADMIN\n}\n\nmodel Role {\n  id        String        @id @default(uuid())\n  name      String\n  ownerType RoleOwnerType\n\n  // owner references\n  outletId     String?\n  superAdminId String? // ✅ NEW\n\n  outlet     outlet?      @relation(fields: [outletId], references: [id], onDelete: Cascade)\n  superAdmin SuperAdmins? @relation(fields: [superAdminId], references: [id], onDelete: Cascade, onUpdate: Cascade)\n\n  rolePermissions     RolePermission[]\n  outletUserRoles     OutletUserRole[]\n  superAdminUserRoles SuperAdminUserRole[] // ✅ NEW\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  @@unique([name, outletId])\n  @@unique([name, superAdminId]) // ✅ NEW\n}\n\nmodel Permission {\n  id          String  @id @default(uuid())\n  key         String  @unique\n  module      String\n  description String?\n\n  rolePermissions RolePermission[]\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\nmodel RolePermission {\n  id           String @id @default(uuid())\n  roleId       String\n  permissionId String\n\n  role       Role       @relation(fields: [roleId], references: [id], onDelete: Cascade, onUpdate: Cascade)\n  permission Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade, onUpdate: Cascade)\n\n  @@unique([roleId, permissionId])\n}\n\n//=========== assaigning role to child users in  outlet and superAdmin==========================\n\nmodel OutletUserRole {\n  id           String @id @default(uuid())\n  outletUserId String\n  roleId       String\n\n  outletUser OutletUser @relation(fields: [outletUserId], references: [id], onDelete: Cascade, onUpdate: Cascade)\n  role       Role       @relation(fields: [roleId], references: [id], onDelete: Cascade, onUpdate: Cascade)\n\n  createdAt DateTime @default(now())\n\n  @@unique([outletUserId, roleId])\n}\n\nmodel SuperAdminUserRole {\n  id           String @id @default(uuid())\n  superAdminId String\n  roleId       String\n\n  superAdmin SuperAdmins @relation(fields: [superAdminId], references: [id], onDelete: Cascade, onUpdate: Cascade)\n  role       Role        @relation(fields: [roleId], references: [id], onDelete: Cascade, onUpdate: Cascade)\n\n  createdAt DateTime @default(now())\n\n  @@unique([superAdminId, roleId])\n}\n\n// ==============================\n// Dynamic website content\n// ==============================\n\n// ================ home/banner  ===============\n\nmodel HomeBanner {\n  id String @id @default(uuid())\n\n  // Main Content\n  title1          String\n  highlightedText String?\n  title2          String?\n  description     String\n\n  // Button / Contact\n  primaryButtonText String?\n  phoneNumber       String?\n\n  // Right Side Card\n  cardTitle    String?\n  cardSubtitle String?\n\n  // Statistics\n  patientsCount    String?\n  doctorsCount     String?\n  departmentsCount String?\n  experienceYears  String?\n\n  patientsLabel    String? @default(\"Happy Patients\")\n  doctorsLabel     String? @default(\"Expert Doctors\")\n  departmentsLabel String? @default(\"Departments\")\n  experienceLabel  String? @default(\"Years Experience\")\n\n  // Certification\n  certificationTitle    String?\n  certificationSubtitle String?\n\n  // Emergency Status\n  emergencyText String?\n\n  isActive Boolean @default(true)\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n",
-  "inlineSchemaHash": "6ee351e50c3855252a25b6e887add8b51de60a38eae629fafe1459504eb9d899",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../../src/generated/main-client\"\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"MAIN_DATABASE_URL\")\n}\n\n//=================SuperAdmins model==================\n\nmodel SuperAdmins {\n  id       String  @id @default(uuid())\n  name     String\n  email    String  @unique\n  phone    String?\n  password String\n  isActive Boolean @default(true)\n\n  roles     Role[]\n  userRoles SuperAdminUserRole[]\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\n//===============patient model =============\n\nenum PatientStatus {\n  ACTIVE\n  INACTIVE\n}\n\nmodel Patient {\n  id String @id @default(uuid())\n\n  referenceName    String?\n  fullName         String\n  mobileNumber     String        @unique\n  email            String?\n  password         String\n  dateOfBirth      DateTime?\n  age              Int?\n  bloodGroup       String?\n  gender           String?\n  address          String?\n  emergencyContact String?\n  status           PatientStatus @default(ACTIVE)\n  otp              String?\n  otpExpiresAt     DateTime?\n\n  outletId String?\n  outlet   outlet? @relation(fields: [outletId], references: [id], onDelete: Cascade, onUpdate: Cascade)\n\n  isActive  Boolean  @default(true)\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\n//===============================Doctor models ==============================\n\nenum DoctorStatus {\n  ACTIVE\n  INACTIVE\n}\n\nenum DoctorOnlineStatus {\n  ONLINE\n  OFFLINE\n}\n\nenum DocumentType {\n  LICENSE\n  CERTIFICATE\n  DEGREE\n  NID\n  OTHER\n}\n\nenum VerificationStatus {\n  PENDING\n  VERIFIED\n  REJECTED\n}\n\nenum ScheduleStatus {\n  ACTIVE\n  INACTIVE\n}\n\nmodel Doctor {\n  id String @id @default(uuid())\n\n  doctorCode String? @unique\n  fullName   String\n  mobile     String?\n  email      String  @unique\n  password   String\n  bmdcNumber String? @unique\n\n  subSpecialization  String?\n  qualification      String?\n  experienceYears    Int?\n  currentDesignation String?\n  consultationFee    Decimal?           @db.Decimal(10, 2)\n  status             DoctorStatus       @default(ACTIVE)\n  onlineStatus       DoctorOnlineStatus @default(OFFLINE)\n\n  outletId String?\n  outlet   outlet? @relation(fields: [outletId], references: [id], onUpdate: Cascade, onDelete: Cascade)\n\n  specializationId String\n  specialization   DoctorSpecialization @relation(fields: [specializationId], references: [id], onUpdate: Cascade, onDelete: Cascade)\n\n  documents DoctorDocument[]\n  schedules DoctorSchedule[]\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\nmodel DoctorSpecialization {\n  id      String       @id @default(uuid())\n  name    String       @unique\n  status  DoctorStatus @default(ACTIVE)\n  doctors Doctor[]\n}\n\nmodel DoctorDocument {\n  id                 String             @id @default(uuid())\n  documentType       DocumentType\n  fileUrl            String\n  verificationStatus VerificationStatus @default(PENDING)\n\n  doctorId String\n  doctor   Doctor @relation(fields: [doctorId], references: [id], onUpdate: Cascade, onDelete: Cascade)\n\n  createdAt DateTime @default(now())\n}\n\nmodel DoctorSchedule {\n  id String @id @default(uuid())\n\n  doctorId String\n  doctor   Doctor @relation(fields: [doctorId], references: [id], onDelete: Cascade, onUpdate: Cascade)\n\n  dayName      String\n  startTime    String\n  endTime      String\n  slotDuration Int\n\n  status ScheduleStatus @default(ACTIVE)\n}\n\n// =================Outlet_parent model ========================\n\nenum OutletStatus {\n  ACTIVE\n  INACTIVE\n}\n\nmodel outlet {\n  id         String @id @default(uuid())\n  outletCode String @unique\n  outletName String\n  subdomain  String @unique\n\n  division      String\n  district      String\n  area          String\n  address       String\n  contactNumber String\n  email         String @unique\n  password      String\n\n  latitude  Decimal? @db.Decimal(10, 8)\n  longitude Decimal? @db.Decimal(11, 8)\n\n  status OutletStatus @default(ACTIVE)\n\n  users    OutletUser[]\n  roles    Role[]\n  patients Patient[]\n  doctors  Doctor[]\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  @@map(\"outlets\")\n}\n\n//======================= Outlet_child model=====================\n\nmodel OutletUser {\n  id       String @id @default(uuid())\n  outletId String\n\n  name     String\n  email    String\n  phone    String?\n  password String\n  isOwner  Boolean @default(false)\n  isActive Boolean @default(true)\n\n  outlet    outlet           @relation(fields: [outletId], references: [id], onDelete: Cascade)\n  userRoles OutletUserRole[]\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  @@unique([email, outletId])\n}\n\n// =======================Role and Permission models ==================\n\nenum RoleOwnerType {\n  OUTLET\n  SUPER_ADMIN\n}\n\nmodel Role {\n  id        String        @id @default(uuid())\n  name      String\n  ownerType RoleOwnerType\n\n  // owner references\n  outletId     String?\n  superAdminId String? // ✅ NEW\n\n  outlet     outlet?      @relation(fields: [outletId], references: [id], onDelete: Cascade)\n  superAdmin SuperAdmins? @relation(fields: [superAdminId], references: [id], onDelete: Cascade, onUpdate: Cascade)\n\n  rolePermissions     RolePermission[]\n  outletUserRoles     OutletUserRole[]\n  superAdminUserRoles SuperAdminUserRole[] // ✅ NEW\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  @@unique([name, outletId])\n  @@unique([name, superAdminId]) // ✅ NEW\n}\n\nmodel Permission {\n  id          String  @id @default(uuid())\n  key         String  @unique\n  module      String\n  description String?\n\n  rolePermissions RolePermission[]\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\nmodel RolePermission {\n  id           String @id @default(uuid())\n  roleId       String\n  permissionId String\n\n  role       Role       @relation(fields: [roleId], references: [id], onDelete: Cascade, onUpdate: Cascade)\n  permission Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade, onUpdate: Cascade)\n\n  @@unique([roleId, permissionId])\n}\n\n//=========== assaigning role to child users in  outlet and superAdmin==========================\n\nmodel OutletUserRole {\n  id           String @id @default(uuid())\n  outletUserId String\n  roleId       String\n\n  outletUser OutletUser @relation(fields: [outletUserId], references: [id], onDelete: Cascade, onUpdate: Cascade)\n  role       Role       @relation(fields: [roleId], references: [id], onDelete: Cascade, onUpdate: Cascade)\n\n  createdAt DateTime @default(now())\n\n  @@unique([outletUserId, roleId])\n}\n\nmodel SuperAdminUserRole {\n  id           String @id @default(uuid())\n  superAdminId String\n  roleId       String\n\n  superAdmin SuperAdmins @relation(fields: [superAdminId], references: [id], onDelete: Cascade, onUpdate: Cascade)\n  role       Role        @relation(fields: [roleId], references: [id], onDelete: Cascade, onUpdate: Cascade)\n\n  createdAt DateTime @default(now())\n\n  @@unique([superAdminId, roleId])\n}\n\n// ==============================\n// Dynamic website content\n// ==============================\n\n// ================ home/banner  ===============\n\nmodel HomeBanner {\n  id String @id @default(uuid())\n\n  // Main Content\n  title1          String\n  highlightedText String?\n  title2          String?\n  description     String\n\n  // Button / Contact\n  primaryButtonText String?\n  phoneNumber       String?\n\n  // Right Side Card\n  cardTitle    String?\n  cardSubtitle String?\n\n  // Statistics\n  patientsCount    String?\n  doctorsCount     String?\n  departmentsCount String?\n  experienceYears  String?\n\n  patientsLabel    String? @default(\"Happy Patients\")\n  doctorsLabel     String? @default(\"Expert Doctors\")\n  departmentsLabel String? @default(\"Departments\")\n  experienceLabel  String? @default(\"Years Experience\")\n\n  // Certification\n  certificationTitle    String?\n  certificationSubtitle String?\n\n  // Emergency Status\n  emergencyText String?\n\n  isActive Boolean @default(true)\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\n// ===========home/about us ======================\n\nmodel AboutSection {\n  id String @id @default(uuid())\n\n  // Section Label\n  sectionLabel String? @default(\"ABOUT US\")\n\n  // Main Content\n  title1          String\n  highlightedText String?\n  title2          String?\n  description     String\n\n  // Image\n  image String?\n\n  // Features\n  feature1Icon        String?\n  feature1Title       String?\n  feature1Description String?\n\n  feature2Icon        String?\n  feature2Title       String?\n  feature2Description String?\n\n  feature3Icon        String?\n  feature3Title       String?\n  feature3Description String?\n\n  // Statistics\n  patientsCount    String?\n  doctorsCount     String?\n  departmentsCount String?\n  experienceYears  String?\n\n  patientsLabel    String? @default(\"Happy Patients\")\n  doctorsLabel     String? @default(\"Expert Doctors\")\n  departmentsLabel String? @default(\"Departments\")\n  experienceLabel  String? @default(\"Years Experience\")\n\n  // Image Bottom Card\n  certificationTitle    String?\n  certificationSubtitle String?\n\n  cardExperienceCount String?\n  cardExperienceLabel String? @default(\"Years\")\n\n  cardPatientsCount String?\n  cardPatientsLabel String? @default(\"Patients\")\n\n  // Buttons\n  primaryButtonText   String?\n  secondaryButtonText String?\n\n  isActive Boolean @default(true)\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\n// ============= home/service section ====================\n\nmodel ServiceSection {\n  id String @id @default(uuid())\n\n  // Section Header\n  sectionLabel String? @default(\"OUR SERVICES\")\n  title        String\n  description  String?\n\n  // Button\n  buttonText String?\n\n  isActive Boolean @default(true)\n\n  services ServiceItem[]\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\nmodel ServiceItem {\n  id String @id @default(uuid())\n\n  serviceSectionId String\n  serviceSection   ServiceSection @relation(fields: [serviceSectionId], references: [id], onDelete: Cascade)\n\n  icon        String?\n  title       String\n  description String\n  linkText    String? @default(\"Learn More\")\n\n  serial Int @default(0)\n\n  isActive Boolean @default(true)\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\n//===============home/doctor section ===========\n\nmodel DoctorSection {\n  id String @id @default(uuid())\n\n  // Section Header\n  sectionLabel String? @default(\"MEET OUR TEAM\")\n\n  // Main Content\n  title1          String\n  highlightedText String?\n  title2          String?\n\n  description String?\n\n  // Button\n  appoinmentButtonText String?\n\n  isActive Boolean @default(true)\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\n//===============home/appoinment section==============\n\nmodel AppointmentSection {\n  id String @id @default(uuid())\n\n  // Top Badge\n  badgeText String? @default(\"NOW ACCEPTING PATIENTS\")\n\n  // Main Content\n  title1          String\n  highlightedText String?\n  title2          String?\n\n  description String?\n\n  // Features\n  feature1Text String?\n  feature2Text String?\n  feature3Text String?\n  feature4Text String?\n\n  // Statistics\n  patientsServedCount String?\n  doctorsCount        String?\n  ratingCount         String?\n\n  patientsServedLabel String? @default(\"PATIENTS SERVED\")\n  doctorsLabel        String? @default(\"SPECIALIST DOCTORS\")\n  ratingLabel         String? @default(\"AVERAGE RATING\")\n\n  // Contact\n  phoneLabel  String? @default(\"PREFER A CALL?\")\n  phoneNumber String?\n\n  // Form Section\n  formTitle       String?\n  formDescription String?\n\n  submitButtonText String?\n\n  // Bottom Form Info\n  sslText     String?\n  confirmText String?\n  reviewText  String?\n\n  isActive Boolean @default(true)\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\n//==============home/products==================\n\nmodel ProductSection {\n  id String @id @default(uuid())\n\n  // Section Header\n  sectionLabel String? @default(\"OUR SHOP\")\n\n  // Main Content\n  title       String\n  description String?\n\n  // Button\n  buttonText String?\n\n  isActive Boolean @default(true)\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\n// ================= home/Faculty section =============\nmodel FacilitySection {\n  id String @id @default(uuid())\n\n  // Section Header\n  sectionLabel String? @default(\"OUR FACILITIES\")\n\n  // Main Content\n  title       String\n  description String?\n\n  buttonText String?\n\n  isActive Boolean @default(true)\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\n// =========== home/testimonial =================\n\nmodel TestimonialSection {\n  id String @id @default(uuid())\n\n  // Section Header\n  sectionLabel String? @default(\"PATIENT STORIES\")\n\n  // Main Content\n  title       String\n  description String?\n\n  // Bottom Statistics\n  satisfactionCount String?\n  ratingCount       String?\n  reviewCount       String?\n\n  satisfactionLabel String? @default(\"Patient Satisfaction\")\n  ratingLabel       String? @default(\"Average Rating\")\n  reviewLabel       String? @default(\"Reviews Collected\")\n\n  isActive Boolean @default(true)\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\n// ================home/blog =============\n\nmodel BlogSection {\n  id String @id @default(uuid())\n\n  // Section Header\n  sectionLabel String? @default(\"HEALTH INSIGHTS\")\n\n  // Main Content\n  title       String\n  description String?\n\n  // Button\n  buttonText String?\n\n  // Emergency Banner\n  emergencyTitle       String?\n  emergencyDescription String?\n\n  phoneNumber1 String?\n  phoneNumber2 String?\n\n  isActive Boolean @default(true)\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n",
+  "inlineSchemaHash": "39d195f4a725c2b55128418085bf7646485c8f55b1698bec19af7ef55da84671",
   "copyEngine": true
 }
 config.dirname = '/'
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"SuperAdmins\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"phone\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"isActive\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"roles\",\"kind\":\"object\",\"type\":\"Role\",\"relationName\":\"RoleToSuperAdmins\"},{\"name\":\"userRoles\",\"kind\":\"object\",\"type\":\"SuperAdminUserRole\",\"relationName\":\"SuperAdminUserRoleToSuperAdmins\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"Patient\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"referenceName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"fullName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"mobileNumber\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"dateOfBirth\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"age\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"bloodGroup\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"gender\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"address\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"emergencyContact\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"status\",\"kind\":\"enum\",\"type\":\"PatientStatus\"},{\"name\":\"otp\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"otpExpiresAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"outletId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"outlet\",\"kind\":\"object\",\"type\":\"outlet\",\"relationName\":\"PatientTooutlet\"},{\"name\":\"isActive\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"Doctor\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"doctorCode\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"fullName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"mobile\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"bmdcNumber\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"subSpecialization\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"qualification\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"experienceYears\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"currentDesignation\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"consultationFee\",\"kind\":\"scalar\",\"type\":\"Decimal\"},{\"name\":\"status\",\"kind\":\"enum\",\"type\":\"DoctorStatus\"},{\"name\":\"onlineStatus\",\"kind\":\"enum\",\"type\":\"DoctorOnlineStatus\"},{\"name\":\"outletId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"outlet\",\"kind\":\"object\",\"type\":\"outlet\",\"relationName\":\"DoctorTooutlet\"},{\"name\":\"specializationId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"specialization\",\"kind\":\"object\",\"type\":\"DoctorSpecialization\",\"relationName\":\"DoctorToDoctorSpecialization\"},{\"name\":\"documents\",\"kind\":\"object\",\"type\":\"DoctorDocument\",\"relationName\":\"DoctorToDoctorDocument\"},{\"name\":\"schedules\",\"kind\":\"object\",\"type\":\"DoctorSchedule\",\"relationName\":\"DoctorToDoctorSchedule\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"DoctorSpecialization\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"status\",\"kind\":\"enum\",\"type\":\"DoctorStatus\"},{\"name\":\"doctors\",\"kind\":\"object\",\"type\":\"Doctor\",\"relationName\":\"DoctorToDoctorSpecialization\"}],\"dbName\":null},\"DoctorDocument\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"documentType\",\"kind\":\"enum\",\"type\":\"DocumentType\"},{\"name\":\"fileUrl\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"verificationStatus\",\"kind\":\"enum\",\"type\":\"VerificationStatus\"},{\"name\":\"doctorId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"doctor\",\"kind\":\"object\",\"type\":\"Doctor\",\"relationName\":\"DoctorToDoctorDocument\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"DoctorSchedule\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"doctorId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"doctor\",\"kind\":\"object\",\"type\":\"Doctor\",\"relationName\":\"DoctorToDoctorSchedule\"},{\"name\":\"dayName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"startTime\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"endTime\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"slotDuration\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"status\",\"kind\":\"enum\",\"type\":\"ScheduleStatus\"}],\"dbName\":null},\"outlet\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"outletCode\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"outletName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"subdomain\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"division\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"district\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"area\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"address\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"contactNumber\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"latitude\",\"kind\":\"scalar\",\"type\":\"Decimal\"},{\"name\":\"longitude\",\"kind\":\"scalar\",\"type\":\"Decimal\"},{\"name\":\"status\",\"kind\":\"enum\",\"type\":\"OutletStatus\"},{\"name\":\"users\",\"kind\":\"object\",\"type\":\"OutletUser\",\"relationName\":\"OutletUserTooutlet\"},{\"name\":\"roles\",\"kind\":\"object\",\"type\":\"Role\",\"relationName\":\"RoleTooutlet\"},{\"name\":\"patients\",\"kind\":\"object\",\"type\":\"Patient\",\"relationName\":\"PatientTooutlet\"},{\"name\":\"doctors\",\"kind\":\"object\",\"type\":\"Doctor\",\"relationName\":\"DoctorTooutlet\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":\"outlets\"},\"OutletUser\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"outletId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"phone\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"isOwner\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"isActive\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"outlet\",\"kind\":\"object\",\"type\":\"outlet\",\"relationName\":\"OutletUserTooutlet\"},{\"name\":\"userRoles\",\"kind\":\"object\",\"type\":\"OutletUserRole\",\"relationName\":\"OutletUserToOutletUserRole\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"Role\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"ownerType\",\"kind\":\"enum\",\"type\":\"RoleOwnerType\"},{\"name\":\"outletId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"superAdminId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"outlet\",\"kind\":\"object\",\"type\":\"outlet\",\"relationName\":\"RoleTooutlet\"},{\"name\":\"superAdmin\",\"kind\":\"object\",\"type\":\"SuperAdmins\",\"relationName\":\"RoleToSuperAdmins\"},{\"name\":\"rolePermissions\",\"kind\":\"object\",\"type\":\"RolePermission\",\"relationName\":\"RoleToRolePermission\"},{\"name\":\"outletUserRoles\",\"kind\":\"object\",\"type\":\"OutletUserRole\",\"relationName\":\"OutletUserRoleToRole\"},{\"name\":\"superAdminUserRoles\",\"kind\":\"object\",\"type\":\"SuperAdminUserRole\",\"relationName\":\"RoleToSuperAdminUserRole\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"Permission\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"key\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"module\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"rolePermissions\",\"kind\":\"object\",\"type\":\"RolePermission\",\"relationName\":\"PermissionToRolePermission\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"RolePermission\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"roleId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"permissionId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"role\",\"kind\":\"object\",\"type\":\"Role\",\"relationName\":\"RoleToRolePermission\"},{\"name\":\"permission\",\"kind\":\"object\",\"type\":\"Permission\",\"relationName\":\"PermissionToRolePermission\"}],\"dbName\":null},\"OutletUserRole\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"outletUserId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"roleId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"outletUser\",\"kind\":\"object\",\"type\":\"OutletUser\",\"relationName\":\"OutletUserToOutletUserRole\"},{\"name\":\"role\",\"kind\":\"object\",\"type\":\"Role\",\"relationName\":\"OutletUserRoleToRole\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"SuperAdminUserRole\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"superAdminId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"roleId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"superAdmin\",\"kind\":\"object\",\"type\":\"SuperAdmins\",\"relationName\":\"SuperAdminUserRoleToSuperAdmins\"},{\"name\":\"role\",\"kind\":\"object\",\"type\":\"Role\",\"relationName\":\"RoleToSuperAdminUserRole\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"HomeBanner\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title1\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"highlightedText\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title2\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"primaryButtonText\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"phoneNumber\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"cardTitle\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"cardSubtitle\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"patientsCount\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"doctorsCount\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"departmentsCount\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"experienceYears\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"patientsLabel\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"doctorsLabel\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"departmentsLabel\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"experienceLabel\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"certificationTitle\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"certificationSubtitle\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"emergencyText\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"isActive\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"SuperAdmins\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"phone\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"isActive\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"roles\",\"kind\":\"object\",\"type\":\"Role\",\"relationName\":\"RoleToSuperAdmins\"},{\"name\":\"userRoles\",\"kind\":\"object\",\"type\":\"SuperAdminUserRole\",\"relationName\":\"SuperAdminUserRoleToSuperAdmins\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"Patient\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"referenceName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"fullName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"mobileNumber\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"dateOfBirth\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"age\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"bloodGroup\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"gender\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"address\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"emergencyContact\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"status\",\"kind\":\"enum\",\"type\":\"PatientStatus\"},{\"name\":\"otp\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"otpExpiresAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"outletId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"outlet\",\"kind\":\"object\",\"type\":\"outlet\",\"relationName\":\"PatientTooutlet\"},{\"name\":\"isActive\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"Doctor\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"doctorCode\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"fullName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"mobile\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"bmdcNumber\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"subSpecialization\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"qualification\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"experienceYears\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"currentDesignation\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"consultationFee\",\"kind\":\"scalar\",\"type\":\"Decimal\"},{\"name\":\"status\",\"kind\":\"enum\",\"type\":\"DoctorStatus\"},{\"name\":\"onlineStatus\",\"kind\":\"enum\",\"type\":\"DoctorOnlineStatus\"},{\"name\":\"outletId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"outlet\",\"kind\":\"object\",\"type\":\"outlet\",\"relationName\":\"DoctorTooutlet\"},{\"name\":\"specializationId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"specialization\",\"kind\":\"object\",\"type\":\"DoctorSpecialization\",\"relationName\":\"DoctorToDoctorSpecialization\"},{\"name\":\"documents\",\"kind\":\"object\",\"type\":\"DoctorDocument\",\"relationName\":\"DoctorToDoctorDocument\"},{\"name\":\"schedules\",\"kind\":\"object\",\"type\":\"DoctorSchedule\",\"relationName\":\"DoctorToDoctorSchedule\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"DoctorSpecialization\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"status\",\"kind\":\"enum\",\"type\":\"DoctorStatus\"},{\"name\":\"doctors\",\"kind\":\"object\",\"type\":\"Doctor\",\"relationName\":\"DoctorToDoctorSpecialization\"}],\"dbName\":null},\"DoctorDocument\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"documentType\",\"kind\":\"enum\",\"type\":\"DocumentType\"},{\"name\":\"fileUrl\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"verificationStatus\",\"kind\":\"enum\",\"type\":\"VerificationStatus\"},{\"name\":\"doctorId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"doctor\",\"kind\":\"object\",\"type\":\"Doctor\",\"relationName\":\"DoctorToDoctorDocument\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"DoctorSchedule\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"doctorId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"doctor\",\"kind\":\"object\",\"type\":\"Doctor\",\"relationName\":\"DoctorToDoctorSchedule\"},{\"name\":\"dayName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"startTime\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"endTime\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"slotDuration\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"status\",\"kind\":\"enum\",\"type\":\"ScheduleStatus\"}],\"dbName\":null},\"outlet\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"outletCode\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"outletName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"subdomain\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"division\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"district\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"area\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"address\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"contactNumber\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"latitude\",\"kind\":\"scalar\",\"type\":\"Decimal\"},{\"name\":\"longitude\",\"kind\":\"scalar\",\"type\":\"Decimal\"},{\"name\":\"status\",\"kind\":\"enum\",\"type\":\"OutletStatus\"},{\"name\":\"users\",\"kind\":\"object\",\"type\":\"OutletUser\",\"relationName\":\"OutletUserTooutlet\"},{\"name\":\"roles\",\"kind\":\"object\",\"type\":\"Role\",\"relationName\":\"RoleTooutlet\"},{\"name\":\"patients\",\"kind\":\"object\",\"type\":\"Patient\",\"relationName\":\"PatientTooutlet\"},{\"name\":\"doctors\",\"kind\":\"object\",\"type\":\"Doctor\",\"relationName\":\"DoctorTooutlet\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":\"outlets\"},\"OutletUser\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"outletId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"phone\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"isOwner\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"isActive\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"outlet\",\"kind\":\"object\",\"type\":\"outlet\",\"relationName\":\"OutletUserTooutlet\"},{\"name\":\"userRoles\",\"kind\":\"object\",\"type\":\"OutletUserRole\",\"relationName\":\"OutletUserToOutletUserRole\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"Role\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"ownerType\",\"kind\":\"enum\",\"type\":\"RoleOwnerType\"},{\"name\":\"outletId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"superAdminId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"outlet\",\"kind\":\"object\",\"type\":\"outlet\",\"relationName\":\"RoleTooutlet\"},{\"name\":\"superAdmin\",\"kind\":\"object\",\"type\":\"SuperAdmins\",\"relationName\":\"RoleToSuperAdmins\"},{\"name\":\"rolePermissions\",\"kind\":\"object\",\"type\":\"RolePermission\",\"relationName\":\"RoleToRolePermission\"},{\"name\":\"outletUserRoles\",\"kind\":\"object\",\"type\":\"OutletUserRole\",\"relationName\":\"OutletUserRoleToRole\"},{\"name\":\"superAdminUserRoles\",\"kind\":\"object\",\"type\":\"SuperAdminUserRole\",\"relationName\":\"RoleToSuperAdminUserRole\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"Permission\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"key\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"module\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"rolePermissions\",\"kind\":\"object\",\"type\":\"RolePermission\",\"relationName\":\"PermissionToRolePermission\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"RolePermission\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"roleId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"permissionId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"role\",\"kind\":\"object\",\"type\":\"Role\",\"relationName\":\"RoleToRolePermission\"},{\"name\":\"permission\",\"kind\":\"object\",\"type\":\"Permission\",\"relationName\":\"PermissionToRolePermission\"}],\"dbName\":null},\"OutletUserRole\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"outletUserId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"roleId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"outletUser\",\"kind\":\"object\",\"type\":\"OutletUser\",\"relationName\":\"OutletUserToOutletUserRole\"},{\"name\":\"role\",\"kind\":\"object\",\"type\":\"Role\",\"relationName\":\"OutletUserRoleToRole\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"SuperAdminUserRole\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"superAdminId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"roleId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"superAdmin\",\"kind\":\"object\",\"type\":\"SuperAdmins\",\"relationName\":\"SuperAdminUserRoleToSuperAdmins\"},{\"name\":\"role\",\"kind\":\"object\",\"type\":\"Role\",\"relationName\":\"RoleToSuperAdminUserRole\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"HomeBanner\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title1\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"highlightedText\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title2\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"primaryButtonText\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"phoneNumber\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"cardTitle\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"cardSubtitle\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"patientsCount\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"doctorsCount\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"departmentsCount\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"experienceYears\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"patientsLabel\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"doctorsLabel\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"departmentsLabel\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"experienceLabel\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"certificationTitle\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"certificationSubtitle\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"emergencyText\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"isActive\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"AboutSection\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"sectionLabel\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title1\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"highlightedText\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title2\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"image\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"feature1Icon\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"feature1Title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"feature1Description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"feature2Icon\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"feature2Title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"feature2Description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"feature3Icon\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"feature3Title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"feature3Description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"patientsCount\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"doctorsCount\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"departmentsCount\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"experienceYears\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"patientsLabel\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"doctorsLabel\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"departmentsLabel\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"experienceLabel\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"certificationTitle\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"certificationSubtitle\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"cardExperienceCount\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"cardExperienceLabel\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"cardPatientsCount\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"cardPatientsLabel\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"primaryButtonText\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"secondaryButtonText\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"isActive\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"ServiceSection\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"sectionLabel\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"buttonText\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"isActive\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"services\",\"kind\":\"object\",\"type\":\"ServiceItem\",\"relationName\":\"ServiceItemToServiceSection\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"ServiceItem\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"serviceSectionId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"serviceSection\",\"kind\":\"object\",\"type\":\"ServiceSection\",\"relationName\":\"ServiceItemToServiceSection\"},{\"name\":\"icon\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"linkText\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"serial\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"isActive\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"DoctorSection\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"sectionLabel\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title1\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"highlightedText\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title2\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"appoinmentButtonText\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"isActive\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"AppointmentSection\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"badgeText\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title1\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"highlightedText\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title2\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"feature1Text\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"feature2Text\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"feature3Text\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"feature4Text\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"patientsServedCount\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"doctorsCount\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"ratingCount\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"patientsServedLabel\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"doctorsLabel\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"ratingLabel\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"phoneLabel\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"phoneNumber\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"formTitle\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"formDescription\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"submitButtonText\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"sslText\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"confirmText\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"reviewText\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"isActive\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"ProductSection\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"sectionLabel\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"buttonText\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"isActive\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"FacilitySection\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"sectionLabel\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"buttonText\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"isActive\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"TestimonialSection\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"sectionLabel\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"satisfactionCount\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"ratingCount\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"reviewCount\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"satisfactionLabel\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"ratingLabel\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"reviewLabel\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"isActive\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"BlogSection\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"sectionLabel\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"buttonText\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"emergencyTitle\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"emergencyDescription\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"phoneNumber1\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"phoneNumber2\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"isActive\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.engineWasm = {
   getRuntime: async () => require('./query_engine_bg.js'),
