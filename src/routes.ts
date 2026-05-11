@@ -14,6 +14,7 @@ import { permissionRoutes } from "./modules/permission/permission.route";
 import { outletAuthRoutes } from "./modules/auth/outlet_user_auth/outlet_user_auth.route";
 import { superAdminRoutes } from "./modules/super_admin/super_admin.route";
 import { superAdminRoleRoutes } from "./modules/super_admin_role/super_admin_role.route";
+import { HomeBannerRoutes } from "./modules/website_content/home/homeBanner/homeBanner.route";
 
 
 const appRouter = Router();
@@ -35,6 +36,13 @@ const moduleRoutes = [
   { path: "/permissions", route: permissionRoutes },
   { path: "/super-admins", route: superAdminRoutes },
   { path: "/super-admin-roles", route: superAdminRoleRoutes },
+
+
+
+  // dynamic website content routes
+  {
+    path: "/website-content/home-banner", route: HomeBannerRoutes
+  }
 
 ];
 

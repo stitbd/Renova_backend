@@ -8,8 +8,7 @@ datasource db {
   url      = env("MAIN_DATABASE_URL")
 }
 
-//SuperAdmins model
-//-----------------
+//=================SuperAdmins model==================
 
 model SuperAdmins {
   id       String  @id @default(uuid())
@@ -26,8 +25,8 @@ model SuperAdmins {
   updatedAt DateTime @updatedAt
 }
 
-//patient model 
-//---------------
+
+//===============patient model =============
 
 enum PatientStatus {
   ACTIVE
@@ -60,8 +59,7 @@ model Patient {
   updatedAt DateTime @updatedAt
 }
 
-//Doctor models 
-//---------------
+//===============================Doctor models ==============================
 
 enum DoctorStatus {
   ACTIVE
@@ -156,8 +154,7 @@ model DoctorSchedule {
   status ScheduleStatus @default(ACTIVE)
 }
 
-// Outlet_parent model 
-//--------------------
+// =================Outlet_parent model ========================
 
 enum OutletStatus {
   ACTIVE
@@ -194,8 +191,7 @@ model outlet {
   @@map("outlets")
 }
 
-// Outlet_child model
-//-----------------------
+//======================= Outlet_child model=====================
 
 model OutletUser {
   id       String @id @default(uuid())
@@ -217,7 +213,7 @@ model OutletUser {
   @@unique([email, outletId])
 }
 
-// Role and Permission models 
+// =======================Role and Permission models ==================
 
 enum RoleOwnerType {
   OUTLET
@@ -270,8 +266,7 @@ model RolePermission {
   @@unique([roleId, permissionId])
 }
 
-// assaigning role to child users in  outlet and superAdmin 
-//------------------------------------------------------
+//=========== assaigning role to child users in  outlet and superAdmin==========================
 
 model OutletUserRole {
   id           String @id @default(uuid())
@@ -298,5 +293,58 @@ model SuperAdminUserRole {
 
   @@unique([superAdminId, roleId])
 }
+
+
+
+
+
+// ==============================
+// Dynamic website content
+// ==============================
+
+
+// ================ home/banner  ===============
+
+model HomeBanner {
+  id String @id @default(uuid())
+
+  // Main Content
+  title1           String
+  highlightedText String?
+  title2        String?
+  description     String
+
+  // Button / Contact
+  primaryButtonText String?
+  phoneNumber       String?
+
+  // Right Side Card
+  cardTitle    String?
+  cardSubtitle String?
+
+  // Statistics
+  patientsCount    String?
+  doctorsCount     String?
+  departmentsCount String?
+  experienceYears  String?
+
+  patientsLabel    String? @default("Happy Patients")
+  doctorsLabel     String? @default("Expert Doctors")
+  departmentsLabel String? @default("Departments")
+  experienceLabel  String? @default("Years Experience")
+
+  // Certification
+  certificationTitle    String?
+  certificationSubtitle String?
+
+  // Emergency Status
+  emergencyText String?
+
+  isActive Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
 
 

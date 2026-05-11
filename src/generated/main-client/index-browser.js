@@ -271,6 +271,32 @@ exports.Prisma.SuperAdminUserRoleScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.HomeBannerScalarFieldEnum = {
+  id: 'id',
+  title1: 'title1',
+  highlightedText: 'highlightedText',
+  title2: 'title2',
+  description: 'description',
+  primaryButtonText: 'primaryButtonText',
+  phoneNumber: 'phoneNumber',
+  cardTitle: 'cardTitle',
+  cardSubtitle: 'cardSubtitle',
+  patientsCount: 'patientsCount',
+  doctorsCount: 'doctorsCount',
+  departmentsCount: 'departmentsCount',
+  experienceYears: 'experienceYears',
+  patientsLabel: 'patientsLabel',
+  doctorsLabel: 'doctorsLabel',
+  departmentsLabel: 'departmentsLabel',
+  experienceLabel: 'experienceLabel',
+  certificationTitle: 'certificationTitle',
+  certificationSubtitle: 'certificationSubtitle',
+  emergencyText: 'emergencyText',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -392,6 +418,29 @@ exports.Prisma.SuperAdminUserRoleOrderByRelevanceFieldEnum = {
   superAdminId: 'superAdminId',
   roleId: 'roleId'
 };
+
+exports.Prisma.HomeBannerOrderByRelevanceFieldEnum = {
+  id: 'id',
+  title1: 'title1',
+  highlightedText: 'highlightedText',
+  title2: 'title2',
+  description: 'description',
+  primaryButtonText: 'primaryButtonText',
+  phoneNumber: 'phoneNumber',
+  cardTitle: 'cardTitle',
+  cardSubtitle: 'cardSubtitle',
+  patientsCount: 'patientsCount',
+  doctorsCount: 'doctorsCount',
+  departmentsCount: 'departmentsCount',
+  experienceYears: 'experienceYears',
+  patientsLabel: 'patientsLabel',
+  doctorsLabel: 'doctorsLabel',
+  departmentsLabel: 'departmentsLabel',
+  experienceLabel: 'experienceLabel',
+  certificationTitle: 'certificationTitle',
+  certificationSubtitle: 'certificationSubtitle',
+  emergencyText: 'emergencyText'
+};
 exports.PatientStatus = exports.$Enums.PatientStatus = {
   ACTIVE: 'ACTIVE',
   INACTIVE: 'INACTIVE'
@@ -449,7 +498,8 @@ exports.Prisma.ModelName = {
   Permission: 'Permission',
   RolePermission: 'RolePermission',
   OutletUserRole: 'OutletUserRole',
-  SuperAdminUserRole: 'SuperAdminUserRole'
+  SuperAdminUserRole: 'SuperAdminUserRole',
+  HomeBanner: 'HomeBanner'
 };
 
 /**

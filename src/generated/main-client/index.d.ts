@@ -78,6 +78,11 @@ export type OutletUserRole = $Result.DefaultSelection<Prisma.$OutletUserRolePayl
  * 
  */
 export type SuperAdminUserRole = $Result.DefaultSelection<Prisma.$SuperAdminUserRolePayload>
+/**
+ * Model HomeBanner
+ * 
+ */
+export type HomeBanner = $Result.DefaultSelection<Prisma.$HomeBannerPayload>
 
 /**
  * Enums
@@ -431,6 +436,16 @@ export class PrismaClient<
     * ```
     */
   get superAdminUserRole(): Prisma.SuperAdminUserRoleDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.homeBanner`: Exposes CRUD operations for the **HomeBanner** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more HomeBanners
+    * const homeBanners = await prisma.homeBanner.findMany()
+    * ```
+    */
+  get homeBanner(): Prisma.HomeBannerDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -884,7 +899,8 @@ export namespace Prisma {
     Permission: 'Permission',
     RolePermission: 'RolePermission',
     OutletUserRole: 'OutletUserRole',
-    SuperAdminUserRole: 'SuperAdminUserRole'
+    SuperAdminUserRole: 'SuperAdminUserRole',
+    HomeBanner: 'HomeBanner'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -903,7 +919,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "superAdmins" | "patient" | "doctor" | "doctorSpecialization" | "doctorDocument" | "doctorSchedule" | "outlet" | "outletUser" | "role" | "permission" | "rolePermission" | "outletUserRole" | "superAdminUserRole"
+      modelProps: "superAdmins" | "patient" | "doctor" | "doctorSpecialization" | "doctorDocument" | "doctorSchedule" | "outlet" | "outletUser" | "role" | "permission" | "rolePermission" | "outletUserRole" | "superAdminUserRole" | "homeBanner"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1765,6 +1781,72 @@ export namespace Prisma {
           }
         }
       }
+      HomeBanner: {
+        payload: Prisma.$HomeBannerPayload<ExtArgs>
+        fields: Prisma.HomeBannerFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.HomeBannerFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HomeBannerPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.HomeBannerFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HomeBannerPayload>
+          }
+          findFirst: {
+            args: Prisma.HomeBannerFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HomeBannerPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.HomeBannerFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HomeBannerPayload>
+          }
+          findMany: {
+            args: Prisma.HomeBannerFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HomeBannerPayload>[]
+          }
+          create: {
+            args: Prisma.HomeBannerCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HomeBannerPayload>
+          }
+          createMany: {
+            args: Prisma.HomeBannerCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.HomeBannerDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HomeBannerPayload>
+          }
+          update: {
+            args: Prisma.HomeBannerUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HomeBannerPayload>
+          }
+          deleteMany: {
+            args: Prisma.HomeBannerDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.HomeBannerUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.HomeBannerUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HomeBannerPayload>
+          }
+          aggregate: {
+            args: Prisma.HomeBannerAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateHomeBanner>
+          }
+          groupBy: {
+            args: Prisma.HomeBannerGroupByArgs<ExtArgs>
+            result: $Utils.Optional<HomeBannerGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.HomeBannerCountArgs<ExtArgs>
+            result: $Utils.Optional<HomeBannerCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1874,6 +1956,7 @@ export namespace Prisma {
     rolePermission?: RolePermissionOmit
     outletUserRole?: OutletUserRoleOmit
     superAdminUserRole?: SuperAdminUserRoleOmit
+    homeBanner?: HomeBannerOmit
   }
 
   /* Types for Logging */
@@ -15447,6 +15530,1086 @@ export namespace Prisma {
 
 
   /**
+   * Model HomeBanner
+   */
+
+  export type AggregateHomeBanner = {
+    _count: HomeBannerCountAggregateOutputType | null
+    _min: HomeBannerMinAggregateOutputType | null
+    _max: HomeBannerMaxAggregateOutputType | null
+  }
+
+  export type HomeBannerMinAggregateOutputType = {
+    id: string | null
+    title1: string | null
+    highlightedText: string | null
+    title2: string | null
+    description: string | null
+    primaryButtonText: string | null
+    phoneNumber: string | null
+    cardTitle: string | null
+    cardSubtitle: string | null
+    patientsCount: string | null
+    doctorsCount: string | null
+    departmentsCount: string | null
+    experienceYears: string | null
+    patientsLabel: string | null
+    doctorsLabel: string | null
+    departmentsLabel: string | null
+    experienceLabel: string | null
+    certificationTitle: string | null
+    certificationSubtitle: string | null
+    emergencyText: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type HomeBannerMaxAggregateOutputType = {
+    id: string | null
+    title1: string | null
+    highlightedText: string | null
+    title2: string | null
+    description: string | null
+    primaryButtonText: string | null
+    phoneNumber: string | null
+    cardTitle: string | null
+    cardSubtitle: string | null
+    patientsCount: string | null
+    doctorsCount: string | null
+    departmentsCount: string | null
+    experienceYears: string | null
+    patientsLabel: string | null
+    doctorsLabel: string | null
+    departmentsLabel: string | null
+    experienceLabel: string | null
+    certificationTitle: string | null
+    certificationSubtitle: string | null
+    emergencyText: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type HomeBannerCountAggregateOutputType = {
+    id: number
+    title1: number
+    highlightedText: number
+    title2: number
+    description: number
+    primaryButtonText: number
+    phoneNumber: number
+    cardTitle: number
+    cardSubtitle: number
+    patientsCount: number
+    doctorsCount: number
+    departmentsCount: number
+    experienceYears: number
+    patientsLabel: number
+    doctorsLabel: number
+    departmentsLabel: number
+    experienceLabel: number
+    certificationTitle: number
+    certificationSubtitle: number
+    emergencyText: number
+    isActive: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type HomeBannerMinAggregateInputType = {
+    id?: true
+    title1?: true
+    highlightedText?: true
+    title2?: true
+    description?: true
+    primaryButtonText?: true
+    phoneNumber?: true
+    cardTitle?: true
+    cardSubtitle?: true
+    patientsCount?: true
+    doctorsCount?: true
+    departmentsCount?: true
+    experienceYears?: true
+    patientsLabel?: true
+    doctorsLabel?: true
+    departmentsLabel?: true
+    experienceLabel?: true
+    certificationTitle?: true
+    certificationSubtitle?: true
+    emergencyText?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type HomeBannerMaxAggregateInputType = {
+    id?: true
+    title1?: true
+    highlightedText?: true
+    title2?: true
+    description?: true
+    primaryButtonText?: true
+    phoneNumber?: true
+    cardTitle?: true
+    cardSubtitle?: true
+    patientsCount?: true
+    doctorsCount?: true
+    departmentsCount?: true
+    experienceYears?: true
+    patientsLabel?: true
+    doctorsLabel?: true
+    departmentsLabel?: true
+    experienceLabel?: true
+    certificationTitle?: true
+    certificationSubtitle?: true
+    emergencyText?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type HomeBannerCountAggregateInputType = {
+    id?: true
+    title1?: true
+    highlightedText?: true
+    title2?: true
+    description?: true
+    primaryButtonText?: true
+    phoneNumber?: true
+    cardTitle?: true
+    cardSubtitle?: true
+    patientsCount?: true
+    doctorsCount?: true
+    departmentsCount?: true
+    experienceYears?: true
+    patientsLabel?: true
+    doctorsLabel?: true
+    departmentsLabel?: true
+    experienceLabel?: true
+    certificationTitle?: true
+    certificationSubtitle?: true
+    emergencyText?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type HomeBannerAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which HomeBanner to aggregate.
+     */
+    where?: HomeBannerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HomeBanners to fetch.
+     */
+    orderBy?: HomeBannerOrderByWithRelationInput | HomeBannerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: HomeBannerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HomeBanners from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HomeBanners.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned HomeBanners
+    **/
+    _count?: true | HomeBannerCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: HomeBannerMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: HomeBannerMaxAggregateInputType
+  }
+
+  export type GetHomeBannerAggregateType<T extends HomeBannerAggregateArgs> = {
+        [P in keyof T & keyof AggregateHomeBanner]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateHomeBanner[P]>
+      : GetScalarType<T[P], AggregateHomeBanner[P]>
+  }
+
+
+
+
+  export type HomeBannerGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: HomeBannerWhereInput
+    orderBy?: HomeBannerOrderByWithAggregationInput | HomeBannerOrderByWithAggregationInput[]
+    by: HomeBannerScalarFieldEnum[] | HomeBannerScalarFieldEnum
+    having?: HomeBannerScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: HomeBannerCountAggregateInputType | true
+    _min?: HomeBannerMinAggregateInputType
+    _max?: HomeBannerMaxAggregateInputType
+  }
+
+  export type HomeBannerGroupByOutputType = {
+    id: string
+    title1: string
+    highlightedText: string | null
+    title2: string | null
+    description: string
+    primaryButtonText: string | null
+    phoneNumber: string | null
+    cardTitle: string | null
+    cardSubtitle: string | null
+    patientsCount: string | null
+    doctorsCount: string | null
+    departmentsCount: string | null
+    experienceYears: string | null
+    patientsLabel: string | null
+    doctorsLabel: string | null
+    departmentsLabel: string | null
+    experienceLabel: string | null
+    certificationTitle: string | null
+    certificationSubtitle: string | null
+    emergencyText: string | null
+    isActive: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: HomeBannerCountAggregateOutputType | null
+    _min: HomeBannerMinAggregateOutputType | null
+    _max: HomeBannerMaxAggregateOutputType | null
+  }
+
+  type GetHomeBannerGroupByPayload<T extends HomeBannerGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<HomeBannerGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof HomeBannerGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], HomeBannerGroupByOutputType[P]>
+            : GetScalarType<T[P], HomeBannerGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type HomeBannerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title1?: boolean
+    highlightedText?: boolean
+    title2?: boolean
+    description?: boolean
+    primaryButtonText?: boolean
+    phoneNumber?: boolean
+    cardTitle?: boolean
+    cardSubtitle?: boolean
+    patientsCount?: boolean
+    doctorsCount?: boolean
+    departmentsCount?: boolean
+    experienceYears?: boolean
+    patientsLabel?: boolean
+    doctorsLabel?: boolean
+    departmentsLabel?: boolean
+    experienceLabel?: boolean
+    certificationTitle?: boolean
+    certificationSubtitle?: boolean
+    emergencyText?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["homeBanner"]>
+
+
+
+  export type HomeBannerSelectScalar = {
+    id?: boolean
+    title1?: boolean
+    highlightedText?: boolean
+    title2?: boolean
+    description?: boolean
+    primaryButtonText?: boolean
+    phoneNumber?: boolean
+    cardTitle?: boolean
+    cardSubtitle?: boolean
+    patientsCount?: boolean
+    doctorsCount?: boolean
+    departmentsCount?: boolean
+    experienceYears?: boolean
+    patientsLabel?: boolean
+    doctorsLabel?: boolean
+    departmentsLabel?: boolean
+    experienceLabel?: boolean
+    certificationTitle?: boolean
+    certificationSubtitle?: boolean
+    emergencyText?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type HomeBannerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title1" | "highlightedText" | "title2" | "description" | "primaryButtonText" | "phoneNumber" | "cardTitle" | "cardSubtitle" | "patientsCount" | "doctorsCount" | "departmentsCount" | "experienceYears" | "patientsLabel" | "doctorsLabel" | "departmentsLabel" | "experienceLabel" | "certificationTitle" | "certificationSubtitle" | "emergencyText" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["homeBanner"]>
+
+  export type $HomeBannerPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "HomeBanner"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      title1: string
+      highlightedText: string | null
+      title2: string | null
+      description: string
+      primaryButtonText: string | null
+      phoneNumber: string | null
+      cardTitle: string | null
+      cardSubtitle: string | null
+      patientsCount: string | null
+      doctorsCount: string | null
+      departmentsCount: string | null
+      experienceYears: string | null
+      patientsLabel: string | null
+      doctorsLabel: string | null
+      departmentsLabel: string | null
+      experienceLabel: string | null
+      certificationTitle: string | null
+      certificationSubtitle: string | null
+      emergencyText: string | null
+      isActive: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["homeBanner"]>
+    composites: {}
+  }
+
+  type HomeBannerGetPayload<S extends boolean | null | undefined | HomeBannerDefaultArgs> = $Result.GetResult<Prisma.$HomeBannerPayload, S>
+
+  type HomeBannerCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<HomeBannerFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: HomeBannerCountAggregateInputType | true
+    }
+
+  export interface HomeBannerDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['HomeBanner'], meta: { name: 'HomeBanner' } }
+    /**
+     * Find zero or one HomeBanner that matches the filter.
+     * @param {HomeBannerFindUniqueArgs} args - Arguments to find a HomeBanner
+     * @example
+     * // Get one HomeBanner
+     * const homeBanner = await prisma.homeBanner.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends HomeBannerFindUniqueArgs>(args: SelectSubset<T, HomeBannerFindUniqueArgs<ExtArgs>>): Prisma__HomeBannerClient<$Result.GetResult<Prisma.$HomeBannerPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one HomeBanner that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {HomeBannerFindUniqueOrThrowArgs} args - Arguments to find a HomeBanner
+     * @example
+     * // Get one HomeBanner
+     * const homeBanner = await prisma.homeBanner.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends HomeBannerFindUniqueOrThrowArgs>(args: SelectSubset<T, HomeBannerFindUniqueOrThrowArgs<ExtArgs>>): Prisma__HomeBannerClient<$Result.GetResult<Prisma.$HomeBannerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first HomeBanner that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HomeBannerFindFirstArgs} args - Arguments to find a HomeBanner
+     * @example
+     * // Get one HomeBanner
+     * const homeBanner = await prisma.homeBanner.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends HomeBannerFindFirstArgs>(args?: SelectSubset<T, HomeBannerFindFirstArgs<ExtArgs>>): Prisma__HomeBannerClient<$Result.GetResult<Prisma.$HomeBannerPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first HomeBanner that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HomeBannerFindFirstOrThrowArgs} args - Arguments to find a HomeBanner
+     * @example
+     * // Get one HomeBanner
+     * const homeBanner = await prisma.homeBanner.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends HomeBannerFindFirstOrThrowArgs>(args?: SelectSubset<T, HomeBannerFindFirstOrThrowArgs<ExtArgs>>): Prisma__HomeBannerClient<$Result.GetResult<Prisma.$HomeBannerPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more HomeBanners that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HomeBannerFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all HomeBanners
+     * const homeBanners = await prisma.homeBanner.findMany()
+     * 
+     * // Get first 10 HomeBanners
+     * const homeBanners = await prisma.homeBanner.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const homeBannerWithIdOnly = await prisma.homeBanner.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends HomeBannerFindManyArgs>(args?: SelectSubset<T, HomeBannerFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HomeBannerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a HomeBanner.
+     * @param {HomeBannerCreateArgs} args - Arguments to create a HomeBanner.
+     * @example
+     * // Create one HomeBanner
+     * const HomeBanner = await prisma.homeBanner.create({
+     *   data: {
+     *     // ... data to create a HomeBanner
+     *   }
+     * })
+     * 
+     */
+    create<T extends HomeBannerCreateArgs>(args: SelectSubset<T, HomeBannerCreateArgs<ExtArgs>>): Prisma__HomeBannerClient<$Result.GetResult<Prisma.$HomeBannerPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many HomeBanners.
+     * @param {HomeBannerCreateManyArgs} args - Arguments to create many HomeBanners.
+     * @example
+     * // Create many HomeBanners
+     * const homeBanner = await prisma.homeBanner.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends HomeBannerCreateManyArgs>(args?: SelectSubset<T, HomeBannerCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a HomeBanner.
+     * @param {HomeBannerDeleteArgs} args - Arguments to delete one HomeBanner.
+     * @example
+     * // Delete one HomeBanner
+     * const HomeBanner = await prisma.homeBanner.delete({
+     *   where: {
+     *     // ... filter to delete one HomeBanner
+     *   }
+     * })
+     * 
+     */
+    delete<T extends HomeBannerDeleteArgs>(args: SelectSubset<T, HomeBannerDeleteArgs<ExtArgs>>): Prisma__HomeBannerClient<$Result.GetResult<Prisma.$HomeBannerPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one HomeBanner.
+     * @param {HomeBannerUpdateArgs} args - Arguments to update one HomeBanner.
+     * @example
+     * // Update one HomeBanner
+     * const homeBanner = await prisma.homeBanner.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends HomeBannerUpdateArgs>(args: SelectSubset<T, HomeBannerUpdateArgs<ExtArgs>>): Prisma__HomeBannerClient<$Result.GetResult<Prisma.$HomeBannerPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more HomeBanners.
+     * @param {HomeBannerDeleteManyArgs} args - Arguments to filter HomeBanners to delete.
+     * @example
+     * // Delete a few HomeBanners
+     * const { count } = await prisma.homeBanner.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends HomeBannerDeleteManyArgs>(args?: SelectSubset<T, HomeBannerDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more HomeBanners.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HomeBannerUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many HomeBanners
+     * const homeBanner = await prisma.homeBanner.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends HomeBannerUpdateManyArgs>(args: SelectSubset<T, HomeBannerUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one HomeBanner.
+     * @param {HomeBannerUpsertArgs} args - Arguments to update or create a HomeBanner.
+     * @example
+     * // Update or create a HomeBanner
+     * const homeBanner = await prisma.homeBanner.upsert({
+     *   create: {
+     *     // ... data to create a HomeBanner
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the HomeBanner we want to update
+     *   }
+     * })
+     */
+    upsert<T extends HomeBannerUpsertArgs>(args: SelectSubset<T, HomeBannerUpsertArgs<ExtArgs>>): Prisma__HomeBannerClient<$Result.GetResult<Prisma.$HomeBannerPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of HomeBanners.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HomeBannerCountArgs} args - Arguments to filter HomeBanners to count.
+     * @example
+     * // Count the number of HomeBanners
+     * const count = await prisma.homeBanner.count({
+     *   where: {
+     *     // ... the filter for the HomeBanners we want to count
+     *   }
+     * })
+    **/
+    count<T extends HomeBannerCountArgs>(
+      args?: Subset<T, HomeBannerCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], HomeBannerCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a HomeBanner.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HomeBannerAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends HomeBannerAggregateArgs>(args: Subset<T, HomeBannerAggregateArgs>): Prisma.PrismaPromise<GetHomeBannerAggregateType<T>>
+
+    /**
+     * Group by HomeBanner.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HomeBannerGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends HomeBannerGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: HomeBannerGroupByArgs['orderBy'] }
+        : { orderBy?: HomeBannerGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, HomeBannerGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetHomeBannerGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the HomeBanner model
+   */
+  readonly fields: HomeBannerFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for HomeBanner.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__HomeBannerClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the HomeBanner model
+   */
+  interface HomeBannerFieldRefs {
+    readonly id: FieldRef<"HomeBanner", 'String'>
+    readonly title1: FieldRef<"HomeBanner", 'String'>
+    readonly highlightedText: FieldRef<"HomeBanner", 'String'>
+    readonly title2: FieldRef<"HomeBanner", 'String'>
+    readonly description: FieldRef<"HomeBanner", 'String'>
+    readonly primaryButtonText: FieldRef<"HomeBanner", 'String'>
+    readonly phoneNumber: FieldRef<"HomeBanner", 'String'>
+    readonly cardTitle: FieldRef<"HomeBanner", 'String'>
+    readonly cardSubtitle: FieldRef<"HomeBanner", 'String'>
+    readonly patientsCount: FieldRef<"HomeBanner", 'String'>
+    readonly doctorsCount: FieldRef<"HomeBanner", 'String'>
+    readonly departmentsCount: FieldRef<"HomeBanner", 'String'>
+    readonly experienceYears: FieldRef<"HomeBanner", 'String'>
+    readonly patientsLabel: FieldRef<"HomeBanner", 'String'>
+    readonly doctorsLabel: FieldRef<"HomeBanner", 'String'>
+    readonly departmentsLabel: FieldRef<"HomeBanner", 'String'>
+    readonly experienceLabel: FieldRef<"HomeBanner", 'String'>
+    readonly certificationTitle: FieldRef<"HomeBanner", 'String'>
+    readonly certificationSubtitle: FieldRef<"HomeBanner", 'String'>
+    readonly emergencyText: FieldRef<"HomeBanner", 'String'>
+    readonly isActive: FieldRef<"HomeBanner", 'Boolean'>
+    readonly createdAt: FieldRef<"HomeBanner", 'DateTime'>
+    readonly updatedAt: FieldRef<"HomeBanner", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * HomeBanner findUnique
+   */
+  export type HomeBannerFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HomeBanner
+     */
+    select?: HomeBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HomeBanner
+     */
+    omit?: HomeBannerOmit<ExtArgs> | null
+    /**
+     * Filter, which HomeBanner to fetch.
+     */
+    where: HomeBannerWhereUniqueInput
+  }
+
+  /**
+   * HomeBanner findUniqueOrThrow
+   */
+  export type HomeBannerFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HomeBanner
+     */
+    select?: HomeBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HomeBanner
+     */
+    omit?: HomeBannerOmit<ExtArgs> | null
+    /**
+     * Filter, which HomeBanner to fetch.
+     */
+    where: HomeBannerWhereUniqueInput
+  }
+
+  /**
+   * HomeBanner findFirst
+   */
+  export type HomeBannerFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HomeBanner
+     */
+    select?: HomeBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HomeBanner
+     */
+    omit?: HomeBannerOmit<ExtArgs> | null
+    /**
+     * Filter, which HomeBanner to fetch.
+     */
+    where?: HomeBannerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HomeBanners to fetch.
+     */
+    orderBy?: HomeBannerOrderByWithRelationInput | HomeBannerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for HomeBanners.
+     */
+    cursor?: HomeBannerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HomeBanners from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HomeBanners.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of HomeBanners.
+     */
+    distinct?: HomeBannerScalarFieldEnum | HomeBannerScalarFieldEnum[]
+  }
+
+  /**
+   * HomeBanner findFirstOrThrow
+   */
+  export type HomeBannerFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HomeBanner
+     */
+    select?: HomeBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HomeBanner
+     */
+    omit?: HomeBannerOmit<ExtArgs> | null
+    /**
+     * Filter, which HomeBanner to fetch.
+     */
+    where?: HomeBannerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HomeBanners to fetch.
+     */
+    orderBy?: HomeBannerOrderByWithRelationInput | HomeBannerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for HomeBanners.
+     */
+    cursor?: HomeBannerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HomeBanners from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HomeBanners.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of HomeBanners.
+     */
+    distinct?: HomeBannerScalarFieldEnum | HomeBannerScalarFieldEnum[]
+  }
+
+  /**
+   * HomeBanner findMany
+   */
+  export type HomeBannerFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HomeBanner
+     */
+    select?: HomeBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HomeBanner
+     */
+    omit?: HomeBannerOmit<ExtArgs> | null
+    /**
+     * Filter, which HomeBanners to fetch.
+     */
+    where?: HomeBannerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HomeBanners to fetch.
+     */
+    orderBy?: HomeBannerOrderByWithRelationInput | HomeBannerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing HomeBanners.
+     */
+    cursor?: HomeBannerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HomeBanners from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HomeBanners.
+     */
+    skip?: number
+    distinct?: HomeBannerScalarFieldEnum | HomeBannerScalarFieldEnum[]
+  }
+
+  /**
+   * HomeBanner create
+   */
+  export type HomeBannerCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HomeBanner
+     */
+    select?: HomeBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HomeBanner
+     */
+    omit?: HomeBannerOmit<ExtArgs> | null
+    /**
+     * The data needed to create a HomeBanner.
+     */
+    data: XOR<HomeBannerCreateInput, HomeBannerUncheckedCreateInput>
+  }
+
+  /**
+   * HomeBanner createMany
+   */
+  export type HomeBannerCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many HomeBanners.
+     */
+    data: HomeBannerCreateManyInput | HomeBannerCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * HomeBanner update
+   */
+  export type HomeBannerUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HomeBanner
+     */
+    select?: HomeBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HomeBanner
+     */
+    omit?: HomeBannerOmit<ExtArgs> | null
+    /**
+     * The data needed to update a HomeBanner.
+     */
+    data: XOR<HomeBannerUpdateInput, HomeBannerUncheckedUpdateInput>
+    /**
+     * Choose, which HomeBanner to update.
+     */
+    where: HomeBannerWhereUniqueInput
+  }
+
+  /**
+   * HomeBanner updateMany
+   */
+  export type HomeBannerUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update HomeBanners.
+     */
+    data: XOR<HomeBannerUpdateManyMutationInput, HomeBannerUncheckedUpdateManyInput>
+    /**
+     * Filter which HomeBanners to update
+     */
+    where?: HomeBannerWhereInput
+    /**
+     * Limit how many HomeBanners to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * HomeBanner upsert
+   */
+  export type HomeBannerUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HomeBanner
+     */
+    select?: HomeBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HomeBanner
+     */
+    omit?: HomeBannerOmit<ExtArgs> | null
+    /**
+     * The filter to search for the HomeBanner to update in case it exists.
+     */
+    where: HomeBannerWhereUniqueInput
+    /**
+     * In case the HomeBanner found by the `where` argument doesn't exist, create a new HomeBanner with this data.
+     */
+    create: XOR<HomeBannerCreateInput, HomeBannerUncheckedCreateInput>
+    /**
+     * In case the HomeBanner was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<HomeBannerUpdateInput, HomeBannerUncheckedUpdateInput>
+  }
+
+  /**
+   * HomeBanner delete
+   */
+  export type HomeBannerDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HomeBanner
+     */
+    select?: HomeBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HomeBanner
+     */
+    omit?: HomeBannerOmit<ExtArgs> | null
+    /**
+     * Filter which HomeBanner to delete.
+     */
+    where: HomeBannerWhereUniqueInput
+  }
+
+  /**
+   * HomeBanner deleteMany
+   */
+  export type HomeBannerDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which HomeBanners to delete
+     */
+    where?: HomeBannerWhereInput
+    /**
+     * Limit how many HomeBanners to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * HomeBanner without action
+   */
+  export type HomeBannerDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HomeBanner
+     */
+    select?: HomeBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HomeBanner
+     */
+    omit?: HomeBannerOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -15649,6 +16812,35 @@ export namespace Prisma {
   export type SuperAdminUserRoleScalarFieldEnum = (typeof SuperAdminUserRoleScalarFieldEnum)[keyof typeof SuperAdminUserRoleScalarFieldEnum]
 
 
+  export const HomeBannerScalarFieldEnum: {
+    id: 'id',
+    title1: 'title1',
+    highlightedText: 'highlightedText',
+    title2: 'title2',
+    description: 'description',
+    primaryButtonText: 'primaryButtonText',
+    phoneNumber: 'phoneNumber',
+    cardTitle: 'cardTitle',
+    cardSubtitle: 'cardSubtitle',
+    patientsCount: 'patientsCount',
+    doctorsCount: 'doctorsCount',
+    departmentsCount: 'departmentsCount',
+    experienceYears: 'experienceYears',
+    patientsLabel: 'patientsLabel',
+    doctorsLabel: 'doctorsLabel',
+    departmentsLabel: 'departmentsLabel',
+    experienceLabel: 'experienceLabel',
+    certificationTitle: 'certificationTitle',
+    certificationSubtitle: 'certificationSubtitle',
+    emergencyText: 'emergencyText',
+    isActive: 'isActive',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type HomeBannerScalarFieldEnum = (typeof HomeBannerScalarFieldEnum)[keyof typeof HomeBannerScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -15814,6 +17006,32 @@ export namespace Prisma {
   };
 
   export type SuperAdminUserRoleOrderByRelevanceFieldEnum = (typeof SuperAdminUserRoleOrderByRelevanceFieldEnum)[keyof typeof SuperAdminUserRoleOrderByRelevanceFieldEnum]
+
+
+  export const HomeBannerOrderByRelevanceFieldEnum: {
+    id: 'id',
+    title1: 'title1',
+    highlightedText: 'highlightedText',
+    title2: 'title2',
+    description: 'description',
+    primaryButtonText: 'primaryButtonText',
+    phoneNumber: 'phoneNumber',
+    cardTitle: 'cardTitle',
+    cardSubtitle: 'cardSubtitle',
+    patientsCount: 'patientsCount',
+    doctorsCount: 'doctorsCount',
+    departmentsCount: 'departmentsCount',
+    experienceYears: 'experienceYears',
+    patientsLabel: 'patientsLabel',
+    doctorsLabel: 'doctorsLabel',
+    departmentsLabel: 'departmentsLabel',
+    experienceLabel: 'experienceLabel',
+    certificationTitle: 'certificationTitle',
+    certificationSubtitle: 'certificationSubtitle',
+    emergencyText: 'emergencyText'
+  };
+
+  export type HomeBannerOrderByRelevanceFieldEnum = (typeof HomeBannerOrderByRelevanceFieldEnum)[keyof typeof HomeBannerOrderByRelevanceFieldEnum]
 
 
   /**
@@ -16939,6 +18157,149 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"SuperAdminUserRole"> | Date | string
   }
 
+  export type HomeBannerWhereInput = {
+    AND?: HomeBannerWhereInput | HomeBannerWhereInput[]
+    OR?: HomeBannerWhereInput[]
+    NOT?: HomeBannerWhereInput | HomeBannerWhereInput[]
+    id?: StringFilter<"HomeBanner"> | string
+    title1?: StringFilter<"HomeBanner"> | string
+    highlightedText?: StringNullableFilter<"HomeBanner"> | string | null
+    title2?: StringNullableFilter<"HomeBanner"> | string | null
+    description?: StringFilter<"HomeBanner"> | string
+    primaryButtonText?: StringNullableFilter<"HomeBanner"> | string | null
+    phoneNumber?: StringNullableFilter<"HomeBanner"> | string | null
+    cardTitle?: StringNullableFilter<"HomeBanner"> | string | null
+    cardSubtitle?: StringNullableFilter<"HomeBanner"> | string | null
+    patientsCount?: StringNullableFilter<"HomeBanner"> | string | null
+    doctorsCount?: StringNullableFilter<"HomeBanner"> | string | null
+    departmentsCount?: StringNullableFilter<"HomeBanner"> | string | null
+    experienceYears?: StringNullableFilter<"HomeBanner"> | string | null
+    patientsLabel?: StringNullableFilter<"HomeBanner"> | string | null
+    doctorsLabel?: StringNullableFilter<"HomeBanner"> | string | null
+    departmentsLabel?: StringNullableFilter<"HomeBanner"> | string | null
+    experienceLabel?: StringNullableFilter<"HomeBanner"> | string | null
+    certificationTitle?: StringNullableFilter<"HomeBanner"> | string | null
+    certificationSubtitle?: StringNullableFilter<"HomeBanner"> | string | null
+    emergencyText?: StringNullableFilter<"HomeBanner"> | string | null
+    isActive?: BoolFilter<"HomeBanner"> | boolean
+    createdAt?: DateTimeFilter<"HomeBanner"> | Date | string
+    updatedAt?: DateTimeFilter<"HomeBanner"> | Date | string
+  }
+
+  export type HomeBannerOrderByWithRelationInput = {
+    id?: SortOrder
+    title1?: SortOrder
+    highlightedText?: SortOrderInput | SortOrder
+    title2?: SortOrderInput | SortOrder
+    description?: SortOrder
+    primaryButtonText?: SortOrderInput | SortOrder
+    phoneNumber?: SortOrderInput | SortOrder
+    cardTitle?: SortOrderInput | SortOrder
+    cardSubtitle?: SortOrderInput | SortOrder
+    patientsCount?: SortOrderInput | SortOrder
+    doctorsCount?: SortOrderInput | SortOrder
+    departmentsCount?: SortOrderInput | SortOrder
+    experienceYears?: SortOrderInput | SortOrder
+    patientsLabel?: SortOrderInput | SortOrder
+    doctorsLabel?: SortOrderInput | SortOrder
+    departmentsLabel?: SortOrderInput | SortOrder
+    experienceLabel?: SortOrderInput | SortOrder
+    certificationTitle?: SortOrderInput | SortOrder
+    certificationSubtitle?: SortOrderInput | SortOrder
+    emergencyText?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _relevance?: HomeBannerOrderByRelevanceInput
+  }
+
+  export type HomeBannerWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: HomeBannerWhereInput | HomeBannerWhereInput[]
+    OR?: HomeBannerWhereInput[]
+    NOT?: HomeBannerWhereInput | HomeBannerWhereInput[]
+    title1?: StringFilter<"HomeBanner"> | string
+    highlightedText?: StringNullableFilter<"HomeBanner"> | string | null
+    title2?: StringNullableFilter<"HomeBanner"> | string | null
+    description?: StringFilter<"HomeBanner"> | string
+    primaryButtonText?: StringNullableFilter<"HomeBanner"> | string | null
+    phoneNumber?: StringNullableFilter<"HomeBanner"> | string | null
+    cardTitle?: StringNullableFilter<"HomeBanner"> | string | null
+    cardSubtitle?: StringNullableFilter<"HomeBanner"> | string | null
+    patientsCount?: StringNullableFilter<"HomeBanner"> | string | null
+    doctorsCount?: StringNullableFilter<"HomeBanner"> | string | null
+    departmentsCount?: StringNullableFilter<"HomeBanner"> | string | null
+    experienceYears?: StringNullableFilter<"HomeBanner"> | string | null
+    patientsLabel?: StringNullableFilter<"HomeBanner"> | string | null
+    doctorsLabel?: StringNullableFilter<"HomeBanner"> | string | null
+    departmentsLabel?: StringNullableFilter<"HomeBanner"> | string | null
+    experienceLabel?: StringNullableFilter<"HomeBanner"> | string | null
+    certificationTitle?: StringNullableFilter<"HomeBanner"> | string | null
+    certificationSubtitle?: StringNullableFilter<"HomeBanner"> | string | null
+    emergencyText?: StringNullableFilter<"HomeBanner"> | string | null
+    isActive?: BoolFilter<"HomeBanner"> | boolean
+    createdAt?: DateTimeFilter<"HomeBanner"> | Date | string
+    updatedAt?: DateTimeFilter<"HomeBanner"> | Date | string
+  }, "id">
+
+  export type HomeBannerOrderByWithAggregationInput = {
+    id?: SortOrder
+    title1?: SortOrder
+    highlightedText?: SortOrderInput | SortOrder
+    title2?: SortOrderInput | SortOrder
+    description?: SortOrder
+    primaryButtonText?: SortOrderInput | SortOrder
+    phoneNumber?: SortOrderInput | SortOrder
+    cardTitle?: SortOrderInput | SortOrder
+    cardSubtitle?: SortOrderInput | SortOrder
+    patientsCount?: SortOrderInput | SortOrder
+    doctorsCount?: SortOrderInput | SortOrder
+    departmentsCount?: SortOrderInput | SortOrder
+    experienceYears?: SortOrderInput | SortOrder
+    patientsLabel?: SortOrderInput | SortOrder
+    doctorsLabel?: SortOrderInput | SortOrder
+    departmentsLabel?: SortOrderInput | SortOrder
+    experienceLabel?: SortOrderInput | SortOrder
+    certificationTitle?: SortOrderInput | SortOrder
+    certificationSubtitle?: SortOrderInput | SortOrder
+    emergencyText?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: HomeBannerCountOrderByAggregateInput
+    _max?: HomeBannerMaxOrderByAggregateInput
+    _min?: HomeBannerMinOrderByAggregateInput
+  }
+
+  export type HomeBannerScalarWhereWithAggregatesInput = {
+    AND?: HomeBannerScalarWhereWithAggregatesInput | HomeBannerScalarWhereWithAggregatesInput[]
+    OR?: HomeBannerScalarWhereWithAggregatesInput[]
+    NOT?: HomeBannerScalarWhereWithAggregatesInput | HomeBannerScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"HomeBanner"> | string
+    title1?: StringWithAggregatesFilter<"HomeBanner"> | string
+    highlightedText?: StringNullableWithAggregatesFilter<"HomeBanner"> | string | null
+    title2?: StringNullableWithAggregatesFilter<"HomeBanner"> | string | null
+    description?: StringWithAggregatesFilter<"HomeBanner"> | string
+    primaryButtonText?: StringNullableWithAggregatesFilter<"HomeBanner"> | string | null
+    phoneNumber?: StringNullableWithAggregatesFilter<"HomeBanner"> | string | null
+    cardTitle?: StringNullableWithAggregatesFilter<"HomeBanner"> | string | null
+    cardSubtitle?: StringNullableWithAggregatesFilter<"HomeBanner"> | string | null
+    patientsCount?: StringNullableWithAggregatesFilter<"HomeBanner"> | string | null
+    doctorsCount?: StringNullableWithAggregatesFilter<"HomeBanner"> | string | null
+    departmentsCount?: StringNullableWithAggregatesFilter<"HomeBanner"> | string | null
+    experienceYears?: StringNullableWithAggregatesFilter<"HomeBanner"> | string | null
+    patientsLabel?: StringNullableWithAggregatesFilter<"HomeBanner"> | string | null
+    doctorsLabel?: StringNullableWithAggregatesFilter<"HomeBanner"> | string | null
+    departmentsLabel?: StringNullableWithAggregatesFilter<"HomeBanner"> | string | null
+    experienceLabel?: StringNullableWithAggregatesFilter<"HomeBanner"> | string | null
+    certificationTitle?: StringNullableWithAggregatesFilter<"HomeBanner"> | string | null
+    certificationSubtitle?: StringNullableWithAggregatesFilter<"HomeBanner"> | string | null
+    emergencyText?: StringNullableWithAggregatesFilter<"HomeBanner"> | string | null
+    isActive?: BoolWithAggregatesFilter<"HomeBanner"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"HomeBanner"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"HomeBanner"> | Date | string
+  }
+
   export type SuperAdminsCreateInput = {
     id?: string
     name: string
@@ -18031,6 +19392,188 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type HomeBannerCreateInput = {
+    id?: string
+    title1: string
+    highlightedText?: string | null
+    title2?: string | null
+    description: string
+    primaryButtonText?: string | null
+    phoneNumber?: string | null
+    cardTitle?: string | null
+    cardSubtitle?: string | null
+    patientsCount?: string | null
+    doctorsCount?: string | null
+    departmentsCount?: string | null
+    experienceYears?: string | null
+    patientsLabel?: string | null
+    doctorsLabel?: string | null
+    departmentsLabel?: string | null
+    experienceLabel?: string | null
+    certificationTitle?: string | null
+    certificationSubtitle?: string | null
+    emergencyText?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type HomeBannerUncheckedCreateInput = {
+    id?: string
+    title1: string
+    highlightedText?: string | null
+    title2?: string | null
+    description: string
+    primaryButtonText?: string | null
+    phoneNumber?: string | null
+    cardTitle?: string | null
+    cardSubtitle?: string | null
+    patientsCount?: string | null
+    doctorsCount?: string | null
+    departmentsCount?: string | null
+    experienceYears?: string | null
+    patientsLabel?: string | null
+    doctorsLabel?: string | null
+    departmentsLabel?: string | null
+    experienceLabel?: string | null
+    certificationTitle?: string | null
+    certificationSubtitle?: string | null
+    emergencyText?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type HomeBannerUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title1?: StringFieldUpdateOperationsInput | string
+    highlightedText?: NullableStringFieldUpdateOperationsInput | string | null
+    title2?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    primaryButtonText?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    cardTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    cardSubtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    patientsCount?: NullableStringFieldUpdateOperationsInput | string | null
+    doctorsCount?: NullableStringFieldUpdateOperationsInput | string | null
+    departmentsCount?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceYears?: NullableStringFieldUpdateOperationsInput | string | null
+    patientsLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    doctorsLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    departmentsLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    certificationTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    certificationSubtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyText?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HomeBannerUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title1?: StringFieldUpdateOperationsInput | string
+    highlightedText?: NullableStringFieldUpdateOperationsInput | string | null
+    title2?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    primaryButtonText?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    cardTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    cardSubtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    patientsCount?: NullableStringFieldUpdateOperationsInput | string | null
+    doctorsCount?: NullableStringFieldUpdateOperationsInput | string | null
+    departmentsCount?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceYears?: NullableStringFieldUpdateOperationsInput | string | null
+    patientsLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    doctorsLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    departmentsLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    certificationTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    certificationSubtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyText?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HomeBannerCreateManyInput = {
+    id?: string
+    title1: string
+    highlightedText?: string | null
+    title2?: string | null
+    description: string
+    primaryButtonText?: string | null
+    phoneNumber?: string | null
+    cardTitle?: string | null
+    cardSubtitle?: string | null
+    patientsCount?: string | null
+    doctorsCount?: string | null
+    departmentsCount?: string | null
+    experienceYears?: string | null
+    patientsLabel?: string | null
+    doctorsLabel?: string | null
+    departmentsLabel?: string | null
+    experienceLabel?: string | null
+    certificationTitle?: string | null
+    certificationSubtitle?: string | null
+    emergencyText?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type HomeBannerUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title1?: StringFieldUpdateOperationsInput | string
+    highlightedText?: NullableStringFieldUpdateOperationsInput | string | null
+    title2?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    primaryButtonText?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    cardTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    cardSubtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    patientsCount?: NullableStringFieldUpdateOperationsInput | string | null
+    doctorsCount?: NullableStringFieldUpdateOperationsInput | string | null
+    departmentsCount?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceYears?: NullableStringFieldUpdateOperationsInput | string | null
+    patientsLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    doctorsLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    departmentsLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    certificationTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    certificationSubtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyText?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HomeBannerUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title1?: StringFieldUpdateOperationsInput | string
+    highlightedText?: NullableStringFieldUpdateOperationsInput | string | null
+    title2?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    primaryButtonText?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    cardTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    cardSubtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    patientsCount?: NullableStringFieldUpdateOperationsInput | string | null
+    doctorsCount?: NullableStringFieldUpdateOperationsInput | string | null
+    departmentsCount?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceYears?: NullableStringFieldUpdateOperationsInput | string | null
+    patientsLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    doctorsLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    departmentsLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    certificationTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    certificationSubtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyText?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[]
@@ -19109,6 +20652,90 @@ export namespace Prisma {
     superAdminId?: SortOrder
     roleId?: SortOrder
     createdAt?: SortOrder
+  }
+
+  export type HomeBannerOrderByRelevanceInput = {
+    fields: HomeBannerOrderByRelevanceFieldEnum | HomeBannerOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type HomeBannerCountOrderByAggregateInput = {
+    id?: SortOrder
+    title1?: SortOrder
+    highlightedText?: SortOrder
+    title2?: SortOrder
+    description?: SortOrder
+    primaryButtonText?: SortOrder
+    phoneNumber?: SortOrder
+    cardTitle?: SortOrder
+    cardSubtitle?: SortOrder
+    patientsCount?: SortOrder
+    doctorsCount?: SortOrder
+    departmentsCount?: SortOrder
+    experienceYears?: SortOrder
+    patientsLabel?: SortOrder
+    doctorsLabel?: SortOrder
+    departmentsLabel?: SortOrder
+    experienceLabel?: SortOrder
+    certificationTitle?: SortOrder
+    certificationSubtitle?: SortOrder
+    emergencyText?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type HomeBannerMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title1?: SortOrder
+    highlightedText?: SortOrder
+    title2?: SortOrder
+    description?: SortOrder
+    primaryButtonText?: SortOrder
+    phoneNumber?: SortOrder
+    cardTitle?: SortOrder
+    cardSubtitle?: SortOrder
+    patientsCount?: SortOrder
+    doctorsCount?: SortOrder
+    departmentsCount?: SortOrder
+    experienceYears?: SortOrder
+    patientsLabel?: SortOrder
+    doctorsLabel?: SortOrder
+    departmentsLabel?: SortOrder
+    experienceLabel?: SortOrder
+    certificationTitle?: SortOrder
+    certificationSubtitle?: SortOrder
+    emergencyText?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type HomeBannerMinOrderByAggregateInput = {
+    id?: SortOrder
+    title1?: SortOrder
+    highlightedText?: SortOrder
+    title2?: SortOrder
+    description?: SortOrder
+    primaryButtonText?: SortOrder
+    phoneNumber?: SortOrder
+    cardTitle?: SortOrder
+    cardSubtitle?: SortOrder
+    patientsCount?: SortOrder
+    doctorsCount?: SortOrder
+    departmentsCount?: SortOrder
+    experienceYears?: SortOrder
+    patientsLabel?: SortOrder
+    doctorsLabel?: SortOrder
+    departmentsLabel?: SortOrder
+    experienceLabel?: SortOrder
+    certificationTitle?: SortOrder
+    certificationSubtitle?: SortOrder
+    emergencyText?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type RoleCreateNestedManyWithoutSuperAdminInput = {
