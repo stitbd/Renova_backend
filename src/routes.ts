@@ -12,6 +12,8 @@ import { outletUserRoutes } from "./modules/outlet_user/outlet_user.route";
 import { roleRoutes } from "./modules/role/role.route";
 import { permissionRoutes } from "./modules/permission/permission.route";
 import { outletAuthRoutes } from "./modules/auth/outlet_user_auth/outlet_user_auth.route";
+import { superAdminRoutes } from "./modules/super_admin/super_admin.route";
+import { superAdminRoleRoutes } from "./modules/super_admin_role/super_admin_role.route";
 
 
 const appRouter = Router();
@@ -31,6 +33,8 @@ const moduleRoutes = [
   { path: "/outlet-users", route: outletUserRoutes },
   { path: "/roles", route: roleRoutes },
   { path: "/permissions", route: permissionRoutes },
+  { path: "/super-admins", route: superAdminRoutes },
+  { path: "/super-admin-roles", route: superAdminRoleRoutes },
 
 ];
 

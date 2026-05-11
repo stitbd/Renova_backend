@@ -270,8 +270,8 @@ model RolePermission {
   @@unique([roleId, permissionId])
 }
 
-// assaigning role to child users in  diagnostic accounts and superAdmin 
-//--------------------------------------------------------------------
+// assaigning role to child users in  outlet and superAdmin 
+//------------------------------------------------------
 
 model OutletUserRole {
   id           String @id @default(uuid())

@@ -271,7 +271,7 @@ model RolePermission {
 }
 
 // assaigning role to child users in  outlet and superAdmin 
-//---------------------------------------------------------
+//------------------------------------------------------
 
 model OutletUserRole {
   id           String @id @default(uuid())
