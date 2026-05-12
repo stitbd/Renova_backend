@@ -24,7 +24,7 @@ export const outletUserRepository = {
         });
     },
 
-    findAll( outletId: string) {
+    findAll(outletId: string) {
         return mainPrisma.outletUser.findMany({
             where: {
                 outletId,

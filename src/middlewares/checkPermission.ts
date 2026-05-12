@@ -152,9 +152,9 @@ const checkPermission = (...requiredPermissions: string[]) => {
                 return next();
             }
 
-            // ===============================
+            // =============================
             // FALLBACK
-            // ===============================
+            // =============================
 
             throw new Error(
                 "Forbidden! Permission denied."
