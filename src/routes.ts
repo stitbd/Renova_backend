@@ -23,6 +23,13 @@ import { ProductSectionRoutes } from "./modules/website_content/home/productSect
 import { FacilitySectionRoutes } from "./modules/website_content/home/facilitySection/facilitySection.route";
 import { TestimonialSectionRoutes } from "./modules/website_content/home/testimonialSection/testimonialSection.route";
 import { BlogSectionRoutes } from "./modules/website_content/home/blogSection/blogSection.route";
+import { AboutBannerRoutes } from "./modules/website_content/about/aboutBanner/aboutBanner.route";
+import { MissionVisionSectionRoutes } from "./modules/website_content/about/MissionVisionSection/MissionVisionSection.route";
+import { ManagingDirectorSectionRoutes } from "./modules/website_content/about/ManagingDirectorSection/ManagingDirectorSection.route";
+import { LeadershipSectionRoutes } from "./modules/website_content/about/LeadershipSection/LeadershipSection.route";
+import { DoctorBannerRoutes } from "./modules/website_content/doctors/doctors_banner/doctors_banner.route";
+import { CareerSectionRoutes } from "./modules/website_content/doctors/careerSection/careerSection.route";
+import { ContactSectionRoutes } from "./modules/website_content/contact_page/contact/contact.route";
 
 
 const appRouter = Router();
@@ -59,6 +66,15 @@ const moduleRoutes = [
   { path: "/website-content/home-facility", route: FacilitySectionRoutes },
   { path: "/website-content/home-testimonial", route: TestimonialSectionRoutes },
   { path: "/website-content/home-blog", route: BlogSectionRoutes },
+
+  { path: "/website-content/about-banner", route: AboutBannerRoutes },
+  { path: "/website-content/about-mission-vision", route: MissionVisionSectionRoutes },
+  { path: "/website-content/about-managing-director", route: ManagingDirectorSectionRoutes },
+  { path: "/website-content/about-leadership", route: LeadershipSectionRoutes },
+  
+  { path: "/website-content/doctors-banner", route: DoctorBannerRoutes },
+  { path: "/website-content/doctors-career", route: CareerSectionRoutes },
+  { path: "/website-content/doctors-contact", route: ContactSectionRoutes },
 
 ];
 

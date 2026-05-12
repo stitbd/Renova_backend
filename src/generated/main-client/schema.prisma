@@ -610,3 +610,206 @@ model BlogSection {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+//================about/banner===============
+
+model AboutBanner {
+  id String @id @default(uuid())
+
+  // Section Header
+  sectionLabel String? @default("WHO WE ARE")
+
+  // Main Content
+  title1          String
+  highlightedText String?
+  title2          String?
+
+  description String?
+
+  isActive Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ==============about/missionVision =================
+
+model MissionVisionSection {
+  id String @id @default(uuid())
+
+  // Mission
+  missionTitle       String?
+  missionDescription String?
+  missionIcon        String?
+
+  // Vision
+  visionTitle       String?
+  visionDescription String?
+  visionIcon        String?
+
+  // Values
+  valuesTitle       String?
+  valuesDescription String?
+  valuesIcon        String?
+
+  isActive Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+//=========== about/mnagingDirector ===================
+
+model ManagingDirectorSection {
+  id String @id @default(uuid())
+
+  // Section Header
+  sectionLabel String? @default("MESSAGE FROM OUR MD")
+
+  // Main Content
+  title1          String
+  highlightedText String?
+  title2          String?
+
+  description String? @db.Text
+
+  // Director Info
+  image       String?
+  name        String?
+  designation String?
+  degree      String?
+
+  // Verification Badge
+  badgeText String?
+
+  // Statistics
+  experienceCount   String?
+  patientsCount     String?
+  satisfactionCount String?
+
+  experienceLabel   String? @default("Years Leading")
+  patientsLabel     String? @default("Lives Touched")
+  satisfactionLabel String? @default("Patient Satisfaction")
+
+  isActive Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+//============ about/LeadershipSection ==========
+
+model LeadershipSection {
+  id String @id @default(uuid())
+
+  // Section Header
+  sectionLabel String? @default("Our Leadership")
+
+  // Main Content
+  title       String
+  description String? @db.Text
+
+  isActive Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ============ doctors/banner =================
+
+model DoctorBanner {
+  id String @id @default(uuid())
+
+  // Section Header
+  sectionLabel String? @default("OUR MEDICAL TEAM")
+
+  // Main Content
+  title1          String
+  highlightedText String?
+  title2          String?
+
+  description String? @db.Text
+
+  isActive Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ================doctor/CareerSection =================
+
+model CareerSection {
+  id String @id @default(uuid())
+
+  // Section Header
+  sectionLabel String? @default("CAREER OPPORTUNITIES")
+
+  // Main Content
+  title       String
+  description String? @db.Text
+
+  // Features
+  feature1 String?
+  feature2 String?
+  feature3 String?
+  feature4 String?
+
+  // Button
+  buttonText String?
+
+  // Statistics
+  specialistsCount String?
+  departmentsCount String?
+  certifiedCount   String?
+
+  specialistsLabel String? @default("Specialists")
+  departmentsLabel String? @default("Departments")
+  certifiedLabel   String? @default("BMDC Certified")
+
+  isActive Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+//===========contact page===============
+
+model ContactSection {
+  id String @id @default(uuid())
+
+  // Banner
+  sectionLabel String? @default("GET IN TOUCH")
+
+  title1          String
+  highlightedText String?
+  title2          String?
+
+  description String? @db.Text
+
+  // Contact Cards
+  addressTitle       String?
+  addressDescription String?
+
+  phoneTitle       String?
+  phoneNumber      String?
+  phoneDescription String?
+
+  emailTitle       String?
+  emailAddress     String?
+  emailDescription String?
+
+  workingHoursTitle       String?
+  workingHours            String?
+  workingHoursDescription String?
+
+  // Department Contacts
+  emergencyNumber   String?
+  appointmentNumber String?
+  pharmacyNumber    String?
+  billingNumber     String?
+
+  isActive Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
