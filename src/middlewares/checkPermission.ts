@@ -2,7 +2,11 @@ import { NextFunction, Request, Response } from "express";
 import { mainPrisma } from "../databases/prisma";
 
 const checkPermission = (...requiredPermissions: string[]) => {
-    return async (req: Request, res: Response, next: NextFunction) => {
+    return async (
+        req: Request,
+        res: Response,
+        next: NextFunction
+    ) => {
         try {
             const user = req.user;
 
@@ -10,59 +14,152 @@ const checkPermission = (...requiredPermissions: string[]) => {
                 throw new Error("Unauthorized!");
             }
 
-            // owner/admin can access everything
-            if (user.isOwner === true) {
-                return next();
-            }
-
+            // no permission required
             if (!requiredPermissions.length) {
                 return next();
             }
 
-            if (user.role !== "OUTLET_USER") {
-                throw new Error("Forbidden! Permission denied.");
-            }
+            // ===============================
+            // SUPER ADMIN
+            // ===============================
 
-            const outletUser = await mainPrisma.outletUser.findUnique({
-                where: {
-                    id: user.id,
-                },
-                include: {
-                    userRoles: {
+            if (user.role === "SUPER_ADMIN") {
+
+                const superAdmin =
+                    await mainPrisma.superAdmins.findUnique({
+                        where: {
+                            id: user.id,
+                        },
+
                         include: {
-                            role: {
+                            userRoles: {
                                 include: {
-                                    rolePermissions: {
+                                    role: {
                                         include: {
-                                            permission: true,
+                                            rolePermissions: {
+                                                include: {
+                                                    permission: true,
+                                                },
+                                            },
                                         },
                                     },
                                 },
                             },
                         },
-                    },
-                },
-            });
+                    });
 
-            if (!outletUser || !outletUser.isActive) {
-                throw new Error("Outlet user account not found or inactive!");
+                if (!superAdmin || !superAdmin.isActive) {
+                    throw new Error(
+                        "Super admin account not found or inactive!"
+                    );
+                }
+
+                const superAdminPermissions =
+                    superAdmin.userRoles.flatMap(
+                        (userRole) =>
+                            userRole.role.rolePermissions.map(
+                                (rolePermission) =>
+                                    rolePermission.permission.key
+                            )
+                    );
+
+                const hasPermission =
+                    requiredPermissions.every(
+                        (permission) =>
+                            superAdminPermissions.includes(
+                                permission
+                            )
+                    );
+
+                if (!hasPermission) {
+                    throw new Error(
+                        "Forbidden! You do not have permission."
+                    );
+                }
+
+                return next();
             }
 
-            const userPermissions = outletUser.userRoles.flatMap((userRole) =>
-                userRole.role.rolePermissions.map(
-                    (rolePermission) => rolePermission.permission.key
-                )
-            );
+            // ===============================
+            // OUTLET OWNER
+            // ===============================
 
-            const hasPermission = requiredPermissions.every((permission) =>
-                userPermissions.includes(permission)
-            );
-
-            if (!hasPermission) {
-                throw new Error("Forbidden! You do not have permission.");
+            if (
+                user.role === "OUTLET_USER" &&
+                user.isOwner === true
+            ) {
+                return next();
             }
 
-            next();
+            // ===============================
+            // OUTLET STAFF USER
+            // ===============================
+
+            if (user.role === "OUTLET_USER") {
+
+                const outletUser =
+                    await mainPrisma.outletUser.findUnique({
+                        where: {
+                            id: user.id,
+                        },
+
+                        include: {
+                            userRoles: {
+                                include: {
+                                    role: {
+                                        include: {
+                                            rolePermissions: {
+                                                include: {
+                                                    permission: true,
+                                                },
+                                            },
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    });
+
+                if (!outletUser || !outletUser.isActive) {
+                    throw new Error(
+                        "Outlet user account not found or inactive!"
+                    );
+                }
+
+                const outletPermissions =
+                    outletUser.userRoles.flatMap(
+                        (userRole) =>
+                            userRole.role.rolePermissions.map(
+                                (rolePermission) =>
+                                    rolePermission.permission.key
+                            )
+                    );
+
+                const hasPermission =
+                    requiredPermissions.every(
+                        (permission) =>
+                            outletPermissions.includes(
+                                permission
+                            )
+                    );
+
+                if (!hasPermission) {
+                    throw new Error(
+                        "Forbidden! You do not have permission."
+                    );
+                }
+
+                return next();
+            }
+
+            // ===============================
+            // FALLBACK
+            // ===============================
+
+            throw new Error(
+                "Forbidden! Permission denied."
+            );
+
         } catch (err) {
             next(err);
         }
