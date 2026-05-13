@@ -30,17 +30,24 @@ import { LeadershipSectionRoutes } from "./modules/website_content/about/Leaders
 import { DoctorBannerRoutes } from "./modules/website_content/doctors/doctors_banner/doctors_banner.route";
 import { CareerSectionRoutes } from "./modules/website_content/doctors/careerSection/careerSection.route";
 import { ContactSectionRoutes } from "./modules/website_content/contact_page/contact/contact.route";
+import { ShopBannerRoutes } from "./modules/website_content/shop/shopBanner.route";
+import { PackageBannerRoutes } from "./modules/website_content/packages/packages.route";
+import { authRoutes } from "./modules/auth/auth.route";
 
 
 const appRouter = Router();
 
 const moduleRoutes = [
   { path: "/patients", route: patientRoutes },
+  { path: "/auth", route: authRoutes },
+
+
   { path: "/auth/patients", route: patientAuthRoutes },
   { path: "/auth/doctors", route: doctorAuthRoutes },
   {
     path: "/auth/outlet-users", route: outletAuthRoutes
   },
+
   { path: "/doctors", route: doctorRoutes },
   { path: "/doctor-specializations", route: doctorSpecializationRoutes },
   { path: "/doctor-documents", route: doctorDocumentRoutes },
@@ -75,6 +82,8 @@ const moduleRoutes = [
   { path: "/website-content/doctors-banner", route: DoctorBannerRoutes },
   { path: "/website-content/doctors-career", route: CareerSectionRoutes },
   { path: "/website-content/doctors-contact", route: ContactSectionRoutes },
+  { path: "/website-content/shop-banner", route: ShopBannerRoutes },
+  { path: "/website-content/package-banner", route: PackageBannerRoutes },
 
 ];
 

@@ -31,5 +31,10 @@ export const env = {
   outletUserAccessTokenExpiresIn: process.env.OUTLET_USER_ACCESS_JWT_EXPIRES_IN || "7d",
   outletUserRefreshTokenSecret: process.env.OUTLET_USER_REFRESH_JWT_SECRET as string,
   outletUserRefreshTokenExpiresIn: process.env.OUTLET_USER_REFRESH_JWT_EXPIRES_IN || "30d",
+
+  superAdminAccessTokenSecret: process.env.SUPER_ADMIN_ACCESS_JWT_SECRET as string,
+  superAdminAccessTokenExpiresIn: process.env.SUPER_ADMIN_ACCESS_JWT_EXPIRES_IN || "7d",
+  superAdminRefreshTokenSecret: process.env.SUPER_ADMIN_REFRESH_JWT_SECRET as string,
+  superAdminRefreshTokenExpiresIn: process.env.SUPER_ADMIN_REFRESH_JWT_EXPIRES_IN || "30d",
   bcrypt_salt_rounds: Number(process.env.BCRYPT_SALT_ROUNDS),
 };

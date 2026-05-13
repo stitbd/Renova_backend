@@ -14,7 +14,7 @@ model SuperAdmins {
   id       String  @id @default(uuid())
   name     String
   email    String  @unique
-  phone    String?
+  phone    String? @unique
   password String
   isActive Boolean @default(true)
 
@@ -298,9 +298,22 @@ model SuperAdminUserRole {
 
 
 
+
+
+
+
+
 // ==============================
 // Dynamic website content
 // ==============================
+
+
+
+
+
+
+
+
 
 
 // ================ home/banner  ===============
@@ -447,8 +460,6 @@ model ServiceItem {
   updatedAt DateTime @updatedAt
 }
 
-
-
 //===============home/doctor section ===========
 
 model DoctorSection {
@@ -472,7 +483,6 @@ model DoctorSection {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
-
 
 //===============home/appoinment section==============
 
@@ -525,7 +535,6 @@ model AppointmentSection {
   updatedAt DateTime @updatedAt
 }
 
-
 //==============home/products==================
 
 model ProductSection {
@@ -547,7 +556,6 @@ model ProductSection {
   updatedAt DateTime @updatedAt
 }
 
-
 // ================= home/Faculty section =============
 model FacilitySection {
   id String @id @default(uuid())
@@ -566,7 +574,6 @@ model FacilitySection {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
-
 
 // =========== home/testimonial =================
 
@@ -728,7 +735,6 @@ model LeadershipSection {
   updatedAt DateTime @updatedAt
 }
 
-
 // ============ doctors/banner =================
 
 model DoctorBanner {
@@ -786,9 +792,7 @@ model CareerSection {
   updatedAt DateTime @updatedAt
 }
 
-
 //===========contact page===============
-
 
 model ContactSection {
   id String @id @default(uuid())
@@ -824,6 +828,75 @@ model ContactSection {
   appointmentNumber  String?
   pharmacyNumber     String?
   billingNumber      String?
+
+  isActive Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+
+//=================shop page ====================
+
+
+model ShopBanner {
+  id String @id @default(uuid())
+
+  // Top Banner
+  sectionLabel String? @default("HEALTH STORE")
+
+  title1          String
+  highlightedText String?
+  title2          String?
+
+  description String? @db.Text
+
+  // Feature Cards
+  feature1Title       String?
+  feature1Description String?
+  feature1Icon        String?
+
+  feature2Title       String?
+  feature2Description String?
+  feature2Icon        String?
+
+  feature3Title       String?
+  feature3Description String?
+  feature3Icon        String?
+
+  feature4Title       String?
+  feature4Description String?
+  feature4Icon        String?
+
+  // Product Section
+  productSectionLabel String? @default("OUR SHOP")
+
+  productTitle1          String?
+  productHighlightedText String?
+  productTitle2          String?
+
+  productDescription String? @db.Text
+
+  isActive Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+//==============packages page =====================
+
+model PackageBanner {
+  id String @id @default(uuid())
+
+  // Section Header
+  sectionLabel String? @default("HEALTH PACKAGES")
+
+  // Main Content
+  title1          String
+  highlightedText String?
+  title2          String?
+
+  description String? @db.Text
 
   isActive Boolean @default(true)
 

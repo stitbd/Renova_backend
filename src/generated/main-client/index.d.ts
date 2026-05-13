@@ -163,6 +163,16 @@ export type CareerSection = $Result.DefaultSelection<Prisma.$CareerSectionPayloa
  * 
  */
 export type ContactSection = $Result.DefaultSelection<Prisma.$ContactSectionPayload>
+/**
+ * Model ShopBanner
+ * 
+ */
+export type ShopBanner = $Result.DefaultSelection<Prisma.$ShopBannerPayload>
+/**
+ * Model PackageBanner
+ * 
+ */
+export type PackageBanner = $Result.DefaultSelection<Prisma.$PackageBannerPayload>
 
 /**
  * Enums
@@ -686,6 +696,26 @@ export class PrismaClient<
     * ```
     */
   get contactSection(): Prisma.ContactSectionDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.shopBanner`: Exposes CRUD operations for the **ShopBanner** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ShopBanners
+    * const shopBanners = await prisma.shopBanner.findMany()
+    * ```
+    */
+  get shopBanner(): Prisma.ShopBannerDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.packageBanner`: Exposes CRUD operations for the **PackageBanner** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PackageBanners
+    * const packageBanners = await prisma.packageBanner.findMany()
+    * ```
+    */
+  get packageBanner(): Prisma.PackageBannerDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -1156,7 +1186,9 @@ export namespace Prisma {
     LeadershipSection: 'LeadershipSection',
     DoctorBanner: 'DoctorBanner',
     CareerSection: 'CareerSection',
-    ContactSection: 'ContactSection'
+    ContactSection: 'ContactSection',
+    ShopBanner: 'ShopBanner',
+    PackageBanner: 'PackageBanner'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1175,7 +1207,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "superAdmins" | "patient" | "doctor" | "doctorSpecialization" | "doctorDocument" | "doctorSchedule" | "outlet" | "outletUser" | "role" | "permission" | "rolePermission" | "outletUserRole" | "superAdminUserRole" | "homeBanner" | "aboutSection" | "serviceSection" | "serviceItem" | "doctorSection" | "appointmentSection" | "productSection" | "facilitySection" | "testimonialSection" | "blogSection" | "aboutBanner" | "missionVisionSection" | "managingDirectorSection" | "leadershipSection" | "doctorBanner" | "careerSection" | "contactSection"
+      modelProps: "superAdmins" | "patient" | "doctor" | "doctorSpecialization" | "doctorDocument" | "doctorSchedule" | "outlet" | "outletUser" | "role" | "permission" | "rolePermission" | "outletUserRole" | "superAdminUserRole" | "homeBanner" | "aboutSection" | "serviceSection" | "serviceItem" | "doctorSection" | "appointmentSection" | "productSection" | "facilitySection" | "testimonialSection" | "blogSection" | "aboutBanner" | "missionVisionSection" | "managingDirectorSection" | "leadershipSection" | "doctorBanner" | "careerSection" | "contactSection" | "shopBanner" | "packageBanner"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -3159,6 +3191,138 @@ export namespace Prisma {
           }
         }
       }
+      ShopBanner: {
+        payload: Prisma.$ShopBannerPayload<ExtArgs>
+        fields: Prisma.ShopBannerFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ShopBannerFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ShopBannerPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ShopBannerFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ShopBannerPayload>
+          }
+          findFirst: {
+            args: Prisma.ShopBannerFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ShopBannerPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ShopBannerFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ShopBannerPayload>
+          }
+          findMany: {
+            args: Prisma.ShopBannerFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ShopBannerPayload>[]
+          }
+          create: {
+            args: Prisma.ShopBannerCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ShopBannerPayload>
+          }
+          createMany: {
+            args: Prisma.ShopBannerCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.ShopBannerDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ShopBannerPayload>
+          }
+          update: {
+            args: Prisma.ShopBannerUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ShopBannerPayload>
+          }
+          deleteMany: {
+            args: Prisma.ShopBannerDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ShopBannerUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.ShopBannerUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ShopBannerPayload>
+          }
+          aggregate: {
+            args: Prisma.ShopBannerAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateShopBanner>
+          }
+          groupBy: {
+            args: Prisma.ShopBannerGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ShopBannerGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ShopBannerCountArgs<ExtArgs>
+            result: $Utils.Optional<ShopBannerCountAggregateOutputType> | number
+          }
+        }
+      }
+      PackageBanner: {
+        payload: Prisma.$PackageBannerPayload<ExtArgs>
+        fields: Prisma.PackageBannerFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PackageBannerFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageBannerPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PackageBannerFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageBannerPayload>
+          }
+          findFirst: {
+            args: Prisma.PackageBannerFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageBannerPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PackageBannerFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageBannerPayload>
+          }
+          findMany: {
+            args: Prisma.PackageBannerFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageBannerPayload>[]
+          }
+          create: {
+            args: Prisma.PackageBannerCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageBannerPayload>
+          }
+          createMany: {
+            args: Prisma.PackageBannerCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.PackageBannerDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageBannerPayload>
+          }
+          update: {
+            args: Prisma.PackageBannerUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageBannerPayload>
+          }
+          deleteMany: {
+            args: Prisma.PackageBannerDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PackageBannerUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.PackageBannerUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageBannerPayload>
+          }
+          aggregate: {
+            args: Prisma.PackageBannerAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePackageBanner>
+          }
+          groupBy: {
+            args: Prisma.PackageBannerGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PackageBannerGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PackageBannerCountArgs<ExtArgs>
+            result: $Utils.Optional<PackageBannerCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -3285,6 +3449,8 @@ export namespace Prisma {
     doctorBanner?: DoctorBannerOmit
     careerSection?: CareerSectionOmit
     contactSection?: ContactSectionOmit
+    shopBanner?: ShopBannerOmit
+    packageBanner?: PackageBannerOmit
   }
 
   /* Types for Logging */
@@ -33896,6 +34062,2045 @@ export namespace Prisma {
 
 
   /**
+   * Model ShopBanner
+   */
+
+  export type AggregateShopBanner = {
+    _count: ShopBannerCountAggregateOutputType | null
+    _min: ShopBannerMinAggregateOutputType | null
+    _max: ShopBannerMaxAggregateOutputType | null
+  }
+
+  export type ShopBannerMinAggregateOutputType = {
+    id: string | null
+    sectionLabel: string | null
+    title1: string | null
+    highlightedText: string | null
+    title2: string | null
+    description: string | null
+    feature1Title: string | null
+    feature1Description: string | null
+    feature1Icon: string | null
+    feature2Title: string | null
+    feature2Description: string | null
+    feature2Icon: string | null
+    feature3Title: string | null
+    feature3Description: string | null
+    feature3Icon: string | null
+    feature4Title: string | null
+    feature4Description: string | null
+    feature4Icon: string | null
+    productSectionLabel: string | null
+    productTitle1: string | null
+    productHighlightedText: string | null
+    productTitle2: string | null
+    productDescription: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ShopBannerMaxAggregateOutputType = {
+    id: string | null
+    sectionLabel: string | null
+    title1: string | null
+    highlightedText: string | null
+    title2: string | null
+    description: string | null
+    feature1Title: string | null
+    feature1Description: string | null
+    feature1Icon: string | null
+    feature2Title: string | null
+    feature2Description: string | null
+    feature2Icon: string | null
+    feature3Title: string | null
+    feature3Description: string | null
+    feature3Icon: string | null
+    feature4Title: string | null
+    feature4Description: string | null
+    feature4Icon: string | null
+    productSectionLabel: string | null
+    productTitle1: string | null
+    productHighlightedText: string | null
+    productTitle2: string | null
+    productDescription: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ShopBannerCountAggregateOutputType = {
+    id: number
+    sectionLabel: number
+    title1: number
+    highlightedText: number
+    title2: number
+    description: number
+    feature1Title: number
+    feature1Description: number
+    feature1Icon: number
+    feature2Title: number
+    feature2Description: number
+    feature2Icon: number
+    feature3Title: number
+    feature3Description: number
+    feature3Icon: number
+    feature4Title: number
+    feature4Description: number
+    feature4Icon: number
+    productSectionLabel: number
+    productTitle1: number
+    productHighlightedText: number
+    productTitle2: number
+    productDescription: number
+    isActive: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ShopBannerMinAggregateInputType = {
+    id?: true
+    sectionLabel?: true
+    title1?: true
+    highlightedText?: true
+    title2?: true
+    description?: true
+    feature1Title?: true
+    feature1Description?: true
+    feature1Icon?: true
+    feature2Title?: true
+    feature2Description?: true
+    feature2Icon?: true
+    feature3Title?: true
+    feature3Description?: true
+    feature3Icon?: true
+    feature4Title?: true
+    feature4Description?: true
+    feature4Icon?: true
+    productSectionLabel?: true
+    productTitle1?: true
+    productHighlightedText?: true
+    productTitle2?: true
+    productDescription?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ShopBannerMaxAggregateInputType = {
+    id?: true
+    sectionLabel?: true
+    title1?: true
+    highlightedText?: true
+    title2?: true
+    description?: true
+    feature1Title?: true
+    feature1Description?: true
+    feature1Icon?: true
+    feature2Title?: true
+    feature2Description?: true
+    feature2Icon?: true
+    feature3Title?: true
+    feature3Description?: true
+    feature3Icon?: true
+    feature4Title?: true
+    feature4Description?: true
+    feature4Icon?: true
+    productSectionLabel?: true
+    productTitle1?: true
+    productHighlightedText?: true
+    productTitle2?: true
+    productDescription?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ShopBannerCountAggregateInputType = {
+    id?: true
+    sectionLabel?: true
+    title1?: true
+    highlightedText?: true
+    title2?: true
+    description?: true
+    feature1Title?: true
+    feature1Description?: true
+    feature1Icon?: true
+    feature2Title?: true
+    feature2Description?: true
+    feature2Icon?: true
+    feature3Title?: true
+    feature3Description?: true
+    feature3Icon?: true
+    feature4Title?: true
+    feature4Description?: true
+    feature4Icon?: true
+    productSectionLabel?: true
+    productTitle1?: true
+    productHighlightedText?: true
+    productTitle2?: true
+    productDescription?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ShopBannerAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ShopBanner to aggregate.
+     */
+    where?: ShopBannerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ShopBanners to fetch.
+     */
+    orderBy?: ShopBannerOrderByWithRelationInput | ShopBannerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ShopBannerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ShopBanners from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ShopBanners.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ShopBanners
+    **/
+    _count?: true | ShopBannerCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ShopBannerMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ShopBannerMaxAggregateInputType
+  }
+
+  export type GetShopBannerAggregateType<T extends ShopBannerAggregateArgs> = {
+        [P in keyof T & keyof AggregateShopBanner]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateShopBanner[P]>
+      : GetScalarType<T[P], AggregateShopBanner[P]>
+  }
+
+
+
+
+  export type ShopBannerGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ShopBannerWhereInput
+    orderBy?: ShopBannerOrderByWithAggregationInput | ShopBannerOrderByWithAggregationInput[]
+    by: ShopBannerScalarFieldEnum[] | ShopBannerScalarFieldEnum
+    having?: ShopBannerScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ShopBannerCountAggregateInputType | true
+    _min?: ShopBannerMinAggregateInputType
+    _max?: ShopBannerMaxAggregateInputType
+  }
+
+  export type ShopBannerGroupByOutputType = {
+    id: string
+    sectionLabel: string | null
+    title1: string
+    highlightedText: string | null
+    title2: string | null
+    description: string | null
+    feature1Title: string | null
+    feature1Description: string | null
+    feature1Icon: string | null
+    feature2Title: string | null
+    feature2Description: string | null
+    feature2Icon: string | null
+    feature3Title: string | null
+    feature3Description: string | null
+    feature3Icon: string | null
+    feature4Title: string | null
+    feature4Description: string | null
+    feature4Icon: string | null
+    productSectionLabel: string | null
+    productTitle1: string | null
+    productHighlightedText: string | null
+    productTitle2: string | null
+    productDescription: string | null
+    isActive: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: ShopBannerCountAggregateOutputType | null
+    _min: ShopBannerMinAggregateOutputType | null
+    _max: ShopBannerMaxAggregateOutputType | null
+  }
+
+  type GetShopBannerGroupByPayload<T extends ShopBannerGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ShopBannerGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ShopBannerGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ShopBannerGroupByOutputType[P]>
+            : GetScalarType<T[P], ShopBannerGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ShopBannerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    sectionLabel?: boolean
+    title1?: boolean
+    highlightedText?: boolean
+    title2?: boolean
+    description?: boolean
+    feature1Title?: boolean
+    feature1Description?: boolean
+    feature1Icon?: boolean
+    feature2Title?: boolean
+    feature2Description?: boolean
+    feature2Icon?: boolean
+    feature3Title?: boolean
+    feature3Description?: boolean
+    feature3Icon?: boolean
+    feature4Title?: boolean
+    feature4Description?: boolean
+    feature4Icon?: boolean
+    productSectionLabel?: boolean
+    productTitle1?: boolean
+    productHighlightedText?: boolean
+    productTitle2?: boolean
+    productDescription?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["shopBanner"]>
+
+
+
+  export type ShopBannerSelectScalar = {
+    id?: boolean
+    sectionLabel?: boolean
+    title1?: boolean
+    highlightedText?: boolean
+    title2?: boolean
+    description?: boolean
+    feature1Title?: boolean
+    feature1Description?: boolean
+    feature1Icon?: boolean
+    feature2Title?: boolean
+    feature2Description?: boolean
+    feature2Icon?: boolean
+    feature3Title?: boolean
+    feature3Description?: boolean
+    feature3Icon?: boolean
+    feature4Title?: boolean
+    feature4Description?: boolean
+    feature4Icon?: boolean
+    productSectionLabel?: boolean
+    productTitle1?: boolean
+    productHighlightedText?: boolean
+    productTitle2?: boolean
+    productDescription?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type ShopBannerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "sectionLabel" | "title1" | "highlightedText" | "title2" | "description" | "feature1Title" | "feature1Description" | "feature1Icon" | "feature2Title" | "feature2Description" | "feature2Icon" | "feature3Title" | "feature3Description" | "feature3Icon" | "feature4Title" | "feature4Description" | "feature4Icon" | "productSectionLabel" | "productTitle1" | "productHighlightedText" | "productTitle2" | "productDescription" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["shopBanner"]>
+
+  export type $ShopBannerPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ShopBanner"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      sectionLabel: string | null
+      title1: string
+      highlightedText: string | null
+      title2: string | null
+      description: string | null
+      feature1Title: string | null
+      feature1Description: string | null
+      feature1Icon: string | null
+      feature2Title: string | null
+      feature2Description: string | null
+      feature2Icon: string | null
+      feature3Title: string | null
+      feature3Description: string | null
+      feature3Icon: string | null
+      feature4Title: string | null
+      feature4Description: string | null
+      feature4Icon: string | null
+      productSectionLabel: string | null
+      productTitle1: string | null
+      productHighlightedText: string | null
+      productTitle2: string | null
+      productDescription: string | null
+      isActive: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["shopBanner"]>
+    composites: {}
+  }
+
+  type ShopBannerGetPayload<S extends boolean | null | undefined | ShopBannerDefaultArgs> = $Result.GetResult<Prisma.$ShopBannerPayload, S>
+
+  type ShopBannerCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ShopBannerFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ShopBannerCountAggregateInputType | true
+    }
+
+  export interface ShopBannerDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ShopBanner'], meta: { name: 'ShopBanner' } }
+    /**
+     * Find zero or one ShopBanner that matches the filter.
+     * @param {ShopBannerFindUniqueArgs} args - Arguments to find a ShopBanner
+     * @example
+     * // Get one ShopBanner
+     * const shopBanner = await prisma.shopBanner.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ShopBannerFindUniqueArgs>(args: SelectSubset<T, ShopBannerFindUniqueArgs<ExtArgs>>): Prisma__ShopBannerClient<$Result.GetResult<Prisma.$ShopBannerPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ShopBanner that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ShopBannerFindUniqueOrThrowArgs} args - Arguments to find a ShopBanner
+     * @example
+     * // Get one ShopBanner
+     * const shopBanner = await prisma.shopBanner.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ShopBannerFindUniqueOrThrowArgs>(args: SelectSubset<T, ShopBannerFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ShopBannerClient<$Result.GetResult<Prisma.$ShopBannerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ShopBanner that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ShopBannerFindFirstArgs} args - Arguments to find a ShopBanner
+     * @example
+     * // Get one ShopBanner
+     * const shopBanner = await prisma.shopBanner.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ShopBannerFindFirstArgs>(args?: SelectSubset<T, ShopBannerFindFirstArgs<ExtArgs>>): Prisma__ShopBannerClient<$Result.GetResult<Prisma.$ShopBannerPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ShopBanner that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ShopBannerFindFirstOrThrowArgs} args - Arguments to find a ShopBanner
+     * @example
+     * // Get one ShopBanner
+     * const shopBanner = await prisma.shopBanner.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ShopBannerFindFirstOrThrowArgs>(args?: SelectSubset<T, ShopBannerFindFirstOrThrowArgs<ExtArgs>>): Prisma__ShopBannerClient<$Result.GetResult<Prisma.$ShopBannerPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ShopBanners that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ShopBannerFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ShopBanners
+     * const shopBanners = await prisma.shopBanner.findMany()
+     * 
+     * // Get first 10 ShopBanners
+     * const shopBanners = await prisma.shopBanner.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const shopBannerWithIdOnly = await prisma.shopBanner.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ShopBannerFindManyArgs>(args?: SelectSubset<T, ShopBannerFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ShopBannerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ShopBanner.
+     * @param {ShopBannerCreateArgs} args - Arguments to create a ShopBanner.
+     * @example
+     * // Create one ShopBanner
+     * const ShopBanner = await prisma.shopBanner.create({
+     *   data: {
+     *     // ... data to create a ShopBanner
+     *   }
+     * })
+     * 
+     */
+    create<T extends ShopBannerCreateArgs>(args: SelectSubset<T, ShopBannerCreateArgs<ExtArgs>>): Prisma__ShopBannerClient<$Result.GetResult<Prisma.$ShopBannerPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ShopBanners.
+     * @param {ShopBannerCreateManyArgs} args - Arguments to create many ShopBanners.
+     * @example
+     * // Create many ShopBanners
+     * const shopBanner = await prisma.shopBanner.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ShopBannerCreateManyArgs>(args?: SelectSubset<T, ShopBannerCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a ShopBanner.
+     * @param {ShopBannerDeleteArgs} args - Arguments to delete one ShopBanner.
+     * @example
+     * // Delete one ShopBanner
+     * const ShopBanner = await prisma.shopBanner.delete({
+     *   where: {
+     *     // ... filter to delete one ShopBanner
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ShopBannerDeleteArgs>(args: SelectSubset<T, ShopBannerDeleteArgs<ExtArgs>>): Prisma__ShopBannerClient<$Result.GetResult<Prisma.$ShopBannerPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ShopBanner.
+     * @param {ShopBannerUpdateArgs} args - Arguments to update one ShopBanner.
+     * @example
+     * // Update one ShopBanner
+     * const shopBanner = await prisma.shopBanner.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ShopBannerUpdateArgs>(args: SelectSubset<T, ShopBannerUpdateArgs<ExtArgs>>): Prisma__ShopBannerClient<$Result.GetResult<Prisma.$ShopBannerPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ShopBanners.
+     * @param {ShopBannerDeleteManyArgs} args - Arguments to filter ShopBanners to delete.
+     * @example
+     * // Delete a few ShopBanners
+     * const { count } = await prisma.shopBanner.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ShopBannerDeleteManyArgs>(args?: SelectSubset<T, ShopBannerDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ShopBanners.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ShopBannerUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ShopBanners
+     * const shopBanner = await prisma.shopBanner.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ShopBannerUpdateManyArgs>(args: SelectSubset<T, ShopBannerUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one ShopBanner.
+     * @param {ShopBannerUpsertArgs} args - Arguments to update or create a ShopBanner.
+     * @example
+     * // Update or create a ShopBanner
+     * const shopBanner = await prisma.shopBanner.upsert({
+     *   create: {
+     *     // ... data to create a ShopBanner
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ShopBanner we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ShopBannerUpsertArgs>(args: SelectSubset<T, ShopBannerUpsertArgs<ExtArgs>>): Prisma__ShopBannerClient<$Result.GetResult<Prisma.$ShopBannerPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ShopBanners.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ShopBannerCountArgs} args - Arguments to filter ShopBanners to count.
+     * @example
+     * // Count the number of ShopBanners
+     * const count = await prisma.shopBanner.count({
+     *   where: {
+     *     // ... the filter for the ShopBanners we want to count
+     *   }
+     * })
+    **/
+    count<T extends ShopBannerCountArgs>(
+      args?: Subset<T, ShopBannerCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ShopBannerCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ShopBanner.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ShopBannerAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ShopBannerAggregateArgs>(args: Subset<T, ShopBannerAggregateArgs>): Prisma.PrismaPromise<GetShopBannerAggregateType<T>>
+
+    /**
+     * Group by ShopBanner.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ShopBannerGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ShopBannerGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ShopBannerGroupByArgs['orderBy'] }
+        : { orderBy?: ShopBannerGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ShopBannerGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetShopBannerGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ShopBanner model
+   */
+  readonly fields: ShopBannerFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ShopBanner.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ShopBannerClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ShopBanner model
+   */
+  interface ShopBannerFieldRefs {
+    readonly id: FieldRef<"ShopBanner", 'String'>
+    readonly sectionLabel: FieldRef<"ShopBanner", 'String'>
+    readonly title1: FieldRef<"ShopBanner", 'String'>
+    readonly highlightedText: FieldRef<"ShopBanner", 'String'>
+    readonly title2: FieldRef<"ShopBanner", 'String'>
+    readonly description: FieldRef<"ShopBanner", 'String'>
+    readonly feature1Title: FieldRef<"ShopBanner", 'String'>
+    readonly feature1Description: FieldRef<"ShopBanner", 'String'>
+    readonly feature1Icon: FieldRef<"ShopBanner", 'String'>
+    readonly feature2Title: FieldRef<"ShopBanner", 'String'>
+    readonly feature2Description: FieldRef<"ShopBanner", 'String'>
+    readonly feature2Icon: FieldRef<"ShopBanner", 'String'>
+    readonly feature3Title: FieldRef<"ShopBanner", 'String'>
+    readonly feature3Description: FieldRef<"ShopBanner", 'String'>
+    readonly feature3Icon: FieldRef<"ShopBanner", 'String'>
+    readonly feature4Title: FieldRef<"ShopBanner", 'String'>
+    readonly feature4Description: FieldRef<"ShopBanner", 'String'>
+    readonly feature4Icon: FieldRef<"ShopBanner", 'String'>
+    readonly productSectionLabel: FieldRef<"ShopBanner", 'String'>
+    readonly productTitle1: FieldRef<"ShopBanner", 'String'>
+    readonly productHighlightedText: FieldRef<"ShopBanner", 'String'>
+    readonly productTitle2: FieldRef<"ShopBanner", 'String'>
+    readonly productDescription: FieldRef<"ShopBanner", 'String'>
+    readonly isActive: FieldRef<"ShopBanner", 'Boolean'>
+    readonly createdAt: FieldRef<"ShopBanner", 'DateTime'>
+    readonly updatedAt: FieldRef<"ShopBanner", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ShopBanner findUnique
+   */
+  export type ShopBannerFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ShopBanner
+     */
+    select?: ShopBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ShopBanner
+     */
+    omit?: ShopBannerOmit<ExtArgs> | null
+    /**
+     * Filter, which ShopBanner to fetch.
+     */
+    where: ShopBannerWhereUniqueInput
+  }
+
+  /**
+   * ShopBanner findUniqueOrThrow
+   */
+  export type ShopBannerFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ShopBanner
+     */
+    select?: ShopBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ShopBanner
+     */
+    omit?: ShopBannerOmit<ExtArgs> | null
+    /**
+     * Filter, which ShopBanner to fetch.
+     */
+    where: ShopBannerWhereUniqueInput
+  }
+
+  /**
+   * ShopBanner findFirst
+   */
+  export type ShopBannerFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ShopBanner
+     */
+    select?: ShopBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ShopBanner
+     */
+    omit?: ShopBannerOmit<ExtArgs> | null
+    /**
+     * Filter, which ShopBanner to fetch.
+     */
+    where?: ShopBannerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ShopBanners to fetch.
+     */
+    orderBy?: ShopBannerOrderByWithRelationInput | ShopBannerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ShopBanners.
+     */
+    cursor?: ShopBannerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ShopBanners from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ShopBanners.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ShopBanners.
+     */
+    distinct?: ShopBannerScalarFieldEnum | ShopBannerScalarFieldEnum[]
+  }
+
+  /**
+   * ShopBanner findFirstOrThrow
+   */
+  export type ShopBannerFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ShopBanner
+     */
+    select?: ShopBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ShopBanner
+     */
+    omit?: ShopBannerOmit<ExtArgs> | null
+    /**
+     * Filter, which ShopBanner to fetch.
+     */
+    where?: ShopBannerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ShopBanners to fetch.
+     */
+    orderBy?: ShopBannerOrderByWithRelationInput | ShopBannerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ShopBanners.
+     */
+    cursor?: ShopBannerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ShopBanners from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ShopBanners.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ShopBanners.
+     */
+    distinct?: ShopBannerScalarFieldEnum | ShopBannerScalarFieldEnum[]
+  }
+
+  /**
+   * ShopBanner findMany
+   */
+  export type ShopBannerFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ShopBanner
+     */
+    select?: ShopBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ShopBanner
+     */
+    omit?: ShopBannerOmit<ExtArgs> | null
+    /**
+     * Filter, which ShopBanners to fetch.
+     */
+    where?: ShopBannerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ShopBanners to fetch.
+     */
+    orderBy?: ShopBannerOrderByWithRelationInput | ShopBannerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ShopBanners.
+     */
+    cursor?: ShopBannerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ShopBanners from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ShopBanners.
+     */
+    skip?: number
+    distinct?: ShopBannerScalarFieldEnum | ShopBannerScalarFieldEnum[]
+  }
+
+  /**
+   * ShopBanner create
+   */
+  export type ShopBannerCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ShopBanner
+     */
+    select?: ShopBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ShopBanner
+     */
+    omit?: ShopBannerOmit<ExtArgs> | null
+    /**
+     * The data needed to create a ShopBanner.
+     */
+    data: XOR<ShopBannerCreateInput, ShopBannerUncheckedCreateInput>
+  }
+
+  /**
+   * ShopBanner createMany
+   */
+  export type ShopBannerCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ShopBanners.
+     */
+    data: ShopBannerCreateManyInput | ShopBannerCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ShopBanner update
+   */
+  export type ShopBannerUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ShopBanner
+     */
+    select?: ShopBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ShopBanner
+     */
+    omit?: ShopBannerOmit<ExtArgs> | null
+    /**
+     * The data needed to update a ShopBanner.
+     */
+    data: XOR<ShopBannerUpdateInput, ShopBannerUncheckedUpdateInput>
+    /**
+     * Choose, which ShopBanner to update.
+     */
+    where: ShopBannerWhereUniqueInput
+  }
+
+  /**
+   * ShopBanner updateMany
+   */
+  export type ShopBannerUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ShopBanners.
+     */
+    data: XOR<ShopBannerUpdateManyMutationInput, ShopBannerUncheckedUpdateManyInput>
+    /**
+     * Filter which ShopBanners to update
+     */
+    where?: ShopBannerWhereInput
+    /**
+     * Limit how many ShopBanners to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ShopBanner upsert
+   */
+  export type ShopBannerUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ShopBanner
+     */
+    select?: ShopBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ShopBanner
+     */
+    omit?: ShopBannerOmit<ExtArgs> | null
+    /**
+     * The filter to search for the ShopBanner to update in case it exists.
+     */
+    where: ShopBannerWhereUniqueInput
+    /**
+     * In case the ShopBanner found by the `where` argument doesn't exist, create a new ShopBanner with this data.
+     */
+    create: XOR<ShopBannerCreateInput, ShopBannerUncheckedCreateInput>
+    /**
+     * In case the ShopBanner was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ShopBannerUpdateInput, ShopBannerUncheckedUpdateInput>
+  }
+
+  /**
+   * ShopBanner delete
+   */
+  export type ShopBannerDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ShopBanner
+     */
+    select?: ShopBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ShopBanner
+     */
+    omit?: ShopBannerOmit<ExtArgs> | null
+    /**
+     * Filter which ShopBanner to delete.
+     */
+    where: ShopBannerWhereUniqueInput
+  }
+
+  /**
+   * ShopBanner deleteMany
+   */
+  export type ShopBannerDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ShopBanners to delete
+     */
+    where?: ShopBannerWhereInput
+    /**
+     * Limit how many ShopBanners to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ShopBanner without action
+   */
+  export type ShopBannerDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ShopBanner
+     */
+    select?: ShopBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ShopBanner
+     */
+    omit?: ShopBannerOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model PackageBanner
+   */
+
+  export type AggregatePackageBanner = {
+    _count: PackageBannerCountAggregateOutputType | null
+    _min: PackageBannerMinAggregateOutputType | null
+    _max: PackageBannerMaxAggregateOutputType | null
+  }
+
+  export type PackageBannerMinAggregateOutputType = {
+    id: string | null
+    sectionLabel: string | null
+    title1: string | null
+    highlightedText: string | null
+    title2: string | null
+    description: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PackageBannerMaxAggregateOutputType = {
+    id: string | null
+    sectionLabel: string | null
+    title1: string | null
+    highlightedText: string | null
+    title2: string | null
+    description: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PackageBannerCountAggregateOutputType = {
+    id: number
+    sectionLabel: number
+    title1: number
+    highlightedText: number
+    title2: number
+    description: number
+    isActive: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type PackageBannerMinAggregateInputType = {
+    id?: true
+    sectionLabel?: true
+    title1?: true
+    highlightedText?: true
+    title2?: true
+    description?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PackageBannerMaxAggregateInputType = {
+    id?: true
+    sectionLabel?: true
+    title1?: true
+    highlightedText?: true
+    title2?: true
+    description?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PackageBannerCountAggregateInputType = {
+    id?: true
+    sectionLabel?: true
+    title1?: true
+    highlightedText?: true
+    title2?: true
+    description?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type PackageBannerAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PackageBanner to aggregate.
+     */
+    where?: PackageBannerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PackageBanners to fetch.
+     */
+    orderBy?: PackageBannerOrderByWithRelationInput | PackageBannerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PackageBannerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PackageBanners from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PackageBanners.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PackageBanners
+    **/
+    _count?: true | PackageBannerCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PackageBannerMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PackageBannerMaxAggregateInputType
+  }
+
+  export type GetPackageBannerAggregateType<T extends PackageBannerAggregateArgs> = {
+        [P in keyof T & keyof AggregatePackageBanner]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePackageBanner[P]>
+      : GetScalarType<T[P], AggregatePackageBanner[P]>
+  }
+
+
+
+
+  export type PackageBannerGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PackageBannerWhereInput
+    orderBy?: PackageBannerOrderByWithAggregationInput | PackageBannerOrderByWithAggregationInput[]
+    by: PackageBannerScalarFieldEnum[] | PackageBannerScalarFieldEnum
+    having?: PackageBannerScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PackageBannerCountAggregateInputType | true
+    _min?: PackageBannerMinAggregateInputType
+    _max?: PackageBannerMaxAggregateInputType
+  }
+
+  export type PackageBannerGroupByOutputType = {
+    id: string
+    sectionLabel: string | null
+    title1: string
+    highlightedText: string | null
+    title2: string | null
+    description: string | null
+    isActive: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: PackageBannerCountAggregateOutputType | null
+    _min: PackageBannerMinAggregateOutputType | null
+    _max: PackageBannerMaxAggregateOutputType | null
+  }
+
+  type GetPackageBannerGroupByPayload<T extends PackageBannerGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PackageBannerGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PackageBannerGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PackageBannerGroupByOutputType[P]>
+            : GetScalarType<T[P], PackageBannerGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PackageBannerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    sectionLabel?: boolean
+    title1?: boolean
+    highlightedText?: boolean
+    title2?: boolean
+    description?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["packageBanner"]>
+
+
+
+  export type PackageBannerSelectScalar = {
+    id?: boolean
+    sectionLabel?: boolean
+    title1?: boolean
+    highlightedText?: boolean
+    title2?: boolean
+    description?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type PackageBannerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "sectionLabel" | "title1" | "highlightedText" | "title2" | "description" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["packageBanner"]>
+
+  export type $PackageBannerPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PackageBanner"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      sectionLabel: string | null
+      title1: string
+      highlightedText: string | null
+      title2: string | null
+      description: string | null
+      isActive: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["packageBanner"]>
+    composites: {}
+  }
+
+  type PackageBannerGetPayload<S extends boolean | null | undefined | PackageBannerDefaultArgs> = $Result.GetResult<Prisma.$PackageBannerPayload, S>
+
+  type PackageBannerCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PackageBannerFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PackageBannerCountAggregateInputType | true
+    }
+
+  export interface PackageBannerDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PackageBanner'], meta: { name: 'PackageBanner' } }
+    /**
+     * Find zero or one PackageBanner that matches the filter.
+     * @param {PackageBannerFindUniqueArgs} args - Arguments to find a PackageBanner
+     * @example
+     * // Get one PackageBanner
+     * const packageBanner = await prisma.packageBanner.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PackageBannerFindUniqueArgs>(args: SelectSubset<T, PackageBannerFindUniqueArgs<ExtArgs>>): Prisma__PackageBannerClient<$Result.GetResult<Prisma.$PackageBannerPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one PackageBanner that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PackageBannerFindUniqueOrThrowArgs} args - Arguments to find a PackageBanner
+     * @example
+     * // Get one PackageBanner
+     * const packageBanner = await prisma.packageBanner.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PackageBannerFindUniqueOrThrowArgs>(args: SelectSubset<T, PackageBannerFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PackageBannerClient<$Result.GetResult<Prisma.$PackageBannerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PackageBanner that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackageBannerFindFirstArgs} args - Arguments to find a PackageBanner
+     * @example
+     * // Get one PackageBanner
+     * const packageBanner = await prisma.packageBanner.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PackageBannerFindFirstArgs>(args?: SelectSubset<T, PackageBannerFindFirstArgs<ExtArgs>>): Prisma__PackageBannerClient<$Result.GetResult<Prisma.$PackageBannerPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PackageBanner that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackageBannerFindFirstOrThrowArgs} args - Arguments to find a PackageBanner
+     * @example
+     * // Get one PackageBanner
+     * const packageBanner = await prisma.packageBanner.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PackageBannerFindFirstOrThrowArgs>(args?: SelectSubset<T, PackageBannerFindFirstOrThrowArgs<ExtArgs>>): Prisma__PackageBannerClient<$Result.GetResult<Prisma.$PackageBannerPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more PackageBanners that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackageBannerFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PackageBanners
+     * const packageBanners = await prisma.packageBanner.findMany()
+     * 
+     * // Get first 10 PackageBanners
+     * const packageBanners = await prisma.packageBanner.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const packageBannerWithIdOnly = await prisma.packageBanner.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PackageBannerFindManyArgs>(args?: SelectSubset<T, PackageBannerFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PackageBannerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a PackageBanner.
+     * @param {PackageBannerCreateArgs} args - Arguments to create a PackageBanner.
+     * @example
+     * // Create one PackageBanner
+     * const PackageBanner = await prisma.packageBanner.create({
+     *   data: {
+     *     // ... data to create a PackageBanner
+     *   }
+     * })
+     * 
+     */
+    create<T extends PackageBannerCreateArgs>(args: SelectSubset<T, PackageBannerCreateArgs<ExtArgs>>): Prisma__PackageBannerClient<$Result.GetResult<Prisma.$PackageBannerPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many PackageBanners.
+     * @param {PackageBannerCreateManyArgs} args - Arguments to create many PackageBanners.
+     * @example
+     * // Create many PackageBanners
+     * const packageBanner = await prisma.packageBanner.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PackageBannerCreateManyArgs>(args?: SelectSubset<T, PackageBannerCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a PackageBanner.
+     * @param {PackageBannerDeleteArgs} args - Arguments to delete one PackageBanner.
+     * @example
+     * // Delete one PackageBanner
+     * const PackageBanner = await prisma.packageBanner.delete({
+     *   where: {
+     *     // ... filter to delete one PackageBanner
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PackageBannerDeleteArgs>(args: SelectSubset<T, PackageBannerDeleteArgs<ExtArgs>>): Prisma__PackageBannerClient<$Result.GetResult<Prisma.$PackageBannerPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one PackageBanner.
+     * @param {PackageBannerUpdateArgs} args - Arguments to update one PackageBanner.
+     * @example
+     * // Update one PackageBanner
+     * const packageBanner = await prisma.packageBanner.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PackageBannerUpdateArgs>(args: SelectSubset<T, PackageBannerUpdateArgs<ExtArgs>>): Prisma__PackageBannerClient<$Result.GetResult<Prisma.$PackageBannerPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more PackageBanners.
+     * @param {PackageBannerDeleteManyArgs} args - Arguments to filter PackageBanners to delete.
+     * @example
+     * // Delete a few PackageBanners
+     * const { count } = await prisma.packageBanner.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PackageBannerDeleteManyArgs>(args?: SelectSubset<T, PackageBannerDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PackageBanners.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackageBannerUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PackageBanners
+     * const packageBanner = await prisma.packageBanner.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PackageBannerUpdateManyArgs>(args: SelectSubset<T, PackageBannerUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one PackageBanner.
+     * @param {PackageBannerUpsertArgs} args - Arguments to update or create a PackageBanner.
+     * @example
+     * // Update or create a PackageBanner
+     * const packageBanner = await prisma.packageBanner.upsert({
+     *   create: {
+     *     // ... data to create a PackageBanner
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PackageBanner we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PackageBannerUpsertArgs>(args: SelectSubset<T, PackageBannerUpsertArgs<ExtArgs>>): Prisma__PackageBannerClient<$Result.GetResult<Prisma.$PackageBannerPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of PackageBanners.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackageBannerCountArgs} args - Arguments to filter PackageBanners to count.
+     * @example
+     * // Count the number of PackageBanners
+     * const count = await prisma.packageBanner.count({
+     *   where: {
+     *     // ... the filter for the PackageBanners we want to count
+     *   }
+     * })
+    **/
+    count<T extends PackageBannerCountArgs>(
+      args?: Subset<T, PackageBannerCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PackageBannerCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PackageBanner.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackageBannerAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PackageBannerAggregateArgs>(args: Subset<T, PackageBannerAggregateArgs>): Prisma.PrismaPromise<GetPackageBannerAggregateType<T>>
+
+    /**
+     * Group by PackageBanner.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackageBannerGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PackageBannerGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PackageBannerGroupByArgs['orderBy'] }
+        : { orderBy?: PackageBannerGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PackageBannerGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPackageBannerGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the PackageBanner model
+   */
+  readonly fields: PackageBannerFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PackageBanner.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PackageBannerClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the PackageBanner model
+   */
+  interface PackageBannerFieldRefs {
+    readonly id: FieldRef<"PackageBanner", 'String'>
+    readonly sectionLabel: FieldRef<"PackageBanner", 'String'>
+    readonly title1: FieldRef<"PackageBanner", 'String'>
+    readonly highlightedText: FieldRef<"PackageBanner", 'String'>
+    readonly title2: FieldRef<"PackageBanner", 'String'>
+    readonly description: FieldRef<"PackageBanner", 'String'>
+    readonly isActive: FieldRef<"PackageBanner", 'Boolean'>
+    readonly createdAt: FieldRef<"PackageBanner", 'DateTime'>
+    readonly updatedAt: FieldRef<"PackageBanner", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * PackageBanner findUnique
+   */
+  export type PackageBannerFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageBanner
+     */
+    select?: PackageBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageBanner
+     */
+    omit?: PackageBannerOmit<ExtArgs> | null
+    /**
+     * Filter, which PackageBanner to fetch.
+     */
+    where: PackageBannerWhereUniqueInput
+  }
+
+  /**
+   * PackageBanner findUniqueOrThrow
+   */
+  export type PackageBannerFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageBanner
+     */
+    select?: PackageBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageBanner
+     */
+    omit?: PackageBannerOmit<ExtArgs> | null
+    /**
+     * Filter, which PackageBanner to fetch.
+     */
+    where: PackageBannerWhereUniqueInput
+  }
+
+  /**
+   * PackageBanner findFirst
+   */
+  export type PackageBannerFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageBanner
+     */
+    select?: PackageBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageBanner
+     */
+    omit?: PackageBannerOmit<ExtArgs> | null
+    /**
+     * Filter, which PackageBanner to fetch.
+     */
+    where?: PackageBannerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PackageBanners to fetch.
+     */
+    orderBy?: PackageBannerOrderByWithRelationInput | PackageBannerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PackageBanners.
+     */
+    cursor?: PackageBannerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PackageBanners from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PackageBanners.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PackageBanners.
+     */
+    distinct?: PackageBannerScalarFieldEnum | PackageBannerScalarFieldEnum[]
+  }
+
+  /**
+   * PackageBanner findFirstOrThrow
+   */
+  export type PackageBannerFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageBanner
+     */
+    select?: PackageBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageBanner
+     */
+    omit?: PackageBannerOmit<ExtArgs> | null
+    /**
+     * Filter, which PackageBanner to fetch.
+     */
+    where?: PackageBannerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PackageBanners to fetch.
+     */
+    orderBy?: PackageBannerOrderByWithRelationInput | PackageBannerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PackageBanners.
+     */
+    cursor?: PackageBannerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PackageBanners from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PackageBanners.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PackageBanners.
+     */
+    distinct?: PackageBannerScalarFieldEnum | PackageBannerScalarFieldEnum[]
+  }
+
+  /**
+   * PackageBanner findMany
+   */
+  export type PackageBannerFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageBanner
+     */
+    select?: PackageBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageBanner
+     */
+    omit?: PackageBannerOmit<ExtArgs> | null
+    /**
+     * Filter, which PackageBanners to fetch.
+     */
+    where?: PackageBannerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PackageBanners to fetch.
+     */
+    orderBy?: PackageBannerOrderByWithRelationInput | PackageBannerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PackageBanners.
+     */
+    cursor?: PackageBannerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PackageBanners from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PackageBanners.
+     */
+    skip?: number
+    distinct?: PackageBannerScalarFieldEnum | PackageBannerScalarFieldEnum[]
+  }
+
+  /**
+   * PackageBanner create
+   */
+  export type PackageBannerCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageBanner
+     */
+    select?: PackageBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageBanner
+     */
+    omit?: PackageBannerOmit<ExtArgs> | null
+    /**
+     * The data needed to create a PackageBanner.
+     */
+    data: XOR<PackageBannerCreateInput, PackageBannerUncheckedCreateInput>
+  }
+
+  /**
+   * PackageBanner createMany
+   */
+  export type PackageBannerCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many PackageBanners.
+     */
+    data: PackageBannerCreateManyInput | PackageBannerCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PackageBanner update
+   */
+  export type PackageBannerUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageBanner
+     */
+    select?: PackageBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageBanner
+     */
+    omit?: PackageBannerOmit<ExtArgs> | null
+    /**
+     * The data needed to update a PackageBanner.
+     */
+    data: XOR<PackageBannerUpdateInput, PackageBannerUncheckedUpdateInput>
+    /**
+     * Choose, which PackageBanner to update.
+     */
+    where: PackageBannerWhereUniqueInput
+  }
+
+  /**
+   * PackageBanner updateMany
+   */
+  export type PackageBannerUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update PackageBanners.
+     */
+    data: XOR<PackageBannerUpdateManyMutationInput, PackageBannerUncheckedUpdateManyInput>
+    /**
+     * Filter which PackageBanners to update
+     */
+    where?: PackageBannerWhereInput
+    /**
+     * Limit how many PackageBanners to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PackageBanner upsert
+   */
+  export type PackageBannerUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageBanner
+     */
+    select?: PackageBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageBanner
+     */
+    omit?: PackageBannerOmit<ExtArgs> | null
+    /**
+     * The filter to search for the PackageBanner to update in case it exists.
+     */
+    where: PackageBannerWhereUniqueInput
+    /**
+     * In case the PackageBanner found by the `where` argument doesn't exist, create a new PackageBanner with this data.
+     */
+    create: XOR<PackageBannerCreateInput, PackageBannerUncheckedCreateInput>
+    /**
+     * In case the PackageBanner was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PackageBannerUpdateInput, PackageBannerUncheckedUpdateInput>
+  }
+
+  /**
+   * PackageBanner delete
+   */
+  export type PackageBannerDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageBanner
+     */
+    select?: PackageBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageBanner
+     */
+    omit?: PackageBannerOmit<ExtArgs> | null
+    /**
+     * Filter which PackageBanner to delete.
+     */
+    where: PackageBannerWhereUniqueInput
+  }
+
+  /**
+   * PackageBanner deleteMany
+   */
+  export type PackageBannerDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PackageBanners to delete
+     */
+    where?: PackageBannerWhereInput
+    /**
+     * Limit how many PackageBanners to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * PackageBanner without action
+   */
+  export type PackageBannerDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageBanner
+     */
+    select?: PackageBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageBanner
+     */
+    omit?: PackageBannerOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -34454,6 +36659,53 @@ export namespace Prisma {
   export type ContactSectionScalarFieldEnum = (typeof ContactSectionScalarFieldEnum)[keyof typeof ContactSectionScalarFieldEnum]
 
 
+  export const ShopBannerScalarFieldEnum: {
+    id: 'id',
+    sectionLabel: 'sectionLabel',
+    title1: 'title1',
+    highlightedText: 'highlightedText',
+    title2: 'title2',
+    description: 'description',
+    feature1Title: 'feature1Title',
+    feature1Description: 'feature1Description',
+    feature1Icon: 'feature1Icon',
+    feature2Title: 'feature2Title',
+    feature2Description: 'feature2Description',
+    feature2Icon: 'feature2Icon',
+    feature3Title: 'feature3Title',
+    feature3Description: 'feature3Description',
+    feature3Icon: 'feature3Icon',
+    feature4Title: 'feature4Title',
+    feature4Description: 'feature4Description',
+    feature4Icon: 'feature4Icon',
+    productSectionLabel: 'productSectionLabel',
+    productTitle1: 'productTitle1',
+    productHighlightedText: 'productHighlightedText',
+    productTitle2: 'productTitle2',
+    productDescription: 'productDescription',
+    isActive: 'isActive',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ShopBannerScalarFieldEnum = (typeof ShopBannerScalarFieldEnum)[keyof typeof ShopBannerScalarFieldEnum]
+
+
+  export const PackageBannerScalarFieldEnum: {
+    id: 'id',
+    sectionLabel: 'sectionLabel',
+    title1: 'title1',
+    highlightedText: 'highlightedText',
+    title2: 'title2',
+    description: 'description',
+    isActive: 'isActive',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type PackageBannerScalarFieldEnum = (typeof PackageBannerScalarFieldEnum)[keyof typeof PackageBannerScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -34925,6 +37177,47 @@ export namespace Prisma {
   export type ContactSectionOrderByRelevanceFieldEnum = (typeof ContactSectionOrderByRelevanceFieldEnum)[keyof typeof ContactSectionOrderByRelevanceFieldEnum]
 
 
+  export const ShopBannerOrderByRelevanceFieldEnum: {
+    id: 'id',
+    sectionLabel: 'sectionLabel',
+    title1: 'title1',
+    highlightedText: 'highlightedText',
+    title2: 'title2',
+    description: 'description',
+    feature1Title: 'feature1Title',
+    feature1Description: 'feature1Description',
+    feature1Icon: 'feature1Icon',
+    feature2Title: 'feature2Title',
+    feature2Description: 'feature2Description',
+    feature2Icon: 'feature2Icon',
+    feature3Title: 'feature3Title',
+    feature3Description: 'feature3Description',
+    feature3Icon: 'feature3Icon',
+    feature4Title: 'feature4Title',
+    feature4Description: 'feature4Description',
+    feature4Icon: 'feature4Icon',
+    productSectionLabel: 'productSectionLabel',
+    productTitle1: 'productTitle1',
+    productHighlightedText: 'productHighlightedText',
+    productTitle2: 'productTitle2',
+    productDescription: 'productDescription'
+  };
+
+  export type ShopBannerOrderByRelevanceFieldEnum = (typeof ShopBannerOrderByRelevanceFieldEnum)[keyof typeof ShopBannerOrderByRelevanceFieldEnum]
+
+
+  export const PackageBannerOrderByRelevanceFieldEnum: {
+    id: 'id',
+    sectionLabel: 'sectionLabel',
+    title1: 'title1',
+    highlightedText: 'highlightedText',
+    title2: 'title2',
+    description: 'description'
+  };
+
+  export type PackageBannerOrderByRelevanceFieldEnum = (typeof PackageBannerOrderByRelevanceFieldEnum)[keyof typeof PackageBannerOrderByRelevanceFieldEnum]
+
+
   /**
    * Field references
    */
@@ -35064,18 +37357,18 @@ export namespace Prisma {
   export type SuperAdminsWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     email?: string
+    phone?: string
     AND?: SuperAdminsWhereInput | SuperAdminsWhereInput[]
     OR?: SuperAdminsWhereInput[]
     NOT?: SuperAdminsWhereInput | SuperAdminsWhereInput[]
     name?: StringFilter<"SuperAdmins"> | string
-    phone?: StringNullableFilter<"SuperAdmins"> | string | null
     password?: StringFilter<"SuperAdmins"> | string
     isActive?: BoolFilter<"SuperAdmins"> | boolean
     createdAt?: DateTimeFilter<"SuperAdmins"> | Date | string
     updatedAt?: DateTimeFilter<"SuperAdmins"> | Date | string
     roles?: RoleListRelationFilter
     userRoles?: SuperAdminUserRoleListRelationFilter
-  }, "id" | "email">
+  }, "id" | "email" | "phone">
 
   export type SuperAdminsOrderByWithAggregationInput = {
     id?: SortOrder
@@ -37800,6 +40093,237 @@ export namespace Prisma {
     isActive?: BoolWithAggregatesFilter<"ContactSection"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"ContactSection"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"ContactSection"> | Date | string
+  }
+
+  export type ShopBannerWhereInput = {
+    AND?: ShopBannerWhereInput | ShopBannerWhereInput[]
+    OR?: ShopBannerWhereInput[]
+    NOT?: ShopBannerWhereInput | ShopBannerWhereInput[]
+    id?: StringFilter<"ShopBanner"> | string
+    sectionLabel?: StringNullableFilter<"ShopBanner"> | string | null
+    title1?: StringFilter<"ShopBanner"> | string
+    highlightedText?: StringNullableFilter<"ShopBanner"> | string | null
+    title2?: StringNullableFilter<"ShopBanner"> | string | null
+    description?: StringNullableFilter<"ShopBanner"> | string | null
+    feature1Title?: StringNullableFilter<"ShopBanner"> | string | null
+    feature1Description?: StringNullableFilter<"ShopBanner"> | string | null
+    feature1Icon?: StringNullableFilter<"ShopBanner"> | string | null
+    feature2Title?: StringNullableFilter<"ShopBanner"> | string | null
+    feature2Description?: StringNullableFilter<"ShopBanner"> | string | null
+    feature2Icon?: StringNullableFilter<"ShopBanner"> | string | null
+    feature3Title?: StringNullableFilter<"ShopBanner"> | string | null
+    feature3Description?: StringNullableFilter<"ShopBanner"> | string | null
+    feature3Icon?: StringNullableFilter<"ShopBanner"> | string | null
+    feature4Title?: StringNullableFilter<"ShopBanner"> | string | null
+    feature4Description?: StringNullableFilter<"ShopBanner"> | string | null
+    feature4Icon?: StringNullableFilter<"ShopBanner"> | string | null
+    productSectionLabel?: StringNullableFilter<"ShopBanner"> | string | null
+    productTitle1?: StringNullableFilter<"ShopBanner"> | string | null
+    productHighlightedText?: StringNullableFilter<"ShopBanner"> | string | null
+    productTitle2?: StringNullableFilter<"ShopBanner"> | string | null
+    productDescription?: StringNullableFilter<"ShopBanner"> | string | null
+    isActive?: BoolFilter<"ShopBanner"> | boolean
+    createdAt?: DateTimeFilter<"ShopBanner"> | Date | string
+    updatedAt?: DateTimeFilter<"ShopBanner"> | Date | string
+  }
+
+  export type ShopBannerOrderByWithRelationInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrderInput | SortOrder
+    title1?: SortOrder
+    highlightedText?: SortOrderInput | SortOrder
+    title2?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
+    feature1Title?: SortOrderInput | SortOrder
+    feature1Description?: SortOrderInput | SortOrder
+    feature1Icon?: SortOrderInput | SortOrder
+    feature2Title?: SortOrderInput | SortOrder
+    feature2Description?: SortOrderInput | SortOrder
+    feature2Icon?: SortOrderInput | SortOrder
+    feature3Title?: SortOrderInput | SortOrder
+    feature3Description?: SortOrderInput | SortOrder
+    feature3Icon?: SortOrderInput | SortOrder
+    feature4Title?: SortOrderInput | SortOrder
+    feature4Description?: SortOrderInput | SortOrder
+    feature4Icon?: SortOrderInput | SortOrder
+    productSectionLabel?: SortOrderInput | SortOrder
+    productTitle1?: SortOrderInput | SortOrder
+    productHighlightedText?: SortOrderInput | SortOrder
+    productTitle2?: SortOrderInput | SortOrder
+    productDescription?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _relevance?: ShopBannerOrderByRelevanceInput
+  }
+
+  export type ShopBannerWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ShopBannerWhereInput | ShopBannerWhereInput[]
+    OR?: ShopBannerWhereInput[]
+    NOT?: ShopBannerWhereInput | ShopBannerWhereInput[]
+    sectionLabel?: StringNullableFilter<"ShopBanner"> | string | null
+    title1?: StringFilter<"ShopBanner"> | string
+    highlightedText?: StringNullableFilter<"ShopBanner"> | string | null
+    title2?: StringNullableFilter<"ShopBanner"> | string | null
+    description?: StringNullableFilter<"ShopBanner"> | string | null
+    feature1Title?: StringNullableFilter<"ShopBanner"> | string | null
+    feature1Description?: StringNullableFilter<"ShopBanner"> | string | null
+    feature1Icon?: StringNullableFilter<"ShopBanner"> | string | null
+    feature2Title?: StringNullableFilter<"ShopBanner"> | string | null
+    feature2Description?: StringNullableFilter<"ShopBanner"> | string | null
+    feature2Icon?: StringNullableFilter<"ShopBanner"> | string | null
+    feature3Title?: StringNullableFilter<"ShopBanner"> | string | null
+    feature3Description?: StringNullableFilter<"ShopBanner"> | string | null
+    feature3Icon?: StringNullableFilter<"ShopBanner"> | string | null
+    feature4Title?: StringNullableFilter<"ShopBanner"> | string | null
+    feature4Description?: StringNullableFilter<"ShopBanner"> | string | null
+    feature4Icon?: StringNullableFilter<"ShopBanner"> | string | null
+    productSectionLabel?: StringNullableFilter<"ShopBanner"> | string | null
+    productTitle1?: StringNullableFilter<"ShopBanner"> | string | null
+    productHighlightedText?: StringNullableFilter<"ShopBanner"> | string | null
+    productTitle2?: StringNullableFilter<"ShopBanner"> | string | null
+    productDescription?: StringNullableFilter<"ShopBanner"> | string | null
+    isActive?: BoolFilter<"ShopBanner"> | boolean
+    createdAt?: DateTimeFilter<"ShopBanner"> | Date | string
+    updatedAt?: DateTimeFilter<"ShopBanner"> | Date | string
+  }, "id">
+
+  export type ShopBannerOrderByWithAggregationInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrderInput | SortOrder
+    title1?: SortOrder
+    highlightedText?: SortOrderInput | SortOrder
+    title2?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
+    feature1Title?: SortOrderInput | SortOrder
+    feature1Description?: SortOrderInput | SortOrder
+    feature1Icon?: SortOrderInput | SortOrder
+    feature2Title?: SortOrderInput | SortOrder
+    feature2Description?: SortOrderInput | SortOrder
+    feature2Icon?: SortOrderInput | SortOrder
+    feature3Title?: SortOrderInput | SortOrder
+    feature3Description?: SortOrderInput | SortOrder
+    feature3Icon?: SortOrderInput | SortOrder
+    feature4Title?: SortOrderInput | SortOrder
+    feature4Description?: SortOrderInput | SortOrder
+    feature4Icon?: SortOrderInput | SortOrder
+    productSectionLabel?: SortOrderInput | SortOrder
+    productTitle1?: SortOrderInput | SortOrder
+    productHighlightedText?: SortOrderInput | SortOrder
+    productTitle2?: SortOrderInput | SortOrder
+    productDescription?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ShopBannerCountOrderByAggregateInput
+    _max?: ShopBannerMaxOrderByAggregateInput
+    _min?: ShopBannerMinOrderByAggregateInput
+  }
+
+  export type ShopBannerScalarWhereWithAggregatesInput = {
+    AND?: ShopBannerScalarWhereWithAggregatesInput | ShopBannerScalarWhereWithAggregatesInput[]
+    OR?: ShopBannerScalarWhereWithAggregatesInput[]
+    NOT?: ShopBannerScalarWhereWithAggregatesInput | ShopBannerScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ShopBanner"> | string
+    sectionLabel?: StringNullableWithAggregatesFilter<"ShopBanner"> | string | null
+    title1?: StringWithAggregatesFilter<"ShopBanner"> | string
+    highlightedText?: StringNullableWithAggregatesFilter<"ShopBanner"> | string | null
+    title2?: StringNullableWithAggregatesFilter<"ShopBanner"> | string | null
+    description?: StringNullableWithAggregatesFilter<"ShopBanner"> | string | null
+    feature1Title?: StringNullableWithAggregatesFilter<"ShopBanner"> | string | null
+    feature1Description?: StringNullableWithAggregatesFilter<"ShopBanner"> | string | null
+    feature1Icon?: StringNullableWithAggregatesFilter<"ShopBanner"> | string | null
+    feature2Title?: StringNullableWithAggregatesFilter<"ShopBanner"> | string | null
+    feature2Description?: StringNullableWithAggregatesFilter<"ShopBanner"> | string | null
+    feature2Icon?: StringNullableWithAggregatesFilter<"ShopBanner"> | string | null
+    feature3Title?: StringNullableWithAggregatesFilter<"ShopBanner"> | string | null
+    feature3Description?: StringNullableWithAggregatesFilter<"ShopBanner"> | string | null
+    feature3Icon?: StringNullableWithAggregatesFilter<"ShopBanner"> | string | null
+    feature4Title?: StringNullableWithAggregatesFilter<"ShopBanner"> | string | null
+    feature4Description?: StringNullableWithAggregatesFilter<"ShopBanner"> | string | null
+    feature4Icon?: StringNullableWithAggregatesFilter<"ShopBanner"> | string | null
+    productSectionLabel?: StringNullableWithAggregatesFilter<"ShopBanner"> | string | null
+    productTitle1?: StringNullableWithAggregatesFilter<"ShopBanner"> | string | null
+    productHighlightedText?: StringNullableWithAggregatesFilter<"ShopBanner"> | string | null
+    productTitle2?: StringNullableWithAggregatesFilter<"ShopBanner"> | string | null
+    productDescription?: StringNullableWithAggregatesFilter<"ShopBanner"> | string | null
+    isActive?: BoolWithAggregatesFilter<"ShopBanner"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"ShopBanner"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"ShopBanner"> | Date | string
+  }
+
+  export type PackageBannerWhereInput = {
+    AND?: PackageBannerWhereInput | PackageBannerWhereInput[]
+    OR?: PackageBannerWhereInput[]
+    NOT?: PackageBannerWhereInput | PackageBannerWhereInput[]
+    id?: StringFilter<"PackageBanner"> | string
+    sectionLabel?: StringNullableFilter<"PackageBanner"> | string | null
+    title1?: StringFilter<"PackageBanner"> | string
+    highlightedText?: StringNullableFilter<"PackageBanner"> | string | null
+    title2?: StringNullableFilter<"PackageBanner"> | string | null
+    description?: StringNullableFilter<"PackageBanner"> | string | null
+    isActive?: BoolFilter<"PackageBanner"> | boolean
+    createdAt?: DateTimeFilter<"PackageBanner"> | Date | string
+    updatedAt?: DateTimeFilter<"PackageBanner"> | Date | string
+  }
+
+  export type PackageBannerOrderByWithRelationInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrderInput | SortOrder
+    title1?: SortOrder
+    highlightedText?: SortOrderInput | SortOrder
+    title2?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _relevance?: PackageBannerOrderByRelevanceInput
+  }
+
+  export type PackageBannerWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: PackageBannerWhereInput | PackageBannerWhereInput[]
+    OR?: PackageBannerWhereInput[]
+    NOT?: PackageBannerWhereInput | PackageBannerWhereInput[]
+    sectionLabel?: StringNullableFilter<"PackageBanner"> | string | null
+    title1?: StringFilter<"PackageBanner"> | string
+    highlightedText?: StringNullableFilter<"PackageBanner"> | string | null
+    title2?: StringNullableFilter<"PackageBanner"> | string | null
+    description?: StringNullableFilter<"PackageBanner"> | string | null
+    isActive?: BoolFilter<"PackageBanner"> | boolean
+    createdAt?: DateTimeFilter<"PackageBanner"> | Date | string
+    updatedAt?: DateTimeFilter<"PackageBanner"> | Date | string
+  }, "id">
+
+  export type PackageBannerOrderByWithAggregationInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrderInput | SortOrder
+    title1?: SortOrder
+    highlightedText?: SortOrderInput | SortOrder
+    title2?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: PackageBannerCountOrderByAggregateInput
+    _max?: PackageBannerMaxOrderByAggregateInput
+    _min?: PackageBannerMinOrderByAggregateInput
+  }
+
+  export type PackageBannerScalarWhereWithAggregatesInput = {
+    AND?: PackageBannerScalarWhereWithAggregatesInput | PackageBannerScalarWhereWithAggregatesInput[]
+    OR?: PackageBannerScalarWhereWithAggregatesInput[]
+    NOT?: PackageBannerScalarWhereWithAggregatesInput | PackageBannerScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"PackageBanner"> | string
+    sectionLabel?: StringNullableWithAggregatesFilter<"PackageBanner"> | string | null
+    title1?: StringWithAggregatesFilter<"PackageBanner"> | string
+    highlightedText?: StringNullableWithAggregatesFilter<"PackageBanner"> | string | null
+    title2?: StringNullableWithAggregatesFilter<"PackageBanner"> | string | null
+    description?: StringNullableWithAggregatesFilter<"PackageBanner"> | string | null
+    isActive?: BoolWithAggregatesFilter<"PackageBanner"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"PackageBanner"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"PackageBanner"> | Date | string
   }
 
   export type SuperAdminsCreateInput = {
@@ -41032,6 +43556,293 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type ShopBannerCreateInput = {
+    id?: string
+    sectionLabel?: string | null
+    title1: string
+    highlightedText?: string | null
+    title2?: string | null
+    description?: string | null
+    feature1Title?: string | null
+    feature1Description?: string | null
+    feature1Icon?: string | null
+    feature2Title?: string | null
+    feature2Description?: string | null
+    feature2Icon?: string | null
+    feature3Title?: string | null
+    feature3Description?: string | null
+    feature3Icon?: string | null
+    feature4Title?: string | null
+    feature4Description?: string | null
+    feature4Icon?: string | null
+    productSectionLabel?: string | null
+    productTitle1?: string | null
+    productHighlightedText?: string | null
+    productTitle2?: string | null
+    productDescription?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ShopBannerUncheckedCreateInput = {
+    id?: string
+    sectionLabel?: string | null
+    title1: string
+    highlightedText?: string | null
+    title2?: string | null
+    description?: string | null
+    feature1Title?: string | null
+    feature1Description?: string | null
+    feature1Icon?: string | null
+    feature2Title?: string | null
+    feature2Description?: string | null
+    feature2Icon?: string | null
+    feature3Title?: string | null
+    feature3Description?: string | null
+    feature3Icon?: string | null
+    feature4Title?: string | null
+    feature4Description?: string | null
+    feature4Icon?: string | null
+    productSectionLabel?: string | null
+    productTitle1?: string | null
+    productHighlightedText?: string | null
+    productTitle2?: string | null
+    productDescription?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ShopBannerUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    title1?: StringFieldUpdateOperationsInput | string
+    highlightedText?: NullableStringFieldUpdateOperationsInput | string | null
+    title2?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    feature1Title?: NullableStringFieldUpdateOperationsInput | string | null
+    feature1Description?: NullableStringFieldUpdateOperationsInput | string | null
+    feature1Icon?: NullableStringFieldUpdateOperationsInput | string | null
+    feature2Title?: NullableStringFieldUpdateOperationsInput | string | null
+    feature2Description?: NullableStringFieldUpdateOperationsInput | string | null
+    feature2Icon?: NullableStringFieldUpdateOperationsInput | string | null
+    feature3Title?: NullableStringFieldUpdateOperationsInput | string | null
+    feature3Description?: NullableStringFieldUpdateOperationsInput | string | null
+    feature3Icon?: NullableStringFieldUpdateOperationsInput | string | null
+    feature4Title?: NullableStringFieldUpdateOperationsInput | string | null
+    feature4Description?: NullableStringFieldUpdateOperationsInput | string | null
+    feature4Icon?: NullableStringFieldUpdateOperationsInput | string | null
+    productSectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    productTitle1?: NullableStringFieldUpdateOperationsInput | string | null
+    productHighlightedText?: NullableStringFieldUpdateOperationsInput | string | null
+    productTitle2?: NullableStringFieldUpdateOperationsInput | string | null
+    productDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ShopBannerUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    title1?: StringFieldUpdateOperationsInput | string
+    highlightedText?: NullableStringFieldUpdateOperationsInput | string | null
+    title2?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    feature1Title?: NullableStringFieldUpdateOperationsInput | string | null
+    feature1Description?: NullableStringFieldUpdateOperationsInput | string | null
+    feature1Icon?: NullableStringFieldUpdateOperationsInput | string | null
+    feature2Title?: NullableStringFieldUpdateOperationsInput | string | null
+    feature2Description?: NullableStringFieldUpdateOperationsInput | string | null
+    feature2Icon?: NullableStringFieldUpdateOperationsInput | string | null
+    feature3Title?: NullableStringFieldUpdateOperationsInput | string | null
+    feature3Description?: NullableStringFieldUpdateOperationsInput | string | null
+    feature3Icon?: NullableStringFieldUpdateOperationsInput | string | null
+    feature4Title?: NullableStringFieldUpdateOperationsInput | string | null
+    feature4Description?: NullableStringFieldUpdateOperationsInput | string | null
+    feature4Icon?: NullableStringFieldUpdateOperationsInput | string | null
+    productSectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    productTitle1?: NullableStringFieldUpdateOperationsInput | string | null
+    productHighlightedText?: NullableStringFieldUpdateOperationsInput | string | null
+    productTitle2?: NullableStringFieldUpdateOperationsInput | string | null
+    productDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ShopBannerCreateManyInput = {
+    id?: string
+    sectionLabel?: string | null
+    title1: string
+    highlightedText?: string | null
+    title2?: string | null
+    description?: string | null
+    feature1Title?: string | null
+    feature1Description?: string | null
+    feature1Icon?: string | null
+    feature2Title?: string | null
+    feature2Description?: string | null
+    feature2Icon?: string | null
+    feature3Title?: string | null
+    feature3Description?: string | null
+    feature3Icon?: string | null
+    feature4Title?: string | null
+    feature4Description?: string | null
+    feature4Icon?: string | null
+    productSectionLabel?: string | null
+    productTitle1?: string | null
+    productHighlightedText?: string | null
+    productTitle2?: string | null
+    productDescription?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ShopBannerUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    title1?: StringFieldUpdateOperationsInput | string
+    highlightedText?: NullableStringFieldUpdateOperationsInput | string | null
+    title2?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    feature1Title?: NullableStringFieldUpdateOperationsInput | string | null
+    feature1Description?: NullableStringFieldUpdateOperationsInput | string | null
+    feature1Icon?: NullableStringFieldUpdateOperationsInput | string | null
+    feature2Title?: NullableStringFieldUpdateOperationsInput | string | null
+    feature2Description?: NullableStringFieldUpdateOperationsInput | string | null
+    feature2Icon?: NullableStringFieldUpdateOperationsInput | string | null
+    feature3Title?: NullableStringFieldUpdateOperationsInput | string | null
+    feature3Description?: NullableStringFieldUpdateOperationsInput | string | null
+    feature3Icon?: NullableStringFieldUpdateOperationsInput | string | null
+    feature4Title?: NullableStringFieldUpdateOperationsInput | string | null
+    feature4Description?: NullableStringFieldUpdateOperationsInput | string | null
+    feature4Icon?: NullableStringFieldUpdateOperationsInput | string | null
+    productSectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    productTitle1?: NullableStringFieldUpdateOperationsInput | string | null
+    productHighlightedText?: NullableStringFieldUpdateOperationsInput | string | null
+    productTitle2?: NullableStringFieldUpdateOperationsInput | string | null
+    productDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ShopBannerUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    title1?: StringFieldUpdateOperationsInput | string
+    highlightedText?: NullableStringFieldUpdateOperationsInput | string | null
+    title2?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    feature1Title?: NullableStringFieldUpdateOperationsInput | string | null
+    feature1Description?: NullableStringFieldUpdateOperationsInput | string | null
+    feature1Icon?: NullableStringFieldUpdateOperationsInput | string | null
+    feature2Title?: NullableStringFieldUpdateOperationsInput | string | null
+    feature2Description?: NullableStringFieldUpdateOperationsInput | string | null
+    feature2Icon?: NullableStringFieldUpdateOperationsInput | string | null
+    feature3Title?: NullableStringFieldUpdateOperationsInput | string | null
+    feature3Description?: NullableStringFieldUpdateOperationsInput | string | null
+    feature3Icon?: NullableStringFieldUpdateOperationsInput | string | null
+    feature4Title?: NullableStringFieldUpdateOperationsInput | string | null
+    feature4Description?: NullableStringFieldUpdateOperationsInput | string | null
+    feature4Icon?: NullableStringFieldUpdateOperationsInput | string | null
+    productSectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    productTitle1?: NullableStringFieldUpdateOperationsInput | string | null
+    productHighlightedText?: NullableStringFieldUpdateOperationsInput | string | null
+    productTitle2?: NullableStringFieldUpdateOperationsInput | string | null
+    productDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PackageBannerCreateInput = {
+    id?: string
+    sectionLabel?: string | null
+    title1: string
+    highlightedText?: string | null
+    title2?: string | null
+    description?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PackageBannerUncheckedCreateInput = {
+    id?: string
+    sectionLabel?: string | null
+    title1: string
+    highlightedText?: string | null
+    title2?: string | null
+    description?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PackageBannerUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    title1?: StringFieldUpdateOperationsInput | string
+    highlightedText?: NullableStringFieldUpdateOperationsInput | string | null
+    title2?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PackageBannerUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    title1?: StringFieldUpdateOperationsInput | string
+    highlightedText?: NullableStringFieldUpdateOperationsInput | string | null
+    title2?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PackageBannerCreateManyInput = {
+    id?: string
+    sectionLabel?: string | null
+    title1: string
+    highlightedText?: string | null
+    title2?: string | null
+    description?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PackageBannerUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    title1?: StringFieldUpdateOperationsInput | string
+    highlightedText?: NullableStringFieldUpdateOperationsInput | string | null
+    title2?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PackageBannerUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sectionLabel?: NullableStringFieldUpdateOperationsInput | string | null
+    title1?: StringFieldUpdateOperationsInput | string
+    highlightedText?: NullableStringFieldUpdateOperationsInput | string | null
+    title2?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[]
@@ -43147,6 +45958,141 @@ export namespace Prisma {
     appointmentNumber?: SortOrder
     pharmacyNumber?: SortOrder
     billingNumber?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ShopBannerOrderByRelevanceInput = {
+    fields: ShopBannerOrderByRelevanceFieldEnum | ShopBannerOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type ShopBannerCountOrderByAggregateInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrder
+    title1?: SortOrder
+    highlightedText?: SortOrder
+    title2?: SortOrder
+    description?: SortOrder
+    feature1Title?: SortOrder
+    feature1Description?: SortOrder
+    feature1Icon?: SortOrder
+    feature2Title?: SortOrder
+    feature2Description?: SortOrder
+    feature2Icon?: SortOrder
+    feature3Title?: SortOrder
+    feature3Description?: SortOrder
+    feature3Icon?: SortOrder
+    feature4Title?: SortOrder
+    feature4Description?: SortOrder
+    feature4Icon?: SortOrder
+    productSectionLabel?: SortOrder
+    productTitle1?: SortOrder
+    productHighlightedText?: SortOrder
+    productTitle2?: SortOrder
+    productDescription?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ShopBannerMaxOrderByAggregateInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrder
+    title1?: SortOrder
+    highlightedText?: SortOrder
+    title2?: SortOrder
+    description?: SortOrder
+    feature1Title?: SortOrder
+    feature1Description?: SortOrder
+    feature1Icon?: SortOrder
+    feature2Title?: SortOrder
+    feature2Description?: SortOrder
+    feature2Icon?: SortOrder
+    feature3Title?: SortOrder
+    feature3Description?: SortOrder
+    feature3Icon?: SortOrder
+    feature4Title?: SortOrder
+    feature4Description?: SortOrder
+    feature4Icon?: SortOrder
+    productSectionLabel?: SortOrder
+    productTitle1?: SortOrder
+    productHighlightedText?: SortOrder
+    productTitle2?: SortOrder
+    productDescription?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ShopBannerMinOrderByAggregateInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrder
+    title1?: SortOrder
+    highlightedText?: SortOrder
+    title2?: SortOrder
+    description?: SortOrder
+    feature1Title?: SortOrder
+    feature1Description?: SortOrder
+    feature1Icon?: SortOrder
+    feature2Title?: SortOrder
+    feature2Description?: SortOrder
+    feature2Icon?: SortOrder
+    feature3Title?: SortOrder
+    feature3Description?: SortOrder
+    feature3Icon?: SortOrder
+    feature4Title?: SortOrder
+    feature4Description?: SortOrder
+    feature4Icon?: SortOrder
+    productSectionLabel?: SortOrder
+    productTitle1?: SortOrder
+    productHighlightedText?: SortOrder
+    productTitle2?: SortOrder
+    productDescription?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PackageBannerOrderByRelevanceInput = {
+    fields: PackageBannerOrderByRelevanceFieldEnum | PackageBannerOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type PackageBannerCountOrderByAggregateInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrder
+    title1?: SortOrder
+    highlightedText?: SortOrder
+    title2?: SortOrder
+    description?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PackageBannerMaxOrderByAggregateInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrder
+    title1?: SortOrder
+    highlightedText?: SortOrder
+    title2?: SortOrder
+    description?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PackageBannerMinOrderByAggregateInput = {
+    id?: SortOrder
+    sectionLabel?: SortOrder
+    title1?: SortOrder
+    highlightedText?: SortOrder
+    title2?: SortOrder
+    description?: SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
