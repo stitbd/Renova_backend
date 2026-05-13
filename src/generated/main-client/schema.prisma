@@ -18,14 +18,13 @@ model SuperAdmins {
   password String
   isActive Boolean @default(true)
 
-  roles     Role[]
   userRoles SuperAdminUserRole[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
-//===============patient model =============
+// ================= Patient =================
 
 enum PatientStatus {
   ACTIVE
@@ -58,7 +57,7 @@ model Patient {
   updatedAt DateTime @updatedAt
 }
 
-//===============================Doctor models ==============================
+// ================= Doctor =================
 
 enum DoctorStatus {
   ACTIVE
@@ -94,7 +93,7 @@ model Doctor {
 
   doctorCode String? @unique
   fullName   String
-  mobile     String?
+  mobile     String? @unique
   email      String  @unique
   password   String
   bmdcNumber String? @unique
@@ -108,10 +107,10 @@ model Doctor {
   onlineStatus       DoctorOnlineStatus @default(OFFLINE)
 
   outletId String?
-  outlet   outlet? @relation(fields: [outletId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  outlet   outlet? @relation(fields: [outletId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   specializationId String
-  specialization   DoctorSpecialization @relation(fields: [specializationId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  specialization   DoctorSpecialization @relation(fields: [specializationId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   documents DoctorDocument[]
   schedules DoctorSchedule[]
@@ -134,7 +133,7 @@ model DoctorDocument {
   verificationStatus VerificationStatus @default(PENDING)
 
   doctorId String
-  doctor   Doctor @relation(fields: [doctorId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  doctor   Doctor @relation(fields: [doctorId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   createdAt DateTime @default(now())
 }
@@ -149,11 +148,10 @@ model DoctorSchedule {
   startTime    String
   endTime      String
   slotDuration Int
-
-  status ScheduleStatus @default(ACTIVE)
+  status       ScheduleStatus @default(ACTIVE)
 }
 
-// =================Outlet_parent model ========================
+// ================= Outlet =================
 
 enum OutletStatus {
   ACTIVE
@@ -179,8 +177,9 @@ model outlet {
 
   status OutletStatus @default(ACTIVE)
 
-  users    OutletUser[]
-  roles    Role[]
+  users       OutletUser[]
+  outletRoles OutletRole[]
+
   patients Patient[]
   doctors  Doctor[]
 
@@ -190,107 +189,145 @@ model outlet {
   @@map("outlets")
 }
 
-//======================= Outlet_child model=====================
-
 model OutletUser {
   id       String @id @default(uuid())
   outletId String
 
   name     String
   email    String
-  phone    String?
+  phone    String? @unique
   password String
   isOwner  Boolean @default(false)
   isActive Boolean @default(true)
 
-  outlet    outlet           @relation(fields: [outletId], references: [id], onDelete: Cascade)
+  outlet    outlet           @relation(fields: [outletId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userRoles OutletUserRole[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   @@unique([email, outletId])
+  @@index([outletId])
 }
 
-// =======================Role and Permission models ==================
+// ================= Outlet RBAC =================
 
-enum RoleOwnerType {
-  OUTLET
-  SUPER_ADMIN
-}
+model OutletRole {
+  id String @id @default(uuid())
 
-model Role {
-  id        String        @id @default(uuid())
-  name      String
-  ownerType RoleOwnerType
+  outletId String
+  outlet   outlet @relation(fields: [outletId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
-  // owner references
-  outletId     String?
-  superAdminId String? // ✅ NEW
+  name String
 
-  outlet     outlet?      @relation(fields: [outletId], references: [id], onDelete: Cascade)
-  superAdmin SuperAdmins? @relation(fields: [superAdminId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-
-  rolePermissions     RolePermission[]
-  outletUserRoles     OutletUserRole[]
-  superAdminUserRoles SuperAdminUserRole[] // ✅ NEW
+  rolePermissions OutletRolePermission[]
+  userRoles       OutletUserRole[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   @@unique([name, outletId])
-  @@unique([name, superAdminId]) // ✅ NEW
+  @@index([outletId])
 }
 
-model Permission {
-  id          String  @id @default(uuid())
+model OutletPermission {
+  id String @id @default(uuid())
+
   key         String  @unique
   module      String
   description String?
 
-  rolePermissions RolePermission[]
+  rolePermissions OutletRolePermission[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
-model RolePermission {
-  id           String @id @default(uuid())
+model OutletRolePermission {
+  id String @id @default(uuid())
+
   roleId       String
   permissionId String
 
-  role       Role       @relation(fields: [roleId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  permission Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  role       OutletRole       @relation(fields: [roleId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  permission OutletPermission @relation(fields: [permissionId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   @@unique([roleId, permissionId])
+  @@index([roleId])
+  @@index([permissionId])
 }
 
-//=========== assaigning role to child users in  outlet and superAdmin==========================
-
 model OutletUserRole {
-  id           String @id @default(uuid())
+  id String @id @default(uuid())
+
   outletUserId String
   roleId       String
 
   outletUser OutletUser @relation(fields: [outletUserId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  role       Role       @relation(fields: [roleId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  role       OutletRole @relation(fields: [roleId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   createdAt DateTime @default(now())
 
   @@unique([outletUserId, roleId])
+  @@index([outletUserId])
+  @@index([roleId])
+}
+
+// ================= Super Admin RBAC =================
+
+model SuperAdminRole {
+  id String @id @default(uuid())
+
+  name String @unique
+
+  rolePermissions SuperAdminRolePermission[]
+  userRoles       SuperAdminUserRole[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SuperAdminPermission {
+  id String @id @default(uuid())
+
+  key         String  @unique
+  module      String
+  description String?
+
+  rolePermissions SuperAdminRolePermission[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SuperAdminRolePermission {
+  id String @id @default(uuid())
+
+  roleId       String
+  permissionId String
+
+  role       SuperAdminRole       @relation(fields: [roleId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  permission SuperAdminPermission @relation(fields: [permissionId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@unique([roleId, permissionId])
+  @@index([roleId])
+  @@index([permissionId])
 }
 
 model SuperAdminUserRole {
-  id           String @id @default(uuid())
+  id String @id @default(uuid())
+
   superAdminId String
   roleId       String
 
-  superAdmin SuperAdmins @relation(fields: [superAdminId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  role       Role        @relation(fields: [roleId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  superAdmin SuperAdmins    @relation(fields: [superAdminId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  role       SuperAdminRole @relation(fields: [roleId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   createdAt DateTime @default(now())
 
   @@unique([superAdminId, roleId])
+  @@index([superAdminId])
+  @@index([roleId])
 }
 
 // ==============================

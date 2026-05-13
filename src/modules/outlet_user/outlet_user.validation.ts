@@ -11,13 +11,11 @@ export const createOutletUserValidationSchema = z.object({
 });
 
 export const updateOutletUserValidationSchema =
-  createOutletUserValidationSchema
-    .partial()
-    .omit({
-      outletId: true,
-      password: true,
-      roleIds: true,
-    });
+  createOutletUserValidationSchema.partial().omit({
+    outletId: true,
+    password: true,
+    roleIds: true,
+  });
 
 export const assignOutletUserRolesValidationSchema = z.object({
   roleIds: z.array(z.string()).min(1, "At least one role is required"),

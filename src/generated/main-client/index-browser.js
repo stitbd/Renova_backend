@@ -232,17 +232,15 @@ exports.Prisma.OutletUserScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.RoleScalarFieldEnum = {
+exports.Prisma.OutletRoleScalarFieldEnum = {
   id: 'id',
-  name: 'name',
-  ownerType: 'ownerType',
   outletId: 'outletId',
-  superAdminId: 'superAdminId',
+  name: 'name',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.PermissionScalarFieldEnum = {
+exports.Prisma.OutletPermissionScalarFieldEnum = {
   id: 'id',
   key: 'key',
   module: 'module',
@@ -251,7 +249,7 @@ exports.Prisma.PermissionScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.RolePermissionScalarFieldEnum = {
+exports.Prisma.OutletRolePermissionScalarFieldEnum = {
   id: 'id',
   roleId: 'roleId',
   permissionId: 'permissionId'
@@ -262,6 +260,28 @@ exports.Prisma.OutletUserRoleScalarFieldEnum = {
   outletUserId: 'outletUserId',
   roleId: 'roleId',
   createdAt: 'createdAt'
+};
+
+exports.Prisma.SuperAdminRoleScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.SuperAdminPermissionScalarFieldEnum = {
+  id: 'id',
+  key: 'key',
+  module: 'module',
+  description: 'description',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.SuperAdminRolePermissionScalarFieldEnum = {
+  id: 'id',
+  roleId: 'roleId',
+  permissionId: 'permissionId'
 };
 
 exports.Prisma.SuperAdminUserRoleScalarFieldEnum = {
@@ -707,21 +727,20 @@ exports.Prisma.OutletUserOrderByRelevanceFieldEnum = {
   password: 'password'
 };
 
-exports.Prisma.RoleOrderByRelevanceFieldEnum = {
+exports.Prisma.OutletRoleOrderByRelevanceFieldEnum = {
   id: 'id',
-  name: 'name',
   outletId: 'outletId',
-  superAdminId: 'superAdminId'
+  name: 'name'
 };
 
-exports.Prisma.PermissionOrderByRelevanceFieldEnum = {
+exports.Prisma.OutletPermissionOrderByRelevanceFieldEnum = {
   id: 'id',
   key: 'key',
   module: 'module',
   description: 'description'
 };
 
-exports.Prisma.RolePermissionOrderByRelevanceFieldEnum = {
+exports.Prisma.OutletRolePermissionOrderByRelevanceFieldEnum = {
   id: 'id',
   roleId: 'roleId',
   permissionId: 'permissionId'
@@ -731,6 +750,24 @@ exports.Prisma.OutletUserRoleOrderByRelevanceFieldEnum = {
   id: 'id',
   outletUserId: 'outletUserId',
   roleId: 'roleId'
+};
+
+exports.Prisma.SuperAdminRoleOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.SuperAdminPermissionOrderByRelevanceFieldEnum = {
+  id: 'id',
+  key: 'key',
+  module: 'module',
+  description: 'description'
+};
+
+exports.Prisma.SuperAdminRolePermissionOrderByRelevanceFieldEnum = {
+  id: 'id',
+  roleId: 'roleId',
+  permissionId: 'permissionId'
 };
 
 exports.Prisma.SuperAdminUserRoleOrderByRelevanceFieldEnum = {
@@ -1065,11 +1102,6 @@ exports.OutletStatus = exports.$Enums.OutletStatus = {
   INACTIVE: 'INACTIVE'
 };
 
-exports.RoleOwnerType = exports.$Enums.RoleOwnerType = {
-  OUTLET: 'OUTLET',
-  SUPER_ADMIN: 'SUPER_ADMIN'
-};
-
 exports.Prisma.ModelName = {
   SuperAdmins: 'SuperAdmins',
   Patient: 'Patient',
@@ -1079,10 +1111,13 @@ exports.Prisma.ModelName = {
   DoctorSchedule: 'DoctorSchedule',
   outlet: 'outlet',
   OutletUser: 'OutletUser',
-  Role: 'Role',
-  Permission: 'Permission',
-  RolePermission: 'RolePermission',
+  OutletRole: 'OutletRole',
+  OutletPermission: 'OutletPermission',
+  OutletRolePermission: 'OutletRolePermission',
   OutletUserRole: 'OutletUserRole',
+  SuperAdminRole: 'SuperAdminRole',
+  SuperAdminPermission: 'SuperAdminPermission',
+  SuperAdminRolePermission: 'SuperAdminRolePermission',
   SuperAdminUserRole: 'SuperAdminUserRole',
   HomeBanner: 'HomeBanner',
   AboutSection: 'AboutSection',

@@ -8,6 +8,7 @@ import {
 export const outletController = {
     async create(req: Request, res: Response) {
         const validatedData = createOutletValidationSchema.parse(req.body);
+
         const result = await outletService.create(validatedData);
 
         res.status(201).json({
@@ -39,7 +40,11 @@ export const outletController = {
 
     async update(req: Request, res: Response) {
         const validatedData = updateOutletValidationSchema.parse(req.body);
-        const result = await outletService.update(req.params.id as string, validatedData);
+
+        const result = await outletService.update(
+            req.params.id as string,
+            validatedData
+        );
 
         res.status(200).json({
             success: true,
@@ -49,7 +54,7 @@ export const outletController = {
     },
 
     async delete(req: Request, res: Response) {
-        await outletService.delete(req.params.id as string  );
+        await outletService.delete(req.params.id as string);
 
         res.status(200).json({
             success: true,

@@ -20,7 +20,9 @@ export const outletUserController = {
     },
 
     async getAll(req: Request, res: Response) {
-        const result = await outletUserService.getAll( req.params.outletId as string);
+        const result = await outletUserService.getAll(
+            req.params.outletId as string
+        );
 
         res.status(200).json({
             success: true,

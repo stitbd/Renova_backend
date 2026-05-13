@@ -6,7 +6,29 @@ import { LoginInput, UserType } from "./auth.types";
 import { authConfig } from "./auth.constants";
 import { jwtHelpers } from "../../utils/JWT";
 
+const getRoles = (user: any, userType: UserType): string[] => {
+    if (userType !== UserType.OUTLET_USER && userType !== UserType.SUPER_ADMIN) {
+        return [];
+    }
 
+    return user.userRoles.map((userRole: any) => userRole.role.name);
+};
+
+const getPermissions = (user: any, userType: UserType): string[] => {
+    if (userType !== UserType.OUTLET_USER && userType !== UserType.SUPER_ADMIN) {
+        return [];
+    }
+
+    return [
+        ...new Set<string>(
+            user.userRoles.flatMap((userRole: any): string[] =>
+                userRole.role.rolePermissions.map(
+                    (rolePermission: any) => rolePermission.permission.key as string
+                )
+            )
+        ),
+    ];
+};
 
 const login = async (data: LoginInput) => {
     const { phone, password, userType } = data;
@@ -15,31 +37,19 @@ const login = async (data: LoginInput) => {
 
     switch (userType) {
         case UserType.SUPER_ADMIN:
-            user =
-                await authRepository.findSuperAdminByPhone(
-                    phone
-                );
+            user = await authRepository.findSuperAdminByPhone(phone);
             break;
 
         case UserType.OUTLET_USER:
-            user =
-                await authRepository.findOutletUserByPhone(
-                    phone
-                );
+            user = await authRepository.findOutletUserByPhone(phone);
             break;
 
         case UserType.DOCTOR:
-            user =
-                await authRepository.findDoctorByPhone(
-                    phone
-                );
+            user = await authRepository.findDoctorByPhone(phone);
             break;
 
         case UserType.PATIENT:
-            user =
-                await authRepository.findPatientByPhone(
-                    phone
-                );
+            user = await authRepository.findPatientByPhone(phone);
             break;
 
         default:
@@ -50,70 +60,56 @@ const login = async (data: LoginInput) => {
         throw new Error("Invalid credentials");
     }
 
-    // ===== status checking =====
-
-    if (userType === UserType.DOCTOR) {
-        if (user.status !== "ACTIVE") {
-            throw new Error("Doctor account inactive");
-        }
+    if (userType === UserType.DOCTOR && user.status !== "ACTIVE") {
+        throw new Error("Doctor account inactive");
     }
 
-    if (userType === UserType.PATIENT) {
-        if (
-            !user.isActive ||
-            user.status !== "ACTIVE"
-        ) {
-            throw new Error("Patient account inactive");
-        }
+    if (userType === UserType.PATIENT && (!user.isActive || user.status !== "ACTIVE")) {
+        throw new Error("Patient account inactive");
     }
 
     if (userType === UserType.OUTLET_USER) {
         if (!user.isActive) {
             throw new Error("Outlet user inactive");
         }
-    }
 
-    if (userType === UserType.SUPER_ADMIN) {
-        if (!user.isActive) {
-            throw new Error("Super admin inactive");
+        if (user.outlet?.status !== "ACTIVE") {
+            throw new Error("Outlet account inactive");
         }
     }
 
-    // ===== password check =====
+    if (userType === UserType.SUPER_ADMIN && !user.isActive) {
+        throw new Error("Super admin inactive");
+    }
 
-    const isPasswordMatched =
-        await bcrypt.compare(
-            password,
-            user.password
-        );
+    const isPasswordMatched = await bcrypt.compare(password, user.password);
 
     if (!isPasswordMatched) {
         throw new Error("Invalid credentials");
     }
 
-    // ===== permissions =====
-
-    let permissions: string[] = [];
-
-    if (
-        userType === UserType.OUTLET_USER ||
-        userType === UserType.SUPER_ADMIN
-    ) {
-        permissions =
-            user.userRoles.flatMap((userRole: any) =>
-                userRole.role.rolePermissions.map(
-                    (rp: any) => rp.permission.key
-                )
-            );
-    }
-
-    // ===== payload =====
+    const roles = getRoles(user, userType);
+    const permissions = getPermissions(user, userType);
 
     const payload = {
         id: user.id,
         phone,
-        role: userType,
+        userType,
+        roles,
         permissions,
+
+        ...(userType === UserType.OUTLET_USER && {
+            outletId: user.outletId,
+            isOwner: user.isOwner,
+        }),
+
+        ...(userType === UserType.DOCTOR && {
+            outletId: user.outletId,
+        }),
+
+        ...(userType === UserType.PATIENT && {
+            outletId: user.outletId,
+        }),
     };
 
     const config = authConfig[userType];
@@ -133,61 +129,72 @@ const login = async (data: LoginInput) => {
     return {
         accessToken,
         refreshToken,
-        refreshCookieName:
-            config.refreshCookieName,
+        refreshCookieName: config.refreshCookieName,
 
         user: {
             id: user.id,
-            role: userType,
+            userType,
 
-            ...(user.fullName && {
-                fullName: user.fullName,
+            ...(user.fullName && { fullName: user.fullName }),
+            ...(user.name && { name: user.name }),
+            ...(user.email && { email: user.email }),
+            ...(user.mobileNumber && { phone: user.mobileNumber }),
+            ...(user.mobile && { phone: user.mobile }),
+            ...(user.phone && { phone: user.phone }),
+
+            ...(userType === UserType.OUTLET_USER && {
+                outletId: user.outletId,
+                isOwner: user.isOwner,
+                outlet: user.outlet,
             }),
 
-            ...(user.name && {
-                name: user.name,
+            ...(userType === UserType.DOCTOR && {
+                outletId: user.outletId,
+                doctorCode: user.doctorCode,
+                specialization: user.specialization,
+                outlet: user.outlet,
             }),
 
-            ...(user.email && {
-                email: user.email,
+            ...(userType === UserType.PATIENT && {
+                outletId: user.outletId,
             }),
 
+            roles,
             permissions,
         },
     };
 };
 
-const refreshToken = async (
-    token: string,
-    userType: UserType
-) => {
+const refreshToken = async (token: string, userType: UserType) => {
     if (!token) {
-        throw new Error(
-            "Refresh token is required"
-        );
+        throw new Error("Refresh token is required");
     }
 
     const config = authConfig[userType];
 
-    const decoded = jwtHelpers.verifyToken(
-        token,
-        config.refreshSecret
-    ) as JwtPayload;
+    const decoded = jwtHelpers.verifyToken(token, config.refreshSecret) as JwtPayload;
 
     const payload = {
         id: decoded.id,
         phone: decoded.phone,
-        role: decoded.role,
-        permissions:
-            decoded.permissions || [],
+        userType: decoded.userType,
+        roles: decoded.roles || [],
+        permissions: decoded.permissions || [],
+
+        ...(decoded.outletId && {
+            outletId: decoded.outletId,
+        }),
+
+        ...(decoded.isOwner !== undefined && {
+            isOwner: decoded.isOwner,
+        }),
     };
 
-    const accessToken =
-        jwtHelpers.generateToken(
-            payload,
-            config.accessSecret,
-            config.accessExpiresIn
-        );
+    const accessToken = jwtHelpers.generateToken(
+        payload,
+        config.accessSecret,
+        config.accessExpiresIn
+    );
 
     return {
         accessToken,

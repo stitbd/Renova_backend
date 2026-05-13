@@ -1,15 +1,15 @@
 import { Prisma } from "../../generated/main-client";
 import { mainPrisma } from "../../databases/prisma";
 
-export const permissionRepository = {
-    create(data: Prisma.PermissionCreateInput) {
-        return mainPrisma.permission.create({
+export const outletPermissionRepository = {
+    create(data: Prisma.OutletPermissionCreateInput) {
+        return mainPrisma.outletPermission.create({
             data,
         });
     },
 
     findAll() {
-        return mainPrisma.permission.findMany({
+        return mainPrisma.outletPermission.findMany({
             orderBy: {
                 createdAt: "desc",
             },
@@ -17,11 +17,10 @@ export const permissionRepository = {
     },
 
     findById(id: string) {
-        return mainPrisma.permission.findUnique({
+        return mainPrisma.outletPermission.findUnique({
             where: {
                 id,
             },
-
             include: {
                 rolePermissions: {
                     include: {
@@ -33,28 +32,24 @@ export const permissionRepository = {
     },
 
     findByKey(key: string) {
-        return mainPrisma.permission.findUnique({
+        return mainPrisma.outletPermission.findUnique({
             where: {
                 key,
             },
         });
     },
 
-    update(
-        id: string,
-        data: Prisma.PermissionUpdateInput
-    ) {
-        return mainPrisma.permission.update({
+    update(id: string, data: Prisma.OutletPermissionUpdateInput) {
+        return mainPrisma.outletPermission.update({
             where: {
                 id,
             },
-
             data,
         });
     },
 
     delete(id: string) {
-        return mainPrisma.permission.delete({
+        return mainPrisma.outletPermission.delete({
             where: {
                 id,
             },

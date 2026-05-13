@@ -1,63 +1,57 @@
+import bcrypt from "bcrypt";
 import { env } from "../../configs/env";
 import { mainPrisma } from "../../databases/prisma";
-import { Prisma, RoleOwnerType } from "../../generated/main-client";
+import { Prisma } from "../../generated/main-client";
 import { outletRepository } from "./outlet.repository";
 import { CreateOutletInput, UpdateOutletInput } from "./outlet.types";
-import bcrypt from "bcrypt";
 
 export const outletService = {
     async create(data: CreateOutletInput) {
-        const outletEmailExists = await mainPrisma.outlet.findUnique({
-            where: {
-                email: data.email,
-            },
-        });
+        const outletEmailExists = await outletRepository.findByEmail(data.email);
 
         if (outletEmailExists) {
             throw new Error("Outlet already exists with this email");
         }
 
-        const outletUserEmailExists = await mainPrisma.outletUser.findFirst({
-            where: {
-                email: data.email,
-            },
-        });
+        const outletUserEmailExists = await outletRepository.findOutletUserByEmail(
+            data.email
+        );
 
         if (outletUserEmailExists) {
             throw new Error("Outlet user already exists with this email");
         }
 
-        const subdomainExists = await mainPrisma.outlet.findUnique({
-            where: {
-                subdomain: data.subdomain,
-            },
-        });
+        const outletUserPhoneExists = await outletRepository.findOutletUserByPhone(
+            data.contactNumber
+        );
+
+        if (outletUserPhoneExists) {
+            throw new Error("Outlet user already exists with this phone number");
+        }
+
+        const subdomainExists = await outletRepository.findBySubdomain(
+            data.subdomain
+        );
 
         if (subdomainExists) {
             throw new Error("Outlet already exists with this subdomain");
         }
 
-        const lastOutlet = await mainPrisma.outlet.findFirst({
-            orderBy: {
-                createdAt: "desc",
-            },
-            select: {
-                outletCode: true,
-            },
-        });
+        const lastOutlet = await outletRepository.findLastOutlet();
 
         let outletCode = "OUT_0001";
 
         if (lastOutlet?.outletCode) {
-            const lastNumber = parseInt(lastOutlet.outletCode.split("_")[1]);
-            const nextNumber = lastNumber + 1;
+            const lastNumber = Number(lastOutlet.outletCode.split("_")[1]);
 
-            outletCode = `OUT_${String(nextNumber).padStart(4, "0")}`;
+            if (!Number.isNaN(lastNumber)) {
+                outletCode = `OUT_${String(lastNumber + 1).padStart(4, "0")}`;
+            }
         }
 
         const hashedPassword = await bcrypt.hash(
             data.password,
-            env.bcrypt_salt_rounds
+            Number(env.bcrypt_salt_rounds)
         );
 
         return mainPrisma.$transaction(async (tx) => {
@@ -97,11 +91,10 @@ export const outletService = {
                 },
             });
 
-            const adminRole = await tx.role.create({
+            const adminRole = await tx.outletRole.create({
                 data: {
-                    name: "Admin",
-                    ownerType: RoleOwnerType.OUTLET,
                     outletId: outlet.id,
+                    name: "Admin",
                 },
             });
 
@@ -114,7 +107,17 @@ export const outletService = {
 
             return {
                 outlet,
-                outletUser,
+                outletUser: {
+                    id: outletUser.id,
+                    name: outletUser.name,
+                    email: outletUser.email,
+                    phone: outletUser.phone,
+                    isOwner: outletUser.isOwner,
+                    isActive: outletUser.isActive,
+                    outletId: outletUser.outletId,
+                    createdAt: outletUser.createdAt,
+                    updatedAt: outletUser.updatedAt,
+                },
                 role: adminRole,
             };
         });
@@ -143,39 +146,79 @@ export const outletService = {
             if (emailExists && emailExists.id !== id) {
                 throw new Error("Outlet already exists with this email");
             }
+
+            const outletUserEmailExists = await outletRepository.findOutletUserByEmail(
+                data.email
+            );
+
+            if (outletUserEmailExists && outletUserEmailExists.outletId !== id) {
+                throw new Error("Outlet user already exists with this email");
+            }
+        }
+
+        if (data.contactNumber) {
+            const outletUserPhoneExists = await outletRepository.findOutletUserByPhone(
+                data.contactNumber
+            );
+
+            if (outletUserPhoneExists && outletUserPhoneExists.outletId !== id) {
+                throw new Error("Outlet user already exists with this phone number");
+            }
         }
 
         if (data.subdomain) {
-            const subdomainExists = await outletRepository.findBySubdomain(data.subdomain);
+            const subdomainExists = await outletRepository.findBySubdomain(
+                data.subdomain
+            );
 
             if (subdomainExists && subdomainExists.id !== id) {
                 throw new Error("Outlet already exists with this subdomain");
             }
         }
 
-        return outletRepository.update(id, {
-            outletName: data.outletName,
-            subdomain: data.subdomain,
-            division: data.division,
-            district: data.district,
-            area: data.area,
-            address: data.address,
-            contactNumber: data.contactNumber,
-            email: data.email,
-            latitude:
-                data.latitude !== undefined
-                    ? new Prisma.Decimal(data.latitude)
-                    : undefined,
-            longitude:
-                data.longitude !== undefined
-                    ? new Prisma.Decimal(data.longitude)
-                    : undefined,
-            status: data.status,
+        return mainPrisma.$transaction(async (tx) => {
+            const updatedOutlet = await tx.outlet.update({
+                where: { id },
+                data: {
+                    outletName: data.outletName,
+                    subdomain: data.subdomain,
+                    division: data.division,
+                    district: data.district,
+                    area: data.area,
+                    address: data.address,
+                    contactNumber: data.contactNumber,
+                    email: data.email,
+                    latitude:
+                        data.latitude !== undefined
+                            ? new Prisma.Decimal(data.latitude)
+                            : undefined,
+                    longitude:
+                        data.longitude !== undefined
+                            ? new Prisma.Decimal(data.longitude)
+                            : undefined,
+                    status: data.status,
+                },
+            });
+
+            await tx.outletUser.updateMany({
+                where: {
+                    outletId: id,
+                    isOwner: true,
+                },
+                data: {
+                    name: data.outletName,
+                    email: data.email,
+                    phone: data.contactNumber,
+                },
+            });
+
+            return updatedOutlet;
         });
     },
 
     async delete(id: string) {
         await this.getById(id);
+
         return outletRepository.delete(id);
     },
 };

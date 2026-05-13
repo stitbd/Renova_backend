@@ -16,17 +16,23 @@ export const superAdminService = {
             throw new Error("Super admin already exists with this email");
         }
 
+        const phoneExists = await superAdminRepository.findByPhone(data.phone);
+
+        if (phoneExists) {
+            throw new Error("Super admin already exists with this phone");
+        }
+
         if (data.roleIds?.length) {
             const roles = await superAdminRepository.findRolesByIds(data.roleIds);
 
             if (roles.length !== data.roleIds.length) {
-                throw new Error("One or more roles are invalid");
+                throw new Error("One or more super admin roles are invalid");
             }
         }
 
         const hashedPassword = await bcrypt.hash(
             data.password,
-            env.bcrypt_salt_rounds
+            Number(env.bcrypt_salt_rounds)
         );
 
         return mainPrisma.$transaction(async (tx) => {
@@ -51,7 +57,9 @@ export const superAdminService = {
             }
 
             return tx.superAdmins.findUnique({
-                where: { id: superAdmin.id },
+                where: {
+                    id: superAdmin.id,
+                },
                 select: {
                     id: true,
                     name: true,
@@ -103,6 +111,14 @@ export const superAdminService = {
             }
         }
 
+        if (data.phone) {
+            const phoneExists = await superAdminRepository.findByPhone(data.phone);
+
+            if (phoneExists && phoneExists.id !== id) {
+                throw new Error("Super admin already exists with this phone");
+            }
+        }
+
         return superAdminRepository.update(id, {
             name: data.name,
             email: data.email,
@@ -117,7 +133,7 @@ export const superAdminService = {
         const roles = await superAdminRepository.findRolesByIds(data.roleIds);
 
         if (roles.length !== data.roleIds.length) {
-            throw new Error("One or more roles are invalid");
+            throw new Error("One or more super admin roles are invalid");
         }
 
         return mainPrisma.$transaction(async (tx) => {

@@ -1,5 +1,4 @@
 import { mainPrisma } from "../../databases/prisma";
-import { RoleOwnerType } from "../../generated/main-client";
 import { superAdminRoleRepository } from "./super_admin_role.repository";
 import {
     AssignSuperAdminRolePermissionsInput,
@@ -21,20 +20,19 @@ export const superAdminRoleService = {
             );
 
             if (permissions.length !== data.permissionIds.length) {
-                throw new Error("One or more permissions are invalid");
+                throw new Error("One or more super admin permissions are invalid");
             }
         }
 
         return mainPrisma.$transaction(async (tx) => {
-            const role = await tx.role.create({
+            const role = await tx.superAdminRole.create({
                 data: {
                     name: data.name,
-                    ownerType: RoleOwnerType.SUPER_ADMIN,
                 },
             });
 
             if (data.permissionIds?.length) {
-                await tx.rolePermission.createMany({
+                await tx.superAdminRolePermission.createMany({
                     data: data.permissionIds.map((permissionId) => ({
                         roleId: role.id,
                         permissionId,
@@ -43,12 +41,19 @@ export const superAdminRoleService = {
                 });
             }
 
-            return tx.role.findUnique({
-                where: { id: role.id },
+            return tx.superAdminRole.findUnique({
+                where: {
+                    id: role.id,
+                },
                 include: {
                     rolePermissions: {
                         include: {
                             permission: true,
+                        },
+                    },
+                    userRoles: {
+                        include: {
+                            superAdmin: true,
                         },
                     },
                 },
@@ -97,17 +102,17 @@ export const superAdminRoleService = {
         );
 
         if (permissions.length !== data.permissionIds.length) {
-            throw new Error("One or more permissions are invalid");
+            throw new Error("One or more super admin permissions are invalid");
         }
 
         return mainPrisma.$transaction(async (tx) => {
-            await tx.rolePermission.deleteMany({
+            await tx.superAdminRolePermission.deleteMany({
                 where: {
                     roleId: id,
                 },
             });
 
-            await tx.rolePermission.createMany({
+            await tx.superAdminRolePermission.createMany({
                 data: data.permissionIds.map((permissionId) => ({
                     roleId: id,
                     permissionId,
@@ -115,12 +120,19 @@ export const superAdminRoleService = {
                 skipDuplicates: true,
             });
 
-            return tx.role.findUnique({
-                where: { id },
+            return tx.superAdminRole.findUnique({
+                where: {
+                    id,
+                },
                 include: {
                     rolePermissions: {
                         include: {
                             permission: true,
+                        },
+                    },
+                    userRoles: {
+                        include: {
+                            superAdmin: true,
                         },
                     },
                 },
@@ -131,7 +143,7 @@ export const superAdminRoleService = {
     async delete(id: string) {
         const role = await this.getById(id);
 
-        if (role.superAdminUserRoles.length > 0) {
+        if (role.userRoles.length > 0) {
             throw new Error("Cannot delete role assigned to super admins");
         }
 

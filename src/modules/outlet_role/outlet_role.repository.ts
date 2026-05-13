@@ -1,9 +1,9 @@
 import { Prisma } from "../../generated/main-client";
 import { mainPrisma } from "../../databases/prisma";
 
-export const roleRepository = {
-    create(data: Prisma.RoleCreateInput) {
-        return mainPrisma.role.create({
+export const outletRoleRepository = {
+    create(data: Prisma.OutletRoleCreateInput) {
+        return mainPrisma.outletRole.create({
             data,
             include: {
                 rolePermissions: {
@@ -11,41 +11,7 @@ export const roleRepository = {
                         permission: true,
                     },
                 },
-            },
-        });
-    },
-
-    findAll(outletId: string) {
-        return mainPrisma.role.findMany({
-            where: {
-                outletId,
-            },
-            orderBy: {
-                createdAt: "desc",
-            },
-
-            include: {
-                rolePermissions: {
-                    include: {
-                        permission: true,
-                    },
-                },
-            },
-        });
-    },
-
-    findById(id: string) {
-        return mainPrisma.role.findUnique({
-            where: { id },
-
-            include: {
-                rolePermissions: {
-                    include: {
-                        permission: true,
-                    },
-                },
-
-                outletUserRoles: {
+                userRoles: {
                     include: {
                         outletUser: true,
                     },
@@ -54,11 +20,49 @@ export const roleRepository = {
         });
     },
 
-    findByNameAndOutlet(
-        name: string,
-        outletId: string
-    ) {
-        return mainPrisma.role.findFirst({
+    findAll(outletId: string) {
+        return mainPrisma.outletRole.findMany({
+            where: {
+                outletId,
+            },
+            orderBy: {
+                createdAt: "desc",
+            },
+            include: {
+                rolePermissions: {
+                    include: {
+                        permission: true,
+                    },
+                },
+                userRoles: {
+                    include: {
+                        outletUser: true,
+                    },
+                },
+            },
+        });
+    },
+
+    findById(id: string) {
+        return mainPrisma.outletRole.findUnique({
+            where: { id },
+            include: {
+                rolePermissions: {
+                    include: {
+                        permission: true,
+                    },
+                },
+                userRoles: {
+                    include: {
+                        outletUser: true,
+                    },
+                },
+            },
+        });
+    },
+
+    findByNameAndOutlet(name: string, outletId: string) {
+        return mainPrisma.outletRole.findFirst({
             where: {
                 name,
                 outletId,
@@ -75,7 +79,7 @@ export const roleRepository = {
     },
 
     findPermissionsByIds(permissionIds: string[]) {
-        return mainPrisma.permission.findMany({
+        return mainPrisma.outletPermission.findMany({
             where: {
                 id: {
                     in: permissionIds,
@@ -84,15 +88,27 @@ export const roleRepository = {
         });
     },
 
-    update(id: string, data: Prisma.RoleUpdateInput) {
-        return mainPrisma.role.update({
+    update(id: string, data: Prisma.OutletRoleUpdateInput) {
+        return mainPrisma.outletRole.update({
             where: { id },
             data,
+            include: {
+                rolePermissions: {
+                    include: {
+                        permission: true,
+                    },
+                },
+                userRoles: {
+                    include: {
+                        outletUser: true,
+                    },
+                },
+            },
         });
     },
 
     delete(id: string) {
-        return mainPrisma.role.delete({
+        return mainPrisma.outletRole.delete({
             where: { id },
         });
     },

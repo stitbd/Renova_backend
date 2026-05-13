@@ -2,11 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { mainPrisma } from "../databases/prisma";
 
 const checkPermission = (...requiredPermissions: string[]) => {
-    return async (
-        req: Request,
-        res: Response,
-        next: NextFunction
-    ) => {
+    return async (req: Request, res: Response, next: NextFunction) => {
         try {
             const user = req.user;
 
@@ -14,152 +10,106 @@ const checkPermission = (...requiredPermissions: string[]) => {
                 throw new Error("Unauthorized!");
             }
 
-            // no permission required
             if (!requiredPermissions.length) {
                 return next();
             }
 
-            // ===============================
-            // SUPER ADMIN
-            // ===============================
-
             if (user.role === "SUPER_ADMIN") {
-
-                const superAdmin =
-                    await mainPrisma.superAdmins.findUnique({
-                        where: {
-                            id: user.id,
-                        },
-
-                        include: {
-                            userRoles: {
-                                include: {
-                                    role: {
-                                        include: {
-                                            rolePermissions: {
-                                                include: {
-                                                    permission: true,
-                                                },
+                const superAdmin = await mainPrisma.superAdmins.findUnique({
+                    where: {
+                        id: user.id,
+                    },
+                    include: {
+                        userRoles: {
+                            include: {
+                                role: {
+                                    include: {
+                                        rolePermissions: {
+                                            include: {
+                                                permission: true,
                                             },
                                         },
                                     },
                                 },
                             },
                         },
-                    });
+                    },
+                });
 
                 if (!superAdmin || !superAdmin.isActive) {
-                    throw new Error(
-                        "Super admin account not found or inactive!"
-                    );
+                    throw new Error("Super admin account not found or inactive!");
                 }
 
-                const superAdminPermissions =
-                    superAdmin.userRoles.flatMap(
-                        (userRole) =>
-                            userRole.role.rolePermissions.map(
-                                (rolePermission) =>
-                                    rolePermission.permission.key
-                            )
-                    );
+                const permissions = superAdmin.userRoles.flatMap((userRole) =>
+                    userRole.role.rolePermissions.map(
+                        (rolePermission) => rolePermission.permission.key
+                    )
+                );
 
-                const hasPermission =
-                    requiredPermissions.every(
-                        (permission) =>
-                            superAdminPermissions.includes(
-                                permission
-                            )
-                    );
+                const hasPermission = requiredPermissions.every((permission) =>
+                    permissions.includes(permission)
+                );
 
                 if (!hasPermission) {
-                    throw new Error(
-                        "Forbidden! You do not have permission."
-                    );
+                    throw new Error("Forbidden! You do not have permission.");
                 }
 
                 return next();
             }
 
-            // ===============================
-            // OUTLET OWNER
-            // ===============================
-
-            if (
-                user.role === "OUTLET_USER" &&
-                user.isOwner === true
-            ) {
-                return next();
-            }
-
-            // ===============================
-            // OUTLET STAFF USER
-            // ===============================
-
             if (user.role === "OUTLET_USER") {
-
-                const outletUser =
-                    await mainPrisma.outletUser.findUnique({
-                        where: {
-                            id: user.id,
-                        },
-
-                        include: {
-                            userRoles: {
-                                include: {
-                                    role: {
-                                        include: {
-                                            rolePermissions: {
-                                                include: {
-                                                    permission: true,
-                                                },
+                const outletUser = await mainPrisma.outletUser.findUnique({
+                    where: {
+                        id: user.id,
+                    },
+                    include: {
+                        outlet: true,
+                        userRoles: {
+                            include: {
+                                role: {
+                                    include: {
+                                        rolePermissions: {
+                                            include: {
+                                                permission: true,
                                             },
                                         },
                                     },
                                 },
                             },
                         },
-                    });
+                    },
+                });
 
                 if (!outletUser || !outletUser.isActive) {
-                    throw new Error(
-                        "Outlet user account not found or inactive!"
-                    );
+                    throw new Error("Outlet user account not found or inactive!");
                 }
 
-                const outletPermissions =
-                    outletUser.userRoles.flatMap(
-                        (userRole) =>
-                            userRole.role.rolePermissions.map(
-                                (rolePermission) =>
-                                    rolePermission.permission.key
-                            )
-                    );
+                if (outletUser.outlet.status !== "ACTIVE") {
+                    throw new Error("Outlet account is inactive!");
+                }
 
-                const hasPermission =
-                    requiredPermissions.every(
-                        (permission) =>
-                            outletPermissions.includes(
-                                permission
-                            )
-                    );
+                if (outletUser.isOwner) {
+                    return next();
+                }
+
+                const permissions = outletUser.userRoles.flatMap((userRole) =>
+                    userRole.role.rolePermissions.map(
+                        (rolePermission) => rolePermission.permission.key
+                    )
+                );
+
+                const hasPermission = requiredPermissions.every((permission) =>
+                    permissions.includes(permission)
+                );
 
                 if (!hasPermission) {
-                    throw new Error(
-                        "Forbidden! You do not have permission."
-                    );
+                    throw new Error("Forbidden! You do not have permission.");
                 }
 
                 return next();
             }
 
-            // =============================
-            // FALLBACK
-            // =============================
-
-            throw new Error(
-                "Forbidden! Permission denied."
-            );
-
+            throw new Error("Forbidden! Permission denied.");
         } catch (err) {
             next(err);
         }

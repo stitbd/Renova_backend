@@ -1,26 +1,36 @@
 import { mainPrisma } from "../../databases/prisma";
 import { Prisma } from "../../generated/main-client";
 
+const outletUserSelect = {
+    id: true,
+    name: true,
+    email: true,
+    phone: true,
+    isOwner: true,
+    isActive: true,
+    outlet: true,
+    userRoles: {
+        include: {
+            role: {
+                include: {
+                    rolePermissions: {
+                        include: {
+                            permission: true,
+                        },
+                    },
+                },
+            },
+        },
+    },
+    createdAt: true,
+    updatedAt: true,
+};
+
 export const outletUserRepository = {
     create(data: Prisma.OutletUserCreateInput) {
         return mainPrisma.outletUser.create({
             data,
-            select: {
-                id: true,
-                name: true,
-                email: true,
-                phone: true,
-                isOwner: true,
-                isActive: true,
-                outlet: true,
-                userRoles: {
-                    include: {
-                        role: true,
-                    },
-                },
-                createdAt: true,
-                updatedAt: true,
-            },
+            select: outletUserSelect,
         });
     },
 
@@ -32,52 +42,14 @@ export const outletUserRepository = {
             orderBy: {
                 createdAt: "desc",
             },
-            select: {
-                id: true,
-                name: true,
-                email: true,
-                phone: true,
-                isOwner: true,
-                isActive: true,
-                outlet: true,
-                userRoles: {
-                    include: {
-                        role: true,
-                    },
-                },
-                createdAt: true,
-                updatedAt: true,
-            },
+            select: outletUserSelect,
         });
     },
 
     findById(id: string) {
         return mainPrisma.outletUser.findUnique({
             where: { id },
-            select: {
-                id: true,
-                name: true,
-                email: true,
-                phone: true,
-                isOwner: true,
-                isActive: true,
-                outlet: true,
-                userRoles: {
-                    include: {
-                        role: {
-                            include: {
-                                rolePermissions: {
-                                    include: {
-                                        permission: true,
-                                    },
-                                },
-                            },
-                        },
-                    },
-                },
-                createdAt: true,
-                updatedAt: true,
-            },
+            select: outletUserSelect,
         });
     },
 
@@ -92,14 +64,24 @@ export const outletUserRepository = {
         });
     },
 
+    findByPhone(phone: string) {
+        return mainPrisma.outletUser.findFirst({
+            where: {
+                phone,
+            },
+        });
+    },
+
     findOutletById(outletId: string) {
         return mainPrisma.outlet.findUnique({
-            where: { id: outletId },
+            where: {
+                id: outletId,
+            },
         });
     },
 
     findRolesByIds(roleIds: string[], outletId: string) {
-        return mainPrisma.role.findMany({
+        return mainPrisma.outletRole.findMany({
             where: {
                 id: {
                     in: roleIds,
@@ -113,17 +95,7 @@ export const outletUserRepository = {
         return mainPrisma.outletUser.update({
             where: { id },
             data,
-            select: {
-                id: true,
-                name: true,
-                email: true,
-                phone: true,
-                isOwner: true,
-                isActive: true,
-                outlet: true,
-                createdAt: true,
-                updatedAt: true,
-            },
+            select: outletUserSelect,
         });
     },
 

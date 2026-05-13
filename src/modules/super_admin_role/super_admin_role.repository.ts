@@ -1,9 +1,9 @@
+import { Prisma } from "../../generated/main-client";
 import { mainPrisma } from "../../databases/prisma";
-import { Prisma, RoleOwnerType } from "../../generated/main-client";
 
 export const superAdminRoleRepository = {
-    create(data: Prisma.RoleCreateInput) {
-        return mainPrisma.role.create({
+    create(data: Prisma.SuperAdminRoleCreateInput) {
+        return mainPrisma.superAdminRole.create({
             data,
             include: {
                 rolePermissions: {
@@ -11,15 +11,17 @@ export const superAdminRoleRepository = {
                         permission: true,
                     },
                 },
+                userRoles: {
+                    include: {
+                        superAdmin: true,
+                    },
+                },
             },
         });
     },
 
     findAll() {
-        return mainPrisma.role.findMany({
-            where: {
-                ownerType: RoleOwnerType.SUPER_ADMIN,
-            },
+        return mainPrisma.superAdminRole.findMany({
             orderBy: {
                 createdAt: "desc",
             },
@@ -29,23 +31,25 @@ export const superAdminRoleRepository = {
                         permission: true,
                     },
                 },
+                userRoles: {
+                    include: {
+                        superAdmin: true,
+                    },
+                },
             },
         });
     },
 
     findById(id: string) {
-        return mainPrisma.role.findFirst({
-            where: {
-                id,
-                ownerType: RoleOwnerType.SUPER_ADMIN,
-            },
+        return mainPrisma.superAdminRole.findUnique({
+            where: { id },
             include: {
                 rolePermissions: {
                     include: {
                         permission: true,
                     },
                 },
-                superAdminUserRoles: {
+                userRoles: {
                     include: {
                         superAdmin: true,
                     },
@@ -55,16 +59,13 @@ export const superAdminRoleRepository = {
     },
 
     findByName(name: string) {
-        return mainPrisma.role.findFirst({
-            where: {
-                name,
-                ownerType: RoleOwnerType.SUPER_ADMIN,
-            },
+        return mainPrisma.superAdminRole.findUnique({
+            where: { name },
         });
     },
 
     findPermissionsByIds(permissionIds: string[]) {
-        return mainPrisma.permission.findMany({
+        return mainPrisma.superAdminPermission.findMany({
             where: {
                 id: {
                     in: permissionIds,
@@ -73,15 +74,27 @@ export const superAdminRoleRepository = {
         });
     },
 
-    update(id: string, data: Prisma.RoleUpdateInput) {
-        return mainPrisma.role.update({
+    update(id: string, data: Prisma.SuperAdminRoleUpdateInput) {
+        return mainPrisma.superAdminRole.update({
             where: { id },
             data,
+            include: {
+                rolePermissions: {
+                    include: {
+                        permission: true,
+                    },
+                },
+                userRoles: {
+                    include: {
+                        superAdmin: true,
+                    },
+                },
+            },
         });
     },
 
     delete(id: string) {
-        return mainPrisma.role.delete({
+        return mainPrisma.superAdminRole.delete({
             where: { id },
         });
     },

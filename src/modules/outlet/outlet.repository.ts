@@ -7,7 +7,15 @@ export const outletRepository = {
             data,
             include: {
                 users: true,
-                roles: true,
+                outletRoles: {
+                    include: {
+                        rolePermissions: {
+                            include: {
+                                permission: true,
+                            },
+                        },
+                    },
+                },
             },
         });
     },
@@ -19,7 +27,7 @@ export const outletRepository = {
             },
             include: {
                 users: true,
-                roles: true,
+                outletRoles: true,
             },
         });
     },
@@ -29,7 +37,15 @@ export const outletRepository = {
             where: { id },
             include: {
                 users: true,
-                roles: true,
+                outletRoles: {
+                    include: {
+                        rolePermissions: {
+                            include: {
+                                permission: true,
+                            },
+                        },
+                    },
+                },
                 patients: true,
                 doctors: true,
             },
@@ -59,6 +75,12 @@ export const outletRepository = {
         });
     },
 
+    findOutletUserByPhone(phone: string) {
+        return mainPrisma.outletUser.findFirst({
+            where: { phone },
+        });
+    },
+
     findBySubdomain(subdomain: string) {
         return mainPrisma.outlet.findUnique({
             where: { subdomain },
@@ -69,6 +91,10 @@ export const outletRepository = {
         return mainPrisma.outlet.update({
             where: { id },
             data,
+            include: {
+                users: true,
+                outletRoles: true,
+            },
         });
     },
 

@@ -1,32 +1,34 @@
 import { mainPrisma } from "../../databases/prisma";
-import { Prisma, RoleOwnerType } from "../../generated/main-client";
+import { Prisma } from "../../generated/main-client";
+
+const superAdminSelect = {
+    id: true,
+    name: true,
+    email: true,
+    phone: true,
+    isActive: true,
+    userRoles: {
+        include: {
+            role: {
+                include: {
+                    rolePermissions: {
+                        include: {
+                            permission: true,
+                        },
+                    },
+                },
+            },
+        },
+    },
+    createdAt: true,
+    updatedAt: true,
+};
 
 export const superAdminRepository = {
     create(data: Prisma.SuperAdminsCreateInput) {
         return mainPrisma.superAdmins.create({
             data,
-            select: {
-                id: true,
-                name: true,
-                email: true,
-                phone: true,
-                isActive: true,
-                userRoles: {
-                    include: {
-                        role: {
-                            include: {
-                                rolePermissions: {
-                                    include: {
-                                        permission: true,
-                                    },
-                                },
-                            },
-                        },
-                    },
-                },
-                createdAt: true,
-                updatedAt: true,
-            },
+            select: superAdminSelect,
         });
     },
 
@@ -35,65 +37,35 @@ export const superAdminRepository = {
             orderBy: {
                 createdAt: "desc",
             },
-            select: {
-                id: true,
-                name: true,
-                email: true,
-                phone: true,
-                isActive: true,
-                userRoles: {
-                    include: {
-                        role: true,
-                    },
-                },
-                createdAt: true,
-                updatedAt: true,
-            },
+            select: superAdminSelect,
         });
     },
 
     findById(id: string) {
         return mainPrisma.superAdmins.findUnique({
             where: { id },
-            select: {
-                id: true,
-                name: true,
-                email: true,
-                phone: true,
-                isActive: true,
-                userRoles: {
-                    include: {
-                        role: {
-                            include: {
-                                rolePermissions: {
-                                    include: {
-                                        permission: true,
-                                    },
-                                },
-                            },
-                        },
-                    },
-                },
-                createdAt: true,
-                updatedAt: true,
-            },
+            select: superAdminSelect,
         });
     },
 
     findByEmail(email: string) {
         return mainPrisma.superAdmins.findUnique({
             where: { email },
+        });
+    },
 
+    findByPhone(phone: string) {
+        return mainPrisma.superAdmins.findUnique({
+            where: { phone },
         });
     },
 
     findRolesByIds(roleIds: string[]) {
-        return mainPrisma.role.findMany({
+        return mainPrisma.superAdminRole.findMany({
             where: {
                 id: {
                     in: roleIds,
                 },
-                ownerType: RoleOwnerType.SUPER_ADMIN,
             },
         });
     },
@@ -102,15 +74,7 @@ export const superAdminRepository = {
         return mainPrisma.superAdmins.update({
             where: { id },
             data,
-            select: {
-                id: true,
-                name: true,
-                email: true,
-                phone: true,
-                isActive: true,
-                createdAt: true,
-                updatedAt: true,
-            },
+            select: superAdminSelect,
         });
     },
 

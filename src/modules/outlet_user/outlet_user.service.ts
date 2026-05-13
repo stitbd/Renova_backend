@@ -25,6 +25,14 @@ export const outletUserService = {
             throw new Error("Outlet user already exists with this email in this outlet");
         }
 
+        if (data.phone) {
+            const phoneExists = await outletUserRepository.findByPhone(data.phone);
+
+            if (phoneExists) {
+                throw new Error("Outlet user already exists with this phone number");
+            }
+        }
+
         if (data.roleIds?.length) {
             const roles = await outletUserRepository.findRolesByIds(
                 data.roleIds,
@@ -38,7 +46,7 @@ export const outletUserService = {
 
         const hashedPassword = await bcrypt.hash(
             data.password,
-            env.bcrypt_salt_rounds
+            Number(env.bcrypt_salt_rounds)
         );
 
         return mainPrisma.$transaction(async (tx) => {
@@ -78,7 +86,15 @@ export const outletUserService = {
                     outlet: true,
                     userRoles: {
                         include: {
-                            role: true,
+                            role: {
+                                include: {
+                                    rolePermissions: {
+                                        include: {
+                                            permission: true,
+                                        },
+                                    },
+                                },
+                            },
                         },
                     },
                     createdAt: true,
@@ -89,7 +105,13 @@ export const outletUserService = {
     },
 
     async getAll(outletId: string) {
-        return outletUserRepository.findAll( outletId);
+        const outlet = await outletUserRepository.findOutletById(outletId);
+
+        if (!outlet) {
+            throw new Error("Outlet not found");
+        }
+
+        return outletUserRepository.findAll(outletId);
     },
 
     async getById(id: string) {
@@ -117,6 +139,14 @@ export const outletUserService = {
 
             if (emailExists && emailExists.id !== id) {
                 throw new Error("Outlet user already exists with this email in this outlet");
+            }
+        }
+
+        if (data.phone) {
+            const phoneExists = await outletUserRepository.findByPhone(data.phone);
+
+            if (phoneExists && phoneExists.id !== id) {
+                throw new Error("Outlet user already exists with this phone number");
             }
         }
 
@@ -173,7 +203,15 @@ export const outletUserService = {
                     outlet: true,
                     userRoles: {
                         include: {
-                            role: true,
+                            role: {
+                                include: {
+                                    rolePermissions: {
+                                        include: {
+                                            permission: true,
+                                        },
+                                    },
+                                },
+                            },
                         },
                     },
                     createdAt: true,

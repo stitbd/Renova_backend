@@ -7,8 +7,6 @@ import { doctorSpecializationRoutes } from "./modules/doctor_specialization/doct
 import { doctorScheduleRoutes } from "./modules/doctor_schedule/doctor_schedule.route";
 import { outletRoutes } from "./modules/outlet/outlet.route";
 import { outletUserRoutes } from "./modules/outlet_user/outlet_user.route";
-import { roleRoutes } from "./modules/role/role.route";
-import { permissionRoutes } from "./modules/permission/permission.route";
 import { superAdminRoutes } from "./modules/super_admin/super_admin.route";
 import { superAdminRoleRoutes } from "./modules/super_admin_role/super_admin_role.route";
 import { HomeBannerRoutes } from "./modules/website_content/home/banner/banner.route";
@@ -30,6 +28,9 @@ import { ContactSectionRoutes } from "./modules/website_content/contact_page/con
 import { ShopBannerRoutes } from "./modules/website_content/shop/shopBanner.route";
 import { PackageBannerRoutes } from "./modules/website_content/packages/packages.route";
 import { authRoutes } from "./modules/auth/auth.route";
+import { outletPermissionRoutes } from "./modules/outlet_permission/outlet_permission.route";
+import { outletRoleRoutes } from "./modules/outlet_role/outlet_role.route";
+import { superAdminPermissionRoutes } from "./modules/super_admin_permission/super_admin_permission.route";
 
 
 const appRouter = Router();
@@ -44,10 +45,11 @@ const moduleRoutes = [
   { path: "/doctor-schedules", route: doctorScheduleRoutes },
   { path: "/outlets", route: outletRoutes },
   { path: "/outlet-users", route: outletUserRoutes },
-  { path: "/roles", route: roleRoutes },
-  { path: "/permissions", route: permissionRoutes },
+  { path: "/outlet-roles", route: outletRoleRoutes },
+  { path: "/outlet-permissions", route: outletPermissionRoutes },
   { path: "/super-admins", route: superAdminRoutes },
   { path: "/super-admin-roles", route: superAdminRoleRoutes },
+  { path: "/super-admin-permission", route: superAdminPermissionRoutes },
 
 
 

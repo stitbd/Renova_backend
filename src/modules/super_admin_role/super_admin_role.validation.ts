@@ -11,5 +11,7 @@ export const updateSuperAdminRoleValidationSchema =
   });
 
 export const assignSuperAdminRolePermissionsValidationSchema = z.object({
-  permissionIds: z.array(z.string()).min(1, "At least one permission is required"),
+  permissionIds: z
+    .array(z.string())
+    .min(1, "At least one permission is required"),
 });
