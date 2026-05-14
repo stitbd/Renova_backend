@@ -29,7 +29,7 @@ app.get("/", (_req: Request, res: Response) => {
 app.use("/api/v1", routes);
 
 // Create default super admin if it doesn't exist
-createDefaultSuperAdmin();
+createDefaultSuperAdmin().catch(err => console.error("Failed to create default super admin:", err));
 
 app.use((req: Request, res: Response) => {
   res.status(404).json({

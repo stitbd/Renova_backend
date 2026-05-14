@@ -14,7 +14,7 @@ const checkPermission = (...requiredPermissions: string[]) => {
                 return next();
             }
 
-            if (user.role === "SUPER_ADMIN") {
+            if (user.userType === "SUPER_ADMIN") {
                 const superAdmin = await mainPrisma.superAdmins.findUnique({
                     where: {
                         id: user.id,
@@ -40,11 +40,15 @@ const checkPermission = (...requiredPermissions: string[]) => {
                     throw new Error("Super admin account not found or inactive!");
                 }
 
-                const permissions = superAdmin.userRoles.flatMap((userRole) =>
-                    userRole.role.rolePermissions.map(
-                        (rolePermission) => rolePermission.permission.key
-                    )
-                );
+                const permissions = [
+                    ...new Set(
+                        superAdmin.userRoles.flatMap((userRole) =>
+                            userRole.role.rolePermissions.map(
+                                (rolePermission) => rolePermission.permission.key
+                            )
+                        )
+                    ),
+                ];
 
                 const hasPermission = requiredPermissions.every((permission) =>
                     permissions.includes(permission)
@@ -57,7 +61,7 @@ const checkPermission = (...requiredPermissions: string[]) => {
                 return next();
             }
 
-            if (user.role === "OUTLET_USER") {
+            if (user.userType === "OUTLET_USER") {
                 const outletUser = await mainPrisma.outletUser.findUnique({
                     where: {
                         id: user.id,
@@ -92,11 +96,15 @@ const checkPermission = (...requiredPermissions: string[]) => {
                     return next();
                 }
 
-                const permissions = outletUser.userRoles.flatMap((userRole) =>
-                    userRole.role.rolePermissions.map(
-                        (rolePermission) => rolePermission.permission.key
-                    )
-                );
+                const permissions = [
+                    ...new Set(
+                        outletUser.userRoles.flatMap((userRole) =>
+                            userRole.role.rolePermissions.map(
+                                (rolePermission) => rolePermission.permission.key
+                            )
+                        )
+                    ),
+                ];
 
                 const hasPermission = requiredPermissions.every((permission) =>
                     permissions.includes(permission)
