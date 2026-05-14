@@ -8,6 +8,10 @@ const requiredEnv = [
   "ECOMMERCE_DATABASE_URL",
   "APPOINTMENT_DATABASE_URL",
   "BCRYPT_SALT_ROUNDS",
+  "JWT_ACCESS_SECRET",
+  "JWT_REFRESH_SECRET",
+  "JWT_ACCESS_EXPIRES_IN",
+  "JWT_REFRESH_EXPIRES_IN",
 ];
 
 requiredEnv.forEach((key) => {
@@ -19,22 +23,11 @@ requiredEnv.forEach((key) => {
 export const env = {
   port: Number(process.env.PORT),
   nodeEnv: process.env.NODE_ENV || "development",
-  patientAccessTokenSecret: process.env.PATIENT_ACCESS_JWT_SECRET as string,
-  patientAccessTokenExpiresIn: process.env.PATIENT_ACCESS_JWT_EXPIRES_IN || "7d",
-  patientRefreshTokenSecret: process.env.PATIENT_REFRESH_JWT_SECRET as string,
-  patientRefreshTokenExpiresIn: process.env.PATIENT_REFRESH_JWT_EXPIRES_IN || "30d",
-  doctorAccessTokenSecret: process.env.DOCTOR_ACCESS_JWT_SECRET as string,
-  doctorAccessTokenExpiresIn: process.env.DOCTOR_ACCESS_JWT_EXPIRES_IN || "7d",
-  doctorRefreshTokenSecret: process.env.DOCTOR_REFRESH_JWT_SECRET as string,
-  doctorRefreshTokenExpiresIn: process.env.DOCTOR_REFRESH_JWT_EXPIRES_IN || "30d",
-  outletUserAccessTokenSecret: process.env.OUTLET_USER_ACCESS_JWT_SECRET as string,
-  outletUserAccessTokenExpiresIn: process.env.OUTLET_USER_ACCESS_JWT_EXPIRES_IN || "7d",
-  outletUserRefreshTokenSecret: process.env.OUTLET_USER_REFRESH_JWT_SECRET as string,
-  outletUserRefreshTokenExpiresIn: process.env.OUTLET_USER_REFRESH_JWT_EXPIRES_IN || "30d",
+  
+  jwtAccessSecret: process.env.JWT_ACCESS_SECRET,
+  jwtRefreshSecret: process.env.JWT_REFRESH_SECRET,
+  jwtAccessExpiresIn: process.env.JWT_ACCESS_EXPIRES_IN,
+  jwtRefreshExpiresIn: process.env.JWT_REFRESH_EXPIRES_IN,
 
-  superAdminAccessTokenSecret: process.env.SUPER_ADMIN_ACCESS_JWT_SECRET as string,
-  superAdminAccessTokenExpiresIn: process.env.SUPER_ADMIN_ACCESS_JWT_EXPIRES_IN || "7d",
-  superAdminRefreshTokenSecret: process.env.SUPER_ADMIN_REFRESH_JWT_SECRET as string,
-  superAdminRefreshTokenExpiresIn: process.env.SUPER_ADMIN_REFRESH_JWT_EXPIRES_IN || "30d",
   bcrypt_salt_rounds: Number(process.env.BCRYPT_SALT_ROUNDS),
 };

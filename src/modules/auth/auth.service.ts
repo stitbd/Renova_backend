@@ -3,11 +3,14 @@ import { JwtPayload } from "jsonwebtoken";
 
 import { authRepository } from "./auth.repository";
 import { LoginInput, UserType } from "./auth.types";
-import { authConfig } from "./auth.constants";
+import { authConfig, jwtConfig } from "./auth.constants";
 import { jwtHelpers } from "../../utils/JWT";
 
 const getRoles = (user: any, userType: UserType): string[] => {
-    if (userType !== UserType.OUTLET_USER && userType !== UserType.SUPER_ADMIN) {
+    if (
+        userType !== UserType.OUTLET_USER &&
+        userType !== UserType.SUPER_ADMIN
+    ) {
         return [];
     }
 
@@ -15,7 +18,10 @@ const getRoles = (user: any, userType: UserType): string[] => {
 };
 
 const getPermissions = (user: any, userType: UserType): string[] => {
-    if (userType !== UserType.OUTLET_USER && userType !== UserType.SUPER_ADMIN) {
+    if (
+        userType !== UserType.OUTLET_USER &&
+        userType !== UserType.SUPER_ADMIN
+    ) {
         return [];
     }
 
@@ -64,7 +70,10 @@ const login = async (data: LoginInput) => {
         throw new Error("Doctor account inactive");
     }
 
-    if (userType === UserType.PATIENT && (!user.isActive || user.status !== "ACTIVE")) {
+    if (
+        userType === UserType.PATIENT &&
+        (!user.isActive || user.status !== "ACTIVE")
+    ) {
         throw new Error("Patient account inactive");
     }
 
@@ -112,24 +121,22 @@ const login = async (data: LoginInput) => {
         }),
     };
 
-    const config = authConfig[userType];
-
     const accessToken = jwtHelpers.generateToken(
         payload,
-        config.accessSecret,
-        config.accessExpiresIn
+        jwtConfig.accessSecret as string,
+        jwtConfig.accessExpiresIn
     );
 
     const refreshToken = jwtHelpers.generateToken(
         payload,
-        config.refreshSecret,
-        config.refreshExpiresIn
+        jwtConfig.refreshSecret as string,
+        jwtConfig.refreshExpiresIn
     );
 
     return {
         accessToken,
         refreshToken,
-        refreshCookieName: config.refreshCookieName,
+        refreshCookieName: authConfig[userType].refreshCookieName,
 
         user: {
             id: user.id,
@@ -165,14 +172,15 @@ const login = async (data: LoginInput) => {
     };
 };
 
-const refreshToken = async (token: string, userType: UserType) => {
+const generateAccessTokenFromRefreshToken = async (token: string) => {
     if (!token) {
         throw new Error("Refresh token is required");
     }
 
-    const config = authConfig[userType];
-
-    const decoded = jwtHelpers.verifyToken(token, config.refreshSecret) as JwtPayload;
+    const decoded = jwtHelpers.verifyToken(
+        token,
+        jwtConfig.refreshSecret as string
+    ) as JwtPayload;
 
     const payload = {
         id: decoded.id,
@@ -192,8 +200,8 @@ const refreshToken = async (token: string, userType: UserType) => {
 
     const accessToken = jwtHelpers.generateToken(
         payload,
-        config.accessSecret,
-        config.accessExpiresIn
+        jwtConfig.accessSecret as string,
+        jwtConfig.accessExpiresIn 
     );
 
     return {
@@ -203,5 +211,5 @@ const refreshToken = async (token: string, userType: UserType) => {
 
 export const authService = {
     login,
-    refreshToken,
+    refreshToken: generateAccessTokenFromRefreshToken,
 };
