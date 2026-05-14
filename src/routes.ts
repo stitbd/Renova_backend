@@ -53,10 +53,10 @@ const moduleRoutes = [
 
 
 
+
+
   // dynamic website content routes
-  {
-    path: "/website-content/home-banner", route: HomeBannerRoutes
-  },
+  { path: "/website-content/home-banner", route: HomeBannerRoutes },
   { path: "/website-content/home-about", route: AboutSectionRoutes },
   { path: "/website-content/home-services", route: ServiceSectionRoutes },
   { path: "/website-content/home-doctors", route: DoctorSectionRoutes },
@@ -65,12 +65,10 @@ const moduleRoutes = [
   { path: "/website-content/home-facility", route: FacilitySectionRoutes },
   { path: "/website-content/home-testimonial", route: TestimonialSectionRoutes },
   { path: "/website-content/home-blog", route: BlogSectionRoutes },
-
   { path: "/website-content/about-banner", route: AboutBannerRoutes },
   { path: "/website-content/about-mission-vision", route: MissionVisionSectionRoutes },
   { path: "/website-content/about-managing-director", route: ManagingDirectorSectionRoutes },
   { path: "/website-content/about-leadership", route: LeadershipSectionRoutes },
-  
   { path: "/website-content/doctors-banner", route: DoctorBannerRoutes },
   { path: "/website-content/doctors-career", route: CareerSectionRoutes },
   { path: "/website-content/doctors-contact", route: ContactSectionRoutes },
@@ -81,5 +79,4 @@ const moduleRoutes = [
 
 moduleRoutes.forEach((route) => appRouter.use(route.path, route.route));
 export default appRouter;
-
 
