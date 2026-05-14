@@ -17,10 +17,15 @@ export const jwtHelpers = {
     generateToken,
     verifyToken,
 };
-export type JwtPayloadType = JwtPayload & {
-    email: string;
-    role: string;
-    iat: number;
-    exp: number;
+
+export type JwtPayloadType = {
+  id: string;
+  phone?: string;
+  userType: "SUPER_ADMIN" | "OUTLET_USER" | "DOCTOR" | "PATIENT";
+  outletId?: string;
+  isOwner?: boolean;
+  roles?: string[];
+  permissions?: string[];
 };
+
 export type JwtTokenType = string | JwtPayloadType | null;

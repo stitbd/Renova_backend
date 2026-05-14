@@ -44,7 +44,7 @@ export const authController = {
     const { userType }: { userType: keyof typeof authConfig } = req.body;
 
     const cookieName =
-      authConfig[userType] 
+      authConfig[userType]
         .refreshCookieName;
 
     const refreshToken =
@@ -53,7 +53,6 @@ export const authController = {
     const result =
       await authService.refreshToken(
         refreshToken,
-        userType
       );
 
     res.status(200).json({

@@ -109,7 +109,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "D:\\Renova\\renova_backend\\src\\generated\\appointment-client",
+      "value": "D:\\Renova\\Renova_backend\\src\\generated\\appointment-client",
       "fromEnvVar": null
     },
     "config": {
@@ -123,7 +123,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "D:\\Renova\\renova_backend\\prisma\\appointment\\schema.prisma",
+    "sourceFilePath": "D:\\Renova\\Renova_backend\\prisma\\appointment\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {

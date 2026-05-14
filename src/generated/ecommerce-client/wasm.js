@@ -108,7 +108,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "D:\\Renova\\renova_backend\\src\\generated\\ecommerce-client",
+      "value": "D:\\Renova\\Renova_backend\\src\\generated\\ecommerce-client",
       "fromEnvVar": null
     },
     "config": {
@@ -122,7 +122,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "D:\\Renova\\renova_backend\\prisma\\ecommerce\\schema.prisma",
+    "sourceFilePath": "D:\\Renova\\Renova_backend\\prisma\\ecommerce\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {

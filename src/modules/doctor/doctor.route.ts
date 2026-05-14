@@ -8,6 +8,7 @@ import {
   updateDoctorStatusSchema,
 } from "./doctor.validation";
 import { validateRequest } from "../../utils/validateRequest";
+import auth from "../../middlewares/auth";
 
 const router = express.Router();
 

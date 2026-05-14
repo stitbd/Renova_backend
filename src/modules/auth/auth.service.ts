@@ -201,7 +201,7 @@ const generateAccessTokenFromRefreshToken = async (token: string) => {
     const accessToken = jwtHelpers.generateToken(
         payload,
         jwtConfig.accessSecret as string,
-        jwtConfig.accessExpiresIn 
+        jwtConfig.accessExpiresIn
     );
 
     return {
