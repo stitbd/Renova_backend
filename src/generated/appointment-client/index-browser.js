@@ -121,9 +121,139 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
+exports.Prisma.AppointmentScalarFieldEnum = {
+  id: 'id',
+  appointmentCode: 'appointmentCode',
+  doctorId: 'doctorId',
+  patientId: 'patientId',
+  outletId: 'outletId',
+  appointmentDate: 'appointmentDate',
+  startTime: 'startTime',
+  endTime: 'endTime',
+  type: 'type',
+  status: 'status',
+  consultationFee: 'consultationFee',
+  paymentStatus: 'paymentStatus',
+  reason: 'reason',
+  patientNotes: 'patientNotes',
+  doctorNotes: 'doctorNotes',
+  cancelledBy: 'cancelledBy',
+  cancellationReason: 'cancellationReason',
+  cancelledAt: 'cancelledAt',
+  confirmedAt: 'confirmedAt',
+  completedAt: 'completedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.AppointmentSlotLockScalarFieldEnum = {
+  id: 'id',
+  doctorId: 'doctorId',
+  startTime: 'startTime',
+  appointmentId: 'appointmentId',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.AppointmentStatusLogScalarFieldEnum = {
+  id: 'id',
+  appointmentId: 'appointmentId',
+  previousStatus: 'previousStatus',
+  newStatus: 'newStatus',
+  changedById: 'changedById',
+  changedByRole: 'changedByRole',
+  note: 'note',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.AppointmentPaymentScalarFieldEnum = {
+  id: 'id',
+  appointmentId: 'appointmentId',
+  amount: 'amount',
+  currency: 'currency',
+  status: 'status',
+  transactionId: 'transactionId',
+  paymentMethod: 'paymentMethod',
+  paidAt: 'paidAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.SortOrder = {
+  asc: 'asc',
+  desc: 'desc'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
+exports.Prisma.AppointmentOrderByRelevanceFieldEnum = {
+  id: 'id',
+  appointmentCode: 'appointmentCode',
+  doctorId: 'doctorId',
+  patientId: 'patientId',
+  outletId: 'outletId',
+  reason: 'reason',
+  patientNotes: 'patientNotes',
+  doctorNotes: 'doctorNotes',
+  cancellationReason: 'cancellationReason'
+};
+
+exports.Prisma.AppointmentSlotLockOrderByRelevanceFieldEnum = {
+  id: 'id',
+  doctorId: 'doctorId',
+  appointmentId: 'appointmentId'
+};
+
+exports.Prisma.AppointmentStatusLogOrderByRelevanceFieldEnum = {
+  id: 'id',
+  appointmentId: 'appointmentId',
+  changedById: 'changedById',
+  changedByRole: 'changedByRole',
+  note: 'note'
+};
+
+exports.Prisma.AppointmentPaymentOrderByRelevanceFieldEnum = {
+  id: 'id',
+  appointmentId: 'appointmentId',
+  currency: 'currency',
+  transactionId: 'transactionId',
+  paymentMethod: 'paymentMethod'
+};
+exports.AppointmentType = exports.$Enums.AppointmentType = {
+  IN_PERSON: 'IN_PERSON',
+  ONLINE: 'ONLINE'
+};
+
+exports.AppointmentStatus = exports.$Enums.AppointmentStatus = {
+  PENDING: 'PENDING',
+  CONFIRMED: 'CONFIRMED',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED',
+  NO_SHOW: 'NO_SHOW'
+};
+
+exports.PaymentStatus = exports.$Enums.PaymentStatus = {
+  UNPAID: 'UNPAID',
+  PAID: 'PAID',
+  FAILED: 'FAILED',
+  REFUNDED: 'REFUNDED'
+};
+
+exports.CancelledBy = exports.$Enums.CancelledBy = {
+  PATIENT: 'PATIENT',
+  DOCTOR: 'DOCTOR',
+  OUTLET_USER: 'OUTLET_USER',
+  SUPER_ADMIN: 'SUPER_ADMIN',
+  SYSTEM: 'SYSTEM'
+};
 
 exports.Prisma.ModelName = {
-
+  Appointment: 'Appointment',
+  AppointmentSlotLock: 'AppointmentSlotLock',
+  AppointmentStatusLog: 'AppointmentStatusLog',
+  AppointmentPayment: 'AppointmentPayment'
 };
 
 /**

@@ -27,9 +27,7 @@ export const createDefaultSuperAdmin = async () => {
       { key: "outlet:view", module: "OUTLET", description: "Can view outlets" },
       { key: "outlet:update", module: "OUTLET", description: "Can update outlet" },
       { key: "outlet:delete", module: "OUTLET", description: "Can delete outlet" },
-
       { key: "doctor:verify", module: "DOCTOR", description: "Can verify doctor" },
-
       { key: "super-admin:create", module: "SUPER_ADMIN", description: "Can create super admin" },
       { key: "super-admin:view", module: "SUPER_ADMIN", description: "Can view super admins" },
       { key: "super-admin:update", module: "SUPER_ADMIN", description: "Can update super admin" },
@@ -39,12 +37,12 @@ export const createDefaultSuperAdmin = async () => {
       { key: "super-admin-role:view", module: "SUPER_ADMIN_ROLE", description: "Can view super admin roles" },
       { key: "super-admin-role:update", module: "SUPER_ADMIN_ROLE", description: "Can update super admin role" },
       { key: "super-admin-role:delete", module: "SUPER_ADMIN_ROLE", description: "Can delete super admin role" },
-
       { key: "super-admin-permission:create", module: "SUPER_ADMIN_PERMISSION", description: "Can create super admin permission" },
       { key: "super-admin-permission:view", module: "SUPER_ADMIN_PERMISSION", description: "Can view super admin permissions" },
       { key: "super-admin-permission:update", module: "SUPER_ADMIN_PERMISSION", description: "Can update super admin permission" },
       { key: "super-admin-permission:delete", module: "SUPER_ADMIN_PERMISSION", description: "Can delete super admin permission" },
     ];
+
 
     await prisma.$transaction(async (tx) => {
       const superAdmin = await tx.superAdmins.create({
@@ -62,6 +60,7 @@ export const createDefaultSuperAdmin = async () => {
         skipDuplicates: true,
       });
 
+      
       const allPermissions = await tx.superAdminPermission.findMany();
 
       const superAdminRole = await tx.superAdminRole.create({
@@ -85,6 +84,8 @@ export const createDefaultSuperAdmin = async () => {
         },
       });
     });
+
+    
 
     console.log("✅ Default Super Admin created successfully.");
   } catch (error) {

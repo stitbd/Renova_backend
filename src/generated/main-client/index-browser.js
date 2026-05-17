@@ -197,7 +197,20 @@ exports.Prisma.DoctorScheduleScalarFieldEnum = {
   startTime: 'startTime',
   endTime: 'endTime',
   slotDuration: 'slotDuration',
-  status: 'status'
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.DoctorUnavailableDateScalarFieldEnum = {
+  id: 'id',
+  doctorId: 'doctorId',
+  unavailableDate: 'unavailableDate',
+  startTime: 'startTime',
+  endTime: 'endTime',
+  reason: 'reason',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.OutletScalarFieldEnum = {
@@ -704,6 +717,14 @@ exports.Prisma.DoctorScheduleOrderByRelevanceFieldEnum = {
   endTime: 'endTime'
 };
 
+exports.Prisma.DoctorUnavailableDateOrderByRelevanceFieldEnum = {
+  id: 'id',
+  doctorId: 'doctorId',
+  startTime: 'startTime',
+  endTime: 'endTime',
+  reason: 'reason'
+};
+
 exports.Prisma.outletOrderByRelevanceFieldEnum = {
   id: 'id',
   outletCode: 'outletCode',
@@ -1109,6 +1130,7 @@ exports.Prisma.ModelName = {
   DoctorSpecialization: 'DoctorSpecialization',
   DoctorDocument: 'DoctorDocument',
   DoctorSchedule: 'DoctorSchedule',
+  DoctorUnavailableDate: 'DoctorUnavailableDate',
   outlet: 'outlet',
   OutletUser: 'OutletUser',
   OutletRole: 'OutletRole',

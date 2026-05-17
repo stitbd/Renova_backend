@@ -112,8 +112,9 @@ model Doctor {
   specializationId String
   specialization   DoctorSpecialization @relation(fields: [specializationId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
-  documents DoctorDocument[]
-  schedules DoctorSchedule[]
+  documents        DoctorDocument[]
+  schedules        DoctorSchedule[]
+  unavailableDates DoctorUnavailableDate[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -149,6 +150,28 @@ model DoctorSchedule {
   endTime      String
   slotDuration Int
   status       ScheduleStatus @default(ACTIVE)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model DoctorUnavailableDate {
+  id String @id @default(uuid())
+
+  doctorId String
+  doctor   Doctor @relation(fields: [doctorId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  unavailableDate DateTime
+
+  startTime String? // "10:00"
+  endTime   String? // "14:00"
+
+  reason String? @db.Text
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([doctorId, unavailableDate])
 }
 
 // ================= Outlet =================

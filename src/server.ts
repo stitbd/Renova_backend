@@ -37,3 +37,4 @@ process.on("SIGINT", async () => {
   await appointmentPrisma.$disconnect();
   process.exit(0);
 });
+

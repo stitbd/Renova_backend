@@ -93,9 +93,139 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
+exports.Prisma.AppointmentScalarFieldEnum = {
+  id: 'id',
+  appointmentCode: 'appointmentCode',
+  doctorId: 'doctorId',
+  patientId: 'patientId',
+  outletId: 'outletId',
+  appointmentDate: 'appointmentDate',
+  startTime: 'startTime',
+  endTime: 'endTime',
+  type: 'type',
+  status: 'status',
+  consultationFee: 'consultationFee',
+  paymentStatus: 'paymentStatus',
+  reason: 'reason',
+  patientNotes: 'patientNotes',
+  doctorNotes: 'doctorNotes',
+  cancelledBy: 'cancelledBy',
+  cancellationReason: 'cancellationReason',
+  cancelledAt: 'cancelledAt',
+  confirmedAt: 'confirmedAt',
+  completedAt: 'completedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.AppointmentSlotLockScalarFieldEnum = {
+  id: 'id',
+  doctorId: 'doctorId',
+  startTime: 'startTime',
+  appointmentId: 'appointmentId',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.AppointmentStatusLogScalarFieldEnum = {
+  id: 'id',
+  appointmentId: 'appointmentId',
+  previousStatus: 'previousStatus',
+  newStatus: 'newStatus',
+  changedById: 'changedById',
+  changedByRole: 'changedByRole',
+  note: 'note',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.AppointmentPaymentScalarFieldEnum = {
+  id: 'id',
+  appointmentId: 'appointmentId',
+  amount: 'amount',
+  currency: 'currency',
+  status: 'status',
+  transactionId: 'transactionId',
+  paymentMethod: 'paymentMethod',
+  paidAt: 'paidAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.SortOrder = {
+  asc: 'asc',
+  desc: 'desc'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
+exports.Prisma.AppointmentOrderByRelevanceFieldEnum = {
+  id: 'id',
+  appointmentCode: 'appointmentCode',
+  doctorId: 'doctorId',
+  patientId: 'patientId',
+  outletId: 'outletId',
+  reason: 'reason',
+  patientNotes: 'patientNotes',
+  doctorNotes: 'doctorNotes',
+  cancellationReason: 'cancellationReason'
+};
+
+exports.Prisma.AppointmentSlotLockOrderByRelevanceFieldEnum = {
+  id: 'id',
+  doctorId: 'doctorId',
+  appointmentId: 'appointmentId'
+};
+
+exports.Prisma.AppointmentStatusLogOrderByRelevanceFieldEnum = {
+  id: 'id',
+  appointmentId: 'appointmentId',
+  changedById: 'changedById',
+  changedByRole: 'changedByRole',
+  note: 'note'
+};
+
+exports.Prisma.AppointmentPaymentOrderByRelevanceFieldEnum = {
+  id: 'id',
+  appointmentId: 'appointmentId',
+  currency: 'currency',
+  transactionId: 'transactionId',
+  paymentMethod: 'paymentMethod'
+};
+exports.AppointmentStatus = exports.$Enums.AppointmentStatus = {
+  PENDING: 'PENDING',
+  CONFIRMED: 'CONFIRMED',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED',
+  NO_SHOW: 'NO_SHOW'
+};
+
+exports.AppointmentType = exports.$Enums.AppointmentType = {
+  IN_PERSON: 'IN_PERSON',
+  ONLINE: 'ONLINE'
+};
+
+exports.PaymentStatus = exports.$Enums.PaymentStatus = {
+  UNPAID: 'UNPAID',
+  PAID: 'PAID',
+  FAILED: 'FAILED',
+  REFUNDED: 'REFUNDED'
+};
+
+exports.CancelledBy = exports.$Enums.CancelledBy = {
+  PATIENT: 'PATIENT',
+  DOCTOR: 'DOCTOR',
+  OUTLET_USER: 'OUTLET_USER',
+  SUPER_ADMIN: 'SUPER_ADMIN',
+  SYSTEM: 'SYSTEM'
+};
 
 exports.Prisma.ModelName = {
-
+  Appointment: 'Appointment',
+  AppointmentSlotLock: 'AppointmentSlotLock',
+  AppointmentStatusLog: 'AppointmentStatusLog',
+  AppointmentPayment: 'AppointmentPayment'
 };
 /**
  * Create the Client
@@ -136,7 +266,6 @@ const config = {
     "db"
   ],
   "activeProvider": "mysql",
-  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -145,13 +274,13 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../../src/generated/appointment-client\"\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"APPOINTMENT_DATABASE_URL\")\n}\n",
-  "inlineSchemaHash": "1cfc5c8d64e08009ab400e9675577eb94b4ed28b02807b1877b09d84da34ba20",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../../src/generated/appointment-client\"\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"APPOINTMENT_DATABASE_URL\")\n}\n\nenum AppointmentStatus {\n  PENDING\n  CONFIRMED\n  COMPLETED\n  CANCELLED\n  NO_SHOW\n}\n\nenum AppointmentType {\n  IN_PERSON\n  ONLINE\n}\n\nenum PaymentStatus {\n  UNPAID\n  PAID\n  FAILED\n  REFUNDED\n}\n\nenum CancelledBy {\n  PATIENT\n  DOCTOR\n  OUTLET_USER\n  SUPER_ADMIN\n  SYSTEM\n}\n\nmodel Appointment {\n  id String @id @default(uuid())\n\n  appointmentCode String @unique\n\n  // External IDs from Main DB\n  doctorId  String\n  patientId String\n  outletId  String?\n\n  appointmentDate DateTime\n  startTime       DateTime\n  endTime         DateTime\n\n  type   AppointmentType   @default(IN_PERSON)\n  status AppointmentStatus @default(PENDING)\n\n  consultationFee Decimal? @db.Decimal(10, 2)\n\n  paymentStatus PaymentStatus @default(UNPAID)\n\n  reason       String? @db.Text\n  patientNotes String? @db.Text\n  doctorNotes  String? @db.Text\n\n  cancelledBy        CancelledBy?\n  cancellationReason String?      @db.Text\n  cancelledAt        DateTime?\n\n  confirmedAt DateTime?\n  completedAt DateTime?\n\n  slotLock   AppointmentSlotLock?\n  statusLogs AppointmentStatusLog[]\n  payment    AppointmentPayment?\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  @@index([doctorId, appointmentDate])\n  @@index([patientId, appointmentDate])\n  @@index([outletId, appointmentDate])\n  @@index([status])\n  @@index([paymentStatus])\n  @@index([startTime])\n}\n\nmodel AppointmentSlotLock {\n  id String @id @default(uuid())\n\n  doctorId  String\n  startTime DateTime\n\n  appointmentId String      @unique\n  appointment   Appointment @relation(fields: [appointmentId], references: [id], onDelete: Cascade)\n\n  createdAt DateTime @default(now())\n\n  @@unique([doctorId, startTime])\n  @@index([appointmentId])\n}\n\nmodel AppointmentStatusLog {\n  id String @id @default(uuid())\n\n  appointmentId String\n  appointment   Appointment @relation(fields: [appointmentId], references: [id], onDelete: Cascade)\n\n  previousStatus AppointmentStatus?\n  newStatus      AppointmentStatus\n\n  changedById   String?\n  changedByRole String?\n\n  note String? @db.Text\n\n  createdAt DateTime @default(now())\n\n  @@index([appointmentId])\n}\n\nmodel AppointmentPayment {\n  id String @id @default(uuid())\n\n  appointmentId String      @unique\n  appointment   Appointment @relation(fields: [appointmentId], references: [id], onDelete: Cascade)\n\n  amount   Decimal @db.Decimal(10, 2)\n  currency String  @default(\"BDT\")\n\n  status PaymentStatus @default(UNPAID)\n\n  transactionId String?\n  paymentMethod String?\n\n  paidAt DateTime?\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  @@index([status])\n  @@index([transactionId])\n}\n",
+  "inlineSchemaHash": "33f297b69a2de6ab8309c385654787c0987a1349f1286e3b673dd09bcad65e67",
   "copyEngine": true
 }
 config.dirname = '/'
 
-config.runtimeDataModel = JSON.parse("{\"models\":{},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"Appointment\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"appointmentCode\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"doctorId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"patientId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"outletId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"appointmentDate\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"startTime\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"endTime\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"type\",\"kind\":\"enum\",\"type\":\"AppointmentType\"},{\"name\":\"status\",\"kind\":\"enum\",\"type\":\"AppointmentStatus\"},{\"name\":\"consultationFee\",\"kind\":\"scalar\",\"type\":\"Decimal\"},{\"name\":\"paymentStatus\",\"kind\":\"enum\",\"type\":\"PaymentStatus\"},{\"name\":\"reason\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"patientNotes\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"doctorNotes\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"cancelledBy\",\"kind\":\"enum\",\"type\":\"CancelledBy\"},{\"name\":\"cancellationReason\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"cancelledAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"confirmedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"completedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"slotLock\",\"kind\":\"object\",\"type\":\"AppointmentSlotLock\",\"relationName\":\"AppointmentToAppointmentSlotLock\"},{\"name\":\"statusLogs\",\"kind\":\"object\",\"type\":\"AppointmentStatusLog\",\"relationName\":\"AppointmentToAppointmentStatusLog\"},{\"name\":\"payment\",\"kind\":\"object\",\"type\":\"AppointmentPayment\",\"relationName\":\"AppointmentToAppointmentPayment\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"AppointmentSlotLock\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"doctorId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"startTime\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"appointmentId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"appointment\",\"kind\":\"object\",\"type\":\"Appointment\",\"relationName\":\"AppointmentToAppointmentSlotLock\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"AppointmentStatusLog\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"appointmentId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"appointment\",\"kind\":\"object\",\"type\":\"Appointment\",\"relationName\":\"AppointmentToAppointmentStatusLog\"},{\"name\":\"previousStatus\",\"kind\":\"enum\",\"type\":\"AppointmentStatus\"},{\"name\":\"newStatus\",\"kind\":\"enum\",\"type\":\"AppointmentStatus\"},{\"name\":\"changedById\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"changedByRole\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"note\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"AppointmentPayment\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"appointmentId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"appointment\",\"kind\":\"object\",\"type\":\"Appointment\",\"relationName\":\"AppointmentToAppointmentPayment\"},{\"name\":\"amount\",\"kind\":\"scalar\",\"type\":\"Decimal\"},{\"name\":\"currency\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"status\",\"kind\":\"enum\",\"type\":\"PaymentStatus\"},{\"name\":\"transactionId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"paymentMethod\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"paidAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.engineWasm = {
   getRuntime: async () => require('./query_engine_bg.js'),

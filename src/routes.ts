@@ -31,6 +31,8 @@ import { authRoutes } from "./modules/auth/auth.route";
 import { outletPermissionRoutes } from "./modules/outlet_permission/outlet_permission.route";
 import { outletRoleRoutes } from "./modules/outlet_role/outlet_role.route";
 import { superAdminPermissionRoutes } from "./modules/super_admin_permission/super_admin_permission.route";
+import { appointmentRoutes } from "./modules/appointment/appointment.route";
+import { doctorUnavailableDateRoutes } from "./modules/doctorUnavailableDate/doctorUnavailableDate.route";
 
 
 const appRouter = Router();
@@ -40,6 +42,7 @@ const moduleRoutes = [
   { path: "/auth", route: authRoutes },
 
   { path: "/doctors", route: doctorRoutes },
+  { path: "/doctor-unavailable-dates", route: doctorUnavailableDateRoutes },
   { path: "/doctor-specializations", route: doctorSpecializationRoutes },
   { path: "/doctor-documents", route: doctorDocumentRoutes },
   { path: "/doctor-schedules", route: doctorScheduleRoutes },
@@ -50,8 +53,7 @@ const moduleRoutes = [
   { path: "/super-admins", route: superAdminRoutes },
   { path: "/super-admin-roles", route: superAdminRoleRoutes },
   { path: "/super-admin-permission", route: superAdminPermissionRoutes },
-
-
+  { path: "/appointments", route: appointmentRoutes },
 
 
 

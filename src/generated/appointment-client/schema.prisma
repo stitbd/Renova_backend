@@ -7,3 +7,135 @@ datasource db {
   provider = "mysql"
   url      = env("APPOINTMENT_DATABASE_URL")
 }
+
+enum AppointmentStatus {
+  PENDING
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+  NO_SHOW
+}
+
+enum AppointmentType {
+  IN_PERSON
+  ONLINE
+}
+
+enum PaymentStatus {
+  UNPAID
+  PAID
+  FAILED
+  REFUNDED
+}
+
+enum CancelledBy {
+  PATIENT
+  DOCTOR
+  OUTLET_USER
+  SUPER_ADMIN
+  SYSTEM
+}
+
+model Appointment {
+  id String @id @default(uuid())
+
+  appointmentCode String @unique
+
+  // External IDs from Main DB
+  doctorId  String
+  patientId String
+  outletId  String?
+
+  appointmentDate DateTime
+  startTime       DateTime
+  endTime         DateTime
+
+  type   AppointmentType   @default(IN_PERSON)
+  status AppointmentStatus @default(PENDING)
+
+  consultationFee Decimal? @db.Decimal(10, 2)
+
+  paymentStatus PaymentStatus @default(UNPAID)
+
+  reason       String? @db.Text
+  patientNotes String? @db.Text
+  doctorNotes  String? @db.Text
+
+  cancelledBy        CancelledBy?
+  cancellationReason String?      @db.Text
+  cancelledAt        DateTime?
+
+  confirmedAt DateTime?
+  completedAt DateTime?
+
+  slotLock   AppointmentSlotLock?
+  statusLogs AppointmentStatusLog[]
+  payment    AppointmentPayment?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([doctorId, appointmentDate])
+  @@index([patientId, appointmentDate])
+  @@index([outletId, appointmentDate])
+  @@index([status])
+  @@index([paymentStatus])
+  @@index([startTime])
+}
+
+model AppointmentSlotLock {
+  id String @id @default(uuid())
+
+  doctorId  String
+  startTime DateTime
+
+  appointmentId String      @unique
+  appointment   Appointment @relation(fields: [appointmentId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@unique([doctorId, startTime])
+  @@index([appointmentId])
+}
+
+model AppointmentStatusLog {
+  id String @id @default(uuid())
+
+  appointmentId String
+  appointment   Appointment @relation(fields: [appointmentId], references: [id], onDelete: Cascade)
+
+  previousStatus AppointmentStatus?
+  newStatus      AppointmentStatus
+
+  changedById   String?
+  changedByRole String?
+
+  note String? @db.Text
+
+  createdAt DateTime @default(now())
+
+  @@index([appointmentId])
+}
+
+model AppointmentPayment {
+  id String @id @default(uuid())
+
+  appointmentId String      @unique
+  appointment   Appointment @relation(fields: [appointmentId], references: [id], onDelete: Cascade)
+
+  amount   Decimal @db.Decimal(10, 2)
+  currency String  @default("BDT")
+
+  status PaymentStatus @default(UNPAID)
+
+  transactionId String?
+  paymentMethod String?
+
+  paidAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status])
+  @@index([transactionId])
+}

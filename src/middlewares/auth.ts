@@ -1,10 +1,19 @@
 import { NextFunction, Request, Response } from "express";
-
 import { env } from "../configs/env";
 import { mainPrisma } from "../databases/prisma";
 import { jwtHelpers, JwtPayloadType } from "../utils/JWT";
+import { AppError } from "../utils/app_error";
 
-const auth = () => {
+export type UserType = "SUPER_ADMIN" | "OUTLET_USER" | "DOCTOR" | "PATIENT";
+
+export type AuthUser = JwtPayloadType & {
+  id: string;
+  userType: UserType;
+  outletId?: string | null;
+  isOwner?: boolean;
+};
+
+const auth = (...allowedUserTypes: UserType[]) => {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
       const token = req.headers.authorization?.startsWith("Bearer ")
@@ -12,83 +21,124 @@ const auth = () => {
         : null;
 
       if (!token) {
-        throw new Error("You are not authorized!");
+        throw new AppError("You are not authorized!", 401);
       }
 
-      const verifiedUser = jwtHelpers.verifyToken(
+      const decoded: AuthUser = jwtHelpers.verifyToken(
         token,
         env.jwtAccessSecret as string
-      ) as JwtPayloadType & {
-        userType: "SUPER_ADMIN" | "OUTLET_USER" | "DOCTOR" | "PATIENT";
-      };
+      ) as AuthUser;
 
-      if (!verifiedUser?.id || !verifiedUser?.userType) {
-        throw new Error("Invalid token!");
+      if (!decoded?.id || !decoded?.userType) {
+        throw new AppError("Invalid token!", 401);
       }
 
-      let user = null;
+      if (
+        allowedUserTypes.length > 0 &&
+        !allowedUserTypes.includes(decoded.userType)
+      ) {
+        throw new AppError(
+          "Forbidden! You are not allowed to access this route.",
+          403
+        );
+      }
 
-      switch (verifiedUser.userType) {
-        case "SUPER_ADMIN":
-          user = await mainPrisma.superAdmins.findUnique({
-            where: { id: verifiedUser.id },
-          });
-
-          if (!user || !user.isActive) {
-            throw new Error("Super admin account not found or inactive!");
-          }
-
-          break;
-
-        case "OUTLET_USER":
-          user = await mainPrisma.outletUser.findUnique({
-            where: { id: verifiedUser.id },
-            include: {
-              outlet: true,
+      switch (decoded.userType) {
+        case "SUPER_ADMIN": {
+          const user = await mainPrisma.superAdmins.findUnique({
+            where: { id: decoded.id },
+            select: {
+              id: true,
+              isActive: true,
             },
           });
 
           if (!user || !user.isActive) {
-            throw new Error("Outlet user account not found or inactive!");
-          }
-
-          if (user.outlet?.status !== "ACTIVE") {
-            throw new Error("Outlet account is inactive!");
+            throw new AppError("Super admin account not found or inactive!", 403);
           }
 
           break;
+        }
 
-        case "DOCTOR":
-          user = await mainPrisma.doctor.findUnique({
-            where: { id: verifiedUser.id },
+        case "OUTLET_USER": {
+          const user = await mainPrisma.outletUser.findUnique({
+            where: { id: decoded.id },
+            select: {
+              id: true,
+              outletId: true,
+              isOwner: true,
+              isActive: true,
+              outlet: {
+                select: {
+                  id: true,
+                  status: true,
+                },
+              },
+            },
+          });
+
+          if (!user || !user.isActive) {
+            throw new AppError("Outlet user account not found or inactive!", 403);
+          }
+
+          if (!user.outlet || user.outlet.status !== "ACTIVE") {
+            throw new AppError("Outlet account is inactive!", 403);
+          }
+
+          decoded.outletId = user.outletId ? user.outletId : undefined;
+          decoded.isOwner = user.isOwner;
+
+          break;
+        }
+
+        case "DOCTOR": {
+          const user = await mainPrisma.doctor.findUnique({
+            where: { id: decoded.id },
+            select: {
+              id: true,
+              outletId: true,
+              status: true,
+            },
           });
 
           if (!user || user.status !== "ACTIVE") {
-            throw new Error("Doctor account not found or inactive!");
+            throw new AppError("Doctor account not found or inactive!", 403);
           }
 
-          break;
+          decoded.outletId = user.outletId ? user.outletId : undefined;
 
-        case "PATIENT":
-          user = await mainPrisma.patient.findUnique({
-            where: { id: verifiedUser.id },
+          break;
+        }
+
+        case "PATIENT": {
+          const user = await mainPrisma.patient.findUnique({
+            where: { id: decoded.id },
+            select: {
+              id: true,
+              outletId: true,
+              isActive: true,
+              status: true,
+            },
           });
 
           if (!user || !user.isActive || user.status !== "ACTIVE") {
-            throw new Error("Patient account not found or inactive!");
+            throw new AppError("Patient account not found or inactive!", 403);
           }
 
+          decoded.outletId = user.outletId ? user.outletId : undefined;
+
           break;
+        }
 
         default:
-          throw new Error("Invalid user type!");
+          throw new AppError("Invalid user type!", 401);
       }
 
-      req.user = verifiedUser;
+      req.user = decoded;
 
       next();
-    } catch (err) {
-      next(err);
+    } catch (error) {
+      next(error);
     }
   };
 };
