@@ -103,6 +103,8 @@ const createAppointment = async (
 
     const requestedDuration = requestedEndMinutes - requestedStartMinutes;
 
+
+    
     if (requestedDuration !== schedule.slotDuration) {
         throw new AppError(
             `Appointment duration must be ${schedule.slotDuration} minutes`,
@@ -164,6 +166,7 @@ const createAppointment = async (
                     changedById: patientId,
                     changedByRole: "PATIENT",
                     note: "Appointment created",
+
                 },
             });
 
