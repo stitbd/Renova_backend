@@ -82,7 +82,6 @@ const moduleRoutes = [
   { path: "/website-content/doctors-contact", route: ContactSectionRoutes },
   { path: "/website-content/shop-banner", route: ShopBannerRoutes },
   { path: "/website-content/package-banner", route: PackageBannerRoutes },
-
 ];
 
 moduleRoutes.forEach((route) => appRouter.use(route.path, route.route));

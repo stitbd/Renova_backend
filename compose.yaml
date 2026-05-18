@@ -1,8 +1,8 @@
 services:
   app:
     build: .
-    image: ${DOCKER_USERNAME}/rakib-deposit-server:latest
-    container_name: rakib-deposit-server
+    image: ${DOCKER_USERNAME}/renova-server:latest
+    container_name: renova-server
     restart: always
     ports:
       - "5000:5000"

@@ -32,7 +32,7 @@ export const outletService = {
         const subdomainExists = await outletRepository.findBySubdomain(
             data.subdomain
         );
-
+        
         if (subdomainExists) {
             throw new Error("Outlet already exists with this subdomain");
         }

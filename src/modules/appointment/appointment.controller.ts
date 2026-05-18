@@ -2,9 +2,10 @@ import { Request, Response } from "express";
 import { appointmentService } from "./appointment.service";
 import catchAsync from "../../utils/catch_async";
 import manageResponse from "../../utils/manage_response";
+import { AuthUser } from "../../middlewares/auth";
 
 const createAppointment = catchAsync(async (req: Request, res: Response) => {
-    const result = await appointmentService.createAppointment(req.body, req.user);
+    const result = await appointmentService.createAppointment(req.body, req.user as AuthUser);
 
     manageResponse(res, {
         statusCode: 201,
@@ -15,7 +16,7 @@ const createAppointment = catchAsync(async (req: Request, res: Response) => {
 });
 
 const getMyAppointments = catchAsync(async (req: Request, res: Response) => {
-    const result = await appointmentService.getMyAppointments(req.user);
+    const result = await appointmentService.getMyAppointments(req.user as AuthUser);
 
     manageResponse(res, {
         statusCode: 200,
@@ -28,7 +29,7 @@ const getMyAppointments = catchAsync(async (req: Request, res: Response) => {
 const cancelAppointment = catchAsync(async (req: Request, res: Response) => {
     const result = await appointmentService.cancelAppointment(
         req.params.id as string,
-        req.user,
+        req.user as AuthUser,
         req.body.cancellationReason
     );
 
@@ -44,7 +45,7 @@ const confirmAppointment = catchAsync(async (req: Request, res: Response) => {
     const result = await appointmentService.updateAppointmentStatus(
         req.params.id as string,
         "CONFIRMED",
-        req.user
+        req.user as AuthUser
     );
 
     manageResponse(res, {
@@ -59,7 +60,7 @@ const completeAppointment = catchAsync(async (req: Request, res: Response) => {
     const result = await appointmentService.updateAppointmentStatus(
         req.params.id as string,
         "COMPLETED",
-        req.user
+        req.user as AuthUser
     );
 
     manageResponse(res, {
@@ -74,7 +75,7 @@ const markNoShow = catchAsync(async (req: Request, res: Response) => {
     const result = await appointmentService.updateAppointmentStatus(
         req.params.id as string,
         "NO_SHOW",
-        req.user
+        req.user as AuthUser
     );
 
     manageResponse(res, {
