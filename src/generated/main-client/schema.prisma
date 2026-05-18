@@ -353,6 +353,56 @@ model SuperAdminUserRole {
   @@index([roleId])
 }
 
+//========================== create packages ======================
+
+model DiagnosticTest {
+  id          String  @id @default(uuid())
+  name        String
+  code        String? @unique
+  price       Decimal @db.Decimal(10, 2)
+  description String? @db.Text
+  isActive    Boolean @default(true)
+
+  packageTests PackageTest[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("diagnostic_tests")
+}
+
+model DiagnosticPackage {
+  id              String  @id @default(uuid())
+  packageName     String
+  subtitle        String?
+  badgeText       String?
+  totalPrice      Decimal @db.Decimal(10, 2)
+  discountedPrice Decimal @db.Decimal(10, 2)
+  isActive        Boolean @default(true)
+
+  packageTests PackageTest[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("diagnostic_packages")
+}
+
+model PackageTest {
+  id String @id @default(uuid())
+
+  packageId String
+  testId    String
+
+  package DiagnosticPackage @relation(fields: [packageId], references: [id], onDelete: Cascade)
+  test    DiagnosticTest    @relation(fields: [testId], references: [id], onDelete: Restrict)
+
+  createdAt DateTime @default(now())
+
+  @@unique([packageId, testId])
+  @@map("package_tests")
+}
+
 // ==============================
 // Dynamic website content
 // ==============================

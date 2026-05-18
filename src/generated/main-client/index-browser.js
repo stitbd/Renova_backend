@@ -304,6 +304,36 @@ exports.Prisma.SuperAdminUserRoleScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.DiagnosticTestScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  code: 'code',
+  price: 'price',
+  description: 'description',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.DiagnosticPackageScalarFieldEnum = {
+  id: 'id',
+  packageName: 'packageName',
+  subtitle: 'subtitle',
+  badgeText: 'badgeText',
+  totalPrice: 'totalPrice',
+  discountedPrice: 'discountedPrice',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.PackageTestScalarFieldEnum = {
+  id: 'id',
+  packageId: 'packageId',
+  testId: 'testId',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.HomeBannerScalarFieldEnum = {
   id: 'id',
   title1: 'title1',
@@ -797,6 +827,26 @@ exports.Prisma.SuperAdminUserRoleOrderByRelevanceFieldEnum = {
   roleId: 'roleId'
 };
 
+exports.Prisma.DiagnosticTestOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  code: 'code',
+  description: 'description'
+};
+
+exports.Prisma.DiagnosticPackageOrderByRelevanceFieldEnum = {
+  id: 'id',
+  packageName: 'packageName',
+  subtitle: 'subtitle',
+  badgeText: 'badgeText'
+};
+
+exports.Prisma.PackageTestOrderByRelevanceFieldEnum = {
+  id: 'id',
+  packageId: 'packageId',
+  testId: 'testId'
+};
+
 exports.Prisma.HomeBannerOrderByRelevanceFieldEnum = {
   id: 'id',
   title1: 'title1',
@@ -1141,6 +1191,9 @@ exports.Prisma.ModelName = {
   SuperAdminPermission: 'SuperAdminPermission',
   SuperAdminRolePermission: 'SuperAdminRolePermission',
   SuperAdminUserRole: 'SuperAdminUserRole',
+  DiagnosticTest: 'DiagnosticTest',
+  DiagnosticPackage: 'DiagnosticPackage',
+  PackageTest: 'PackageTest',
   HomeBanner: 'HomeBanner',
   AboutSection: 'AboutSection',
   ServiceSection: 'ServiceSection',

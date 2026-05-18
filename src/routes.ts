@@ -33,6 +33,8 @@ import { outletRoleRoutes } from "./modules/outlet_role/outlet_role.route";
 import { superAdminPermissionRoutes } from "./modules/super_admin_permission/super_admin_permission.route";
 import { appointmentRoutes } from "./modules/appointment/appointment.route";
 import { doctorUnavailableDateRoutes } from "./modules/doctorUnavailableDate/doctorUnavailableDate.route";
+import { TestRoutes } from "./modules/test/test.route";
+import { PackageRoutes } from "./modules/package/package.route";
 
 
 const appRouter = Router();
@@ -54,6 +56,10 @@ const moduleRoutes = [
   { path: "/super-admin-roles", route: superAdminRoleRoutes },
   { path: "/super-admin-permission", route: superAdminPermissionRoutes },
   { path: "/appointments", route: appointmentRoutes },
+
+  //create package 
+  { path: "/tests", route: TestRoutes },
+  { path: "/packages", route: PackageRoutes },
 
 
 

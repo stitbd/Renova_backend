@@ -99,6 +99,21 @@ export type SuperAdminRolePermission = $Result.DefaultSelection<Prisma.$SuperAdm
  */
 export type SuperAdminUserRole = $Result.DefaultSelection<Prisma.$SuperAdminUserRolePayload>
 /**
+ * Model DiagnosticTest
+ * 
+ */
+export type DiagnosticTest = $Result.DefaultSelection<Prisma.$DiagnosticTestPayload>
+/**
+ * Model DiagnosticPackage
+ * 
+ */
+export type DiagnosticPackage = $Result.DefaultSelection<Prisma.$DiagnosticPackagePayload>
+/**
+ * Model PackageTest
+ * 
+ */
+export type PackageTest = $Result.DefaultSelection<Prisma.$PackageTestPayload>
+/**
  * Model HomeBanner
  * 
  */
@@ -574,6 +589,36 @@ export class PrismaClient<
     * ```
     */
   get superAdminUserRole(): Prisma.SuperAdminUserRoleDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.diagnosticTest`: Exposes CRUD operations for the **DiagnosticTest** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more DiagnosticTests
+    * const diagnosticTests = await prisma.diagnosticTest.findMany()
+    * ```
+    */
+  get diagnosticTest(): Prisma.DiagnosticTestDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.diagnosticPackage`: Exposes CRUD operations for the **DiagnosticPackage** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more DiagnosticPackages
+    * const diagnosticPackages = await prisma.diagnosticPackage.findMany()
+    * ```
+    */
+  get diagnosticPackage(): Prisma.DiagnosticPackageDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.packageTest`: Exposes CRUD operations for the **PackageTest** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PackageTests
+    * const packageTests = await prisma.packageTest.findMany()
+    * ```
+    */
+  get packageTest(): Prisma.PackageTestDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.homeBanner`: Exposes CRUD operations for the **HomeBanner** model.
@@ -1222,6 +1267,9 @@ export namespace Prisma {
     SuperAdminPermission: 'SuperAdminPermission',
     SuperAdminRolePermission: 'SuperAdminRolePermission',
     SuperAdminUserRole: 'SuperAdminUserRole',
+    DiagnosticTest: 'DiagnosticTest',
+    DiagnosticPackage: 'DiagnosticPackage',
+    PackageTest: 'PackageTest',
     HomeBanner: 'HomeBanner',
     AboutSection: 'AboutSection',
     ServiceSection: 'ServiceSection',
@@ -1259,7 +1307,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "superAdmins" | "patient" | "doctor" | "doctorSpecialization" | "doctorDocument" | "doctorSchedule" | "doctorUnavailableDate" | "outlet" | "outletUser" | "outletRole" | "outletPermission" | "outletRolePermission" | "outletUserRole" | "superAdminRole" | "superAdminPermission" | "superAdminRolePermission" | "superAdminUserRole" | "homeBanner" | "aboutSection" | "serviceSection" | "serviceItem" | "doctorSection" | "appointmentSection" | "productSection" | "facilitySection" | "testimonialSection" | "blogSection" | "aboutBanner" | "missionVisionSection" | "managingDirectorSection" | "leadershipSection" | "doctorBanner" | "careerSection" | "contactSection" | "shopBanner" | "packageBanner"
+      modelProps: "superAdmins" | "patient" | "doctor" | "doctorSpecialization" | "doctorDocument" | "doctorSchedule" | "doctorUnavailableDate" | "outlet" | "outletUser" | "outletRole" | "outletPermission" | "outletRolePermission" | "outletUserRole" | "superAdminRole" | "superAdminPermission" | "superAdminRolePermission" | "superAdminUserRole" | "diagnosticTest" | "diagnosticPackage" | "packageTest" | "homeBanner" | "aboutSection" | "serviceSection" | "serviceItem" | "doctorSection" | "appointmentSection" | "productSection" | "facilitySection" | "testimonialSection" | "blogSection" | "aboutBanner" | "missionVisionSection" | "managingDirectorSection" | "leadershipSection" | "doctorBanner" | "careerSection" | "contactSection" | "shopBanner" | "packageBanner"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2382,6 +2430,204 @@ export namespace Prisma {
           count: {
             args: Prisma.SuperAdminUserRoleCountArgs<ExtArgs>
             result: $Utils.Optional<SuperAdminUserRoleCountAggregateOutputType> | number
+          }
+        }
+      }
+      DiagnosticTest: {
+        payload: Prisma.$DiagnosticTestPayload<ExtArgs>
+        fields: Prisma.DiagnosticTestFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DiagnosticTestFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiagnosticTestPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DiagnosticTestFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiagnosticTestPayload>
+          }
+          findFirst: {
+            args: Prisma.DiagnosticTestFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiagnosticTestPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DiagnosticTestFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiagnosticTestPayload>
+          }
+          findMany: {
+            args: Prisma.DiagnosticTestFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiagnosticTestPayload>[]
+          }
+          create: {
+            args: Prisma.DiagnosticTestCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiagnosticTestPayload>
+          }
+          createMany: {
+            args: Prisma.DiagnosticTestCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.DiagnosticTestDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiagnosticTestPayload>
+          }
+          update: {
+            args: Prisma.DiagnosticTestUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiagnosticTestPayload>
+          }
+          deleteMany: {
+            args: Prisma.DiagnosticTestDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DiagnosticTestUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.DiagnosticTestUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiagnosticTestPayload>
+          }
+          aggregate: {
+            args: Prisma.DiagnosticTestAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDiagnosticTest>
+          }
+          groupBy: {
+            args: Prisma.DiagnosticTestGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DiagnosticTestGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DiagnosticTestCountArgs<ExtArgs>
+            result: $Utils.Optional<DiagnosticTestCountAggregateOutputType> | number
+          }
+        }
+      }
+      DiagnosticPackage: {
+        payload: Prisma.$DiagnosticPackagePayload<ExtArgs>
+        fields: Prisma.DiagnosticPackageFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DiagnosticPackageFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiagnosticPackagePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DiagnosticPackageFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiagnosticPackagePayload>
+          }
+          findFirst: {
+            args: Prisma.DiagnosticPackageFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiagnosticPackagePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DiagnosticPackageFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiagnosticPackagePayload>
+          }
+          findMany: {
+            args: Prisma.DiagnosticPackageFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiagnosticPackagePayload>[]
+          }
+          create: {
+            args: Prisma.DiagnosticPackageCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiagnosticPackagePayload>
+          }
+          createMany: {
+            args: Prisma.DiagnosticPackageCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.DiagnosticPackageDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiagnosticPackagePayload>
+          }
+          update: {
+            args: Prisma.DiagnosticPackageUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiagnosticPackagePayload>
+          }
+          deleteMany: {
+            args: Prisma.DiagnosticPackageDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DiagnosticPackageUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.DiagnosticPackageUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiagnosticPackagePayload>
+          }
+          aggregate: {
+            args: Prisma.DiagnosticPackageAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDiagnosticPackage>
+          }
+          groupBy: {
+            args: Prisma.DiagnosticPackageGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DiagnosticPackageGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DiagnosticPackageCountArgs<ExtArgs>
+            result: $Utils.Optional<DiagnosticPackageCountAggregateOutputType> | number
+          }
+        }
+      }
+      PackageTest: {
+        payload: Prisma.$PackageTestPayload<ExtArgs>
+        fields: Prisma.PackageTestFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PackageTestFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageTestPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PackageTestFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageTestPayload>
+          }
+          findFirst: {
+            args: Prisma.PackageTestFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageTestPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PackageTestFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageTestPayload>
+          }
+          findMany: {
+            args: Prisma.PackageTestFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageTestPayload>[]
+          }
+          create: {
+            args: Prisma.PackageTestCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageTestPayload>
+          }
+          createMany: {
+            args: Prisma.PackageTestCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.PackageTestDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageTestPayload>
+          }
+          update: {
+            args: Prisma.PackageTestUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageTestPayload>
+          }
+          deleteMany: {
+            args: Prisma.PackageTestDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PackageTestUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.PackageTestUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageTestPayload>
+          }
+          aggregate: {
+            args: Prisma.PackageTestAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePackageTest>
+          }
+          groupBy: {
+            args: Prisma.PackageTestGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PackageTestGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PackageTestCountArgs<ExtArgs>
+            result: $Utils.Optional<PackageTestCountAggregateOutputType> | number
           }
         }
       }
@@ -3752,6 +3998,9 @@ export namespace Prisma {
     superAdminPermission?: SuperAdminPermissionOmit
     superAdminRolePermission?: SuperAdminRolePermissionOmit
     superAdminUserRole?: SuperAdminUserRoleOmit
+    diagnosticTest?: DiagnosticTestOmit
+    diagnosticPackage?: DiagnosticPackageOmit
+    packageTest?: PackageTestOmit
     homeBanner?: HomeBannerOmit
     aboutSection?: AboutSectionOmit
     serviceSection?: ServiceSectionOmit
@@ -4185,6 +4434,68 @@ export namespace Prisma {
    */
   export type SuperAdminPermissionCountOutputTypeCountRolePermissionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: SuperAdminRolePermissionWhereInput
+  }
+
+
+  /**
+   * Count Type DiagnosticTestCountOutputType
+   */
+
+  export type DiagnosticTestCountOutputType = {
+    packageTests: number
+  }
+
+  export type DiagnosticTestCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    packageTests?: boolean | DiagnosticTestCountOutputTypeCountPackageTestsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * DiagnosticTestCountOutputType without action
+   */
+  export type DiagnosticTestCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiagnosticTestCountOutputType
+     */
+    select?: DiagnosticTestCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * DiagnosticTestCountOutputType without action
+   */
+  export type DiagnosticTestCountOutputTypeCountPackageTestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PackageTestWhereInput
+  }
+
+
+  /**
+   * Count Type DiagnosticPackageCountOutputType
+   */
+
+  export type DiagnosticPackageCountOutputType = {
+    packageTests: number
+  }
+
+  export type DiagnosticPackageCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    packageTests?: boolean | DiagnosticPackageCountOutputTypeCountPackageTestsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * DiagnosticPackageCountOutputType without action
+   */
+  export type DiagnosticPackageCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiagnosticPackageCountOutputType
+     */
+    select?: DiagnosticPackageCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * DiagnosticPackageCountOutputType without action
+   */
+  export type DiagnosticPackageCountOutputTypeCountPackageTestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PackageTestWhereInput
   }
 
 
@@ -21174,6 +21485,2987 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: SuperAdminUserRoleInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model DiagnosticTest
+   */
+
+  export type AggregateDiagnosticTest = {
+    _count: DiagnosticTestCountAggregateOutputType | null
+    _avg: DiagnosticTestAvgAggregateOutputType | null
+    _sum: DiagnosticTestSumAggregateOutputType | null
+    _min: DiagnosticTestMinAggregateOutputType | null
+    _max: DiagnosticTestMaxAggregateOutputType | null
+  }
+
+  export type DiagnosticTestAvgAggregateOutputType = {
+    price: Decimal | null
+  }
+
+  export type DiagnosticTestSumAggregateOutputType = {
+    price: Decimal | null
+  }
+
+  export type DiagnosticTestMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    code: string | null
+    price: Decimal | null
+    description: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type DiagnosticTestMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    code: string | null
+    price: Decimal | null
+    description: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type DiagnosticTestCountAggregateOutputType = {
+    id: number
+    name: number
+    code: number
+    price: number
+    description: number
+    isActive: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type DiagnosticTestAvgAggregateInputType = {
+    price?: true
+  }
+
+  export type DiagnosticTestSumAggregateInputType = {
+    price?: true
+  }
+
+  export type DiagnosticTestMinAggregateInputType = {
+    id?: true
+    name?: true
+    code?: true
+    price?: true
+    description?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type DiagnosticTestMaxAggregateInputType = {
+    id?: true
+    name?: true
+    code?: true
+    price?: true
+    description?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type DiagnosticTestCountAggregateInputType = {
+    id?: true
+    name?: true
+    code?: true
+    price?: true
+    description?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type DiagnosticTestAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DiagnosticTest to aggregate.
+     */
+    where?: DiagnosticTestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DiagnosticTests to fetch.
+     */
+    orderBy?: DiagnosticTestOrderByWithRelationInput | DiagnosticTestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DiagnosticTestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DiagnosticTests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DiagnosticTests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned DiagnosticTests
+    **/
+    _count?: true | DiagnosticTestCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: DiagnosticTestAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: DiagnosticTestSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DiagnosticTestMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DiagnosticTestMaxAggregateInputType
+  }
+
+  export type GetDiagnosticTestAggregateType<T extends DiagnosticTestAggregateArgs> = {
+        [P in keyof T & keyof AggregateDiagnosticTest]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDiagnosticTest[P]>
+      : GetScalarType<T[P], AggregateDiagnosticTest[P]>
+  }
+
+
+
+
+  export type DiagnosticTestGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DiagnosticTestWhereInput
+    orderBy?: DiagnosticTestOrderByWithAggregationInput | DiagnosticTestOrderByWithAggregationInput[]
+    by: DiagnosticTestScalarFieldEnum[] | DiagnosticTestScalarFieldEnum
+    having?: DiagnosticTestScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DiagnosticTestCountAggregateInputType | true
+    _avg?: DiagnosticTestAvgAggregateInputType
+    _sum?: DiagnosticTestSumAggregateInputType
+    _min?: DiagnosticTestMinAggregateInputType
+    _max?: DiagnosticTestMaxAggregateInputType
+  }
+
+  export type DiagnosticTestGroupByOutputType = {
+    id: string
+    name: string
+    code: string | null
+    price: Decimal
+    description: string | null
+    isActive: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: DiagnosticTestCountAggregateOutputType | null
+    _avg: DiagnosticTestAvgAggregateOutputType | null
+    _sum: DiagnosticTestSumAggregateOutputType | null
+    _min: DiagnosticTestMinAggregateOutputType | null
+    _max: DiagnosticTestMaxAggregateOutputType | null
+  }
+
+  type GetDiagnosticTestGroupByPayload<T extends DiagnosticTestGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DiagnosticTestGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DiagnosticTestGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DiagnosticTestGroupByOutputType[P]>
+            : GetScalarType<T[P], DiagnosticTestGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DiagnosticTestSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    code?: boolean
+    price?: boolean
+    description?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    packageTests?: boolean | DiagnosticTest$packageTestsArgs<ExtArgs>
+    _count?: boolean | DiagnosticTestCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["diagnosticTest"]>
+
+
+
+  export type DiagnosticTestSelectScalar = {
+    id?: boolean
+    name?: boolean
+    code?: boolean
+    price?: boolean
+    description?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type DiagnosticTestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "code" | "price" | "description" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["diagnosticTest"]>
+  export type DiagnosticTestInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    packageTests?: boolean | DiagnosticTest$packageTestsArgs<ExtArgs>
+    _count?: boolean | DiagnosticTestCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $DiagnosticTestPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "DiagnosticTest"
+    objects: {
+      packageTests: Prisma.$PackageTestPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      code: string | null
+      price: Prisma.Decimal
+      description: string | null
+      isActive: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["diagnosticTest"]>
+    composites: {}
+  }
+
+  type DiagnosticTestGetPayload<S extends boolean | null | undefined | DiagnosticTestDefaultArgs> = $Result.GetResult<Prisma.$DiagnosticTestPayload, S>
+
+  type DiagnosticTestCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DiagnosticTestFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DiagnosticTestCountAggregateInputType | true
+    }
+
+  export interface DiagnosticTestDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['DiagnosticTest'], meta: { name: 'DiagnosticTest' } }
+    /**
+     * Find zero or one DiagnosticTest that matches the filter.
+     * @param {DiagnosticTestFindUniqueArgs} args - Arguments to find a DiagnosticTest
+     * @example
+     * // Get one DiagnosticTest
+     * const diagnosticTest = await prisma.diagnosticTest.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DiagnosticTestFindUniqueArgs>(args: SelectSubset<T, DiagnosticTestFindUniqueArgs<ExtArgs>>): Prisma__DiagnosticTestClient<$Result.GetResult<Prisma.$DiagnosticTestPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one DiagnosticTest that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DiagnosticTestFindUniqueOrThrowArgs} args - Arguments to find a DiagnosticTest
+     * @example
+     * // Get one DiagnosticTest
+     * const diagnosticTest = await prisma.diagnosticTest.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DiagnosticTestFindUniqueOrThrowArgs>(args: SelectSubset<T, DiagnosticTestFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DiagnosticTestClient<$Result.GetResult<Prisma.$DiagnosticTestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DiagnosticTest that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiagnosticTestFindFirstArgs} args - Arguments to find a DiagnosticTest
+     * @example
+     * // Get one DiagnosticTest
+     * const diagnosticTest = await prisma.diagnosticTest.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DiagnosticTestFindFirstArgs>(args?: SelectSubset<T, DiagnosticTestFindFirstArgs<ExtArgs>>): Prisma__DiagnosticTestClient<$Result.GetResult<Prisma.$DiagnosticTestPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DiagnosticTest that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiagnosticTestFindFirstOrThrowArgs} args - Arguments to find a DiagnosticTest
+     * @example
+     * // Get one DiagnosticTest
+     * const diagnosticTest = await prisma.diagnosticTest.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DiagnosticTestFindFirstOrThrowArgs>(args?: SelectSubset<T, DiagnosticTestFindFirstOrThrowArgs<ExtArgs>>): Prisma__DiagnosticTestClient<$Result.GetResult<Prisma.$DiagnosticTestPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more DiagnosticTests that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiagnosticTestFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all DiagnosticTests
+     * const diagnosticTests = await prisma.diagnosticTest.findMany()
+     * 
+     * // Get first 10 DiagnosticTests
+     * const diagnosticTests = await prisma.diagnosticTest.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const diagnosticTestWithIdOnly = await prisma.diagnosticTest.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DiagnosticTestFindManyArgs>(args?: SelectSubset<T, DiagnosticTestFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiagnosticTestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a DiagnosticTest.
+     * @param {DiagnosticTestCreateArgs} args - Arguments to create a DiagnosticTest.
+     * @example
+     * // Create one DiagnosticTest
+     * const DiagnosticTest = await prisma.diagnosticTest.create({
+     *   data: {
+     *     // ... data to create a DiagnosticTest
+     *   }
+     * })
+     * 
+     */
+    create<T extends DiagnosticTestCreateArgs>(args: SelectSubset<T, DiagnosticTestCreateArgs<ExtArgs>>): Prisma__DiagnosticTestClient<$Result.GetResult<Prisma.$DiagnosticTestPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many DiagnosticTests.
+     * @param {DiagnosticTestCreateManyArgs} args - Arguments to create many DiagnosticTests.
+     * @example
+     * // Create many DiagnosticTests
+     * const diagnosticTest = await prisma.diagnosticTest.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DiagnosticTestCreateManyArgs>(args?: SelectSubset<T, DiagnosticTestCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a DiagnosticTest.
+     * @param {DiagnosticTestDeleteArgs} args - Arguments to delete one DiagnosticTest.
+     * @example
+     * // Delete one DiagnosticTest
+     * const DiagnosticTest = await prisma.diagnosticTest.delete({
+     *   where: {
+     *     // ... filter to delete one DiagnosticTest
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DiagnosticTestDeleteArgs>(args: SelectSubset<T, DiagnosticTestDeleteArgs<ExtArgs>>): Prisma__DiagnosticTestClient<$Result.GetResult<Prisma.$DiagnosticTestPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one DiagnosticTest.
+     * @param {DiagnosticTestUpdateArgs} args - Arguments to update one DiagnosticTest.
+     * @example
+     * // Update one DiagnosticTest
+     * const diagnosticTest = await prisma.diagnosticTest.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DiagnosticTestUpdateArgs>(args: SelectSubset<T, DiagnosticTestUpdateArgs<ExtArgs>>): Prisma__DiagnosticTestClient<$Result.GetResult<Prisma.$DiagnosticTestPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more DiagnosticTests.
+     * @param {DiagnosticTestDeleteManyArgs} args - Arguments to filter DiagnosticTests to delete.
+     * @example
+     * // Delete a few DiagnosticTests
+     * const { count } = await prisma.diagnosticTest.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DiagnosticTestDeleteManyArgs>(args?: SelectSubset<T, DiagnosticTestDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DiagnosticTests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiagnosticTestUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many DiagnosticTests
+     * const diagnosticTest = await prisma.diagnosticTest.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DiagnosticTestUpdateManyArgs>(args: SelectSubset<T, DiagnosticTestUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one DiagnosticTest.
+     * @param {DiagnosticTestUpsertArgs} args - Arguments to update or create a DiagnosticTest.
+     * @example
+     * // Update or create a DiagnosticTest
+     * const diagnosticTest = await prisma.diagnosticTest.upsert({
+     *   create: {
+     *     // ... data to create a DiagnosticTest
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the DiagnosticTest we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DiagnosticTestUpsertArgs>(args: SelectSubset<T, DiagnosticTestUpsertArgs<ExtArgs>>): Prisma__DiagnosticTestClient<$Result.GetResult<Prisma.$DiagnosticTestPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of DiagnosticTests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiagnosticTestCountArgs} args - Arguments to filter DiagnosticTests to count.
+     * @example
+     * // Count the number of DiagnosticTests
+     * const count = await prisma.diagnosticTest.count({
+     *   where: {
+     *     // ... the filter for the DiagnosticTests we want to count
+     *   }
+     * })
+    **/
+    count<T extends DiagnosticTestCountArgs>(
+      args?: Subset<T, DiagnosticTestCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DiagnosticTestCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a DiagnosticTest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiagnosticTestAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DiagnosticTestAggregateArgs>(args: Subset<T, DiagnosticTestAggregateArgs>): Prisma.PrismaPromise<GetDiagnosticTestAggregateType<T>>
+
+    /**
+     * Group by DiagnosticTest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiagnosticTestGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DiagnosticTestGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DiagnosticTestGroupByArgs['orderBy'] }
+        : { orderBy?: DiagnosticTestGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DiagnosticTestGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDiagnosticTestGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the DiagnosticTest model
+   */
+  readonly fields: DiagnosticTestFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for DiagnosticTest.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DiagnosticTestClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    packageTests<T extends DiagnosticTest$packageTestsArgs<ExtArgs> = {}>(args?: Subset<T, DiagnosticTest$packageTestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PackageTestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the DiagnosticTest model
+   */
+  interface DiagnosticTestFieldRefs {
+    readonly id: FieldRef<"DiagnosticTest", 'String'>
+    readonly name: FieldRef<"DiagnosticTest", 'String'>
+    readonly code: FieldRef<"DiagnosticTest", 'String'>
+    readonly price: FieldRef<"DiagnosticTest", 'Decimal'>
+    readonly description: FieldRef<"DiagnosticTest", 'String'>
+    readonly isActive: FieldRef<"DiagnosticTest", 'Boolean'>
+    readonly createdAt: FieldRef<"DiagnosticTest", 'DateTime'>
+    readonly updatedAt: FieldRef<"DiagnosticTest", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * DiagnosticTest findUnique
+   */
+  export type DiagnosticTestFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiagnosticTest
+     */
+    select?: DiagnosticTestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiagnosticTest
+     */
+    omit?: DiagnosticTestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiagnosticTestInclude<ExtArgs> | null
+    /**
+     * Filter, which DiagnosticTest to fetch.
+     */
+    where: DiagnosticTestWhereUniqueInput
+  }
+
+  /**
+   * DiagnosticTest findUniqueOrThrow
+   */
+  export type DiagnosticTestFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiagnosticTest
+     */
+    select?: DiagnosticTestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiagnosticTest
+     */
+    omit?: DiagnosticTestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiagnosticTestInclude<ExtArgs> | null
+    /**
+     * Filter, which DiagnosticTest to fetch.
+     */
+    where: DiagnosticTestWhereUniqueInput
+  }
+
+  /**
+   * DiagnosticTest findFirst
+   */
+  export type DiagnosticTestFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiagnosticTest
+     */
+    select?: DiagnosticTestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiagnosticTest
+     */
+    omit?: DiagnosticTestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiagnosticTestInclude<ExtArgs> | null
+    /**
+     * Filter, which DiagnosticTest to fetch.
+     */
+    where?: DiagnosticTestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DiagnosticTests to fetch.
+     */
+    orderBy?: DiagnosticTestOrderByWithRelationInput | DiagnosticTestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DiagnosticTests.
+     */
+    cursor?: DiagnosticTestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DiagnosticTests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DiagnosticTests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DiagnosticTests.
+     */
+    distinct?: DiagnosticTestScalarFieldEnum | DiagnosticTestScalarFieldEnum[]
+  }
+
+  /**
+   * DiagnosticTest findFirstOrThrow
+   */
+  export type DiagnosticTestFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiagnosticTest
+     */
+    select?: DiagnosticTestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiagnosticTest
+     */
+    omit?: DiagnosticTestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiagnosticTestInclude<ExtArgs> | null
+    /**
+     * Filter, which DiagnosticTest to fetch.
+     */
+    where?: DiagnosticTestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DiagnosticTests to fetch.
+     */
+    orderBy?: DiagnosticTestOrderByWithRelationInput | DiagnosticTestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DiagnosticTests.
+     */
+    cursor?: DiagnosticTestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DiagnosticTests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DiagnosticTests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DiagnosticTests.
+     */
+    distinct?: DiagnosticTestScalarFieldEnum | DiagnosticTestScalarFieldEnum[]
+  }
+
+  /**
+   * DiagnosticTest findMany
+   */
+  export type DiagnosticTestFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiagnosticTest
+     */
+    select?: DiagnosticTestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiagnosticTest
+     */
+    omit?: DiagnosticTestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiagnosticTestInclude<ExtArgs> | null
+    /**
+     * Filter, which DiagnosticTests to fetch.
+     */
+    where?: DiagnosticTestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DiagnosticTests to fetch.
+     */
+    orderBy?: DiagnosticTestOrderByWithRelationInput | DiagnosticTestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing DiagnosticTests.
+     */
+    cursor?: DiagnosticTestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DiagnosticTests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DiagnosticTests.
+     */
+    skip?: number
+    distinct?: DiagnosticTestScalarFieldEnum | DiagnosticTestScalarFieldEnum[]
+  }
+
+  /**
+   * DiagnosticTest create
+   */
+  export type DiagnosticTestCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiagnosticTest
+     */
+    select?: DiagnosticTestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiagnosticTest
+     */
+    omit?: DiagnosticTestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiagnosticTestInclude<ExtArgs> | null
+    /**
+     * The data needed to create a DiagnosticTest.
+     */
+    data: XOR<DiagnosticTestCreateInput, DiagnosticTestUncheckedCreateInput>
+  }
+
+  /**
+   * DiagnosticTest createMany
+   */
+  export type DiagnosticTestCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many DiagnosticTests.
+     */
+    data: DiagnosticTestCreateManyInput | DiagnosticTestCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * DiagnosticTest update
+   */
+  export type DiagnosticTestUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiagnosticTest
+     */
+    select?: DiagnosticTestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiagnosticTest
+     */
+    omit?: DiagnosticTestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiagnosticTestInclude<ExtArgs> | null
+    /**
+     * The data needed to update a DiagnosticTest.
+     */
+    data: XOR<DiagnosticTestUpdateInput, DiagnosticTestUncheckedUpdateInput>
+    /**
+     * Choose, which DiagnosticTest to update.
+     */
+    where: DiagnosticTestWhereUniqueInput
+  }
+
+  /**
+   * DiagnosticTest updateMany
+   */
+  export type DiagnosticTestUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update DiagnosticTests.
+     */
+    data: XOR<DiagnosticTestUpdateManyMutationInput, DiagnosticTestUncheckedUpdateManyInput>
+    /**
+     * Filter which DiagnosticTests to update
+     */
+    where?: DiagnosticTestWhereInput
+    /**
+     * Limit how many DiagnosticTests to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * DiagnosticTest upsert
+   */
+  export type DiagnosticTestUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiagnosticTest
+     */
+    select?: DiagnosticTestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiagnosticTest
+     */
+    omit?: DiagnosticTestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiagnosticTestInclude<ExtArgs> | null
+    /**
+     * The filter to search for the DiagnosticTest to update in case it exists.
+     */
+    where: DiagnosticTestWhereUniqueInput
+    /**
+     * In case the DiagnosticTest found by the `where` argument doesn't exist, create a new DiagnosticTest with this data.
+     */
+    create: XOR<DiagnosticTestCreateInput, DiagnosticTestUncheckedCreateInput>
+    /**
+     * In case the DiagnosticTest was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DiagnosticTestUpdateInput, DiagnosticTestUncheckedUpdateInput>
+  }
+
+  /**
+   * DiagnosticTest delete
+   */
+  export type DiagnosticTestDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiagnosticTest
+     */
+    select?: DiagnosticTestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiagnosticTest
+     */
+    omit?: DiagnosticTestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiagnosticTestInclude<ExtArgs> | null
+    /**
+     * Filter which DiagnosticTest to delete.
+     */
+    where: DiagnosticTestWhereUniqueInput
+  }
+
+  /**
+   * DiagnosticTest deleteMany
+   */
+  export type DiagnosticTestDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DiagnosticTests to delete
+     */
+    where?: DiagnosticTestWhereInput
+    /**
+     * Limit how many DiagnosticTests to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * DiagnosticTest.packageTests
+   */
+  export type DiagnosticTest$packageTestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageTest
+     */
+    select?: PackageTestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageTest
+     */
+    omit?: PackageTestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageTestInclude<ExtArgs> | null
+    where?: PackageTestWhereInput
+    orderBy?: PackageTestOrderByWithRelationInput | PackageTestOrderByWithRelationInput[]
+    cursor?: PackageTestWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PackageTestScalarFieldEnum | PackageTestScalarFieldEnum[]
+  }
+
+  /**
+   * DiagnosticTest without action
+   */
+  export type DiagnosticTestDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiagnosticTest
+     */
+    select?: DiagnosticTestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiagnosticTest
+     */
+    omit?: DiagnosticTestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiagnosticTestInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model DiagnosticPackage
+   */
+
+  export type AggregateDiagnosticPackage = {
+    _count: DiagnosticPackageCountAggregateOutputType | null
+    _avg: DiagnosticPackageAvgAggregateOutputType | null
+    _sum: DiagnosticPackageSumAggregateOutputType | null
+    _min: DiagnosticPackageMinAggregateOutputType | null
+    _max: DiagnosticPackageMaxAggregateOutputType | null
+  }
+
+  export type DiagnosticPackageAvgAggregateOutputType = {
+    totalPrice: Decimal | null
+    discountedPrice: Decimal | null
+  }
+
+  export type DiagnosticPackageSumAggregateOutputType = {
+    totalPrice: Decimal | null
+    discountedPrice: Decimal | null
+  }
+
+  export type DiagnosticPackageMinAggregateOutputType = {
+    id: string | null
+    packageName: string | null
+    subtitle: string | null
+    badgeText: string | null
+    totalPrice: Decimal | null
+    discountedPrice: Decimal | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type DiagnosticPackageMaxAggregateOutputType = {
+    id: string | null
+    packageName: string | null
+    subtitle: string | null
+    badgeText: string | null
+    totalPrice: Decimal | null
+    discountedPrice: Decimal | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type DiagnosticPackageCountAggregateOutputType = {
+    id: number
+    packageName: number
+    subtitle: number
+    badgeText: number
+    totalPrice: number
+    discountedPrice: number
+    isActive: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type DiagnosticPackageAvgAggregateInputType = {
+    totalPrice?: true
+    discountedPrice?: true
+  }
+
+  export type DiagnosticPackageSumAggregateInputType = {
+    totalPrice?: true
+    discountedPrice?: true
+  }
+
+  export type DiagnosticPackageMinAggregateInputType = {
+    id?: true
+    packageName?: true
+    subtitle?: true
+    badgeText?: true
+    totalPrice?: true
+    discountedPrice?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type DiagnosticPackageMaxAggregateInputType = {
+    id?: true
+    packageName?: true
+    subtitle?: true
+    badgeText?: true
+    totalPrice?: true
+    discountedPrice?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type DiagnosticPackageCountAggregateInputType = {
+    id?: true
+    packageName?: true
+    subtitle?: true
+    badgeText?: true
+    totalPrice?: true
+    discountedPrice?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type DiagnosticPackageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DiagnosticPackage to aggregate.
+     */
+    where?: DiagnosticPackageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DiagnosticPackages to fetch.
+     */
+    orderBy?: DiagnosticPackageOrderByWithRelationInput | DiagnosticPackageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DiagnosticPackageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DiagnosticPackages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DiagnosticPackages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned DiagnosticPackages
+    **/
+    _count?: true | DiagnosticPackageCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: DiagnosticPackageAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: DiagnosticPackageSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DiagnosticPackageMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DiagnosticPackageMaxAggregateInputType
+  }
+
+  export type GetDiagnosticPackageAggregateType<T extends DiagnosticPackageAggregateArgs> = {
+        [P in keyof T & keyof AggregateDiagnosticPackage]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDiagnosticPackage[P]>
+      : GetScalarType<T[P], AggregateDiagnosticPackage[P]>
+  }
+
+
+
+
+  export type DiagnosticPackageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DiagnosticPackageWhereInput
+    orderBy?: DiagnosticPackageOrderByWithAggregationInput | DiagnosticPackageOrderByWithAggregationInput[]
+    by: DiagnosticPackageScalarFieldEnum[] | DiagnosticPackageScalarFieldEnum
+    having?: DiagnosticPackageScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DiagnosticPackageCountAggregateInputType | true
+    _avg?: DiagnosticPackageAvgAggregateInputType
+    _sum?: DiagnosticPackageSumAggregateInputType
+    _min?: DiagnosticPackageMinAggregateInputType
+    _max?: DiagnosticPackageMaxAggregateInputType
+  }
+
+  export type DiagnosticPackageGroupByOutputType = {
+    id: string
+    packageName: string
+    subtitle: string | null
+    badgeText: string | null
+    totalPrice: Decimal
+    discountedPrice: Decimal
+    isActive: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: DiagnosticPackageCountAggregateOutputType | null
+    _avg: DiagnosticPackageAvgAggregateOutputType | null
+    _sum: DiagnosticPackageSumAggregateOutputType | null
+    _min: DiagnosticPackageMinAggregateOutputType | null
+    _max: DiagnosticPackageMaxAggregateOutputType | null
+  }
+
+  type GetDiagnosticPackageGroupByPayload<T extends DiagnosticPackageGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DiagnosticPackageGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DiagnosticPackageGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DiagnosticPackageGroupByOutputType[P]>
+            : GetScalarType<T[P], DiagnosticPackageGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DiagnosticPackageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    packageName?: boolean
+    subtitle?: boolean
+    badgeText?: boolean
+    totalPrice?: boolean
+    discountedPrice?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    packageTests?: boolean | DiagnosticPackage$packageTestsArgs<ExtArgs>
+    _count?: boolean | DiagnosticPackageCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["diagnosticPackage"]>
+
+
+
+  export type DiagnosticPackageSelectScalar = {
+    id?: boolean
+    packageName?: boolean
+    subtitle?: boolean
+    badgeText?: boolean
+    totalPrice?: boolean
+    discountedPrice?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type DiagnosticPackageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "packageName" | "subtitle" | "badgeText" | "totalPrice" | "discountedPrice" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["diagnosticPackage"]>
+  export type DiagnosticPackageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    packageTests?: boolean | DiagnosticPackage$packageTestsArgs<ExtArgs>
+    _count?: boolean | DiagnosticPackageCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $DiagnosticPackagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "DiagnosticPackage"
+    objects: {
+      packageTests: Prisma.$PackageTestPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      packageName: string
+      subtitle: string | null
+      badgeText: string | null
+      totalPrice: Prisma.Decimal
+      discountedPrice: Prisma.Decimal
+      isActive: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["diagnosticPackage"]>
+    composites: {}
+  }
+
+  type DiagnosticPackageGetPayload<S extends boolean | null | undefined | DiagnosticPackageDefaultArgs> = $Result.GetResult<Prisma.$DiagnosticPackagePayload, S>
+
+  type DiagnosticPackageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DiagnosticPackageFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DiagnosticPackageCountAggregateInputType | true
+    }
+
+  export interface DiagnosticPackageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['DiagnosticPackage'], meta: { name: 'DiagnosticPackage' } }
+    /**
+     * Find zero or one DiagnosticPackage that matches the filter.
+     * @param {DiagnosticPackageFindUniqueArgs} args - Arguments to find a DiagnosticPackage
+     * @example
+     * // Get one DiagnosticPackage
+     * const diagnosticPackage = await prisma.diagnosticPackage.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DiagnosticPackageFindUniqueArgs>(args: SelectSubset<T, DiagnosticPackageFindUniqueArgs<ExtArgs>>): Prisma__DiagnosticPackageClient<$Result.GetResult<Prisma.$DiagnosticPackagePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one DiagnosticPackage that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DiagnosticPackageFindUniqueOrThrowArgs} args - Arguments to find a DiagnosticPackage
+     * @example
+     * // Get one DiagnosticPackage
+     * const diagnosticPackage = await prisma.diagnosticPackage.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DiagnosticPackageFindUniqueOrThrowArgs>(args: SelectSubset<T, DiagnosticPackageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DiagnosticPackageClient<$Result.GetResult<Prisma.$DiagnosticPackagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DiagnosticPackage that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiagnosticPackageFindFirstArgs} args - Arguments to find a DiagnosticPackage
+     * @example
+     * // Get one DiagnosticPackage
+     * const diagnosticPackage = await prisma.diagnosticPackage.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DiagnosticPackageFindFirstArgs>(args?: SelectSubset<T, DiagnosticPackageFindFirstArgs<ExtArgs>>): Prisma__DiagnosticPackageClient<$Result.GetResult<Prisma.$DiagnosticPackagePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DiagnosticPackage that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiagnosticPackageFindFirstOrThrowArgs} args - Arguments to find a DiagnosticPackage
+     * @example
+     * // Get one DiagnosticPackage
+     * const diagnosticPackage = await prisma.diagnosticPackage.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DiagnosticPackageFindFirstOrThrowArgs>(args?: SelectSubset<T, DiagnosticPackageFindFirstOrThrowArgs<ExtArgs>>): Prisma__DiagnosticPackageClient<$Result.GetResult<Prisma.$DiagnosticPackagePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more DiagnosticPackages that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiagnosticPackageFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all DiagnosticPackages
+     * const diagnosticPackages = await prisma.diagnosticPackage.findMany()
+     * 
+     * // Get first 10 DiagnosticPackages
+     * const diagnosticPackages = await prisma.diagnosticPackage.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const diagnosticPackageWithIdOnly = await prisma.diagnosticPackage.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DiagnosticPackageFindManyArgs>(args?: SelectSubset<T, DiagnosticPackageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiagnosticPackagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a DiagnosticPackage.
+     * @param {DiagnosticPackageCreateArgs} args - Arguments to create a DiagnosticPackage.
+     * @example
+     * // Create one DiagnosticPackage
+     * const DiagnosticPackage = await prisma.diagnosticPackage.create({
+     *   data: {
+     *     // ... data to create a DiagnosticPackage
+     *   }
+     * })
+     * 
+     */
+    create<T extends DiagnosticPackageCreateArgs>(args: SelectSubset<T, DiagnosticPackageCreateArgs<ExtArgs>>): Prisma__DiagnosticPackageClient<$Result.GetResult<Prisma.$DiagnosticPackagePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many DiagnosticPackages.
+     * @param {DiagnosticPackageCreateManyArgs} args - Arguments to create many DiagnosticPackages.
+     * @example
+     * // Create many DiagnosticPackages
+     * const diagnosticPackage = await prisma.diagnosticPackage.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DiagnosticPackageCreateManyArgs>(args?: SelectSubset<T, DiagnosticPackageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a DiagnosticPackage.
+     * @param {DiagnosticPackageDeleteArgs} args - Arguments to delete one DiagnosticPackage.
+     * @example
+     * // Delete one DiagnosticPackage
+     * const DiagnosticPackage = await prisma.diagnosticPackage.delete({
+     *   where: {
+     *     // ... filter to delete one DiagnosticPackage
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DiagnosticPackageDeleteArgs>(args: SelectSubset<T, DiagnosticPackageDeleteArgs<ExtArgs>>): Prisma__DiagnosticPackageClient<$Result.GetResult<Prisma.$DiagnosticPackagePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one DiagnosticPackage.
+     * @param {DiagnosticPackageUpdateArgs} args - Arguments to update one DiagnosticPackage.
+     * @example
+     * // Update one DiagnosticPackage
+     * const diagnosticPackage = await prisma.diagnosticPackage.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DiagnosticPackageUpdateArgs>(args: SelectSubset<T, DiagnosticPackageUpdateArgs<ExtArgs>>): Prisma__DiagnosticPackageClient<$Result.GetResult<Prisma.$DiagnosticPackagePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more DiagnosticPackages.
+     * @param {DiagnosticPackageDeleteManyArgs} args - Arguments to filter DiagnosticPackages to delete.
+     * @example
+     * // Delete a few DiagnosticPackages
+     * const { count } = await prisma.diagnosticPackage.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DiagnosticPackageDeleteManyArgs>(args?: SelectSubset<T, DiagnosticPackageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DiagnosticPackages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiagnosticPackageUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many DiagnosticPackages
+     * const diagnosticPackage = await prisma.diagnosticPackage.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DiagnosticPackageUpdateManyArgs>(args: SelectSubset<T, DiagnosticPackageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one DiagnosticPackage.
+     * @param {DiagnosticPackageUpsertArgs} args - Arguments to update or create a DiagnosticPackage.
+     * @example
+     * // Update or create a DiagnosticPackage
+     * const diagnosticPackage = await prisma.diagnosticPackage.upsert({
+     *   create: {
+     *     // ... data to create a DiagnosticPackage
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the DiagnosticPackage we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DiagnosticPackageUpsertArgs>(args: SelectSubset<T, DiagnosticPackageUpsertArgs<ExtArgs>>): Prisma__DiagnosticPackageClient<$Result.GetResult<Prisma.$DiagnosticPackagePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of DiagnosticPackages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiagnosticPackageCountArgs} args - Arguments to filter DiagnosticPackages to count.
+     * @example
+     * // Count the number of DiagnosticPackages
+     * const count = await prisma.diagnosticPackage.count({
+     *   where: {
+     *     // ... the filter for the DiagnosticPackages we want to count
+     *   }
+     * })
+    **/
+    count<T extends DiagnosticPackageCountArgs>(
+      args?: Subset<T, DiagnosticPackageCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DiagnosticPackageCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a DiagnosticPackage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiagnosticPackageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DiagnosticPackageAggregateArgs>(args: Subset<T, DiagnosticPackageAggregateArgs>): Prisma.PrismaPromise<GetDiagnosticPackageAggregateType<T>>
+
+    /**
+     * Group by DiagnosticPackage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiagnosticPackageGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DiagnosticPackageGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DiagnosticPackageGroupByArgs['orderBy'] }
+        : { orderBy?: DiagnosticPackageGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DiagnosticPackageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDiagnosticPackageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the DiagnosticPackage model
+   */
+  readonly fields: DiagnosticPackageFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for DiagnosticPackage.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DiagnosticPackageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    packageTests<T extends DiagnosticPackage$packageTestsArgs<ExtArgs> = {}>(args?: Subset<T, DiagnosticPackage$packageTestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PackageTestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the DiagnosticPackage model
+   */
+  interface DiagnosticPackageFieldRefs {
+    readonly id: FieldRef<"DiagnosticPackage", 'String'>
+    readonly packageName: FieldRef<"DiagnosticPackage", 'String'>
+    readonly subtitle: FieldRef<"DiagnosticPackage", 'String'>
+    readonly badgeText: FieldRef<"DiagnosticPackage", 'String'>
+    readonly totalPrice: FieldRef<"DiagnosticPackage", 'Decimal'>
+    readonly discountedPrice: FieldRef<"DiagnosticPackage", 'Decimal'>
+    readonly isActive: FieldRef<"DiagnosticPackage", 'Boolean'>
+    readonly createdAt: FieldRef<"DiagnosticPackage", 'DateTime'>
+    readonly updatedAt: FieldRef<"DiagnosticPackage", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * DiagnosticPackage findUnique
+   */
+  export type DiagnosticPackageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiagnosticPackage
+     */
+    select?: DiagnosticPackageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiagnosticPackage
+     */
+    omit?: DiagnosticPackageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiagnosticPackageInclude<ExtArgs> | null
+    /**
+     * Filter, which DiagnosticPackage to fetch.
+     */
+    where: DiagnosticPackageWhereUniqueInput
+  }
+
+  /**
+   * DiagnosticPackage findUniqueOrThrow
+   */
+  export type DiagnosticPackageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiagnosticPackage
+     */
+    select?: DiagnosticPackageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiagnosticPackage
+     */
+    omit?: DiagnosticPackageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiagnosticPackageInclude<ExtArgs> | null
+    /**
+     * Filter, which DiagnosticPackage to fetch.
+     */
+    where: DiagnosticPackageWhereUniqueInput
+  }
+
+  /**
+   * DiagnosticPackage findFirst
+   */
+  export type DiagnosticPackageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiagnosticPackage
+     */
+    select?: DiagnosticPackageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiagnosticPackage
+     */
+    omit?: DiagnosticPackageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiagnosticPackageInclude<ExtArgs> | null
+    /**
+     * Filter, which DiagnosticPackage to fetch.
+     */
+    where?: DiagnosticPackageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DiagnosticPackages to fetch.
+     */
+    orderBy?: DiagnosticPackageOrderByWithRelationInput | DiagnosticPackageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DiagnosticPackages.
+     */
+    cursor?: DiagnosticPackageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DiagnosticPackages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DiagnosticPackages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DiagnosticPackages.
+     */
+    distinct?: DiagnosticPackageScalarFieldEnum | DiagnosticPackageScalarFieldEnum[]
+  }
+
+  /**
+   * DiagnosticPackage findFirstOrThrow
+   */
+  export type DiagnosticPackageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiagnosticPackage
+     */
+    select?: DiagnosticPackageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiagnosticPackage
+     */
+    omit?: DiagnosticPackageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiagnosticPackageInclude<ExtArgs> | null
+    /**
+     * Filter, which DiagnosticPackage to fetch.
+     */
+    where?: DiagnosticPackageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DiagnosticPackages to fetch.
+     */
+    orderBy?: DiagnosticPackageOrderByWithRelationInput | DiagnosticPackageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DiagnosticPackages.
+     */
+    cursor?: DiagnosticPackageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DiagnosticPackages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DiagnosticPackages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DiagnosticPackages.
+     */
+    distinct?: DiagnosticPackageScalarFieldEnum | DiagnosticPackageScalarFieldEnum[]
+  }
+
+  /**
+   * DiagnosticPackage findMany
+   */
+  export type DiagnosticPackageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiagnosticPackage
+     */
+    select?: DiagnosticPackageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiagnosticPackage
+     */
+    omit?: DiagnosticPackageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiagnosticPackageInclude<ExtArgs> | null
+    /**
+     * Filter, which DiagnosticPackages to fetch.
+     */
+    where?: DiagnosticPackageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DiagnosticPackages to fetch.
+     */
+    orderBy?: DiagnosticPackageOrderByWithRelationInput | DiagnosticPackageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing DiagnosticPackages.
+     */
+    cursor?: DiagnosticPackageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DiagnosticPackages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DiagnosticPackages.
+     */
+    skip?: number
+    distinct?: DiagnosticPackageScalarFieldEnum | DiagnosticPackageScalarFieldEnum[]
+  }
+
+  /**
+   * DiagnosticPackage create
+   */
+  export type DiagnosticPackageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiagnosticPackage
+     */
+    select?: DiagnosticPackageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiagnosticPackage
+     */
+    omit?: DiagnosticPackageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiagnosticPackageInclude<ExtArgs> | null
+    /**
+     * The data needed to create a DiagnosticPackage.
+     */
+    data: XOR<DiagnosticPackageCreateInput, DiagnosticPackageUncheckedCreateInput>
+  }
+
+  /**
+   * DiagnosticPackage createMany
+   */
+  export type DiagnosticPackageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many DiagnosticPackages.
+     */
+    data: DiagnosticPackageCreateManyInput | DiagnosticPackageCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * DiagnosticPackage update
+   */
+  export type DiagnosticPackageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiagnosticPackage
+     */
+    select?: DiagnosticPackageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiagnosticPackage
+     */
+    omit?: DiagnosticPackageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiagnosticPackageInclude<ExtArgs> | null
+    /**
+     * The data needed to update a DiagnosticPackage.
+     */
+    data: XOR<DiagnosticPackageUpdateInput, DiagnosticPackageUncheckedUpdateInput>
+    /**
+     * Choose, which DiagnosticPackage to update.
+     */
+    where: DiagnosticPackageWhereUniqueInput
+  }
+
+  /**
+   * DiagnosticPackage updateMany
+   */
+  export type DiagnosticPackageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update DiagnosticPackages.
+     */
+    data: XOR<DiagnosticPackageUpdateManyMutationInput, DiagnosticPackageUncheckedUpdateManyInput>
+    /**
+     * Filter which DiagnosticPackages to update
+     */
+    where?: DiagnosticPackageWhereInput
+    /**
+     * Limit how many DiagnosticPackages to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * DiagnosticPackage upsert
+   */
+  export type DiagnosticPackageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiagnosticPackage
+     */
+    select?: DiagnosticPackageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiagnosticPackage
+     */
+    omit?: DiagnosticPackageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiagnosticPackageInclude<ExtArgs> | null
+    /**
+     * The filter to search for the DiagnosticPackage to update in case it exists.
+     */
+    where: DiagnosticPackageWhereUniqueInput
+    /**
+     * In case the DiagnosticPackage found by the `where` argument doesn't exist, create a new DiagnosticPackage with this data.
+     */
+    create: XOR<DiagnosticPackageCreateInput, DiagnosticPackageUncheckedCreateInput>
+    /**
+     * In case the DiagnosticPackage was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DiagnosticPackageUpdateInput, DiagnosticPackageUncheckedUpdateInput>
+  }
+
+  /**
+   * DiagnosticPackage delete
+   */
+  export type DiagnosticPackageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiagnosticPackage
+     */
+    select?: DiagnosticPackageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiagnosticPackage
+     */
+    omit?: DiagnosticPackageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiagnosticPackageInclude<ExtArgs> | null
+    /**
+     * Filter which DiagnosticPackage to delete.
+     */
+    where: DiagnosticPackageWhereUniqueInput
+  }
+
+  /**
+   * DiagnosticPackage deleteMany
+   */
+  export type DiagnosticPackageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DiagnosticPackages to delete
+     */
+    where?: DiagnosticPackageWhereInput
+    /**
+     * Limit how many DiagnosticPackages to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * DiagnosticPackage.packageTests
+   */
+  export type DiagnosticPackage$packageTestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageTest
+     */
+    select?: PackageTestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageTest
+     */
+    omit?: PackageTestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageTestInclude<ExtArgs> | null
+    where?: PackageTestWhereInput
+    orderBy?: PackageTestOrderByWithRelationInput | PackageTestOrderByWithRelationInput[]
+    cursor?: PackageTestWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PackageTestScalarFieldEnum | PackageTestScalarFieldEnum[]
+  }
+
+  /**
+   * DiagnosticPackage without action
+   */
+  export type DiagnosticPackageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiagnosticPackage
+     */
+    select?: DiagnosticPackageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiagnosticPackage
+     */
+    omit?: DiagnosticPackageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiagnosticPackageInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model PackageTest
+   */
+
+  export type AggregatePackageTest = {
+    _count: PackageTestCountAggregateOutputType | null
+    _min: PackageTestMinAggregateOutputType | null
+    _max: PackageTestMaxAggregateOutputType | null
+  }
+
+  export type PackageTestMinAggregateOutputType = {
+    id: string | null
+    packageId: string | null
+    testId: string | null
+    createdAt: Date | null
+  }
+
+  export type PackageTestMaxAggregateOutputType = {
+    id: string | null
+    packageId: string | null
+    testId: string | null
+    createdAt: Date | null
+  }
+
+  export type PackageTestCountAggregateOutputType = {
+    id: number
+    packageId: number
+    testId: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type PackageTestMinAggregateInputType = {
+    id?: true
+    packageId?: true
+    testId?: true
+    createdAt?: true
+  }
+
+  export type PackageTestMaxAggregateInputType = {
+    id?: true
+    packageId?: true
+    testId?: true
+    createdAt?: true
+  }
+
+  export type PackageTestCountAggregateInputType = {
+    id?: true
+    packageId?: true
+    testId?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type PackageTestAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PackageTest to aggregate.
+     */
+    where?: PackageTestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PackageTests to fetch.
+     */
+    orderBy?: PackageTestOrderByWithRelationInput | PackageTestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PackageTestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PackageTests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PackageTests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PackageTests
+    **/
+    _count?: true | PackageTestCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PackageTestMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PackageTestMaxAggregateInputType
+  }
+
+  export type GetPackageTestAggregateType<T extends PackageTestAggregateArgs> = {
+        [P in keyof T & keyof AggregatePackageTest]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePackageTest[P]>
+      : GetScalarType<T[P], AggregatePackageTest[P]>
+  }
+
+
+
+
+  export type PackageTestGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PackageTestWhereInput
+    orderBy?: PackageTestOrderByWithAggregationInput | PackageTestOrderByWithAggregationInput[]
+    by: PackageTestScalarFieldEnum[] | PackageTestScalarFieldEnum
+    having?: PackageTestScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PackageTestCountAggregateInputType | true
+    _min?: PackageTestMinAggregateInputType
+    _max?: PackageTestMaxAggregateInputType
+  }
+
+  export type PackageTestGroupByOutputType = {
+    id: string
+    packageId: string
+    testId: string
+    createdAt: Date
+    _count: PackageTestCountAggregateOutputType | null
+    _min: PackageTestMinAggregateOutputType | null
+    _max: PackageTestMaxAggregateOutputType | null
+  }
+
+  type GetPackageTestGroupByPayload<T extends PackageTestGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PackageTestGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PackageTestGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PackageTestGroupByOutputType[P]>
+            : GetScalarType<T[P], PackageTestGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PackageTestSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    packageId?: boolean
+    testId?: boolean
+    createdAt?: boolean
+    package?: boolean | DiagnosticPackageDefaultArgs<ExtArgs>
+    test?: boolean | DiagnosticTestDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["packageTest"]>
+
+
+
+  export type PackageTestSelectScalar = {
+    id?: boolean
+    packageId?: boolean
+    testId?: boolean
+    createdAt?: boolean
+  }
+
+  export type PackageTestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "packageId" | "testId" | "createdAt", ExtArgs["result"]["packageTest"]>
+  export type PackageTestInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    package?: boolean | DiagnosticPackageDefaultArgs<ExtArgs>
+    test?: boolean | DiagnosticTestDefaultArgs<ExtArgs>
+  }
+
+  export type $PackageTestPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PackageTest"
+    objects: {
+      package: Prisma.$DiagnosticPackagePayload<ExtArgs>
+      test: Prisma.$DiagnosticTestPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      packageId: string
+      testId: string
+      createdAt: Date
+    }, ExtArgs["result"]["packageTest"]>
+    composites: {}
+  }
+
+  type PackageTestGetPayload<S extends boolean | null | undefined | PackageTestDefaultArgs> = $Result.GetResult<Prisma.$PackageTestPayload, S>
+
+  type PackageTestCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PackageTestFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PackageTestCountAggregateInputType | true
+    }
+
+  export interface PackageTestDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PackageTest'], meta: { name: 'PackageTest' } }
+    /**
+     * Find zero or one PackageTest that matches the filter.
+     * @param {PackageTestFindUniqueArgs} args - Arguments to find a PackageTest
+     * @example
+     * // Get one PackageTest
+     * const packageTest = await prisma.packageTest.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PackageTestFindUniqueArgs>(args: SelectSubset<T, PackageTestFindUniqueArgs<ExtArgs>>): Prisma__PackageTestClient<$Result.GetResult<Prisma.$PackageTestPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one PackageTest that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PackageTestFindUniqueOrThrowArgs} args - Arguments to find a PackageTest
+     * @example
+     * // Get one PackageTest
+     * const packageTest = await prisma.packageTest.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PackageTestFindUniqueOrThrowArgs>(args: SelectSubset<T, PackageTestFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PackageTestClient<$Result.GetResult<Prisma.$PackageTestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PackageTest that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackageTestFindFirstArgs} args - Arguments to find a PackageTest
+     * @example
+     * // Get one PackageTest
+     * const packageTest = await prisma.packageTest.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PackageTestFindFirstArgs>(args?: SelectSubset<T, PackageTestFindFirstArgs<ExtArgs>>): Prisma__PackageTestClient<$Result.GetResult<Prisma.$PackageTestPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PackageTest that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackageTestFindFirstOrThrowArgs} args - Arguments to find a PackageTest
+     * @example
+     * // Get one PackageTest
+     * const packageTest = await prisma.packageTest.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PackageTestFindFirstOrThrowArgs>(args?: SelectSubset<T, PackageTestFindFirstOrThrowArgs<ExtArgs>>): Prisma__PackageTestClient<$Result.GetResult<Prisma.$PackageTestPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more PackageTests that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackageTestFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PackageTests
+     * const packageTests = await prisma.packageTest.findMany()
+     * 
+     * // Get first 10 PackageTests
+     * const packageTests = await prisma.packageTest.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const packageTestWithIdOnly = await prisma.packageTest.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PackageTestFindManyArgs>(args?: SelectSubset<T, PackageTestFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PackageTestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a PackageTest.
+     * @param {PackageTestCreateArgs} args - Arguments to create a PackageTest.
+     * @example
+     * // Create one PackageTest
+     * const PackageTest = await prisma.packageTest.create({
+     *   data: {
+     *     // ... data to create a PackageTest
+     *   }
+     * })
+     * 
+     */
+    create<T extends PackageTestCreateArgs>(args: SelectSubset<T, PackageTestCreateArgs<ExtArgs>>): Prisma__PackageTestClient<$Result.GetResult<Prisma.$PackageTestPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many PackageTests.
+     * @param {PackageTestCreateManyArgs} args - Arguments to create many PackageTests.
+     * @example
+     * // Create many PackageTests
+     * const packageTest = await prisma.packageTest.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PackageTestCreateManyArgs>(args?: SelectSubset<T, PackageTestCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a PackageTest.
+     * @param {PackageTestDeleteArgs} args - Arguments to delete one PackageTest.
+     * @example
+     * // Delete one PackageTest
+     * const PackageTest = await prisma.packageTest.delete({
+     *   where: {
+     *     // ... filter to delete one PackageTest
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PackageTestDeleteArgs>(args: SelectSubset<T, PackageTestDeleteArgs<ExtArgs>>): Prisma__PackageTestClient<$Result.GetResult<Prisma.$PackageTestPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one PackageTest.
+     * @param {PackageTestUpdateArgs} args - Arguments to update one PackageTest.
+     * @example
+     * // Update one PackageTest
+     * const packageTest = await prisma.packageTest.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PackageTestUpdateArgs>(args: SelectSubset<T, PackageTestUpdateArgs<ExtArgs>>): Prisma__PackageTestClient<$Result.GetResult<Prisma.$PackageTestPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more PackageTests.
+     * @param {PackageTestDeleteManyArgs} args - Arguments to filter PackageTests to delete.
+     * @example
+     * // Delete a few PackageTests
+     * const { count } = await prisma.packageTest.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PackageTestDeleteManyArgs>(args?: SelectSubset<T, PackageTestDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PackageTests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackageTestUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PackageTests
+     * const packageTest = await prisma.packageTest.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PackageTestUpdateManyArgs>(args: SelectSubset<T, PackageTestUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one PackageTest.
+     * @param {PackageTestUpsertArgs} args - Arguments to update or create a PackageTest.
+     * @example
+     * // Update or create a PackageTest
+     * const packageTest = await prisma.packageTest.upsert({
+     *   create: {
+     *     // ... data to create a PackageTest
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PackageTest we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PackageTestUpsertArgs>(args: SelectSubset<T, PackageTestUpsertArgs<ExtArgs>>): Prisma__PackageTestClient<$Result.GetResult<Prisma.$PackageTestPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of PackageTests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackageTestCountArgs} args - Arguments to filter PackageTests to count.
+     * @example
+     * // Count the number of PackageTests
+     * const count = await prisma.packageTest.count({
+     *   where: {
+     *     // ... the filter for the PackageTests we want to count
+     *   }
+     * })
+    **/
+    count<T extends PackageTestCountArgs>(
+      args?: Subset<T, PackageTestCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PackageTestCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PackageTest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackageTestAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PackageTestAggregateArgs>(args: Subset<T, PackageTestAggregateArgs>): Prisma.PrismaPromise<GetPackageTestAggregateType<T>>
+
+    /**
+     * Group by PackageTest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackageTestGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PackageTestGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PackageTestGroupByArgs['orderBy'] }
+        : { orderBy?: PackageTestGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PackageTestGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPackageTestGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the PackageTest model
+   */
+  readonly fields: PackageTestFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PackageTest.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PackageTestClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    package<T extends DiagnosticPackageDefaultArgs<ExtArgs> = {}>(args?: Subset<T, DiagnosticPackageDefaultArgs<ExtArgs>>): Prisma__DiagnosticPackageClient<$Result.GetResult<Prisma.$DiagnosticPackagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    test<T extends DiagnosticTestDefaultArgs<ExtArgs> = {}>(args?: Subset<T, DiagnosticTestDefaultArgs<ExtArgs>>): Prisma__DiagnosticTestClient<$Result.GetResult<Prisma.$DiagnosticTestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the PackageTest model
+   */
+  interface PackageTestFieldRefs {
+    readonly id: FieldRef<"PackageTest", 'String'>
+    readonly packageId: FieldRef<"PackageTest", 'String'>
+    readonly testId: FieldRef<"PackageTest", 'String'>
+    readonly createdAt: FieldRef<"PackageTest", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * PackageTest findUnique
+   */
+  export type PackageTestFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageTest
+     */
+    select?: PackageTestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageTest
+     */
+    omit?: PackageTestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageTestInclude<ExtArgs> | null
+    /**
+     * Filter, which PackageTest to fetch.
+     */
+    where: PackageTestWhereUniqueInput
+  }
+
+  /**
+   * PackageTest findUniqueOrThrow
+   */
+  export type PackageTestFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageTest
+     */
+    select?: PackageTestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageTest
+     */
+    omit?: PackageTestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageTestInclude<ExtArgs> | null
+    /**
+     * Filter, which PackageTest to fetch.
+     */
+    where: PackageTestWhereUniqueInput
+  }
+
+  /**
+   * PackageTest findFirst
+   */
+  export type PackageTestFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageTest
+     */
+    select?: PackageTestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageTest
+     */
+    omit?: PackageTestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageTestInclude<ExtArgs> | null
+    /**
+     * Filter, which PackageTest to fetch.
+     */
+    where?: PackageTestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PackageTests to fetch.
+     */
+    orderBy?: PackageTestOrderByWithRelationInput | PackageTestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PackageTests.
+     */
+    cursor?: PackageTestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PackageTests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PackageTests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PackageTests.
+     */
+    distinct?: PackageTestScalarFieldEnum | PackageTestScalarFieldEnum[]
+  }
+
+  /**
+   * PackageTest findFirstOrThrow
+   */
+  export type PackageTestFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageTest
+     */
+    select?: PackageTestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageTest
+     */
+    omit?: PackageTestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageTestInclude<ExtArgs> | null
+    /**
+     * Filter, which PackageTest to fetch.
+     */
+    where?: PackageTestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PackageTests to fetch.
+     */
+    orderBy?: PackageTestOrderByWithRelationInput | PackageTestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PackageTests.
+     */
+    cursor?: PackageTestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PackageTests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PackageTests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PackageTests.
+     */
+    distinct?: PackageTestScalarFieldEnum | PackageTestScalarFieldEnum[]
+  }
+
+  /**
+   * PackageTest findMany
+   */
+  export type PackageTestFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageTest
+     */
+    select?: PackageTestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageTest
+     */
+    omit?: PackageTestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageTestInclude<ExtArgs> | null
+    /**
+     * Filter, which PackageTests to fetch.
+     */
+    where?: PackageTestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PackageTests to fetch.
+     */
+    orderBy?: PackageTestOrderByWithRelationInput | PackageTestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PackageTests.
+     */
+    cursor?: PackageTestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PackageTests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PackageTests.
+     */
+    skip?: number
+    distinct?: PackageTestScalarFieldEnum | PackageTestScalarFieldEnum[]
+  }
+
+  /**
+   * PackageTest create
+   */
+  export type PackageTestCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageTest
+     */
+    select?: PackageTestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageTest
+     */
+    omit?: PackageTestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageTestInclude<ExtArgs> | null
+    /**
+     * The data needed to create a PackageTest.
+     */
+    data: XOR<PackageTestCreateInput, PackageTestUncheckedCreateInput>
+  }
+
+  /**
+   * PackageTest createMany
+   */
+  export type PackageTestCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many PackageTests.
+     */
+    data: PackageTestCreateManyInput | PackageTestCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PackageTest update
+   */
+  export type PackageTestUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageTest
+     */
+    select?: PackageTestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageTest
+     */
+    omit?: PackageTestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageTestInclude<ExtArgs> | null
+    /**
+     * The data needed to update a PackageTest.
+     */
+    data: XOR<PackageTestUpdateInput, PackageTestUncheckedUpdateInput>
+    /**
+     * Choose, which PackageTest to update.
+     */
+    where: PackageTestWhereUniqueInput
+  }
+
+  /**
+   * PackageTest updateMany
+   */
+  export type PackageTestUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update PackageTests.
+     */
+    data: XOR<PackageTestUpdateManyMutationInput, PackageTestUncheckedUpdateManyInput>
+    /**
+     * Filter which PackageTests to update
+     */
+    where?: PackageTestWhereInput
+    /**
+     * Limit how many PackageTests to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PackageTest upsert
+   */
+  export type PackageTestUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageTest
+     */
+    select?: PackageTestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageTest
+     */
+    omit?: PackageTestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageTestInclude<ExtArgs> | null
+    /**
+     * The filter to search for the PackageTest to update in case it exists.
+     */
+    where: PackageTestWhereUniqueInput
+    /**
+     * In case the PackageTest found by the `where` argument doesn't exist, create a new PackageTest with this data.
+     */
+    create: XOR<PackageTestCreateInput, PackageTestUncheckedCreateInput>
+    /**
+     * In case the PackageTest was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PackageTestUpdateInput, PackageTestUncheckedUpdateInput>
+  }
+
+  /**
+   * PackageTest delete
+   */
+  export type PackageTestDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageTest
+     */
+    select?: PackageTestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageTest
+     */
+    omit?: PackageTestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageTestInclude<ExtArgs> | null
+    /**
+     * Filter which PackageTest to delete.
+     */
+    where: PackageTestWhereUniqueInput
+  }
+
+  /**
+   * PackageTest deleteMany
+   */
+  export type PackageTestDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PackageTests to delete
+     */
+    where?: PackageTestWhereInput
+    /**
+     * Limit how many PackageTests to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * PackageTest without action
+   */
+  export type PackageTestDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageTest
+     */
+    select?: PackageTestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageTest
+     */
+    omit?: PackageTestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageTestInclude<ExtArgs> | null
   }
 
 
@@ -40471,6 +43763,45 @@ export namespace Prisma {
   export type SuperAdminUserRoleScalarFieldEnum = (typeof SuperAdminUserRoleScalarFieldEnum)[keyof typeof SuperAdminUserRoleScalarFieldEnum]
 
 
+  export const DiagnosticTestScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    code: 'code',
+    price: 'price',
+    description: 'description',
+    isActive: 'isActive',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type DiagnosticTestScalarFieldEnum = (typeof DiagnosticTestScalarFieldEnum)[keyof typeof DiagnosticTestScalarFieldEnum]
+
+
+  export const DiagnosticPackageScalarFieldEnum: {
+    id: 'id',
+    packageName: 'packageName',
+    subtitle: 'subtitle',
+    badgeText: 'badgeText',
+    totalPrice: 'totalPrice',
+    discountedPrice: 'discountedPrice',
+    isActive: 'isActive',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type DiagnosticPackageScalarFieldEnum = (typeof DiagnosticPackageScalarFieldEnum)[keyof typeof DiagnosticPackageScalarFieldEnum]
+
+
+  export const PackageTestScalarFieldEnum: {
+    id: 'id',
+    packageId: 'packageId',
+    testId: 'testId',
+    createdAt: 'createdAt'
+  };
+
+  export type PackageTestScalarFieldEnum = (typeof PackageTestScalarFieldEnum)[keyof typeof PackageTestScalarFieldEnum]
+
+
   export const HomeBannerScalarFieldEnum: {
     id: 'id',
     title1: 'title1',
@@ -41076,6 +44407,35 @@ export namespace Prisma {
   };
 
   export type SuperAdminUserRoleOrderByRelevanceFieldEnum = (typeof SuperAdminUserRoleOrderByRelevanceFieldEnum)[keyof typeof SuperAdminUserRoleOrderByRelevanceFieldEnum]
+
+
+  export const DiagnosticTestOrderByRelevanceFieldEnum: {
+    id: 'id',
+    name: 'name',
+    code: 'code',
+    description: 'description'
+  };
+
+  export type DiagnosticTestOrderByRelevanceFieldEnum = (typeof DiagnosticTestOrderByRelevanceFieldEnum)[keyof typeof DiagnosticTestOrderByRelevanceFieldEnum]
+
+
+  export const DiagnosticPackageOrderByRelevanceFieldEnum: {
+    id: 'id',
+    packageName: 'packageName',
+    subtitle: 'subtitle',
+    badgeText: 'badgeText'
+  };
+
+  export type DiagnosticPackageOrderByRelevanceFieldEnum = (typeof DiagnosticPackageOrderByRelevanceFieldEnum)[keyof typeof DiagnosticPackageOrderByRelevanceFieldEnum]
+
+
+  export const PackageTestOrderByRelevanceFieldEnum: {
+    id: 'id',
+    packageId: 'packageId',
+    testId: 'testId'
+  };
+
+  export type PackageTestOrderByRelevanceFieldEnum = (typeof PackageTestOrderByRelevanceFieldEnum)[keyof typeof PackageTestOrderByRelevanceFieldEnum]
 
 
   export const HomeBannerOrderByRelevanceFieldEnum: {
@@ -42766,6 +46126,212 @@ export namespace Prisma {
     superAdminId?: StringWithAggregatesFilter<"SuperAdminUserRole"> | string
     roleId?: StringWithAggregatesFilter<"SuperAdminUserRole"> | string
     createdAt?: DateTimeWithAggregatesFilter<"SuperAdminUserRole"> | Date | string
+  }
+
+  export type DiagnosticTestWhereInput = {
+    AND?: DiagnosticTestWhereInput | DiagnosticTestWhereInput[]
+    OR?: DiagnosticTestWhereInput[]
+    NOT?: DiagnosticTestWhereInput | DiagnosticTestWhereInput[]
+    id?: StringFilter<"DiagnosticTest"> | string
+    name?: StringFilter<"DiagnosticTest"> | string
+    code?: StringNullableFilter<"DiagnosticTest"> | string | null
+    price?: DecimalFilter<"DiagnosticTest"> | Decimal | DecimalJsLike | number | string
+    description?: StringNullableFilter<"DiagnosticTest"> | string | null
+    isActive?: BoolFilter<"DiagnosticTest"> | boolean
+    createdAt?: DateTimeFilter<"DiagnosticTest"> | Date | string
+    updatedAt?: DateTimeFilter<"DiagnosticTest"> | Date | string
+    packageTests?: PackageTestListRelationFilter
+  }
+
+  export type DiagnosticTestOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    code?: SortOrderInput | SortOrder
+    price?: SortOrder
+    description?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    packageTests?: PackageTestOrderByRelationAggregateInput
+    _relevance?: DiagnosticTestOrderByRelevanceInput
+  }
+
+  export type DiagnosticTestWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    code?: string
+    AND?: DiagnosticTestWhereInput | DiagnosticTestWhereInput[]
+    OR?: DiagnosticTestWhereInput[]
+    NOT?: DiagnosticTestWhereInput | DiagnosticTestWhereInput[]
+    name?: StringFilter<"DiagnosticTest"> | string
+    price?: DecimalFilter<"DiagnosticTest"> | Decimal | DecimalJsLike | number | string
+    description?: StringNullableFilter<"DiagnosticTest"> | string | null
+    isActive?: BoolFilter<"DiagnosticTest"> | boolean
+    createdAt?: DateTimeFilter<"DiagnosticTest"> | Date | string
+    updatedAt?: DateTimeFilter<"DiagnosticTest"> | Date | string
+    packageTests?: PackageTestListRelationFilter
+  }, "id" | "code">
+
+  export type DiagnosticTestOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    code?: SortOrderInput | SortOrder
+    price?: SortOrder
+    description?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: DiagnosticTestCountOrderByAggregateInput
+    _avg?: DiagnosticTestAvgOrderByAggregateInput
+    _max?: DiagnosticTestMaxOrderByAggregateInput
+    _min?: DiagnosticTestMinOrderByAggregateInput
+    _sum?: DiagnosticTestSumOrderByAggregateInput
+  }
+
+  export type DiagnosticTestScalarWhereWithAggregatesInput = {
+    AND?: DiagnosticTestScalarWhereWithAggregatesInput | DiagnosticTestScalarWhereWithAggregatesInput[]
+    OR?: DiagnosticTestScalarWhereWithAggregatesInput[]
+    NOT?: DiagnosticTestScalarWhereWithAggregatesInput | DiagnosticTestScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"DiagnosticTest"> | string
+    name?: StringWithAggregatesFilter<"DiagnosticTest"> | string
+    code?: StringNullableWithAggregatesFilter<"DiagnosticTest"> | string | null
+    price?: DecimalWithAggregatesFilter<"DiagnosticTest"> | Decimal | DecimalJsLike | number | string
+    description?: StringNullableWithAggregatesFilter<"DiagnosticTest"> | string | null
+    isActive?: BoolWithAggregatesFilter<"DiagnosticTest"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"DiagnosticTest"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"DiagnosticTest"> | Date | string
+  }
+
+  export type DiagnosticPackageWhereInput = {
+    AND?: DiagnosticPackageWhereInput | DiagnosticPackageWhereInput[]
+    OR?: DiagnosticPackageWhereInput[]
+    NOT?: DiagnosticPackageWhereInput | DiagnosticPackageWhereInput[]
+    id?: StringFilter<"DiagnosticPackage"> | string
+    packageName?: StringFilter<"DiagnosticPackage"> | string
+    subtitle?: StringNullableFilter<"DiagnosticPackage"> | string | null
+    badgeText?: StringNullableFilter<"DiagnosticPackage"> | string | null
+    totalPrice?: DecimalFilter<"DiagnosticPackage"> | Decimal | DecimalJsLike | number | string
+    discountedPrice?: DecimalFilter<"DiagnosticPackage"> | Decimal | DecimalJsLike | number | string
+    isActive?: BoolFilter<"DiagnosticPackage"> | boolean
+    createdAt?: DateTimeFilter<"DiagnosticPackage"> | Date | string
+    updatedAt?: DateTimeFilter<"DiagnosticPackage"> | Date | string
+    packageTests?: PackageTestListRelationFilter
+  }
+
+  export type DiagnosticPackageOrderByWithRelationInput = {
+    id?: SortOrder
+    packageName?: SortOrder
+    subtitle?: SortOrderInput | SortOrder
+    badgeText?: SortOrderInput | SortOrder
+    totalPrice?: SortOrder
+    discountedPrice?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    packageTests?: PackageTestOrderByRelationAggregateInput
+    _relevance?: DiagnosticPackageOrderByRelevanceInput
+  }
+
+  export type DiagnosticPackageWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: DiagnosticPackageWhereInput | DiagnosticPackageWhereInput[]
+    OR?: DiagnosticPackageWhereInput[]
+    NOT?: DiagnosticPackageWhereInput | DiagnosticPackageWhereInput[]
+    packageName?: StringFilter<"DiagnosticPackage"> | string
+    subtitle?: StringNullableFilter<"DiagnosticPackage"> | string | null
+    badgeText?: StringNullableFilter<"DiagnosticPackage"> | string | null
+    totalPrice?: DecimalFilter<"DiagnosticPackage"> | Decimal | DecimalJsLike | number | string
+    discountedPrice?: DecimalFilter<"DiagnosticPackage"> | Decimal | DecimalJsLike | number | string
+    isActive?: BoolFilter<"DiagnosticPackage"> | boolean
+    createdAt?: DateTimeFilter<"DiagnosticPackage"> | Date | string
+    updatedAt?: DateTimeFilter<"DiagnosticPackage"> | Date | string
+    packageTests?: PackageTestListRelationFilter
+  }, "id">
+
+  export type DiagnosticPackageOrderByWithAggregationInput = {
+    id?: SortOrder
+    packageName?: SortOrder
+    subtitle?: SortOrderInput | SortOrder
+    badgeText?: SortOrderInput | SortOrder
+    totalPrice?: SortOrder
+    discountedPrice?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: DiagnosticPackageCountOrderByAggregateInput
+    _avg?: DiagnosticPackageAvgOrderByAggregateInput
+    _max?: DiagnosticPackageMaxOrderByAggregateInput
+    _min?: DiagnosticPackageMinOrderByAggregateInput
+    _sum?: DiagnosticPackageSumOrderByAggregateInput
+  }
+
+  export type DiagnosticPackageScalarWhereWithAggregatesInput = {
+    AND?: DiagnosticPackageScalarWhereWithAggregatesInput | DiagnosticPackageScalarWhereWithAggregatesInput[]
+    OR?: DiagnosticPackageScalarWhereWithAggregatesInput[]
+    NOT?: DiagnosticPackageScalarWhereWithAggregatesInput | DiagnosticPackageScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"DiagnosticPackage"> | string
+    packageName?: StringWithAggregatesFilter<"DiagnosticPackage"> | string
+    subtitle?: StringNullableWithAggregatesFilter<"DiagnosticPackage"> | string | null
+    badgeText?: StringNullableWithAggregatesFilter<"DiagnosticPackage"> | string | null
+    totalPrice?: DecimalWithAggregatesFilter<"DiagnosticPackage"> | Decimal | DecimalJsLike | number | string
+    discountedPrice?: DecimalWithAggregatesFilter<"DiagnosticPackage"> | Decimal | DecimalJsLike | number | string
+    isActive?: BoolWithAggregatesFilter<"DiagnosticPackage"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"DiagnosticPackage"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"DiagnosticPackage"> | Date | string
+  }
+
+  export type PackageTestWhereInput = {
+    AND?: PackageTestWhereInput | PackageTestWhereInput[]
+    OR?: PackageTestWhereInput[]
+    NOT?: PackageTestWhereInput | PackageTestWhereInput[]
+    id?: StringFilter<"PackageTest"> | string
+    packageId?: StringFilter<"PackageTest"> | string
+    testId?: StringFilter<"PackageTest"> | string
+    createdAt?: DateTimeFilter<"PackageTest"> | Date | string
+    package?: XOR<DiagnosticPackageScalarRelationFilter, DiagnosticPackageWhereInput>
+    test?: XOR<DiagnosticTestScalarRelationFilter, DiagnosticTestWhereInput>
+  }
+
+  export type PackageTestOrderByWithRelationInput = {
+    id?: SortOrder
+    packageId?: SortOrder
+    testId?: SortOrder
+    createdAt?: SortOrder
+    package?: DiagnosticPackageOrderByWithRelationInput
+    test?: DiagnosticTestOrderByWithRelationInput
+    _relevance?: PackageTestOrderByRelevanceInput
+  }
+
+  export type PackageTestWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    packageId_testId?: PackageTestPackageIdTestIdCompoundUniqueInput
+    AND?: PackageTestWhereInput | PackageTestWhereInput[]
+    OR?: PackageTestWhereInput[]
+    NOT?: PackageTestWhereInput | PackageTestWhereInput[]
+    packageId?: StringFilter<"PackageTest"> | string
+    testId?: StringFilter<"PackageTest"> | string
+    createdAt?: DateTimeFilter<"PackageTest"> | Date | string
+    package?: XOR<DiagnosticPackageScalarRelationFilter, DiagnosticPackageWhereInput>
+    test?: XOR<DiagnosticTestScalarRelationFilter, DiagnosticTestWhereInput>
+  }, "id" | "packageId_testId">
+
+  export type PackageTestOrderByWithAggregationInput = {
+    id?: SortOrder
+    packageId?: SortOrder
+    testId?: SortOrder
+    createdAt?: SortOrder
+    _count?: PackageTestCountOrderByAggregateInput
+    _max?: PackageTestMaxOrderByAggregateInput
+    _min?: PackageTestMinOrderByAggregateInput
+  }
+
+  export type PackageTestScalarWhereWithAggregatesInput = {
+    AND?: PackageTestScalarWhereWithAggregatesInput | PackageTestScalarWhereWithAggregatesInput[]
+    OR?: PackageTestScalarWhereWithAggregatesInput[]
+    NOT?: PackageTestScalarWhereWithAggregatesInput | PackageTestScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"PackageTest"> | string
+    packageId?: StringWithAggregatesFilter<"PackageTest"> | string
+    testId?: StringWithAggregatesFilter<"PackageTest"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"PackageTest"> | Date | string
   }
 
   export type HomeBannerWhereInput = {
@@ -46079,6 +49645,222 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     superAdminId?: StringFieldUpdateOperationsInput | string
     roleId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DiagnosticTestCreateInput = {
+    id?: string
+    name: string
+    code?: string | null
+    price: Decimal | DecimalJsLike | number | string
+    description?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    packageTests?: PackageTestCreateNestedManyWithoutTestInput
+  }
+
+  export type DiagnosticTestUncheckedCreateInput = {
+    id?: string
+    name: string
+    code?: string | null
+    price: Decimal | DecimalJsLike | number | string
+    description?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    packageTests?: PackageTestUncheckedCreateNestedManyWithoutTestInput
+  }
+
+  export type DiagnosticTestUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    code?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    packageTests?: PackageTestUpdateManyWithoutTestNestedInput
+  }
+
+  export type DiagnosticTestUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    code?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    packageTests?: PackageTestUncheckedUpdateManyWithoutTestNestedInput
+  }
+
+  export type DiagnosticTestCreateManyInput = {
+    id?: string
+    name: string
+    code?: string | null
+    price: Decimal | DecimalJsLike | number | string
+    description?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DiagnosticTestUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    code?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DiagnosticTestUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    code?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DiagnosticPackageCreateInput = {
+    id?: string
+    packageName: string
+    subtitle?: string | null
+    badgeText?: string | null
+    totalPrice: Decimal | DecimalJsLike | number | string
+    discountedPrice: Decimal | DecimalJsLike | number | string
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    packageTests?: PackageTestCreateNestedManyWithoutPackageInput
+  }
+
+  export type DiagnosticPackageUncheckedCreateInput = {
+    id?: string
+    packageName: string
+    subtitle?: string | null
+    badgeText?: string | null
+    totalPrice: Decimal | DecimalJsLike | number | string
+    discountedPrice: Decimal | DecimalJsLike | number | string
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    packageTests?: PackageTestUncheckedCreateNestedManyWithoutPackageInput
+  }
+
+  export type DiagnosticPackageUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    packageName?: StringFieldUpdateOperationsInput | string
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    badgeText?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    discountedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    packageTests?: PackageTestUpdateManyWithoutPackageNestedInput
+  }
+
+  export type DiagnosticPackageUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    packageName?: StringFieldUpdateOperationsInput | string
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    badgeText?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    discountedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    packageTests?: PackageTestUncheckedUpdateManyWithoutPackageNestedInput
+  }
+
+  export type DiagnosticPackageCreateManyInput = {
+    id?: string
+    packageName: string
+    subtitle?: string | null
+    badgeText?: string | null
+    totalPrice: Decimal | DecimalJsLike | number | string
+    discountedPrice: Decimal | DecimalJsLike | number | string
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DiagnosticPackageUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    packageName?: StringFieldUpdateOperationsInput | string
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    badgeText?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    discountedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DiagnosticPackageUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    packageName?: StringFieldUpdateOperationsInput | string
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    badgeText?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    discountedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PackageTestCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    package: DiagnosticPackageCreateNestedOneWithoutPackageTestsInput
+    test: DiagnosticTestCreateNestedOneWithoutPackageTestsInput
+  }
+
+  export type PackageTestUncheckedCreateInput = {
+    id?: string
+    packageId: string
+    testId: string
+    createdAt?: Date | string
+  }
+
+  export type PackageTestUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    package?: DiagnosticPackageUpdateOneRequiredWithoutPackageTestsNestedInput
+    test?: DiagnosticTestUpdateOneRequiredWithoutPackageTestsNestedInput
+  }
+
+  export type PackageTestUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    packageId?: StringFieldUpdateOperationsInput | string
+    testId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PackageTestCreateManyInput = {
+    id?: string
+    packageId: string
+    testId: string
+    createdAt?: Date | string
+  }
+
+  export type PackageTestUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PackageTestUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    packageId?: StringFieldUpdateOperationsInput | string
+    testId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -49718,6 +53500,184 @@ export namespace Prisma {
     createdAt?: SortOrder
   }
 
+  export type DecimalFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[]
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[]
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+  }
+
+  export type PackageTestListRelationFilter = {
+    every?: PackageTestWhereInput
+    some?: PackageTestWhereInput
+    none?: PackageTestWhereInput
+  }
+
+  export type PackageTestOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type DiagnosticTestOrderByRelevanceInput = {
+    fields: DiagnosticTestOrderByRelevanceFieldEnum | DiagnosticTestOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type DiagnosticTestCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    code?: SortOrder
+    price?: SortOrder
+    description?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DiagnosticTestAvgOrderByAggregateInput = {
+    price?: SortOrder
+  }
+
+  export type DiagnosticTestMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    code?: SortOrder
+    price?: SortOrder
+    description?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DiagnosticTestMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    code?: SortOrder
+    price?: SortOrder
+    description?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DiagnosticTestSumOrderByAggregateInput = {
+    price?: SortOrder
+  }
+
+  export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[]
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[]
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedDecimalFilter<$PrismaModel>
+    _sum?: NestedDecimalFilter<$PrismaModel>
+    _min?: NestedDecimalFilter<$PrismaModel>
+    _max?: NestedDecimalFilter<$PrismaModel>
+  }
+
+  export type DiagnosticPackageOrderByRelevanceInput = {
+    fields: DiagnosticPackageOrderByRelevanceFieldEnum | DiagnosticPackageOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type DiagnosticPackageCountOrderByAggregateInput = {
+    id?: SortOrder
+    packageName?: SortOrder
+    subtitle?: SortOrder
+    badgeText?: SortOrder
+    totalPrice?: SortOrder
+    discountedPrice?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DiagnosticPackageAvgOrderByAggregateInput = {
+    totalPrice?: SortOrder
+    discountedPrice?: SortOrder
+  }
+
+  export type DiagnosticPackageMaxOrderByAggregateInput = {
+    id?: SortOrder
+    packageName?: SortOrder
+    subtitle?: SortOrder
+    badgeText?: SortOrder
+    totalPrice?: SortOrder
+    discountedPrice?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DiagnosticPackageMinOrderByAggregateInput = {
+    id?: SortOrder
+    packageName?: SortOrder
+    subtitle?: SortOrder
+    badgeText?: SortOrder
+    totalPrice?: SortOrder
+    discountedPrice?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DiagnosticPackageSumOrderByAggregateInput = {
+    totalPrice?: SortOrder
+    discountedPrice?: SortOrder
+  }
+
+  export type DiagnosticPackageScalarRelationFilter = {
+    is?: DiagnosticPackageWhereInput
+    isNot?: DiagnosticPackageWhereInput
+  }
+
+  export type DiagnosticTestScalarRelationFilter = {
+    is?: DiagnosticTestWhereInput
+    isNot?: DiagnosticTestWhereInput
+  }
+
+  export type PackageTestOrderByRelevanceInput = {
+    fields: PackageTestOrderByRelevanceFieldEnum | PackageTestOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type PackageTestPackageIdTestIdCompoundUniqueInput = {
+    packageId: string
+    testId: string
+  }
+
+  export type PackageTestCountOrderByAggregateInput = {
+    id?: SortOrder
+    packageId?: SortOrder
+    testId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type PackageTestMaxOrderByAggregateInput = {
+    id?: SortOrder
+    packageId?: SortOrder
+    testId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type PackageTestMinOrderByAggregateInput = {
+    id?: SortOrder
+    packageId?: SortOrder
+    testId?: SortOrder
+    createdAt?: SortOrder
+  }
+
   export type HomeBannerOrderByRelevanceInput = {
     fields: HomeBannerOrderByRelevanceFieldEnum | HomeBannerOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -51865,6 +55825,126 @@ export namespace Prisma {
     update?: XOR<XOR<SuperAdminRoleUpdateToOneWithWhereWithoutUserRolesInput, SuperAdminRoleUpdateWithoutUserRolesInput>, SuperAdminRoleUncheckedUpdateWithoutUserRolesInput>
   }
 
+  export type PackageTestCreateNestedManyWithoutTestInput = {
+    create?: XOR<PackageTestCreateWithoutTestInput, PackageTestUncheckedCreateWithoutTestInput> | PackageTestCreateWithoutTestInput[] | PackageTestUncheckedCreateWithoutTestInput[]
+    connectOrCreate?: PackageTestCreateOrConnectWithoutTestInput | PackageTestCreateOrConnectWithoutTestInput[]
+    createMany?: PackageTestCreateManyTestInputEnvelope
+    connect?: PackageTestWhereUniqueInput | PackageTestWhereUniqueInput[]
+  }
+
+  export type PackageTestUncheckedCreateNestedManyWithoutTestInput = {
+    create?: XOR<PackageTestCreateWithoutTestInput, PackageTestUncheckedCreateWithoutTestInput> | PackageTestCreateWithoutTestInput[] | PackageTestUncheckedCreateWithoutTestInput[]
+    connectOrCreate?: PackageTestCreateOrConnectWithoutTestInput | PackageTestCreateOrConnectWithoutTestInput[]
+    createMany?: PackageTestCreateManyTestInputEnvelope
+    connect?: PackageTestWhereUniqueInput | PackageTestWhereUniqueInput[]
+  }
+
+  export type DecimalFieldUpdateOperationsInput = {
+    set?: Decimal | DecimalJsLike | number | string
+    increment?: Decimal | DecimalJsLike | number | string
+    decrement?: Decimal | DecimalJsLike | number | string
+    multiply?: Decimal | DecimalJsLike | number | string
+    divide?: Decimal | DecimalJsLike | number | string
+  }
+
+  export type PackageTestUpdateManyWithoutTestNestedInput = {
+    create?: XOR<PackageTestCreateWithoutTestInput, PackageTestUncheckedCreateWithoutTestInput> | PackageTestCreateWithoutTestInput[] | PackageTestUncheckedCreateWithoutTestInput[]
+    connectOrCreate?: PackageTestCreateOrConnectWithoutTestInput | PackageTestCreateOrConnectWithoutTestInput[]
+    upsert?: PackageTestUpsertWithWhereUniqueWithoutTestInput | PackageTestUpsertWithWhereUniqueWithoutTestInput[]
+    createMany?: PackageTestCreateManyTestInputEnvelope
+    set?: PackageTestWhereUniqueInput | PackageTestWhereUniqueInput[]
+    disconnect?: PackageTestWhereUniqueInput | PackageTestWhereUniqueInput[]
+    delete?: PackageTestWhereUniqueInput | PackageTestWhereUniqueInput[]
+    connect?: PackageTestWhereUniqueInput | PackageTestWhereUniqueInput[]
+    update?: PackageTestUpdateWithWhereUniqueWithoutTestInput | PackageTestUpdateWithWhereUniqueWithoutTestInput[]
+    updateMany?: PackageTestUpdateManyWithWhereWithoutTestInput | PackageTestUpdateManyWithWhereWithoutTestInput[]
+    deleteMany?: PackageTestScalarWhereInput | PackageTestScalarWhereInput[]
+  }
+
+  export type PackageTestUncheckedUpdateManyWithoutTestNestedInput = {
+    create?: XOR<PackageTestCreateWithoutTestInput, PackageTestUncheckedCreateWithoutTestInput> | PackageTestCreateWithoutTestInput[] | PackageTestUncheckedCreateWithoutTestInput[]
+    connectOrCreate?: PackageTestCreateOrConnectWithoutTestInput | PackageTestCreateOrConnectWithoutTestInput[]
+    upsert?: PackageTestUpsertWithWhereUniqueWithoutTestInput | PackageTestUpsertWithWhereUniqueWithoutTestInput[]
+    createMany?: PackageTestCreateManyTestInputEnvelope
+    set?: PackageTestWhereUniqueInput | PackageTestWhereUniqueInput[]
+    disconnect?: PackageTestWhereUniqueInput | PackageTestWhereUniqueInput[]
+    delete?: PackageTestWhereUniqueInput | PackageTestWhereUniqueInput[]
+    connect?: PackageTestWhereUniqueInput | PackageTestWhereUniqueInput[]
+    update?: PackageTestUpdateWithWhereUniqueWithoutTestInput | PackageTestUpdateWithWhereUniqueWithoutTestInput[]
+    updateMany?: PackageTestUpdateManyWithWhereWithoutTestInput | PackageTestUpdateManyWithWhereWithoutTestInput[]
+    deleteMany?: PackageTestScalarWhereInput | PackageTestScalarWhereInput[]
+  }
+
+  export type PackageTestCreateNestedManyWithoutPackageInput = {
+    create?: XOR<PackageTestCreateWithoutPackageInput, PackageTestUncheckedCreateWithoutPackageInput> | PackageTestCreateWithoutPackageInput[] | PackageTestUncheckedCreateWithoutPackageInput[]
+    connectOrCreate?: PackageTestCreateOrConnectWithoutPackageInput | PackageTestCreateOrConnectWithoutPackageInput[]
+    createMany?: PackageTestCreateManyPackageInputEnvelope
+    connect?: PackageTestWhereUniqueInput | PackageTestWhereUniqueInput[]
+  }
+
+  export type PackageTestUncheckedCreateNestedManyWithoutPackageInput = {
+    create?: XOR<PackageTestCreateWithoutPackageInput, PackageTestUncheckedCreateWithoutPackageInput> | PackageTestCreateWithoutPackageInput[] | PackageTestUncheckedCreateWithoutPackageInput[]
+    connectOrCreate?: PackageTestCreateOrConnectWithoutPackageInput | PackageTestCreateOrConnectWithoutPackageInput[]
+    createMany?: PackageTestCreateManyPackageInputEnvelope
+    connect?: PackageTestWhereUniqueInput | PackageTestWhereUniqueInput[]
+  }
+
+  export type PackageTestUpdateManyWithoutPackageNestedInput = {
+    create?: XOR<PackageTestCreateWithoutPackageInput, PackageTestUncheckedCreateWithoutPackageInput> | PackageTestCreateWithoutPackageInput[] | PackageTestUncheckedCreateWithoutPackageInput[]
+    connectOrCreate?: PackageTestCreateOrConnectWithoutPackageInput | PackageTestCreateOrConnectWithoutPackageInput[]
+    upsert?: PackageTestUpsertWithWhereUniqueWithoutPackageInput | PackageTestUpsertWithWhereUniqueWithoutPackageInput[]
+    createMany?: PackageTestCreateManyPackageInputEnvelope
+    set?: PackageTestWhereUniqueInput | PackageTestWhereUniqueInput[]
+    disconnect?: PackageTestWhereUniqueInput | PackageTestWhereUniqueInput[]
+    delete?: PackageTestWhereUniqueInput | PackageTestWhereUniqueInput[]
+    connect?: PackageTestWhereUniqueInput | PackageTestWhereUniqueInput[]
+    update?: PackageTestUpdateWithWhereUniqueWithoutPackageInput | PackageTestUpdateWithWhereUniqueWithoutPackageInput[]
+    updateMany?: PackageTestUpdateManyWithWhereWithoutPackageInput | PackageTestUpdateManyWithWhereWithoutPackageInput[]
+    deleteMany?: PackageTestScalarWhereInput | PackageTestScalarWhereInput[]
+  }
+
+  export type PackageTestUncheckedUpdateManyWithoutPackageNestedInput = {
+    create?: XOR<PackageTestCreateWithoutPackageInput, PackageTestUncheckedCreateWithoutPackageInput> | PackageTestCreateWithoutPackageInput[] | PackageTestUncheckedCreateWithoutPackageInput[]
+    connectOrCreate?: PackageTestCreateOrConnectWithoutPackageInput | PackageTestCreateOrConnectWithoutPackageInput[]
+    upsert?: PackageTestUpsertWithWhereUniqueWithoutPackageInput | PackageTestUpsertWithWhereUniqueWithoutPackageInput[]
+    createMany?: PackageTestCreateManyPackageInputEnvelope
+    set?: PackageTestWhereUniqueInput | PackageTestWhereUniqueInput[]
+    disconnect?: PackageTestWhereUniqueInput | PackageTestWhereUniqueInput[]
+    delete?: PackageTestWhereUniqueInput | PackageTestWhereUniqueInput[]
+    connect?: PackageTestWhereUniqueInput | PackageTestWhereUniqueInput[]
+    update?: PackageTestUpdateWithWhereUniqueWithoutPackageInput | PackageTestUpdateWithWhereUniqueWithoutPackageInput[]
+    updateMany?: PackageTestUpdateManyWithWhereWithoutPackageInput | PackageTestUpdateManyWithWhereWithoutPackageInput[]
+    deleteMany?: PackageTestScalarWhereInput | PackageTestScalarWhereInput[]
+  }
+
+  export type DiagnosticPackageCreateNestedOneWithoutPackageTestsInput = {
+    create?: XOR<DiagnosticPackageCreateWithoutPackageTestsInput, DiagnosticPackageUncheckedCreateWithoutPackageTestsInput>
+    connectOrCreate?: DiagnosticPackageCreateOrConnectWithoutPackageTestsInput
+    connect?: DiagnosticPackageWhereUniqueInput
+  }
+
+  export type DiagnosticTestCreateNestedOneWithoutPackageTestsInput = {
+    create?: XOR<DiagnosticTestCreateWithoutPackageTestsInput, DiagnosticTestUncheckedCreateWithoutPackageTestsInput>
+    connectOrCreate?: DiagnosticTestCreateOrConnectWithoutPackageTestsInput
+    connect?: DiagnosticTestWhereUniqueInput
+  }
+
+  export type DiagnosticPackageUpdateOneRequiredWithoutPackageTestsNestedInput = {
+    create?: XOR<DiagnosticPackageCreateWithoutPackageTestsInput, DiagnosticPackageUncheckedCreateWithoutPackageTestsInput>
+    connectOrCreate?: DiagnosticPackageCreateOrConnectWithoutPackageTestsInput
+    upsert?: DiagnosticPackageUpsertWithoutPackageTestsInput
+    connect?: DiagnosticPackageWhereUniqueInput
+    update?: XOR<XOR<DiagnosticPackageUpdateToOneWithWhereWithoutPackageTestsInput, DiagnosticPackageUpdateWithoutPackageTestsInput>, DiagnosticPackageUncheckedUpdateWithoutPackageTestsInput>
+  }
+
+  export type DiagnosticTestUpdateOneRequiredWithoutPackageTestsNestedInput = {
+    create?: XOR<DiagnosticTestCreateWithoutPackageTestsInput, DiagnosticTestUncheckedCreateWithoutPackageTestsInput>
+    connectOrCreate?: DiagnosticTestCreateOrConnectWithoutPackageTestsInput
+    upsert?: DiagnosticTestUpsertWithoutPackageTestsInput
+    connect?: DiagnosticTestWhereUniqueInput
+    update?: XOR<XOR<DiagnosticTestUpdateToOneWithWhereWithoutPackageTestsInput, DiagnosticTestUpdateWithoutPackageTestsInput>, DiagnosticTestUncheckedUpdateWithoutPackageTestsInput>
+  }
+
   export type ServiceItemCreateNestedManyWithoutServiceSectionInput = {
     create?: XOR<ServiceItemCreateWithoutServiceSectionInput, ServiceItemUncheckedCreateWithoutServiceSectionInput> | ServiceItemCreateWithoutServiceSectionInput[] | ServiceItemUncheckedCreateWithoutServiceSectionInput[]
     connectOrCreate?: ServiceItemCreateOrConnectWithoutServiceSectionInput | ServiceItemCreateOrConnectWithoutServiceSectionInput[]
@@ -52270,6 +56350,33 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumOutletStatusFilter<$PrismaModel>
     _max?: NestedEnumOutletStatusFilter<$PrismaModel>
+  }
+
+  export type NestedDecimalFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[]
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[]
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+  }
+
+  export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[]
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[]
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedDecimalFilter<$PrismaModel>
+    _sum?: NestedDecimalFilter<$PrismaModel>
+    _min?: NestedDecimalFilter<$PrismaModel>
+    _max?: NestedDecimalFilter<$PrismaModel>
   }
 
   export type SuperAdminUserRoleCreateWithoutSuperAdminInput = {
@@ -54379,6 +58486,216 @@ export namespace Prisma {
     rolePermissions?: SuperAdminRolePermissionUncheckedUpdateManyWithoutRoleNestedInput
   }
 
+  export type PackageTestCreateWithoutTestInput = {
+    id?: string
+    createdAt?: Date | string
+    package: DiagnosticPackageCreateNestedOneWithoutPackageTestsInput
+  }
+
+  export type PackageTestUncheckedCreateWithoutTestInput = {
+    id?: string
+    packageId: string
+    createdAt?: Date | string
+  }
+
+  export type PackageTestCreateOrConnectWithoutTestInput = {
+    where: PackageTestWhereUniqueInput
+    create: XOR<PackageTestCreateWithoutTestInput, PackageTestUncheckedCreateWithoutTestInput>
+  }
+
+  export type PackageTestCreateManyTestInputEnvelope = {
+    data: PackageTestCreateManyTestInput | PackageTestCreateManyTestInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PackageTestUpsertWithWhereUniqueWithoutTestInput = {
+    where: PackageTestWhereUniqueInput
+    update: XOR<PackageTestUpdateWithoutTestInput, PackageTestUncheckedUpdateWithoutTestInput>
+    create: XOR<PackageTestCreateWithoutTestInput, PackageTestUncheckedCreateWithoutTestInput>
+  }
+
+  export type PackageTestUpdateWithWhereUniqueWithoutTestInput = {
+    where: PackageTestWhereUniqueInput
+    data: XOR<PackageTestUpdateWithoutTestInput, PackageTestUncheckedUpdateWithoutTestInput>
+  }
+
+  export type PackageTestUpdateManyWithWhereWithoutTestInput = {
+    where: PackageTestScalarWhereInput
+    data: XOR<PackageTestUpdateManyMutationInput, PackageTestUncheckedUpdateManyWithoutTestInput>
+  }
+
+  export type PackageTestScalarWhereInput = {
+    AND?: PackageTestScalarWhereInput | PackageTestScalarWhereInput[]
+    OR?: PackageTestScalarWhereInput[]
+    NOT?: PackageTestScalarWhereInput | PackageTestScalarWhereInput[]
+    id?: StringFilter<"PackageTest"> | string
+    packageId?: StringFilter<"PackageTest"> | string
+    testId?: StringFilter<"PackageTest"> | string
+    createdAt?: DateTimeFilter<"PackageTest"> | Date | string
+  }
+
+  export type PackageTestCreateWithoutPackageInput = {
+    id?: string
+    createdAt?: Date | string
+    test: DiagnosticTestCreateNestedOneWithoutPackageTestsInput
+  }
+
+  export type PackageTestUncheckedCreateWithoutPackageInput = {
+    id?: string
+    testId: string
+    createdAt?: Date | string
+  }
+
+  export type PackageTestCreateOrConnectWithoutPackageInput = {
+    where: PackageTestWhereUniqueInput
+    create: XOR<PackageTestCreateWithoutPackageInput, PackageTestUncheckedCreateWithoutPackageInput>
+  }
+
+  export type PackageTestCreateManyPackageInputEnvelope = {
+    data: PackageTestCreateManyPackageInput | PackageTestCreateManyPackageInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PackageTestUpsertWithWhereUniqueWithoutPackageInput = {
+    where: PackageTestWhereUniqueInput
+    update: XOR<PackageTestUpdateWithoutPackageInput, PackageTestUncheckedUpdateWithoutPackageInput>
+    create: XOR<PackageTestCreateWithoutPackageInput, PackageTestUncheckedCreateWithoutPackageInput>
+  }
+
+  export type PackageTestUpdateWithWhereUniqueWithoutPackageInput = {
+    where: PackageTestWhereUniqueInput
+    data: XOR<PackageTestUpdateWithoutPackageInput, PackageTestUncheckedUpdateWithoutPackageInput>
+  }
+
+  export type PackageTestUpdateManyWithWhereWithoutPackageInput = {
+    where: PackageTestScalarWhereInput
+    data: XOR<PackageTestUpdateManyMutationInput, PackageTestUncheckedUpdateManyWithoutPackageInput>
+  }
+
+  export type DiagnosticPackageCreateWithoutPackageTestsInput = {
+    id?: string
+    packageName: string
+    subtitle?: string | null
+    badgeText?: string | null
+    totalPrice: Decimal | DecimalJsLike | number | string
+    discountedPrice: Decimal | DecimalJsLike | number | string
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DiagnosticPackageUncheckedCreateWithoutPackageTestsInput = {
+    id?: string
+    packageName: string
+    subtitle?: string | null
+    badgeText?: string | null
+    totalPrice: Decimal | DecimalJsLike | number | string
+    discountedPrice: Decimal | DecimalJsLike | number | string
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DiagnosticPackageCreateOrConnectWithoutPackageTestsInput = {
+    where: DiagnosticPackageWhereUniqueInput
+    create: XOR<DiagnosticPackageCreateWithoutPackageTestsInput, DiagnosticPackageUncheckedCreateWithoutPackageTestsInput>
+  }
+
+  export type DiagnosticTestCreateWithoutPackageTestsInput = {
+    id?: string
+    name: string
+    code?: string | null
+    price: Decimal | DecimalJsLike | number | string
+    description?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DiagnosticTestUncheckedCreateWithoutPackageTestsInput = {
+    id?: string
+    name: string
+    code?: string | null
+    price: Decimal | DecimalJsLike | number | string
+    description?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DiagnosticTestCreateOrConnectWithoutPackageTestsInput = {
+    where: DiagnosticTestWhereUniqueInput
+    create: XOR<DiagnosticTestCreateWithoutPackageTestsInput, DiagnosticTestUncheckedCreateWithoutPackageTestsInput>
+  }
+
+  export type DiagnosticPackageUpsertWithoutPackageTestsInput = {
+    update: XOR<DiagnosticPackageUpdateWithoutPackageTestsInput, DiagnosticPackageUncheckedUpdateWithoutPackageTestsInput>
+    create: XOR<DiagnosticPackageCreateWithoutPackageTestsInput, DiagnosticPackageUncheckedCreateWithoutPackageTestsInput>
+    where?: DiagnosticPackageWhereInput
+  }
+
+  export type DiagnosticPackageUpdateToOneWithWhereWithoutPackageTestsInput = {
+    where?: DiagnosticPackageWhereInput
+    data: XOR<DiagnosticPackageUpdateWithoutPackageTestsInput, DiagnosticPackageUncheckedUpdateWithoutPackageTestsInput>
+  }
+
+  export type DiagnosticPackageUpdateWithoutPackageTestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    packageName?: StringFieldUpdateOperationsInput | string
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    badgeText?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    discountedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DiagnosticPackageUncheckedUpdateWithoutPackageTestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    packageName?: StringFieldUpdateOperationsInput | string
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    badgeText?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    discountedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DiagnosticTestUpsertWithoutPackageTestsInput = {
+    update: XOR<DiagnosticTestUpdateWithoutPackageTestsInput, DiagnosticTestUncheckedUpdateWithoutPackageTestsInput>
+    create: XOR<DiagnosticTestCreateWithoutPackageTestsInput, DiagnosticTestUncheckedCreateWithoutPackageTestsInput>
+    where?: DiagnosticTestWhereInput
+  }
+
+  export type DiagnosticTestUpdateToOneWithWhereWithoutPackageTestsInput = {
+    where?: DiagnosticTestWhereInput
+    data: XOR<DiagnosticTestUpdateWithoutPackageTestsInput, DiagnosticTestUncheckedUpdateWithoutPackageTestsInput>
+  }
+
+  export type DiagnosticTestUpdateWithoutPackageTestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    code?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DiagnosticTestUncheckedUpdateWithoutPackageTestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    code?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type ServiceItemCreateWithoutServiceSectionInput = {
     id?: string
     icon?: string | null
@@ -55133,6 +59450,54 @@ export namespace Prisma {
   export type SuperAdminRolePermissionUncheckedUpdateManyWithoutPermissionInput = {
     id?: StringFieldUpdateOperationsInput | string
     roleId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type PackageTestCreateManyTestInput = {
+    id?: string
+    packageId: string
+    createdAt?: Date | string
+  }
+
+  export type PackageTestUpdateWithoutTestInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    package?: DiagnosticPackageUpdateOneRequiredWithoutPackageTestsNestedInput
+  }
+
+  export type PackageTestUncheckedUpdateWithoutTestInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    packageId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PackageTestUncheckedUpdateManyWithoutTestInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    packageId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PackageTestCreateManyPackageInput = {
+    id?: string
+    testId: string
+    createdAt?: Date | string
+  }
+
+  export type PackageTestUpdateWithoutPackageInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    test?: DiagnosticTestUpdateOneRequiredWithoutPackageTestsNestedInput
+  }
+
+  export type PackageTestUncheckedUpdateWithoutPackageInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    testId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PackageTestUncheckedUpdateManyWithoutPackageInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    testId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ServiceItemCreateManyServiceSectionInput = {
