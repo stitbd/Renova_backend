@@ -40,6 +40,8 @@ const sslcommerzCancel = catchAsync(async (req: Request, res: Response) => {
     return res.redirect(`${env.frontendUrl}/payment/cancel`);
 });
 
+
+
 const sslcommerzIpn = catchAsync(async (req: Request, res: Response) => {
     await paymentService.handleSslcommerzSuccess(req.body);
 
@@ -56,3 +58,7 @@ export const paymentController = {
     sslcommerzCancel,
     sslcommerzIpn,
 };
+
+
+
+
