@@ -35,6 +35,7 @@ import { appointmentRoutes } from "./modules/appointment/appointment.route";
 import { doctorUnavailableDateRoutes } from "./modules/doctorUnavailableDate/doctorUnavailableDate.route";
 import { TestRoutes } from "./modules/test/test.route";
 import { PackageRoutes } from "./modules/package/package.route";
+import { paymentRoutes } from "./modules/payment/payment.route";
 
 
 const appRouter = Router();
@@ -56,6 +57,7 @@ const moduleRoutes = [
   { path: "/super-admin-roles", route: superAdminRoleRoutes },
   { path: "/super-admin-permission", route: superAdminPermissionRoutes },
   { path: "/appointments", route: appointmentRoutes },
+  { path: "/payments", route: paymentRoutes },
 
   //create package 
   { path: "/tests", route: TestRoutes },

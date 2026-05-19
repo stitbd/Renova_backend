@@ -132,3 +132,14 @@ export type SlotResponse = {
   disabledReason: "PAST_SLOT" | "BOOKED" | "DOCTOR_UNAVAILABLE" | null;
   appointmentId: string | null;
 };
+
+
+export const generatePaymentTransactionId = (): string => {
+  const now = new Date();
+
+  const datePart = getDhakaDateString(now).split("-").join("");
+  const timePart = getDhakaTimeString(now).replace(":", "");
+  const random = Math.floor(100000 + Math.random() * 900000);
+
+  return `TXN_${datePart}${timePart}_${random}`;
+};

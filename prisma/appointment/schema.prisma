@@ -118,6 +118,12 @@ model AppointmentStatusLog {
   @@index([appointmentId])
 }
 
+
+enum PaymentGateway {
+  SSLCOMMERZ
+  MANUAL
+}
+
 model AppointmentPayment {
   id String @id @default(uuid())
 
@@ -129,8 +135,16 @@ model AppointmentPayment {
 
   status PaymentStatus @default(UNPAID)
 
-  transactionId String?
+  gateway PaymentGateway @default(SSLCOMMERZ)
+
+  transactionId String @unique
+  validationId  String?
+  bankTransactionId String?
+
   paymentMethod String?
+  cardType      String?
+
+  gatewayResponse Json?
 
   paidAt DateTime?
 
@@ -139,4 +153,5 @@ model AppointmentPayment {
 
   @@index([status])
   @@index([transactionId])
+  @@index([validationId])
 }

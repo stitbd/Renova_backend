@@ -171,8 +171,13 @@ exports.Prisma.AppointmentPaymentScalarFieldEnum = {
   amount: 'amount',
   currency: 'currency',
   status: 'status',
+  gateway: 'gateway',
   transactionId: 'transactionId',
+  validationId: 'validationId',
+  bankTransactionId: 'bankTransactionId',
   paymentMethod: 'paymentMethod',
+  cardType: 'cardType',
+  gatewayResponse: 'gatewayResponse',
   paidAt: 'paidAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -181,6 +186,11 @@ exports.Prisma.AppointmentPaymentScalarFieldEnum = {
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
+};
+
+exports.Prisma.NullableJsonNullValueInput = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull
 };
 
 exports.Prisma.NullsOrder = {
@@ -214,12 +224,26 @@ exports.Prisma.AppointmentStatusLogOrderByRelevanceFieldEnum = {
   note: 'note'
 };
 
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
+};
+
+exports.Prisma.QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+};
+
 exports.Prisma.AppointmentPaymentOrderByRelevanceFieldEnum = {
   id: 'id',
   appointmentId: 'appointmentId',
   currency: 'currency',
   transactionId: 'transactionId',
-  paymentMethod: 'paymentMethod'
+  validationId: 'validationId',
+  bankTransactionId: 'bankTransactionId',
+  paymentMethod: 'paymentMethod',
+  cardType: 'cardType'
 };
 exports.AppointmentType = exports.$Enums.AppointmentType = {
   IN_PERSON: 'IN_PERSON',
@@ -247,6 +271,11 @@ exports.CancelledBy = exports.$Enums.CancelledBy = {
   OUTLET_USER: 'OUTLET_USER',
   SUPER_ADMIN: 'SUPER_ADMIN',
   SYSTEM: 'SYSTEM'
+};
+
+exports.PaymentGateway = exports.$Enums.PaymentGateway = {
+  SSLCOMMERZ: 'SSLCOMMERZ',
+  MANUAL: 'MANUAL'
 };
 
 exports.Prisma.ModelName = {

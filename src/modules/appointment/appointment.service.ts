@@ -4,6 +4,7 @@ import { appointmentPrisma, mainPrisma } from "../../databases/prisma";
 import {
     buildDhakaDateTime,
     generateAppointmentCode,
+    generatePaymentTransactionId,
     getDayName,
     getDhakaDateString,
     getDhakaTimeString,
@@ -104,7 +105,7 @@ const createAppointment = async (
     const requestedDuration = requestedEndMinutes - requestedStartMinutes;
 
 
-    
+
     if (requestedDuration !== schedule.slotDuration) {
         throw new AppError(
             `Appointment duration must be ${schedule.slotDuration} minutes`,
@@ -158,6 +159,16 @@ const createAppointment = async (
                 },
             });
 
+            await tx.appointmentPayment.create({
+                data: {
+                    appointmentId: createdAppointment.id,
+                    amount: doctor.consultationFee || 0,
+                    currency: "BDT",
+                    status: "UNPAID",
+                    transactionId: generatePaymentTransactionId(),
+                },
+            });
+
             await tx.appointmentStatusLog.create({
                 data: {
                     appointmentId: createdAppointment.id,
@@ -166,11 +177,16 @@ const createAppointment = async (
                     changedById: patientId,
                     changedByRole: "PATIENT",
                     note: "Appointment created",
-
                 },
             });
 
-            return createdAppointment;
+            return tx.appointment.findUnique({
+                where: { id: createdAppointment.id },
+                include: {
+                    payment: true,
+                    statusLogs: true,
+                },
+            });
         });
     } catch (error) {
         if (
@@ -183,6 +199,7 @@ const createAppointment = async (
         throw error;
     }
 };
+
 const getMyAppointments = async (authUser: AuthUser) => {
     const where =
         authUser.userType === "PATIENT"
