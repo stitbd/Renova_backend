@@ -59,7 +59,7 @@ const createPackageOrder = async (
     return appointmentPrisma.$transaction(async (tx) => {
         const order = await tx.packageOrder.create({
             data: {
-                orderCode: generatePackageOrderCode(),
+                orderCode: generatePackageOrderCode(),   
 
                 patientId: authUser.id,
                 outletId: patient.outletId || null,
@@ -359,12 +359,12 @@ const markOfflinePaid = async (
         throw new AppError("Package order not found", 404);
     }
 
-    if (
-        authUser.userType === "OUTLET_USER" &&
-        order.outletId !== authUser.outletId
-    ) {
-        throw new AppError("You are not allowed to update this order", 403);
-    }
+    // if (
+    //     authUser.userType === "OUTLET_USER" &&
+    //     order.outletId !== authUser.outletId
+    // ) {
+    //     throw new AppError("You are not allowed to update this order", 403);
+    // }
 
     if (!order.payment) {
         throw new AppError("Payment record not found", 404);
