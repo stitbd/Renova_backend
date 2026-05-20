@@ -275,8 +275,6 @@ const handleSslcommerzSuccess = async (payload: any) => {
             },
         });
 
-
-
         const updatedOrder = await tx.packageOrder.update({
             where: { id: payment.orderId },
             data: {
