@@ -33,6 +33,21 @@ export type AppointmentStatusLog = $Result.DefaultSelection<Prisma.$AppointmentS
  * 
  */
 export type AppointmentPayment = $Result.DefaultSelection<Prisma.$AppointmentPaymentPayload>
+/**
+ * Model PackageOrder
+ * 
+ */
+export type PackageOrder = $Result.DefaultSelection<Prisma.$PackageOrderPayload>
+/**
+ * Model PackageOrderItem
+ * 
+ */
+export type PackageOrderItem = $Result.DefaultSelection<Prisma.$PackageOrderItemPayload>
+/**
+ * Model PackagePayment
+ * 
+ */
+export type PackagePayment = $Result.DefaultSelection<Prisma.$PackagePaymentPayload>
 
 /**
  * Enums
@@ -85,6 +100,35 @@ export const PaymentGateway: {
 
 export type PaymentGateway = (typeof PaymentGateway)[keyof typeof PaymentGateway]
 
+
+export const PackageOrderStatus: {
+  PENDING: 'PENDING',
+  CONFIRMED: 'CONFIRMED',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED'
+};
+
+export type PackageOrderStatus = (typeof PackageOrderStatus)[keyof typeof PackageOrderStatus]
+
+
+export const PackagePaymentStatus: {
+  UNPAID: 'UNPAID',
+  PAID: 'PAID',
+  FAILED: 'FAILED',
+  REFUNDED: 'REFUNDED'
+};
+
+export type PackagePaymentStatus = (typeof PackagePaymentStatus)[keyof typeof PackagePaymentStatus]
+
+
+export const PackagePaymentMethod: {
+  SSLCOMMERZ: 'SSLCOMMERZ',
+  CASH: 'CASH',
+  MANUAL: 'MANUAL'
+};
+
+export type PackagePaymentMethod = (typeof PackagePaymentMethod)[keyof typeof PackagePaymentMethod]
+
 }
 
 export type AppointmentStatus = $Enums.AppointmentStatus
@@ -106,6 +150,18 @@ export const CancelledBy: typeof $Enums.CancelledBy
 export type PaymentGateway = $Enums.PaymentGateway
 
 export const PaymentGateway: typeof $Enums.PaymentGateway
+
+export type PackageOrderStatus = $Enums.PackageOrderStatus
+
+export const PackageOrderStatus: typeof $Enums.PackageOrderStatus
+
+export type PackagePaymentStatus = $Enums.PackagePaymentStatus
+
+export const PackagePaymentStatus: typeof $Enums.PackagePaymentStatus
+
+export type PackagePaymentMethod = $Enums.PackagePaymentMethod
+
+export const PackagePaymentMethod: typeof $Enums.PackagePaymentMethod
 
 /**
  * ##  Prisma Client ʲˢ
@@ -264,6 +320,36 @@ export class PrismaClient<
     * ```
     */
   get appointmentPayment(): Prisma.AppointmentPaymentDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.packageOrder`: Exposes CRUD operations for the **PackageOrder** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PackageOrders
+    * const packageOrders = await prisma.packageOrder.findMany()
+    * ```
+    */
+  get packageOrder(): Prisma.PackageOrderDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.packageOrderItem`: Exposes CRUD operations for the **PackageOrderItem** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PackageOrderItems
+    * const packageOrderItems = await prisma.packageOrderItem.findMany()
+    * ```
+    */
+  get packageOrderItem(): Prisma.PackageOrderItemDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.packagePayment`: Exposes CRUD operations for the **PackagePayment** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PackagePayments
+    * const packagePayments = await prisma.packagePayment.findMany()
+    * ```
+    */
+  get packagePayment(): Prisma.PackagePaymentDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -708,7 +794,10 @@ export namespace Prisma {
     Appointment: 'Appointment',
     AppointmentSlotLock: 'AppointmentSlotLock',
     AppointmentStatusLog: 'AppointmentStatusLog',
-    AppointmentPayment: 'AppointmentPayment'
+    AppointmentPayment: 'AppointmentPayment',
+    PackageOrder: 'PackageOrder',
+    PackageOrderItem: 'PackageOrderItem',
+    PackagePayment: 'PackagePayment'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -727,7 +816,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "appointment" | "appointmentSlotLock" | "appointmentStatusLog" | "appointmentPayment"
+      modelProps: "appointment" | "appointmentSlotLock" | "appointmentStatusLog" | "appointmentPayment" | "packageOrder" | "packageOrderItem" | "packagePayment"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -995,6 +1084,204 @@ export namespace Prisma {
           }
         }
       }
+      PackageOrder: {
+        payload: Prisma.$PackageOrderPayload<ExtArgs>
+        fields: Prisma.PackageOrderFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PackageOrderFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageOrderPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PackageOrderFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageOrderPayload>
+          }
+          findFirst: {
+            args: Prisma.PackageOrderFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageOrderPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PackageOrderFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageOrderPayload>
+          }
+          findMany: {
+            args: Prisma.PackageOrderFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageOrderPayload>[]
+          }
+          create: {
+            args: Prisma.PackageOrderCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageOrderPayload>
+          }
+          createMany: {
+            args: Prisma.PackageOrderCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.PackageOrderDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageOrderPayload>
+          }
+          update: {
+            args: Prisma.PackageOrderUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageOrderPayload>
+          }
+          deleteMany: {
+            args: Prisma.PackageOrderDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PackageOrderUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.PackageOrderUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageOrderPayload>
+          }
+          aggregate: {
+            args: Prisma.PackageOrderAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePackageOrder>
+          }
+          groupBy: {
+            args: Prisma.PackageOrderGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PackageOrderGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PackageOrderCountArgs<ExtArgs>
+            result: $Utils.Optional<PackageOrderCountAggregateOutputType> | number
+          }
+        }
+      }
+      PackageOrderItem: {
+        payload: Prisma.$PackageOrderItemPayload<ExtArgs>
+        fields: Prisma.PackageOrderItemFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PackageOrderItemFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageOrderItemPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PackageOrderItemFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageOrderItemPayload>
+          }
+          findFirst: {
+            args: Prisma.PackageOrderItemFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageOrderItemPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PackageOrderItemFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageOrderItemPayload>
+          }
+          findMany: {
+            args: Prisma.PackageOrderItemFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageOrderItemPayload>[]
+          }
+          create: {
+            args: Prisma.PackageOrderItemCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageOrderItemPayload>
+          }
+          createMany: {
+            args: Prisma.PackageOrderItemCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.PackageOrderItemDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageOrderItemPayload>
+          }
+          update: {
+            args: Prisma.PackageOrderItemUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageOrderItemPayload>
+          }
+          deleteMany: {
+            args: Prisma.PackageOrderItemDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PackageOrderItemUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.PackageOrderItemUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageOrderItemPayload>
+          }
+          aggregate: {
+            args: Prisma.PackageOrderItemAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePackageOrderItem>
+          }
+          groupBy: {
+            args: Prisma.PackageOrderItemGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PackageOrderItemGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PackageOrderItemCountArgs<ExtArgs>
+            result: $Utils.Optional<PackageOrderItemCountAggregateOutputType> | number
+          }
+        }
+      }
+      PackagePayment: {
+        payload: Prisma.$PackagePaymentPayload<ExtArgs>
+        fields: Prisma.PackagePaymentFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PackagePaymentFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackagePaymentPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PackagePaymentFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackagePaymentPayload>
+          }
+          findFirst: {
+            args: Prisma.PackagePaymentFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackagePaymentPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PackagePaymentFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackagePaymentPayload>
+          }
+          findMany: {
+            args: Prisma.PackagePaymentFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackagePaymentPayload>[]
+          }
+          create: {
+            args: Prisma.PackagePaymentCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackagePaymentPayload>
+          }
+          createMany: {
+            args: Prisma.PackagePaymentCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.PackagePaymentDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackagePaymentPayload>
+          }
+          update: {
+            args: Prisma.PackagePaymentUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackagePaymentPayload>
+          }
+          deleteMany: {
+            args: Prisma.PackagePaymentDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PackagePaymentUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.PackagePaymentUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackagePaymentPayload>
+          }
+          aggregate: {
+            args: Prisma.PackagePaymentAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePackagePayment>
+          }
+          groupBy: {
+            args: Prisma.PackagePaymentGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PackagePaymentGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PackagePaymentCountArgs<ExtArgs>
+            result: $Utils.Optional<PackagePaymentCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1095,6 +1382,9 @@ export namespace Prisma {
     appointmentSlotLock?: AppointmentSlotLockOmit
     appointmentStatusLog?: AppointmentStatusLogOmit
     appointmentPayment?: AppointmentPaymentOmit
+    packageOrder?: PackageOrderOmit
+    packageOrderItem?: PackageOrderItemOmit
+    packagePayment?: PackagePaymentOmit
   }
 
   /* Types for Logging */
@@ -1198,6 +1488,37 @@ export namespace Prisma {
    */
   export type AppointmentCountOutputTypeCountStatusLogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: AppointmentStatusLogWhereInput
+  }
+
+
+  /**
+   * Count Type PackageOrderCountOutputType
+   */
+
+  export type PackageOrderCountOutputType = {
+    items: number
+  }
+
+  export type PackageOrderCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    items?: boolean | PackageOrderCountOutputTypeCountItemsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * PackageOrderCountOutputType without action
+   */
+  export type PackageOrderCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageOrderCountOutputType
+     */
+    select?: PackageOrderCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * PackageOrderCountOutputType without action
+   */
+  export type PackageOrderCountOutputTypeCountItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PackageOrderItemWhereInput
   }
 
 
@@ -5388,6 +5709,3186 @@ export namespace Prisma {
 
 
   /**
+   * Model PackageOrder
+   */
+
+  export type AggregatePackageOrder = {
+    _count: PackageOrderCountAggregateOutputType | null
+    _avg: PackageOrderAvgAggregateOutputType | null
+    _sum: PackageOrderSumAggregateOutputType | null
+    _min: PackageOrderMinAggregateOutputType | null
+    _max: PackageOrderMaxAggregateOutputType | null
+  }
+
+  export type PackageOrderAvgAggregateOutputType = {
+    totalPrice: Decimal | null
+    discountedPrice: Decimal | null
+  }
+
+  export type PackageOrderSumAggregateOutputType = {
+    totalPrice: Decimal | null
+    discountedPrice: Decimal | null
+  }
+
+  export type PackageOrderMinAggregateOutputType = {
+    id: string | null
+    orderCode: string | null
+    patientId: string | null
+    outletId: string | null
+    packageId: string | null
+    packageName: string | null
+    subtitle: string | null
+    totalPrice: Decimal | null
+    discountedPrice: Decimal | null
+    status: $Enums.PackageOrderStatus | null
+    paymentStatus: $Enums.PackagePaymentStatus | null
+    paymentMethod: $Enums.PackagePaymentMethod | null
+    notes: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PackageOrderMaxAggregateOutputType = {
+    id: string | null
+    orderCode: string | null
+    patientId: string | null
+    outletId: string | null
+    packageId: string | null
+    packageName: string | null
+    subtitle: string | null
+    totalPrice: Decimal | null
+    discountedPrice: Decimal | null
+    status: $Enums.PackageOrderStatus | null
+    paymentStatus: $Enums.PackagePaymentStatus | null
+    paymentMethod: $Enums.PackagePaymentMethod | null
+    notes: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PackageOrderCountAggregateOutputType = {
+    id: number
+    orderCode: number
+    patientId: number
+    outletId: number
+    packageId: number
+    packageName: number
+    subtitle: number
+    totalPrice: number
+    discountedPrice: number
+    status: number
+    paymentStatus: number
+    paymentMethod: number
+    notes: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type PackageOrderAvgAggregateInputType = {
+    totalPrice?: true
+    discountedPrice?: true
+  }
+
+  export type PackageOrderSumAggregateInputType = {
+    totalPrice?: true
+    discountedPrice?: true
+  }
+
+  export type PackageOrderMinAggregateInputType = {
+    id?: true
+    orderCode?: true
+    patientId?: true
+    outletId?: true
+    packageId?: true
+    packageName?: true
+    subtitle?: true
+    totalPrice?: true
+    discountedPrice?: true
+    status?: true
+    paymentStatus?: true
+    paymentMethod?: true
+    notes?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PackageOrderMaxAggregateInputType = {
+    id?: true
+    orderCode?: true
+    patientId?: true
+    outletId?: true
+    packageId?: true
+    packageName?: true
+    subtitle?: true
+    totalPrice?: true
+    discountedPrice?: true
+    status?: true
+    paymentStatus?: true
+    paymentMethod?: true
+    notes?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PackageOrderCountAggregateInputType = {
+    id?: true
+    orderCode?: true
+    patientId?: true
+    outletId?: true
+    packageId?: true
+    packageName?: true
+    subtitle?: true
+    totalPrice?: true
+    discountedPrice?: true
+    status?: true
+    paymentStatus?: true
+    paymentMethod?: true
+    notes?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type PackageOrderAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PackageOrder to aggregate.
+     */
+    where?: PackageOrderWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PackageOrders to fetch.
+     */
+    orderBy?: PackageOrderOrderByWithRelationInput | PackageOrderOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PackageOrderWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PackageOrders from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PackageOrders.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PackageOrders
+    **/
+    _count?: true | PackageOrderCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PackageOrderAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PackageOrderSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PackageOrderMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PackageOrderMaxAggregateInputType
+  }
+
+  export type GetPackageOrderAggregateType<T extends PackageOrderAggregateArgs> = {
+        [P in keyof T & keyof AggregatePackageOrder]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePackageOrder[P]>
+      : GetScalarType<T[P], AggregatePackageOrder[P]>
+  }
+
+
+
+
+  export type PackageOrderGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PackageOrderWhereInput
+    orderBy?: PackageOrderOrderByWithAggregationInput | PackageOrderOrderByWithAggregationInput[]
+    by: PackageOrderScalarFieldEnum[] | PackageOrderScalarFieldEnum
+    having?: PackageOrderScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PackageOrderCountAggregateInputType | true
+    _avg?: PackageOrderAvgAggregateInputType
+    _sum?: PackageOrderSumAggregateInputType
+    _min?: PackageOrderMinAggregateInputType
+    _max?: PackageOrderMaxAggregateInputType
+  }
+
+  export type PackageOrderGroupByOutputType = {
+    id: string
+    orderCode: string
+    patientId: string
+    outletId: string | null
+    packageId: string
+    packageName: string
+    subtitle: string | null
+    totalPrice: Decimal
+    discountedPrice: Decimal
+    status: $Enums.PackageOrderStatus
+    paymentStatus: $Enums.PackagePaymentStatus
+    paymentMethod: $Enums.PackagePaymentMethod | null
+    notes: string | null
+    createdAt: Date
+    updatedAt: Date
+    _count: PackageOrderCountAggregateOutputType | null
+    _avg: PackageOrderAvgAggregateOutputType | null
+    _sum: PackageOrderSumAggregateOutputType | null
+    _min: PackageOrderMinAggregateOutputType | null
+    _max: PackageOrderMaxAggregateOutputType | null
+  }
+
+  type GetPackageOrderGroupByPayload<T extends PackageOrderGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PackageOrderGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PackageOrderGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PackageOrderGroupByOutputType[P]>
+            : GetScalarType<T[P], PackageOrderGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PackageOrderSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    orderCode?: boolean
+    patientId?: boolean
+    outletId?: boolean
+    packageId?: boolean
+    packageName?: boolean
+    subtitle?: boolean
+    totalPrice?: boolean
+    discountedPrice?: boolean
+    status?: boolean
+    paymentStatus?: boolean
+    paymentMethod?: boolean
+    notes?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    items?: boolean | PackageOrder$itemsArgs<ExtArgs>
+    payment?: boolean | PackageOrder$paymentArgs<ExtArgs>
+    _count?: boolean | PackageOrderCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["packageOrder"]>
+
+
+
+  export type PackageOrderSelectScalar = {
+    id?: boolean
+    orderCode?: boolean
+    patientId?: boolean
+    outletId?: boolean
+    packageId?: boolean
+    packageName?: boolean
+    subtitle?: boolean
+    totalPrice?: boolean
+    discountedPrice?: boolean
+    status?: boolean
+    paymentStatus?: boolean
+    paymentMethod?: boolean
+    notes?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type PackageOrderOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "orderCode" | "patientId" | "outletId" | "packageId" | "packageName" | "subtitle" | "totalPrice" | "discountedPrice" | "status" | "paymentStatus" | "paymentMethod" | "notes" | "createdAt" | "updatedAt", ExtArgs["result"]["packageOrder"]>
+  export type PackageOrderInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    items?: boolean | PackageOrder$itemsArgs<ExtArgs>
+    payment?: boolean | PackageOrder$paymentArgs<ExtArgs>
+    _count?: boolean | PackageOrderCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $PackageOrderPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PackageOrder"
+    objects: {
+      items: Prisma.$PackageOrderItemPayload<ExtArgs>[]
+      payment: Prisma.$PackagePaymentPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      orderCode: string
+      patientId: string
+      outletId: string | null
+      packageId: string
+      packageName: string
+      subtitle: string | null
+      totalPrice: Prisma.Decimal
+      discountedPrice: Prisma.Decimal
+      status: $Enums.PackageOrderStatus
+      paymentStatus: $Enums.PackagePaymentStatus
+      paymentMethod: $Enums.PackagePaymentMethod | null
+      notes: string | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["packageOrder"]>
+    composites: {}
+  }
+
+  type PackageOrderGetPayload<S extends boolean | null | undefined | PackageOrderDefaultArgs> = $Result.GetResult<Prisma.$PackageOrderPayload, S>
+
+  type PackageOrderCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PackageOrderFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PackageOrderCountAggregateInputType | true
+    }
+
+  export interface PackageOrderDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PackageOrder'], meta: { name: 'PackageOrder' } }
+    /**
+     * Find zero or one PackageOrder that matches the filter.
+     * @param {PackageOrderFindUniqueArgs} args - Arguments to find a PackageOrder
+     * @example
+     * // Get one PackageOrder
+     * const packageOrder = await prisma.packageOrder.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PackageOrderFindUniqueArgs>(args: SelectSubset<T, PackageOrderFindUniqueArgs<ExtArgs>>): Prisma__PackageOrderClient<$Result.GetResult<Prisma.$PackageOrderPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one PackageOrder that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PackageOrderFindUniqueOrThrowArgs} args - Arguments to find a PackageOrder
+     * @example
+     * // Get one PackageOrder
+     * const packageOrder = await prisma.packageOrder.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PackageOrderFindUniqueOrThrowArgs>(args: SelectSubset<T, PackageOrderFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PackageOrderClient<$Result.GetResult<Prisma.$PackageOrderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PackageOrder that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackageOrderFindFirstArgs} args - Arguments to find a PackageOrder
+     * @example
+     * // Get one PackageOrder
+     * const packageOrder = await prisma.packageOrder.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PackageOrderFindFirstArgs>(args?: SelectSubset<T, PackageOrderFindFirstArgs<ExtArgs>>): Prisma__PackageOrderClient<$Result.GetResult<Prisma.$PackageOrderPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PackageOrder that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackageOrderFindFirstOrThrowArgs} args - Arguments to find a PackageOrder
+     * @example
+     * // Get one PackageOrder
+     * const packageOrder = await prisma.packageOrder.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PackageOrderFindFirstOrThrowArgs>(args?: SelectSubset<T, PackageOrderFindFirstOrThrowArgs<ExtArgs>>): Prisma__PackageOrderClient<$Result.GetResult<Prisma.$PackageOrderPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more PackageOrders that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackageOrderFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PackageOrders
+     * const packageOrders = await prisma.packageOrder.findMany()
+     * 
+     * // Get first 10 PackageOrders
+     * const packageOrders = await prisma.packageOrder.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const packageOrderWithIdOnly = await prisma.packageOrder.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PackageOrderFindManyArgs>(args?: SelectSubset<T, PackageOrderFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PackageOrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a PackageOrder.
+     * @param {PackageOrderCreateArgs} args - Arguments to create a PackageOrder.
+     * @example
+     * // Create one PackageOrder
+     * const PackageOrder = await prisma.packageOrder.create({
+     *   data: {
+     *     // ... data to create a PackageOrder
+     *   }
+     * })
+     * 
+     */
+    create<T extends PackageOrderCreateArgs>(args: SelectSubset<T, PackageOrderCreateArgs<ExtArgs>>): Prisma__PackageOrderClient<$Result.GetResult<Prisma.$PackageOrderPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many PackageOrders.
+     * @param {PackageOrderCreateManyArgs} args - Arguments to create many PackageOrders.
+     * @example
+     * // Create many PackageOrders
+     * const packageOrder = await prisma.packageOrder.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PackageOrderCreateManyArgs>(args?: SelectSubset<T, PackageOrderCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a PackageOrder.
+     * @param {PackageOrderDeleteArgs} args - Arguments to delete one PackageOrder.
+     * @example
+     * // Delete one PackageOrder
+     * const PackageOrder = await prisma.packageOrder.delete({
+     *   where: {
+     *     // ... filter to delete one PackageOrder
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PackageOrderDeleteArgs>(args: SelectSubset<T, PackageOrderDeleteArgs<ExtArgs>>): Prisma__PackageOrderClient<$Result.GetResult<Prisma.$PackageOrderPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one PackageOrder.
+     * @param {PackageOrderUpdateArgs} args - Arguments to update one PackageOrder.
+     * @example
+     * // Update one PackageOrder
+     * const packageOrder = await prisma.packageOrder.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PackageOrderUpdateArgs>(args: SelectSubset<T, PackageOrderUpdateArgs<ExtArgs>>): Prisma__PackageOrderClient<$Result.GetResult<Prisma.$PackageOrderPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more PackageOrders.
+     * @param {PackageOrderDeleteManyArgs} args - Arguments to filter PackageOrders to delete.
+     * @example
+     * // Delete a few PackageOrders
+     * const { count } = await prisma.packageOrder.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PackageOrderDeleteManyArgs>(args?: SelectSubset<T, PackageOrderDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PackageOrders.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackageOrderUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PackageOrders
+     * const packageOrder = await prisma.packageOrder.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PackageOrderUpdateManyArgs>(args: SelectSubset<T, PackageOrderUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one PackageOrder.
+     * @param {PackageOrderUpsertArgs} args - Arguments to update or create a PackageOrder.
+     * @example
+     * // Update or create a PackageOrder
+     * const packageOrder = await prisma.packageOrder.upsert({
+     *   create: {
+     *     // ... data to create a PackageOrder
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PackageOrder we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PackageOrderUpsertArgs>(args: SelectSubset<T, PackageOrderUpsertArgs<ExtArgs>>): Prisma__PackageOrderClient<$Result.GetResult<Prisma.$PackageOrderPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of PackageOrders.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackageOrderCountArgs} args - Arguments to filter PackageOrders to count.
+     * @example
+     * // Count the number of PackageOrders
+     * const count = await prisma.packageOrder.count({
+     *   where: {
+     *     // ... the filter for the PackageOrders we want to count
+     *   }
+     * })
+    **/
+    count<T extends PackageOrderCountArgs>(
+      args?: Subset<T, PackageOrderCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PackageOrderCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PackageOrder.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackageOrderAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PackageOrderAggregateArgs>(args: Subset<T, PackageOrderAggregateArgs>): Prisma.PrismaPromise<GetPackageOrderAggregateType<T>>
+
+    /**
+     * Group by PackageOrder.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackageOrderGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PackageOrderGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PackageOrderGroupByArgs['orderBy'] }
+        : { orderBy?: PackageOrderGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PackageOrderGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPackageOrderGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the PackageOrder model
+   */
+  readonly fields: PackageOrderFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PackageOrder.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PackageOrderClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    items<T extends PackageOrder$itemsArgs<ExtArgs> = {}>(args?: Subset<T, PackageOrder$itemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PackageOrderItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    payment<T extends PackageOrder$paymentArgs<ExtArgs> = {}>(args?: Subset<T, PackageOrder$paymentArgs<ExtArgs>>): Prisma__PackagePaymentClient<$Result.GetResult<Prisma.$PackagePaymentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the PackageOrder model
+   */
+  interface PackageOrderFieldRefs {
+    readonly id: FieldRef<"PackageOrder", 'String'>
+    readonly orderCode: FieldRef<"PackageOrder", 'String'>
+    readonly patientId: FieldRef<"PackageOrder", 'String'>
+    readonly outletId: FieldRef<"PackageOrder", 'String'>
+    readonly packageId: FieldRef<"PackageOrder", 'String'>
+    readonly packageName: FieldRef<"PackageOrder", 'String'>
+    readonly subtitle: FieldRef<"PackageOrder", 'String'>
+    readonly totalPrice: FieldRef<"PackageOrder", 'Decimal'>
+    readonly discountedPrice: FieldRef<"PackageOrder", 'Decimal'>
+    readonly status: FieldRef<"PackageOrder", 'PackageOrderStatus'>
+    readonly paymentStatus: FieldRef<"PackageOrder", 'PackagePaymentStatus'>
+    readonly paymentMethod: FieldRef<"PackageOrder", 'PackagePaymentMethod'>
+    readonly notes: FieldRef<"PackageOrder", 'String'>
+    readonly createdAt: FieldRef<"PackageOrder", 'DateTime'>
+    readonly updatedAt: FieldRef<"PackageOrder", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * PackageOrder findUnique
+   */
+  export type PackageOrderFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageOrder
+     */
+    select?: PackageOrderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageOrder
+     */
+    omit?: PackageOrderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageOrderInclude<ExtArgs> | null
+    /**
+     * Filter, which PackageOrder to fetch.
+     */
+    where: PackageOrderWhereUniqueInput
+  }
+
+  /**
+   * PackageOrder findUniqueOrThrow
+   */
+  export type PackageOrderFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageOrder
+     */
+    select?: PackageOrderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageOrder
+     */
+    omit?: PackageOrderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageOrderInclude<ExtArgs> | null
+    /**
+     * Filter, which PackageOrder to fetch.
+     */
+    where: PackageOrderWhereUniqueInput
+  }
+
+  /**
+   * PackageOrder findFirst
+   */
+  export type PackageOrderFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageOrder
+     */
+    select?: PackageOrderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageOrder
+     */
+    omit?: PackageOrderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageOrderInclude<ExtArgs> | null
+    /**
+     * Filter, which PackageOrder to fetch.
+     */
+    where?: PackageOrderWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PackageOrders to fetch.
+     */
+    orderBy?: PackageOrderOrderByWithRelationInput | PackageOrderOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PackageOrders.
+     */
+    cursor?: PackageOrderWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PackageOrders from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PackageOrders.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PackageOrders.
+     */
+    distinct?: PackageOrderScalarFieldEnum | PackageOrderScalarFieldEnum[]
+  }
+
+  /**
+   * PackageOrder findFirstOrThrow
+   */
+  export type PackageOrderFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageOrder
+     */
+    select?: PackageOrderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageOrder
+     */
+    omit?: PackageOrderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageOrderInclude<ExtArgs> | null
+    /**
+     * Filter, which PackageOrder to fetch.
+     */
+    where?: PackageOrderWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PackageOrders to fetch.
+     */
+    orderBy?: PackageOrderOrderByWithRelationInput | PackageOrderOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PackageOrders.
+     */
+    cursor?: PackageOrderWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PackageOrders from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PackageOrders.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PackageOrders.
+     */
+    distinct?: PackageOrderScalarFieldEnum | PackageOrderScalarFieldEnum[]
+  }
+
+  /**
+   * PackageOrder findMany
+   */
+  export type PackageOrderFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageOrder
+     */
+    select?: PackageOrderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageOrder
+     */
+    omit?: PackageOrderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageOrderInclude<ExtArgs> | null
+    /**
+     * Filter, which PackageOrders to fetch.
+     */
+    where?: PackageOrderWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PackageOrders to fetch.
+     */
+    orderBy?: PackageOrderOrderByWithRelationInput | PackageOrderOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PackageOrders.
+     */
+    cursor?: PackageOrderWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PackageOrders from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PackageOrders.
+     */
+    skip?: number
+    distinct?: PackageOrderScalarFieldEnum | PackageOrderScalarFieldEnum[]
+  }
+
+  /**
+   * PackageOrder create
+   */
+  export type PackageOrderCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageOrder
+     */
+    select?: PackageOrderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageOrder
+     */
+    omit?: PackageOrderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageOrderInclude<ExtArgs> | null
+    /**
+     * The data needed to create a PackageOrder.
+     */
+    data: XOR<PackageOrderCreateInput, PackageOrderUncheckedCreateInput>
+  }
+
+  /**
+   * PackageOrder createMany
+   */
+  export type PackageOrderCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many PackageOrders.
+     */
+    data: PackageOrderCreateManyInput | PackageOrderCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PackageOrder update
+   */
+  export type PackageOrderUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageOrder
+     */
+    select?: PackageOrderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageOrder
+     */
+    omit?: PackageOrderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageOrderInclude<ExtArgs> | null
+    /**
+     * The data needed to update a PackageOrder.
+     */
+    data: XOR<PackageOrderUpdateInput, PackageOrderUncheckedUpdateInput>
+    /**
+     * Choose, which PackageOrder to update.
+     */
+    where: PackageOrderWhereUniqueInput
+  }
+
+  /**
+   * PackageOrder updateMany
+   */
+  export type PackageOrderUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update PackageOrders.
+     */
+    data: XOR<PackageOrderUpdateManyMutationInput, PackageOrderUncheckedUpdateManyInput>
+    /**
+     * Filter which PackageOrders to update
+     */
+    where?: PackageOrderWhereInput
+    /**
+     * Limit how many PackageOrders to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PackageOrder upsert
+   */
+  export type PackageOrderUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageOrder
+     */
+    select?: PackageOrderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageOrder
+     */
+    omit?: PackageOrderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageOrderInclude<ExtArgs> | null
+    /**
+     * The filter to search for the PackageOrder to update in case it exists.
+     */
+    where: PackageOrderWhereUniqueInput
+    /**
+     * In case the PackageOrder found by the `where` argument doesn't exist, create a new PackageOrder with this data.
+     */
+    create: XOR<PackageOrderCreateInput, PackageOrderUncheckedCreateInput>
+    /**
+     * In case the PackageOrder was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PackageOrderUpdateInput, PackageOrderUncheckedUpdateInput>
+  }
+
+  /**
+   * PackageOrder delete
+   */
+  export type PackageOrderDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageOrder
+     */
+    select?: PackageOrderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageOrder
+     */
+    omit?: PackageOrderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageOrderInclude<ExtArgs> | null
+    /**
+     * Filter which PackageOrder to delete.
+     */
+    where: PackageOrderWhereUniqueInput
+  }
+
+  /**
+   * PackageOrder deleteMany
+   */
+  export type PackageOrderDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PackageOrders to delete
+     */
+    where?: PackageOrderWhereInput
+    /**
+     * Limit how many PackageOrders to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * PackageOrder.items
+   */
+  export type PackageOrder$itemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageOrderItem
+     */
+    select?: PackageOrderItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageOrderItem
+     */
+    omit?: PackageOrderItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageOrderItemInclude<ExtArgs> | null
+    where?: PackageOrderItemWhereInput
+    orderBy?: PackageOrderItemOrderByWithRelationInput | PackageOrderItemOrderByWithRelationInput[]
+    cursor?: PackageOrderItemWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PackageOrderItemScalarFieldEnum | PackageOrderItemScalarFieldEnum[]
+  }
+
+  /**
+   * PackageOrder.payment
+   */
+  export type PackageOrder$paymentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackagePayment
+     */
+    select?: PackagePaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackagePayment
+     */
+    omit?: PackagePaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackagePaymentInclude<ExtArgs> | null
+    where?: PackagePaymentWhereInput
+  }
+
+  /**
+   * PackageOrder without action
+   */
+  export type PackageOrderDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageOrder
+     */
+    select?: PackageOrderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageOrder
+     */
+    omit?: PackageOrderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageOrderInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model PackageOrderItem
+   */
+
+  export type AggregatePackageOrderItem = {
+    _count: PackageOrderItemCountAggregateOutputType | null
+    _avg: PackageOrderItemAvgAggregateOutputType | null
+    _sum: PackageOrderItemSumAggregateOutputType | null
+    _min: PackageOrderItemMinAggregateOutputType | null
+    _max: PackageOrderItemMaxAggregateOutputType | null
+  }
+
+  export type PackageOrderItemAvgAggregateOutputType = {
+    price: Decimal | null
+  }
+
+  export type PackageOrderItemSumAggregateOutputType = {
+    price: Decimal | null
+  }
+
+  export type PackageOrderItemMinAggregateOutputType = {
+    id: string | null
+    orderId: string | null
+    testId: string | null
+    testName: string | null
+    testCode: string | null
+    price: Decimal | null
+    createdAt: Date | null
+  }
+
+  export type PackageOrderItemMaxAggregateOutputType = {
+    id: string | null
+    orderId: string | null
+    testId: string | null
+    testName: string | null
+    testCode: string | null
+    price: Decimal | null
+    createdAt: Date | null
+  }
+
+  export type PackageOrderItemCountAggregateOutputType = {
+    id: number
+    orderId: number
+    testId: number
+    testName: number
+    testCode: number
+    price: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type PackageOrderItemAvgAggregateInputType = {
+    price?: true
+  }
+
+  export type PackageOrderItemSumAggregateInputType = {
+    price?: true
+  }
+
+  export type PackageOrderItemMinAggregateInputType = {
+    id?: true
+    orderId?: true
+    testId?: true
+    testName?: true
+    testCode?: true
+    price?: true
+    createdAt?: true
+  }
+
+  export type PackageOrderItemMaxAggregateInputType = {
+    id?: true
+    orderId?: true
+    testId?: true
+    testName?: true
+    testCode?: true
+    price?: true
+    createdAt?: true
+  }
+
+  export type PackageOrderItemCountAggregateInputType = {
+    id?: true
+    orderId?: true
+    testId?: true
+    testName?: true
+    testCode?: true
+    price?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type PackageOrderItemAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PackageOrderItem to aggregate.
+     */
+    where?: PackageOrderItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PackageOrderItems to fetch.
+     */
+    orderBy?: PackageOrderItemOrderByWithRelationInput | PackageOrderItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PackageOrderItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PackageOrderItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PackageOrderItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PackageOrderItems
+    **/
+    _count?: true | PackageOrderItemCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PackageOrderItemAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PackageOrderItemSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PackageOrderItemMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PackageOrderItemMaxAggregateInputType
+  }
+
+  export type GetPackageOrderItemAggregateType<T extends PackageOrderItemAggregateArgs> = {
+        [P in keyof T & keyof AggregatePackageOrderItem]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePackageOrderItem[P]>
+      : GetScalarType<T[P], AggregatePackageOrderItem[P]>
+  }
+
+
+
+
+  export type PackageOrderItemGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PackageOrderItemWhereInput
+    orderBy?: PackageOrderItemOrderByWithAggregationInput | PackageOrderItemOrderByWithAggregationInput[]
+    by: PackageOrderItemScalarFieldEnum[] | PackageOrderItemScalarFieldEnum
+    having?: PackageOrderItemScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PackageOrderItemCountAggregateInputType | true
+    _avg?: PackageOrderItemAvgAggregateInputType
+    _sum?: PackageOrderItemSumAggregateInputType
+    _min?: PackageOrderItemMinAggregateInputType
+    _max?: PackageOrderItemMaxAggregateInputType
+  }
+
+  export type PackageOrderItemGroupByOutputType = {
+    id: string
+    orderId: string
+    testId: string
+    testName: string
+    testCode: string | null
+    price: Decimal
+    createdAt: Date
+    _count: PackageOrderItemCountAggregateOutputType | null
+    _avg: PackageOrderItemAvgAggregateOutputType | null
+    _sum: PackageOrderItemSumAggregateOutputType | null
+    _min: PackageOrderItemMinAggregateOutputType | null
+    _max: PackageOrderItemMaxAggregateOutputType | null
+  }
+
+  type GetPackageOrderItemGroupByPayload<T extends PackageOrderItemGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PackageOrderItemGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PackageOrderItemGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PackageOrderItemGroupByOutputType[P]>
+            : GetScalarType<T[P], PackageOrderItemGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PackageOrderItemSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    orderId?: boolean
+    testId?: boolean
+    testName?: boolean
+    testCode?: boolean
+    price?: boolean
+    createdAt?: boolean
+    order?: boolean | PackageOrderDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["packageOrderItem"]>
+
+
+
+  export type PackageOrderItemSelectScalar = {
+    id?: boolean
+    orderId?: boolean
+    testId?: boolean
+    testName?: boolean
+    testCode?: boolean
+    price?: boolean
+    createdAt?: boolean
+  }
+
+  export type PackageOrderItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "orderId" | "testId" | "testName" | "testCode" | "price" | "createdAt", ExtArgs["result"]["packageOrderItem"]>
+  export type PackageOrderItemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    order?: boolean | PackageOrderDefaultArgs<ExtArgs>
+  }
+
+  export type $PackageOrderItemPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PackageOrderItem"
+    objects: {
+      order: Prisma.$PackageOrderPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      orderId: string
+      testId: string
+      testName: string
+      testCode: string | null
+      price: Prisma.Decimal
+      createdAt: Date
+    }, ExtArgs["result"]["packageOrderItem"]>
+    composites: {}
+  }
+
+  type PackageOrderItemGetPayload<S extends boolean | null | undefined | PackageOrderItemDefaultArgs> = $Result.GetResult<Prisma.$PackageOrderItemPayload, S>
+
+  type PackageOrderItemCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PackageOrderItemFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PackageOrderItemCountAggregateInputType | true
+    }
+
+  export interface PackageOrderItemDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PackageOrderItem'], meta: { name: 'PackageOrderItem' } }
+    /**
+     * Find zero or one PackageOrderItem that matches the filter.
+     * @param {PackageOrderItemFindUniqueArgs} args - Arguments to find a PackageOrderItem
+     * @example
+     * // Get one PackageOrderItem
+     * const packageOrderItem = await prisma.packageOrderItem.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PackageOrderItemFindUniqueArgs>(args: SelectSubset<T, PackageOrderItemFindUniqueArgs<ExtArgs>>): Prisma__PackageOrderItemClient<$Result.GetResult<Prisma.$PackageOrderItemPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one PackageOrderItem that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PackageOrderItemFindUniqueOrThrowArgs} args - Arguments to find a PackageOrderItem
+     * @example
+     * // Get one PackageOrderItem
+     * const packageOrderItem = await prisma.packageOrderItem.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PackageOrderItemFindUniqueOrThrowArgs>(args: SelectSubset<T, PackageOrderItemFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PackageOrderItemClient<$Result.GetResult<Prisma.$PackageOrderItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PackageOrderItem that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackageOrderItemFindFirstArgs} args - Arguments to find a PackageOrderItem
+     * @example
+     * // Get one PackageOrderItem
+     * const packageOrderItem = await prisma.packageOrderItem.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PackageOrderItemFindFirstArgs>(args?: SelectSubset<T, PackageOrderItemFindFirstArgs<ExtArgs>>): Prisma__PackageOrderItemClient<$Result.GetResult<Prisma.$PackageOrderItemPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PackageOrderItem that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackageOrderItemFindFirstOrThrowArgs} args - Arguments to find a PackageOrderItem
+     * @example
+     * // Get one PackageOrderItem
+     * const packageOrderItem = await prisma.packageOrderItem.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PackageOrderItemFindFirstOrThrowArgs>(args?: SelectSubset<T, PackageOrderItemFindFirstOrThrowArgs<ExtArgs>>): Prisma__PackageOrderItemClient<$Result.GetResult<Prisma.$PackageOrderItemPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more PackageOrderItems that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackageOrderItemFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PackageOrderItems
+     * const packageOrderItems = await prisma.packageOrderItem.findMany()
+     * 
+     * // Get first 10 PackageOrderItems
+     * const packageOrderItems = await prisma.packageOrderItem.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const packageOrderItemWithIdOnly = await prisma.packageOrderItem.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PackageOrderItemFindManyArgs>(args?: SelectSubset<T, PackageOrderItemFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PackageOrderItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a PackageOrderItem.
+     * @param {PackageOrderItemCreateArgs} args - Arguments to create a PackageOrderItem.
+     * @example
+     * // Create one PackageOrderItem
+     * const PackageOrderItem = await prisma.packageOrderItem.create({
+     *   data: {
+     *     // ... data to create a PackageOrderItem
+     *   }
+     * })
+     * 
+     */
+    create<T extends PackageOrderItemCreateArgs>(args: SelectSubset<T, PackageOrderItemCreateArgs<ExtArgs>>): Prisma__PackageOrderItemClient<$Result.GetResult<Prisma.$PackageOrderItemPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many PackageOrderItems.
+     * @param {PackageOrderItemCreateManyArgs} args - Arguments to create many PackageOrderItems.
+     * @example
+     * // Create many PackageOrderItems
+     * const packageOrderItem = await prisma.packageOrderItem.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PackageOrderItemCreateManyArgs>(args?: SelectSubset<T, PackageOrderItemCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a PackageOrderItem.
+     * @param {PackageOrderItemDeleteArgs} args - Arguments to delete one PackageOrderItem.
+     * @example
+     * // Delete one PackageOrderItem
+     * const PackageOrderItem = await prisma.packageOrderItem.delete({
+     *   where: {
+     *     // ... filter to delete one PackageOrderItem
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PackageOrderItemDeleteArgs>(args: SelectSubset<T, PackageOrderItemDeleteArgs<ExtArgs>>): Prisma__PackageOrderItemClient<$Result.GetResult<Prisma.$PackageOrderItemPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one PackageOrderItem.
+     * @param {PackageOrderItemUpdateArgs} args - Arguments to update one PackageOrderItem.
+     * @example
+     * // Update one PackageOrderItem
+     * const packageOrderItem = await prisma.packageOrderItem.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PackageOrderItemUpdateArgs>(args: SelectSubset<T, PackageOrderItemUpdateArgs<ExtArgs>>): Prisma__PackageOrderItemClient<$Result.GetResult<Prisma.$PackageOrderItemPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more PackageOrderItems.
+     * @param {PackageOrderItemDeleteManyArgs} args - Arguments to filter PackageOrderItems to delete.
+     * @example
+     * // Delete a few PackageOrderItems
+     * const { count } = await prisma.packageOrderItem.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PackageOrderItemDeleteManyArgs>(args?: SelectSubset<T, PackageOrderItemDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PackageOrderItems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackageOrderItemUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PackageOrderItems
+     * const packageOrderItem = await prisma.packageOrderItem.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PackageOrderItemUpdateManyArgs>(args: SelectSubset<T, PackageOrderItemUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one PackageOrderItem.
+     * @param {PackageOrderItemUpsertArgs} args - Arguments to update or create a PackageOrderItem.
+     * @example
+     * // Update or create a PackageOrderItem
+     * const packageOrderItem = await prisma.packageOrderItem.upsert({
+     *   create: {
+     *     // ... data to create a PackageOrderItem
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PackageOrderItem we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PackageOrderItemUpsertArgs>(args: SelectSubset<T, PackageOrderItemUpsertArgs<ExtArgs>>): Prisma__PackageOrderItemClient<$Result.GetResult<Prisma.$PackageOrderItemPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of PackageOrderItems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackageOrderItemCountArgs} args - Arguments to filter PackageOrderItems to count.
+     * @example
+     * // Count the number of PackageOrderItems
+     * const count = await prisma.packageOrderItem.count({
+     *   where: {
+     *     // ... the filter for the PackageOrderItems we want to count
+     *   }
+     * })
+    **/
+    count<T extends PackageOrderItemCountArgs>(
+      args?: Subset<T, PackageOrderItemCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PackageOrderItemCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PackageOrderItem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackageOrderItemAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PackageOrderItemAggregateArgs>(args: Subset<T, PackageOrderItemAggregateArgs>): Prisma.PrismaPromise<GetPackageOrderItemAggregateType<T>>
+
+    /**
+     * Group by PackageOrderItem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackageOrderItemGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PackageOrderItemGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PackageOrderItemGroupByArgs['orderBy'] }
+        : { orderBy?: PackageOrderItemGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PackageOrderItemGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPackageOrderItemGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the PackageOrderItem model
+   */
+  readonly fields: PackageOrderItemFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PackageOrderItem.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PackageOrderItemClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    order<T extends PackageOrderDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PackageOrderDefaultArgs<ExtArgs>>): Prisma__PackageOrderClient<$Result.GetResult<Prisma.$PackageOrderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the PackageOrderItem model
+   */
+  interface PackageOrderItemFieldRefs {
+    readonly id: FieldRef<"PackageOrderItem", 'String'>
+    readonly orderId: FieldRef<"PackageOrderItem", 'String'>
+    readonly testId: FieldRef<"PackageOrderItem", 'String'>
+    readonly testName: FieldRef<"PackageOrderItem", 'String'>
+    readonly testCode: FieldRef<"PackageOrderItem", 'String'>
+    readonly price: FieldRef<"PackageOrderItem", 'Decimal'>
+    readonly createdAt: FieldRef<"PackageOrderItem", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * PackageOrderItem findUnique
+   */
+  export type PackageOrderItemFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageOrderItem
+     */
+    select?: PackageOrderItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageOrderItem
+     */
+    omit?: PackageOrderItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageOrderItemInclude<ExtArgs> | null
+    /**
+     * Filter, which PackageOrderItem to fetch.
+     */
+    where: PackageOrderItemWhereUniqueInput
+  }
+
+  /**
+   * PackageOrderItem findUniqueOrThrow
+   */
+  export type PackageOrderItemFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageOrderItem
+     */
+    select?: PackageOrderItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageOrderItem
+     */
+    omit?: PackageOrderItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageOrderItemInclude<ExtArgs> | null
+    /**
+     * Filter, which PackageOrderItem to fetch.
+     */
+    where: PackageOrderItemWhereUniqueInput
+  }
+
+  /**
+   * PackageOrderItem findFirst
+   */
+  export type PackageOrderItemFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageOrderItem
+     */
+    select?: PackageOrderItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageOrderItem
+     */
+    omit?: PackageOrderItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageOrderItemInclude<ExtArgs> | null
+    /**
+     * Filter, which PackageOrderItem to fetch.
+     */
+    where?: PackageOrderItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PackageOrderItems to fetch.
+     */
+    orderBy?: PackageOrderItemOrderByWithRelationInput | PackageOrderItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PackageOrderItems.
+     */
+    cursor?: PackageOrderItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PackageOrderItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PackageOrderItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PackageOrderItems.
+     */
+    distinct?: PackageOrderItemScalarFieldEnum | PackageOrderItemScalarFieldEnum[]
+  }
+
+  /**
+   * PackageOrderItem findFirstOrThrow
+   */
+  export type PackageOrderItemFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageOrderItem
+     */
+    select?: PackageOrderItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageOrderItem
+     */
+    omit?: PackageOrderItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageOrderItemInclude<ExtArgs> | null
+    /**
+     * Filter, which PackageOrderItem to fetch.
+     */
+    where?: PackageOrderItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PackageOrderItems to fetch.
+     */
+    orderBy?: PackageOrderItemOrderByWithRelationInput | PackageOrderItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PackageOrderItems.
+     */
+    cursor?: PackageOrderItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PackageOrderItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PackageOrderItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PackageOrderItems.
+     */
+    distinct?: PackageOrderItemScalarFieldEnum | PackageOrderItemScalarFieldEnum[]
+  }
+
+  /**
+   * PackageOrderItem findMany
+   */
+  export type PackageOrderItemFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageOrderItem
+     */
+    select?: PackageOrderItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageOrderItem
+     */
+    omit?: PackageOrderItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageOrderItemInclude<ExtArgs> | null
+    /**
+     * Filter, which PackageOrderItems to fetch.
+     */
+    where?: PackageOrderItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PackageOrderItems to fetch.
+     */
+    orderBy?: PackageOrderItemOrderByWithRelationInput | PackageOrderItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PackageOrderItems.
+     */
+    cursor?: PackageOrderItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PackageOrderItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PackageOrderItems.
+     */
+    skip?: number
+    distinct?: PackageOrderItemScalarFieldEnum | PackageOrderItemScalarFieldEnum[]
+  }
+
+  /**
+   * PackageOrderItem create
+   */
+  export type PackageOrderItemCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageOrderItem
+     */
+    select?: PackageOrderItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageOrderItem
+     */
+    omit?: PackageOrderItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageOrderItemInclude<ExtArgs> | null
+    /**
+     * The data needed to create a PackageOrderItem.
+     */
+    data: XOR<PackageOrderItemCreateInput, PackageOrderItemUncheckedCreateInput>
+  }
+
+  /**
+   * PackageOrderItem createMany
+   */
+  export type PackageOrderItemCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many PackageOrderItems.
+     */
+    data: PackageOrderItemCreateManyInput | PackageOrderItemCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PackageOrderItem update
+   */
+  export type PackageOrderItemUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageOrderItem
+     */
+    select?: PackageOrderItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageOrderItem
+     */
+    omit?: PackageOrderItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageOrderItemInclude<ExtArgs> | null
+    /**
+     * The data needed to update a PackageOrderItem.
+     */
+    data: XOR<PackageOrderItemUpdateInput, PackageOrderItemUncheckedUpdateInput>
+    /**
+     * Choose, which PackageOrderItem to update.
+     */
+    where: PackageOrderItemWhereUniqueInput
+  }
+
+  /**
+   * PackageOrderItem updateMany
+   */
+  export type PackageOrderItemUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update PackageOrderItems.
+     */
+    data: XOR<PackageOrderItemUpdateManyMutationInput, PackageOrderItemUncheckedUpdateManyInput>
+    /**
+     * Filter which PackageOrderItems to update
+     */
+    where?: PackageOrderItemWhereInput
+    /**
+     * Limit how many PackageOrderItems to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PackageOrderItem upsert
+   */
+  export type PackageOrderItemUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageOrderItem
+     */
+    select?: PackageOrderItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageOrderItem
+     */
+    omit?: PackageOrderItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageOrderItemInclude<ExtArgs> | null
+    /**
+     * The filter to search for the PackageOrderItem to update in case it exists.
+     */
+    where: PackageOrderItemWhereUniqueInput
+    /**
+     * In case the PackageOrderItem found by the `where` argument doesn't exist, create a new PackageOrderItem with this data.
+     */
+    create: XOR<PackageOrderItemCreateInput, PackageOrderItemUncheckedCreateInput>
+    /**
+     * In case the PackageOrderItem was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PackageOrderItemUpdateInput, PackageOrderItemUncheckedUpdateInput>
+  }
+
+  /**
+   * PackageOrderItem delete
+   */
+  export type PackageOrderItemDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageOrderItem
+     */
+    select?: PackageOrderItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageOrderItem
+     */
+    omit?: PackageOrderItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageOrderItemInclude<ExtArgs> | null
+    /**
+     * Filter which PackageOrderItem to delete.
+     */
+    where: PackageOrderItemWhereUniqueInput
+  }
+
+  /**
+   * PackageOrderItem deleteMany
+   */
+  export type PackageOrderItemDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PackageOrderItems to delete
+     */
+    where?: PackageOrderItemWhereInput
+    /**
+     * Limit how many PackageOrderItems to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * PackageOrderItem without action
+   */
+  export type PackageOrderItemDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageOrderItem
+     */
+    select?: PackageOrderItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackageOrderItem
+     */
+    omit?: PackageOrderItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageOrderItemInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model PackagePayment
+   */
+
+  export type AggregatePackagePayment = {
+    _count: PackagePaymentCountAggregateOutputType | null
+    _avg: PackagePaymentAvgAggregateOutputType | null
+    _sum: PackagePaymentSumAggregateOutputType | null
+    _min: PackagePaymentMinAggregateOutputType | null
+    _max: PackagePaymentMaxAggregateOutputType | null
+  }
+
+  export type PackagePaymentAvgAggregateOutputType = {
+    amount: Decimal | null
+  }
+
+  export type PackagePaymentSumAggregateOutputType = {
+    amount: Decimal | null
+  }
+
+  export type PackagePaymentMinAggregateOutputType = {
+    id: string | null
+    orderId: string | null
+    amount: Decimal | null
+    currency: string | null
+    status: $Enums.PackagePaymentStatus | null
+    method: $Enums.PackagePaymentMethod | null
+    transactionId: string | null
+    validationId: string | null
+    bankTransactionId: string | null
+    paymentMethodName: string | null
+    cardType: string | null
+    paidAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PackagePaymentMaxAggregateOutputType = {
+    id: string | null
+    orderId: string | null
+    amount: Decimal | null
+    currency: string | null
+    status: $Enums.PackagePaymentStatus | null
+    method: $Enums.PackagePaymentMethod | null
+    transactionId: string | null
+    validationId: string | null
+    bankTransactionId: string | null
+    paymentMethodName: string | null
+    cardType: string | null
+    paidAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PackagePaymentCountAggregateOutputType = {
+    id: number
+    orderId: number
+    amount: number
+    currency: number
+    status: number
+    method: number
+    transactionId: number
+    validationId: number
+    bankTransactionId: number
+    paymentMethodName: number
+    cardType: number
+    gatewayResponse: number
+    paidAt: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type PackagePaymentAvgAggregateInputType = {
+    amount?: true
+  }
+
+  export type PackagePaymentSumAggregateInputType = {
+    amount?: true
+  }
+
+  export type PackagePaymentMinAggregateInputType = {
+    id?: true
+    orderId?: true
+    amount?: true
+    currency?: true
+    status?: true
+    method?: true
+    transactionId?: true
+    validationId?: true
+    bankTransactionId?: true
+    paymentMethodName?: true
+    cardType?: true
+    paidAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PackagePaymentMaxAggregateInputType = {
+    id?: true
+    orderId?: true
+    amount?: true
+    currency?: true
+    status?: true
+    method?: true
+    transactionId?: true
+    validationId?: true
+    bankTransactionId?: true
+    paymentMethodName?: true
+    cardType?: true
+    paidAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PackagePaymentCountAggregateInputType = {
+    id?: true
+    orderId?: true
+    amount?: true
+    currency?: true
+    status?: true
+    method?: true
+    transactionId?: true
+    validationId?: true
+    bankTransactionId?: true
+    paymentMethodName?: true
+    cardType?: true
+    gatewayResponse?: true
+    paidAt?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type PackagePaymentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PackagePayment to aggregate.
+     */
+    where?: PackagePaymentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PackagePayments to fetch.
+     */
+    orderBy?: PackagePaymentOrderByWithRelationInput | PackagePaymentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PackagePaymentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PackagePayments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PackagePayments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PackagePayments
+    **/
+    _count?: true | PackagePaymentCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PackagePaymentAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PackagePaymentSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PackagePaymentMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PackagePaymentMaxAggregateInputType
+  }
+
+  export type GetPackagePaymentAggregateType<T extends PackagePaymentAggregateArgs> = {
+        [P in keyof T & keyof AggregatePackagePayment]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePackagePayment[P]>
+      : GetScalarType<T[P], AggregatePackagePayment[P]>
+  }
+
+
+
+
+  export type PackagePaymentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PackagePaymentWhereInput
+    orderBy?: PackagePaymentOrderByWithAggregationInput | PackagePaymentOrderByWithAggregationInput[]
+    by: PackagePaymentScalarFieldEnum[] | PackagePaymentScalarFieldEnum
+    having?: PackagePaymentScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PackagePaymentCountAggregateInputType | true
+    _avg?: PackagePaymentAvgAggregateInputType
+    _sum?: PackagePaymentSumAggregateInputType
+    _min?: PackagePaymentMinAggregateInputType
+    _max?: PackagePaymentMaxAggregateInputType
+  }
+
+  export type PackagePaymentGroupByOutputType = {
+    id: string
+    orderId: string
+    amount: Decimal
+    currency: string
+    status: $Enums.PackagePaymentStatus
+    method: $Enums.PackagePaymentMethod
+    transactionId: string
+    validationId: string | null
+    bankTransactionId: string | null
+    paymentMethodName: string | null
+    cardType: string | null
+    gatewayResponse: JsonValue | null
+    paidAt: Date | null
+    createdAt: Date
+    updatedAt: Date
+    _count: PackagePaymentCountAggregateOutputType | null
+    _avg: PackagePaymentAvgAggregateOutputType | null
+    _sum: PackagePaymentSumAggregateOutputType | null
+    _min: PackagePaymentMinAggregateOutputType | null
+    _max: PackagePaymentMaxAggregateOutputType | null
+  }
+
+  type GetPackagePaymentGroupByPayload<T extends PackagePaymentGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PackagePaymentGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PackagePaymentGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PackagePaymentGroupByOutputType[P]>
+            : GetScalarType<T[P], PackagePaymentGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PackagePaymentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    orderId?: boolean
+    amount?: boolean
+    currency?: boolean
+    status?: boolean
+    method?: boolean
+    transactionId?: boolean
+    validationId?: boolean
+    bankTransactionId?: boolean
+    paymentMethodName?: boolean
+    cardType?: boolean
+    gatewayResponse?: boolean
+    paidAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    order?: boolean | PackageOrderDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["packagePayment"]>
+
+
+
+  export type PackagePaymentSelectScalar = {
+    id?: boolean
+    orderId?: boolean
+    amount?: boolean
+    currency?: boolean
+    status?: boolean
+    method?: boolean
+    transactionId?: boolean
+    validationId?: boolean
+    bankTransactionId?: boolean
+    paymentMethodName?: boolean
+    cardType?: boolean
+    gatewayResponse?: boolean
+    paidAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type PackagePaymentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "orderId" | "amount" | "currency" | "status" | "method" | "transactionId" | "validationId" | "bankTransactionId" | "paymentMethodName" | "cardType" | "gatewayResponse" | "paidAt" | "createdAt" | "updatedAt", ExtArgs["result"]["packagePayment"]>
+  export type PackagePaymentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    order?: boolean | PackageOrderDefaultArgs<ExtArgs>
+  }
+
+  export type $PackagePaymentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PackagePayment"
+    objects: {
+      order: Prisma.$PackageOrderPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      orderId: string
+      amount: Prisma.Decimal
+      currency: string
+      status: $Enums.PackagePaymentStatus
+      method: $Enums.PackagePaymentMethod
+      transactionId: string
+      validationId: string | null
+      bankTransactionId: string | null
+      paymentMethodName: string | null
+      cardType: string | null
+      gatewayResponse: Prisma.JsonValue | null
+      paidAt: Date | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["packagePayment"]>
+    composites: {}
+  }
+
+  type PackagePaymentGetPayload<S extends boolean | null | undefined | PackagePaymentDefaultArgs> = $Result.GetResult<Prisma.$PackagePaymentPayload, S>
+
+  type PackagePaymentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PackagePaymentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PackagePaymentCountAggregateInputType | true
+    }
+
+  export interface PackagePaymentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PackagePayment'], meta: { name: 'PackagePayment' } }
+    /**
+     * Find zero or one PackagePayment that matches the filter.
+     * @param {PackagePaymentFindUniqueArgs} args - Arguments to find a PackagePayment
+     * @example
+     * // Get one PackagePayment
+     * const packagePayment = await prisma.packagePayment.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PackagePaymentFindUniqueArgs>(args: SelectSubset<T, PackagePaymentFindUniqueArgs<ExtArgs>>): Prisma__PackagePaymentClient<$Result.GetResult<Prisma.$PackagePaymentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one PackagePayment that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PackagePaymentFindUniqueOrThrowArgs} args - Arguments to find a PackagePayment
+     * @example
+     * // Get one PackagePayment
+     * const packagePayment = await prisma.packagePayment.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PackagePaymentFindUniqueOrThrowArgs>(args: SelectSubset<T, PackagePaymentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PackagePaymentClient<$Result.GetResult<Prisma.$PackagePaymentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PackagePayment that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackagePaymentFindFirstArgs} args - Arguments to find a PackagePayment
+     * @example
+     * // Get one PackagePayment
+     * const packagePayment = await prisma.packagePayment.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PackagePaymentFindFirstArgs>(args?: SelectSubset<T, PackagePaymentFindFirstArgs<ExtArgs>>): Prisma__PackagePaymentClient<$Result.GetResult<Prisma.$PackagePaymentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PackagePayment that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackagePaymentFindFirstOrThrowArgs} args - Arguments to find a PackagePayment
+     * @example
+     * // Get one PackagePayment
+     * const packagePayment = await prisma.packagePayment.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PackagePaymentFindFirstOrThrowArgs>(args?: SelectSubset<T, PackagePaymentFindFirstOrThrowArgs<ExtArgs>>): Prisma__PackagePaymentClient<$Result.GetResult<Prisma.$PackagePaymentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more PackagePayments that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackagePaymentFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PackagePayments
+     * const packagePayments = await prisma.packagePayment.findMany()
+     * 
+     * // Get first 10 PackagePayments
+     * const packagePayments = await prisma.packagePayment.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const packagePaymentWithIdOnly = await prisma.packagePayment.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PackagePaymentFindManyArgs>(args?: SelectSubset<T, PackagePaymentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PackagePaymentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a PackagePayment.
+     * @param {PackagePaymentCreateArgs} args - Arguments to create a PackagePayment.
+     * @example
+     * // Create one PackagePayment
+     * const PackagePayment = await prisma.packagePayment.create({
+     *   data: {
+     *     // ... data to create a PackagePayment
+     *   }
+     * })
+     * 
+     */
+    create<T extends PackagePaymentCreateArgs>(args: SelectSubset<T, PackagePaymentCreateArgs<ExtArgs>>): Prisma__PackagePaymentClient<$Result.GetResult<Prisma.$PackagePaymentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many PackagePayments.
+     * @param {PackagePaymentCreateManyArgs} args - Arguments to create many PackagePayments.
+     * @example
+     * // Create many PackagePayments
+     * const packagePayment = await prisma.packagePayment.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PackagePaymentCreateManyArgs>(args?: SelectSubset<T, PackagePaymentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a PackagePayment.
+     * @param {PackagePaymentDeleteArgs} args - Arguments to delete one PackagePayment.
+     * @example
+     * // Delete one PackagePayment
+     * const PackagePayment = await prisma.packagePayment.delete({
+     *   where: {
+     *     // ... filter to delete one PackagePayment
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PackagePaymentDeleteArgs>(args: SelectSubset<T, PackagePaymentDeleteArgs<ExtArgs>>): Prisma__PackagePaymentClient<$Result.GetResult<Prisma.$PackagePaymentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one PackagePayment.
+     * @param {PackagePaymentUpdateArgs} args - Arguments to update one PackagePayment.
+     * @example
+     * // Update one PackagePayment
+     * const packagePayment = await prisma.packagePayment.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PackagePaymentUpdateArgs>(args: SelectSubset<T, PackagePaymentUpdateArgs<ExtArgs>>): Prisma__PackagePaymentClient<$Result.GetResult<Prisma.$PackagePaymentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more PackagePayments.
+     * @param {PackagePaymentDeleteManyArgs} args - Arguments to filter PackagePayments to delete.
+     * @example
+     * // Delete a few PackagePayments
+     * const { count } = await prisma.packagePayment.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PackagePaymentDeleteManyArgs>(args?: SelectSubset<T, PackagePaymentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PackagePayments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackagePaymentUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PackagePayments
+     * const packagePayment = await prisma.packagePayment.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PackagePaymentUpdateManyArgs>(args: SelectSubset<T, PackagePaymentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one PackagePayment.
+     * @param {PackagePaymentUpsertArgs} args - Arguments to update or create a PackagePayment.
+     * @example
+     * // Update or create a PackagePayment
+     * const packagePayment = await prisma.packagePayment.upsert({
+     *   create: {
+     *     // ... data to create a PackagePayment
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PackagePayment we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PackagePaymentUpsertArgs>(args: SelectSubset<T, PackagePaymentUpsertArgs<ExtArgs>>): Prisma__PackagePaymentClient<$Result.GetResult<Prisma.$PackagePaymentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of PackagePayments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackagePaymentCountArgs} args - Arguments to filter PackagePayments to count.
+     * @example
+     * // Count the number of PackagePayments
+     * const count = await prisma.packagePayment.count({
+     *   where: {
+     *     // ... the filter for the PackagePayments we want to count
+     *   }
+     * })
+    **/
+    count<T extends PackagePaymentCountArgs>(
+      args?: Subset<T, PackagePaymentCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PackagePaymentCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PackagePayment.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackagePaymentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PackagePaymentAggregateArgs>(args: Subset<T, PackagePaymentAggregateArgs>): Prisma.PrismaPromise<GetPackagePaymentAggregateType<T>>
+
+    /**
+     * Group by PackagePayment.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackagePaymentGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PackagePaymentGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PackagePaymentGroupByArgs['orderBy'] }
+        : { orderBy?: PackagePaymentGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PackagePaymentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPackagePaymentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the PackagePayment model
+   */
+  readonly fields: PackagePaymentFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PackagePayment.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PackagePaymentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    order<T extends PackageOrderDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PackageOrderDefaultArgs<ExtArgs>>): Prisma__PackageOrderClient<$Result.GetResult<Prisma.$PackageOrderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the PackagePayment model
+   */
+  interface PackagePaymentFieldRefs {
+    readonly id: FieldRef<"PackagePayment", 'String'>
+    readonly orderId: FieldRef<"PackagePayment", 'String'>
+    readonly amount: FieldRef<"PackagePayment", 'Decimal'>
+    readonly currency: FieldRef<"PackagePayment", 'String'>
+    readonly status: FieldRef<"PackagePayment", 'PackagePaymentStatus'>
+    readonly method: FieldRef<"PackagePayment", 'PackagePaymentMethod'>
+    readonly transactionId: FieldRef<"PackagePayment", 'String'>
+    readonly validationId: FieldRef<"PackagePayment", 'String'>
+    readonly bankTransactionId: FieldRef<"PackagePayment", 'String'>
+    readonly paymentMethodName: FieldRef<"PackagePayment", 'String'>
+    readonly cardType: FieldRef<"PackagePayment", 'String'>
+    readonly gatewayResponse: FieldRef<"PackagePayment", 'Json'>
+    readonly paidAt: FieldRef<"PackagePayment", 'DateTime'>
+    readonly createdAt: FieldRef<"PackagePayment", 'DateTime'>
+    readonly updatedAt: FieldRef<"PackagePayment", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * PackagePayment findUnique
+   */
+  export type PackagePaymentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackagePayment
+     */
+    select?: PackagePaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackagePayment
+     */
+    omit?: PackagePaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackagePaymentInclude<ExtArgs> | null
+    /**
+     * Filter, which PackagePayment to fetch.
+     */
+    where: PackagePaymentWhereUniqueInput
+  }
+
+  /**
+   * PackagePayment findUniqueOrThrow
+   */
+  export type PackagePaymentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackagePayment
+     */
+    select?: PackagePaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackagePayment
+     */
+    omit?: PackagePaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackagePaymentInclude<ExtArgs> | null
+    /**
+     * Filter, which PackagePayment to fetch.
+     */
+    where: PackagePaymentWhereUniqueInput
+  }
+
+  /**
+   * PackagePayment findFirst
+   */
+  export type PackagePaymentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackagePayment
+     */
+    select?: PackagePaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackagePayment
+     */
+    omit?: PackagePaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackagePaymentInclude<ExtArgs> | null
+    /**
+     * Filter, which PackagePayment to fetch.
+     */
+    where?: PackagePaymentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PackagePayments to fetch.
+     */
+    orderBy?: PackagePaymentOrderByWithRelationInput | PackagePaymentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PackagePayments.
+     */
+    cursor?: PackagePaymentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PackagePayments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PackagePayments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PackagePayments.
+     */
+    distinct?: PackagePaymentScalarFieldEnum | PackagePaymentScalarFieldEnum[]
+  }
+
+  /**
+   * PackagePayment findFirstOrThrow
+   */
+  export type PackagePaymentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackagePayment
+     */
+    select?: PackagePaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackagePayment
+     */
+    omit?: PackagePaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackagePaymentInclude<ExtArgs> | null
+    /**
+     * Filter, which PackagePayment to fetch.
+     */
+    where?: PackagePaymentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PackagePayments to fetch.
+     */
+    orderBy?: PackagePaymentOrderByWithRelationInput | PackagePaymentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PackagePayments.
+     */
+    cursor?: PackagePaymentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PackagePayments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PackagePayments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PackagePayments.
+     */
+    distinct?: PackagePaymentScalarFieldEnum | PackagePaymentScalarFieldEnum[]
+  }
+
+  /**
+   * PackagePayment findMany
+   */
+  export type PackagePaymentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackagePayment
+     */
+    select?: PackagePaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackagePayment
+     */
+    omit?: PackagePaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackagePaymentInclude<ExtArgs> | null
+    /**
+     * Filter, which PackagePayments to fetch.
+     */
+    where?: PackagePaymentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PackagePayments to fetch.
+     */
+    orderBy?: PackagePaymentOrderByWithRelationInput | PackagePaymentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PackagePayments.
+     */
+    cursor?: PackagePaymentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PackagePayments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PackagePayments.
+     */
+    skip?: number
+    distinct?: PackagePaymentScalarFieldEnum | PackagePaymentScalarFieldEnum[]
+  }
+
+  /**
+   * PackagePayment create
+   */
+  export type PackagePaymentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackagePayment
+     */
+    select?: PackagePaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackagePayment
+     */
+    omit?: PackagePaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackagePaymentInclude<ExtArgs> | null
+    /**
+     * The data needed to create a PackagePayment.
+     */
+    data: XOR<PackagePaymentCreateInput, PackagePaymentUncheckedCreateInput>
+  }
+
+  /**
+   * PackagePayment createMany
+   */
+  export type PackagePaymentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many PackagePayments.
+     */
+    data: PackagePaymentCreateManyInput | PackagePaymentCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PackagePayment update
+   */
+  export type PackagePaymentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackagePayment
+     */
+    select?: PackagePaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackagePayment
+     */
+    omit?: PackagePaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackagePaymentInclude<ExtArgs> | null
+    /**
+     * The data needed to update a PackagePayment.
+     */
+    data: XOR<PackagePaymentUpdateInput, PackagePaymentUncheckedUpdateInput>
+    /**
+     * Choose, which PackagePayment to update.
+     */
+    where: PackagePaymentWhereUniqueInput
+  }
+
+  /**
+   * PackagePayment updateMany
+   */
+  export type PackagePaymentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update PackagePayments.
+     */
+    data: XOR<PackagePaymentUpdateManyMutationInput, PackagePaymentUncheckedUpdateManyInput>
+    /**
+     * Filter which PackagePayments to update
+     */
+    where?: PackagePaymentWhereInput
+    /**
+     * Limit how many PackagePayments to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PackagePayment upsert
+   */
+  export type PackagePaymentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackagePayment
+     */
+    select?: PackagePaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackagePayment
+     */
+    omit?: PackagePaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackagePaymentInclude<ExtArgs> | null
+    /**
+     * The filter to search for the PackagePayment to update in case it exists.
+     */
+    where: PackagePaymentWhereUniqueInput
+    /**
+     * In case the PackagePayment found by the `where` argument doesn't exist, create a new PackagePayment with this data.
+     */
+    create: XOR<PackagePaymentCreateInput, PackagePaymentUncheckedCreateInput>
+    /**
+     * In case the PackagePayment was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PackagePaymentUpdateInput, PackagePaymentUncheckedUpdateInput>
+  }
+
+  /**
+   * PackagePayment delete
+   */
+  export type PackagePaymentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackagePayment
+     */
+    select?: PackagePaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackagePayment
+     */
+    omit?: PackagePaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackagePaymentInclude<ExtArgs> | null
+    /**
+     * Filter which PackagePayment to delete.
+     */
+    where: PackagePaymentWhereUniqueInput
+  }
+
+  /**
+   * PackagePayment deleteMany
+   */
+  export type PackagePaymentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PackagePayments to delete
+     */
+    where?: PackagePaymentWhereInput
+    /**
+     * Limit how many PackagePayments to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * PackagePayment without action
+   */
+  export type PackagePaymentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackagePayment
+     */
+    select?: PackagePaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PackagePayment
+     */
+    omit?: PackagePaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackagePaymentInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -5473,6 +8974,61 @@ export namespace Prisma {
   };
 
   export type AppointmentPaymentScalarFieldEnum = (typeof AppointmentPaymentScalarFieldEnum)[keyof typeof AppointmentPaymentScalarFieldEnum]
+
+
+  export const PackageOrderScalarFieldEnum: {
+    id: 'id',
+    orderCode: 'orderCode',
+    patientId: 'patientId',
+    outletId: 'outletId',
+    packageId: 'packageId',
+    packageName: 'packageName',
+    subtitle: 'subtitle',
+    totalPrice: 'totalPrice',
+    discountedPrice: 'discountedPrice',
+    status: 'status',
+    paymentStatus: 'paymentStatus',
+    paymentMethod: 'paymentMethod',
+    notes: 'notes',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type PackageOrderScalarFieldEnum = (typeof PackageOrderScalarFieldEnum)[keyof typeof PackageOrderScalarFieldEnum]
+
+
+  export const PackageOrderItemScalarFieldEnum: {
+    id: 'id',
+    orderId: 'orderId',
+    testId: 'testId',
+    testName: 'testName',
+    testCode: 'testCode',
+    price: 'price',
+    createdAt: 'createdAt'
+  };
+
+  export type PackageOrderItemScalarFieldEnum = (typeof PackageOrderItemScalarFieldEnum)[keyof typeof PackageOrderItemScalarFieldEnum]
+
+
+  export const PackagePaymentScalarFieldEnum: {
+    id: 'id',
+    orderId: 'orderId',
+    amount: 'amount',
+    currency: 'currency',
+    status: 'status',
+    method: 'method',
+    transactionId: 'transactionId',
+    validationId: 'validationId',
+    bankTransactionId: 'bankTransactionId',
+    paymentMethodName: 'paymentMethodName',
+    cardType: 'cardType',
+    gatewayResponse: 'gatewayResponse',
+    paidAt: 'paidAt',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type PackagePaymentScalarFieldEnum = (typeof PackagePaymentScalarFieldEnum)[keyof typeof PackagePaymentScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -5565,6 +9121,45 @@ export namespace Prisma {
   export type AppointmentPaymentOrderByRelevanceFieldEnum = (typeof AppointmentPaymentOrderByRelevanceFieldEnum)[keyof typeof AppointmentPaymentOrderByRelevanceFieldEnum]
 
 
+  export const PackageOrderOrderByRelevanceFieldEnum: {
+    id: 'id',
+    orderCode: 'orderCode',
+    patientId: 'patientId',
+    outletId: 'outletId',
+    packageId: 'packageId',
+    packageName: 'packageName',
+    subtitle: 'subtitle',
+    notes: 'notes'
+  };
+
+  export type PackageOrderOrderByRelevanceFieldEnum = (typeof PackageOrderOrderByRelevanceFieldEnum)[keyof typeof PackageOrderOrderByRelevanceFieldEnum]
+
+
+  export const PackageOrderItemOrderByRelevanceFieldEnum: {
+    id: 'id',
+    orderId: 'orderId',
+    testId: 'testId',
+    testName: 'testName',
+    testCode: 'testCode'
+  };
+
+  export type PackageOrderItemOrderByRelevanceFieldEnum = (typeof PackageOrderItemOrderByRelevanceFieldEnum)[keyof typeof PackageOrderItemOrderByRelevanceFieldEnum]
+
+
+  export const PackagePaymentOrderByRelevanceFieldEnum: {
+    id: 'id',
+    orderId: 'orderId',
+    currency: 'currency',
+    transactionId: 'transactionId',
+    validationId: 'validationId',
+    bankTransactionId: 'bankTransactionId',
+    paymentMethodName: 'paymentMethodName',
+    cardType: 'cardType'
+  };
+
+  export type PackagePaymentOrderByRelevanceFieldEnum = (typeof PackagePaymentOrderByRelevanceFieldEnum)[keyof typeof PackagePaymentOrderByRelevanceFieldEnum]
+
+
   /**
    * Field references
    */
@@ -5637,6 +9232,27 @@ export namespace Prisma {
    * Reference to a field of type 'QueryMode'
    */
   export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
+    
+
+
+  /**
+   * Reference to a field of type 'PackageOrderStatus'
+   */
+  export type EnumPackageOrderStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PackageOrderStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'PackagePaymentStatus'
+   */
+  export type EnumPackagePaymentStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PackagePaymentStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'PackagePaymentMethod'
+   */
+  export type EnumPackagePaymentMethodFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PackagePaymentMethod'>
     
 
 
@@ -6033,6 +9649,293 @@ export namespace Prisma {
     paidAt?: DateTimeNullableWithAggregatesFilter<"AppointmentPayment"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"AppointmentPayment"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"AppointmentPayment"> | Date | string
+  }
+
+  export type PackageOrderWhereInput = {
+    AND?: PackageOrderWhereInput | PackageOrderWhereInput[]
+    OR?: PackageOrderWhereInput[]
+    NOT?: PackageOrderWhereInput | PackageOrderWhereInput[]
+    id?: StringFilter<"PackageOrder"> | string
+    orderCode?: StringFilter<"PackageOrder"> | string
+    patientId?: StringFilter<"PackageOrder"> | string
+    outletId?: StringNullableFilter<"PackageOrder"> | string | null
+    packageId?: StringFilter<"PackageOrder"> | string
+    packageName?: StringFilter<"PackageOrder"> | string
+    subtitle?: StringNullableFilter<"PackageOrder"> | string | null
+    totalPrice?: DecimalFilter<"PackageOrder"> | Decimal | DecimalJsLike | number | string
+    discountedPrice?: DecimalFilter<"PackageOrder"> | Decimal | DecimalJsLike | number | string
+    status?: EnumPackageOrderStatusFilter<"PackageOrder"> | $Enums.PackageOrderStatus
+    paymentStatus?: EnumPackagePaymentStatusFilter<"PackageOrder"> | $Enums.PackagePaymentStatus
+    paymentMethod?: EnumPackagePaymentMethodNullableFilter<"PackageOrder"> | $Enums.PackagePaymentMethod | null
+    notes?: StringNullableFilter<"PackageOrder"> | string | null
+    createdAt?: DateTimeFilter<"PackageOrder"> | Date | string
+    updatedAt?: DateTimeFilter<"PackageOrder"> | Date | string
+    items?: PackageOrderItemListRelationFilter
+    payment?: XOR<PackagePaymentNullableScalarRelationFilter, PackagePaymentWhereInput> | null
+  }
+
+  export type PackageOrderOrderByWithRelationInput = {
+    id?: SortOrder
+    orderCode?: SortOrder
+    patientId?: SortOrder
+    outletId?: SortOrderInput | SortOrder
+    packageId?: SortOrder
+    packageName?: SortOrder
+    subtitle?: SortOrderInput | SortOrder
+    totalPrice?: SortOrder
+    discountedPrice?: SortOrder
+    status?: SortOrder
+    paymentStatus?: SortOrder
+    paymentMethod?: SortOrderInput | SortOrder
+    notes?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    items?: PackageOrderItemOrderByRelationAggregateInput
+    payment?: PackagePaymentOrderByWithRelationInput
+    _relevance?: PackageOrderOrderByRelevanceInput
+  }
+
+  export type PackageOrderWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    orderCode?: string
+    AND?: PackageOrderWhereInput | PackageOrderWhereInput[]
+    OR?: PackageOrderWhereInput[]
+    NOT?: PackageOrderWhereInput | PackageOrderWhereInput[]
+    patientId?: StringFilter<"PackageOrder"> | string
+    outletId?: StringNullableFilter<"PackageOrder"> | string | null
+    packageId?: StringFilter<"PackageOrder"> | string
+    packageName?: StringFilter<"PackageOrder"> | string
+    subtitle?: StringNullableFilter<"PackageOrder"> | string | null
+    totalPrice?: DecimalFilter<"PackageOrder"> | Decimal | DecimalJsLike | number | string
+    discountedPrice?: DecimalFilter<"PackageOrder"> | Decimal | DecimalJsLike | number | string
+    status?: EnumPackageOrderStatusFilter<"PackageOrder"> | $Enums.PackageOrderStatus
+    paymentStatus?: EnumPackagePaymentStatusFilter<"PackageOrder"> | $Enums.PackagePaymentStatus
+    paymentMethod?: EnumPackagePaymentMethodNullableFilter<"PackageOrder"> | $Enums.PackagePaymentMethod | null
+    notes?: StringNullableFilter<"PackageOrder"> | string | null
+    createdAt?: DateTimeFilter<"PackageOrder"> | Date | string
+    updatedAt?: DateTimeFilter<"PackageOrder"> | Date | string
+    items?: PackageOrderItemListRelationFilter
+    payment?: XOR<PackagePaymentNullableScalarRelationFilter, PackagePaymentWhereInput> | null
+  }, "id" | "orderCode">
+
+  export type PackageOrderOrderByWithAggregationInput = {
+    id?: SortOrder
+    orderCode?: SortOrder
+    patientId?: SortOrder
+    outletId?: SortOrderInput | SortOrder
+    packageId?: SortOrder
+    packageName?: SortOrder
+    subtitle?: SortOrderInput | SortOrder
+    totalPrice?: SortOrder
+    discountedPrice?: SortOrder
+    status?: SortOrder
+    paymentStatus?: SortOrder
+    paymentMethod?: SortOrderInput | SortOrder
+    notes?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: PackageOrderCountOrderByAggregateInput
+    _avg?: PackageOrderAvgOrderByAggregateInput
+    _max?: PackageOrderMaxOrderByAggregateInput
+    _min?: PackageOrderMinOrderByAggregateInput
+    _sum?: PackageOrderSumOrderByAggregateInput
+  }
+
+  export type PackageOrderScalarWhereWithAggregatesInput = {
+    AND?: PackageOrderScalarWhereWithAggregatesInput | PackageOrderScalarWhereWithAggregatesInput[]
+    OR?: PackageOrderScalarWhereWithAggregatesInput[]
+    NOT?: PackageOrderScalarWhereWithAggregatesInput | PackageOrderScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"PackageOrder"> | string
+    orderCode?: StringWithAggregatesFilter<"PackageOrder"> | string
+    patientId?: StringWithAggregatesFilter<"PackageOrder"> | string
+    outletId?: StringNullableWithAggregatesFilter<"PackageOrder"> | string | null
+    packageId?: StringWithAggregatesFilter<"PackageOrder"> | string
+    packageName?: StringWithAggregatesFilter<"PackageOrder"> | string
+    subtitle?: StringNullableWithAggregatesFilter<"PackageOrder"> | string | null
+    totalPrice?: DecimalWithAggregatesFilter<"PackageOrder"> | Decimal | DecimalJsLike | number | string
+    discountedPrice?: DecimalWithAggregatesFilter<"PackageOrder"> | Decimal | DecimalJsLike | number | string
+    status?: EnumPackageOrderStatusWithAggregatesFilter<"PackageOrder"> | $Enums.PackageOrderStatus
+    paymentStatus?: EnumPackagePaymentStatusWithAggregatesFilter<"PackageOrder"> | $Enums.PackagePaymentStatus
+    paymentMethod?: EnumPackagePaymentMethodNullableWithAggregatesFilter<"PackageOrder"> | $Enums.PackagePaymentMethod | null
+    notes?: StringNullableWithAggregatesFilter<"PackageOrder"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"PackageOrder"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"PackageOrder"> | Date | string
+  }
+
+  export type PackageOrderItemWhereInput = {
+    AND?: PackageOrderItemWhereInput | PackageOrderItemWhereInput[]
+    OR?: PackageOrderItemWhereInput[]
+    NOT?: PackageOrderItemWhereInput | PackageOrderItemWhereInput[]
+    id?: StringFilter<"PackageOrderItem"> | string
+    orderId?: StringFilter<"PackageOrderItem"> | string
+    testId?: StringFilter<"PackageOrderItem"> | string
+    testName?: StringFilter<"PackageOrderItem"> | string
+    testCode?: StringNullableFilter<"PackageOrderItem"> | string | null
+    price?: DecimalFilter<"PackageOrderItem"> | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFilter<"PackageOrderItem"> | Date | string
+    order?: XOR<PackageOrderScalarRelationFilter, PackageOrderWhereInput>
+  }
+
+  export type PackageOrderItemOrderByWithRelationInput = {
+    id?: SortOrder
+    orderId?: SortOrder
+    testId?: SortOrder
+    testName?: SortOrder
+    testCode?: SortOrderInput | SortOrder
+    price?: SortOrder
+    createdAt?: SortOrder
+    order?: PackageOrderOrderByWithRelationInput
+    _relevance?: PackageOrderItemOrderByRelevanceInput
+  }
+
+  export type PackageOrderItemWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: PackageOrderItemWhereInput | PackageOrderItemWhereInput[]
+    OR?: PackageOrderItemWhereInput[]
+    NOT?: PackageOrderItemWhereInput | PackageOrderItemWhereInput[]
+    orderId?: StringFilter<"PackageOrderItem"> | string
+    testId?: StringFilter<"PackageOrderItem"> | string
+    testName?: StringFilter<"PackageOrderItem"> | string
+    testCode?: StringNullableFilter<"PackageOrderItem"> | string | null
+    price?: DecimalFilter<"PackageOrderItem"> | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFilter<"PackageOrderItem"> | Date | string
+    order?: XOR<PackageOrderScalarRelationFilter, PackageOrderWhereInput>
+  }, "id">
+
+  export type PackageOrderItemOrderByWithAggregationInput = {
+    id?: SortOrder
+    orderId?: SortOrder
+    testId?: SortOrder
+    testName?: SortOrder
+    testCode?: SortOrderInput | SortOrder
+    price?: SortOrder
+    createdAt?: SortOrder
+    _count?: PackageOrderItemCountOrderByAggregateInput
+    _avg?: PackageOrderItemAvgOrderByAggregateInput
+    _max?: PackageOrderItemMaxOrderByAggregateInput
+    _min?: PackageOrderItemMinOrderByAggregateInput
+    _sum?: PackageOrderItemSumOrderByAggregateInput
+  }
+
+  export type PackageOrderItemScalarWhereWithAggregatesInput = {
+    AND?: PackageOrderItemScalarWhereWithAggregatesInput | PackageOrderItemScalarWhereWithAggregatesInput[]
+    OR?: PackageOrderItemScalarWhereWithAggregatesInput[]
+    NOT?: PackageOrderItemScalarWhereWithAggregatesInput | PackageOrderItemScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"PackageOrderItem"> | string
+    orderId?: StringWithAggregatesFilter<"PackageOrderItem"> | string
+    testId?: StringWithAggregatesFilter<"PackageOrderItem"> | string
+    testName?: StringWithAggregatesFilter<"PackageOrderItem"> | string
+    testCode?: StringNullableWithAggregatesFilter<"PackageOrderItem"> | string | null
+    price?: DecimalWithAggregatesFilter<"PackageOrderItem"> | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeWithAggregatesFilter<"PackageOrderItem"> | Date | string
+  }
+
+  export type PackagePaymentWhereInput = {
+    AND?: PackagePaymentWhereInput | PackagePaymentWhereInput[]
+    OR?: PackagePaymentWhereInput[]
+    NOT?: PackagePaymentWhereInput | PackagePaymentWhereInput[]
+    id?: StringFilter<"PackagePayment"> | string
+    orderId?: StringFilter<"PackagePayment"> | string
+    amount?: DecimalFilter<"PackagePayment"> | Decimal | DecimalJsLike | number | string
+    currency?: StringFilter<"PackagePayment"> | string
+    status?: EnumPackagePaymentStatusFilter<"PackagePayment"> | $Enums.PackagePaymentStatus
+    method?: EnumPackagePaymentMethodFilter<"PackagePayment"> | $Enums.PackagePaymentMethod
+    transactionId?: StringFilter<"PackagePayment"> | string
+    validationId?: StringNullableFilter<"PackagePayment"> | string | null
+    bankTransactionId?: StringNullableFilter<"PackagePayment"> | string | null
+    paymentMethodName?: StringNullableFilter<"PackagePayment"> | string | null
+    cardType?: StringNullableFilter<"PackagePayment"> | string | null
+    gatewayResponse?: JsonNullableFilter<"PackagePayment">
+    paidAt?: DateTimeNullableFilter<"PackagePayment"> | Date | string | null
+    createdAt?: DateTimeFilter<"PackagePayment"> | Date | string
+    updatedAt?: DateTimeFilter<"PackagePayment"> | Date | string
+    order?: XOR<PackageOrderScalarRelationFilter, PackageOrderWhereInput>
+  }
+
+  export type PackagePaymentOrderByWithRelationInput = {
+    id?: SortOrder
+    orderId?: SortOrder
+    amount?: SortOrder
+    currency?: SortOrder
+    status?: SortOrder
+    method?: SortOrder
+    transactionId?: SortOrder
+    validationId?: SortOrderInput | SortOrder
+    bankTransactionId?: SortOrderInput | SortOrder
+    paymentMethodName?: SortOrderInput | SortOrder
+    cardType?: SortOrderInput | SortOrder
+    gatewayResponse?: SortOrderInput | SortOrder
+    paidAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    order?: PackageOrderOrderByWithRelationInput
+    _relevance?: PackagePaymentOrderByRelevanceInput
+  }
+
+  export type PackagePaymentWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    orderId?: string
+    transactionId?: string
+    AND?: PackagePaymentWhereInput | PackagePaymentWhereInput[]
+    OR?: PackagePaymentWhereInput[]
+    NOT?: PackagePaymentWhereInput | PackagePaymentWhereInput[]
+    amount?: DecimalFilter<"PackagePayment"> | Decimal | DecimalJsLike | number | string
+    currency?: StringFilter<"PackagePayment"> | string
+    status?: EnumPackagePaymentStatusFilter<"PackagePayment"> | $Enums.PackagePaymentStatus
+    method?: EnumPackagePaymentMethodFilter<"PackagePayment"> | $Enums.PackagePaymentMethod
+    validationId?: StringNullableFilter<"PackagePayment"> | string | null
+    bankTransactionId?: StringNullableFilter<"PackagePayment"> | string | null
+    paymentMethodName?: StringNullableFilter<"PackagePayment"> | string | null
+    cardType?: StringNullableFilter<"PackagePayment"> | string | null
+    gatewayResponse?: JsonNullableFilter<"PackagePayment">
+    paidAt?: DateTimeNullableFilter<"PackagePayment"> | Date | string | null
+    createdAt?: DateTimeFilter<"PackagePayment"> | Date | string
+    updatedAt?: DateTimeFilter<"PackagePayment"> | Date | string
+    order?: XOR<PackageOrderScalarRelationFilter, PackageOrderWhereInput>
+  }, "id" | "orderId" | "transactionId">
+
+  export type PackagePaymentOrderByWithAggregationInput = {
+    id?: SortOrder
+    orderId?: SortOrder
+    amount?: SortOrder
+    currency?: SortOrder
+    status?: SortOrder
+    method?: SortOrder
+    transactionId?: SortOrder
+    validationId?: SortOrderInput | SortOrder
+    bankTransactionId?: SortOrderInput | SortOrder
+    paymentMethodName?: SortOrderInput | SortOrder
+    cardType?: SortOrderInput | SortOrder
+    gatewayResponse?: SortOrderInput | SortOrder
+    paidAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: PackagePaymentCountOrderByAggregateInput
+    _avg?: PackagePaymentAvgOrderByAggregateInput
+    _max?: PackagePaymentMaxOrderByAggregateInput
+    _min?: PackagePaymentMinOrderByAggregateInput
+    _sum?: PackagePaymentSumOrderByAggregateInput
+  }
+
+  export type PackagePaymentScalarWhereWithAggregatesInput = {
+    AND?: PackagePaymentScalarWhereWithAggregatesInput | PackagePaymentScalarWhereWithAggregatesInput[]
+    OR?: PackagePaymentScalarWhereWithAggregatesInput[]
+    NOT?: PackagePaymentScalarWhereWithAggregatesInput | PackagePaymentScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"PackagePayment"> | string
+    orderId?: StringWithAggregatesFilter<"PackagePayment"> | string
+    amount?: DecimalWithAggregatesFilter<"PackagePayment"> | Decimal | DecimalJsLike | number | string
+    currency?: StringWithAggregatesFilter<"PackagePayment"> | string
+    status?: EnumPackagePaymentStatusWithAggregatesFilter<"PackagePayment"> | $Enums.PackagePaymentStatus
+    method?: EnumPackagePaymentMethodWithAggregatesFilter<"PackagePayment"> | $Enums.PackagePaymentMethod
+    transactionId?: StringWithAggregatesFilter<"PackagePayment"> | string
+    validationId?: StringNullableWithAggregatesFilter<"PackagePayment"> | string | null
+    bankTransactionId?: StringNullableWithAggregatesFilter<"PackagePayment"> | string | null
+    paymentMethodName?: StringNullableWithAggregatesFilter<"PackagePayment"> | string | null
+    cardType?: StringNullableWithAggregatesFilter<"PackagePayment"> | string | null
+    gatewayResponse?: JsonNullableWithAggregatesFilter<"PackagePayment">
+    paidAt?: DateTimeNullableWithAggregatesFilter<"PackagePayment"> | Date | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"PackagePayment"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"PackagePayment"> | Date | string
   }
 
   export type AppointmentCreateInput = {
@@ -6471,6 +10374,334 @@ export namespace Prisma {
     validationId?: NullableStringFieldUpdateOperationsInput | string | null
     bankTransactionId?: NullableStringFieldUpdateOperationsInput | string | null
     paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
+    cardType?: NullableStringFieldUpdateOperationsInput | string | null
+    gatewayResponse?: NullableJsonNullValueInput | InputJsonValue
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PackageOrderCreateInput = {
+    id?: string
+    orderCode: string
+    patientId: string
+    outletId?: string | null
+    packageId: string
+    packageName: string
+    subtitle?: string | null
+    totalPrice: Decimal | DecimalJsLike | number | string
+    discountedPrice: Decimal | DecimalJsLike | number | string
+    status?: $Enums.PackageOrderStatus
+    paymentStatus?: $Enums.PackagePaymentStatus
+    paymentMethod?: $Enums.PackagePaymentMethod | null
+    notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    items?: PackageOrderItemCreateNestedManyWithoutOrderInput
+    payment?: PackagePaymentCreateNestedOneWithoutOrderInput
+  }
+
+  export type PackageOrderUncheckedCreateInput = {
+    id?: string
+    orderCode: string
+    patientId: string
+    outletId?: string | null
+    packageId: string
+    packageName: string
+    subtitle?: string | null
+    totalPrice: Decimal | DecimalJsLike | number | string
+    discountedPrice: Decimal | DecimalJsLike | number | string
+    status?: $Enums.PackageOrderStatus
+    paymentStatus?: $Enums.PackagePaymentStatus
+    paymentMethod?: $Enums.PackagePaymentMethod | null
+    notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    items?: PackageOrderItemUncheckedCreateNestedManyWithoutOrderInput
+    payment?: PackagePaymentUncheckedCreateNestedOneWithoutOrderInput
+  }
+
+  export type PackageOrderUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    orderCode?: StringFieldUpdateOperationsInput | string
+    patientId?: StringFieldUpdateOperationsInput | string
+    outletId?: NullableStringFieldUpdateOperationsInput | string | null
+    packageId?: StringFieldUpdateOperationsInput | string
+    packageName?: StringFieldUpdateOperationsInput | string
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    discountedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    status?: EnumPackageOrderStatusFieldUpdateOperationsInput | $Enums.PackageOrderStatus
+    paymentStatus?: EnumPackagePaymentStatusFieldUpdateOperationsInput | $Enums.PackagePaymentStatus
+    paymentMethod?: NullableEnumPackagePaymentMethodFieldUpdateOperationsInput | $Enums.PackagePaymentMethod | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    items?: PackageOrderItemUpdateManyWithoutOrderNestedInput
+    payment?: PackagePaymentUpdateOneWithoutOrderNestedInput
+  }
+
+  export type PackageOrderUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    orderCode?: StringFieldUpdateOperationsInput | string
+    patientId?: StringFieldUpdateOperationsInput | string
+    outletId?: NullableStringFieldUpdateOperationsInput | string | null
+    packageId?: StringFieldUpdateOperationsInput | string
+    packageName?: StringFieldUpdateOperationsInput | string
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    discountedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    status?: EnumPackageOrderStatusFieldUpdateOperationsInput | $Enums.PackageOrderStatus
+    paymentStatus?: EnumPackagePaymentStatusFieldUpdateOperationsInput | $Enums.PackagePaymentStatus
+    paymentMethod?: NullableEnumPackagePaymentMethodFieldUpdateOperationsInput | $Enums.PackagePaymentMethod | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    items?: PackageOrderItemUncheckedUpdateManyWithoutOrderNestedInput
+    payment?: PackagePaymentUncheckedUpdateOneWithoutOrderNestedInput
+  }
+
+  export type PackageOrderCreateManyInput = {
+    id?: string
+    orderCode: string
+    patientId: string
+    outletId?: string | null
+    packageId: string
+    packageName: string
+    subtitle?: string | null
+    totalPrice: Decimal | DecimalJsLike | number | string
+    discountedPrice: Decimal | DecimalJsLike | number | string
+    status?: $Enums.PackageOrderStatus
+    paymentStatus?: $Enums.PackagePaymentStatus
+    paymentMethod?: $Enums.PackagePaymentMethod | null
+    notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PackageOrderUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    orderCode?: StringFieldUpdateOperationsInput | string
+    patientId?: StringFieldUpdateOperationsInput | string
+    outletId?: NullableStringFieldUpdateOperationsInput | string | null
+    packageId?: StringFieldUpdateOperationsInput | string
+    packageName?: StringFieldUpdateOperationsInput | string
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    discountedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    status?: EnumPackageOrderStatusFieldUpdateOperationsInput | $Enums.PackageOrderStatus
+    paymentStatus?: EnumPackagePaymentStatusFieldUpdateOperationsInput | $Enums.PackagePaymentStatus
+    paymentMethod?: NullableEnumPackagePaymentMethodFieldUpdateOperationsInput | $Enums.PackagePaymentMethod | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PackageOrderUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    orderCode?: StringFieldUpdateOperationsInput | string
+    patientId?: StringFieldUpdateOperationsInput | string
+    outletId?: NullableStringFieldUpdateOperationsInput | string | null
+    packageId?: StringFieldUpdateOperationsInput | string
+    packageName?: StringFieldUpdateOperationsInput | string
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    discountedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    status?: EnumPackageOrderStatusFieldUpdateOperationsInput | $Enums.PackageOrderStatus
+    paymentStatus?: EnumPackagePaymentStatusFieldUpdateOperationsInput | $Enums.PackagePaymentStatus
+    paymentMethod?: NullableEnumPackagePaymentMethodFieldUpdateOperationsInput | $Enums.PackagePaymentMethod | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PackageOrderItemCreateInput = {
+    id?: string
+    testId: string
+    testName: string
+    testCode?: string | null
+    price: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    order: PackageOrderCreateNestedOneWithoutItemsInput
+  }
+
+  export type PackageOrderItemUncheckedCreateInput = {
+    id?: string
+    orderId: string
+    testId: string
+    testName: string
+    testCode?: string | null
+    price: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+  }
+
+  export type PackageOrderItemUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    testId?: StringFieldUpdateOperationsInput | string
+    testName?: StringFieldUpdateOperationsInput | string
+    testCode?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    order?: PackageOrderUpdateOneRequiredWithoutItemsNestedInput
+  }
+
+  export type PackageOrderItemUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    orderId?: StringFieldUpdateOperationsInput | string
+    testId?: StringFieldUpdateOperationsInput | string
+    testName?: StringFieldUpdateOperationsInput | string
+    testCode?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PackageOrderItemCreateManyInput = {
+    id?: string
+    orderId: string
+    testId: string
+    testName: string
+    testCode?: string | null
+    price: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+  }
+
+  export type PackageOrderItemUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    testId?: StringFieldUpdateOperationsInput | string
+    testName?: StringFieldUpdateOperationsInput | string
+    testCode?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PackageOrderItemUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    orderId?: StringFieldUpdateOperationsInput | string
+    testId?: StringFieldUpdateOperationsInput | string
+    testName?: StringFieldUpdateOperationsInput | string
+    testCode?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PackagePaymentCreateInput = {
+    id?: string
+    amount: Decimal | DecimalJsLike | number | string
+    currency?: string
+    status?: $Enums.PackagePaymentStatus
+    method?: $Enums.PackagePaymentMethod
+    transactionId: string
+    validationId?: string | null
+    bankTransactionId?: string | null
+    paymentMethodName?: string | null
+    cardType?: string | null
+    gatewayResponse?: NullableJsonNullValueInput | InputJsonValue
+    paidAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    order: PackageOrderCreateNestedOneWithoutPaymentInput
+  }
+
+  export type PackagePaymentUncheckedCreateInput = {
+    id?: string
+    orderId: string
+    amount: Decimal | DecimalJsLike | number | string
+    currency?: string
+    status?: $Enums.PackagePaymentStatus
+    method?: $Enums.PackagePaymentMethod
+    transactionId: string
+    validationId?: string | null
+    bankTransactionId?: string | null
+    paymentMethodName?: string | null
+    cardType?: string | null
+    gatewayResponse?: NullableJsonNullValueInput | InputJsonValue
+    paidAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PackagePaymentUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    currency?: StringFieldUpdateOperationsInput | string
+    status?: EnumPackagePaymentStatusFieldUpdateOperationsInput | $Enums.PackagePaymentStatus
+    method?: EnumPackagePaymentMethodFieldUpdateOperationsInput | $Enums.PackagePaymentMethod
+    transactionId?: StringFieldUpdateOperationsInput | string
+    validationId?: NullableStringFieldUpdateOperationsInput | string | null
+    bankTransactionId?: NullableStringFieldUpdateOperationsInput | string | null
+    paymentMethodName?: NullableStringFieldUpdateOperationsInput | string | null
+    cardType?: NullableStringFieldUpdateOperationsInput | string | null
+    gatewayResponse?: NullableJsonNullValueInput | InputJsonValue
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    order?: PackageOrderUpdateOneRequiredWithoutPaymentNestedInput
+  }
+
+  export type PackagePaymentUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    orderId?: StringFieldUpdateOperationsInput | string
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    currency?: StringFieldUpdateOperationsInput | string
+    status?: EnumPackagePaymentStatusFieldUpdateOperationsInput | $Enums.PackagePaymentStatus
+    method?: EnumPackagePaymentMethodFieldUpdateOperationsInput | $Enums.PackagePaymentMethod
+    transactionId?: StringFieldUpdateOperationsInput | string
+    validationId?: NullableStringFieldUpdateOperationsInput | string | null
+    bankTransactionId?: NullableStringFieldUpdateOperationsInput | string | null
+    paymentMethodName?: NullableStringFieldUpdateOperationsInput | string | null
+    cardType?: NullableStringFieldUpdateOperationsInput | string | null
+    gatewayResponse?: NullableJsonNullValueInput | InputJsonValue
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PackagePaymentCreateManyInput = {
+    id?: string
+    orderId: string
+    amount: Decimal | DecimalJsLike | number | string
+    currency?: string
+    status?: $Enums.PackagePaymentStatus
+    method?: $Enums.PackagePaymentMethod
+    transactionId: string
+    validationId?: string | null
+    bankTransactionId?: string | null
+    paymentMethodName?: string | null
+    cardType?: string | null
+    gatewayResponse?: NullableJsonNullValueInput | InputJsonValue
+    paidAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PackagePaymentUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    currency?: StringFieldUpdateOperationsInput | string
+    status?: EnumPackagePaymentStatusFieldUpdateOperationsInput | $Enums.PackagePaymentStatus
+    method?: EnumPackagePaymentMethodFieldUpdateOperationsInput | $Enums.PackagePaymentMethod
+    transactionId?: StringFieldUpdateOperationsInput | string
+    validationId?: NullableStringFieldUpdateOperationsInput | string | null
+    bankTransactionId?: NullableStringFieldUpdateOperationsInput | string | null
+    paymentMethodName?: NullableStringFieldUpdateOperationsInput | string | null
+    cardType?: NullableStringFieldUpdateOperationsInput | string | null
+    gatewayResponse?: NullableJsonNullValueInput | InputJsonValue
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PackagePaymentUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    orderId?: StringFieldUpdateOperationsInput | string
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    currency?: StringFieldUpdateOperationsInput | string
+    status?: EnumPackagePaymentStatusFieldUpdateOperationsInput | $Enums.PackagePaymentStatus
+    method?: EnumPackagePaymentMethodFieldUpdateOperationsInput | $Enums.PackagePaymentMethod
+    transactionId?: StringFieldUpdateOperationsInput | string
+    validationId?: NullableStringFieldUpdateOperationsInput | string | null
+    bankTransactionId?: NullableStringFieldUpdateOperationsInput | string | null
+    paymentMethodName?: NullableStringFieldUpdateOperationsInput | string | null
     cardType?: NullableStringFieldUpdateOperationsInput | string | null
     gatewayResponse?: NullableJsonNullValueInput | InputJsonValue
     paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -7058,6 +11289,274 @@ export namespace Prisma {
     _max?: NestedJsonNullableFilter<$PrismaModel>
   }
 
+  export type EnumPackageOrderStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.PackageOrderStatus | EnumPackageOrderStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.PackageOrderStatus[]
+    notIn?: $Enums.PackageOrderStatus[]
+    not?: NestedEnumPackageOrderStatusFilter<$PrismaModel> | $Enums.PackageOrderStatus
+  }
+
+  export type EnumPackagePaymentStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.PackagePaymentStatus | EnumPackagePaymentStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.PackagePaymentStatus[]
+    notIn?: $Enums.PackagePaymentStatus[]
+    not?: NestedEnumPackagePaymentStatusFilter<$PrismaModel> | $Enums.PackagePaymentStatus
+  }
+
+  export type EnumPackagePaymentMethodNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.PackagePaymentMethod | EnumPackagePaymentMethodFieldRefInput<$PrismaModel> | null
+    in?: $Enums.PackagePaymentMethod[] | null
+    notIn?: $Enums.PackagePaymentMethod[] | null
+    not?: NestedEnumPackagePaymentMethodNullableFilter<$PrismaModel> | $Enums.PackagePaymentMethod | null
+  }
+
+  export type PackageOrderItemListRelationFilter = {
+    every?: PackageOrderItemWhereInput
+    some?: PackageOrderItemWhereInput
+    none?: PackageOrderItemWhereInput
+  }
+
+  export type PackagePaymentNullableScalarRelationFilter = {
+    is?: PackagePaymentWhereInput | null
+    isNot?: PackagePaymentWhereInput | null
+  }
+
+  export type PackageOrderItemOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type PackageOrderOrderByRelevanceInput = {
+    fields: PackageOrderOrderByRelevanceFieldEnum | PackageOrderOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type PackageOrderCountOrderByAggregateInput = {
+    id?: SortOrder
+    orderCode?: SortOrder
+    patientId?: SortOrder
+    outletId?: SortOrder
+    packageId?: SortOrder
+    packageName?: SortOrder
+    subtitle?: SortOrder
+    totalPrice?: SortOrder
+    discountedPrice?: SortOrder
+    status?: SortOrder
+    paymentStatus?: SortOrder
+    paymentMethod?: SortOrder
+    notes?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PackageOrderAvgOrderByAggregateInput = {
+    totalPrice?: SortOrder
+    discountedPrice?: SortOrder
+  }
+
+  export type PackageOrderMaxOrderByAggregateInput = {
+    id?: SortOrder
+    orderCode?: SortOrder
+    patientId?: SortOrder
+    outletId?: SortOrder
+    packageId?: SortOrder
+    packageName?: SortOrder
+    subtitle?: SortOrder
+    totalPrice?: SortOrder
+    discountedPrice?: SortOrder
+    status?: SortOrder
+    paymentStatus?: SortOrder
+    paymentMethod?: SortOrder
+    notes?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PackageOrderMinOrderByAggregateInput = {
+    id?: SortOrder
+    orderCode?: SortOrder
+    patientId?: SortOrder
+    outletId?: SortOrder
+    packageId?: SortOrder
+    packageName?: SortOrder
+    subtitle?: SortOrder
+    totalPrice?: SortOrder
+    discountedPrice?: SortOrder
+    status?: SortOrder
+    paymentStatus?: SortOrder
+    paymentMethod?: SortOrder
+    notes?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PackageOrderSumOrderByAggregateInput = {
+    totalPrice?: SortOrder
+    discountedPrice?: SortOrder
+  }
+
+  export type EnumPackageOrderStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.PackageOrderStatus | EnumPackageOrderStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.PackageOrderStatus[]
+    notIn?: $Enums.PackageOrderStatus[]
+    not?: NestedEnumPackageOrderStatusWithAggregatesFilter<$PrismaModel> | $Enums.PackageOrderStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumPackageOrderStatusFilter<$PrismaModel>
+    _max?: NestedEnumPackageOrderStatusFilter<$PrismaModel>
+  }
+
+  export type EnumPackagePaymentStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.PackagePaymentStatus | EnumPackagePaymentStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.PackagePaymentStatus[]
+    notIn?: $Enums.PackagePaymentStatus[]
+    not?: NestedEnumPackagePaymentStatusWithAggregatesFilter<$PrismaModel> | $Enums.PackagePaymentStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumPackagePaymentStatusFilter<$PrismaModel>
+    _max?: NestedEnumPackagePaymentStatusFilter<$PrismaModel>
+  }
+
+  export type EnumPackagePaymentMethodNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.PackagePaymentMethod | EnumPackagePaymentMethodFieldRefInput<$PrismaModel> | null
+    in?: $Enums.PackagePaymentMethod[] | null
+    notIn?: $Enums.PackagePaymentMethod[] | null
+    not?: NestedEnumPackagePaymentMethodNullableWithAggregatesFilter<$PrismaModel> | $Enums.PackagePaymentMethod | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumPackagePaymentMethodNullableFilter<$PrismaModel>
+    _max?: NestedEnumPackagePaymentMethodNullableFilter<$PrismaModel>
+  }
+
+  export type PackageOrderScalarRelationFilter = {
+    is?: PackageOrderWhereInput
+    isNot?: PackageOrderWhereInput
+  }
+
+  export type PackageOrderItemOrderByRelevanceInput = {
+    fields: PackageOrderItemOrderByRelevanceFieldEnum | PackageOrderItemOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type PackageOrderItemCountOrderByAggregateInput = {
+    id?: SortOrder
+    orderId?: SortOrder
+    testId?: SortOrder
+    testName?: SortOrder
+    testCode?: SortOrder
+    price?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type PackageOrderItemAvgOrderByAggregateInput = {
+    price?: SortOrder
+  }
+
+  export type PackageOrderItemMaxOrderByAggregateInput = {
+    id?: SortOrder
+    orderId?: SortOrder
+    testId?: SortOrder
+    testName?: SortOrder
+    testCode?: SortOrder
+    price?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type PackageOrderItemMinOrderByAggregateInput = {
+    id?: SortOrder
+    orderId?: SortOrder
+    testId?: SortOrder
+    testName?: SortOrder
+    testCode?: SortOrder
+    price?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type PackageOrderItemSumOrderByAggregateInput = {
+    price?: SortOrder
+  }
+
+  export type EnumPackagePaymentMethodFilter<$PrismaModel = never> = {
+    equals?: $Enums.PackagePaymentMethod | EnumPackagePaymentMethodFieldRefInput<$PrismaModel>
+    in?: $Enums.PackagePaymentMethod[]
+    notIn?: $Enums.PackagePaymentMethod[]
+    not?: NestedEnumPackagePaymentMethodFilter<$PrismaModel> | $Enums.PackagePaymentMethod
+  }
+
+  export type PackagePaymentOrderByRelevanceInput = {
+    fields: PackagePaymentOrderByRelevanceFieldEnum | PackagePaymentOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type PackagePaymentCountOrderByAggregateInput = {
+    id?: SortOrder
+    orderId?: SortOrder
+    amount?: SortOrder
+    currency?: SortOrder
+    status?: SortOrder
+    method?: SortOrder
+    transactionId?: SortOrder
+    validationId?: SortOrder
+    bankTransactionId?: SortOrder
+    paymentMethodName?: SortOrder
+    cardType?: SortOrder
+    gatewayResponse?: SortOrder
+    paidAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PackagePaymentAvgOrderByAggregateInput = {
+    amount?: SortOrder
+  }
+
+  export type PackagePaymentMaxOrderByAggregateInput = {
+    id?: SortOrder
+    orderId?: SortOrder
+    amount?: SortOrder
+    currency?: SortOrder
+    status?: SortOrder
+    method?: SortOrder
+    transactionId?: SortOrder
+    validationId?: SortOrder
+    bankTransactionId?: SortOrder
+    paymentMethodName?: SortOrder
+    cardType?: SortOrder
+    paidAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PackagePaymentMinOrderByAggregateInput = {
+    id?: SortOrder
+    orderId?: SortOrder
+    amount?: SortOrder
+    currency?: SortOrder
+    status?: SortOrder
+    method?: SortOrder
+    transactionId?: SortOrder
+    validationId?: SortOrder
+    bankTransactionId?: SortOrder
+    paymentMethodName?: SortOrder
+    cardType?: SortOrder
+    paidAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PackagePaymentSumOrderByAggregateInput = {
+    amount?: SortOrder
+  }
+
+  export type EnumPackagePaymentMethodWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.PackagePaymentMethod | EnumPackagePaymentMethodFieldRefInput<$PrismaModel>
+    in?: $Enums.PackagePaymentMethod[]
+    notIn?: $Enums.PackagePaymentMethod[]
+    not?: NestedEnumPackagePaymentMethodWithAggregatesFilter<$PrismaModel> | $Enums.PackagePaymentMethod
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumPackagePaymentMethodFilter<$PrismaModel>
+    _max?: NestedEnumPackagePaymentMethodFilter<$PrismaModel>
+  }
+
   export type AppointmentSlotLockCreateNestedOneWithoutAppointmentInput = {
     create?: XOR<AppointmentSlotLockCreateWithoutAppointmentInput, AppointmentSlotLockUncheckedCreateWithoutAppointmentInput>
     connectOrCreate?: AppointmentSlotLockCreateOrConnectWithoutAppointmentInput
@@ -7260,6 +11759,124 @@ export namespace Prisma {
     upsert?: AppointmentUpsertWithoutPaymentInput
     connect?: AppointmentWhereUniqueInput
     update?: XOR<XOR<AppointmentUpdateToOneWithWhereWithoutPaymentInput, AppointmentUpdateWithoutPaymentInput>, AppointmentUncheckedUpdateWithoutPaymentInput>
+  }
+
+  export type PackageOrderItemCreateNestedManyWithoutOrderInput = {
+    create?: XOR<PackageOrderItemCreateWithoutOrderInput, PackageOrderItemUncheckedCreateWithoutOrderInput> | PackageOrderItemCreateWithoutOrderInput[] | PackageOrderItemUncheckedCreateWithoutOrderInput[]
+    connectOrCreate?: PackageOrderItemCreateOrConnectWithoutOrderInput | PackageOrderItemCreateOrConnectWithoutOrderInput[]
+    createMany?: PackageOrderItemCreateManyOrderInputEnvelope
+    connect?: PackageOrderItemWhereUniqueInput | PackageOrderItemWhereUniqueInput[]
+  }
+
+  export type PackagePaymentCreateNestedOneWithoutOrderInput = {
+    create?: XOR<PackagePaymentCreateWithoutOrderInput, PackagePaymentUncheckedCreateWithoutOrderInput>
+    connectOrCreate?: PackagePaymentCreateOrConnectWithoutOrderInput
+    connect?: PackagePaymentWhereUniqueInput
+  }
+
+  export type PackageOrderItemUncheckedCreateNestedManyWithoutOrderInput = {
+    create?: XOR<PackageOrderItemCreateWithoutOrderInput, PackageOrderItemUncheckedCreateWithoutOrderInput> | PackageOrderItemCreateWithoutOrderInput[] | PackageOrderItemUncheckedCreateWithoutOrderInput[]
+    connectOrCreate?: PackageOrderItemCreateOrConnectWithoutOrderInput | PackageOrderItemCreateOrConnectWithoutOrderInput[]
+    createMany?: PackageOrderItemCreateManyOrderInputEnvelope
+    connect?: PackageOrderItemWhereUniqueInput | PackageOrderItemWhereUniqueInput[]
+  }
+
+  export type PackagePaymentUncheckedCreateNestedOneWithoutOrderInput = {
+    create?: XOR<PackagePaymentCreateWithoutOrderInput, PackagePaymentUncheckedCreateWithoutOrderInput>
+    connectOrCreate?: PackagePaymentCreateOrConnectWithoutOrderInput
+    connect?: PackagePaymentWhereUniqueInput
+  }
+
+  export type EnumPackageOrderStatusFieldUpdateOperationsInput = {
+    set?: $Enums.PackageOrderStatus
+  }
+
+  export type EnumPackagePaymentStatusFieldUpdateOperationsInput = {
+    set?: $Enums.PackagePaymentStatus
+  }
+
+  export type NullableEnumPackagePaymentMethodFieldUpdateOperationsInput = {
+    set?: $Enums.PackagePaymentMethod | null
+  }
+
+  export type PackageOrderItemUpdateManyWithoutOrderNestedInput = {
+    create?: XOR<PackageOrderItemCreateWithoutOrderInput, PackageOrderItemUncheckedCreateWithoutOrderInput> | PackageOrderItemCreateWithoutOrderInput[] | PackageOrderItemUncheckedCreateWithoutOrderInput[]
+    connectOrCreate?: PackageOrderItemCreateOrConnectWithoutOrderInput | PackageOrderItemCreateOrConnectWithoutOrderInput[]
+    upsert?: PackageOrderItemUpsertWithWhereUniqueWithoutOrderInput | PackageOrderItemUpsertWithWhereUniqueWithoutOrderInput[]
+    createMany?: PackageOrderItemCreateManyOrderInputEnvelope
+    set?: PackageOrderItemWhereUniqueInput | PackageOrderItemWhereUniqueInput[]
+    disconnect?: PackageOrderItemWhereUniqueInput | PackageOrderItemWhereUniqueInput[]
+    delete?: PackageOrderItemWhereUniqueInput | PackageOrderItemWhereUniqueInput[]
+    connect?: PackageOrderItemWhereUniqueInput | PackageOrderItemWhereUniqueInput[]
+    update?: PackageOrderItemUpdateWithWhereUniqueWithoutOrderInput | PackageOrderItemUpdateWithWhereUniqueWithoutOrderInput[]
+    updateMany?: PackageOrderItemUpdateManyWithWhereWithoutOrderInput | PackageOrderItemUpdateManyWithWhereWithoutOrderInput[]
+    deleteMany?: PackageOrderItemScalarWhereInput | PackageOrderItemScalarWhereInput[]
+  }
+
+  export type PackagePaymentUpdateOneWithoutOrderNestedInput = {
+    create?: XOR<PackagePaymentCreateWithoutOrderInput, PackagePaymentUncheckedCreateWithoutOrderInput>
+    connectOrCreate?: PackagePaymentCreateOrConnectWithoutOrderInput
+    upsert?: PackagePaymentUpsertWithoutOrderInput
+    disconnect?: PackagePaymentWhereInput | boolean
+    delete?: PackagePaymentWhereInput | boolean
+    connect?: PackagePaymentWhereUniqueInput
+    update?: XOR<XOR<PackagePaymentUpdateToOneWithWhereWithoutOrderInput, PackagePaymentUpdateWithoutOrderInput>, PackagePaymentUncheckedUpdateWithoutOrderInput>
+  }
+
+  export type PackageOrderItemUncheckedUpdateManyWithoutOrderNestedInput = {
+    create?: XOR<PackageOrderItemCreateWithoutOrderInput, PackageOrderItemUncheckedCreateWithoutOrderInput> | PackageOrderItemCreateWithoutOrderInput[] | PackageOrderItemUncheckedCreateWithoutOrderInput[]
+    connectOrCreate?: PackageOrderItemCreateOrConnectWithoutOrderInput | PackageOrderItemCreateOrConnectWithoutOrderInput[]
+    upsert?: PackageOrderItemUpsertWithWhereUniqueWithoutOrderInput | PackageOrderItemUpsertWithWhereUniqueWithoutOrderInput[]
+    createMany?: PackageOrderItemCreateManyOrderInputEnvelope
+    set?: PackageOrderItemWhereUniqueInput | PackageOrderItemWhereUniqueInput[]
+    disconnect?: PackageOrderItemWhereUniqueInput | PackageOrderItemWhereUniqueInput[]
+    delete?: PackageOrderItemWhereUniqueInput | PackageOrderItemWhereUniqueInput[]
+    connect?: PackageOrderItemWhereUniqueInput | PackageOrderItemWhereUniqueInput[]
+    update?: PackageOrderItemUpdateWithWhereUniqueWithoutOrderInput | PackageOrderItemUpdateWithWhereUniqueWithoutOrderInput[]
+    updateMany?: PackageOrderItemUpdateManyWithWhereWithoutOrderInput | PackageOrderItemUpdateManyWithWhereWithoutOrderInput[]
+    deleteMany?: PackageOrderItemScalarWhereInput | PackageOrderItemScalarWhereInput[]
+  }
+
+  export type PackagePaymentUncheckedUpdateOneWithoutOrderNestedInput = {
+    create?: XOR<PackagePaymentCreateWithoutOrderInput, PackagePaymentUncheckedCreateWithoutOrderInput>
+    connectOrCreate?: PackagePaymentCreateOrConnectWithoutOrderInput
+    upsert?: PackagePaymentUpsertWithoutOrderInput
+    disconnect?: PackagePaymentWhereInput | boolean
+    delete?: PackagePaymentWhereInput | boolean
+    connect?: PackagePaymentWhereUniqueInput
+    update?: XOR<XOR<PackagePaymentUpdateToOneWithWhereWithoutOrderInput, PackagePaymentUpdateWithoutOrderInput>, PackagePaymentUncheckedUpdateWithoutOrderInput>
+  }
+
+  export type PackageOrderCreateNestedOneWithoutItemsInput = {
+    create?: XOR<PackageOrderCreateWithoutItemsInput, PackageOrderUncheckedCreateWithoutItemsInput>
+    connectOrCreate?: PackageOrderCreateOrConnectWithoutItemsInput
+    connect?: PackageOrderWhereUniqueInput
+  }
+
+  export type PackageOrderUpdateOneRequiredWithoutItemsNestedInput = {
+    create?: XOR<PackageOrderCreateWithoutItemsInput, PackageOrderUncheckedCreateWithoutItemsInput>
+    connectOrCreate?: PackageOrderCreateOrConnectWithoutItemsInput
+    upsert?: PackageOrderUpsertWithoutItemsInput
+    connect?: PackageOrderWhereUniqueInput
+    update?: XOR<XOR<PackageOrderUpdateToOneWithWhereWithoutItemsInput, PackageOrderUpdateWithoutItemsInput>, PackageOrderUncheckedUpdateWithoutItemsInput>
+  }
+
+  export type PackageOrderCreateNestedOneWithoutPaymentInput = {
+    create?: XOR<PackageOrderCreateWithoutPaymentInput, PackageOrderUncheckedCreateWithoutPaymentInput>
+    connectOrCreate?: PackageOrderCreateOrConnectWithoutPaymentInput
+    connect?: PackageOrderWhereUniqueInput
+  }
+
+  export type EnumPackagePaymentMethodFieldUpdateOperationsInput = {
+    set?: $Enums.PackagePaymentMethod
+  }
+
+  export type PackageOrderUpdateOneRequiredWithoutPaymentNestedInput = {
+    create?: XOR<PackageOrderCreateWithoutPaymentInput, PackageOrderUncheckedCreateWithoutPaymentInput>
+    connectOrCreate?: PackageOrderCreateOrConnectWithoutPaymentInput
+    upsert?: PackageOrderUpsertWithoutPaymentInput
+    connect?: PackageOrderWhereUniqueInput
+    update?: XOR<XOR<PackageOrderUpdateToOneWithWhereWithoutPaymentInput, PackageOrderUpdateWithoutPaymentInput>, PackageOrderUncheckedUpdateWithoutPaymentInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -7577,6 +12194,74 @@ export namespace Prisma {
     gt?: InputJsonValue
     gte?: InputJsonValue
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type NestedEnumPackageOrderStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.PackageOrderStatus | EnumPackageOrderStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.PackageOrderStatus[]
+    notIn?: $Enums.PackageOrderStatus[]
+    not?: NestedEnumPackageOrderStatusFilter<$PrismaModel> | $Enums.PackageOrderStatus
+  }
+
+  export type NestedEnumPackagePaymentStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.PackagePaymentStatus | EnumPackagePaymentStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.PackagePaymentStatus[]
+    notIn?: $Enums.PackagePaymentStatus[]
+    not?: NestedEnumPackagePaymentStatusFilter<$PrismaModel> | $Enums.PackagePaymentStatus
+  }
+
+  export type NestedEnumPackagePaymentMethodNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.PackagePaymentMethod | EnumPackagePaymentMethodFieldRefInput<$PrismaModel> | null
+    in?: $Enums.PackagePaymentMethod[] | null
+    notIn?: $Enums.PackagePaymentMethod[] | null
+    not?: NestedEnumPackagePaymentMethodNullableFilter<$PrismaModel> | $Enums.PackagePaymentMethod | null
+  }
+
+  export type NestedEnumPackageOrderStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.PackageOrderStatus | EnumPackageOrderStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.PackageOrderStatus[]
+    notIn?: $Enums.PackageOrderStatus[]
+    not?: NestedEnumPackageOrderStatusWithAggregatesFilter<$PrismaModel> | $Enums.PackageOrderStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumPackageOrderStatusFilter<$PrismaModel>
+    _max?: NestedEnumPackageOrderStatusFilter<$PrismaModel>
+  }
+
+  export type NestedEnumPackagePaymentStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.PackagePaymentStatus | EnumPackagePaymentStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.PackagePaymentStatus[]
+    notIn?: $Enums.PackagePaymentStatus[]
+    not?: NestedEnumPackagePaymentStatusWithAggregatesFilter<$PrismaModel> | $Enums.PackagePaymentStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumPackagePaymentStatusFilter<$PrismaModel>
+    _max?: NestedEnumPackagePaymentStatusFilter<$PrismaModel>
+  }
+
+  export type NestedEnumPackagePaymentMethodNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.PackagePaymentMethod | EnumPackagePaymentMethodFieldRefInput<$PrismaModel> | null
+    in?: $Enums.PackagePaymentMethod[] | null
+    notIn?: $Enums.PackagePaymentMethod[] | null
+    not?: NestedEnumPackagePaymentMethodNullableWithAggregatesFilter<$PrismaModel> | $Enums.PackagePaymentMethod | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumPackagePaymentMethodNullableFilter<$PrismaModel>
+    _max?: NestedEnumPackagePaymentMethodNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumPackagePaymentMethodFilter<$PrismaModel = never> = {
+    equals?: $Enums.PackagePaymentMethod | EnumPackagePaymentMethodFieldRefInput<$PrismaModel>
+    in?: $Enums.PackagePaymentMethod[]
+    notIn?: $Enums.PackagePaymentMethod[]
+    not?: NestedEnumPackagePaymentMethodFilter<$PrismaModel> | $Enums.PackagePaymentMethod
+  }
+
+  export type NestedEnumPackagePaymentMethodWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.PackagePaymentMethod | EnumPackagePaymentMethodFieldRefInput<$PrismaModel>
+    in?: $Enums.PackagePaymentMethod[]
+    notIn?: $Enums.PackagePaymentMethod[]
+    not?: NestedEnumPackagePaymentMethodWithAggregatesFilter<$PrismaModel> | $Enums.PackagePaymentMethod
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumPackagePaymentMethodFilter<$PrismaModel>
+    _max?: NestedEnumPackagePaymentMethodFilter<$PrismaModel>
   }
 
   export type AppointmentSlotLockCreateWithoutAppointmentInput = {
@@ -8139,6 +12824,331 @@ export namespace Prisma {
     statusLogs?: AppointmentStatusLogUncheckedUpdateManyWithoutAppointmentNestedInput
   }
 
+  export type PackageOrderItemCreateWithoutOrderInput = {
+    id?: string
+    testId: string
+    testName: string
+    testCode?: string | null
+    price: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+  }
+
+  export type PackageOrderItemUncheckedCreateWithoutOrderInput = {
+    id?: string
+    testId: string
+    testName: string
+    testCode?: string | null
+    price: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+  }
+
+  export type PackageOrderItemCreateOrConnectWithoutOrderInput = {
+    where: PackageOrderItemWhereUniqueInput
+    create: XOR<PackageOrderItemCreateWithoutOrderInput, PackageOrderItemUncheckedCreateWithoutOrderInput>
+  }
+
+  export type PackageOrderItemCreateManyOrderInputEnvelope = {
+    data: PackageOrderItemCreateManyOrderInput | PackageOrderItemCreateManyOrderInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PackagePaymentCreateWithoutOrderInput = {
+    id?: string
+    amount: Decimal | DecimalJsLike | number | string
+    currency?: string
+    status?: $Enums.PackagePaymentStatus
+    method?: $Enums.PackagePaymentMethod
+    transactionId: string
+    validationId?: string | null
+    bankTransactionId?: string | null
+    paymentMethodName?: string | null
+    cardType?: string | null
+    gatewayResponse?: NullableJsonNullValueInput | InputJsonValue
+    paidAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PackagePaymentUncheckedCreateWithoutOrderInput = {
+    id?: string
+    amount: Decimal | DecimalJsLike | number | string
+    currency?: string
+    status?: $Enums.PackagePaymentStatus
+    method?: $Enums.PackagePaymentMethod
+    transactionId: string
+    validationId?: string | null
+    bankTransactionId?: string | null
+    paymentMethodName?: string | null
+    cardType?: string | null
+    gatewayResponse?: NullableJsonNullValueInput | InputJsonValue
+    paidAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PackagePaymentCreateOrConnectWithoutOrderInput = {
+    where: PackagePaymentWhereUniqueInput
+    create: XOR<PackagePaymentCreateWithoutOrderInput, PackagePaymentUncheckedCreateWithoutOrderInput>
+  }
+
+  export type PackageOrderItemUpsertWithWhereUniqueWithoutOrderInput = {
+    where: PackageOrderItemWhereUniqueInput
+    update: XOR<PackageOrderItemUpdateWithoutOrderInput, PackageOrderItemUncheckedUpdateWithoutOrderInput>
+    create: XOR<PackageOrderItemCreateWithoutOrderInput, PackageOrderItemUncheckedCreateWithoutOrderInput>
+  }
+
+  export type PackageOrderItemUpdateWithWhereUniqueWithoutOrderInput = {
+    where: PackageOrderItemWhereUniqueInput
+    data: XOR<PackageOrderItemUpdateWithoutOrderInput, PackageOrderItemUncheckedUpdateWithoutOrderInput>
+  }
+
+  export type PackageOrderItemUpdateManyWithWhereWithoutOrderInput = {
+    where: PackageOrderItemScalarWhereInput
+    data: XOR<PackageOrderItemUpdateManyMutationInput, PackageOrderItemUncheckedUpdateManyWithoutOrderInput>
+  }
+
+  export type PackageOrderItemScalarWhereInput = {
+    AND?: PackageOrderItemScalarWhereInput | PackageOrderItemScalarWhereInput[]
+    OR?: PackageOrderItemScalarWhereInput[]
+    NOT?: PackageOrderItemScalarWhereInput | PackageOrderItemScalarWhereInput[]
+    id?: StringFilter<"PackageOrderItem"> | string
+    orderId?: StringFilter<"PackageOrderItem"> | string
+    testId?: StringFilter<"PackageOrderItem"> | string
+    testName?: StringFilter<"PackageOrderItem"> | string
+    testCode?: StringNullableFilter<"PackageOrderItem"> | string | null
+    price?: DecimalFilter<"PackageOrderItem"> | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFilter<"PackageOrderItem"> | Date | string
+  }
+
+  export type PackagePaymentUpsertWithoutOrderInput = {
+    update: XOR<PackagePaymentUpdateWithoutOrderInput, PackagePaymentUncheckedUpdateWithoutOrderInput>
+    create: XOR<PackagePaymentCreateWithoutOrderInput, PackagePaymentUncheckedCreateWithoutOrderInput>
+    where?: PackagePaymentWhereInput
+  }
+
+  export type PackagePaymentUpdateToOneWithWhereWithoutOrderInput = {
+    where?: PackagePaymentWhereInput
+    data: XOR<PackagePaymentUpdateWithoutOrderInput, PackagePaymentUncheckedUpdateWithoutOrderInput>
+  }
+
+  export type PackagePaymentUpdateWithoutOrderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    currency?: StringFieldUpdateOperationsInput | string
+    status?: EnumPackagePaymentStatusFieldUpdateOperationsInput | $Enums.PackagePaymentStatus
+    method?: EnumPackagePaymentMethodFieldUpdateOperationsInput | $Enums.PackagePaymentMethod
+    transactionId?: StringFieldUpdateOperationsInput | string
+    validationId?: NullableStringFieldUpdateOperationsInput | string | null
+    bankTransactionId?: NullableStringFieldUpdateOperationsInput | string | null
+    paymentMethodName?: NullableStringFieldUpdateOperationsInput | string | null
+    cardType?: NullableStringFieldUpdateOperationsInput | string | null
+    gatewayResponse?: NullableJsonNullValueInput | InputJsonValue
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PackagePaymentUncheckedUpdateWithoutOrderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    currency?: StringFieldUpdateOperationsInput | string
+    status?: EnumPackagePaymentStatusFieldUpdateOperationsInput | $Enums.PackagePaymentStatus
+    method?: EnumPackagePaymentMethodFieldUpdateOperationsInput | $Enums.PackagePaymentMethod
+    transactionId?: StringFieldUpdateOperationsInput | string
+    validationId?: NullableStringFieldUpdateOperationsInput | string | null
+    bankTransactionId?: NullableStringFieldUpdateOperationsInput | string | null
+    paymentMethodName?: NullableStringFieldUpdateOperationsInput | string | null
+    cardType?: NullableStringFieldUpdateOperationsInput | string | null
+    gatewayResponse?: NullableJsonNullValueInput | InputJsonValue
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PackageOrderCreateWithoutItemsInput = {
+    id?: string
+    orderCode: string
+    patientId: string
+    outletId?: string | null
+    packageId: string
+    packageName: string
+    subtitle?: string | null
+    totalPrice: Decimal | DecimalJsLike | number | string
+    discountedPrice: Decimal | DecimalJsLike | number | string
+    status?: $Enums.PackageOrderStatus
+    paymentStatus?: $Enums.PackagePaymentStatus
+    paymentMethod?: $Enums.PackagePaymentMethod | null
+    notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    payment?: PackagePaymentCreateNestedOneWithoutOrderInput
+  }
+
+  export type PackageOrderUncheckedCreateWithoutItemsInput = {
+    id?: string
+    orderCode: string
+    patientId: string
+    outletId?: string | null
+    packageId: string
+    packageName: string
+    subtitle?: string | null
+    totalPrice: Decimal | DecimalJsLike | number | string
+    discountedPrice: Decimal | DecimalJsLike | number | string
+    status?: $Enums.PackageOrderStatus
+    paymentStatus?: $Enums.PackagePaymentStatus
+    paymentMethod?: $Enums.PackagePaymentMethod | null
+    notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    payment?: PackagePaymentUncheckedCreateNestedOneWithoutOrderInput
+  }
+
+  export type PackageOrderCreateOrConnectWithoutItemsInput = {
+    where: PackageOrderWhereUniqueInput
+    create: XOR<PackageOrderCreateWithoutItemsInput, PackageOrderUncheckedCreateWithoutItemsInput>
+  }
+
+  export type PackageOrderUpsertWithoutItemsInput = {
+    update: XOR<PackageOrderUpdateWithoutItemsInput, PackageOrderUncheckedUpdateWithoutItemsInput>
+    create: XOR<PackageOrderCreateWithoutItemsInput, PackageOrderUncheckedCreateWithoutItemsInput>
+    where?: PackageOrderWhereInput
+  }
+
+  export type PackageOrderUpdateToOneWithWhereWithoutItemsInput = {
+    where?: PackageOrderWhereInput
+    data: XOR<PackageOrderUpdateWithoutItemsInput, PackageOrderUncheckedUpdateWithoutItemsInput>
+  }
+
+  export type PackageOrderUpdateWithoutItemsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    orderCode?: StringFieldUpdateOperationsInput | string
+    patientId?: StringFieldUpdateOperationsInput | string
+    outletId?: NullableStringFieldUpdateOperationsInput | string | null
+    packageId?: StringFieldUpdateOperationsInput | string
+    packageName?: StringFieldUpdateOperationsInput | string
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    discountedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    status?: EnumPackageOrderStatusFieldUpdateOperationsInput | $Enums.PackageOrderStatus
+    paymentStatus?: EnumPackagePaymentStatusFieldUpdateOperationsInput | $Enums.PackagePaymentStatus
+    paymentMethod?: NullableEnumPackagePaymentMethodFieldUpdateOperationsInput | $Enums.PackagePaymentMethod | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    payment?: PackagePaymentUpdateOneWithoutOrderNestedInput
+  }
+
+  export type PackageOrderUncheckedUpdateWithoutItemsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    orderCode?: StringFieldUpdateOperationsInput | string
+    patientId?: StringFieldUpdateOperationsInput | string
+    outletId?: NullableStringFieldUpdateOperationsInput | string | null
+    packageId?: StringFieldUpdateOperationsInput | string
+    packageName?: StringFieldUpdateOperationsInput | string
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    discountedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    status?: EnumPackageOrderStatusFieldUpdateOperationsInput | $Enums.PackageOrderStatus
+    paymentStatus?: EnumPackagePaymentStatusFieldUpdateOperationsInput | $Enums.PackagePaymentStatus
+    paymentMethod?: NullableEnumPackagePaymentMethodFieldUpdateOperationsInput | $Enums.PackagePaymentMethod | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    payment?: PackagePaymentUncheckedUpdateOneWithoutOrderNestedInput
+  }
+
+  export type PackageOrderCreateWithoutPaymentInput = {
+    id?: string
+    orderCode: string
+    patientId: string
+    outletId?: string | null
+    packageId: string
+    packageName: string
+    subtitle?: string | null
+    totalPrice: Decimal | DecimalJsLike | number | string
+    discountedPrice: Decimal | DecimalJsLike | number | string
+    status?: $Enums.PackageOrderStatus
+    paymentStatus?: $Enums.PackagePaymentStatus
+    paymentMethod?: $Enums.PackagePaymentMethod | null
+    notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    items?: PackageOrderItemCreateNestedManyWithoutOrderInput
+  }
+
+  export type PackageOrderUncheckedCreateWithoutPaymentInput = {
+    id?: string
+    orderCode: string
+    patientId: string
+    outletId?: string | null
+    packageId: string
+    packageName: string
+    subtitle?: string | null
+    totalPrice: Decimal | DecimalJsLike | number | string
+    discountedPrice: Decimal | DecimalJsLike | number | string
+    status?: $Enums.PackageOrderStatus
+    paymentStatus?: $Enums.PackagePaymentStatus
+    paymentMethod?: $Enums.PackagePaymentMethod | null
+    notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    items?: PackageOrderItemUncheckedCreateNestedManyWithoutOrderInput
+  }
+
+  export type PackageOrderCreateOrConnectWithoutPaymentInput = {
+    where: PackageOrderWhereUniqueInput
+    create: XOR<PackageOrderCreateWithoutPaymentInput, PackageOrderUncheckedCreateWithoutPaymentInput>
+  }
+
+  export type PackageOrderUpsertWithoutPaymentInput = {
+    update: XOR<PackageOrderUpdateWithoutPaymentInput, PackageOrderUncheckedUpdateWithoutPaymentInput>
+    create: XOR<PackageOrderCreateWithoutPaymentInput, PackageOrderUncheckedCreateWithoutPaymentInput>
+    where?: PackageOrderWhereInput
+  }
+
+  export type PackageOrderUpdateToOneWithWhereWithoutPaymentInput = {
+    where?: PackageOrderWhereInput
+    data: XOR<PackageOrderUpdateWithoutPaymentInput, PackageOrderUncheckedUpdateWithoutPaymentInput>
+  }
+
+  export type PackageOrderUpdateWithoutPaymentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    orderCode?: StringFieldUpdateOperationsInput | string
+    patientId?: StringFieldUpdateOperationsInput | string
+    outletId?: NullableStringFieldUpdateOperationsInput | string | null
+    packageId?: StringFieldUpdateOperationsInput | string
+    packageName?: StringFieldUpdateOperationsInput | string
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    discountedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    status?: EnumPackageOrderStatusFieldUpdateOperationsInput | $Enums.PackageOrderStatus
+    paymentStatus?: EnumPackagePaymentStatusFieldUpdateOperationsInput | $Enums.PackagePaymentStatus
+    paymentMethod?: NullableEnumPackagePaymentMethodFieldUpdateOperationsInput | $Enums.PackagePaymentMethod | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    items?: PackageOrderItemUpdateManyWithoutOrderNestedInput
+  }
+
+  export type PackageOrderUncheckedUpdateWithoutPaymentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    orderCode?: StringFieldUpdateOperationsInput | string
+    patientId?: StringFieldUpdateOperationsInput | string
+    outletId?: NullableStringFieldUpdateOperationsInput | string | null
+    packageId?: StringFieldUpdateOperationsInput | string
+    packageName?: StringFieldUpdateOperationsInput | string
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    discountedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    status?: EnumPackageOrderStatusFieldUpdateOperationsInput | $Enums.PackageOrderStatus
+    paymentStatus?: EnumPackagePaymentStatusFieldUpdateOperationsInput | $Enums.PackagePaymentStatus
+    paymentMethod?: NullableEnumPackagePaymentMethodFieldUpdateOperationsInput | $Enums.PackagePaymentMethod | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    items?: PackageOrderItemUncheckedUpdateManyWithoutOrderNestedInput
+  }
+
   export type AppointmentStatusLogCreateManyAppointmentInput = {
     id?: string
     previousStatus?: $Enums.AppointmentStatus | null
@@ -8176,6 +13186,42 @@ export namespace Prisma {
     changedById?: NullableStringFieldUpdateOperationsInput | string | null
     changedByRole?: NullableStringFieldUpdateOperationsInput | string | null
     note?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PackageOrderItemCreateManyOrderInput = {
+    id?: string
+    testId: string
+    testName: string
+    testCode?: string | null
+    price: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+  }
+
+  export type PackageOrderItemUpdateWithoutOrderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    testId?: StringFieldUpdateOperationsInput | string
+    testName?: StringFieldUpdateOperationsInput | string
+    testCode?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PackageOrderItemUncheckedUpdateWithoutOrderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    testId?: StringFieldUpdateOperationsInput | string
+    testName?: StringFieldUpdateOperationsInput | string
+    testCode?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PackageOrderItemUncheckedUpdateManyWithoutOrderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    testId?: StringFieldUpdateOperationsInput | string
+    testName?: StringFieldUpdateOperationsInput | string
+    testCode?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

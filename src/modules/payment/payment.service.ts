@@ -1,7 +1,8 @@
 import { appointmentPrisma, mainPrisma } from "../../databases/prisma";
 import { AppError } from "../../utils/app_error";
 import { AuthUser } from "../../middlewares/auth";
-import { sslcommerzService } from "./sslcommerz.service";
+import { env } from "../../configs/env";
+import { sslcommerzService } from "../../utils/sslcommerz.service";
 
 const initiateAppointmentPayment = async (
   appointmentId: string,
@@ -57,11 +58,19 @@ const initiateAppointmentPayment = async (
   const sslResponse = await sslcommerzService.initPayment({
     totalAmount: amount,
     transactionId: appointment.payment.transactionId,
+
     customerName: patient.fullName,
     customerEmail: patient.email,
     customerPhone: patient.mobileNumber,
     customerAddress: patient.address,
+
     productName: `Appointment ${appointment.appointmentCode}`,
+    productCategory: "Appointment",
+
+    successUrl: `${env.backendUrl}/api/v1/payments/sslcommerz/success`,
+    failUrl: `${env.backendUrl}/api/v1/payments/sslcommerz/fail`,
+    cancelUrl: `${env.backendUrl}/api/v1/payments/sslcommerz/cancel`,
+    ipnUrl: `${env.backendUrl}/api/v1/payments/sslcommerz/ipn`,
   });
 
   await appointmentPrisma.appointmentPayment.update({
@@ -93,7 +102,7 @@ const handleSslcommerzSuccess = async (payload: any) => {
     validationResponse.status === "VALID" ||
     validationResponse.status === "VALIDATED";
 
-    console.log("validate response ", validationResponse);
+  console.log("validate response ", validationResponse);
 
   if (!isValid) {
     throw new AppError("SSLCommerz payment validation failed", 400);
@@ -168,7 +177,7 @@ const handleSslcommerzSuccess = async (payload: any) => {
     console.log('udpatecd payment', updatedPayment)
     console.log('udpatecd updatedAppointment', updatedAppointment)
 
-    
+
 
 
 

@@ -183,6 +183,52 @@ exports.Prisma.AppointmentPaymentScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.PackageOrderScalarFieldEnum = {
+  id: 'id',
+  orderCode: 'orderCode',
+  patientId: 'patientId',
+  outletId: 'outletId',
+  packageId: 'packageId',
+  packageName: 'packageName',
+  subtitle: 'subtitle',
+  totalPrice: 'totalPrice',
+  discountedPrice: 'discountedPrice',
+  status: 'status',
+  paymentStatus: 'paymentStatus',
+  paymentMethod: 'paymentMethod',
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.PackageOrderItemScalarFieldEnum = {
+  id: 'id',
+  orderId: 'orderId',
+  testId: 'testId',
+  testName: 'testName',
+  testCode: 'testCode',
+  price: 'price',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.PackagePaymentScalarFieldEnum = {
+  id: 'id',
+  orderId: 'orderId',
+  amount: 'amount',
+  currency: 'currency',
+  status: 'status',
+  method: 'method',
+  transactionId: 'transactionId',
+  validationId: 'validationId',
+  bankTransactionId: 'bankTransactionId',
+  paymentMethodName: 'paymentMethodName',
+  cardType: 'cardType',
+  gatewayResponse: 'gatewayResponse',
+  paidAt: 'paidAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -245,6 +291,36 @@ exports.Prisma.AppointmentPaymentOrderByRelevanceFieldEnum = {
   paymentMethod: 'paymentMethod',
   cardType: 'cardType'
 };
+
+exports.Prisma.PackageOrderOrderByRelevanceFieldEnum = {
+  id: 'id',
+  orderCode: 'orderCode',
+  patientId: 'patientId',
+  outletId: 'outletId',
+  packageId: 'packageId',
+  packageName: 'packageName',
+  subtitle: 'subtitle',
+  notes: 'notes'
+};
+
+exports.Prisma.PackageOrderItemOrderByRelevanceFieldEnum = {
+  id: 'id',
+  orderId: 'orderId',
+  testId: 'testId',
+  testName: 'testName',
+  testCode: 'testCode'
+};
+
+exports.Prisma.PackagePaymentOrderByRelevanceFieldEnum = {
+  id: 'id',
+  orderId: 'orderId',
+  currency: 'currency',
+  transactionId: 'transactionId',
+  validationId: 'validationId',
+  bankTransactionId: 'bankTransactionId',
+  paymentMethodName: 'paymentMethodName',
+  cardType: 'cardType'
+};
 exports.AppointmentType = exports.$Enums.AppointmentType = {
   IN_PERSON: 'IN_PERSON',
   ONLINE: 'ONLINE'
@@ -278,11 +354,34 @@ exports.PaymentGateway = exports.$Enums.PaymentGateway = {
   MANUAL: 'MANUAL'
 };
 
+exports.PackageOrderStatus = exports.$Enums.PackageOrderStatus = {
+  PENDING: 'PENDING',
+  CONFIRMED: 'CONFIRMED',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED'
+};
+
+exports.PackagePaymentStatus = exports.$Enums.PackagePaymentStatus = {
+  UNPAID: 'UNPAID',
+  PAID: 'PAID',
+  FAILED: 'FAILED',
+  REFUNDED: 'REFUNDED'
+};
+
+exports.PackagePaymentMethod = exports.$Enums.PackagePaymentMethod = {
+  SSLCOMMERZ: 'SSLCOMMERZ',
+  CASH: 'CASH',
+  MANUAL: 'MANUAL'
+};
+
 exports.Prisma.ModelName = {
   Appointment: 'Appointment',
   AppointmentSlotLock: 'AppointmentSlotLock',
   AppointmentStatusLog: 'AppointmentStatusLog',
-  AppointmentPayment: 'AppointmentPayment'
+  AppointmentPayment: 'AppointmentPayment',
+  PackageOrder: 'PackageOrder',
+  PackageOrderItem: 'PackageOrderItem',
+  PackagePayment: 'PackagePayment'
 };
 
 /**

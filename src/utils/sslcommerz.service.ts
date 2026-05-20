@@ -1,15 +1,24 @@
 import axios from "axios";
-import { AppError } from "../../utils/app_error";
-import { env } from "../../configs/env";
+import { env } from "../configs/env";
+import { AppError } from "./app_error";
+
 
 type InitPaymentPayload = {
   totalAmount: number;
   transactionId: string;
+
   customerName: string;
   customerEmail?: string | null;
   customerPhone: string;
   customerAddress?: string | null;
+
   productName: string;
+  productCategory: string;
+
+  successUrl: string;
+  failUrl: string;
+  cancelUrl: string;
+  ipnUrl: string;
 };
 
 // normalize value to string to handle boolean or string env values
@@ -28,22 +37,10 @@ const initPayment = async (payload: InitPaymentPayload) => {
   formData.append("currency", "BDT");
   formData.append("tran_id", payload.transactionId);
 
-  formData.append(
-    "success_url",
-    `${env.backendUrl}/api/v1/payments/sslcommerz/success`
-  );
-  formData.append(
-    "fail_url",
-    `${env.backendUrl}/api/v1/payments/sslcommerz/fail`
-  );
-  formData.append(
-    "cancel_url",
-    `${env.backendUrl}/api/v1/payments/sslcommerz/cancel`
-  );
-  formData.append(
-    "ipn_url",
-    `${env.backendUrl}/api/v1/payments/sslcommerz/ipn`
-  );
+  formData.append("success_url", payload.successUrl);
+  formData.append("fail_url", payload.failUrl);
+  formData.append("cancel_url", payload.cancelUrl);
+  formData.append("ipn_url", payload.ipnUrl);
 
   formData.append("cus_name", payload.customerName);
   formData.append("cus_email", payload.customerEmail || "customer@example.com");
@@ -54,7 +51,7 @@ const initPayment = async (payload: InitPaymentPayload) => {
 
   formData.append("shipping_method", "NO");
   formData.append("product_name", payload.productName);
-  formData.append("product_category", "Healthcare");
+  formData.append("product_category", payload.productCategory);
   formData.append("product_profile", "non-physical-goods");
 
   const { data } = await axios.post(

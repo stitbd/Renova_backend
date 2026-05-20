@@ -155,3 +155,113 @@ model AppointmentPayment {
   @@index([transactionId])
   @@index([validationId])
 }
+
+
+
+
+// ==================purchase packages -====================== 
+
+
+
+enum PackageOrderStatus {
+  PENDING
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+}
+
+enum PackagePaymentStatus {
+  UNPAID
+  PAID
+  FAILED
+  REFUNDED
+}
+
+enum PackagePaymentMethod {
+  SSLCOMMERZ
+  CASH
+  MANUAL
+}
+
+model PackageOrder {
+  id String @id @default(uuid())
+
+  orderCode String @unique
+
+  // External IDs from Main DB
+  patientId String
+  outletId  String?
+
+  packageId String
+
+  packageName     String
+  subtitle        String?
+  totalPrice      Decimal @db.Decimal(10, 2)
+  discountedPrice Decimal @db.Decimal(10, 2)
+
+  status        PackageOrderStatus   @default(PENDING)
+  paymentStatus PackagePaymentStatus @default(UNPAID)
+  paymentMethod PackagePaymentMethod?
+
+  notes String? @db.Text
+
+  items   PackageOrderItem[]
+  payment PackagePayment?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([patientId])
+  @@index([outletId])
+  @@index([packageId])
+  @@index([status])
+  @@index([paymentStatus])
+}
+
+model PackageOrderItem {
+  id String @id @default(uuid())
+
+  orderId String
+  order   PackageOrder @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  testId String
+
+  testName String
+  testCode String?
+  price    Decimal @db.Decimal(10, 2)
+
+  createdAt DateTime @default(now())
+
+  @@index([orderId])
+  @@index([testId])
+}
+
+model PackagePayment {
+  id String @id @default(uuid())
+
+  orderId String @unique
+  order   PackageOrder @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  amount   Decimal @db.Decimal(10, 2)
+  currency String  @default("BDT")
+
+  status PackagePaymentStatus @default(UNPAID)
+  method PackagePaymentMethod @default(SSLCOMMERZ)
+
+  transactionId String @unique
+  validationId  String?
+  bankTransactionId String?
+
+  paymentMethodName String?
+  cardType          String?
+
+  gatewayResponse Json?
+
+  paidAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status])
+  @@index([transactionId])
+}
