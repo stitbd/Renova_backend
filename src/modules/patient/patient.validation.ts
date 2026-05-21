@@ -2,7 +2,6 @@ import { z } from "zod";
 
 export const createPatientSchema = z.object({
   referenceName: z.string().optional(),
-
   fullName: z.string().min(2, "Full name is required"),
   mobileNumber: z.string().min(10, "Mobile number is required"),
   email: z.string().email().optional(),
@@ -10,6 +9,7 @@ export const createPatientSchema = z.object({
 
   dateOfBirth: z.string().optional(),
   age: z.number().int().positive().optional(),
+  nationality: z.string().optional(),
 
   bloodGroup: z.string().optional(),
   gender: z.string().optional(),

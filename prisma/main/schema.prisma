@@ -35,12 +35,14 @@ model Patient {
   id String @id @default(uuid())
 
   referenceName    String?
+  patientCode      String? @unique
   fullName         String
   mobileNumber     String        @unique
   email            String?
   password         String
   dateOfBirth      DateTime?
   age              Int?
+  nationality      String? 
   bloodGroup       String?
   gender           String?
   address          String?

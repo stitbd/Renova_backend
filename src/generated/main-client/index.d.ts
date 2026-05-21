@@ -5545,12 +5545,14 @@ export namespace Prisma {
   export type PatientMinAggregateOutputType = {
     id: string | null
     referenceName: string | null
+    patientCode: string | null
     fullName: string | null
     mobileNumber: string | null
     email: string | null
     password: string | null
     dateOfBirth: Date | null
     age: number | null
+    nationality: string | null
     bloodGroup: string | null
     gender: string | null
     address: string | null
@@ -5567,12 +5569,14 @@ export namespace Prisma {
   export type PatientMaxAggregateOutputType = {
     id: string | null
     referenceName: string | null
+    patientCode: string | null
     fullName: string | null
     mobileNumber: string | null
     email: string | null
     password: string | null
     dateOfBirth: Date | null
     age: number | null
+    nationality: string | null
     bloodGroup: string | null
     gender: string | null
     address: string | null
@@ -5589,12 +5593,14 @@ export namespace Prisma {
   export type PatientCountAggregateOutputType = {
     id: number
     referenceName: number
+    patientCode: number
     fullName: number
     mobileNumber: number
     email: number
     password: number
     dateOfBirth: number
     age: number
+    nationality: number
     bloodGroup: number
     gender: number
     address: number
@@ -5621,12 +5627,14 @@ export namespace Prisma {
   export type PatientMinAggregateInputType = {
     id?: true
     referenceName?: true
+    patientCode?: true
     fullName?: true
     mobileNumber?: true
     email?: true
     password?: true
     dateOfBirth?: true
     age?: true
+    nationality?: true
     bloodGroup?: true
     gender?: true
     address?: true
@@ -5643,12 +5651,14 @@ export namespace Prisma {
   export type PatientMaxAggregateInputType = {
     id?: true
     referenceName?: true
+    patientCode?: true
     fullName?: true
     mobileNumber?: true
     email?: true
     password?: true
     dateOfBirth?: true
     age?: true
+    nationality?: true
     bloodGroup?: true
     gender?: true
     address?: true
@@ -5665,12 +5675,14 @@ export namespace Prisma {
   export type PatientCountAggregateInputType = {
     id?: true
     referenceName?: true
+    patientCode?: true
     fullName?: true
     mobileNumber?: true
     email?: true
     password?: true
     dateOfBirth?: true
     age?: true
+    nationality?: true
     bloodGroup?: true
     gender?: true
     address?: true
@@ -5774,12 +5786,14 @@ export namespace Prisma {
   export type PatientGroupByOutputType = {
     id: string
     referenceName: string | null
+    patientCode: string | null
     fullName: string
     mobileNumber: string
     email: string | null
     password: string
     dateOfBirth: Date | null
     age: number | null
+    nationality: string | null
     bloodGroup: string | null
     gender: string | null
     address: string | null
@@ -5815,12 +5829,14 @@ export namespace Prisma {
   export type PatientSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     referenceName?: boolean
+    patientCode?: boolean
     fullName?: boolean
     mobileNumber?: boolean
     email?: boolean
     password?: boolean
     dateOfBirth?: boolean
     age?: boolean
+    nationality?: boolean
     bloodGroup?: boolean
     gender?: boolean
     address?: boolean
@@ -5840,12 +5856,14 @@ export namespace Prisma {
   export type PatientSelectScalar = {
     id?: boolean
     referenceName?: boolean
+    patientCode?: boolean
     fullName?: boolean
     mobileNumber?: boolean
     email?: boolean
     password?: boolean
     dateOfBirth?: boolean
     age?: boolean
+    nationality?: boolean
     bloodGroup?: boolean
     gender?: boolean
     address?: boolean
@@ -5859,7 +5877,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type PatientOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "referenceName" | "fullName" | "mobileNumber" | "email" | "password" | "dateOfBirth" | "age" | "bloodGroup" | "gender" | "address" | "emergencyContact" | "status" | "otp" | "otpExpiresAt" | "outletId" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["patient"]>
+  export type PatientOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "referenceName" | "patientCode" | "fullName" | "mobileNumber" | "email" | "password" | "dateOfBirth" | "age" | "nationality" | "bloodGroup" | "gender" | "address" | "emergencyContact" | "status" | "otp" | "otpExpiresAt" | "outletId" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["patient"]>
   export type PatientInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     outlet?: boolean | Patient$outletArgs<ExtArgs>
   }
@@ -5872,12 +5890,14 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       referenceName: string | null
+      patientCode: string | null
       fullName: string
       mobileNumber: string
       email: string | null
       password: string
       dateOfBirth: Date | null
       age: number | null
+      nationality: string | null
       bloodGroup: string | null
       gender: string | null
       address: string | null
@@ -6261,12 +6281,14 @@ export namespace Prisma {
   interface PatientFieldRefs {
     readonly id: FieldRef<"Patient", 'String'>
     readonly referenceName: FieldRef<"Patient", 'String'>
+    readonly patientCode: FieldRef<"Patient", 'String'>
     readonly fullName: FieldRef<"Patient", 'String'>
     readonly mobileNumber: FieldRef<"Patient", 'String'>
     readonly email: FieldRef<"Patient", 'String'>
     readonly password: FieldRef<"Patient", 'String'>
     readonly dateOfBirth: FieldRef<"Patient", 'DateTime'>
     readonly age: FieldRef<"Patient", 'Int'>
+    readonly nationality: FieldRef<"Patient", 'String'>
     readonly bloodGroup: FieldRef<"Patient", 'String'>
     readonly gender: FieldRef<"Patient", 'String'>
     readonly address: FieldRef<"Patient", 'String'>
@@ -43590,12 +43612,14 @@ export namespace Prisma {
   export const PatientScalarFieldEnum: {
     id: 'id',
     referenceName: 'referenceName',
+    patientCode: 'patientCode',
     fullName: 'fullName',
     mobileNumber: 'mobileNumber',
     email: 'email',
     password: 'password',
     dateOfBirth: 'dateOfBirth',
     age: 'age',
+    nationality: 'nationality',
     bloodGroup: 'bloodGroup',
     gender: 'gender',
     address: 'address',
@@ -44283,10 +44307,12 @@ export namespace Prisma {
   export const PatientOrderByRelevanceFieldEnum: {
     id: 'id',
     referenceName: 'referenceName',
+    patientCode: 'patientCode',
     fullName: 'fullName',
     mobileNumber: 'mobileNumber',
     email: 'email',
     password: 'password',
+    nationality: 'nationality',
     bloodGroup: 'bloodGroup',
     gender: 'gender',
     address: 'address',
@@ -45010,12 +45036,14 @@ export namespace Prisma {
     NOT?: PatientWhereInput | PatientWhereInput[]
     id?: StringFilter<"Patient"> | string
     referenceName?: StringNullableFilter<"Patient"> | string | null
+    patientCode?: StringNullableFilter<"Patient"> | string | null
     fullName?: StringFilter<"Patient"> | string
     mobileNumber?: StringFilter<"Patient"> | string
     email?: StringNullableFilter<"Patient"> | string | null
     password?: StringFilter<"Patient"> | string
     dateOfBirth?: DateTimeNullableFilter<"Patient"> | Date | string | null
     age?: IntNullableFilter<"Patient"> | number | null
+    nationality?: StringNullableFilter<"Patient"> | string | null
     bloodGroup?: StringNullableFilter<"Patient"> | string | null
     gender?: StringNullableFilter<"Patient"> | string | null
     address?: StringNullableFilter<"Patient"> | string | null
@@ -45033,12 +45061,14 @@ export namespace Prisma {
   export type PatientOrderByWithRelationInput = {
     id?: SortOrder
     referenceName?: SortOrderInput | SortOrder
+    patientCode?: SortOrderInput | SortOrder
     fullName?: SortOrder
     mobileNumber?: SortOrder
     email?: SortOrderInput | SortOrder
     password?: SortOrder
     dateOfBirth?: SortOrderInput | SortOrder
     age?: SortOrderInput | SortOrder
+    nationality?: SortOrderInput | SortOrder
     bloodGroup?: SortOrderInput | SortOrder
     gender?: SortOrderInput | SortOrder
     address?: SortOrderInput | SortOrder
@@ -45056,6 +45086,7 @@ export namespace Prisma {
 
   export type PatientWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    patientCode?: string
     mobileNumber?: string
     AND?: PatientWhereInput | PatientWhereInput[]
     OR?: PatientWhereInput[]
@@ -45066,6 +45097,7 @@ export namespace Prisma {
     password?: StringFilter<"Patient"> | string
     dateOfBirth?: DateTimeNullableFilter<"Patient"> | Date | string | null
     age?: IntNullableFilter<"Patient"> | number | null
+    nationality?: StringNullableFilter<"Patient"> | string | null
     bloodGroup?: StringNullableFilter<"Patient"> | string | null
     gender?: StringNullableFilter<"Patient"> | string | null
     address?: StringNullableFilter<"Patient"> | string | null
@@ -45078,17 +45110,19 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Patient"> | Date | string
     updatedAt?: DateTimeFilter<"Patient"> | Date | string
     outlet?: XOR<OutletNullableScalarRelationFilter, outletWhereInput> | null
-  }, "id" | "mobileNumber">
+  }, "id" | "patientCode" | "mobileNumber">
 
   export type PatientOrderByWithAggregationInput = {
     id?: SortOrder
     referenceName?: SortOrderInput | SortOrder
+    patientCode?: SortOrderInput | SortOrder
     fullName?: SortOrder
     mobileNumber?: SortOrder
     email?: SortOrderInput | SortOrder
     password?: SortOrder
     dateOfBirth?: SortOrderInput | SortOrder
     age?: SortOrderInput | SortOrder
+    nationality?: SortOrderInput | SortOrder
     bloodGroup?: SortOrderInput | SortOrder
     gender?: SortOrderInput | SortOrder
     address?: SortOrderInput | SortOrder
@@ -45113,12 +45147,14 @@ export namespace Prisma {
     NOT?: PatientScalarWhereWithAggregatesInput | PatientScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Patient"> | string
     referenceName?: StringNullableWithAggregatesFilter<"Patient"> | string | null
+    patientCode?: StringNullableWithAggregatesFilter<"Patient"> | string | null
     fullName?: StringWithAggregatesFilter<"Patient"> | string
     mobileNumber?: StringWithAggregatesFilter<"Patient"> | string
     email?: StringNullableWithAggregatesFilter<"Patient"> | string | null
     password?: StringWithAggregatesFilter<"Patient"> | string
     dateOfBirth?: DateTimeNullableWithAggregatesFilter<"Patient"> | Date | string | null
     age?: IntNullableWithAggregatesFilter<"Patient"> | number | null
+    nationality?: StringNullableWithAggregatesFilter<"Patient"> | string | null
     bloodGroup?: StringNullableWithAggregatesFilter<"Patient"> | string | null
     gender?: StringNullableWithAggregatesFilter<"Patient"> | string | null
     address?: StringNullableWithAggregatesFilter<"Patient"> | string | null
@@ -48474,12 +48510,14 @@ export namespace Prisma {
   export type PatientCreateInput = {
     id?: string
     referenceName?: string | null
+    patientCode?: string | null
     fullName: string
     mobileNumber: string
     email?: string | null
     password: string
     dateOfBirth?: Date | string | null
     age?: number | null
+    nationality?: string | null
     bloodGroup?: string | null
     gender?: string | null
     address?: string | null
@@ -48496,12 +48534,14 @@ export namespace Prisma {
   export type PatientUncheckedCreateInput = {
     id?: string
     referenceName?: string | null
+    patientCode?: string | null
     fullName: string
     mobileNumber: string
     email?: string | null
     password: string
     dateOfBirth?: Date | string | null
     age?: number | null
+    nationality?: string | null
     bloodGroup?: string | null
     gender?: string | null
     address?: string | null
@@ -48518,12 +48558,14 @@ export namespace Prisma {
   export type PatientUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     referenceName?: NullableStringFieldUpdateOperationsInput | string | null
+    patientCode?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: StringFieldUpdateOperationsInput | string
     mobileNumber?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48540,12 +48582,14 @@ export namespace Prisma {
   export type PatientUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     referenceName?: NullableStringFieldUpdateOperationsInput | string | null
+    patientCode?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: StringFieldUpdateOperationsInput | string
     mobileNumber?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48562,12 +48606,14 @@ export namespace Prisma {
   export type PatientCreateManyInput = {
     id?: string
     referenceName?: string | null
+    patientCode?: string | null
     fullName: string
     mobileNumber: string
     email?: string | null
     password: string
     dateOfBirth?: Date | string | null
     age?: number | null
+    nationality?: string | null
     bloodGroup?: string | null
     gender?: string | null
     address?: string | null
@@ -48584,12 +48630,14 @@ export namespace Prisma {
   export type PatientUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     referenceName?: NullableStringFieldUpdateOperationsInput | string | null
+    patientCode?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: StringFieldUpdateOperationsInput | string
     mobileNumber?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48605,12 +48653,14 @@ export namespace Prisma {
   export type PatientUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     referenceName?: NullableStringFieldUpdateOperationsInput | string | null
+    patientCode?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: StringFieldUpdateOperationsInput | string
     mobileNumber?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
@@ -52589,12 +52639,14 @@ export namespace Prisma {
   export type PatientCountOrderByAggregateInput = {
     id?: SortOrder
     referenceName?: SortOrder
+    patientCode?: SortOrder
     fullName?: SortOrder
     mobileNumber?: SortOrder
     email?: SortOrder
     password?: SortOrder
     dateOfBirth?: SortOrder
     age?: SortOrder
+    nationality?: SortOrder
     bloodGroup?: SortOrder
     gender?: SortOrder
     address?: SortOrder
@@ -52615,12 +52667,14 @@ export namespace Prisma {
   export type PatientMaxOrderByAggregateInput = {
     id?: SortOrder
     referenceName?: SortOrder
+    patientCode?: SortOrder
     fullName?: SortOrder
     mobileNumber?: SortOrder
     email?: SortOrder
     password?: SortOrder
     dateOfBirth?: SortOrder
     age?: SortOrder
+    nationality?: SortOrder
     bloodGroup?: SortOrder
     gender?: SortOrder
     address?: SortOrder
@@ -52637,12 +52691,14 @@ export namespace Prisma {
   export type PatientMinOrderByAggregateInput = {
     id?: SortOrder
     referenceName?: SortOrder
+    patientCode?: SortOrder
     fullName?: SortOrder
     mobileNumber?: SortOrder
     email?: SortOrder
     password?: SortOrder
     dateOfBirth?: SortOrder
     age?: SortOrder
+    nationality?: SortOrder
     bloodGroup?: SortOrder
     gender?: SortOrder
     address?: SortOrder
@@ -57510,12 +57566,14 @@ export namespace Prisma {
   export type PatientCreateWithoutOutletInput = {
     id?: string
     referenceName?: string | null
+    patientCode?: string | null
     fullName: string
     mobileNumber: string
     email?: string | null
     password: string
     dateOfBirth?: Date | string | null
     age?: number | null
+    nationality?: string | null
     bloodGroup?: string | null
     gender?: string | null
     address?: string | null
@@ -57531,12 +57589,14 @@ export namespace Prisma {
   export type PatientUncheckedCreateWithoutOutletInput = {
     id?: string
     referenceName?: string | null
+    patientCode?: string | null
     fullName: string
     mobileNumber: string
     email?: string | null
     password: string
     dateOfBirth?: Date | string | null
     age?: number | null
+    nationality?: string | null
     bloodGroup?: string | null
     gender?: string | null
     address?: string | null
@@ -57704,12 +57764,14 @@ export namespace Prisma {
     NOT?: PatientScalarWhereInput | PatientScalarWhereInput[]
     id?: StringFilter<"Patient"> | string
     referenceName?: StringNullableFilter<"Patient"> | string | null
+    patientCode?: StringNullableFilter<"Patient"> | string | null
     fullName?: StringFilter<"Patient"> | string
     mobileNumber?: StringFilter<"Patient"> | string
     email?: StringNullableFilter<"Patient"> | string | null
     password?: StringFilter<"Patient"> | string
     dateOfBirth?: DateTimeNullableFilter<"Patient"> | Date | string | null
     age?: IntNullableFilter<"Patient"> | number | null
+    nationality?: StringNullableFilter<"Patient"> | string | null
     bloodGroup?: StringNullableFilter<"Patient"> | string | null
     gender?: StringNullableFilter<"Patient"> | string | null
     address?: StringNullableFilter<"Patient"> | string | null
@@ -59265,12 +59327,14 @@ export namespace Prisma {
   export type PatientCreateManyOutletInput = {
     id?: string
     referenceName?: string | null
+    patientCode?: string | null
     fullName: string
     mobileNumber: string
     email?: string | null
     password: string
     dateOfBirth?: Date | string | null
     age?: number | null
+    nationality?: string | null
     bloodGroup?: string | null
     gender?: string | null
     address?: string | null
@@ -59373,12 +59437,14 @@ export namespace Prisma {
   export type PatientUpdateWithoutOutletInput = {
     id?: StringFieldUpdateOperationsInput | string
     referenceName?: NullableStringFieldUpdateOperationsInput | string | null
+    patientCode?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: StringFieldUpdateOperationsInput | string
     mobileNumber?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
@@ -59394,12 +59460,14 @@ export namespace Prisma {
   export type PatientUncheckedUpdateWithoutOutletInput = {
     id?: StringFieldUpdateOperationsInput | string
     referenceName?: NullableStringFieldUpdateOperationsInput | string | null
+    patientCode?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: StringFieldUpdateOperationsInput | string
     mobileNumber?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
@@ -59415,12 +59483,14 @@ export namespace Prisma {
   export type PatientUncheckedUpdateManyWithoutOutletInput = {
     id?: StringFieldUpdateOperationsInput | string
     referenceName?: NullableStringFieldUpdateOperationsInput | string | null
+    patientCode?: NullableStringFieldUpdateOperationsInput | string | null
     fullName?: StringFieldUpdateOperationsInput | string
     mobileNumber?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null

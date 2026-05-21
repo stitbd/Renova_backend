@@ -26,18 +26,28 @@ export const patientService = {
       env.bcrypt_salt_rounds
     );
 
+    const lastPatient = await patientRepository.findLastPatient();
+    let patientCode = "PAT_0001";
+    if (lastPatient && lastPatient.patientCode) {
+      const lastNumber = parseInt(lastPatient.patientCode.split("_")[1]);
+      patientCode = `PAT_${String(lastNumber + 1).padStart(4, "0")}`;
+    }
+
+    console.log("Generated patientCode:", patientCode);
     return patientRepository.create({
       referenceName: data.referenceName,
+      patientCode: patientCode,
       fullName: data.fullName,
       mobileNumber: data.mobileNumber,
       email: data.email,
-        password: hashedPassword,
+      password: hashedPassword,
 
       dateOfBirth: data.dateOfBirth
         ? new Date(data.dateOfBirth)
         : undefined,
 
       age: data.age,
+      nationality: data.nationality,
       bloodGroup: data.bloodGroup,
       gender: data.gender,
       address: data.address,
@@ -46,10 +56,10 @@ export const patientService = {
 
       outlet: data.outletId
         ? {
-            connect: {
-              id: data.outletId,
-            },
-          }
+          connect: {
+            id: data.outletId,
+          },
+        }
         : undefined,
     });
   },
@@ -110,10 +120,10 @@ export const patientService = {
 
       outlet: data.outletId
         ? {
-            connect: {
-              id: data.outletId,
-            },
-          }
+          connect: {
+            id: data.outletId,
+          },
+        }
         : undefined,
     });
   },

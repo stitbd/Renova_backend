@@ -24,6 +24,14 @@ export const patientRepository = {
     });
   },
 
+  findLastPatient() {
+    return mainPrisma.patient.findFirst({
+      orderBy: {
+        patientCode: "desc",
+      },
+    });
+  },
+
   findByEmailExceptId(email: string, id: string) {
     return mainPrisma.patient.findFirst({
       where: {
