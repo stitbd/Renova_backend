@@ -211,6 +211,7 @@ const initiatePackagePayment = async (orderId: string, authUser: AuthUser) => {
         },
     });
 
+
     return {
         paymentUrl: sslResponse.GatewayPageURL,
         transactionId: order.payment.transactionId,
