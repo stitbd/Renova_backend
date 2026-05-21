@@ -20,8 +20,26 @@ export type CreateDoctorInput = {
   consultationFee?: number;
   status?: DoctorStatus;
   onlineStatus?: DoctorOnlineStatus;
+  gender?: string;
+  dateOfBirth?: string;
+  nationality?: string;
+  bloodGroup?: string;
   outletId?: string;
   specializationId?: string;
+  specializationName?: string;
+  schedules?: {
+    dayName: string;
+    startTime: string;
+    endTime: string;
+    slotDuration: number;
+    status?: ScheduleStatus;
+  }[];
+  documentTypes?: DocumentType[];
+  documents?: {
+    fileUrl?: string;
+    documentType: DocumentType;
+    verificationStatus?: VerificationStatus;
+  }[];
 };
 
 export type UpdateDoctorInput = Partial<CreateDoctorInput>;

@@ -6695,6 +6695,10 @@ export namespace Prisma {
     consultationFee: Decimal | null
     status: $Enums.DoctorStatus | null
     onlineStatus: $Enums.DoctorOnlineStatus | null
+    gender: string | null
+    dateOfBirth: Date | null
+    nationality: string | null
+    bloodGroup: string | null
     outletId: string | null
     specializationId: string | null
     createdAt: Date | null
@@ -6716,6 +6720,10 @@ export namespace Prisma {
     consultationFee: Decimal | null
     status: $Enums.DoctorStatus | null
     onlineStatus: $Enums.DoctorOnlineStatus | null
+    gender: string | null
+    dateOfBirth: Date | null
+    nationality: string | null
+    bloodGroup: string | null
     outletId: string | null
     specializationId: string | null
     createdAt: Date | null
@@ -6737,6 +6745,10 @@ export namespace Prisma {
     consultationFee: number
     status: number
     onlineStatus: number
+    gender: number
+    dateOfBirth: number
+    nationality: number
+    bloodGroup: number
     outletId: number
     specializationId: number
     createdAt: number
@@ -6770,6 +6782,10 @@ export namespace Prisma {
     consultationFee?: true
     status?: true
     onlineStatus?: true
+    gender?: true
+    dateOfBirth?: true
+    nationality?: true
+    bloodGroup?: true
     outletId?: true
     specializationId?: true
     createdAt?: true
@@ -6791,6 +6807,10 @@ export namespace Prisma {
     consultationFee?: true
     status?: true
     onlineStatus?: true
+    gender?: true
+    dateOfBirth?: true
+    nationality?: true
+    bloodGroup?: true
     outletId?: true
     specializationId?: true
     createdAt?: true
@@ -6812,6 +6832,10 @@ export namespace Prisma {
     consultationFee?: true
     status?: true
     onlineStatus?: true
+    gender?: true
+    dateOfBirth?: true
+    nationality?: true
+    bloodGroup?: true
     outletId?: true
     specializationId?: true
     createdAt?: true
@@ -6920,6 +6944,10 @@ export namespace Prisma {
     consultationFee: Decimal | null
     status: $Enums.DoctorStatus
     onlineStatus: $Enums.DoctorOnlineStatus
+    gender: string | null
+    dateOfBirth: Date | null
+    nationality: string | null
+    bloodGroup: string | null
     outletId: string | null
     specializationId: string
     createdAt: Date
@@ -6960,6 +6988,10 @@ export namespace Prisma {
     consultationFee?: boolean
     status?: boolean
     onlineStatus?: boolean
+    gender?: boolean
+    dateOfBirth?: boolean
+    nationality?: boolean
+    bloodGroup?: boolean
     outletId?: boolean
     specializationId?: boolean
     createdAt?: boolean
@@ -6989,13 +7021,17 @@ export namespace Prisma {
     consultationFee?: boolean
     status?: boolean
     onlineStatus?: boolean
+    gender?: boolean
+    dateOfBirth?: boolean
+    nationality?: boolean
+    bloodGroup?: boolean
     outletId?: boolean
     specializationId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type DoctorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "doctorCode" | "fullName" | "mobile" | "email" | "password" | "bmdcNumber" | "subSpecialization" | "qualification" | "experienceYears" | "currentDesignation" | "consultationFee" | "status" | "onlineStatus" | "outletId" | "specializationId" | "createdAt" | "updatedAt", ExtArgs["result"]["doctor"]>
+  export type DoctorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "doctorCode" | "fullName" | "mobile" | "email" | "password" | "bmdcNumber" | "subSpecialization" | "qualification" | "experienceYears" | "currentDesignation" | "consultationFee" | "status" | "onlineStatus" | "gender" | "dateOfBirth" | "nationality" | "bloodGroup" | "outletId" | "specializationId" | "createdAt" | "updatedAt", ExtArgs["result"]["doctor"]>
   export type DoctorInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     outlet?: boolean | Doctor$outletArgs<ExtArgs>
     specialization?: boolean | DoctorSpecializationDefaultArgs<ExtArgs>
@@ -7029,6 +7065,10 @@ export namespace Prisma {
       consultationFee: Prisma.Decimal | null
       status: $Enums.DoctorStatus
       onlineStatus: $Enums.DoctorOnlineStatus
+      gender: string | null
+      dateOfBirth: Date | null
+      nationality: string | null
+      bloodGroup: string | null
       outletId: string | null
       specializationId: string
       createdAt: Date
@@ -7421,6 +7461,10 @@ export namespace Prisma {
     readonly consultationFee: FieldRef<"Doctor", 'Decimal'>
     readonly status: FieldRef<"Doctor", 'DoctorStatus'>
     readonly onlineStatus: FieldRef<"Doctor", 'DoctorOnlineStatus'>
+    readonly gender: FieldRef<"Doctor", 'String'>
+    readonly dateOfBirth: FieldRef<"Doctor", 'DateTime'>
+    readonly nationality: FieldRef<"Doctor", 'String'>
+    readonly bloodGroup: FieldRef<"Doctor", 'String'>
     readonly outletId: FieldRef<"Doctor", 'String'>
     readonly specializationId: FieldRef<"Doctor", 'String'>
     readonly createdAt: FieldRef<"Doctor", 'DateTime'>
@@ -43583,6 +43627,10 @@ export namespace Prisma {
     consultationFee: 'consultationFee',
     status: 'status',
     onlineStatus: 'onlineStatus',
+    gender: 'gender',
+    dateOfBirth: 'dateOfBirth',
+    nationality: 'nationality',
+    bloodGroup: 'bloodGroup',
     outletId: 'outletId',
     specializationId: 'specializationId',
     createdAt: 'createdAt',
@@ -44261,6 +44309,9 @@ export namespace Prisma {
     subSpecialization: 'subSpecialization',
     qualification: 'qualification',
     currentDesignation: 'currentDesignation',
+    gender: 'gender',
+    nationality: 'nationality',
+    bloodGroup: 'bloodGroup',
     outletId: 'outletId',
     specializationId: 'specializationId'
   };
@@ -45099,6 +45150,10 @@ export namespace Prisma {
     consultationFee?: DecimalNullableFilter<"Doctor"> | Decimal | DecimalJsLike | number | string | null
     status?: EnumDoctorStatusFilter<"Doctor"> | $Enums.DoctorStatus
     onlineStatus?: EnumDoctorOnlineStatusFilter<"Doctor"> | $Enums.DoctorOnlineStatus
+    gender?: StringNullableFilter<"Doctor"> | string | null
+    dateOfBirth?: DateTimeNullableFilter<"Doctor"> | Date | string | null
+    nationality?: StringNullableFilter<"Doctor"> | string | null
+    bloodGroup?: StringNullableFilter<"Doctor"> | string | null
     outletId?: StringNullableFilter<"Doctor"> | string | null
     specializationId?: StringFilter<"Doctor"> | string
     createdAt?: DateTimeFilter<"Doctor"> | Date | string
@@ -45125,6 +45180,10 @@ export namespace Prisma {
     consultationFee?: SortOrderInput | SortOrder
     status?: SortOrder
     onlineStatus?: SortOrder
+    gender?: SortOrderInput | SortOrder
+    dateOfBirth?: SortOrderInput | SortOrder
+    nationality?: SortOrderInput | SortOrder
+    bloodGroup?: SortOrderInput | SortOrder
     outletId?: SortOrderInput | SortOrder
     specializationId?: SortOrder
     createdAt?: SortOrder
@@ -45155,6 +45214,10 @@ export namespace Prisma {
     consultationFee?: DecimalNullableFilter<"Doctor"> | Decimal | DecimalJsLike | number | string | null
     status?: EnumDoctorStatusFilter<"Doctor"> | $Enums.DoctorStatus
     onlineStatus?: EnumDoctorOnlineStatusFilter<"Doctor"> | $Enums.DoctorOnlineStatus
+    gender?: StringNullableFilter<"Doctor"> | string | null
+    dateOfBirth?: DateTimeNullableFilter<"Doctor"> | Date | string | null
+    nationality?: StringNullableFilter<"Doctor"> | string | null
+    bloodGroup?: StringNullableFilter<"Doctor"> | string | null
     outletId?: StringNullableFilter<"Doctor"> | string | null
     specializationId?: StringFilter<"Doctor"> | string
     createdAt?: DateTimeFilter<"Doctor"> | Date | string
@@ -45181,6 +45244,10 @@ export namespace Prisma {
     consultationFee?: SortOrderInput | SortOrder
     status?: SortOrder
     onlineStatus?: SortOrder
+    gender?: SortOrderInput | SortOrder
+    dateOfBirth?: SortOrderInput | SortOrder
+    nationality?: SortOrderInput | SortOrder
+    bloodGroup?: SortOrderInput | SortOrder
     outletId?: SortOrderInput | SortOrder
     specializationId?: SortOrder
     createdAt?: SortOrder
@@ -45210,6 +45277,10 @@ export namespace Prisma {
     consultationFee?: DecimalNullableWithAggregatesFilter<"Doctor"> | Decimal | DecimalJsLike | number | string | null
     status?: EnumDoctorStatusWithAggregatesFilter<"Doctor"> | $Enums.DoctorStatus
     onlineStatus?: EnumDoctorOnlineStatusWithAggregatesFilter<"Doctor"> | $Enums.DoctorOnlineStatus
+    gender?: StringNullableWithAggregatesFilter<"Doctor"> | string | null
+    dateOfBirth?: DateTimeNullableWithAggregatesFilter<"Doctor"> | Date | string | null
+    nationality?: StringNullableWithAggregatesFilter<"Doctor"> | string | null
+    bloodGroup?: StringNullableWithAggregatesFilter<"Doctor"> | string | null
     outletId?: StringNullableWithAggregatesFilter<"Doctor"> | string | null
     specializationId?: StringWithAggregatesFilter<"Doctor"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Doctor"> | Date | string
@@ -48568,6 +48639,10 @@ export namespace Prisma {
     consultationFee?: Decimal | DecimalJsLike | number | string | null
     status?: $Enums.DoctorStatus
     onlineStatus?: $Enums.DoctorOnlineStatus
+    gender?: string | null
+    dateOfBirth?: Date | string | null
+    nationality?: string | null
+    bloodGroup?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     outlet?: outletCreateNestedOneWithoutDoctorsInput
@@ -48592,6 +48667,10 @@ export namespace Prisma {
     consultationFee?: Decimal | DecimalJsLike | number | string | null
     status?: $Enums.DoctorStatus
     onlineStatus?: $Enums.DoctorOnlineStatus
+    gender?: string | null
+    dateOfBirth?: Date | string | null
+    nationality?: string | null
+    bloodGroup?: string | null
     outletId?: string | null
     specializationId: string
     createdAt?: Date | string
@@ -48616,6 +48695,10 @@ export namespace Prisma {
     consultationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     status?: EnumDoctorStatusFieldUpdateOperationsInput | $Enums.DoctorStatus
     onlineStatus?: EnumDoctorOnlineStatusFieldUpdateOperationsInput | $Enums.DoctorOnlineStatus
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
+    bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     outlet?: outletUpdateOneWithoutDoctorsNestedInput
@@ -48640,6 +48723,10 @@ export namespace Prisma {
     consultationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     status?: EnumDoctorStatusFieldUpdateOperationsInput | $Enums.DoctorStatus
     onlineStatus?: EnumDoctorOnlineStatusFieldUpdateOperationsInput | $Enums.DoctorOnlineStatus
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
+    bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
     outletId?: NullableStringFieldUpdateOperationsInput | string | null
     specializationId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -48664,6 +48751,10 @@ export namespace Prisma {
     consultationFee?: Decimal | DecimalJsLike | number | string | null
     status?: $Enums.DoctorStatus
     onlineStatus?: $Enums.DoctorOnlineStatus
+    gender?: string | null
+    dateOfBirth?: Date | string | null
+    nationality?: string | null
+    bloodGroup?: string | null
     outletId?: string | null
     specializationId: string
     createdAt?: Date | string
@@ -48685,6 +48776,10 @@ export namespace Prisma {
     consultationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     status?: EnumDoctorStatusFieldUpdateOperationsInput | $Enums.DoctorStatus
     onlineStatus?: EnumDoctorOnlineStatusFieldUpdateOperationsInput | $Enums.DoctorOnlineStatus
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
+    bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -48704,6 +48799,10 @@ export namespace Prisma {
     consultationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     status?: EnumDoctorStatusFieldUpdateOperationsInput | $Enums.DoctorStatus
     onlineStatus?: EnumDoctorOnlineStatusFieldUpdateOperationsInput | $Enums.DoctorOnlineStatus
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
+    bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
     outletId?: NullableStringFieldUpdateOperationsInput | string | null
     specializationId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -52682,6 +52781,10 @@ export namespace Prisma {
     consultationFee?: SortOrder
     status?: SortOrder
     onlineStatus?: SortOrder
+    gender?: SortOrder
+    dateOfBirth?: SortOrder
+    nationality?: SortOrder
+    bloodGroup?: SortOrder
     outletId?: SortOrder
     specializationId?: SortOrder
     createdAt?: SortOrder
@@ -52708,6 +52811,10 @@ export namespace Prisma {
     consultationFee?: SortOrder
     status?: SortOrder
     onlineStatus?: SortOrder
+    gender?: SortOrder
+    dateOfBirth?: SortOrder
+    nationality?: SortOrder
+    bloodGroup?: SortOrder
     outletId?: SortOrder
     specializationId?: SortOrder
     createdAt?: SortOrder
@@ -52729,6 +52836,10 @@ export namespace Prisma {
     consultationFee?: SortOrder
     status?: SortOrder
     onlineStatus?: SortOrder
+    gender?: SortOrder
+    dateOfBirth?: SortOrder
+    nationality?: SortOrder
+    bloodGroup?: SortOrder
     outletId?: SortOrder
     specializationId?: SortOrder
     createdAt?: SortOrder
@@ -56867,6 +56978,10 @@ export namespace Prisma {
     consultationFee?: Decimal | DecimalJsLike | number | string | null
     status?: $Enums.DoctorStatus
     onlineStatus?: $Enums.DoctorOnlineStatus
+    gender?: string | null
+    dateOfBirth?: Date | string | null
+    nationality?: string | null
+    bloodGroup?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     outlet?: outletCreateNestedOneWithoutDoctorsInput
@@ -56890,6 +57005,10 @@ export namespace Prisma {
     consultationFee?: Decimal | DecimalJsLike | number | string | null
     status?: $Enums.DoctorStatus
     onlineStatus?: $Enums.DoctorOnlineStatus
+    gender?: string | null
+    dateOfBirth?: Date | string | null
+    nationality?: string | null
+    bloodGroup?: string | null
     outletId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -56942,6 +57061,10 @@ export namespace Prisma {
     consultationFee?: DecimalNullableFilter<"Doctor"> | Decimal | DecimalJsLike | number | string | null
     status?: EnumDoctorStatusFilter<"Doctor"> | $Enums.DoctorStatus
     onlineStatus?: EnumDoctorOnlineStatusFilter<"Doctor"> | $Enums.DoctorOnlineStatus
+    gender?: StringNullableFilter<"Doctor"> | string | null
+    dateOfBirth?: DateTimeNullableFilter<"Doctor"> | Date | string | null
+    nationality?: StringNullableFilter<"Doctor"> | string | null
+    bloodGroup?: StringNullableFilter<"Doctor"> | string | null
     outletId?: StringNullableFilter<"Doctor"> | string | null
     specializationId?: StringFilter<"Doctor"> | string
     createdAt?: DateTimeFilter<"Doctor"> | Date | string
@@ -56963,6 +57086,10 @@ export namespace Prisma {
     consultationFee?: Decimal | DecimalJsLike | number | string | null
     status?: $Enums.DoctorStatus
     onlineStatus?: $Enums.DoctorOnlineStatus
+    gender?: string | null
+    dateOfBirth?: Date | string | null
+    nationality?: string | null
+    bloodGroup?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     outlet?: outletCreateNestedOneWithoutDoctorsInput
@@ -56986,6 +57113,10 @@ export namespace Prisma {
     consultationFee?: Decimal | DecimalJsLike | number | string | null
     status?: $Enums.DoctorStatus
     onlineStatus?: $Enums.DoctorOnlineStatus
+    gender?: string | null
+    dateOfBirth?: Date | string | null
+    nationality?: string | null
+    bloodGroup?: string | null
     outletId?: string | null
     specializationId: string
     createdAt?: Date | string
@@ -57025,6 +57156,10 @@ export namespace Prisma {
     consultationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     status?: EnumDoctorStatusFieldUpdateOperationsInput | $Enums.DoctorStatus
     onlineStatus?: EnumDoctorOnlineStatusFieldUpdateOperationsInput | $Enums.DoctorOnlineStatus
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
+    bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     outlet?: outletUpdateOneWithoutDoctorsNestedInput
@@ -57048,6 +57183,10 @@ export namespace Prisma {
     consultationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     status?: EnumDoctorStatusFieldUpdateOperationsInput | $Enums.DoctorStatus
     onlineStatus?: EnumDoctorOnlineStatusFieldUpdateOperationsInput | $Enums.DoctorOnlineStatus
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
+    bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
     outletId?: NullableStringFieldUpdateOperationsInput | string | null
     specializationId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -57071,6 +57210,10 @@ export namespace Prisma {
     consultationFee?: Decimal | DecimalJsLike | number | string | null
     status?: $Enums.DoctorStatus
     onlineStatus?: $Enums.DoctorOnlineStatus
+    gender?: string | null
+    dateOfBirth?: Date | string | null
+    nationality?: string | null
+    bloodGroup?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     outlet?: outletCreateNestedOneWithoutDoctorsInput
@@ -57094,6 +57237,10 @@ export namespace Prisma {
     consultationFee?: Decimal | DecimalJsLike | number | string | null
     status?: $Enums.DoctorStatus
     onlineStatus?: $Enums.DoctorOnlineStatus
+    gender?: string | null
+    dateOfBirth?: Date | string | null
+    nationality?: string | null
+    bloodGroup?: string | null
     outletId?: string | null
     specializationId: string
     createdAt?: Date | string
@@ -57133,6 +57280,10 @@ export namespace Prisma {
     consultationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     status?: EnumDoctorStatusFieldUpdateOperationsInput | $Enums.DoctorStatus
     onlineStatus?: EnumDoctorOnlineStatusFieldUpdateOperationsInput | $Enums.DoctorOnlineStatus
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
+    bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     outlet?: outletUpdateOneWithoutDoctorsNestedInput
@@ -57156,6 +57307,10 @@ export namespace Prisma {
     consultationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     status?: EnumDoctorStatusFieldUpdateOperationsInput | $Enums.DoctorStatus
     onlineStatus?: EnumDoctorOnlineStatusFieldUpdateOperationsInput | $Enums.DoctorOnlineStatus
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
+    bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
     outletId?: NullableStringFieldUpdateOperationsInput | string | null
     specializationId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -57179,6 +57334,10 @@ export namespace Prisma {
     consultationFee?: Decimal | DecimalJsLike | number | string | null
     status?: $Enums.DoctorStatus
     onlineStatus?: $Enums.DoctorOnlineStatus
+    gender?: string | null
+    dateOfBirth?: Date | string | null
+    nationality?: string | null
+    bloodGroup?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     outlet?: outletCreateNestedOneWithoutDoctorsInput
@@ -57202,6 +57361,10 @@ export namespace Prisma {
     consultationFee?: Decimal | DecimalJsLike | number | string | null
     status?: $Enums.DoctorStatus
     onlineStatus?: $Enums.DoctorOnlineStatus
+    gender?: string | null
+    dateOfBirth?: Date | string | null
+    nationality?: string | null
+    bloodGroup?: string | null
     outletId?: string | null
     specializationId: string
     createdAt?: Date | string
@@ -57241,6 +57404,10 @@ export namespace Prisma {
     consultationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     status?: EnumDoctorStatusFieldUpdateOperationsInput | $Enums.DoctorStatus
     onlineStatus?: EnumDoctorOnlineStatusFieldUpdateOperationsInput | $Enums.DoctorOnlineStatus
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
+    bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     outlet?: outletUpdateOneWithoutDoctorsNestedInput
@@ -57264,6 +57431,10 @@ export namespace Prisma {
     consultationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     status?: EnumDoctorStatusFieldUpdateOperationsInput | $Enums.DoctorStatus
     onlineStatus?: EnumDoctorOnlineStatusFieldUpdateOperationsInput | $Enums.DoctorOnlineStatus
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
+    bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
     outletId?: NullableStringFieldUpdateOperationsInput | string | null
     specializationId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -57403,6 +57574,10 @@ export namespace Prisma {
     consultationFee?: Decimal | DecimalJsLike | number | string | null
     status?: $Enums.DoctorStatus
     onlineStatus?: $Enums.DoctorOnlineStatus
+    gender?: string | null
+    dateOfBirth?: Date | string | null
+    nationality?: string | null
+    bloodGroup?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     specialization: DoctorSpecializationCreateNestedOneWithoutDoctorsInput
@@ -57426,6 +57601,10 @@ export namespace Prisma {
     consultationFee?: Decimal | DecimalJsLike | number | string | null
     status?: $Enums.DoctorStatus
     onlineStatus?: $Enums.DoctorOnlineStatus
+    gender?: string | null
+    dateOfBirth?: Date | string | null
+    nationality?: string | null
+    bloodGroup?: string | null
     specializationId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -58977,6 +59156,10 @@ export namespace Prisma {
     consultationFee?: Decimal | DecimalJsLike | number | string | null
     status?: $Enums.DoctorStatus
     onlineStatus?: $Enums.DoctorOnlineStatus
+    gender?: string | null
+    dateOfBirth?: Date | string | null
+    nationality?: string | null
+    bloodGroup?: string | null
     outletId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -58997,6 +59180,10 @@ export namespace Prisma {
     consultationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     status?: EnumDoctorStatusFieldUpdateOperationsInput | $Enums.DoctorStatus
     onlineStatus?: EnumDoctorOnlineStatusFieldUpdateOperationsInput | $Enums.DoctorOnlineStatus
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
+    bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     outlet?: outletUpdateOneWithoutDoctorsNestedInput
@@ -59020,6 +59207,10 @@ export namespace Prisma {
     consultationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     status?: EnumDoctorStatusFieldUpdateOperationsInput | $Enums.DoctorStatus
     onlineStatus?: EnumDoctorOnlineStatusFieldUpdateOperationsInput | $Enums.DoctorOnlineStatus
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
+    bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
     outletId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -59043,6 +59234,10 @@ export namespace Prisma {
     consultationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     status?: EnumDoctorStatusFieldUpdateOperationsInput | $Enums.DoctorStatus
     onlineStatus?: EnumDoctorOnlineStatusFieldUpdateOperationsInput | $Enums.DoctorOnlineStatus
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
+    bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
     outletId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -59103,6 +59298,10 @@ export namespace Prisma {
     consultationFee?: Decimal | DecimalJsLike | number | string | null
     status?: $Enums.DoctorStatus
     onlineStatus?: $Enums.DoctorOnlineStatus
+    gender?: string | null
+    dateOfBirth?: Date | string | null
+    nationality?: string | null
+    bloodGroup?: string | null
     specializationId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -59249,6 +59448,10 @@ export namespace Prisma {
     consultationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     status?: EnumDoctorStatusFieldUpdateOperationsInput | $Enums.DoctorStatus
     onlineStatus?: EnumDoctorOnlineStatusFieldUpdateOperationsInput | $Enums.DoctorOnlineStatus
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
+    bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     specialization?: DoctorSpecializationUpdateOneRequiredWithoutDoctorsNestedInput
@@ -59272,6 +59475,10 @@ export namespace Prisma {
     consultationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     status?: EnumDoctorStatusFieldUpdateOperationsInput | $Enums.DoctorStatus
     onlineStatus?: EnumDoctorOnlineStatusFieldUpdateOperationsInput | $Enums.DoctorOnlineStatus
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
+    bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
     specializationId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -59295,6 +59502,10 @@ export namespace Prisma {
     consultationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     status?: EnumDoctorStatusFieldUpdateOperationsInput | $Enums.DoctorStatus
     onlineStatus?: EnumDoctorOnlineStatusFieldUpdateOperationsInput | $Enums.DoctorOnlineStatus
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
+    bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
     specializationId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string

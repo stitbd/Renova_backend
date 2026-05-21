@@ -169,6 +169,10 @@ exports.Prisma.DoctorScalarFieldEnum = {
   consultationFee: 'consultationFee',
   status: 'status',
   onlineStatus: 'onlineStatus',
+  gender: 'gender',
+  dateOfBirth: 'dateOfBirth',
+  nationality: 'nationality',
+  bloodGroup: 'bloodGroup',
   outletId: 'outletId',
   specializationId: 'specializationId',
   createdAt: 'createdAt',
@@ -724,6 +728,9 @@ exports.Prisma.DoctorOrderByRelevanceFieldEnum = {
   subSpecialization: 'subSpecialization',
   qualification: 'qualification',
   currentDesignation: 'currentDesignation',
+  gender: 'gender',
+  nationality: 'nationality',
+  bloodGroup: 'bloodGroup',
   outletId: 'outletId',
   specializationId: 'specializationId'
 };

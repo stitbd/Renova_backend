@@ -14,7 +14,9 @@ import bcrypt from "bcryptjs";
 
 export const doctorService = {
   async create(data: CreateDoctorInput) {
+    console.log('data', data);
     const emailExists = await doctorRepository.findByEmail(data.email);
+    console.log("emailExists", emailExists);
 
     if (emailExists) {
       throw new Error("Doctor already exists with this email");
@@ -34,8 +36,8 @@ export const doctorService = {
       }
     }
 
-    if (!data.specializationId) {
-      throw new Error("Specialization ID is required");
+    if (!data.specializationId && !data.specializationName) {
+      throw new Error("Either Specialization ID or Specialization Name is required");
     }
 
     const lastDoctor = await doctorRepository.findLastDoctor();
@@ -64,6 +66,12 @@ export const doctorService = {
       consultationFee: data.consultationFee,
       status: data.status,
       onlineStatus: data.onlineStatus,
+      gender: data.gender,
+      dateOfBirth: data.dateOfBirth
+        ? new Date(data.dateOfBirth)
+        : undefined,
+      nationality: data.nationality,
+      bloodGroup: data.bloodGroup,
 
       outlet: data.outletId
         ? {
@@ -73,11 +81,40 @@ export const doctorService = {
         }
         : undefined,
 
-      specialization: {
-        connect: {
-          id: data.specializationId,
+      specialization: data.specializationId
+        ? {
+          connect: {
+            id: data.specializationId,
+          },
+        }
+        : {
+          connectOrCreate: {
+            where: { name: data.specializationName! },
+            create: { name: data.specializationName! },
+          },
         },
-      },
+
+
+      schedules: data.schedules
+        ? {
+          create: data.schedules.map((schedule) => ({
+            dayName: schedule.dayName,
+            startTime: schedule.startTime,
+            endTime: schedule.endTime,
+            slotDuration: schedule.slotDuration,
+            status: schedule.status,
+          })),
+        }
+        : undefined,
+      documents: data.documents && data.documents.length > 0
+        ? {
+            create: data.documents.map((doc) => ({
+              fileUrl: doc.fileUrl!,
+              documentType: doc.documentType,
+              verificationStatus: doc.verificationStatus,
+            })),
+          }
+        : undefined,
     });
   }
   ,
@@ -136,6 +173,12 @@ export const doctorService = {
       consultationFee: data.consultationFee,
       status: data.status,
       onlineStatus: data.onlineStatus,
+      gender: data.gender,
+      dateOfBirth: data.dateOfBirth
+        ? new Date(data.dateOfBirth)
+        : undefined,
+      nationality: data.nationality,
+      bloodGroup: data.bloodGroup,
 
       outlet: data.outletId
         ? {
@@ -151,7 +194,14 @@ export const doctorService = {
             id: data.specializationId,
           },
         }
-        : undefined,
+        : data.specializationName
+          ? {
+            connectOrCreate: {
+              where: { name: data.specializationName },
+              create: { name: data.specializationName },
+            },
+          }
+          : undefined,
 
     });
   },

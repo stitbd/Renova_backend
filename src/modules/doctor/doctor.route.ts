@@ -9,10 +9,18 @@ import {
 } from "./doctor.validation";
 import { validateRequest } from "../../utils/validateRequest";
 import auth from "../../middlewares/auth";
+import { createUploader } from "../../utils/cloudinary";
+import { parseBodyData } from "../../middlewares/parseBodyData";
 
 const router = express.Router();
 
-router.post("/create", validateRequest(createDoctorSchema), doctorController.create);
+router.post(
+  "/create",
+  createUploader("doctor_documents").array("documents"),
+  parseBodyData,
+  validateRequest(createDoctorSchema),
+  doctorController.create
+);
 
 router.get("/getAll", doctorController.getAll);
 router.get("/getSingle/:id", doctorController.getById);

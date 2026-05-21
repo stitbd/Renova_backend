@@ -4,6 +4,17 @@ import manageResponse from "../../utils/manage_response";
 
 export const doctorController = {
   async create(req: Request, res: Response) {
+    const files = req.files as Express.Multer.File[];
+    const documentsData = req.body.documents || [];
+
+    if (files && files.length > 0) {
+      req.body.documents = files.map((file, index) => ({
+        fileUrl: file.path,
+        documentType: documentsData[index]?.documentType || "OTHER",
+        verificationStatus: documentsData[index]?.verificationStatus || "PENDING",
+      }));
+    }
+
     const result = await doctorService.create(req.body);
 
     manageResponse(res, {
