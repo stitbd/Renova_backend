@@ -15,8 +15,15 @@ const createAppointment = catchAsync(async (req: Request, res: Response) => {
     });
 });
 
+import { AppointmentStatus } from "../../generated/appointment-client";
+
 const getMyAppointments = catchAsync(async (req: Request, res: Response) => {
-    const result = await appointmentService.getMyAppointments(req.user as AuthUser);
+    const status = req.query.status as AppointmentStatus | undefined;
+
+    const result = await appointmentService.getMyAppointments(
+        req.user as AuthUser,
+        status
+    );
 
     manageResponse(res, {
         statusCode: 200,
@@ -88,17 +95,17 @@ const markNoShow = catchAsync(async (req: Request, res: Response) => {
 
 
 const getDoctorSlots = catchAsync(async (req: Request, res: Response) => {
-  const result = await appointmentService.getDoctorSlots({
-    doctorId: req.params.doctorId as string,
-    date: req.query.date as string,
-  });
+    const result = await appointmentService.getDoctorSlots({
+        doctorId: req.params.doctorId as string,
+        date: req.query.date as string,
+    });
 
-  manageResponse(res, {
-    statusCode: 200,
-    success: true,
-    message: "Doctor slots retrieved successfully",
-    data: result,
-  });
+    manageResponse(res, {
+        statusCode: 200,
+        success: true,
+        message: "Doctor slots retrieved successfully",
+        data: result,
+    });
 });
 
 export const appointmentController = {

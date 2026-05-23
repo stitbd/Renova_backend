@@ -1,5 +1,6 @@
 import { Prisma } from "../../generated/appointment-client";
 import { appointmentPrisma, mainPrisma } from "../../databases/prisma";
+import { AppointmentStatus } from "../../generated/appointment-client";
 
 import {
     buildDhakaDateTime,
@@ -200,7 +201,12 @@ const createAppointment = async (
     }
 };
 
-const getMyAppointments = async (authUser: AuthUser) => {
+
+
+const getMyAppointments = async (
+    authUser: AuthUser,
+    status?: AppointmentStatus
+) => {
     const where =
         authUser.userType === "PATIENT"
             ? { patientId: authUser.id }
@@ -210,8 +216,11 @@ const getMyAppointments = async (authUser: AuthUser) => {
                     ? { outletId: authUser.outletId }
                     : {};
 
-    return appointmentPrisma.appointment.findMany({
-        where,
+    const appointments = await appointmentPrisma.appointment.findMany({
+        where: {
+            ...where,
+            ...(status ? { status } : {}),
+        },
         orderBy: {
             startTime: "desc",
         },
@@ -220,7 +229,89 @@ const getMyAppointments = async (authUser: AuthUser) => {
             statusLogs: true,
         },
     });
+
+    const doctorIds = [...new Set(appointments.map((item) => item.doctorId))];
+    const patientIds = [...new Set(appointments.map((item) => item.patientId))];
+
+    const [doctors, patients] = await Promise.all([
+        mainPrisma.doctor.findMany({
+            where: {
+                id: {
+                    in: doctorIds,
+                },
+            },
+            select: {
+                id: true,
+                fullName: true,
+                email: true,
+                mobile: true,
+                consultationFee: true,
+                outletId: true,
+                specialization: {
+                    select: {
+                        id: true,
+                        name: true,
+                    },
+                },
+                documents: {
+                    where: {
+                        documentType: "OTHER",
+                    },
+                    select: {
+                        id: true,
+                        fileUrl: true,
+                        documentType: true,
+                    },
+                    take: 1,
+                },
+            },
+        }),
+
+        mainPrisma.patient.findMany({
+            where: {
+                id: {
+                    in: patientIds,
+                },
+            },
+            select: {
+                id: true,
+                fullName: true,
+                mobileNumber: true,
+                email: true,
+                gender: true,
+                age: true,
+            },
+        }),
+    ]);
+
+    const doctorMap = new Map(doctors.map((doctor) => [doctor.id, doctor]));
+    const patientMap = new Map(patients.map((patient) => [patient.id, patient]));
+
+    return appointments.map((appointment) => {
+        const doctor = doctorMap.get(appointment.doctorId) || null;
+        const patient = patientMap.get(appointment.patientId) || null;
+
+        return {
+            ...appointment,
+            doctor: doctor
+                ? {
+                    id: doctor.id,
+                    fullName: doctor.fullName,
+                    email: doctor.email,
+                    mobile: doctor.mobile,
+                    consultationFee: doctor.consultationFee,
+                    outletId: doctor.outletId,
+                    specialization: doctor.specialization,
+                    profileImage: doctor.documents?.[0]?.fileUrl || null,
+                }
+                : null,
+            patient,
+        };
+    });
 };
+
+
+
 
 const cancelAppointment = async (
     appointmentId: string,

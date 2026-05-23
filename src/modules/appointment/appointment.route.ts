@@ -23,6 +23,8 @@ router.get(
   appointmentController.getMyAppointments
 );
 
+
+
 router.patch(
   "/cancel/:id",
   auth("PATIENT", "DOCTOR", "OUTLET_USER", "SUPER_ADMIN"),
