@@ -3,6 +3,8 @@ import { appointmentService } from "./appointment.service";
 import catchAsync from "../../utils/catch_async";
 import manageResponse from "../../utils/manage_response";
 import { AuthUser } from "../../middlewares/auth";
+import { AppointmentStatus } from "../../generated/appointment-client";
+
 
 const createAppointment = catchAsync(async (req: Request, res: Response) => {
     const result = await appointmentService.createAppointment(req.body, req.user as AuthUser);
@@ -14,8 +16,6 @@ const createAppointment = catchAsync(async (req: Request, res: Response) => {
         data: result,
     });
 });
-
-import { AppointmentStatus } from "../../generated/appointment-client";
 
 const getMyAppointments = catchAsync(async (req: Request, res: Response) => {
     const status = req.query.status as AppointmentStatus | undefined;

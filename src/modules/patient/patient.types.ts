@@ -1,6 +1,6 @@
 export type CreatePatientInput = {
   referenceName?: string;
-  patientCode: string;
+  patientCode?: string;
   fullName: string;
   mobileNumber: string;
   email?: string;
