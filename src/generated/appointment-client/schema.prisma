@@ -154,6 +154,95 @@ model AppointmentPayment {
   @@index([validationId])
 }
 
+//=========================videoCall ===============================
+
+enum VideoCallStatus {
+  RINGING
+  ACCEPTED
+  REJECTED
+  ENDED
+  MISSED
+}
+
+model VideoCall {
+  id String @id @default(uuid())
+
+  callId      String @unique
+  channelName String @unique
+
+  appointmentId String?
+
+  callerId   String
+  receiverId String
+
+  callerUid   Int
+  receiverUid Int?
+
+  status VideoCallStatus @default(RINGING)
+
+  startedAt DateTime?
+  endedAt   DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([callerId])
+  @@index([receiverId])
+  @@index([appointmentId])
+  @@index([status])
+}
+
+enum ChatMessageType {
+  TEXT
+  IMAGE
+  FILE
+  SYSTEM
+}
+
+model ChatConversation {
+  id String @id @default(uuid())
+
+  appointmentId String?
+
+  participantOneId String
+  participantTwoId String
+
+  messages ChatMessage[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([participantOneId, participantTwoId, appointmentId])
+  @@index([appointmentId])
+  @@index([participantOneId])
+  @@index([participantTwoId])
+}
+
+model ChatMessage {
+  id String @id @default(uuid())
+
+  conversationId String
+  conversation   ChatConversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  senderId   String
+  receiverId String
+
+  type ChatMessageType @default(TEXT)
+
+  message  String? @db.Text
+  fileUrl  String?
+  fileName String?
+
+  seenAt DateTime?
+
+  createdAt DateTime @default(now())
+
+  @@index([conversationId])
+  @@index([senderId])
+  @@index([receiverId])
+  @@index([seenAt])
+}
+
 // ==================purchase packages -====================== 
 
 enum PackageOrderStatus {

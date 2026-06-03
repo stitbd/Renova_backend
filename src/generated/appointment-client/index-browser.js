@@ -183,6 +183,44 @@ exports.Prisma.AppointmentPaymentScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.VideoCallScalarFieldEnum = {
+  id: 'id',
+  callId: 'callId',
+  channelName: 'channelName',
+  appointmentId: 'appointmentId',
+  callerId: 'callerId',
+  receiverId: 'receiverId',
+  callerUid: 'callerUid',
+  receiverUid: 'receiverUid',
+  status: 'status',
+  startedAt: 'startedAt',
+  endedAt: 'endedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ChatConversationScalarFieldEnum = {
+  id: 'id',
+  appointmentId: 'appointmentId',
+  participantOneId: 'participantOneId',
+  participantTwoId: 'participantTwoId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ChatMessageScalarFieldEnum = {
+  id: 'id',
+  conversationId: 'conversationId',
+  senderId: 'senderId',
+  receiverId: 'receiverId',
+  type: 'type',
+  message: 'message',
+  fileUrl: 'fileUrl',
+  fileName: 'fileName',
+  seenAt: 'seenAt',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.PackageOrderScalarFieldEnum = {
   id: 'id',
   orderCode: 'orderCode',
@@ -292,6 +330,32 @@ exports.Prisma.AppointmentPaymentOrderByRelevanceFieldEnum = {
   cardType: 'cardType'
 };
 
+exports.Prisma.VideoCallOrderByRelevanceFieldEnum = {
+  id: 'id',
+  callId: 'callId',
+  channelName: 'channelName',
+  appointmentId: 'appointmentId',
+  callerId: 'callerId',
+  receiverId: 'receiverId'
+};
+
+exports.Prisma.ChatConversationOrderByRelevanceFieldEnum = {
+  id: 'id',
+  appointmentId: 'appointmentId',
+  participantOneId: 'participantOneId',
+  participantTwoId: 'participantTwoId'
+};
+
+exports.Prisma.ChatMessageOrderByRelevanceFieldEnum = {
+  id: 'id',
+  conversationId: 'conversationId',
+  senderId: 'senderId',
+  receiverId: 'receiverId',
+  message: 'message',
+  fileUrl: 'fileUrl',
+  fileName: 'fileName'
+};
+
 exports.Prisma.PackageOrderOrderByRelevanceFieldEnum = {
   id: 'id',
   orderCode: 'orderCode',
@@ -354,6 +418,21 @@ exports.PaymentGateway = exports.$Enums.PaymentGateway = {
   MANUAL: 'MANUAL'
 };
 
+exports.VideoCallStatus = exports.$Enums.VideoCallStatus = {
+  RINGING: 'RINGING',
+  ACCEPTED: 'ACCEPTED',
+  REJECTED: 'REJECTED',
+  ENDED: 'ENDED',
+  MISSED: 'MISSED'
+};
+
+exports.ChatMessageType = exports.$Enums.ChatMessageType = {
+  TEXT: 'TEXT',
+  IMAGE: 'IMAGE',
+  FILE: 'FILE',
+  SYSTEM: 'SYSTEM'
+};
+
 exports.PackageOrderStatus = exports.$Enums.PackageOrderStatus = {
   PENDING: 'PENDING',
   CONFIRMED: 'CONFIRMED',
@@ -379,6 +458,9 @@ exports.Prisma.ModelName = {
   AppointmentSlotLock: 'AppointmentSlotLock',
   AppointmentStatusLog: 'AppointmentStatusLog',
   AppointmentPayment: 'AppointmentPayment',
+  VideoCall: 'VideoCall',
+  ChatConversation: 'ChatConversation',
+  ChatMessage: 'ChatMessage',
   PackageOrder: 'PackageOrder',
   PackageOrderItem: 'PackageOrderItem',
   PackagePayment: 'PackagePayment'

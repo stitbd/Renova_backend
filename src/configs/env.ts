@@ -36,6 +36,9 @@ export const env = {
   sslcommerzStorePassword: process.env.SSLCOMMERZ_STORE_PASSWORD,
   sslcommerzIsLive: process.env.SSLCOMMERZ_IS_LIVE,
   backendUrl: process.env.BACKEND_URL,
-  frontendUrl: process.env.FRONTEND_URL
+  frontendUrl: process.env.FRONTEND_URL,
+  agoraAppId: process.env.AGORA_APP_ID,
+  agoraAppCertificate: process.env.AGORA_APP_CERTIFICATE,
+
 
 };
