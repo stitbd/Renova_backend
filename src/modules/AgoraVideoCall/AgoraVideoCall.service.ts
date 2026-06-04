@@ -168,6 +168,9 @@ const rejectCall = async (callId: string, authUser: AuthUser) => {
     return null;
 };
 
+
+
+
 const endCall = async (callId: string, authUser: AuthUser) => {
     const call = await appointmentPrisma.videoCall.findUnique({
         where: { callId },

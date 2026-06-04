@@ -33,7 +33,7 @@ import { outletRoleRoutes } from "./modules/outlet_role/outlet_role.route";
 import { superAdminPermissionRoutes } from "./modules/super_admin_permission/super_admin_permission.route";
 import { appointmentRoutes } from "./modules/appointment/appointment.route";
 import { doctorUnavailableDateRoutes } from "./modules/doctorUnavailableDate/doctorUnavailableDate.route";
-import { TestRoutes } from "./modules/test/test.route";
+import { TestRoutes } from "./modules/medicalTest/test.route";
 import { PackageRoutes } from "./modules/packages/package.route";
 import { paymentRoutes } from "./modules/payment/payment.route";
 import { packageOrderRoutes } from "./modules/packageOrder/packageOrder.route";
