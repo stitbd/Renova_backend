@@ -38,6 +38,7 @@ const getUserBasicInfo = async (userId: string) => {
     if (superAdmin) return { id: superAdmin.id, name: superAdmin.name };
 
     return null;
+    
 };
 
 const startCall = async (payload: StartCallPayload, authUser: AuthUser) => {

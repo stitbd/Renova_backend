@@ -19,7 +19,7 @@
 
   "include": [
     "src"
-, "test-socket.ts"  ],
+,  ],
 
   "exclude": [
     "node_modules",
