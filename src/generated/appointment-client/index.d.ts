@@ -116,6 +116,14 @@ export const PaymentGateway: {
 export type PaymentGateway = (typeof PaymentGateway)[keyof typeof PaymentGateway]
 
 
+export const CallType: {
+  AUDIO: 'AUDIO',
+  VIDEO: 'VIDEO'
+};
+
+export type CallType = (typeof CallType)[keyof typeof CallType]
+
+
 export const VideoCallStatus: {
   RINGING: 'RINGING',
   ACCEPTED: 'ACCEPTED',
@@ -186,6 +194,10 @@ export const CancelledBy: typeof $Enums.CancelledBy
 export type PaymentGateway = $Enums.PaymentGateway
 
 export const PaymentGateway: typeof $Enums.PaymentGateway
+
+export type CallType = $Enums.CallType
+
+export const CallType: typeof $Enums.CallType
 
 export type VideoCallStatus = $Enums.VideoCallStatus
 
@@ -6048,6 +6060,7 @@ export namespace Prisma {
     receiverId: string | null
     callerUid: number | null
     receiverUid: number | null
+    callType: $Enums.CallType | null
     status: $Enums.VideoCallStatus | null
     startedAt: Date | null
     endedAt: Date | null
@@ -6064,6 +6077,7 @@ export namespace Prisma {
     receiverId: string | null
     callerUid: number | null
     receiverUid: number | null
+    callType: $Enums.CallType | null
     status: $Enums.VideoCallStatus | null
     startedAt: Date | null
     endedAt: Date | null
@@ -6080,6 +6094,7 @@ export namespace Prisma {
     receiverId: number
     callerUid: number
     receiverUid: number
+    callType: number
     status: number
     startedAt: number
     endedAt: number
@@ -6108,6 +6123,7 @@ export namespace Prisma {
     receiverId?: true
     callerUid?: true
     receiverUid?: true
+    callType?: true
     status?: true
     startedAt?: true
     endedAt?: true
@@ -6124,6 +6140,7 @@ export namespace Prisma {
     receiverId?: true
     callerUid?: true
     receiverUid?: true
+    callType?: true
     status?: true
     startedAt?: true
     endedAt?: true
@@ -6140,6 +6157,7 @@ export namespace Prisma {
     receiverId?: true
     callerUid?: true
     receiverUid?: true
+    callType?: true
     status?: true
     startedAt?: true
     endedAt?: true
@@ -6243,6 +6261,7 @@ export namespace Prisma {
     receiverId: string
     callerUid: number
     receiverUid: number | null
+    callType: $Enums.CallType
     status: $Enums.VideoCallStatus
     startedAt: Date | null
     endedAt: Date | null
@@ -6278,6 +6297,7 @@ export namespace Prisma {
     receiverId?: boolean
     callerUid?: boolean
     receiverUid?: boolean
+    callType?: boolean
     status?: boolean
     startedAt?: boolean
     endedAt?: boolean
@@ -6296,6 +6316,7 @@ export namespace Prisma {
     receiverId?: boolean
     callerUid?: boolean
     receiverUid?: boolean
+    callType?: boolean
     status?: boolean
     startedAt?: boolean
     endedAt?: boolean
@@ -6303,7 +6324,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type VideoCallOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "callId" | "channelName" | "appointmentId" | "callerId" | "receiverId" | "callerUid" | "receiverUid" | "status" | "startedAt" | "endedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["videoCall"]>
+  export type VideoCallOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "callId" | "channelName" | "appointmentId" | "callerId" | "receiverId" | "callerUid" | "receiverUid" | "callType" | "status" | "startedAt" | "endedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["videoCall"]>
 
   export type $VideoCallPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "VideoCall"
@@ -6317,6 +6338,7 @@ export namespace Prisma {
       receiverId: string
       callerUid: number
       receiverUid: number | null
+      callType: $Enums.CallType
       status: $Enums.VideoCallStatus
       startedAt: Date | null
       endedAt: Date | null
@@ -6699,6 +6721,7 @@ export namespace Prisma {
     readonly receiverId: FieldRef<"VideoCall", 'String'>
     readonly callerUid: FieldRef<"VideoCall", 'Int'>
     readonly receiverUid: FieldRef<"VideoCall", 'Int'>
+    readonly callType: FieldRef<"VideoCall", 'CallType'>
     readonly status: FieldRef<"VideoCall", 'VideoCallStatus'>
     readonly startedAt: FieldRef<"VideoCall", 'DateTime'>
     readonly endedAt: FieldRef<"VideoCall", 'DateTime'>
@@ -12252,6 +12275,7 @@ export namespace Prisma {
     receiverId: 'receiverId',
     callerUid: 'callerUid',
     receiverUid: 'receiverUid',
+    callType: 'callType',
     status: 'status',
     startedAt: 'startedAt',
     endedAt: 'endedAt',
@@ -12588,6 +12612,13 @@ export namespace Prisma {
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
+   * Reference to a field of type 'CallType'
+   */
+  export type EnumCallTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CallType'>
     
 
 
@@ -13033,6 +13064,7 @@ export namespace Prisma {
     receiverId?: StringFilter<"VideoCall"> | string
     callerUid?: IntFilter<"VideoCall"> | number
     receiverUid?: IntNullableFilter<"VideoCall"> | number | null
+    callType?: EnumCallTypeFilter<"VideoCall"> | $Enums.CallType
     status?: EnumVideoCallStatusFilter<"VideoCall"> | $Enums.VideoCallStatus
     startedAt?: DateTimeNullableFilter<"VideoCall"> | Date | string | null
     endedAt?: DateTimeNullableFilter<"VideoCall"> | Date | string | null
@@ -13049,6 +13081,7 @@ export namespace Prisma {
     receiverId?: SortOrder
     callerUid?: SortOrder
     receiverUid?: SortOrderInput | SortOrder
+    callType?: SortOrder
     status?: SortOrder
     startedAt?: SortOrderInput | SortOrder
     endedAt?: SortOrderInput | SortOrder
@@ -13069,6 +13102,7 @@ export namespace Prisma {
     receiverId?: StringFilter<"VideoCall"> | string
     callerUid?: IntFilter<"VideoCall"> | number
     receiverUid?: IntNullableFilter<"VideoCall"> | number | null
+    callType?: EnumCallTypeFilter<"VideoCall"> | $Enums.CallType
     status?: EnumVideoCallStatusFilter<"VideoCall"> | $Enums.VideoCallStatus
     startedAt?: DateTimeNullableFilter<"VideoCall"> | Date | string | null
     endedAt?: DateTimeNullableFilter<"VideoCall"> | Date | string | null
@@ -13085,6 +13119,7 @@ export namespace Prisma {
     receiverId?: SortOrder
     callerUid?: SortOrder
     receiverUid?: SortOrderInput | SortOrder
+    callType?: SortOrder
     status?: SortOrder
     startedAt?: SortOrderInput | SortOrder
     endedAt?: SortOrderInput | SortOrder
@@ -13109,6 +13144,7 @@ export namespace Prisma {
     receiverId?: StringWithAggregatesFilter<"VideoCall"> | string
     callerUid?: IntWithAggregatesFilter<"VideoCall"> | number
     receiverUid?: IntNullableWithAggregatesFilter<"VideoCall"> | number | null
+    callType?: EnumCallTypeWithAggregatesFilter<"VideoCall"> | $Enums.CallType
     status?: EnumVideoCallStatusWithAggregatesFilter<"VideoCall"> | $Enums.VideoCallStatus
     startedAt?: DateTimeNullableWithAggregatesFilter<"VideoCall"> | Date | string | null
     endedAt?: DateTimeNullableWithAggregatesFilter<"VideoCall"> | Date | string | null
@@ -13998,6 +14034,7 @@ export namespace Prisma {
     receiverId: string
     callerUid: number
     receiverUid?: number | null
+    callType?: $Enums.CallType
     status?: $Enums.VideoCallStatus
     startedAt?: Date | string | null
     endedAt?: Date | string | null
@@ -14014,6 +14051,7 @@ export namespace Prisma {
     receiverId: string
     callerUid: number
     receiverUid?: number | null
+    callType?: $Enums.CallType
     status?: $Enums.VideoCallStatus
     startedAt?: Date | string | null
     endedAt?: Date | string | null
@@ -14030,6 +14068,7 @@ export namespace Prisma {
     receiverId?: StringFieldUpdateOperationsInput | string
     callerUid?: IntFieldUpdateOperationsInput | number
     receiverUid?: NullableIntFieldUpdateOperationsInput | number | null
+    callType?: EnumCallTypeFieldUpdateOperationsInput | $Enums.CallType
     status?: EnumVideoCallStatusFieldUpdateOperationsInput | $Enums.VideoCallStatus
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14046,6 +14085,7 @@ export namespace Prisma {
     receiverId?: StringFieldUpdateOperationsInput | string
     callerUid?: IntFieldUpdateOperationsInput | number
     receiverUid?: NullableIntFieldUpdateOperationsInput | number | null
+    callType?: EnumCallTypeFieldUpdateOperationsInput | $Enums.CallType
     status?: EnumVideoCallStatusFieldUpdateOperationsInput | $Enums.VideoCallStatus
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14062,6 +14102,7 @@ export namespace Prisma {
     receiverId: string
     callerUid: number
     receiverUid?: number | null
+    callType?: $Enums.CallType
     status?: $Enums.VideoCallStatus
     startedAt?: Date | string | null
     endedAt?: Date | string | null
@@ -14078,6 +14119,7 @@ export namespace Prisma {
     receiverId?: StringFieldUpdateOperationsInput | string
     callerUid?: IntFieldUpdateOperationsInput | number
     receiverUid?: NullableIntFieldUpdateOperationsInput | number | null
+    callType?: EnumCallTypeFieldUpdateOperationsInput | $Enums.CallType
     status?: EnumVideoCallStatusFieldUpdateOperationsInput | $Enums.VideoCallStatus
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14094,6 +14136,7 @@ export namespace Prisma {
     receiverId?: StringFieldUpdateOperationsInput | string
     callerUid?: IntFieldUpdateOperationsInput | number
     receiverUid?: NullableIntFieldUpdateOperationsInput | number | null
+    callType?: EnumCallTypeFieldUpdateOperationsInput | $Enums.CallType
     status?: EnumVideoCallStatusFieldUpdateOperationsInput | $Enums.VideoCallStatus
     startedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -15188,6 +15231,13 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type EnumCallTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.CallType | EnumCallTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.CallType[]
+    notIn?: $Enums.CallType[]
+    not?: NestedEnumCallTypeFilter<$PrismaModel> | $Enums.CallType
+  }
+
   export type EnumVideoCallStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.VideoCallStatus | EnumVideoCallStatusFieldRefInput<$PrismaModel>
     in?: $Enums.VideoCallStatus[]
@@ -15210,6 +15260,7 @@ export namespace Prisma {
     receiverId?: SortOrder
     callerUid?: SortOrder
     receiverUid?: SortOrder
+    callType?: SortOrder
     status?: SortOrder
     startedAt?: SortOrder
     endedAt?: SortOrder
@@ -15231,6 +15282,7 @@ export namespace Prisma {
     receiverId?: SortOrder
     callerUid?: SortOrder
     receiverUid?: SortOrder
+    callType?: SortOrder
     status?: SortOrder
     startedAt?: SortOrder
     endedAt?: SortOrder
@@ -15247,6 +15299,7 @@ export namespace Prisma {
     receiverId?: SortOrder
     callerUid?: SortOrder
     receiverUid?: SortOrder
+    callType?: SortOrder
     status?: SortOrder
     startedAt?: SortOrder
     endedAt?: SortOrder
@@ -15289,6 +15342,16 @@ export namespace Prisma {
     _sum?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedIntNullableFilter<$PrismaModel>
     _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type EnumCallTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.CallType | EnumCallTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.CallType[]
+    notIn?: $Enums.CallType[]
+    not?: NestedEnumCallTypeWithAggregatesFilter<$PrismaModel> | $Enums.CallType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumCallTypeFilter<$PrismaModel>
+    _max?: NestedEnumCallTypeFilter<$PrismaModel>
   }
 
   export type EnumVideoCallStatusWithAggregatesFilter<$PrismaModel = never> = {
@@ -15905,6 +15968,10 @@ export namespace Prisma {
     divide?: number
   }
 
+  export type EnumCallTypeFieldUpdateOperationsInput = {
+    set?: $Enums.CallType
+  }
+
   export type EnumVideoCallStatusFieldUpdateOperationsInput = {
     set?: $Enums.VideoCallStatus
   }
@@ -16404,6 +16471,13 @@ export namespace Prisma {
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
+  export type NestedEnumCallTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.CallType | EnumCallTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.CallType[]
+    notIn?: $Enums.CallType[]
+    not?: NestedEnumCallTypeFilter<$PrismaModel> | $Enums.CallType
+  }
+
   export type NestedEnumVideoCallStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.VideoCallStatus | EnumVideoCallStatusFieldRefInput<$PrismaModel>
     in?: $Enums.VideoCallStatus[]
@@ -16463,6 +16537,16 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedEnumCallTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.CallType | EnumCallTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.CallType[]
+    notIn?: $Enums.CallType[]
+    not?: NestedEnumCallTypeWithAggregatesFilter<$PrismaModel> | $Enums.CallType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumCallTypeFilter<$PrismaModel>
+    _max?: NestedEnumCallTypeFilter<$PrismaModel>
   }
 
   export type NestedEnumVideoCallStatusWithAggregatesFilter<$PrismaModel = never> = {

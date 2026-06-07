@@ -11,32 +11,9 @@ import { videoCallController } from "./AgoraVideoCall.controller";
 
 const router = express.Router();
 
-router.post(
-    "/start",
-    auth("PATIENT", "DOCTOR"),
-    validateRequest(startCallValidationSchema),
-    videoCallController.startCall
-);
-
-router.post(
-    "/accept",
-    auth("PATIENT", "DOCTOR"),
-    validateRequest(callIdValidationSchema),
-    videoCallController.acceptCall
-);
-
-router.post(
-    "/reject",
-    auth("PATIENT", "DOCTOR"),
-    validateRequest(callIdValidationSchema),
-    videoCallController.rejectCall
-);
-
-router.post(
-    "/end",
-    auth("PATIENT", "DOCTOR"),
-    validateRequest(callIdValidationSchema),
-    videoCallController.endCall
-);
+router.post("/start", auth("PATIENT", "DOCTOR"), validateRequest(startCallValidationSchema), videoCallController.startCall);
+router.post("/accept", auth("PATIENT", "DOCTOR"), validateRequest(callIdValidationSchema), videoCallController.acceptCall);
+router.post("/reject", auth("PATIENT", "DOCTOR"), validateRequest(callIdValidationSchema), videoCallController.rejectCall);
+router.post("/end", auth("PATIENT", "DOCTOR"), validateRequest(callIdValidationSchema), videoCallController.endCall);
 
 export const videoCallRoutes = router;

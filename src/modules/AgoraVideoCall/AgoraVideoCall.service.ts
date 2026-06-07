@@ -10,6 +10,7 @@ import { AuthUser } from "../../middlewares/auth";
 type StartCallPayload = {
     receiverId: string;
     appointmentId?: string;
+    callType?: "AUDIO" | "VIDEO";
 };
 
 const getUserBasicInfo = async (userId: string) => {
@@ -38,7 +39,7 @@ const getUserBasicInfo = async (userId: string) => {
     if (superAdmin) return { id: superAdmin.id, name: superAdmin.name };
 
     return null;
-    
+
 };
 
 const startCall = async (payload: StartCallPayload, authUser: AuthUser) => {
@@ -63,6 +64,8 @@ const startCall = async (payload: StartCallPayload, authUser: AuthUser) => {
     const callerUid = generateAgoraUid();
     const callerToken = generateAgoraToken(channelName, callerUid);
 
+    const callType = payload.callType || "VIDEO";
+
     const call = await appointmentPrisma.videoCall.create({
         data: {
             callId,
@@ -71,21 +74,27 @@ const startCall = async (payload: StartCallPayload, authUser: AuthUser) => {
             callerId,
             receiverId,
             callerUid,
+            callType,
             status: "RINGING",
         },
     });
 
-    getIo().to(receiverId).emit("incoming_call", {
-        callId: call.callId,
-        channelName: call.channelName,
-        appointmentId: call.appointmentId,
-        callerId,
-        callerName: caller?.name || "Unknown",
-    });
+    getIo().to(receiverId).emit(
+        callType === "AUDIO" ? "incoming_audio_call" : "incoming_video_call",
+        {
+            callId: call.callId,
+            channelName: call.channelName,
+            appointmentId: call.appointmentId,
+            callerId,
+            callerName: caller?.name || "Unknown",
+            callType,
+        }
+    );
 
     return {
         callId: call.callId,
         channelName: call.channelName,
+        callType,
         appId: process.env.AGORA_APP_ID,
         token: callerToken,
         uid: callerUid,
@@ -121,14 +130,19 @@ const acceptCall = async (callId: string, authUser: AuthUser) => {
         },
     });
 
-    getIo().to(call.callerId).emit("call_accepted", {
-        callId,
-        channelName: call.channelName,
-    });
+    getIo().to(call.callerId).emit(
+        call.callType === "AUDIO" ? "audio_call_accepted" : "video_call_accepted",
+        {
+            callId,
+            channelName: call.channelName,
+            callType: call.callType,
+        }
+    );
 
     return {
         callId: updatedCall.callId,
         channelName: updatedCall.channelName,
+        callType: updatedCall.callType,
         appId: process.env.AGORA_APP_ID,
         token: receiverToken,
         uid: receiverUid,
@@ -160,10 +174,14 @@ const rejectCall = async (callId: string, authUser: AuthUser) => {
         },
     });
 
-    getIo().to(call.callerId).emit("call_rejected", {
-        callId,
-        receiverId: authUser.id,
-    });
+    getIo().to(call.callerId).emit(
+        call.callType === "AUDIO" ? "audio_call_rejected" : "video_call_rejected",
+        {
+            callId,
+            receiverId: authUser.id,
+            callType: call.callType,
+        }
+    );
 
     return null;
 };
@@ -196,10 +214,14 @@ const endCall = async (callId: string, authUser: AuthUser) => {
     });
 
     [call.callerId, call.receiverId].forEach((userId) => {
-        getIo().to(userId).emit("call_ended", {
-            callId,
-            channelName: call.channelName,
-        });
+        getIo().to(userId).emit(
+            call.callType === "AUDIO" ? "audio_call_ended" : "video_call_ended",
+            {
+                callId,
+                channelName: call.channelName,
+                callType: call.callType,
+            }
+        );
     });
 
     return null;

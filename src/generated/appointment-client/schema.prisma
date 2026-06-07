@@ -156,6 +156,11 @@ model AppointmentPayment {
 
 //=========================videoCall ===============================
 
+enum CallType {
+  AUDIO
+  VIDEO
+}
+
 enum VideoCallStatus {
   RINGING
   ACCEPTED
@@ -178,6 +183,8 @@ model VideoCall {
   callerUid   Int
   receiverUid Int?
 
+  callType CallType @default(VIDEO)
+
   status VideoCallStatus @default(RINGING)
 
   startedAt DateTime?
@@ -189,6 +196,7 @@ model VideoCall {
   @@index([callerId])
   @@index([receiverId])
   @@index([appointmentId])
+  @@index([callType])
   @@index([status])
 }
 

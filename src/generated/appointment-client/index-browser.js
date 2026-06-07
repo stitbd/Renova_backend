@@ -192,6 +192,7 @@ exports.Prisma.VideoCallScalarFieldEnum = {
   receiverId: 'receiverId',
   callerUid: 'callerUid',
   receiverUid: 'receiverUid',
+  callType: 'callType',
   status: 'status',
   startedAt: 'startedAt',
   endedAt: 'endedAt',
@@ -416,6 +417,11 @@ exports.CancelledBy = exports.$Enums.CancelledBy = {
 exports.PaymentGateway = exports.$Enums.PaymentGateway = {
   SSLCOMMERZ: 'SSLCOMMERZ',
   MANUAL: 'MANUAL'
+};
+
+exports.CallType = exports.$Enums.CallType = {
+  AUDIO: 'AUDIO',
+  VIDEO: 'VIDEO'
 };
 
 exports.VideoCallStatus = exports.$Enums.VideoCallStatus = {
