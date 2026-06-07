@@ -104,7 +104,7 @@ model Doctor {
   qualification      String?
   experienceYears    Int?
   currentDesignation String?
-  consultationFee    Decimal?           @db.Decimal(10, 2)
+  consultationFee    Decimal?        @db.Decimal(10, 2)
   status             DoctorStatus       @default(ACTIVE)
   onlineStatus       DoctorOnlineStatus @default(OFFLINE)
 
