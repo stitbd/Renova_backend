@@ -7,6 +7,7 @@ export const createAppointmentValidationSchema = z.object({
   patientName: z.string().min(2).max(100),
   patientEmail: z.string().email(),
   patientDateOfBirth: z.string().regex(dateRegex, "Date must be YYYY-MM-DD"),
+  patientPhone: z.string().min(10).max(15).optional(),
   patientGender: z.enum(["MALE", "FEMALE", "OTHER"]),
   patientMedicalHistory: z.string().max(2000).optional(),
   doctorId: z.string().uuid(),

@@ -55,7 +55,7 @@ const createAppointment = async (
         throw new AppError("doctorId and appointmentDate are required", 400);
     }
 
-    console.log("Creating appointment with payload:", payload, "for user:", authUser);
+    console.log("Creating appointment with payload:", payload);
 
     const patientId = authUser.id;
 
@@ -130,6 +130,10 @@ const createAppointment = async (
         throw new AppError("Doctor is unavailable during this time", 400);
     }
 
+    if (!payload.patientPhone) {
+    throw new AppError("Patient phone number is required", 400);
+}
+
     try {
         return await appointmentPrisma.$transaction(async (tx) => {
             const createdAppointment = await tx.appointment.create({
@@ -138,7 +142,7 @@ const createAppointment = async (
 
                     patientName: payload.patientName,
                     patientEmail: payload.patientEmail,
-                    patientPhone: payload.patientPhone,
+                  patientPhone: payload?.patientPhone,
                     patientDateOfBirth: new Date(payload.patientDateOfBirth),
                     patientGender: payload.patientGender,
 
