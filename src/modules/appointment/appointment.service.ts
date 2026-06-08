@@ -27,10 +27,15 @@ type AuthUser = {
 };
 
 type CreateAppointmentPayload = {
+    patientName: string;
+    patientEmail: string;
+    patientPhone: string;
+    patientDateOfBirth: string;
+    patientGender: string;
+    patientMedicalHistory?: string;
     doctorId: string;
     appointmentDate: string;
     startTime: string;
-    endTime: string;
     type: "IN_PERSON" | "ONLINE";
     reason?: string;
 };
@@ -46,15 +51,16 @@ const createAppointment = async (
         throw new AppError("Only patients can create appointments", 403);
     }
 
+    if(! payload?.doctorId || !payload?.doctorId){
+        throw new AppError("doctorId and appointmentDate are required", 400);
+    }
+
+    console.log("Creating appointment with payload:", payload, "for user:", authUser);
+
     const patientId = authUser.id;
 
     const appointmentDate = buildDhakaDateTime(payload.appointmentDate, "00:00");
     const startTime = buildDhakaDateTime(payload.appointmentDate, payload.startTime);
-    const endTime = buildDhakaDateTime(payload.appointmentDate, payload.endTime);
-
-    if (startTime >= endTime) {
-        throw new AppError("Start time must be before end time", 400);
-    }
 
     if (startTime.getTime() < Date.now()) {
         throw new AppError("Cannot book appointment in the past", 400);
@@ -91,7 +97,7 @@ const createAppointment = async (
     }
 
     const requestedStartMinutes = timeToMinutes(payload.startTime);
-    const requestedEndMinutes = timeToMinutes(payload.endTime);
+    const requestedEndMinutes = requestedStartMinutes + schedule.slotDuration;
 
     const scheduleStartMinutes = timeToMinutes(schedule.startTime);
     const scheduleEndMinutes = timeToMinutes(schedule.endTime);
@@ -103,16 +109,7 @@ const createAppointment = async (
         throw new AppError("Requested time is outside doctor's schedule", 400);
     }
 
-    const requestedDuration = requestedEndMinutes - requestedStartMinutes;
-
-
-
-    if (requestedDuration !== schedule.slotDuration) {
-        throw new AppError(
-            `Appointment duration must be ${schedule.slotDuration} minutes`,
-            400
-        );
-    }
+    const endTime = buildDhakaDateTime(payload.appointmentDate, minutesToTime(requestedEndMinutes));
 
     const unavailableDate = doctor.unavailableDates.find((item) => {
         const sameDate = getDhakaDateString(item.unavailableDate) === payload.appointmentDate;
@@ -138,6 +135,15 @@ const createAppointment = async (
             const createdAppointment = await tx.appointment.create({
                 data: {
                     appointmentCode: generateAppointmentCode(),
+
+                    patientName: payload.patientName,
+                    patientEmail: payload.patientEmail,
+                    patientPhone: payload.patientPhone,
+                    patientDateOfBirth: new Date(payload.patientDateOfBirth),
+                    patientGender: payload.patientGender,
+
+                    patientMedicalHistory: payload.patientMedicalHistory,
+
                     doctorId: doctor.id,
                     patientId,
                     outletId: doctor.outletId || null,

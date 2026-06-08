@@ -9,8 +9,23 @@ const app: Application = express();
 
 app.use(
   cors({
-    origin: true,
+    origin: [
+      "http://localhost:3000",
+      "http://localhost:3001",
+      "http://localhost:5173",
+
+      "https://renovalifecare.com",
+      "https://www.renovalifecare.com",
+
+      "https://admin.renovalifecare.com",
+    ],
     credentials: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+      "Accept",
+    ],
   })
 );
 

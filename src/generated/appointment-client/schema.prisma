@@ -41,6 +41,14 @@ model Appointment {
 
   appointmentCode String @unique
 
+  patientName        String
+  patientEmail       String
+  patientPhone       String
+  patientGender      String
+  patientDateOfBirth DateTime
+
+  patientMedicalHistory String?
+
   // External IDs from Main DB
   doctorId  String
   patientId String

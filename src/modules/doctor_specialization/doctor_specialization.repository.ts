@@ -19,6 +19,11 @@ export const doctorSpecializationRepository = {
             },
         });
     },
+    findUniqueSpecializations() {
+        return mainPrisma.doctorSpecialization.findMany({
+            distinct: ["name"],
+        });
+    },
 
     findSpecializationById(id: string) {
         return mainPrisma.doctorSpecialization.findUnique({

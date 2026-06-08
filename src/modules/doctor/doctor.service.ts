@@ -40,6 +40,33 @@ export const doctorService = {
       throw new Error("Either Specialization ID or Specialization Name is required");
     }
 
+    // Handle specialization - ensure reuse of existing specialization
+    let specializationConnect: any;
+    if (data.specializationId) {
+      specializationConnect = {
+        connect: {
+          id: data.specializationId,
+        },
+      };
+    } else if (data.specializationName) {
+      // Check if specialization already exists by name
+      const existingSpecialization = await doctorRepository.findSpecializationByName(data.specializationName);
+      if (existingSpecialization) {
+        specializationConnect = {
+          connect: {
+            id: existingSpecialization.id,
+          },
+        };
+      } else {
+        // Create new specialization if it doesn't exist
+        specializationConnect = {
+          create: {
+            name: data.specializationName,
+          },
+        };
+      }
+    }
+
     const lastDoctor = await doctorRepository.findLastDoctor();
 
     let doctorCode = "DOC_0001";
@@ -81,18 +108,7 @@ export const doctorService = {
         }
         : undefined,
 
-      specialization: data.specializationId
-        ? {
-          connect: {
-            id: data.specializationId,
-          },
-        }
-        : {
-          connectOrCreate: {
-            where: { name: data.specializationName! },
-            create: { name: data.specializationName! },
-          },
-        },
+      specialization: specializationConnect,
 
 
       schedules: data.schedules
@@ -133,6 +149,10 @@ export const doctorService = {
     return doctor;
   },
 
+  getDoctorListBySpecializationName(specializationName: string) {
+    return doctorRepository.findDoctorsBySpecializationName(specializationName);
+  },
+
   async update(id: string, data: UpdateDoctorInput) {
     await this.getById(id);
 
@@ -157,6 +177,33 @@ export const doctorService = {
 
       if (codeExists && codeExists.id !== id) {
         throw new Error("Doctor already exists with this doctor code");
+      }
+    }
+
+    // Handle specialization - ensure reuse of existing specialization
+    let specializationConnect: any;
+    if (data.specializationId) {
+      specializationConnect = {
+        connect: {
+          id: data.specializationId,
+        },
+      };
+    } else if (data.specializationName) {
+      // Check if specialization already exists by name
+      const existingSpecialization = await doctorRepository.findSpecializationByName(data.specializationName);
+      if (existingSpecialization) {
+        specializationConnect = {
+          connect: {
+            id: existingSpecialization.id,
+          },
+        };
+      } else {
+        // Create new specialization if it doesn't exist
+        specializationConnect = {
+          create: {
+            name: data.specializationName,
+          },
+        };
       }
     }
 
@@ -188,20 +235,8 @@ export const doctorService = {
         }
         : undefined,
 
-      specialization: data.specializationId
-        ? {
-          connect: {
-            id: data.specializationId,
-          },
-        }
-        : data.specializationName
-          ? {
-            connectOrCreate: {
-              where: { name: data.specializationName },
-              create: { name: data.specializationName },
-            },
-          }
-          : undefined,
+
+        specialization: specializationConnect,
 
     });
   },

@@ -13,7 +13,6 @@ router.post(
 );
 
 router.get("/getAll", doctorSpecializationController.getAllSpecializations);
-
 router.patch(
   "/update/:id",
   validateRequest(updateDoctorSpecializationSchema),

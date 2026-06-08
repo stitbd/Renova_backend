@@ -24,6 +24,7 @@ router.post(
 
 router.get("/getAll", doctorController.getAll);
 router.get("/getSingle/:id", doctorController.getById);
+router.get("/getDoctorsBySpecialization/:specializationName", doctorController.getDoctorListBySpecializationName);
 
 router.patch("/update/:id", validateRequest(updateDoctorSchema), doctorController.update);
 

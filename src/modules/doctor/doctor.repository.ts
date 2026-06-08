@@ -43,6 +43,19 @@ export const doctorRepository = {
     });
   },
 
+  findDoctorsBySpecializationName(specializationName: string) {
+    return mainPrisma.doctor.findMany({
+      where: {
+        specialization: {
+          name: specializationName,
+        },
+      },
+      include: {
+        specialization: true,
+      },
+    });
+  },
+
   findByEmail(email: string) {
     return mainPrisma.doctor.findFirst({
       where: { email },
@@ -108,6 +121,12 @@ export const doctorRepository = {
     return mainPrisma.doctor.update({
       where: { id },
       data: { onlineStatus },
+    });
+  },
+
+  findSpecializationByName(name: string) {
+    return mainPrisma.doctorSpecialization.findUnique({
+      where: { name },
     });
   },
 };

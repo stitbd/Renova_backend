@@ -6,24 +6,23 @@ import { CreateDoctorSpecializationInput, UpdateDoctorSpecializationInput } from
 export const doctorSpecializationService = {
 
   async createSpecialization(data: CreateDoctorSpecializationInput) {
-    const exists = await doctorSpecializationRepository.findSpecializationByName(data.name);
-
-    if (exists) {
-      throw new Error("Specialization already exists");
+    // Check if specialization with same name already exists
+    const existingSpecialization = await doctorSpecializationRepository.findSpecializationByName(data.name);
+    
+    if (existingSpecialization) {
+      throw new Error("Specialization with this name already exists");
     }
-
-
 
     return doctorSpecializationRepository.createSpecialization({
       name: data.name,
       status: data.status as "ACTIVE" | "INACTIVE",
-    
     });
   },
 
   async getAllSpecializations() {
     return doctorSpecializationRepository.findAllSpecializations();
   },
+
 
   async getSpecializationById(id: string) {
     const specialization = await doctorSpecializationRepository.findSpecializationById(id);
