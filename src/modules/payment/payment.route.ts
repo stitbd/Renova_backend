@@ -17,5 +17,6 @@ router.post("/sslcommerz/success", paymentController.sslcommerzSuccess);
 router.post("/sslcommerz/fail", paymentController.sslcommerzFail);
 router.post("/sslcommerz/cancel", paymentController.sslcommerzCancel);
 router.post("/sslcommerz/ipn", paymentController.sslcommerzIpn);
+router.get("/getSingle/:paymentId", paymentController.getSinglePayment);
 
 export const paymentRoutes = router;

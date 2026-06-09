@@ -49,6 +49,8 @@ export const doctorController = {
   async getDoctorListBySpecializationName(req: Request, res: Response) {
     const result = await doctorService.getDoctorListBySpecializationName(req.params.specializationName as string);
 
+    
+
     manageResponse(res, {
       success: true,
       statusCode: 200,

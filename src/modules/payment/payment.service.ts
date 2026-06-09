@@ -238,8 +238,68 @@ const handleSslcommerzFailOrCancel = async (
   };
 };
 
+const getSinglePayment = async (paymentId: string) => {
+ const payment = await appointmentPrisma.appointmentPayment.findUnique({
+  where: {
+    id: paymentId,
+  },
+  include: {
+    appointment: {
+      select: {
+        id: true,
+        appointmentCode: true,
+        appointmentDate: true,
+        startTime: true,
+        endTime: true,
+        doctorId: true,
+        patientId: true,
+        type: true,
+        status: true,
+        consultationFee: true,
+      },
+    },
+  },
+});
+
+// console.log("Fetched payment for getSinglePayment:", payment);
+
+  if (!payment) {
+    throw new AppError("Payment not found", 404);
+  }
+
+  const [doctor, patient] = await Promise.all([
+    mainPrisma.doctor.findUnique({
+      where: {
+        id: payment.appointment.doctorId,
+      },
+      select: {
+        id: true,
+        fullName: true,
+      },
+    }),
+
+    mainPrisma.patient.findUnique({
+      where: {
+        id: payment.appointment.patientId,
+      },
+      select: {
+        id: true,
+        fullName: true,
+        email: true,
+      },
+    }),
+  ]);
+
+  return {
+    ...payment,
+    doctor,
+    patient,
+  };
+};
+
 export const paymentService = {
   initiateAppointmentPayment,
   handleSslcommerzSuccess,
   handleSslcommerzFailOrCancel,
+  getSinglePayment,
 };

@@ -22,22 +22,24 @@ const initiateAppointmentPayment = catchAsync(
 );
 
 const sslcommerzSuccess = catchAsync(async (req: Request, res: Response) => {
-    await paymentService.handleSslcommerzSuccess(req.body);
+  const result : any =   await paymentService.handleSslcommerzSuccess(req.body);
 
-    // return res.redirect(`${env.frontendUrl}/payment/success`);
-    return res.json({message : "Payment successfull "})
+  console.log("SSLCommerz Success Result appointment:", result?.payment?.appointmentId);
+
+    return res.redirect(`${env.frontendUrl}/appointment/payment/success?paymentId=${result?.payment?.id}`);
+
 });
 
 const sslcommerzFail = catchAsync(async (req: Request, res: Response) => {
     await paymentService.handleSslcommerzFailOrCancel(req.body, "FAILED");
 
-    return res.redirect(`${env.frontendUrl}/payment/fail`);
+    return res.redirect(`${env.frontendUrl}/appointment?payment=fail`);
 });
 
 const sslcommerzCancel = catchAsync(async (req: Request, res: Response) => {
     await paymentService.handleSslcommerzFailOrCancel(req.body, "CANCELLED");
 
-    return res.redirect(`${env.frontendUrl}/payment/cancel`);
+    return res.redirect(`${env.frontendUrl}/appointment?payment=cancel`);
 });
 
 
@@ -51,12 +53,25 @@ const sslcommerzIpn = catchAsync(async (req: Request, res: Response) => {
     });
 });
 
+const getSinglePayment = catchAsync(async (req: Request, res: Response) => {
+  const paymentId = req.params.paymentId;
+  const payment = await paymentService.getSinglePayment(paymentId as string);
+
+  manageResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: "Payment retrieved successfully",
+    data: payment,
+  });
+});
+
 export const paymentController = {
     initiateAppointmentPayment,
     sslcommerzSuccess,
     sslcommerzFail,
     sslcommerzCancel,
     sslcommerzIpn,
+    getSinglePayment
 };
 
 
