@@ -139,10 +139,9 @@ const createAppointment = async (
             const createdAppointment = await tx.appointment.create({
                 data: {
                     appointmentCode: generateAppointmentCode(),
-
                     patientName: payload.patientName,
                     patientEmail: payload.patientEmail,
-                  patientPhone: payload?.patientPhone,
+                    patientPhone: payload?.patientPhone,
                     patientDateOfBirth: new Date(payload.patientDateOfBirth),
                     patientGender: payload.patientGender,
 
