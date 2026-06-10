@@ -16,7 +16,7 @@ app.use(
 
       "https://renovalifecare.com",
       "https://www.renovalifecare.com",
-
+      "https://renovafrontend-e3309yxqk-md-soyaib-hossains-projects.vercel.app",
       "https://admin.renovalifecare.com",
     ],
     credentials: true,

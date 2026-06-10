@@ -15,7 +15,7 @@ export const createDoctorSchema = z.object({
 
   status: z.enum(["ACTIVE", "INACTIVE"]).optional(),
   onlineStatus: z.enum(["ONLINE", "OFFLINE"]).optional(),
-
+  outletId: z.string().optional(),
   gender: z.string().optional(),
   dateOfBirth: z.string().optional(),
   nationality: z.string().optional(),

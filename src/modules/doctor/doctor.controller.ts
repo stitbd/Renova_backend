@@ -6,6 +6,7 @@ export const doctorController = {
   async create(req: Request, res: Response) {
     const files = req.files as Express.Multer.File[];
     const documentsData = req.body.documents || [];
+    console.log("Received doctor creation request with data:", req.body);
 
     if (files && files.length > 0) {
       req.body.documents = files.map((file, index) => ({
@@ -25,17 +26,41 @@ export const doctorController = {
     });
   },
 
-  async getAll(req: Request, res: Response) {
-    const result = await doctorService.getAll();
+async getAll(req: Request, res: Response) {
+  try {
+    const { 
+      gender, 
+      specializationId, 
+      outletId,
+      status,
+      page,
+      limit 
+    } = req.query;
+
+    const result = await doctorService.getAll({
+      gender: gender as string,
+      specializationId: specializationId as string,
+      outletId: outletId as string,
+      status: status as string,
+      page: page ? parseInt(page as string, 10) : 1,
+      limit: limit ? parseInt(limit as string, 10) : 10,
+    });
 
     manageResponse(res, {
       success: true,
       statusCode: 200,
       message: "Doctors retrieved successfully",
-      data: result,
+      data: result.data,
+      meta: result.meta,
     });
-  },
-
+  } catch (error) {
+    manageResponse(res, {
+      success: false,
+      statusCode: 500,
+      message: "Failed to retrieve doctors",
+    });
+  }
+},
   async getById(req: Request, res: Response) {
     const result = await doctorService.getById(req.params.id as string);
 

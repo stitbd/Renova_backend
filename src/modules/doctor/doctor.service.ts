@@ -14,9 +14,9 @@ import bcrypt from "bcryptjs";
 
 export const doctorService = {
   async create(data: CreateDoctorInput) {
-    console.log('data', data);
+    // console.log('data', data);
     const emailExists = await doctorRepository.findByEmail(data.email);
-    console.log("emailExists", emailExists);
+    // console.log("emailExists", emailExists);
 
     if (emailExists) {
       throw new Error("Doctor already exists with this email");
@@ -79,7 +79,7 @@ export const doctorService = {
 
     const hashedPassword = await bcrypt.hash(data.password, env.bcrypt_salt_rounds);
 
-    return doctorRepository.create({
+    const res = await doctorRepository.create({
       doctorCode,
       fullName: data.fullName,
       mobile: data.mobile,
@@ -132,12 +132,72 @@ export const doctorService = {
           }
         : undefined,
     });
+    console.log("create doctor ", res);
+    return res;
   }
   ,
 
-  async getAll() {
-    return doctorRepository.findAll();
-  },
+async getAll(filters: {
+  gender?: string;
+  specializationId?: string;
+  outletId?: string;
+  status?: string;
+  page?: number;
+  limit?: number;
+}) {
+  const { 
+    gender, 
+    specializationId, 
+    outletId, 
+    status,
+    page = 1,
+    limit = 10 
+  } = filters;
+
+  // Build filters object for repository
+  const queryFilters: any = {
+    status: status || 'ACTIVE',
+  };
+
+  if (gender) queryFilters.gender = gender.toUpperCase();
+  if (specializationId) queryFilters.specializationId = specializationId;
+  if (outletId) queryFilters.outletId = outletId;
+
+
+  const skip = (page - 1) * limit;
+  const take = limit;
+
+  // Assuming your repository supports filtering + pagination
+  // If not, update your DoctorRepository accordingly (see note below)
+  const result = await doctorRepository.findAll({
+    where: queryFilters,
+    include: {
+      specialization: true,
+      outlet: true,
+      documents: true,
+      schedules: true,
+    },
+    orderBy: {
+      createdAt: 'desc',
+    },
+    skip,
+    take,
+  });
+
+  // For total count - you may need to add findCount or use findAll with count
+  const total = await doctorRepository.count?.({ where: queryFilters }) 
+    || (await doctorRepository.findAll({ where: queryFilters })).length; // fallback
+
+  return {
+    data: result,
+    meta: {
+      total,
+      page,
+      limit,
+      totalPages: Math.ceil(total / limit),
+    },
+  };
+},
 
   async getById(id: string) {
     const doctor = await doctorRepository.findById(id);

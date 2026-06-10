@@ -17,19 +17,14 @@ export const doctorRepository = {
       },
     });
   },
-  findAll() {
-    return mainPrisma.doctor.findMany({
-      include: {
-        specialization: true,
-        documents: true,
-        schedules: true,
-        outlet: true,
-      },
-      orderBy: {
-        createdAt: "desc",
-      },
-    });
-  },
+
+  async findAll(options: any = {}) {
+  return mainPrisma.doctor.findMany(options);   // or your current implementation
+}
+,
+async count(options: any = {}) {
+  return mainPrisma.doctor.count({ where: options.where });
+},
 
   findById(id: string) {
     return mainPrisma.doctor.findUnique({
