@@ -1,4 +1,5 @@
 import { mainPrisma } from "../../databases/prisma";
+import { UserType } from "./auth.types";
 
 
 export const authRepository = {
@@ -64,4 +65,55 @@ export const authRepository = {
             },
         });
     },
+
+    async findUserById(id: string, userType: UserType) {
+  switch (userType) {
+    case UserType.SUPER_ADMIN:
+      return mainPrisma.superAdmins.findUnique({ where: { id } });
+
+    case UserType.OUTLET_USER:
+      return mainPrisma.outletUser.findUnique({ where: { id } });
+
+    case UserType.DOCTOR:
+      return mainPrisma.doctor.findUnique({ where: { id } });
+
+    case UserType.PATIENT:
+      return mainPrisma.patient.findUnique({ where: { id } });
+
+    default:
+      return null;
+  }
+},
+
+async updatePassword(id: string, userType: UserType, hashedPassword: string) {
+  switch (userType) {
+    case UserType.SUPER_ADMIN:
+      return mainPrisma.superAdmins.update({
+        where: { id },
+        data: { password: hashedPassword },
+      });
+
+    case UserType.OUTLET_USER:
+      return mainPrisma.outletUser.update({
+        where: { id },
+        data: { password: hashedPassword },
+      });
+
+    case UserType.DOCTOR:
+      return mainPrisma.doctor.update({
+        where: { id },
+        data: { password: hashedPassword },
+      });
+
+    case UserType.PATIENT:
+      return mainPrisma.patient.update({
+        where: { id },
+        data: { password: hashedPassword },
+      });
+
+    default:
+      throw new Error("Invalid user type");
+  }
+},
+
 };

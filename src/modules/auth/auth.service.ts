@@ -209,7 +209,40 @@ const generateAccessTokenFromRefreshToken = async (token: string) => {
     };
 };
 
+const changePassword = async (
+  userId: string,
+  userType: UserType,
+  oldPassword: string,
+  newPassword: string
+) => {
+  const user = await authRepository.findUserById(userId, userType);
+
+  if (!user) {
+    throw new Error("User not found");
+  }
+
+  const isOldPasswordMatched = await bcrypt.compare(oldPassword, user.password);
+
+  if (!isOldPasswordMatched) {
+    throw new Error("Old password is incorrect");
+  }
+
+  const isSamePassword = await bcrypt.compare(newPassword, user.password);
+
+  if (isSamePassword) {
+    throw new Error("New password cannot be same as old password");
+  }
+
+  const hashedPassword = await bcrypt.hash(newPassword, 12);
+
+  await authRepository.updatePassword(userId, userType, hashedPassword);
+
+  return null;
+};
+
+
 export const authService = {
     login,
     refreshToken: generateAccessTokenFromRefreshToken,
+    changePassword
 };

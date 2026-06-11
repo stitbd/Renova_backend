@@ -19,12 +19,12 @@ export const doctorRepository = {
   },
 
   async findAll(options: any = {}) {
-  return mainPrisma.doctor.findMany(options);   // or your current implementation
-}
-,
-async count(options: any = {}) {
-  return mainPrisma.doctor.count({ where: options.where });
-},
+    return mainPrisma.doctor.findMany(options);   // or your current implementation
+  }
+  ,
+  async count(options: any = {}) {
+    return mainPrisma.doctor.count({ where: options.where });
+  },
 
   findById(id: string) {
     return mainPrisma.doctor.findUnique({

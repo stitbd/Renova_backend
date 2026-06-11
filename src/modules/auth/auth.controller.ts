@@ -4,6 +4,7 @@ import { authService } from "./auth.service";
 
 import { authConfig } from "./auth.constants";
 import { env } from "../../configs/env";
+import { UserType } from "./auth.types";
 
 export const authController = {
   async login(req: Request, res: Response) {
@@ -62,4 +63,26 @@ export const authController = {
       data: result,
     });
   },
+
+  async changePassword(req: Request, res: Response) {
+  const user = req.user as {
+    id: string;
+    userType: UserType;
+  };
+
+  const { oldPassword, newPassword } = req.body;
+
+  await authService.changePassword(
+    user.id,
+    user.userType,
+    oldPassword,
+    newPassword
+  );
+
+  res.status(200).json({
+    success: true,
+    message: "Password changed successfully",
+    data: null,
+  });
+}
 };
