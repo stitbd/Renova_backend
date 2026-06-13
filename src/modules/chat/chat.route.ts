@@ -20,6 +20,12 @@ router.get(
 );
 
 router.get(
+  "/conversation-by-participant",
+  auth("PATIENT", "DOCTOR"),
+  chatController.getConversationByParticipant
+);
+
+router.get(
     "/conversations/:conversationId/messages",
     auth("PATIENT", "DOCTOR"),
     chatController.getMessages

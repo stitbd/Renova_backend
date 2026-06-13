@@ -7126,7 +7126,6 @@ export namespace Prisma {
 
   export type ChatConversationMinAggregateOutputType = {
     id: string | null
-    appointmentId: string | null
     participantOneId: string | null
     participantTwoId: string | null
     createdAt: Date | null
@@ -7135,7 +7134,6 @@ export namespace Prisma {
 
   export type ChatConversationMaxAggregateOutputType = {
     id: string | null
-    appointmentId: string | null
     participantOneId: string | null
     participantTwoId: string | null
     createdAt: Date | null
@@ -7144,7 +7142,6 @@ export namespace Prisma {
 
   export type ChatConversationCountAggregateOutputType = {
     id: number
-    appointmentId: number
     participantOneId: number
     participantTwoId: number
     createdAt: number
@@ -7155,7 +7152,6 @@ export namespace Prisma {
 
   export type ChatConversationMinAggregateInputType = {
     id?: true
-    appointmentId?: true
     participantOneId?: true
     participantTwoId?: true
     createdAt?: true
@@ -7164,7 +7160,6 @@ export namespace Prisma {
 
   export type ChatConversationMaxAggregateInputType = {
     id?: true
-    appointmentId?: true
     participantOneId?: true
     participantTwoId?: true
     createdAt?: true
@@ -7173,7 +7168,6 @@ export namespace Prisma {
 
   export type ChatConversationCountAggregateInputType = {
     id?: true
-    appointmentId?: true
     participantOneId?: true
     participantTwoId?: true
     createdAt?: true
@@ -7255,7 +7249,6 @@ export namespace Prisma {
 
   export type ChatConversationGroupByOutputType = {
     id: string
-    appointmentId: string | null
     participantOneId: string
     participantTwoId: string
     createdAt: Date
@@ -7281,7 +7274,6 @@ export namespace Prisma {
 
   export type ChatConversationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    appointmentId?: boolean
     participantOneId?: boolean
     participantTwoId?: boolean
     createdAt?: boolean
@@ -7294,14 +7286,13 @@ export namespace Prisma {
 
   export type ChatConversationSelectScalar = {
     id?: boolean
-    appointmentId?: boolean
     participantOneId?: boolean
     participantTwoId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type ChatConversationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "appointmentId" | "participantOneId" | "participantTwoId" | "createdAt" | "updatedAt", ExtArgs["result"]["chatConversation"]>
+  export type ChatConversationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "participantOneId" | "participantTwoId" | "createdAt" | "updatedAt", ExtArgs["result"]["chatConversation"]>
   export type ChatConversationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     messages?: boolean | ChatConversation$messagesArgs<ExtArgs>
     _count?: boolean | ChatConversationCountOutputTypeDefaultArgs<ExtArgs>
@@ -7314,7 +7305,6 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      appointmentId: string | null
       participantOneId: string
       participantTwoId: string
       createdAt: Date
@@ -7690,7 +7680,6 @@ export namespace Prisma {
    */
   interface ChatConversationFieldRefs {
     readonly id: FieldRef<"ChatConversation", 'String'>
-    readonly appointmentId: FieldRef<"ChatConversation", 'String'>
     readonly participantOneId: FieldRef<"ChatConversation", 'String'>
     readonly participantTwoId: FieldRef<"ChatConversation", 'String'>
     readonly createdAt: FieldRef<"ChatConversation", 'DateTime'>
@@ -8095,6 +8084,7 @@ export namespace Prisma {
     conversationId: string | null
     senderId: string | null
     receiverId: string | null
+    appointmentId: string | null
     type: $Enums.ChatMessageType | null
     message: string | null
     fileUrl: string | null
@@ -8108,6 +8098,7 @@ export namespace Prisma {
     conversationId: string | null
     senderId: string | null
     receiverId: string | null
+    appointmentId: string | null
     type: $Enums.ChatMessageType | null
     message: string | null
     fileUrl: string | null
@@ -8121,6 +8112,7 @@ export namespace Prisma {
     conversationId: number
     senderId: number
     receiverId: number
+    appointmentId: number
     type: number
     message: number
     fileUrl: number
@@ -8136,6 +8128,7 @@ export namespace Prisma {
     conversationId?: true
     senderId?: true
     receiverId?: true
+    appointmentId?: true
     type?: true
     message?: true
     fileUrl?: true
@@ -8149,6 +8142,7 @@ export namespace Prisma {
     conversationId?: true
     senderId?: true
     receiverId?: true
+    appointmentId?: true
     type?: true
     message?: true
     fileUrl?: true
@@ -8162,6 +8156,7 @@ export namespace Prisma {
     conversationId?: true
     senderId?: true
     receiverId?: true
+    appointmentId?: true
     type?: true
     message?: true
     fileUrl?: true
@@ -8248,6 +8243,7 @@ export namespace Prisma {
     conversationId: string
     senderId: string
     receiverId: string
+    appointmentId: string | null
     type: $Enums.ChatMessageType
     message: string | null
     fileUrl: string | null
@@ -8278,6 +8274,7 @@ export namespace Prisma {
     conversationId?: boolean
     senderId?: boolean
     receiverId?: boolean
+    appointmentId?: boolean
     type?: boolean
     message?: boolean
     fileUrl?: boolean
@@ -8294,6 +8291,7 @@ export namespace Prisma {
     conversationId?: boolean
     senderId?: boolean
     receiverId?: boolean
+    appointmentId?: boolean
     type?: boolean
     message?: boolean
     fileUrl?: boolean
@@ -8302,7 +8300,7 @@ export namespace Prisma {
     createdAt?: boolean
   }
 
-  export type ChatMessageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "conversationId" | "senderId" | "receiverId" | "type" | "message" | "fileUrl" | "fileName" | "seenAt" | "createdAt", ExtArgs["result"]["chatMessage"]>
+  export type ChatMessageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "conversationId" | "senderId" | "receiverId" | "appointmentId" | "type" | "message" | "fileUrl" | "fileName" | "seenAt" | "createdAt", ExtArgs["result"]["chatMessage"]>
   export type ChatMessageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     conversation?: boolean | ChatConversationDefaultArgs<ExtArgs>
   }
@@ -8317,6 +8315,7 @@ export namespace Prisma {
       conversationId: string
       senderId: string
       receiverId: string
+      appointmentId: string | null
       type: $Enums.ChatMessageType
       message: string | null
       fileUrl: string | null
@@ -8697,6 +8696,7 @@ export namespace Prisma {
     readonly conversationId: FieldRef<"ChatMessage", 'String'>
     readonly senderId: FieldRef<"ChatMessage", 'String'>
     readonly receiverId: FieldRef<"ChatMessage", 'String'>
+    readonly appointmentId: FieldRef<"ChatMessage", 'String'>
     readonly type: FieldRef<"ChatMessage", 'ChatMessageType'>
     readonly message: FieldRef<"ChatMessage", 'String'>
     readonly fileUrl: FieldRef<"ChatMessage", 'String'>
@@ -12360,7 +12360,6 @@ export namespace Prisma {
 
   export const ChatConversationScalarFieldEnum: {
     id: 'id',
-    appointmentId: 'appointmentId',
     participantOneId: 'participantOneId',
     participantTwoId: 'participantTwoId',
     createdAt: 'createdAt',
@@ -12375,6 +12374,7 @@ export namespace Prisma {
     conversationId: 'conversationId',
     senderId: 'senderId',
     receiverId: 'receiverId',
+    appointmentId: 'appointmentId',
     type: 'type',
     message: 'message',
     fileUrl: 'fileUrl',
@@ -12550,7 +12550,6 @@ export namespace Prisma {
 
   export const ChatConversationOrderByRelevanceFieldEnum: {
     id: 'id',
-    appointmentId: 'appointmentId',
     participantOneId: 'participantOneId',
     participantTwoId: 'participantTwoId'
   };
@@ -12563,6 +12562,7 @@ export namespace Prisma {
     conversationId: 'conversationId',
     senderId: 'senderId',
     receiverId: 'receiverId',
+    appointmentId: 'appointmentId',
     message: 'message',
     fileUrl: 'fileUrl',
     fileName: 'fileName'
@@ -13264,7 +13264,6 @@ export namespace Prisma {
     OR?: ChatConversationWhereInput[]
     NOT?: ChatConversationWhereInput | ChatConversationWhereInput[]
     id?: StringFilter<"ChatConversation"> | string
-    appointmentId?: StringNullableFilter<"ChatConversation"> | string | null
     participantOneId?: StringFilter<"ChatConversation"> | string
     participantTwoId?: StringFilter<"ChatConversation"> | string
     createdAt?: DateTimeFilter<"ChatConversation"> | Date | string
@@ -13274,7 +13273,6 @@ export namespace Prisma {
 
   export type ChatConversationOrderByWithRelationInput = {
     id?: SortOrder
-    appointmentId?: SortOrderInput | SortOrder
     participantOneId?: SortOrder
     participantTwoId?: SortOrder
     createdAt?: SortOrder
@@ -13285,21 +13283,19 @@ export namespace Prisma {
 
   export type ChatConversationWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    participantOneId_participantTwoId_appointmentId?: ChatConversationParticipantOneIdParticipantTwoIdAppointmentIdCompoundUniqueInput
+    participantOneId_participantTwoId?: ChatConversationParticipantOneIdParticipantTwoIdCompoundUniqueInput
     AND?: ChatConversationWhereInput | ChatConversationWhereInput[]
     OR?: ChatConversationWhereInput[]
     NOT?: ChatConversationWhereInput | ChatConversationWhereInput[]
-    appointmentId?: StringNullableFilter<"ChatConversation"> | string | null
     participantOneId?: StringFilter<"ChatConversation"> | string
     participantTwoId?: StringFilter<"ChatConversation"> | string
     createdAt?: DateTimeFilter<"ChatConversation"> | Date | string
     updatedAt?: DateTimeFilter<"ChatConversation"> | Date | string
     messages?: ChatMessageListRelationFilter
-  }, "id" | "participantOneId_participantTwoId_appointmentId">
+  }, "id" | "participantOneId_participantTwoId">
 
   export type ChatConversationOrderByWithAggregationInput = {
     id?: SortOrder
-    appointmentId?: SortOrderInput | SortOrder
     participantOneId?: SortOrder
     participantTwoId?: SortOrder
     createdAt?: SortOrder
@@ -13314,7 +13310,6 @@ export namespace Prisma {
     OR?: ChatConversationScalarWhereWithAggregatesInput[]
     NOT?: ChatConversationScalarWhereWithAggregatesInput | ChatConversationScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"ChatConversation"> | string
-    appointmentId?: StringNullableWithAggregatesFilter<"ChatConversation"> | string | null
     participantOneId?: StringWithAggregatesFilter<"ChatConversation"> | string
     participantTwoId?: StringWithAggregatesFilter<"ChatConversation"> | string
     createdAt?: DateTimeWithAggregatesFilter<"ChatConversation"> | Date | string
@@ -13329,6 +13324,7 @@ export namespace Prisma {
     conversationId?: StringFilter<"ChatMessage"> | string
     senderId?: StringFilter<"ChatMessage"> | string
     receiverId?: StringFilter<"ChatMessage"> | string
+    appointmentId?: StringNullableFilter<"ChatMessage"> | string | null
     type?: EnumChatMessageTypeFilter<"ChatMessage"> | $Enums.ChatMessageType
     message?: StringNullableFilter<"ChatMessage"> | string | null
     fileUrl?: StringNullableFilter<"ChatMessage"> | string | null
@@ -13343,6 +13339,7 @@ export namespace Prisma {
     conversationId?: SortOrder
     senderId?: SortOrder
     receiverId?: SortOrder
+    appointmentId?: SortOrderInput | SortOrder
     type?: SortOrder
     message?: SortOrderInput | SortOrder
     fileUrl?: SortOrderInput | SortOrder
@@ -13361,6 +13358,7 @@ export namespace Prisma {
     conversationId?: StringFilter<"ChatMessage"> | string
     senderId?: StringFilter<"ChatMessage"> | string
     receiverId?: StringFilter<"ChatMessage"> | string
+    appointmentId?: StringNullableFilter<"ChatMessage"> | string | null
     type?: EnumChatMessageTypeFilter<"ChatMessage"> | $Enums.ChatMessageType
     message?: StringNullableFilter<"ChatMessage"> | string | null
     fileUrl?: StringNullableFilter<"ChatMessage"> | string | null
@@ -13375,6 +13373,7 @@ export namespace Prisma {
     conversationId?: SortOrder
     senderId?: SortOrder
     receiverId?: SortOrder
+    appointmentId?: SortOrderInput | SortOrder
     type?: SortOrder
     message?: SortOrderInput | SortOrder
     fileUrl?: SortOrderInput | SortOrder
@@ -13394,6 +13393,7 @@ export namespace Prisma {
     conversationId?: StringWithAggregatesFilter<"ChatMessage"> | string
     senderId?: StringWithAggregatesFilter<"ChatMessage"> | string
     receiverId?: StringWithAggregatesFilter<"ChatMessage"> | string
+    appointmentId?: StringNullableWithAggregatesFilter<"ChatMessage"> | string | null
     type?: EnumChatMessageTypeWithAggregatesFilter<"ChatMessage"> | $Enums.ChatMessageType
     message?: StringNullableWithAggregatesFilter<"ChatMessage"> | string | null
     fileUrl?: StringNullableWithAggregatesFilter<"ChatMessage"> | string | null
@@ -14295,7 +14295,6 @@ export namespace Prisma {
 
   export type ChatConversationCreateInput = {
     id?: string
-    appointmentId?: string | null
     participantOneId: string
     participantTwoId: string
     createdAt?: Date | string
@@ -14305,7 +14304,6 @@ export namespace Prisma {
 
   export type ChatConversationUncheckedCreateInput = {
     id?: string
-    appointmentId?: string | null
     participantOneId: string
     participantTwoId: string
     createdAt?: Date | string
@@ -14315,7 +14313,6 @@ export namespace Prisma {
 
   export type ChatConversationUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    appointmentId?: NullableStringFieldUpdateOperationsInput | string | null
     participantOneId?: StringFieldUpdateOperationsInput | string
     participantTwoId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14325,7 +14322,6 @@ export namespace Prisma {
 
   export type ChatConversationUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    appointmentId?: NullableStringFieldUpdateOperationsInput | string | null
     participantOneId?: StringFieldUpdateOperationsInput | string
     participantTwoId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14335,7 +14331,6 @@ export namespace Prisma {
 
   export type ChatConversationCreateManyInput = {
     id?: string
-    appointmentId?: string | null
     participantOneId: string
     participantTwoId: string
     createdAt?: Date | string
@@ -14344,7 +14339,6 @@ export namespace Prisma {
 
   export type ChatConversationUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    appointmentId?: NullableStringFieldUpdateOperationsInput | string | null
     participantOneId?: StringFieldUpdateOperationsInput | string
     participantTwoId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14353,7 +14347,6 @@ export namespace Prisma {
 
   export type ChatConversationUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    appointmentId?: NullableStringFieldUpdateOperationsInput | string | null
     participantOneId?: StringFieldUpdateOperationsInput | string
     participantTwoId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14364,6 +14357,7 @@ export namespace Prisma {
     id?: string
     senderId: string
     receiverId: string
+    appointmentId?: string | null
     type?: $Enums.ChatMessageType
     message?: string | null
     fileUrl?: string | null
@@ -14378,6 +14372,7 @@ export namespace Prisma {
     conversationId: string
     senderId: string
     receiverId: string
+    appointmentId?: string | null
     type?: $Enums.ChatMessageType
     message?: string | null
     fileUrl?: string | null
@@ -14390,6 +14385,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     senderId?: StringFieldUpdateOperationsInput | string
     receiverId?: StringFieldUpdateOperationsInput | string
+    appointmentId?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumChatMessageTypeFieldUpdateOperationsInput | $Enums.ChatMessageType
     message?: NullableStringFieldUpdateOperationsInput | string | null
     fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -14404,6 +14400,7 @@ export namespace Prisma {
     conversationId?: StringFieldUpdateOperationsInput | string
     senderId?: StringFieldUpdateOperationsInput | string
     receiverId?: StringFieldUpdateOperationsInput | string
+    appointmentId?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumChatMessageTypeFieldUpdateOperationsInput | $Enums.ChatMessageType
     message?: NullableStringFieldUpdateOperationsInput | string | null
     fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -14417,6 +14414,7 @@ export namespace Prisma {
     conversationId: string
     senderId: string
     receiverId: string
+    appointmentId?: string | null
     type?: $Enums.ChatMessageType
     message?: string | null
     fileUrl?: string | null
@@ -14429,6 +14427,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     senderId?: StringFieldUpdateOperationsInput | string
     receiverId?: StringFieldUpdateOperationsInput | string
+    appointmentId?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumChatMessageTypeFieldUpdateOperationsInput | $Enums.ChatMessageType
     message?: NullableStringFieldUpdateOperationsInput | string | null
     fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -14442,6 +14441,7 @@ export namespace Prisma {
     conversationId?: StringFieldUpdateOperationsInput | string
     senderId?: StringFieldUpdateOperationsInput | string
     receiverId?: StringFieldUpdateOperationsInput | string
+    appointmentId?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumChatMessageTypeFieldUpdateOperationsInput | $Enums.ChatMessageType
     message?: NullableStringFieldUpdateOperationsInput | string | null
     fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -15547,15 +15547,13 @@ export namespace Prisma {
     search: string
   }
 
-  export type ChatConversationParticipantOneIdParticipantTwoIdAppointmentIdCompoundUniqueInput = {
+  export type ChatConversationParticipantOneIdParticipantTwoIdCompoundUniqueInput = {
     participantOneId: string
     participantTwoId: string
-    appointmentId: string
   }
 
   export type ChatConversationCountOrderByAggregateInput = {
     id?: SortOrder
-    appointmentId?: SortOrder
     participantOneId?: SortOrder
     participantTwoId?: SortOrder
     createdAt?: SortOrder
@@ -15564,7 +15562,6 @@ export namespace Prisma {
 
   export type ChatConversationMaxOrderByAggregateInput = {
     id?: SortOrder
-    appointmentId?: SortOrder
     participantOneId?: SortOrder
     participantTwoId?: SortOrder
     createdAt?: SortOrder
@@ -15573,7 +15570,6 @@ export namespace Prisma {
 
   export type ChatConversationMinOrderByAggregateInput = {
     id?: SortOrder
-    appointmentId?: SortOrder
     participantOneId?: SortOrder
     participantTwoId?: SortOrder
     createdAt?: SortOrder
@@ -15603,6 +15599,7 @@ export namespace Prisma {
     conversationId?: SortOrder
     senderId?: SortOrder
     receiverId?: SortOrder
+    appointmentId?: SortOrder
     type?: SortOrder
     message?: SortOrder
     fileUrl?: SortOrder
@@ -15616,6 +15613,7 @@ export namespace Prisma {
     conversationId?: SortOrder
     senderId?: SortOrder
     receiverId?: SortOrder
+    appointmentId?: SortOrder
     type?: SortOrder
     message?: SortOrder
     fileUrl?: SortOrder
@@ -15629,6 +15627,7 @@ export namespace Prisma {
     conversationId?: SortOrder
     senderId?: SortOrder
     receiverId?: SortOrder
+    appointmentId?: SortOrder
     type?: SortOrder
     message?: SortOrder
     fileUrl?: SortOrder
@@ -17447,6 +17446,7 @@ export namespace Prisma {
     id?: string
     senderId: string
     receiverId: string
+    appointmentId?: string | null
     type?: $Enums.ChatMessageType
     message?: string | null
     fileUrl?: string | null
@@ -17459,6 +17459,7 @@ export namespace Prisma {
     id?: string
     senderId: string
     receiverId: string
+    appointmentId?: string | null
     type?: $Enums.ChatMessageType
     message?: string | null
     fileUrl?: string | null
@@ -17501,6 +17502,7 @@ export namespace Prisma {
     conversationId?: StringFilter<"ChatMessage"> | string
     senderId?: StringFilter<"ChatMessage"> | string
     receiverId?: StringFilter<"ChatMessage"> | string
+    appointmentId?: StringNullableFilter<"ChatMessage"> | string | null
     type?: EnumChatMessageTypeFilter<"ChatMessage"> | $Enums.ChatMessageType
     message?: StringNullableFilter<"ChatMessage"> | string | null
     fileUrl?: StringNullableFilter<"ChatMessage"> | string | null
@@ -17511,7 +17513,6 @@ export namespace Prisma {
 
   export type ChatConversationCreateWithoutMessagesInput = {
     id?: string
-    appointmentId?: string | null
     participantOneId: string
     participantTwoId: string
     createdAt?: Date | string
@@ -17520,7 +17521,6 @@ export namespace Prisma {
 
   export type ChatConversationUncheckedCreateWithoutMessagesInput = {
     id?: string
-    appointmentId?: string | null
     participantOneId: string
     participantTwoId: string
     createdAt?: Date | string
@@ -17545,7 +17545,6 @@ export namespace Prisma {
 
   export type ChatConversationUpdateWithoutMessagesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    appointmentId?: NullableStringFieldUpdateOperationsInput | string | null
     participantOneId?: StringFieldUpdateOperationsInput | string
     participantTwoId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17554,7 +17553,6 @@ export namespace Prisma {
 
   export type ChatConversationUncheckedUpdateWithoutMessagesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    appointmentId?: NullableStringFieldUpdateOperationsInput | string | null
     participantOneId?: StringFieldUpdateOperationsInput | string
     participantTwoId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17930,6 +17928,7 @@ export namespace Prisma {
     id?: string
     senderId: string
     receiverId: string
+    appointmentId?: string | null
     type?: $Enums.ChatMessageType
     message?: string | null
     fileUrl?: string | null
@@ -17942,6 +17941,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     senderId?: StringFieldUpdateOperationsInput | string
     receiverId?: StringFieldUpdateOperationsInput | string
+    appointmentId?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumChatMessageTypeFieldUpdateOperationsInput | $Enums.ChatMessageType
     message?: NullableStringFieldUpdateOperationsInput | string | null
     fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17954,6 +17954,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     senderId?: StringFieldUpdateOperationsInput | string
     receiverId?: StringFieldUpdateOperationsInput | string
+    appointmentId?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumChatMessageTypeFieldUpdateOperationsInput | $Enums.ChatMessageType
     message?: NullableStringFieldUpdateOperationsInput | string | null
     fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17966,6 +17967,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     senderId?: StringFieldUpdateOperationsInput | string
     receiverId?: StringFieldUpdateOperationsInput | string
+    appointmentId?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumChatMessageTypeFieldUpdateOperationsInput | $Enums.ChatMessageType
     message?: NullableStringFieldUpdateOperationsInput | string | null
     fileUrl?: NullableStringFieldUpdateOperationsInput | string | null

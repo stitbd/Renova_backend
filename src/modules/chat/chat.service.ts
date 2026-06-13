@@ -44,32 +44,29 @@ const getConversationParticipants = (senderId: string, receiverId: string) => {
 };
 
 const getOrCreateConversation = async (
-    senderId: string,
-    receiverId: string,
-    appointmentId?: string
+  senderId: string,
+  receiverId: string
 ) => {
-    const [participantOneId, participantTwoId] = getConversationParticipants(
-        senderId,
-        receiverId
-    );
+  const [participantOneId, participantTwoId] = getConversationParticipants(
+    senderId,
+    receiverId
+  );
 
-    const existing = await appointmentPrisma.chatConversation.findFirst({
-        where: {
-            participantOneId,
-            participantTwoId,
-            appointmentId: appointmentId || null,
-        },
-    });
+  const existing = await appointmentPrisma.chatConversation.findFirst({
+    where: {
+      participantOneId,
+      participantTwoId,
+    },
+  });
 
-    if (existing) return existing;
+  if (existing) return existing;
 
-    return appointmentPrisma.chatConversation.create({
-        data: {
-            participantOneId,
-            participantTwoId,
-            appointmentId: appointmentId || null,
-        },
-    });
+  return appointmentPrisma.chatConversation.create({
+    data: {
+      participantOneId,
+      participantTwoId,
+    },
+  });
 };
 
 const sendMessage = async (payload: SendMessagePayload, authUser: AuthUser) => {
@@ -115,7 +112,6 @@ const sendMessage = async (payload: SendMessagePayload, authUser: AuthUser) => {
     const conversation = await getOrCreateConversation(
         authUser.id,
         payload.receiverId,
-        payload.appointmentId
     );
 
     const createdMessage = await appointmentPrisma.chatMessage.create({
@@ -135,18 +131,17 @@ const sendMessage = async (payload: SendMessagePayload, authUser: AuthUser) => {
         data: { updatedAt: new Date() },
     });
 
-    const response = {
-        ...createdMessage,
-        conversationId: conversation.id,
-        sender: {
-            id: authUser.id,
-            userType: authUser.userType,
-        },
-        receiver,
-    };
+const sender = await getUserBasicInfo(authUser.id);
 
-    getIo().to(payload.receiverId).emit("receive_message", response);
-    getIo().to(authUser.id).emit("message_sent", response);
+const response = {
+  ...createdMessage,
+  conversationId: conversation.id,
+  sender,
+  receiver,
+};
+
+getIo().to(payload.receiverId).emit("receive_message", response);
+getIo().to(authUser.id).emit("message_sent", response);
 
     return response;
 };
@@ -279,9 +274,90 @@ const markSeen = async (messageId: string, authUser: AuthUser) => {
     return updatedMessage;
 };
 
+const getConversationByParticipant = async (
+  authUser: AuthUser,
+  receiverId: string,
+  appointmentId?: string
+) => {
+  if (!receiverId) {
+    throw new AppError("Receiver ID is required", 400);
+  }
+
+  if (receiverId === authUser.id) {
+    throw new AppError("Receiver cannot be same as sender", 400);
+  }
+
+  const receiver = await getUserBasicInfo(receiverId);
+
+  if (!receiver) {
+    throw new AppError("Receiver not found", 404);
+  }
+
+  if (appointmentId) {
+    const appointment = await appointmentPrisma.appointment.findUnique({
+      where: { id: appointmentId },
+      select: {
+        id: true,
+        doctorId: true,
+        patientId: true,
+        patientName: true,
+        patientPhone: true,
+        patientGender: true,
+        reason: true,
+        startTime: true,
+        appointmentDate: true,
+      },
+    });
+
+    if (!appointment) {
+      throw new AppError("Appointment not found", 404);
+    }
+
+    const isParticipant =
+      appointment.doctorId === authUser.id ||
+      appointment.patientId === authUser.id;
+
+    const isReceiverParticipant =
+      appointment.doctorId === receiverId ||
+      appointment.patientId === receiverId;
+
+    if (!isParticipant || !isReceiverParticipant) {
+      throw new AppError("You are not allowed to access this conversation", 403);
+    }
+  }
+
+  const [participantOneId, participantTwoId] = getConversationParticipants(
+    authUser.id,
+    receiverId
+  );
+
+  const conversation = await appointmentPrisma.chatConversation.findFirst({
+    where: {
+      participantOneId,
+      participantTwoId,
+    },
+    include: {
+      messages: {
+        orderBy: { createdAt: "desc" },
+        take: 1,
+      },
+    },
+  });
+
+  return {
+    conversation,
+    otherUser: receiver,
+    lastMessage: conversation?.messages?.[0] || null,
+    appointmentId: appointmentId || null,
+    receiverId,
+  };
+};
+
+
 export const chatService = {
     sendMessage,
     getMyConversations,
     getMessages,
     markSeen,
+    getConversationByParticipant
 };

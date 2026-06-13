@@ -208,7 +208,6 @@ exports.Prisma.VideoCallScalarFieldEnum = {
 
 exports.Prisma.ChatConversationScalarFieldEnum = {
   id: 'id',
-  appointmentId: 'appointmentId',
   participantOneId: 'participantOneId',
   participantTwoId: 'participantTwoId',
   createdAt: 'createdAt',
@@ -220,6 +219,7 @@ exports.Prisma.ChatMessageScalarFieldEnum = {
   conversationId: 'conversationId',
   senderId: 'senderId',
   receiverId: 'receiverId',
+  appointmentId: 'appointmentId',
   type: 'type',
   message: 'message',
   fileUrl: 'fileUrl',
@@ -353,7 +353,6 @@ exports.Prisma.VideoCallOrderByRelevanceFieldEnum = {
 
 exports.Prisma.ChatConversationOrderByRelevanceFieldEnum = {
   id: 'id',
-  appointmentId: 'appointmentId',
   participantOneId: 'participantOneId',
   participantTwoId: 'participantTwoId'
 };
@@ -363,6 +362,7 @@ exports.Prisma.ChatMessageOrderByRelevanceFieldEnum = {
   conversationId: 'conversationId',
   senderId: 'senderId',
   receiverId: 'receiverId',
+  appointmentId: 'appointmentId',
   message: 'message',
   fileUrl: 'fileUrl',
   fileName: 'fileName'

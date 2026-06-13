@@ -222,8 +222,6 @@ enum ChatMessageType {
 model ChatConversation {
   id String @id @default(uuid())
 
-  appointmentId String?
-
   participantOneId String
   participantTwoId String
 
@@ -232,8 +230,7 @@ model ChatConversation {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@unique([participantOneId, participantTwoId, appointmentId])
-  @@index([appointmentId])
+  @@unique([participantOneId, participantTwoId])
   @@index([participantOneId])
   @@index([participantTwoId])
 }
@@ -247,6 +244,8 @@ model ChatMessage {
   senderId   String
   receiverId String
 
+  appointmentId String?
+
   type ChatMessageType @default(TEXT)
 
   message  String? @db.Text
@@ -258,6 +257,7 @@ model ChatMessage {
   createdAt DateTime @default(now())
 
   @@index([conversationId])
+  @@index([appointmentId])
   @@index([senderId])
   @@index([receiverId])
   @@index([seenAt])

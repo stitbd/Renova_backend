@@ -61,10 +61,30 @@ const markSeen = catchAsync(async (req: Request, res: Response) => {
         data: result,
     });
 });
+const getConversationByParticipant = catchAsync(
+  async (req: Request, res: Response) => {
+    const receiverId = req.query.receiverId as string;
+    const appointmentId = req.query.appointmentId as string | undefined;
+
+    const result = await chatService.getConversationByParticipant(
+      req.user as AuthUser,
+      receiverId,
+      appointmentId
+    );
+
+    manageResponse(res, {
+      statusCode: 200,
+      success: true,
+      message: "Conversation retrieved successfully",
+      data: result,
+    });
+  }
+);
 
 export const chatController = {
     sendMessage,
     getMyConversations,
     getMessages,
     markSeen,
+    getConversationByParticipant
 };

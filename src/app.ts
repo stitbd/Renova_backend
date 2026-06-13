@@ -18,6 +18,7 @@ app.use(
       "https://www.renovalifecare.com",
       "https://renovafrontend-e3309yxqk-md-soyaib-hossains-projects.vercel.app",
       "https://admin.renovalifecare.com",
+      "https://renovafrontend.vercel.app"
     ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
