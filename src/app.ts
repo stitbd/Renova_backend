@@ -19,7 +19,7 @@ app.use(
       "https://renovafrontend-e3309yxqk-md-soyaib-hossains-projects.vercel.app",
       "https://admin.renovalifecare.com",
       "https://renovafrontend.vercel.app",
-      "https://renovafrontend.vercel.app",
+      "https://renovalifecare.com",
       "http://192.168.0.164:3000"
 
     ],
