@@ -447,7 +447,8 @@ exports.ChatMessageType = exports.$Enums.ChatMessageType = {
   TEXT: 'TEXT',
   IMAGE: 'IMAGE',
   FILE: 'FILE',
-  SYSTEM: 'SYSTEM'
+  SYSTEM: 'SYSTEM',
+  CALL: 'CALL'
 };
 
 exports.PackageOrderStatus = exports.$Enums.PackageOrderStatus = {

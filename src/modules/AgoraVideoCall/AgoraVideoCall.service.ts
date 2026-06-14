@@ -6,6 +6,7 @@ import { AppError } from "../../utils/app_error";
 import { generateAgoraToken, generateAgoraUid } from "../../utils/agoraToken";
 import { getIo } from "../../socket/initSocket";
 import { AuthUser } from "../../middlewares/auth";
+import { getOrCreateConversation } from "../chat/chat.service";
 
 type StartCallPayload = {
     receiverId: string;
@@ -41,6 +42,57 @@ const getUserBasicInfo = async (userId: string) => {
     return null;
 
 };
+const createCallHistoryMessage = async ({
+  callerId,
+  receiverId,
+  appointmentId,
+  callType,
+  status,
+}: {
+  callerId: string;
+  receiverId: string;
+  appointmentId?: string | null;
+  callType: "AUDIO" | "VIDEO";
+  status: "MISSED" | "REJECTED" | "ENDED";
+}) => {
+  const conversation = await getOrCreateConversation(callerId, receiverId);
+
+  const messageText =
+    status === "MISSED"
+      ? `Missed ${callType.toLowerCase()} call`
+      : status === "REJECTED"
+        ? `${callType.toLowerCase()} call declined`
+        : `${callType.toLowerCase()} call ended`;
+
+  const message = await appointmentPrisma.chatMessage.create({
+    data: {
+      conversationId: conversation.id,
+      senderId: callerId,
+      receiverId,
+      appointmentId: appointmentId || undefined,
+      type: "CALL" as any,
+      message: messageText,
+    },
+  });
+
+  await appointmentPrisma.chatConversation.update({
+    where: { id: conversation.id },
+    data: { updatedAt: new Date() },
+  });
+
+  const response = {
+    ...message,
+    conversationId: conversation.id,
+    callType,
+    callStatus: status,
+  };
+
+  getIo().to(callerId).emit("receive_message", response);
+  getIo().to(receiverId).emit("receive_message", response);
+
+  return response;
+};
+
 
 const startCall = async (payload: StartCallPayload, authUser: AuthUser) => {
     const callerId = authUser.id;
@@ -90,6 +142,50 @@ const startCall = async (payload: StartCallPayload, authUser: AuthUser) => {
             callType,
         }
     );
+
+
+    // for missed call 
+
+    const CALL_TIMEOUT_MS = 31_000;
+
+setTimeout(async () => {
+  const latestCall = await appointmentPrisma.videoCall.findUnique({
+    where: { callId: call.callId },
+  });
+
+  if (!latestCall || latestCall.status !== "RINGING") return;
+
+  await appointmentPrisma.videoCall.update({
+    where: { callId: call.callId },
+    data: {
+      status: "MISSED",
+      endedAt: new Date(),
+    },
+  });
+
+  await createCallHistoryMessage({
+    callerId: latestCall.callerId,
+    receiverId: latestCall.receiverId,
+    appointmentId: latestCall.appointmentId,
+    callType: latestCall.callType,
+    status: "MISSED",
+  });
+
+  [latestCall.callerId, latestCall.receiverId].forEach((userId) => {
+    getIo().to(userId).emit(
+      latestCall.callType === "AUDIO"
+        ? "audio_call_missed"
+        : "video_call_missed",
+      {
+        callId: latestCall.callId,
+        channelName: latestCall.channelName,
+        callType: latestCall.callType,
+      }
+    );
+  });
+}, CALL_TIMEOUT_MS);
+
+
 
     return {
         callId: call.callId,
@@ -174,6 +270,15 @@ const rejectCall = async (callId: string, authUser: AuthUser) => {
         },
     });
 
+
+        await createCallHistoryMessage({
+  callerId: call.callerId,
+  receiverId: call.receiverId,
+  appointmentId: call.appointmentId,
+  callType: call.callType,
+  status: "REJECTED",
+});
+
     getIo().to(call.callerId).emit(
         call.callType === "AUDIO" ? "audio_call_rejected" : "video_call_rejected",
         {
@@ -182,6 +287,8 @@ const rejectCall = async (callId: string, authUser: AuthUser) => {
             callType: call.callType,
         }
     );
+
+
 
     return null;
 };
@@ -205,13 +312,24 @@ const endCall = async (callId: string, authUser: AuthUser) => {
         throw new AppError("You are not allowed to end this call", 403);
     }
 
-    await appointmentPrisma.videoCall.update({
-        where: { callId },
-        data: {
-            status: "ENDED",
-            endedAt: new Date(),
-        },
-    });
+await appointmentPrisma.videoCall.update({
+  where: { callId },
+  data: {
+    status: "ENDED",
+    endedAt: new Date(),
+  },
+});
+
+if (call.status === "ACCEPTED") {
+  await createCallHistoryMessage({
+    callerId: call.callerId,
+    receiverId: call.receiverId,
+    appointmentId: call.appointmentId,
+    callType: call.callType,
+    status: "ENDED",
+  });
+}
+
 
     [call.callerId, call.receiverId].forEach((userId) => {
         getIo().to(userId).emit(

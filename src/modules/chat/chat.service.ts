@@ -43,7 +43,7 @@ const getConversationParticipants = (senderId: string, receiverId: string) => {
     return [senderId, receiverId].sort();
 };
 
-const getOrCreateConversation = async (
+export const getOrCreateConversation = async (
   senderId: string,
   receiverId: string
 ) => {

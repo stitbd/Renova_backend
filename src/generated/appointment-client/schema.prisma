@@ -213,6 +213,7 @@ enum ChatMessageType {
   IMAGE
   FILE
   SYSTEM
+  CALL
 }
 
 model ChatConversation {

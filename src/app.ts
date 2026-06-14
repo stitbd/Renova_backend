@@ -18,7 +18,10 @@ app.use(
       "https://www.renovalifecare.com",
       "https://renovafrontend-e3309yxqk-md-soyaib-hossains-projects.vercel.app",
       "https://admin.renovalifecare.com",
-      "https://renovafrontend.vercel.app"
+      "https://renovafrontend.vercel.app",
+      "https://renovafrontend.vercel.app",
+      "http://192.168.0.164:3000"
+
     ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],

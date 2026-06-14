@@ -139,7 +139,8 @@ export const ChatMessageType: {
   TEXT: 'TEXT',
   IMAGE: 'IMAGE',
   FILE: 'FILE',
-  SYSTEM: 'SYSTEM'
+  SYSTEM: 'SYSTEM',
+  CALL: 'CALL'
 };
 
 export type ChatMessageType = (typeof ChatMessageType)[keyof typeof ChatMessageType]
