@@ -5,18 +5,29 @@ import manageResponse from "../../utils/manage_response";
 import { chatService } from "./chat.service";
 
 const sendMessage = catchAsync(async (req: Request, res: Response) => {
-    const result = await chatService.sendMessage(
-        req.body,
-        req.user as AuthUser
-    );
+  const file = req.file as Express.Multer.File | undefined;
 
-    manageResponse(res, {
-        statusCode: 201,
-        success: true,
-        message: "Message sent successfully",
-        data: result,
-    });
+  const payload = {
+    receiverId: req.body.receiverId,
+    appointmentId: req.body.appointmentId || undefined,
+    message: req.body.message || undefined,
+    fileUrl: file?.path || undefined,
+    fileName: file?.originalname || undefined,
+  };
+
+  const result = await chatService.sendMessage(
+    payload,
+    req.user as AuthUser
+  );
+
+  manageResponse(res, {
+    statusCode: 201,
+    success: true,
+    message: "Message sent successfully",
+    data: result,
+  });
 });
+
 
 const getMyConversations = catchAsync(async (req: Request, res: Response) => {
     const result = await chatService.getMyConversations(req.user as AuthUser);

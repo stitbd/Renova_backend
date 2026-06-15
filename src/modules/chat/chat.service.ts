@@ -119,7 +119,11 @@ const sendMessage = async (payload: SendMessagePayload, authUser: AuthUser) => {
             conversationId: conversation.id,
             senderId: authUser.id,
             receiverId: payload.receiverId,
-            type: payload.fileUrl ? "FILE" : "TEXT",
+           type: payload.fileUrl
+  ? payload.fileName?.match(/\.(jpg|jpeg|png|webp)$/i)
+    ? "IMAGE"
+    : "FILE"
+  : "TEXT",
             message: payload.message,
             fileUrl: payload.fileUrl,
             fileName: payload.fileName,

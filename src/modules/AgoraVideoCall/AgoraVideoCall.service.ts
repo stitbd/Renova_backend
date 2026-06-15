@@ -295,54 +295,63 @@ const rejectCall = async (callId: string, authUser: AuthUser) => {
 
 
 
-
 const endCall = async (callId: string, authUser: AuthUser) => {
-    const call = await appointmentPrisma.videoCall.findUnique({
-        where: { callId },
-    });
+  const call = await appointmentPrisma.videoCall.findUnique({
+    where: { callId },
+  });
 
-    if (!call) {
-        throw new AppError("Call not found", 404);
-    }
+  if (!call) {
+    throw new AppError("Call not found", 404);
+  }
 
-    const isParticipant =
-        call.callerId === authUser.id || call.receiverId === authUser.id;
+  const isParticipant =
+    call.callerId === authUser.id || call.receiverId === authUser.id;
 
-    if (!isParticipant) {
-        throw new AppError("You are not allowed to end this call", 403);
-    }
+  if (!isParticipant) {
+    throw new AppError("You are not allowed to end this call", 403);
+  }
 
-await appointmentPrisma.videoCall.update({
-  where: { callId },
-  data: {
-    status: "ENDED",
-    endedAt: new Date(),
-  },
-});
+  if (["ENDED", "MISSED", "REJECTED"].includes(call.status)) {
+    return null;
+  }
 
-if (call.status === "ACCEPTED") {
+  const finalStatus =
+    call.status === "RINGING" ? "MISSED" : "ENDED";
+
+  await appointmentPrisma.videoCall.update({
+    where: { callId },
+    data: {
+      status: finalStatus,
+      endedAt: new Date(),
+    },
+  });
+
   await createCallHistoryMessage({
     callerId: call.callerId,
     receiverId: call.receiverId,
     appointmentId: call.appointmentId,
     callType: call.callType,
-    status: "ENDED",
+    status: finalStatus,
   });
-}
 
+  [call.callerId, call.receiverId].forEach((userId) => {
+    getIo().to(userId).emit(
+      finalStatus === "MISSED"
+        ? call.callType === "AUDIO"
+          ? "audio_call_missed"
+          : "video_call_missed"
+        : call.callType === "AUDIO"
+          ? "audio_call_ended"
+          : "video_call_ended",
+      {
+        callId,
+        channelName: call.channelName,
+        callType: call.callType,
+      }
+    );
+  });
 
-    [call.callerId, call.receiverId].forEach((userId) => {
-        getIo().to(userId).emit(
-            call.callType === "AUDIO" ? "audio_call_ended" : "video_call_ended",
-            {
-                callId,
-                channelName: call.channelName,
-                callType: call.callType,
-            }
-        );
-    });
-
-    return null;
+  return null;
 };
 
 export const videoCallService = {

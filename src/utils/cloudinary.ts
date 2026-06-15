@@ -8,17 +8,36 @@ cloudinary.config({
     api_secret: process.env.CLOUD_API_SECRET,
 });
 
-export const createUploader = (folder: string) => {
-    // console.log("folder", folder);
-    const storage = new CloudinaryStorage({
-        cloudinary,
-        params: async () => ({
-            folder: folder,
-            allowed_formats: ["jpg", "jpeg", "png", "webp", "pdf"],
-        }),
-    });
 
-    return multer({ storage });
+export const createUploader = (folder: string) => {
+  const storage = new CloudinaryStorage({
+    cloudinary,
+    params: async () => ({
+      folder,
+      resource_type: "auto",
+      allowed_formats: [
+        "jpg",
+        "jpeg",
+        "png",
+        "webp",
+        "pdf",
+        "doc",
+        "docx",
+        "mp4",
+        "mov",
+        "avi",
+        "mkv",
+        "webm",
+      ],
+    }),
+  });
+
+  return multer({
+    storage,
+    limits: {
+      fileSize: 50 * 1024 * 1024, // 50MB
+    },
+  });
 };
 
 

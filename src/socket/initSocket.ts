@@ -4,8 +4,15 @@ import { Server } from "socket.io";
 import { env } from "../configs/env";
 import { jwtHelpers } from "../utils/JWT";
 
+export const onlineUsers = new Map<string, Set<string>>();
+    const typingUsers = new Map<string, string>();
+
 
 let io: Server;
+
+const getOnlineUserIds = () => {
+  return Array.from(onlineUsers.keys());
+};
 
 export const initSocket = (server: any) => {
   io = new Server(server, {
@@ -41,12 +48,80 @@ export const initSocket = (server: any) => {
 
   io.on("connection", (socket) => {
     const user = socket.data.user;
-
     const userId = user.id || user.userId;
+
+    if (!userId) {
+      socket.disconnect(true);
+      return;
+    }
 
     socket.join(userId);
 
+    const existingSockets = onlineUsers.get(userId) || new Set<string>();
+    existingSockets.add(socket.id);
+    onlineUsers.set(userId, existingSockets);
+
+    io.emit("user_online", {
+      userId,
+      online: true,
+      onlineUserIds: getOnlineUserIds(),
+    });
+
+    socket.emit("online_users", {
+      onlineUserIds: getOnlineUserIds(),
+    });
+
+socket.on("typing_start", ({ receiverId }) => {
+  if (!receiverId) return;
+
+  typingUsers.set(userId, receiverId);
+
+  io.to(receiverId).emit("typing_start", {
+    userId,
+  });
+});
+
+socket.on("typing_stop", ({ receiverId }) => {
+  if (!receiverId) return;
+
+  typingUsers.delete(userId);
+
+  io.to(receiverId).emit("typing_stop", {
+    userId,
+  });
+});
+    
+
     socket.on("disconnect", () => {
+      const userSockets = onlineUsers.get(userId);
+
+      if (userSockets) {
+        userSockets.delete(socket.id);
+
+        if (userSockets.size === 0) {
+          onlineUsers.delete(userId);
+
+          io.emit("user_offline", {
+            userId,
+            online: false,
+            lastSeen: new Date().toISOString(),
+            onlineUserIds: getOnlineUserIds(),
+          });
+        } else {
+          onlineUsers.set(userId, userSockets);
+        }
+      }
+
+      const typingReceiverId = typingUsers.get(userId);
+
+if (typingReceiverId) {
+  io.to(typingReceiverId).emit("typing_stop", {
+    userId,
+  });
+
+  typingUsers.delete(userId);
+}
+
       console.log("Socket disconnected:", socket.id);
     });
   });

@@ -3,14 +3,17 @@ import auth from "../../middlewares/auth";
 import { validateRequest } from "../../utils/validateRequest";
 import { chatController } from "./chat.controller";
 import { sendMessageValidationSchema } from "./chat.validation";
+import { createUploader } from "../../utils/cloudinary";
 
 const router = express.Router();
 
+const chatFileUploader = createUploader("renova/chat-files");
+
 router.post(
-    "/send",
-    auth("PATIENT", "DOCTOR"),
-    validateRequest(sendMessageValidationSchema),
-    chatController.sendMessage
+  "/send",
+  auth("PATIENT", "DOCTOR"),
+  chatFileUploader.single("file"),
+  chatController.sendMessage
 );
 
 router.get(
