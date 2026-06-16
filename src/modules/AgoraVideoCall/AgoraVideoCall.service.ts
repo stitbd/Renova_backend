@@ -102,6 +102,41 @@ const startCall = async (payload: StartCallPayload, authUser: AuthUser) => {
         throw new AppError("Caller and receiver cannot be same", 400);
     }
 
+    const activeCall = await appointmentPrisma.videoCall.findFirst({
+  where: {
+    status: {
+      in: ["RINGING", "ACCEPTED"],
+    },
+    OR: [
+      {
+        callerId: receiverId,
+      },
+      {
+        receiverId: receiverId,
+      },
+      {
+        callerId,
+      },
+      {
+        receiverId: callerId,
+      },
+    ],
+  },
+});
+
+if (activeCall) {
+
+  getIo().to(callerId).emit("call_busy", {
+  receiverId,
+  message: "User is busy in another call",
+});
+
+  throw new AppError(
+    "User is currently busy in another call",
+    409
+  );
+}
+
     const receiver = await getUserBasicInfo(receiverId);
 
     if (!receiver) {

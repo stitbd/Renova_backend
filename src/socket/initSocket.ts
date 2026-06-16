@@ -5,8 +5,8 @@ import { env } from "../configs/env";
 import { jwtHelpers } from "../utils/JWT";
 
 export const onlineUsers = new Map<string, Set<string>>();
-    const typingUsers = new Map<string, string>();
-
+const typingUsers = new Map<string, string>();
+const offlineTimers = new Map<string, NodeJS.Timeout>();
 
 let io: Server;
 
@@ -17,7 +17,7 @@ const getOnlineUserIds = () => {
 export const initSocket = (server: any) => {
   io = new Server(server, {
     cors: {
-      origin: ["http://localhost:3000", "http://localhost:5173"],
+      origin: ["http://localhost:3000", "http://localhost:5173","https://renovafrontend.vercel.app"],
       credentials: true,
     },
   });
@@ -49,6 +49,14 @@ export const initSocket = (server: any) => {
   io.on("connection", (socket) => {
     const user = socket.data.user;
     const userId = user.id || user.userId;
+
+    const pendingOfflineTimer = offlineTimers.get(userId);
+
+if (pendingOfflineTimer) {
+  clearTimeout(pendingOfflineTimer);
+  offlineTimers.delete(userId);
+}
+
 
     if (!userId) {
       socket.disconnect(true);
@@ -92,38 +100,46 @@ socket.on("typing_stop", ({ receiverId }) => {
 });
     
 
-    socket.on("disconnect", () => {
-      const userSockets = onlineUsers.get(userId);
+socket.on("disconnect", () => {
+  const userSockets = onlineUsers.get(userId);
 
-      if (userSockets) {
-        userSockets.delete(socket.id);
+  if (userSockets) {
+    userSockets.delete(socket.id);
 
-        if (userSockets.size === 0) {
-          onlineUsers.delete(userId);
+    if (userSockets.size === 0) {
+      onlineUsers.delete(userId);
 
+      const timer = setTimeout(() => {
+        if (!onlineUsers.has(userId)) {
           io.emit("user_offline", {
             userId,
             online: false,
             lastSeen: new Date().toISOString(),
             onlineUserIds: getOnlineUserIds(),
           });
-        } else {
-          onlineUsers.set(userId, userSockets);
         }
-      }
 
-      const typingReceiverId = typingUsers.get(userId);
+        offlineTimers.delete(userId);
+      }, 8000);
 
-if (typingReceiverId) {
-  io.to(typingReceiverId).emit("typing_stop", {
-    userId,
-  });
+      offlineTimers.set(userId, timer);
+    } else {
+      onlineUsers.set(userId, userSockets);
+    }
+  }
 
-  typingUsers.delete(userId);
-}
+  const typingReceiverId = typingUsers.get(userId);
 
-      console.log("Socket disconnected:", socket.id);
+  if (typingReceiverId) {
+    io.to(typingReceiverId).emit("typing_stop", {
+      userId,
     });
+
+    typingUsers.delete(userId);
+  }
+
+  console.log("Socket disconnected:", socket.id);
+});
   });
 
   return io;
