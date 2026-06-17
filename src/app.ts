@@ -7,29 +7,28 @@ import { createDefaultSuperAdmin } from "./utils/createDefaultSuperAdmin";
 
 const app: Application = express();
 
+const allowedOrigins = [
+  "http://localhost:3000",
+  "http://localhost:3001",
+  "http://localhost:5173",
+  "https://renovafrontend.vercel.app",
+];
+
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",
-      "http://localhost:3001",
-      "http://localhost:5173",
+    origin: (origin, callback) => {
+      // allow Postman/server-to-server/no-origin requests
+      if (!origin) return callback(null, true);
 
-      "https://renovalifecare.com",
-      "https://www.renovalifecare.com",
-      "https://renovafrontend-e3309yxqk-md-soyaib-hossains-projects.vercel.app",
-      "https://admin.renovalifecare.com",
-      "https://renovafrontend.vercel.app",
-      "https://renovalifecare.com",
-      "http://192.168.0.164:3000"
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
 
-    ],
+      return callback(new Error(`CORS blocked origin: ${origin}`));
+    },
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    allowedHeaders: [
-      "Content-Type",
-      "Authorization",
-      "Accept",
-    ],
+    allowedHeaders: ["Content-Type", "Authorization", "Accept"],
   })
 );
 

@@ -17,7 +17,7 @@ const getOnlineUserIds = () => {
 export const initSocket = (server: any) => {
   io = new Server(server, {
     cors: {
-      origin: ["http://localhost:3000", "http://localhost:5173","https://renovafrontend.vercel.app"],
+      origin: ["http://localhost:3000", "http://localhost:5173","https://renovafrontend.vercel.app",],
       credentials: true,
     },
   });
