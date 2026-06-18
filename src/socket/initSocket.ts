@@ -52,10 +52,10 @@ export const initSocket = (server: any) => {
 
     const pendingOfflineTimer = offlineTimers.get(userId);
 
-if (pendingOfflineTimer) {
+    if (pendingOfflineTimer) {
   clearTimeout(pendingOfflineTimer);
   offlineTimers.delete(userId);
-}
+  }
 
 
     if (!userId) {
