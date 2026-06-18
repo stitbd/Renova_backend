@@ -182,7 +182,7 @@ if (activeCall) {
 
     const CALL_TIMEOUT_MS = 31_000;
 
-setTimeout(async () => {
+  setTimeout(async () => {
   const latestCall = await appointmentPrisma.videoCall.findUnique({
     where: { callId: call.callId },
   });
