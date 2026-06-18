@@ -93,7 +93,6 @@ const createCallHistoryMessage = async ({
   return response;
 };
 
-
 const startCall = async (payload: StartCallPayload, authUser: AuthUser) => {
     const callerId = authUser.id;
     const receiverId = payload.receiverId;
@@ -327,8 +326,6 @@ const rejectCall = async (callId: string, authUser: AuthUser) => {
 
     return null;
 };
-
-
 
 const endCall = async (callId: string, authUser: AuthUser) => {
   const call = await appointmentPrisma.videoCall.findUnique({
