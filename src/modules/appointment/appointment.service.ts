@@ -55,7 +55,7 @@ const createAppointment = async (
         throw new AppError("doctorId and appointmentDate are required", 400);
     }
 
-    console.log("Creating appointment with payload:", payload);
+    // console.log("Creating appointment with payload:", payload);
 
     const patientId = authUser.id;
 
