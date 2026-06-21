@@ -7,7 +7,7 @@ import { AppointmentStatus } from "../../generated/appointment-client";
 
 
 const createAppointment = catchAsync(async (req: Request, res: Response) => {
-    console.log("Received request to create appointment with body controller :", req.body);
+    // console.log("Received request to create appointment with body controller :", req.body);
     const result = await appointmentService.createAppointment(req.body, req.user as AuthUser);
 
     manageResponse(res, {
