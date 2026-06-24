@@ -39,6 +39,7 @@ import { paymentRoutes } from "./modules/payment/payment.route";
 import { packageOrderRoutes } from "./modules/packageOrder/packageOrder.route";
 import { videoCallRoutes } from "./modules/AgoraVideoCall/AgoraVideoCall.route";
 import { chatRoutes } from "./modules/chat/chat.route";
+import { prescriptionRoutes } from "./modules/prescriptions/prescription.route";
 
 
 const appRouter = Router();
@@ -60,6 +61,7 @@ const moduleRoutes = [
   { path: "/super-admin-roles", route: superAdminRoleRoutes },
   { path: "/super-admin-permission", route: superAdminPermissionRoutes },
   { path: "/appointments", route: appointmentRoutes },
+  { path: "/prescription", route: prescriptionRoutes },
   { path: "/video-calls", route: videoCallRoutes },
   { path: "/chat", route: chatRoutes },
   { path: "/payments", route: paymentRoutes },

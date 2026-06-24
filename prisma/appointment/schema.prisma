@@ -81,6 +81,7 @@ model Appointment {
   slotLock   AppointmentSlotLock?
   statusLogs AppointmentStatusLog[]
   payment    AppointmentPayment?
+  prescription Prescription?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -127,6 +128,72 @@ model AppointmentStatusLog {
   @@index([appointmentId])
 }
 
+
+
+
+//=============================Prescription  ==================================
+
+model Prescription {
+  id String @id @default(uuid())
+
+  prescriptionCode String @unique
+
+  appointmentId String @unique
+  appointment   Appointment @relation(fields: [appointmentId], references: [id], onDelete: Cascade)
+
+  doctorId  String
+  patientId String
+
+  chiefComplaint String? @db.Text
+  diagnosis      String? @db.Text
+  advice         String? @db.Text
+  followUpDate   DateTime?
+
+  medicines PrescriptionMedicine[]
+  tests     PrescriptionTest[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([doctorId])
+  @@index([patientId])
+  @@index([appointmentId])
+}
+
+model PrescriptionMedicine {
+  id String @id @default(uuid())
+
+  prescriptionId String
+  prescription   Prescription @relation(fields: [prescriptionId], references: [id], onDelete: Cascade)
+
+  medicineName String
+  dosage       String?
+  frequency    String?
+  duration     String?
+  instruction  String? @db.Text
+
+  createdAt DateTime @default(now())
+
+  @@index([prescriptionId])
+}
+
+model PrescriptionTest {
+  id String @id @default(uuid())
+
+  prescriptionId String
+  prescription   Prescription @relation(fields: [prescriptionId], references: [id], onDelete: Cascade)
+
+  testName    String
+  instruction String? @db.Text
+
+  createdAt DateTime @default(now())
+
+  @@index([prescriptionId])
+}
+
+
+
+//==========================appointment payment ===========================
 
 enum PaymentGateway {
   SSLCOMMERZ

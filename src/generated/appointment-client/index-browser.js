@@ -171,6 +171,39 @@ exports.Prisma.AppointmentStatusLogScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.PrescriptionScalarFieldEnum = {
+  id: 'id',
+  prescriptionCode: 'prescriptionCode',
+  appointmentId: 'appointmentId',
+  doctorId: 'doctorId',
+  patientId: 'patientId',
+  chiefComplaint: 'chiefComplaint',
+  diagnosis: 'diagnosis',
+  advice: 'advice',
+  followUpDate: 'followUpDate',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.PrescriptionMedicineScalarFieldEnum = {
+  id: 'id',
+  prescriptionId: 'prescriptionId',
+  medicineName: 'medicineName',
+  dosage: 'dosage',
+  frequency: 'frequency',
+  duration: 'duration',
+  instruction: 'instruction',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.PrescriptionTestScalarFieldEnum = {
+  id: 'id',
+  prescriptionId: 'prescriptionId',
+  testName: 'testName',
+  instruction: 'instruction',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.AppointmentPaymentScalarFieldEnum = {
   id: 'id',
   appointmentId: 'appointmentId',
@@ -318,6 +351,34 @@ exports.Prisma.AppointmentStatusLogOrderByRelevanceFieldEnum = {
   changedById: 'changedById',
   changedByRole: 'changedByRole',
   note: 'note'
+};
+
+exports.Prisma.PrescriptionOrderByRelevanceFieldEnum = {
+  id: 'id',
+  prescriptionCode: 'prescriptionCode',
+  appointmentId: 'appointmentId',
+  doctorId: 'doctorId',
+  patientId: 'patientId',
+  chiefComplaint: 'chiefComplaint',
+  diagnosis: 'diagnosis',
+  advice: 'advice'
+};
+
+exports.Prisma.PrescriptionMedicineOrderByRelevanceFieldEnum = {
+  id: 'id',
+  prescriptionId: 'prescriptionId',
+  medicineName: 'medicineName',
+  dosage: 'dosage',
+  frequency: 'frequency',
+  duration: 'duration',
+  instruction: 'instruction'
+};
+
+exports.Prisma.PrescriptionTestOrderByRelevanceFieldEnum = {
+  id: 'id',
+  prescriptionId: 'prescriptionId',
+  testName: 'testName',
+  instruction: 'instruction'
 };
 
 exports.Prisma.JsonNullValueFilter = {
@@ -475,6 +536,9 @@ exports.Prisma.ModelName = {
   Appointment: 'Appointment',
   AppointmentSlotLock: 'AppointmentSlotLock',
   AppointmentStatusLog: 'AppointmentStatusLog',
+  Prescription: 'Prescription',
+  PrescriptionMedicine: 'PrescriptionMedicine',
+  PrescriptionTest: 'PrescriptionTest',
   AppointmentPayment: 'AppointmentPayment',
   VideoCall: 'VideoCall',
   ChatConversation: 'ChatConversation',
