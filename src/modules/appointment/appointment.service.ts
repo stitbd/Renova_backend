@@ -583,11 +583,167 @@ const getDoctorSlots = async ({ doctorId, date }: GetDoctorSlotsPayload) => {
 };
 
 
+const getDoctorPatients = async (authUser: AuthUser) => {
+  if (authUser.userType !== "DOCTOR") {
+    throw new AppError("Only doctors can access this route", 403);
+  }
+
+  const appointments = await appointmentPrisma.appointment.findMany({
+    where: {
+      doctorId: authUser.id,
+      status: {
+        not: "CANCELLED",
+      },
+    },
+    select: {
+      patientId: true,
+      appointmentDate: true,
+      startTime: true,
+      reason: true,
+      createdAt: true,
+
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+
+  const uniquePatientIds = [
+    ...new Set(appointments.map((item) => item.patientId)),
+  ];
+
+  const patients = await mainPrisma.patient.findMany({
+    where: {
+      id: {
+        in: uniquePatientIds,
+      },
+    },
+    select: {
+      id: true,
+      fullName: true,
+      email: true,
+      mobileNumber: true,
+      gender: true,
+      age: true,
+      bloodGroup: true,
+      patientCode:true,
+      address: true
+
+    },
+  });
+
+  const patientMap = new Map(
+    patients.map((patient) => [patient.id, patient])
+  );
+
+  return uniquePatientIds.map((patientId) => {
+    const patientAppointments = appointments.filter(
+      (item) => item.patientId === patientId
+    );
+
+    return {
+      ...patientMap.get(patientId),
+
+      totalAppointments: patientAppointments.length,
+
+      lastAppointment:
+        patientAppointments.length > 0
+          ? patientAppointments[0].startTime
+          : null,
+
+      firstAppointment:
+        patientAppointments.length > 0
+          ? patientAppointments[patientAppointments.length - 1].startTime
+          : null,
+    };
+  });
+};
+
+const getAppointmentsByPatientId = async (
+  patientId: string,
+  authUser: AuthUser,
+  status?: AppointmentStatus
+) => {
+  if (authUser.userType === "PATIENT" && authUser.id !== patientId) {
+    throw new AppError("You are not allowed to view this patient's appointments", 403);
+  }
+
+  const patient = await mainPrisma.patient.findUnique({
+    where: {
+      id: patientId,
+    },
+    select: {
+      id: true,
+      fullName: true,
+      email: true,
+      mobileNumber: true,
+      gender: true,
+      age: true,
+      bloodGroup: true,
+    },
+  });
+
+  if (!patient) {
+    throw new AppError("Patient not found", 404);
+  }
+
+  const appointments = await appointmentPrisma.appointment.findMany({
+    where: {
+      patientId,
+      ...(status ? { status } : {}),
+    },
+    orderBy: {
+      startTime: "desc",
+    },
+    include: {
+      payment: true,
+      prescription: true,
+    },
+  });
+
+  const doctorIds = [...new Set(appointments.map((item) => item.doctorId))];
+
+  const doctors = await mainPrisma.doctor.findMany({
+    where: {
+      id: {
+        in: doctorIds,
+      },
+    },
+    select: {
+      id: true,
+      fullName: true,
+      email: true,
+      mobile: true,
+      consultationFee: true,
+      specialization: {
+        select: {
+          id: true,
+          name: true,
+        },
+      },
+    },
+  });
+
+  const doctorMap = new Map(doctors.map((doctor) => [doctor.id, doctor]));
+
+  return {
+    patient,
+    totalAppointments: appointments.length,
+    appointments: appointments.map((appointment) => ({
+      ...appointment,
+      doctor: doctorMap.get(appointment.doctorId) || null,
+    })),
+  };
+};
+
+
 export const appointmentService = {
     createAppointment,
     getMyAppointments,
     cancelAppointment,
     updateAppointmentStatus,
-    getDoctorSlots
+    getDoctorSlots,
+    getDoctorPatients,
+    getAppointmentsByPatientId
 
 };

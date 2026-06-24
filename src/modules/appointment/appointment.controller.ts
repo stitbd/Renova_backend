@@ -109,6 +109,40 @@ const getDoctorSlots = catchAsync(async (req: Request, res: Response) => {
     });
 });
 
+const getDoctorPatients = catchAsync(
+  async (req: Request, res: Response) => {
+    const result = await appointmentService.getDoctorPatients(
+      req.user as AuthUser
+    );
+
+    manageResponse(res, {
+      statusCode: 200,
+      success: true,
+      message: "Doctor patients retrieved successfully",
+      data: result,
+    });
+  }
+);
+
+const getAppointmentsByPatientId = catchAsync(
+  async (req: Request, res: Response) => {
+    const result = await appointmentService.getAppointmentsByPatientId(
+      req.params.patientId as string,
+      req.user as AuthUser,
+      req.query.status as AppointmentStatus | undefined
+    );
+
+    manageResponse(res, {
+      statusCode: 200,
+      success: true,
+      message: "Patient appointments retrieved successfully",
+      data: result,
+    });
+  }
+);
+
+
+
 export const appointmentController = {
     createAppointment,
     getMyAppointments,
@@ -116,5 +150,7 @@ export const appointmentController = {
     confirmAppointment,
     completeAppointment,
     markNoShow,
-    getDoctorSlots
+    getDoctorSlots,
+    getDoctorPatients,
+    getAppointmentsByPatientId
 };

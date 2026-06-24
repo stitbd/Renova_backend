@@ -15,15 +15,15 @@ const getUserBasicInfo = async (userId: string) => {
     const [doctor, patient, outletUser, superAdmin] = await Promise.all([
         mainPrisma.doctor.findUnique({
             where: { id: userId },
-            select: { id: true, fullName: true },
+            select: { id: true, fullName: true , mobile: true , gender: true , dateOfBirth : true },
         }),
         mainPrisma.patient.findUnique({
             where: { id: userId },
-            select: { id: true, fullName: true },
+            select: { id: true, fullName: true ,mobileNumber:true ,gender: true , dateOfBirth : true},
         }),
         mainPrisma.outletUser.findUnique({
             where: { id: userId },
-            select: { id: true, name: true },
+            select: { id: true, name: true  },
         }),
         mainPrisma.superAdmins.findUnique({
             where: { id: userId },
@@ -31,8 +31,8 @@ const getUserBasicInfo = async (userId: string) => {
         }),
     ]);
 
-    if (doctor) return { id: doctor.id, name: doctor.fullName, userType: "DOCTOR" };
-    if (patient) return { id: patient.id, name: patient.fullName, userType: "PATIENT" };
+    if (doctor) return { id: doctor.id, name: doctor.fullName, userType: "DOCTOR", mobileNumber : doctor?.mobile , gender: doctor.gender , dateOfBirth : doctor.dateOfBirth };
+    if (patient) return { id: patient.id, name: patient.fullName, userType: "PATIENT", mobileNumber : patient?.mobileNumber,gender: patient.gender , dateOfBirth : patient.dateOfBirth };
     if (outletUser) return { id: outletUser.id, name: outletUser.name, userType: "OUTLET_USER" };
     if (superAdmin) return { id: superAdmin.id, name: superAdmin.name, userType: "SUPER_ADMIN" };
 
@@ -183,6 +183,8 @@ const getMyConversations = async (authUser: AuthUser) => {
     const users = await Promise.all(
         participantIds.map(async (id) => getUserBasicInfo(id))
     );
+
+    // console.log('backend user', users)
 
     const userMap = new Map(
         users.filter(Boolean).map((user) => [user!.id, user])

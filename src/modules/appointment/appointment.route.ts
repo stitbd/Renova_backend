@@ -60,4 +60,17 @@ router.get(
   appointmentController.getDoctorSlots
 );
 
+router.get(
+  "/doctor/patients",
+  auth("DOCTOR"),
+  appointmentController.getDoctorPatients
+);
+
+router.get(
+  "/patient/:patientId",
+  auth("PATIENT", "DOCTOR", "OUTLET_USER", "SUPER_ADMIN"),
+  appointmentController.getAppointmentsByPatientId
+);
+
+
 export const appointmentRoutes = router;
