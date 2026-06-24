@@ -737,6 +737,138 @@ const getAppointmentsByPatientId = async (
 };
 
 
+
+const getDoctorConsultations = async (authUser: AuthUser) => {
+  const appointments = await appointmentPrisma.appointment.findMany({
+    where: {
+      doctorId: authUser.id,
+      status: "COMPLETED",
+    },
+    orderBy: {
+      completedAt: "desc",
+    },
+    include: {
+      prescription: {
+        include: {
+          medicines: true,
+          tests: true,
+        },
+      },
+    },
+  });
+
+  const patientIds = [
+    ...new Set(appointments.map((item) => item.patientId)),
+  ];
+
+  const patients = await mainPrisma.patient.findMany({
+    where: {
+      id: {
+        in: patientIds,
+      },
+    },
+    select: {
+      id: true,
+      fullName: true,
+      gender: true,
+      age: true,
+      mobileNumber: true,
+    },
+  });
+
+  const doctor = await mainPrisma.doctor.findUnique({
+    where: {
+      id: authUser.id,
+    },
+    select: {
+      id: true,
+      fullName: true,
+      specialization: {
+        select: {
+          name: true,
+        },
+      },
+    },
+  });
+
+  const patientMap = new Map(
+    patients.map((patient) => [patient.id, patient])
+  );
+
+  return appointments.map((appointment) => {
+    const patient = patientMap.get(appointment.patientId);
+
+    const prescription = appointment.prescription;
+
+    const duration =
+      (appointment.endTime.getTime() -
+        appointment.startTime.getTime()) /
+      (1000 * 60);
+
+    return {
+      appointmentId: appointment.id,
+      appointmentCode: appointment.appointmentCode,
+
+      patient: {
+        id: patient?.id,
+        fullName: patient?.fullName,
+        gender: patient?.gender,
+        age: patient?.age,
+        phone: patient?.mobileNumber,
+      },
+
+      doctor: {
+        id: doctor?.id,
+        fullName: doctor?.fullName,
+        specialization: doctor?.specialization?.name,
+      },
+
+    consultation: {
+  date: getDhakaDateString(
+    appointment.appointmentDate
+  ),
+  startTime: getDhakaTimeString(
+    appointment.startTime
+  ),
+  endTime: getDhakaTimeString(
+    appointment.endTime
+  ),
+  duration,
+  type: appointment.type,
+  status: appointment.status,
+  fee: appointment.consultationFee,
+  paymentStatus: appointment.paymentStatus,
+},
+
+      clinical: {
+        chiefComplaint:
+          prescription?.chiefComplaint || null,
+
+        diagnosis:
+          prescription?.diagnosis || null,
+
+        advice:
+          prescription?.advice || null,
+      },
+
+      prescription: prescription
+        ? {
+            id: prescription.id,
+            code: prescription.prescriptionCode,
+            medicinesCount:
+              prescription.medicines.length,
+            testsCount:
+              prescription.tests.length,
+          }
+        : null,
+
+      followUpDate:
+        prescription?.followUpDate || null,
+    };
+  });
+};
+
+
 export const appointmentService = {
     createAppointment,
     getMyAppointments,
@@ -744,6 +876,7 @@ export const appointmentService = {
     updateAppointmentStatus,
     getDoctorSlots,
     getDoctorPatients,
-    getAppointmentsByPatientId
+    getAppointmentsByPatientId,
+    getDoctorConsultations 
 
 };

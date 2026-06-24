@@ -72,5 +72,11 @@ router.get(
   appointmentController.getAppointmentsByPatientId
 );
 
+router.get(
+  "/doctor/consultations",
+  auth("DOCTOR"),
+  appointmentController.getDoctorConsultations
+);
+
 
 export const appointmentRoutes = router;

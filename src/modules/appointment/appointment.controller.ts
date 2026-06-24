@@ -142,6 +142,24 @@ const getAppointmentsByPatientId = catchAsync(
 );
 
 
+const getDoctorConsultations = catchAsync(
+  async (req: Request, res: Response) => {
+    const result =
+      await appointmentService.getDoctorConsultations(
+        req.user as AuthUser
+      );
+
+    manageResponse(res, {
+      statusCode: 200,
+      success: true,
+      message:
+        "Doctor consultations retrieved successfully",
+      data: result,
+    });
+  }
+);
+
+
 
 export const appointmentController = {
     createAppointment,
@@ -152,5 +170,6 @@ export const appointmentController = {
     markNoShow,
     getDoctorSlots,
     getDoctorPatients,
-    getAppointmentsByPatientId
+    getAppointmentsByPatientId,
+    getDoctorConsultations
 };
